@@ -1235,3 +1235,40 @@ src: url("/fonts/Inter-Regular.woff") format("woff");
 font-family: "Inter_SemiBold";
 src: url("/fonts/Inter-SemiBold.woff") format("woff");
 }
+
+
+
+@font-face {
+font-family: "poppins_black";
+src: url("/fonts/poppins_black.woff") format("woff");
+}
+
+@font-face {
+font-family: "poppins_bold";
+src: url("/fonts/poppins_bold.woff") format("woff");
+}
+
+@font-face {
+font-family: "poppins_semibold";
+src: url("/fonts/poppins_semibold.woff") format("woff");
+}
+
+@font-face {
+font-family: "poppins_light";
+src: url("/fonts/poppins_light.woff") format("woff");
+}
+
+@font-face {
+font-family: "poppins_regular";
+src: url("/fonts/poppins_regular.woff") format("woff");
+}
+
+@font-face {
+font-family: "poppins_medium";
+src: url("/fonts/poppins_medium.woff") format("woff");
+}
+
+@font-face {
+font-family: "poppins_thin";
+src: url("/fonts/poppins_thin.woff") format("woff");
+}

@@ -62,8 +62,11 @@ use App\Models\LibroReclamaciones;
 
 /* Las rutas publicas */
 
-Route::get('/', [IndexController::class, 'index'])->name('index');
+// Route::get('/', [IndexController::class, 'index'])->name('index');
 Route::get('/nosotros', [IndexController::class, 'nosotros'])->name('nosotros');
+Route::get('/detallecurso2', [IndexController::class, 'detallecurso2'])->name('detallecurso2');
+
+
 Route::get('/servicios', [IndexController::class, 'servicios'])->name('servicios');
 Route::get('/comentario', [IndexController::class, 'comentario'])->name('comentario');
 Route::post('/comentario/nuevo', [IndexController::class, 'hacerComentario'])->name('nuevocomentario');
@@ -78,6 +81,8 @@ Route::post('/procesar/pago', [IndexController::class, 'procesarPago'])->name('p
 Route::get('/agradecimiento', [IndexController::class, 'agradecimiento'])->name('agradecimiento');
 /* Catálogo y producto */
 Route::get('/producto/{id}', [IndexController::class, 'producto'])->name('producto');
+
+
 // Route::get('/catalogo', [IndexController::class, 'catalogo'])->name('catalogo.all');
 // Route::get('/catalogo/{category}', [IndexController::class, 'catalogo'])->name('catalogo');
 // Route::get('/catalogo/{category}/{subcategory}', [IndexController::class, 'catalogo'])->name('catalogo.sub');

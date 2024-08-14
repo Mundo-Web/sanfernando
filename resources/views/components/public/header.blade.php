@@ -200,32 +200,47 @@
 </div>
 
 
-<header class="font-Inter_Regular">
-  @foreach ($datosgenerales as $item)
-    <div
-      class="bg-[#006BF6] h-[50px] flex lg:justify-between justify-center w-full px-[5%] xl:px-[8%] py-3 text-base items-center">
-      <div class="text-white font-Inter_Regular text-[17px] text-start flex gap-3">
+<header class="font-poppins_regular">
+  {{-- @foreach ($datosgenerales as $item)
+    <div class="bg-[#0F1F38] h-[44px] flex lg:justify-between justify-center w-full px-[5%] xl:px-[8%] py-2 text-sm items-center">
+      <div class="text-white text-start flex gap-3">
         <h3>
-          {{ $item->cellphone }}</h3>
-
-        {{-- <div>|</div>
-        <a href="#">Direccion</a> --}}
-
+          Teléfono: {{ $item->cellphone }}
+        </h3>
+        <div>|</div>
+        <a href="#">
+          Email: contacto@egespp
+        </a>
       </div>
-      <h3 class="text-white font-Inter_Regular  text-center hidden lg:flex">
-        Cuéntale a un amigo sobre Boost y consigue un 20% de descuento *
-      </h3>
-      <div class="text-white font-Inter_Regular  text-end hidden lg:flex">
+
+      <div class="text-white text-end hidden lg:flex">
         @if (Auth::user() == null)
           <a href="/login">Log In </a> / <a href="/register">Sign Up</a>
         @endif
-
       </div>
     </div>
-  @endforeach
+  @endforeach --}}
+
+  <section class="flex flex-wrap gap-10 justify-between items-center px-[8%] py-2 border border-solid bg-slate-900 border-teal-800 border-opacity-10 max-md:px-5">
+    <div class="hidden md:flex gap-4 items-start self-stretch my-auto text-sm tracking-normal leading-7 text-center min-w-[240px] text-slate-100">
+        <p>Teléfono: +51 999 999 999</p>
+        <p>Email: contacto@egespp</p>
+    </div>
+    <nav class="flex gap-4 items-start self-stretch my-auto mx-auto md:mx-0">
+        <a href="#" aria-label="Social Media Link 1">
+            <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/8693f932039c2e8c0a816be060e78697a7a02b21edbfbfcf31bd73f4123f53bf?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f" alt="" class="object-contain shrink-0 w-6 aspect-square" />
+        </a>
+        <a href="#" aria-label="Social Media Link 2">
+            <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/e1adcb46e083a4104243cc7858289a099b773ab8ae97b361c2a565e5498fd619?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f" alt="" class="object-contain shrink-0 w-6 aspect-square" />
+        </a>
+        <a href="#" aria-label="Social Media Link 3">
+            <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/2cb868de28b1b49e52be101815be5c820fdf20aee19c0b5b86753f263366f629?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f" alt="" class="object-contain shrink-0 w-6 aspect-square" />
+        </a>
+    </nav>
+</section>
 
   <div>
-    <div id="header-menu" class="flex justify-between gap-5 w-full px-[5%] xl:px-[8%] py-2  text-[17px] relative">
+    <div id="header-menu" class="flex justify-between gap-5 w-full px-[5%] xl:px-[8%] py-3  text-[17px] relative">
 
       <div id="menu-burguer" class="lg:hidden z-10 w-max">
         <img class="h-10 w-10 cursor-pointer" src="{{ asset('images/img/menu_hamburguer.png') }}"
@@ -235,7 +250,7 @@
       <div class="w-auto">
         <a href="#">
           <img id="logo-boostperu" class="w-[170px] " {{-- public\images\svg\LOGO2.png --}}
-            src="{{ asset($isIndex ? 'images/svg/LOGO2.png' : 'images/svg/LOGO2.png') }}" alt="boostperu" />
+            src="{{ asset($isIndex ? 'images/svg/logogp.svg' : 'images/svg/logogp.svg') }}" alt="boostperu" />
         </a>
       </div>
 
@@ -245,30 +260,34 @@
             class=" text-[#333] text-base font-Inter_Medium flex gap-5 xl:gap-10 items-center justify-center "
             x-data="{ openCatalogo: false, openSubMenu: null }">
             <a href="/" class="font-medium hover:opacity-75 ">
-              <span class="underline-this">INICIO</span>
+              <span class="underline-this">Inicio</span>
             </a>
 
-            <a id="productos-link" href="{{ route('Catalogo.jsx') }}" class="font-medium ">
-              <span class="underline-this">PRODUCTOS</span>
-              <div id="productos-link-h" class="w-0"></div>
+            <a id="productos-link" href="#" class="font-medium ">
+              <span class="underline-this">Nosotros</span>
+              {{-- <div id="productos-link-h" class="w-0"></div> --}}
 
             </a>
 
-            @if ($offerExists)
-              <a href="{{ route('Ofertas.jsx') }}" class="font-medium hover:opacity-75">
-                <span class="underline-this">OFERTAS</span>
+            {{-- @if ($offerExists) --}}
+              <a href="/catalogogp" class="font-medium hover:opacity-75">
+                <span class="underline-this">Docentes</span>
               </a>
-            @endif
+            {{-- @endif --}}
 
-            @if ($blog > 0)
-              <a href="/blog/0" class="font-medium hover:opacity-75 ">
-                <span class="underline-this">BLOG </span>
+            {{-- @if ($blog > 0) --}}
+              <a href="#" class="font-medium hover:opacity-75 ">
+                <span class="underline-this">Eventos </span>
               </a>
-            @endif
+
+              <a href="#" class="font-medium hover:opacity-75 ">
+                <span class="underline-this">Blog </span>
+              </a>
+            {{-- @endif --}}
 
 
-            <a href="/contacto" class="font-medium hover:opacity-75  ">
-              <span class="underline-this">CONTACTO</span>
+            <a href="#" class="font-medium hover:opacity-75  ">
+              <span class="underline-this">Contacto</span>
             </a>
             @if ($tags->count() > 0)
               @foreach ($tags as $item)
@@ -285,105 +304,17 @@
         </div>
       </div>
 
-      <div class="flex justify-end md:w-auto md:justify-center items-center gap-2">
+     
 
-        @if (Auth::user() == null)
-          <a class="hidden md:flex" href="{{ route('login') }}"><img class="bg-white rounded-lg"
-              src="{{ asset('images/svg/header_user.svg') }}" alt="user" /></a>
-        @else
-          <div class="relative  hidden md:inline-flex" x-data="{ open: false }">
-            <button class="px-3 py-5 inline-flex justify-center items-center group" aria-haspopup="true"
-              @click.prevent="open = !open" :aria-expanded="open">
-              <div class="flex items-center truncate">
-                <span id="username"
-                  class="truncate ml-2 text-sm font-medium dark:text-slate-300 group-hover:opacity-75 dark:group-hover:text-slate-200 text-[#272727] ">{{ Auth::user()->name }}</span>
-                <svg class="w-3 h-3 shrink-0 ml-1 fill-current text-slate-400" viewBox="0 0 12 12">
-                  <path d="M5.9 11.4L.5 6l1.4-1.4 4 4 4-4L11.3 6z" />
-                </svg>
-              </div>
-            </button>
-            <div
-              class="origin-top-right z-10 absolute top-full min-w-44 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 py-1.5 rounded shadow-lg overflow-hidden mt-1"
-              @click.outside="open = false" @keydown.escape.window="open = false" x-show="open">
-              <ul>
-                <li class="hover:bg-gray-100">
-                  <a class="font-medium text-sm text-black flex items-center py-1 px-3"
-                    href="{{ route('micuenta') }}" @click="open = false" @focus="open = true"
-                    @focusout="open = false">Mi Cuenta</a>
-                </li>
-
-                <li class="hover:bg-gray-100">
-                  <form method="POST" action="{{ route('logout') }}" x-data>
-                    @csrf
-                    <button type="submit" class="font-medium text-sm text-black flex items-center py-1 px-3"
-                      @click.prevent="$root.submit(); open = false">
-                      {{ __('Cerrar sesión') }}
-                    </button>
-                  </form>
-                </li>
-              </ul>
-            </div>
-          </div>
-        @endif
-        {{-- <div class="bg-[#EB5D2C] flex justify-center items-center rounded-full w-7 h-7">
-            <span id="itemsCount" class="text-white"></span>
-          </div> --}}
-
-        <div class="relative inline-block cursor-pointer justify-center ">
-          <button onclick="openSearch()" class="flex justify-center items-center">
-            <img src="{{ asset('images/svg/search_boost.svg') }}"
-              class="bg-white rounded-lg max-w-full h-auto cursor-pointer" />
-          </button>
-
+      <section class="flex gap-3 items-center">
+        <div class="flex gap-1.5 items-center self-stretch p-2.5 my-auto w-10 h-10 bg-red-100 rounded-[57px]">
+            <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/995e42d883b4ad4ad14f887f23504fcf5af2557fc95c8d33c27cb17fed7fef65?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f" alt="" class="object-contain self-stretch my-auto w-5 aspect-square" />
         </div>
-
-
-        <div class="flex justify-center items-center">
-          <div id="open-cart" class="relative inline-block cursor-pointer pr-3">
-            <span id="itemsCount"
-              class="bg-[#EB5D2C] text-xs font-medium text-white text-center px-[7px] py-[2px]  rounded-full absolute bottom-0 right-0 ml-3">0</span>
-            <img src="{{ asset('images/svg/bag_boost.svg') }}"
-              class="bg-white rounded-lg p-1 max-w-full h-auto cursor-pointer" />
-          </div>
-          {{-- <input type="checkbox" class="bag__modal" id="check" /> --}}
-          <div id="cart-modal"
-            class="bag !fixed top-0 right-0 md:w-[450px] cartContainer border shadow-2xl  !rounded-none !p-0 !z-30"
-            style="display: none">
-            <div class="p-4 flex flex-col h-[90vh] justify-between gap-2">
-              <div class="flex flex-col">
-                <div class="flex justify-between ">
-                  <h2 class="font-semibold font-Inter_Medium text-[28px] text-[#151515] pb-5">Carrito</h2>
-                  <div id="close-cart" class="cursor-pointer">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                      stroke="currentColor" class="w-6 h-6">
-                      <path stroke="#272727" stroke-linecap="round" stroke-linejoin="round"
-                        d="M6 18 18 6M6 6l12 12" />
-                    </svg>
-                  </div>
-                </div>
-                <div class="overflow-y-scroll h-[calc(90vh-200px)] scroll__carrito">
-                  <table class="w-full">
-                    <tbody id="itemsCarrito">
-                      {{-- <div class="flex flex-col gap-10 align-top" id="itemsCarrito"></div> --}}
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-              <div class="flex flex-col gap-2 pt-2">
-                <div class="text-[#006BF6]  text-xl flex justify-between items-center">
-                  <p class="font-Inter_Medium font-semibold">Total</p>
-                  <p class="font-Inter_Medium font-semibold" id="itemsTotal">S/ 0.00</p>
-                </div>
-                <div>
-                  <a href="/carrito"
-                    class="font-normal font-Inter_Medium text-lg bg-[#006BF6] py-3 px-5 rounded-2xl text-white cursor-pointer w-full inline-block text-center">Ver
-                    Carrito</a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+        <button class="hidden md:flex gap-2.5 justify-center items-center self-stretch px-5 py-2.5 my-auto text-sm font-semibold text-center text-red-600 bg-red-100 rounded-lg min-h-[40px]">
+            <span class="self-stretch my-auto">Crear Cuenta</span>
+            <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/75bad0eb80e4c8fa820b5a280da9560ca64547065469b69cd2c648442bf9f1c3?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f" alt="" class="object-contain shrink-0 self-stretch my-auto w-5 aspect-square" />
+        </button>
+    </section>
 
     </div>
   </div>

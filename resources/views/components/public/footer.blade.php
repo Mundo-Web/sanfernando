@@ -1,238 +1,63 @@
-<footer class="font-Inter_Medium bg-[#FFFFFF] mt-5">
-  <style>
-    #modalPoliticasDev #modalTerminosCondiciones {
-      height: 70vh;
-      /* Establece la altura del modal al 70% de la altura de la ventana gráfica */
-      overflow-y: auto;
-      /* Permite el desplazamiento vertical si el contenido excede la altura del modal */
-    }
-  </style>
-
-  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 md:justify-center w-full px-[5%] py-8 lg:py-16 ">
-
-    <div class="flex flex-col text-[#444444] text-base gap-1">
-      <h3 class="font-bold text-xl text-[#333333] pb-3">Contacta con Nosotros</h3>
-      <p>{{ config('app.name') }}</p>
-      <p>{{ $datosgenerales->address }}</p>
-      <p> {{ $datosgenerales->city }} - {{ $datosgenerales->country }}</p>
-      <p>{{ $datosgenerales->cellphone }}</p>
-      <p>{{ $datosgenerales->email }}</p>
-
-      <div class="flex flex-row gap-4 text-[#333333] mt-6 pt-2">
-        @if ($datosgenerales->facebook)
-          <a href="{{ $datosgenerales->facebook }}">
-            <i class="fa-brands fa-facebook fa-2xl"></i>
-          </a>
-        @endif
-        @if ($datosgenerales->instagram)
-          <a href="{{ $datosgenerales->instagram }}">
-            <i class="fa-brands fa-instagram fa-2xl"></i>
-          </a>
-        @endif
-        @if ($datosgenerales->linkedin)
-          <a href="{{ $datosgenerales->linkedin }}">
-            <i class="fa-brands fa-linkedin fa-2xl"></i>
-          </a>
-        @endif
-        @if ($datosgenerales->tiktok)
-          <a href="{{ $datosgenerales->tiktok }}">
-            <i class="fa-brands fa-tiktok fa-2xl"></i>
-          </a>
-        @endif
-        @if ($datosgenerales->twitter)
-          <a href="{{ $datosgenerales->twitter }}">
-            <i class="fa-brands fa-twitter fa-2xl"></i>
-          </a>
-        @endif
-        @if ($datosgenerales->youtube)
-          <a href="{{ $datosgenerales->youtube }}">
-            <i class="fa-brands fa-youtube fa-2xl"></i>
-          </a>
-        @endif
-      </div>
-    </div>
-
-    <div class="flex flex-col text-[#444444] text-base gap-1">
-      <h3 class="font-bold text-xl text-[#333333] pb-3">Información</h3>
-      <a href="/">Inicio</a>
-      <a href="{{ route('Catalogo.jsx') }}">Productos</a>
-      <a href="{{ route('blog', 0) }}">Blog</a>
-    </div>
-
-    <div class="flex flex-col text-[#444444] text-base gap-1">
-      <h3 class="font-bold text-xl text-[#333333] pb-3">Servicio al Cliente</h3>
-      <a href="/contacto">Contacto</a>
-      <a id="linkTerminos">Terminos y condiciones </a>
-      <a id="linkPoliticas">Politicas de devolucion </a>
-
-      <a href="{{ route('librodereclamaciones') }}"><img class="w-24"
-          src="{{ asset('images/img/reclamaciones.png') }}" /></a>
-    </div>
-
-    <div class=" flex flex-col gap-2 text-[#444444] text-base">
-      <h3 class="font-bold text-xl text-[#333333] pb-3">Únete al Blog</h3>
-      <p>¡Suscríbete ahora para no perderte ninguno de nuestros artículos!</p>
-      <div class="relative bg-[#F8F8F8] rounded-full p-2 px-4">
-        <form id="subsEmail" class="flex">
-          @csrf
-          <input type="email" name="email" id="email" placeholder="Déjanos tu e-mail"
-            class="w-full border-none focus:border-transparent ring-0 focus:ring-0 p-2 bg-[#F8F8F8]" />
-          <input type="text" name="tipo" value="Inscripción" hidden />
-          <button type="submit" class=" text-[#444444] p-2 font-semibold">Enviar</button>
-        </form>
-      </div>
-    </div>
-
-  </div>
-
-  <div class="bg-[#F8F8F8] py-4 flex items-center justify-center">
-    <div class="flex flex-col lg:flex-row justify-between items-center gap-5 w-full px-[5%]">
-      <div class="text-center">
-        <p class="font-normal text-sm text-[#444444]">
-          Copyright &copy; 2023 {{ config('app.name') }}. Reservados todos los derechos. Powered by <a
-            href="https://www.mundoweb.pe" target="_blank" class="text-[#006BF6] border-b border-[#006BF6]"> Mundo Web
-          </a>
+<footer class="flex flex-col justify-center px-[8%] py-20 bg-slate-900 max-md:px-5 !text-lg !font-poppins_regular">
+  <div class="flex flex-wrap gap-10 justify-between items-start w-full max-md:max-w-full">
+    <section class="flex flex-col min-w-[240px] w-[330px]">
+      <div class="flex flex-col w-full">
+        <div class="flex gap-2 items-center self-start">
+          <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/93f2421934f627c82a1f00265f8fb2b03632c8f4c667470a8307d61d620234d7?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f" class="object-contain shrink-0 self-stretch my-auto w-10 aspect-square" alt="Company logo" />
+          <div class="flex flex-col self-stretch my-auto w-[100px]">
+            <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/5d9cc8593fc9f4378529e5f8c320b53f2fcac980a4b35b024695fc7e7110fb0f?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f" class="object-contain max-w-full aspect-[3.03] w-[100px]" alt="Company name" />
+            <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/bd5896281afafbaa5dec749f1bab7d83b6d5ed9b62b8ebe2e33452518a7e0678?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f" class="object-contain max-w-full aspect-[16.67] w-[100px]" alt="Company slogan" />
+          </div>
+        </div>
+        <p class="mt-4 text-xs leading-4 text-white">
+          Nunc gravida sodales lectus et finibus. Duis vehicula pretium odio, nec efficitur purus tempor at. Donec eget tellus id tellus convallis malesuada at eget justo.
         </p>
       </div>
-      <div class="flex gap-2 items-center justify-center">
-        <img src="{{ asset('images/svg/visa.svg') }}" alt="visa" class="h-7 md:h-10" />
-        <img src="{{ asset('images/svg/american.svg') }}" alt="american" class="h-7 md:h-10" />
-        <img src="{{ asset('images/svg/mastercad.svg') }}" alt="mastercad" class="h-7 md:h-10" />
-        <img src="{{ asset('images/svg/stripe.svg') }}" alt="stripe" class="h-7 md:h-10" />
-        <img src="{{ asset('images/svg/paypal.svg') }}" alt="paypal" class="h-7 md:h-10" />
-        <img src="{{ asset('images/svg/pay.svg') }}" alt="pay" class="h-7 md:h-10" />
+      <a href="#" class="flex gap-3 items-start mt-6 text-sm font-semibold tracking-normal leading-10 text-white rounded-xl min-h-[40px]">
+        <span class="gap-3 self-stretch px-6 h-10 bg-red-600 rounded-xl min-w-[240px] max-md:px-5">
+          Explorar todos los cursos y Diplomados
+        </span>
+      </a>
+    </section>
+    <nav class="flex flex-wrap gap-10 items-start min-w-[240px] w-[659px] max-md:max-w-full">
+      <div class="flex flex-col flex-1 shrink leading-tight whitespace-nowrap basis-0">
+        <h3 class="text-sm font-medium text-white">Enlaces</h3>
+        <ul class="flex flex-col mt-5 w-full text-xs text-white text-opacity-80">
+          <li><a href="#">Inicio</a></li>
+          <li class="mt-3"><a href="#">Cursos</a></li>
+          <li class="mt-3"><a href="#">Diplomados</a></li>
+          <li class="mt-3"><a href="#">Nosotros</a></li>
+          <li class="mt-3"><a href="#">Contacto</a></li>
+        </ul>
       </div>
+      <div class="flex flex-col w-[221px]">
+        <h3 class="text-sm font-medium leading-tight text-white">Datos de contacto</h3>
+        <address class="flex flex-col mt-5 w-full text-xs leading-4 text-white text-opacity-80 not-italic">
+          <p>Av. Benavides 3583 - Santiago de Surco</p>
+          <p class="mt-3">Correo Electrónico: <a href="mailto:admision@gestionpublica.edu.pe">admision@gestionpublica.edu.pe</a></p>
+          <p class="mt-3 leading-tight">Teléfono: <a href="tel:+51943305073">+51 943 305 073</a></p>
+        </address>
+      </div>
+      <div class="flex flex-col flex-1 shrink leading-tight basis-0">
+        <h3 class="text-sm font-medium text-white">Aviso Legal</h3>
+        <ul class="flex flex-col mt-5 w-full text-xs text-white text-opacity-80">
+          <li><a href="#">Política de Privacidad</a></li>
+          <li class="mt-3"><a href="#">Términos y Condiciones</a></li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+  <hr class="mt-12 w-full bg-white rounded-lg min-h-[2px] max-md:mt-10 max-md:max-w-full" />
+  <div class="flex flex-wrap gap-10 justify-between items-center mt-12 w-full max-md:mt-10 max-md:max-w-full">
+    <p class="self-stretch my-auto text-xs leading-tight text-white">
+      Copyright © 2023 EGESPP. Reservados todos los derechos
+    </p>
+    <div class="flex gap-2.5 items-start self-stretch my-auto">
+      <a href="#" aria-label="Facebook"><img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/b923cc1833af09337dc143c7c3d54c19cfe840deec4df793c6d96201779c7718?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f" class="object-contain shrink-0 w-8 aspect-square" alt="" /></a>
+      <a href="#" aria-label="Twitter"><img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/3c44a8c6d2e998706681aefde9edcecc1a8c578bd58b7870eb2a1f803e056be5?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f" class="object-contain shrink-0 w-8 aspect-square" alt="" /></a>
+      <a href="#" aria-label="Instagram"><img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/b66ec4cdec5c308e6417c85e86eb12d327f5bcedaa96b3e65ca3c9d2259a126c?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f" class="object-contain shrink-0 w-8 aspect-square" alt="" /></a>
+      <a href="#" aria-label="LinkedIn"><img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/3607abf1fa88fd120d941c5e99b8e4bb76763247b76cd8982cfbb664d0cf5113?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f" class="object-contain shrink-0 w-8 aspect-square" alt="" /></a>
+      <a href="#" aria-label="YouTube"><img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/5fc26ec50783276560ca9943a64bd811beb64489abceec1aa5a530ee4cd62991?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f" class="object-contain shrink-0 w-8 aspect-square" alt="" /></a>
     </div>
   </div>
-
-  <div id="modalTerminosCondiciones" class="modal" style="max-width: 900px !important;width: 100% !important;  ">
-    <!-- Modal body -->
-    <div class="p-4 ">
-      <h1 class="font-Inter_SemiBold">Terminos y condiciones</h1>
-      <p class="font-Inter_Regular p-2 prose">{!! $terminos->content ?? '' !!}</p>
-    </div>
-  </div>
-  <div id="modalPoliticasDev" class="modal" style="max-width: 900px !important; width: 100% !important;  ">
-    <!-- Modal body -->
-    <div class="p-4 ">
-      <h1 class="font-Inter_SemiBold">Politicas de devolucion</h1>
-
-      <p class="font-Inter_Regular p-2">{!! $politicas->content ?? '' !!}</p>
-
-
-    </div>
-  </div>
-
 </footer>
-
-
-<script>
-  $(document).ready(function() {
-
-
-    $(document).on('click', '#linkTerminos', function() {
-      $('#modalTerminosCondiciones').modal({
-        show: true,
-        fadeDuration: 400,
-
-      })
-    })
-    $(document).on('click', '#linkPoliticas', function() {
-      $('#modalPoliticasDev').modal({
-        show: true,
-        fadeDuration: 400,
-
-
-      })
-    })
-
-    function alerta(message) {
-      Swal.fire({
-        title: message,
-        icon: "error",
-      });
-    }
-
-    function validarEmail(value) {
-      const regex =
-        /^(([^<>()\[\]\\.,;:\s@”]+(\.[^<>()\[\]\\.,;:\s@”]+)*)|(“.+”))@((\[[0–9]{1,3}\.[0–9]{1,3}\.[0–9]{1,3}\.[0–9]{1,3}])|(([a-zA-Z\-0–9]+\.)+[a-zA-Z]{2,}))$/
-
-      if (!regex.test(value)) {
-        alerta("Por favor, asegúrate de ingresar una dirección de correo electrónico válida");
-        return false;
-      }
-      return true;
-    }
-
-
-    $("#subsEmail").submit(function(e) {
-
-      console.log('enviando subscripcion');
-
-      e.preventDefault();
-
-      Swal.fire({
-
-        title: 'Realizando suscripción',
-        html: `Registrando... 
-          <div class="max-w-2xl mx-auto overflow-hidden flex justify-center items-center mt-4">
-              <div role="status">
-              <svg aria-hidden="true" class="w-8 h-8 text-blue-600 animate-spin dark:text-gray-600 " viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z" fill="currentColor"/>
-                <path d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z" fill="currentFill"/>
-              </svg>
-
-              </div>
-          </div>
-          `,
-        allowOutsideClick: false,
-        onBeforeOpen: () => {
-          Swal.showLoading();
-        }
-      });
-
-
-      if (!validarEmail($('#email').val())) {
-        return;
-      };
-      $.ajax({
-        url: '{{ route('guardarUserNewsLetter') }}',
-        method: 'POST',
-        data: $(this).serialize(),
-        success: function(response) {
-          Swal.close();
-          Swal.fire({
-            title: response.message,
-            icon: "success",
-          });
-          $('#subsEmail')[0].reset();
-        },
-        error: function(response) {
-          let message = ''
-
-          let isDuplicado = response.responseJSON.message.includes('Duplicate entry')
-          console.log(isDuplicado)
-
-          if (isDuplicado) {
-            message =
-              'El correo que ha ingresado ya existe. Utilice  otra direccion de correo'
-          } else {
-            message = response.responseJSON.message
-          }
-          Swal.close();
-          Swal.fire({
-            title: message,
-            icon: "error",
-          });
-        }
-      });
-
-    })
-
-
-
-
-
-
-  })
-</script>

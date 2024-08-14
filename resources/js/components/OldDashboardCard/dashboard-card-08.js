@@ -4,7 +4,7 @@ import {
 } from 'chart.js';
 
 // Import utilities
-import { tailwindConfig, formatValue } from '../utils';
+import { tailwindConfig, formatValue } from '../../utils';
 
 Chart.register(LineController, LineElement, Filler, PointElement, LinearScale, TimeScale, Tooltip);
 

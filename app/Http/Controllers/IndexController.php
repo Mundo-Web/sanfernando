@@ -84,54 +84,95 @@ class IndexController extends Controller
     $slider = Slider::where('status', '=', 1)->where('visible', '=', 1)->get();
     $category = Category::where('status', '=', 1)->where('destacar', '=', 1)->get();
 
-
-
-    return view('public.index', compact('url_env', 'popups', 'banners', 'blogs', 'categoriasAll', 'productosPupulares', 'ultimosProductos', 'productos', 'destacados', 'descuentos', 'general', 'benefit', 'faqs', 'testimonie', 'slider', 'categorias', 'category'));
-  }
-
-  public function catalogo(Request $request, string $id_cat = null)
-  {
-    $tag_id = null;
-    $tag_id = $request->input('tag');
-
-    $catId = $request->input('category');
-    $subCatId = $request->input('subcategoria');
-    $tag_id = $request->input('tag');
-    $id_cat = $id_cat ?? $catId;
-
-    // $categories = Category::with('subcategories')->where('visible', true)->get();
-    $categories = Category::with(['subcategories' => function ($query) {
-      $query->whereHas('products');
-    }])->where('visible', true)->get();
-
-    $tags = Tag::where('visible', true)->get();
-
-    $minPrice = Products::select()
-      ->where('visible', true)
-      ->where('descuento', '>', 0)
-      ->min('descuento');
-    if ($minPrice) Products::where('visible', true)->min('precio');
-    $maxPrice = Products::max('precio');
-
-    $attribute_values = AttributesValues::select('attributes_values.*')
-      ->with('attribute')
-      ->join('attributes', 'attributes.id', '=', 'attributes_values.attribute_id')
-      ->where('attributes_values.visible', true)
-      ->where('attributes.visible', true)
-      ->get();
-
-    return Inertia::render('Catalogo', [
-      'component' => 'Catalogo',
-      'minPrice' => $minPrice,
-      'maxPrice' => $maxPrice,
-      'categories' => $categories,
-      'tags' => $tags,
-      'attribute_values' => $attribute_values,
-      'id_cat' => $id_cat,
-      'tag_id' => $tag_id,
-      'subCatId' => $subCatId
+    return Inertia::render('Home', [
+      'component' => 'Home',
+      'url_env' => $url_env,
+      'productos' => $productos,
+      'ultimosProductos' => $ultimosProductos,
+      'productosPupulares' => $productosPupulares,
+      'blogs' => $blogs,
+      'banners' => $banners,
+      'categorias' => $categorias,
+      'categoriasAll' => $categoriasAll,
+      'destacados' => $destacados,
+      'descuentos' => $descuentos,
+      'popups' => $popups,
+      'general' => $general,
+      'benefit' =>  $benefit,
+      'faqs' => $faqs,
+      'testimonie' => $testimonie,
+      'slider' => $slider,
+      'category' => $category
+      
     ])->rootView('app');
+
+     // return view('public.index', compact('url_env', 'popups', 'banners', 'blogs', 'categoriasAll', 'productosPupulares', 'ultimosProductos', 'productos', 'destacados', 'descuentos', 'general', 'benefit', 'faqs', 'testimonie', 'slider', 'categorias', 'category'));
   }
+
+  public function catalogogp(){
+    return Inertia::render('CatalogGP')->rootView('app');
+  }
+
+  public function detalleCurso(){
+    return Inertia::render('DetalleCurso')->rootView('app');
+  }
+
+  public function docente(){
+    return Inertia::render('Docente')->rootView('app');
+  }
+
+  public function DocenteDetalle(){
+    return Inertia::render('DocenteDetalle')->rootView('app');
+  }
+
+  public function detallecurso2(){
+    return view('public.detalleCurso');
+  }
+
+
+  // public function catalogo(Request $request, string $id_cat = null)
+  // {
+  //   $tag_id = null;
+  //   $tag_id = $request->input('tag');
+
+  //   $catId = $request->input('category');
+  //   $subCatId = $request->input('subcategoria');
+  //   $tag_id = $request->input('tag');
+  //   $id_cat = $id_cat ?? $catId;
+
+  //   // $categories = Category::with('subcategories')->where('visible', true)->get();
+  //   $categories = Category::with(['subcategories' => function ($query) {
+  //     $query->whereHas('products');
+  //   }])->where('visible', true)->get();
+
+  //   $tags = Tag::where('visible', true)->get();
+
+  //   $minPrice = Products::select()
+  //     ->where('visible', true)
+  //     ->where('descuento', '>', 0)
+  //     ->min('descuento');
+  //   if ($minPrice) Products::where('visible', true)->min('precio');
+  //   $maxPrice = Products::max('precio');
+
+  //   $attribute_values = AttributesValues::select('attributes_values.*')
+  //     ->with('attribute')
+  //     ->join('attributes', 'attributes.id', '=', 'attributes_values.attribute_id')
+  //     ->where('attributes_values.visible', true)
+  //     ->where('attributes.visible', true)
+  //     ->get();
+
+  //   return Inertia::render('Catalogo', [
+  //     'component' => 'Catalogo',
+  //     'minPrice' => $minPrice,
+  //     'maxPrice' => $maxPrice,
+  //     'categories' => $categories,
+  //     'tags' => $tags,
+  //     'attribute_values' => $attribute_values,
+  //     'id_cat' => $id_cat,
+  //     'tag_id' => $tag_id,
+  //     'subCatId' => $subCatId
+  //   ])->rootView('app');
+  // }
 
   public function ofertas(Request $request, string $id_cat = null)
   {
@@ -1216,4 +1257,6 @@ class IndexController extends Controller
 
     return response()->json($resultados);
   }
+
+
 }

@@ -13,7 +13,9 @@ export default {
         './storage/framework/views/*.php',
         './resources/views/**/*.blade.php',
         './resources/js/**/*.js',
-        './node_modules/flowbite/**/*.js'
+        './resources/js/**/*.jsx',
+        './node_modules/flowbite/**/*.js',
+        './src/**/*.{js,jsx,ts,tsx}',
     ],
     darkMode: 'class',
     theme: {
@@ -35,6 +37,15 @@ export default {
                 Inter_Medium: ["Inter_Medium"],
                 Inter_Regular: ["Inter_Regular"],
                 Inter_SemiBold: ["Inter_SemiBold"],
+
+                poppins_black: ["poppins_black"],
+                poppins_bold: ["poppins_bold"],
+                poppins_semibold: ["poppins_semibold"],
+                poppins_light: ["poppins_light"],
+                poppins_medium: ["poppins_medium"],
+                poppins_thin: ["poppins_thin"],
+                poppins_regular: ["poppins_regular"],
+
             },
 
             screens: {

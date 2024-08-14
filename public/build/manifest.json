@@ -41,7 +41,7 @@
     ]
   },
   "resources/css/app.css": {
-    "file": "assets/app--ATwbje4.css",
+    "file": "assets/app-xw--2Uwc.css",
     "isEntry": true,
     "src": "resources/css/app.css"
   },
@@ -96,6 +96,20 @@
     ],
     "isEntry": true,
     "src": "resources/js/Catalogo.jsx"
+  },
+  "resources/js/Home.jsx": {
+    "file": "assets/Home-VvolusUe.js",
+    "imports": [
+      "resources/js/components/Filter/FilterContainer.jsx",
+      "_CreateReactScript-qyXjqq-l.js",
+      "_main-jzs2GwAM.js",
+      "__commonjsHelpers-4gQjN7DL.js",
+      "_index-GBzf7Cls.js",
+      "resources/js/Utils/CreateReactScript.jsx",
+      "_axios-_sX4vCAy.js"
+    ],
+    "isEntry": true,
+    "src": "resources/js/Home.jsx"
   },
   "resources/js/Ofertas.jsx": {
     "file": "assets/Ofertas-9gfchRV9.js",
@@ -241,5 +255,14 @@
     ],
     "isEntry": true,
     "src": "resources/js/components/Product/ProductRow.jsx"
+  },
+  "resources/js/components/Slider/SliderOne.jsx": {
+    "file": "assets/SliderOne-z-iOF4ss.js",
+    "imports": [
+      "resources/js/components/Filter/FilterContainer.jsx",
+      "__commonjsHelpers-4gQjN7DL.js"
+    ],
+    "isEntry": true,
+    "src": "resources/js/components/Slider/SliderOne.jsx"
   }
 }

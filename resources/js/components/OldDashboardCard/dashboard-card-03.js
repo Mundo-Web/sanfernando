@@ -5,14 +5,14 @@ import {
 import 'chartjs-adapter-moment';
 
 // Import utilities
-import { tailwindConfig, formatValue, hexToRGB } from '../utils';
+import { tailwindConfig, formatValue, hexToRGB } from '../../utils';
 
 Chart.register(LineController, LineElement, Filler, PointElement, LinearScale, TimeScale, Tooltip);
 
 // A chart built with Chart.js 3
 // https://www.chartjs.org/
-const dashboardCard02 = () => {
-  const ctx = document.getElementById('dashboard-card-02');
+const dashboardCard03 = () => {
+  const ctx = document.getElementById('dashboard-card-03');
   if (!ctx) return;
 
   const darkMode = localStorage.getItem('dark-mode') === 'true';
@@ -35,9 +35,9 @@ const dashboardCard02 = () => {
   const tooltipBorderColor = {
     light: '#e2e8f0',
     dark: '#475569'
-  };   
+  };    
 
-  fetch('/json-data-feed?datatype=2')
+  fetch('/json-data-feed?datatype=3')
     .then(a => {
       return a.json();
     })
@@ -144,4 +144,4 @@ const dashboardCard02 = () => {
     });
 };
 
-export default dashboardCard02;
+export default dashboardCard03;

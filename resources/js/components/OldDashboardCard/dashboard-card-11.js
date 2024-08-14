@@ -4,7 +4,7 @@ import {
 } from 'chart.js';
 
 // Import utilities
-import { tailwindConfig } from '../utils';
+import { tailwindConfig } from '../../utils';
 
 Chart.register(BarController, BarElement, LinearScale, CategoryScale, Tooltip, Legend);
 
