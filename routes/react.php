@@ -11,10 +11,10 @@ use Inertia\Inertia;
 // require __DIR__ . '/router.php';
 
 Route::get('/', [IndexController::class, 'index'])->name('Home.jsx');
-Route::get('/catalogogp', [IndexController::class, 'catalogogp'])->name('catalogogp');
+Route::get('/catalogoGestion', [IndexController::class, 'CursosyDiplomados'])->name('catalogogp');
 Route::get('/detalleCurso', [IndexController::class, 'detalleCurso'])->name('detalleCurso');
 Route::get('/docente', [IndexController::class, 'docente'])->name('docente');
-Route::get('/DocenteDetalle', [IndexController::class, 'DocenteDetalle'])->name('DocenteDetalle');
+Route::get('/detalleDocente', [IndexController::class, 'DocenteDetalle'])->name('DocenteDetalle');
 
 Route::get('/catalogo/{id?}', [IndexController::class, 'catalogo'])->name('Catalogo.jsx');
 Route::get('/ofertas/{id?}', [IndexController::class, 'ofertas'])->name('Ofertas.jsx');

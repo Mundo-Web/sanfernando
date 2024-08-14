@@ -23,7 +23,7 @@ return (<>
         <div className="flex w-full bg-[#FFF0F0] h-40 lg:h-60 max-md:max-w-full" role="banner"></div>
 
         <div className="flex flex-col px-[5%] lg:px-[8%] py-10 w-full max-md:px-5 max-md:max-w-full -mt-40 ">
-            <div className="flex flex-col bg-white p-8 rounded-2xl">
+            <div className="flex flex-col bg-white p-4 lg:p-8 rounded-2xl">
                 <div className="text-3xl font-semibold leading-tight text-neutral-800 max-md:max-w-full">
                     Docentes
                 </div>

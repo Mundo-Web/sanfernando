@@ -109,7 +109,7 @@ class IndexController extends Controller
      // return view('public.index', compact('url_env', 'popups', 'banners', 'blogs', 'categoriasAll', 'productosPupulares', 'ultimosProductos', 'productos', 'destacados', 'descuentos', 'general', 'benefit', 'faqs', 'testimonie', 'slider', 'categorias', 'category'));
   }
 
-  public function catalogogp(){
+  public function CursosyDiplomados(){
     return Inertia::render('CatalogGP')->rootView('app');
   }
 

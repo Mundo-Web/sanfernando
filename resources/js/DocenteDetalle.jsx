@@ -20,10 +20,9 @@ const imgPlay = 'images/img/iconoplayblanco.png';
 
 return (<>
     <section className="flex flex-col !font-poppins_regular !font-normal">
-        <div className="flex w-full bg-[#FFF0F0] h-10 lg:h-20 max-md:max-w-full" role="banner">
-        </div>
-        <div className="flex flex-col px-[8%] py-10 w-full max-md:px-5 max-md:max-w-full">
-
+        <div className="flex w-full bg-[#FFF0F0] h-40 lg:h-60 max-md:max-w-full" role="banner"></div>
+        <div className="flex flex-col px-[8%] py-10 w-full max-md:px-5 max-md:max-w-full -mt-40">
+          <div className='flex flex-col bg-white p-4 lg:p-8 rounded-2xl'>  
             <div class="flex flex-wrap gap-10 justify-between items-center px-6 py-8 bg-red-100 rounded-xl max-md:px-5">
                 <div class="flex flex-wrap gap-6 items-center self-stretch my-auto min-w-[240px] max-md:max-w-full">
                     <img loading="lazy"
@@ -40,7 +39,7 @@ return (<>
                             </div>
                         </div>
                         <div
-                            class="flex gap-10 justify-between items-center mt-4 w-full font-medium whitespace-nowrap min-h-[22px]">
+                            class="flex flex-col lg:flex-row gap-1 justify-between items-center mt-4 w-full font-medium whitespace-nowrap min-h-[22px]">
                             <div
                                 class="flex gap-1.5 items-center self-stretch my-auto text-sm tracking-normal leading-none text-neutral-800">
                                 <img loading="lazy"
@@ -108,7 +107,7 @@ return (<>
             </div>
 
             <div className='grid grid-cols-1 lg:grid-cols-3 mt-10 gap-10'>
-                <div className='cols-span-1'>
+                <div className='col-span-1'>
                         <div className='bg-[#FFF0F0] p-6 rounded-2xl'>
                             <h2 className='font-poppins_regular font-bold text-xl'>Acerca de mí</h2>
                             <p>Profesional con amplia experiencia en auditoría gubernamental y control interno. 
@@ -117,9 +116,9 @@ return (<>
                                 y la eficiencia en la gestión pública.</p>
                         </div>
                 </div>
-                <div className='cols-span-1 lg:cols-span-2'>
-                      <div><h2 className='font-poppins_regular font-bold text-2xl'>Cursos de la Dra. Patricia</h2></div> 
-                      <div className='grid grid-cols-2'>
+                <div className='col-span-1 lg:col-span-2'>
+                      <h2 className='font-poppins_regular font-bold text-2xl'>Cursos de la Dra. Patricia</h2>
+                      <div className='grid grid-cols-1 md:grid-cols-2 gap-6 mt-6'>
                         <Curse />
                         <Curse />
                         <Curse />
@@ -128,7 +127,7 @@ return (<>
                       </div> 
                 </div>
             </div>
-
+         </div>
         </div>
     </section>
 
