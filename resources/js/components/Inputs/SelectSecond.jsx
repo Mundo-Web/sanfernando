@@ -13,6 +13,7 @@ const customStyles = {
       borderColor: '#EA1D2C',
     },
     minHeight: '48px', // Altura mínima del select
+    
   }),
   option: (provided, state) => ({
     ...provided,
