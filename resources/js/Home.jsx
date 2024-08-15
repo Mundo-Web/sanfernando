@@ -221,7 +221,7 @@ const Home = ({ url_env,
                     </h1>
 
                     <div className="">
-                        <SliderTestimony />
+                        <SliderTestimony sliders={1} />
                     </div>
                 </div>
             </div>
