@@ -9,6 +9,7 @@ import SliderBenefit from './components/Section/SliderBenefit'
 import TwoColumn from './components/Section/TwoColumn'
 import Curse from './components/Product/Curse'
 import SliderTestimony from './components/Section/SliderTestimony'
+import SelectSecond from './components/Inputs/SelectSecond'
 
 
 const CatalogoGP = () => {
@@ -37,10 +38,7 @@ const CatalogoGP = () => {
                     <span className="self-stretch my-auto text-sm tracking-normal leading-loose text-gray-600">
                       Ordenar por:
                     </span>
-                    <div className="flex gap-2.5 items-center self-stretch px-4 py-3 my-auto text-base leading-tight text-red-600 whitespace-nowrap bg-rose-50 rounded-xl" role="button" tabindex="0">
-                      <span className="self-stretch my-auto">Tendencias</span>
-                      <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/560d29ead07b85ec6bc5be3251ad24dfeac5fff9cc1338da00022c87b5927764?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f" className="object-contain shrink-0 self-stretch my-auto w-6 aspect-square" alt="" />
-                    </div>
+                    <SelectSecond title={'Tendencias'} />
                   </div>
                 </div>
               </div>
@@ -66,32 +64,10 @@ const CatalogoGP = () => {
                 <div class="hidden lg:flex flex-col justify-start !font-poppins_regular !font-normal  items-start lg:col-span-1">
                     <section class="flex flex-col text-base leading-tight max-w-[350px]">
                         <div class="flex flex-col w-full">
-                          <header class="flex gap-2.5 items-center px-4 py-3 w-full font-semibold text-red-600 whitespace-nowrap bg-gray-50 rounded-xl border-b border-zinc-100">
-                            <h2 class="flex-1 shrink self-stretch my-auto basis-0">Cursos</h2>
-                            <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/bb5ff0527288599e198e0eed4dac55467f0d3d99698718f0808db8085b50604b?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f" class="object-contain shrink-0 self-stretch my-auto w-6 aspect-square" alt="" />
-                          </header>
-                          <nav class="flex flex-col w-full text-red-200">
-                            <a href="#" class="flex-1 shrink gap-2.5 self-stretch px-4 py-3 w-full bg-gray-50">Curso 1</a>
-                            <a href="#" class="flex-1 shrink gap-2.5 self-stretch px-4 py-3 w-full bg-gray-50">Curso 2</a>
-                            <a href="#" class="flex-1 shrink gap-2.5 self-stretch px-4 py-3 w-full font-semibold text-white bg-red-600">Curso 3</a>
-                            <a href="#" class="flex-1 shrink gap-2.5 self-stretch px-4 py-3 w-full bg-gray-50">Curso 4</a>
-                            <a href="#" class="flex-1 shrink gap-2.5 self-stretch px-4 py-3 w-full bg-gray-50">Curso 5</a>
-                            <a href="#" class="flex-1 shrink gap-2.5 self-stretch px-4 py-3 w-full bg-gray-50 rounded-none">Curso 6</a>
-                          </nav>
+                           <SelectSecond title={'Cursos'} />
                         </div>
                         <div class="flex flex-col mt-6 w-full">
-                          <header class="flex gap-2.5 items-center px-4 py-3 w-full font-semibold text-red-600 whitespace-nowrap bg-gray-50 rounded-xl border-b border-zinc-100">
-                            <h2 class="flex-1 shrink self-stretch my-auto basis-0">Diplomados</h2>
-                            <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/8f25a881811c52a794fbb3f7644ad50c2d39b584fecdf8f41974ed50976cfeea?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f" class="object-contain shrink-0 self-stretch my-auto w-6 aspect-square" alt="" />
-                          </header>
-                          <nav class="flex flex-col w-full text-red-200">
-                            <a href="#" class="flex-1 shrink gap-2.5 self-stretch px-4 py-3 w-full bg-gray-50">Diplomado 1</a>
-                            <a href="#" class="flex-1 shrink gap-2.5 self-stretch px-4 py-3 w-full bg-gray-50">Diplomado 2</a>
-                            <a href="#" class="flex-1 shrink gap-2.5 self-stretch px-4 py-3 w-full bg-gray-50">Diplomado 3</a>
-                            <a href="#" class="flex-1 shrink gap-2.5 self-stretch px-4 py-3 w-full bg-gray-50">Diplomado 4</a>
-                            <a href="#" class="flex-1 shrink gap-2.5 self-stretch px-4 py-3 w-full bg-gray-50">Diplomado 5</a>
-                            <a href="#" class="flex-1 shrink gap-2.5 self-stretch px-4 py-3 w-full bg-gray-50 rounded-none">Diplomado 6</a>
-                          </nav>
+                           <SelectSecond title={'Diplomados'} />
                         </div>
                       </section>
                 </div>
