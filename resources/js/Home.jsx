@@ -35,7 +35,7 @@ const Home = ({ url_env,
 
     return (<>
         <section className="w-full relative">
-            <SliderFront categorias={categoriasAll} />
+            <SliderFront banners={banners} />
         </section>
 
         <section className="flex flex-wrap items-center">

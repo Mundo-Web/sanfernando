@@ -317,7 +317,7 @@
             </a>
 
             {{-- @if ($offerExists) --}}
-            <a href="/catalogogp" class="font-medium hover:opacity-75">
+            <a href="{{route('CatalogoGP.jsx')}}" class="font-medium hover:opacity-75">
               <span class="underline-this">Docentes</span>
             </a>
             {{-- @endif --}}
