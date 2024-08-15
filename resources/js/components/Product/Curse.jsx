@@ -36,14 +36,14 @@ const Curse = ({ producto, env_url }) => {
 
         <div
           className="flex flex-col self-start mt-4 text-sm tracking-normal font-poppins_regular leading-loose text-gray-600">
-          <div className="flex flex-row gap-2 items-start justify-start">
+          <div className="flex flex-row gap-2 items-center justify-start">
             {/* <img loading="lazy" src={`/${imgreloj}`} className="object-contain w-6" alt="Clock icon" /> */}
-            <i className='fa fa-clock text-lg text-red'></i>
+            <i className='fa fa-clock text-lg' style={{color: '#e02424'}}></i>
             <p>{producto.duracion} horas lectivas y {producto.creditos} créditos</p>
           </div>
-          <div className="flex flex-row gap-2 items-start justify-start  mt-2">
+          <div className="flex flex-row gap-2 items-center justify-start  mt-2">
             {/* <img loading="lazy" src={`${imgcalendario}`} className="object-contain w-6 " alt="Calendar icon" /> */}
-            <i className='fa fa-calendar text-lg text-red'></i>
+            <i className='fa fa-calendar text-lg' style={{color: '#e02424'}}></i>
             <p>Inicio: {producto.fecha_inicio ? producto.fecha_inicio : 'Próximamente'}</p>
           </div>
         </div>
