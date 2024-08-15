@@ -64,7 +64,6 @@ use App\Models\LibroReclamaciones;
 
 // Route::get('/', [IndexController::class, 'index'])->name('index');
 Route::get('/nosotros', [IndexController::class, 'nosotros'])->name('nosotros');
-Route::get('/detallecurso2', [IndexController::class, 'detallecurso2'])->name('detallecurso2');
 
 
 Route::get('/servicios', [IndexController::class, 'servicios'])->name('servicios');

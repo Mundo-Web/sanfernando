@@ -109,25 +109,22 @@ class IndexController extends Controller
      // return view('public.index', compact('url_env', 'popups', 'banners', 'blogs', 'categoriasAll', 'productosPupulares', 'ultimosProductos', 'productos', 'destacados', 'descuentos', 'general', 'benefit', 'faqs', 'testimonie', 'slider', 'categorias', 'category'));
   }
 
-  public function CursosyDiplomados(){
+  public function cursosyDiplomados(){
     return Inertia::render('CatalogGP')->rootView('app');
   }
 
   public function detalleCurso(){
-    return Inertia::render('DetalleCurso')->rootView('app');
+    return Inertia::render('CursoDetalle')->rootView('app');
   }
 
   public function docente(){
     return Inertia::render('Docente')->rootView('app');
   }
 
-  public function DocenteDetalle(){
+  public function docenteDetalle(){
     return Inertia::render('DocenteDetalle')->rootView('app');
   }
 
-  public function detallecurso2(){
-    return view('public.detalleCurso');
-  }
 
 
   // public function catalogo(Request $request, string $id_cat = null)

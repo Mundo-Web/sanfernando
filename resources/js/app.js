@@ -30,6 +30,7 @@ Aos.init();
 
 // Define Chart.js default settings
 /* eslint-disable prefer-destructuring */
+
 Chart.defaults.font.family = '"Inter", sans-serif';
 Chart.defaults.font.weight = '500';
 Chart.defaults.plugins.tooltip.borderWidth = 1;
