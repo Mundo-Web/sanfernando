@@ -9,6 +9,7 @@ import SliderBenefit from './components/Section/SliderBenefit'
 import TwoColumn from './components/Section/TwoColumn'
 import Curse from './components/Product/Curse'
 import SliderTestimony from './components/Section/SliderTestimony'
+import BenefitCard from './components/Benefits/BenefitCard'
 
 
 const Home = ({ url_env,
@@ -46,7 +47,7 @@ const Home = ({ url_env,
     </section>
 
     <section className="flex flex-wrap gap-5 items-start px-24 py-8 bg-[#CF072C] text-slate-100 max-md:px-5">
-      <SliderBenefit benefits={benefit}/>
+      <SliderBenefit benefits={benefit} />
     </section>
 
     <section>
@@ -104,56 +105,11 @@ const Home = ({ url_env,
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 w-full gap-12 pt-12 pb-12 xl:pb-16">
-        <div
-          className="flex flex-col px-5 pt-5 pb-20 w-full rounded-xl border border-gray-50 border-solid min-h-[236px]">
-          <div className="flex flex-col w-full text-white font-poppins_semibold">
-            <h2 className="text-4xl text-left">01</h2>
-            <h3 className="mt-5 text-2xl leading-7">CERTICIFACIÓN FÍSICA Y VIRTUAL</h3>
-          </div>
-        </div>
-
-        <div
-          className="flex flex-col px-5 pt-5 pb-20 w-full rounded-xl border border-gray-50 border-solid min-h-[236px]">
-          <div className="flex flex-col w-full text-white font-poppins_semibold">
-            <h2 className="text-4xl text-left">02</h2>
-            <h3 className="mt-5 text-2xl leading-7">MODERNA PLATAFORMA VIRTUAL SEGÚN TU DISPONIBILIDAD
-            </h3>
-          </div>
-        </div>
-
-        <div
-          className="flex flex-col px-5 pt-5 pb-20 w-full rounded-xl border border-gray-50 border-solid min-h-[236px]">
-          <div className="flex flex-col w-full text-white font-poppins_semibold">
-            <h2 className="text-4xl text-left">03</h2>
-            <h3 className="mt-5 text-2xl leading-7">DOCENTES CON MÁS DE 20 AÑOS DE EXPERIENCIA </h3>
-          </div>
-        </div>
-
-        <div
-          className="flex flex-col px-5 pt-5 pb-20 w-full rounded-xl border border-gray-50 border-solid min-h-[236px]">
-          <div className="flex flex-col w-full text-white font-poppins_semibold">
-            <h2 className="text-4xl text-left">04</h2>
-            <h3 className="mt-5 text-2xl leading-7">NORMATIVA ACTUALIZADA Y MATERIALES DESCARGABLES </h3>
-          </div>
-        </div>
-
-        <div
-          className="flex flex-col px-5 pt-5 pb-20 w-full rounded-xl border border-gray-50 border-solid min-h-[236px]">
-          <div className="flex flex-col w-full text-white font-poppins_semibold">
-            <h2 className="text-4xl text-left">05</h2>
-            <h3 className="mt-5 text-2xl leading-7">ACCESO POR UN AÑO A LA PLATAFORMA VIRTUAL Y DISPONIBLE LAS 24
-              HORAS </h3>
-          </div>
-        </div>
-
-        <div
-          className="flex flex-col px-5 pt-5 pb-20 w-full rounded-xl border border-gray-50 border-solid min-h-[236px]">
-          <div className="flex flex-col w-full text-white font-poppins_semibold">
-            <h2 className="text-4xl text-left">06</h2>
-            <h3 className="mt-5 text-2xl leading-7">CONVENIOS CON EL COLEGIO DE ECONOMISTAS DEL PERÚ Y SERVIR </h3>
-          </div>
-        </div>
-
+        {
+          benefit.map((benefit, i) => {
+            return <BenefitCard key={`benefit-${i}`} {...benefit} />
+          })
+        }
       </div>
     </section>
 

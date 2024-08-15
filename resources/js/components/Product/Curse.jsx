@@ -7,7 +7,6 @@ const Curse = ({ producto, env_url }) => {
   const imgcurso = 'images/img/imagencurso.png';
   const imgcalendario = 'images/svg/gp_calendario.svg';
   const imgreloj = 'images/svg/gp_reloj.svg';
-  console.log(producto)
   return (
     <div className="flex relative flex-col flex-1 shrink basis-0 min-w-[240px]">
       <div className="min-w-[240px]">
@@ -39,10 +38,12 @@ const Curse = ({ producto, env_url }) => {
           className="flex flex-col self-start mt-4 text-sm tracking-normal font-poppins_regular leading-loose text-gray-600">
           <div className="flex flex-row gap-2 items-start justify-start">
             <img loading="lazy" src={`${imgreloj}`} className="object-contain w-6"
-              alt="Clock icon" />
+              alt="Clock icon" onError={e => e.target.src = '/images/img/noimagen.jpg'}/>
+              <i className='fa fa-clock text-lg'></i>
             <p>{producto.duracion} horas lectivas y {producto.creditos} créditos</p>
           </div>
           <div className="flex flex-row gap-2 items-start justify-start  mt-2">
+            <i className='fa fa-calendar text-lg'></i>
             <img loading="lazy" src={`${imgcalendario}`} className="object-contain w-6 "
               alt="Calendar icon" />
             <p>Inicio: {producto.fecha_inicio ? producto.fecha_inicio : 'Próximamente'}</p>

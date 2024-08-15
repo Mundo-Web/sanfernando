@@ -6,8 +6,8 @@
       "_main-jzs2GwAM.js"
     ]
   },
-  "_Curse-FGgsE_P4.js": {
-    "file": "assets/Curse-FGgsE_P4.js",
+  "_Curse-9x2lkUTC.js": {
+    "file": "assets/Curse-9x2lkUTC.js",
     "imports": [
       "resources/js/Utils/HtmlContent.jsx",
       "_index-TT1qJ6UJ.js",
@@ -136,7 +136,7 @@
     "src": "resources/js/Catalogo.jsx"
   },
   "resources/js/CatalogoGP.jsx": {
-    "file": "assets/CatalogoGP-ZciUxZMG.js",
+    "file": "assets/CatalogoGP-VzRVI4xo.js",
     "imports": [
       "resources/js/Utils/HtmlContent.jsx",
       "_index-TT1qJ6UJ.js",
@@ -144,7 +144,7 @@
       "_CreateReactScript-QuaDmwri.js",
       "_main-jzs2GwAM.js",
       "resources/js/components/Section/SliderFront.jsx",
-      "_Curse-FGgsE_P4.js",
+      "_Curse-9x2lkUTC.js",
       "resources/js/components/Section/SliderTestimony.jsx",
       "_index-jtdEOcur.js",
       "__commonjsHelpers-4gQjN7DL.js",
@@ -250,7 +250,7 @@
     "src": "resources/js/Docente.jsx"
   },
   "resources/js/DocenteDetalle.jsx": {
-    "file": "assets/DocenteDetalle-VWsdOC_P.js",
+    "file": "assets/DocenteDetalle-pjgm65hm.js",
     "imports": [
       "resources/js/Utils/HtmlContent.jsx",
       "_index-TT1qJ6UJ.js",
@@ -258,7 +258,7 @@
       "_CreateReactScript-QuaDmwri.js",
       "_main-jzs2GwAM.js",
       "resources/js/components/Section/SliderFront.jsx",
-      "_Curse-FGgsE_P4.js",
+      "_Curse-9x2lkUTC.js",
       "resources/js/components/Section/SliderTestimony.jsx",
       "__commonjsHelpers-4gQjN7DL.js",
       "_index-jtdEOcur.js",
@@ -309,7 +309,7 @@
     "src": "resources/js/ExamenPregunta.jsx"
   },
   "resources/js/Home.jsx": {
-    "file": "assets/Home-UYB42qn3.js",
+    "file": "assets/Home-g_wi6sje.js",
     "imports": [
       "resources/js/Utils/HtmlContent.jsx",
       "_index-TT1qJ6UJ.js",
@@ -317,7 +317,7 @@
       "_CreateReactScript-QuaDmwri.js",
       "_main-jzs2GwAM.js",
       "resources/js/components/Section/SliderFront.jsx",
-      "_Curse-FGgsE_P4.js",
+      "_Curse-9x2lkUTC.js",
       "_SliderTestimony-hCbkR5iv.js",
       "__commonjsHelpers-4gQjN7DL.js",
       "_index-jtdEOcur.js",
@@ -454,6 +454,16 @@
     ],
     "isEntry": true,
     "src": "resources/js/app.js"
+  },
+  "resources/js/components/Benefits/BenefitCard.jsx": {
+    "file": "assets/BenefitCard-CFe-fSeY.js",
+    "imports": [
+      "resources/js/Utils/HtmlContent.jsx",
+      "_index-TT1qJ6UJ.js",
+      "__commonjsHelpers-4gQjN7DL.js"
+    ],
+    "isEntry": true,
+    "src": "resources/js/components/Benefits/BenefitCard.jsx"
   },
   "resources/js/components/Dropdown.jsx": {
     "file": "assets/Dropdown-CFe-fSeY.js",
