@@ -55,7 +55,7 @@
     ]
   },
   "resources/css/app.css": {
-    "file": "assets/app-10W0zNUM.css",
+    "file": "assets/app-ciBQdpx_.css",
     "isEntry": true,
     "src": "resources/css/app.css"
   },
@@ -185,7 +185,7 @@
     "src": "resources/js/DocenteDetalle.jsx"
   },
   "resources/js/Home.jsx": {
-    "file": "assets/Home-iQDlVu7G.js",
+    "file": "assets/Home-G0wPzulj.js",
     "imports": [
       "resources/js/components/Section/TwoColumn.jsx",
       "_index-TykbAVkI.js",
@@ -287,7 +287,7 @@
     "css": [
       "assets/SelectSecond-1fxfbQLv.css"
     ],
-    "file": "assets/SelectSecond-Gmrod048.js",
+    "file": "assets/SelectSecond-NJeIPuqD.js",
     "imports": [
       "resources/js/components/Section/TwoColumn.jsx",
       "_index-TykbAVkI.js",
