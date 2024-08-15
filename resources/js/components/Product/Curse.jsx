@@ -29,7 +29,7 @@ const Curse = ({ producto, env_url }) => {
           <span className="gap-2.5 self-stretch px-1.5 py-1 my-auto bg-red-800 rounded font-poppins_regular">{producto?.category?.name}</span>
         </div>
         <Tippy content={producto.producto}>
-          <h2 className="mt-4 text-2xl font-semibold font-poppins_medium leading-7 text-neutral-800 md:h-[58px]">
+          <h2 className="mt-4 text-2xl font-semibold font-poppins_medium leading-7 text-neutral-800 md:h-[74px]">
 
             {truncateText(producto.producto, 55)}
           </h2>
