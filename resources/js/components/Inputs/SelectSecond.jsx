@@ -1,4 +1,4 @@
-import React, { useEffect, useRef  } from 'react';
+import React, { useEffect, useRef } from 'react';
 import Select from 'react-select'
 
 const customStyles = {
@@ -6,14 +6,14 @@ const customStyles = {
     ...provided,
     backgroundColor: '#F9FAFB', // Color de fondo
     borderRadius: '12px',
-    width:'200px',
+    width: '200px',
     borderColor: state.isFocused ? '#EA1D2C' : '#F9FAFB', // Color de borde
     boxShadow: state.isFocused ? '0 0 0 1px #EA1D2C' : 'none',
     '&:hover': {
       borderColor: '#EA1D2C',
     },
     minHeight: '48px', // Altura mínima del select
-    
+
   }),
   option: (provided, state) => ({
     ...provided,
@@ -58,13 +58,13 @@ const customStyles = {
 
 
 const options = [
-  { value: 'chocolate', label: 'Chocolate' },
-  { value: 'strawberry', label: 'Strawberry' },
-  { value: 'vanilla', label: 'Vanilla' }
+  { value: 'mas_valorado', label: 'Mas valorado' },
+  { value: 'mas_comprado', label: 'Mas comprado' },
+
 ]
 
 const SelectSecond = ({ title }) => {
-  
+
   return (
     <Select className='font-poppins_regular font-bold'
       styles={customStyles}

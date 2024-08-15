@@ -31,6 +31,7 @@ class DatabaseSeeder extends Seeder
             MarketerSeeder::class,
             CampaignMarketerSeeder::class,
             */
+            BannerSeeder::class,
             RoleSeeder::class,
             UsersSeeder::class,
             MessageSeeder::class,
@@ -39,7 +40,7 @@ class DatabaseSeeder extends Seeder
             FaqsSeeder::class,
             BeneficiosSeeder::class,
             SliderSeeder::class,
-            SubCategorySeeder::class,
+            // SubCategorySeeder::class,
             // ProductSeeder::class,
             StatusSeeder::class,
             PricesTableSeeder::class,

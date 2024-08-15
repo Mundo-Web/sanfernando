@@ -6,22 +6,24 @@
       "_main-jzs2GwAM.js"
     ]
   },
-  "_Curse-iATFJzhg.js": {
-    "file": "assets/Curse-iATFJzhg.js",
+  "_Curse-CHbNvWEQ.js": {
+    "file": "assets/Curse-CHbNvWEQ.js",
     "imports": [
       "resources/js/Utils/HtmlContent.jsx",
-      "_index-TT1qJ6UJ.js"
+      "_index-TT1qJ6UJ.js",
+      "_tippy-react.esm-Ethl7wjd.js",
+      "resources/js/components/Product/ProductCard.jsx"
     ]
   },
   "_JSEncrypt-jwo8Dr6z.js": {
     "file": "assets/JSEncrypt-jwo8Dr6z.js"
   },
-  "_ProductCard-Y9xCNKxx.js": {
-    "file": "assets/ProductCard-Y9xCNKxx.js",
+  "_ProductCard-YDLP_b75.js": {
+    "file": "assets/ProductCard-YDLP_b75.js",
     "imports": [
       "resources/js/Utils/HtmlContent.jsx",
       "_index-TT1qJ6UJ.js",
-      "_tippy-react.esm-XmlSpNlB.js",
+      "_tippy-react.esm-Ethl7wjd.js",
       "resources/js/components/Product/ProductCard.jsx"
     ]
   },
@@ -36,6 +38,9 @@
   },
   "__commonjsHelpers-4gQjN7DL.js": {
     "file": "assets/_commonjsHelpers-4gQjN7DL.js"
+  },
+  "_arrayJoin-X0k7NUGR.js": {
+    "file": "assets/arrayJoin-X0k7NUGR.js"
   },
   "_axios-_sX4vCAy.js": {
     "file": "assets/axios-_sX4vCAy.js"
@@ -58,20 +63,20 @@
       "__commonjsHelpers-4gQjN7DL.js"
     ]
   },
-  "_tippy-react.esm-XmlSpNlB.js": {
-    "file": "assets/tippy-react.esm-XmlSpNlB.js",
+  "_tippy-react.esm-Ethl7wjd.js": {
+    "file": "assets/tippy-react.esm-Ethl7wjd.js",
     "imports": [
       "_index-TT1qJ6UJ.js",
       "_index-jtdEOcur.js"
     ]
   },
   "resources/css/app.css": {
-    "file": "assets/app-oGcm93wH.css",
+    "file": "assets/app-VfXPGeWg.css",
     "isEntry": true,
     "src": "resources/css/app.css"
   },
   "resources/js/Admin/Offers.jsx": {
-    "file": "assets/Offers-fxzUaKZQ.js",
+    "file": "assets/Offers-LHxnGDgF.js",
     "imports": [
       "resources/js/Utils/HtmlContent.jsx",
       "_index-TT1qJ6UJ.js",
@@ -79,9 +84,10 @@
       "_CreateReactScript-QuaDmwri.js",
       "_main-jzs2GwAM.js",
       "resources/js/components/Offer/OfferCard.jsx",
-      "_tippy-react.esm-XmlSpNlB.js",
+      "_tippy-react.esm-Ethl7wjd.js",
       "resources/js/components/Product/ProductCard.jsx",
       "resources/js/components/Offer/OfferForm.jsx",
+      "_arrayJoin-X0k7NUGR.js",
       "__commonjsHelpers-4gQjN7DL.js",
       "_index-jtdEOcur.js",
       "resources/js/Utils/CreateReactScript.jsx",
@@ -110,26 +116,27 @@
     "src": "resources/js/Admin/Products.jsx"
   },
   "resources/js/Catalogo.jsx": {
-    "file": "assets/Catalogo-KMQ9Z6HQ.js",
+    "file": "assets/Catalogo-x0XP9Or5.js",
     "imports": [
       "resources/js/Utils/HtmlContent.jsx",
       "_index-TT1qJ6UJ.js",
       "resources/js/Utils/ReactAppend.jsx",
       "_CreateReactScript-QuaDmwri.js",
-      "_ProductCard-Y9xCNKxx.js",
+      "_ProductCard-YDLP_b75.js",
       "_main-jzs2GwAM.js",
-      "_tippy-react.esm-XmlSpNlB.js",
+      "_arrayJoin-X0k7NUGR.js",
       "__commonjsHelpers-4gQjN7DL.js",
       "_index-jtdEOcur.js",
       "resources/js/Utils/CreateReactScript.jsx",
       "_axios-_sX4vCAy.js",
+      "_tippy-react.esm-Ethl7wjd.js",
       "resources/js/components/Product/ProductCard.jsx"
     ],
     "isEntry": true,
     "src": "resources/js/Catalogo.jsx"
   },
   "resources/js/CatalogoGP.jsx": {
-    "file": "assets/CatalogoGP-idG5KLrA.js",
+    "file": "assets/CatalogoGP-kTUGW0nj.js",
     "imports": [
       "resources/js/Utils/HtmlContent.jsx",
       "_index-TT1qJ6UJ.js",
@@ -137,12 +144,14 @@
       "_CreateReactScript-QuaDmwri.js",
       "_main-jzs2GwAM.js",
       "resources/js/components/Section/SliderFront.jsx",
-      "_Curse-iATFJzhg.js",
+      "_Curse-CHbNvWEQ.js",
       "resources/js/components/Section/SliderTestimony.jsx",
       "_index-jtdEOcur.js",
       "__commonjsHelpers-4gQjN7DL.js",
       "resources/js/Utils/CreateReactScript.jsx",
-      "_axios-_sX4vCAy.js"
+      "_axios-_sX4vCAy.js",
+      "_tippy-react.esm-Ethl7wjd.js",
+      "resources/js/components/Product/ProductCard.jsx"
     ],
     "isEntry": true,
     "src": "resources/js/CatalogoGP.jsx"
@@ -165,7 +174,7 @@
     "src": "resources/js/ConfirmEmail.jsx"
   },
   "resources/js/Contacto.jsx": {
-    "file": "assets/Contacto-bZhC__Hj.js",
+    "file": "assets/Contacto-4KQq6P_g.js",
     "imports": [
       "resources/js/Utils/HtmlContent.jsx",
       "_index-TT1qJ6UJ.js",
@@ -173,6 +182,7 @@
       "_CreateReactScript-QuaDmwri.js",
       "_main-jzs2GwAM.js",
       "resources/js/components/Section/SliderFront.jsx",
+      "resources/js/components/Product/ProductCard.jsx",
       "resources/js/components/Section/SliderTestimony.jsx",
       "__commonjsHelpers-4gQjN7DL.js",
       "_index-jtdEOcur.js",
@@ -183,7 +193,7 @@
     "src": "resources/js/Contacto.jsx"
   },
   "resources/js/CursoDesarrollo.jsx": {
-    "file": "assets/CursoDesarrollo-TKlwhMcu.js",
+    "file": "assets/CursoDesarrollo-PAGhx2V4.js",
     "imports": [
       "resources/js/Utils/HtmlContent.jsx",
       "_index-TT1qJ6UJ.js",
@@ -191,6 +201,7 @@
       "_CreateReactScript-QuaDmwri.js",
       "_main-jzs2GwAM.js",
       "resources/js/components/Section/SliderFront.jsx",
+      "resources/js/components/Product/ProductCard.jsx",
       "resources/js/components/Section/SliderTestimony.jsx",
       "__commonjsHelpers-4gQjN7DL.js",
       "_index-jtdEOcur.js",
@@ -201,7 +212,7 @@
     "src": "resources/js/CursoDesarrollo.jsx"
   },
   "resources/js/CursoDetalle.jsx": {
-    "file": "assets/CursoDetalle--jft-c6K.js",
+    "file": "assets/CursoDetalle-Z_-KAg4f.js",
     "imports": [
       "resources/js/Utils/HtmlContent.jsx",
       "_index-TT1qJ6UJ.js",
@@ -209,6 +220,7 @@
       "_CreateReactScript-QuaDmwri.js",
       "_main-jzs2GwAM.js",
       "resources/js/components/Section/SliderFront.jsx",
+      "resources/js/components/Product/ProductCard.jsx",
       "resources/js/components/Section/SliderTestimony.jsx",
       "__commonjsHelpers-4gQjN7DL.js",
       "_index-jtdEOcur.js",
@@ -219,7 +231,7 @@
     "src": "resources/js/CursoDetalle.jsx"
   },
   "resources/js/Docente.jsx": {
-    "file": "assets/Docente-GquTZk-K.js",
+    "file": "assets/Docente-FIH-o1Wy.js",
     "imports": [
       "resources/js/Utils/HtmlContent.jsx",
       "_index-TT1qJ6UJ.js",
@@ -227,6 +239,7 @@
       "_CreateReactScript-QuaDmwri.js",
       "_main-jzs2GwAM.js",
       "resources/js/components/Section/SliderFront.jsx",
+      "resources/js/components/Product/ProductCard.jsx",
       "resources/js/components/Section/SliderTestimony.jsx",
       "__commonjsHelpers-4gQjN7DL.js",
       "_index-jtdEOcur.js",
@@ -237,7 +250,7 @@
     "src": "resources/js/Docente.jsx"
   },
   "resources/js/DocenteDetalle.jsx": {
-    "file": "assets/DocenteDetalle-4qHEivmf.js",
+    "file": "assets/DocenteDetalle-8k6sNm5s.js",
     "imports": [
       "resources/js/Utils/HtmlContent.jsx",
       "_index-TT1qJ6UJ.js",
@@ -245,18 +258,20 @@
       "_CreateReactScript-QuaDmwri.js",
       "_main-jzs2GwAM.js",
       "resources/js/components/Section/SliderFront.jsx",
-      "_Curse-iATFJzhg.js",
+      "_Curse-CHbNvWEQ.js",
       "resources/js/components/Section/SliderTestimony.jsx",
       "__commonjsHelpers-4gQjN7DL.js",
       "_index-jtdEOcur.js",
       "resources/js/Utils/CreateReactScript.jsx",
-      "_axios-_sX4vCAy.js"
+      "_axios-_sX4vCAy.js",
+      "_tippy-react.esm-Ethl7wjd.js",
+      "resources/js/components/Product/ProductCard.jsx"
     ],
     "isEntry": true,
     "src": "resources/js/DocenteDetalle.jsx"
   },
   "resources/js/ExamenFinalizado.jsx": {
-    "file": "assets/ExamenFinalizado-Pmoua7ob.js",
+    "file": "assets/ExamenFinalizado-KM7s7vGL.js",
     "imports": [
       "resources/js/Utils/HtmlContent.jsx",
       "_index-TT1qJ6UJ.js",
@@ -264,6 +279,7 @@
       "_CreateReactScript-QuaDmwri.js",
       "_main-jzs2GwAM.js",
       "resources/js/components/Section/SliderFront.jsx",
+      "resources/js/components/Product/ProductCard.jsx",
       "resources/js/components/Section/SliderTestimony.jsx",
       "__commonjsHelpers-4gQjN7DL.js",
       "_index-jtdEOcur.js",
@@ -274,7 +290,7 @@
     "src": "resources/js/ExamenFinalizado.jsx"
   },
   "resources/js/ExamenPregunta.jsx": {
-    "file": "assets/ExamenPregunta-jqtlG1Pk.js",
+    "file": "assets/ExamenPregunta-3WmR4Z9l.js",
     "imports": [
       "resources/js/Utils/HtmlContent.jsx",
       "_index-TT1qJ6UJ.js",
@@ -282,6 +298,7 @@
       "_CreateReactScript-QuaDmwri.js",
       "_main-jzs2GwAM.js",
       "resources/js/components/Section/SliderFront.jsx",
+      "resources/js/components/Product/ProductCard.jsx",
       "resources/js/components/Section/SliderTestimony.jsx",
       "__commonjsHelpers-4gQjN7DL.js",
       "_index-jtdEOcur.js",
@@ -292,7 +309,7 @@
     "src": "resources/js/ExamenPregunta.jsx"
   },
   "resources/js/Home.jsx": {
-    "file": "assets/Home-_SsvaHxG.js",
+    "file": "assets/Home-tQarU5bl.js",
     "imports": [
       "resources/js/Utils/HtmlContent.jsx",
       "_index-TT1qJ6UJ.js",
@@ -300,12 +317,14 @@
       "_CreateReactScript-QuaDmwri.js",
       "_main-jzs2GwAM.js",
       "resources/js/components/Section/SliderFront.jsx",
-      "_Curse-iATFJzhg.js",
+      "_Curse-CHbNvWEQ.js",
       "_SliderTestimony-hCbkR5iv.js",
       "__commonjsHelpers-4gQjN7DL.js",
       "_index-jtdEOcur.js",
       "resources/js/Utils/CreateReactScript.jsx",
       "_axios-_sX4vCAy.js",
+      "_tippy-react.esm-Ethl7wjd.js",
+      "resources/js/components/Product/ProductCard.jsx",
       "resources/js/components/Section/SliderTestimony.jsx"
     ],
     "isEntry": true,
@@ -330,7 +349,7 @@
     "src": "resources/js/Login.jsx"
   },
   "resources/js/Nosotros.jsx": {
-    "file": "assets/Nosotros-uNdeq9aX.js",
+    "file": "assets/Nosotros-kYL4L4-7.js",
     "imports": [
       "resources/js/Utils/HtmlContent.jsx",
       "_index-TT1qJ6UJ.js",
@@ -338,6 +357,7 @@
       "_CreateReactScript-QuaDmwri.js",
       "_main-jzs2GwAM.js",
       "resources/js/components/Section/SliderFront.jsx",
+      "resources/js/components/Product/ProductCard.jsx",
       "_SliderTestimony-hCbkR5iv.js",
       "__commonjsHelpers-4gQjN7DL.js",
       "_index-jtdEOcur.js",
@@ -349,19 +369,20 @@
     "src": "resources/js/Nosotros.jsx"
   },
   "resources/js/Ofertas.jsx": {
-    "file": "assets/Ofertas-il9X3rEg.js",
+    "file": "assets/Ofertas-JeQ3F07x.js",
     "imports": [
       "resources/js/Utils/HtmlContent.jsx",
       "_index-TT1qJ6UJ.js",
       "resources/js/Utils/ReactAppend.jsx",
       "_CreateReactScript-QuaDmwri.js",
-      "_ProductCard-Y9xCNKxx.js",
+      "_ProductCard-YDLP_b75.js",
       "_main-jzs2GwAM.js",
-      "_tippy-react.esm-XmlSpNlB.js",
+      "_arrayJoin-X0k7NUGR.js",
       "__commonjsHelpers-4gQjN7DL.js",
       "_index-jtdEOcur.js",
       "resources/js/Utils/CreateReactScript.jsx",
       "_axios-_sX4vCAy.js",
+      "_tippy-react.esm-Ethl7wjd.js",
       "resources/js/components/Product/ProductCard.jsx"
     ],
     "isEntry": true,
@@ -433,6 +454,36 @@
     ],
     "isEntry": true,
     "src": "resources/js/app.js"
+  },
+  "resources/js/components/Benefits/BenefitCard.jsx": {
+    "file": "assets/BenefitCard-CFe-fSeY.js",
+    "imports": [
+      "resources/js/Utils/HtmlContent.jsx",
+      "_index-TT1qJ6UJ.js",
+      "__commonjsHelpers-4gQjN7DL.js"
+    ],
+    "isEntry": true,
+    "src": "resources/js/components/Benefits/BenefitCard.jsx"
+  },
+  "resources/js/components/Benefits/BenefitSlide.jsx": {
+    "file": "assets/BenefitSlide-CFe-fSeY.js",
+    "imports": [
+      "resources/js/Utils/HtmlContent.jsx",
+      "_index-TT1qJ6UJ.js",
+      "__commonjsHelpers-4gQjN7DL.js"
+    ],
+    "isEntry": true,
+    "src": "resources/js/components/Benefits/BenefitSlide.jsx"
+  },
+  "resources/js/components/Dropdown.jsx": {
+    "file": "assets/Dropdown-CFe-fSeY.js",
+    "imports": [
+      "resources/js/Utils/HtmlContent.jsx",
+      "_index-TT1qJ6UJ.js",
+      "__commonjsHelpers-4gQjN7DL.js"
+    ],
+    "isEntry": true,
+    "src": "resources/js/components/Dropdown.jsx"
   },
   "resources/js/components/Filter/FilterContainer.jsx": {
     "file": "assets/FilterContainer-CFe-fSeY.js",
@@ -519,10 +570,11 @@
     "src": "resources/js/components/Offer/OfferForm.jsx"
   },
   "resources/js/components/Product/Curse.jsx": {
-    "file": "assets/Curse-CFe-fSeY.js",
+    "file": "assets/Curse-ZiH0ztnj.js",
     "imports": [
       "resources/js/Utils/HtmlContent.jsx",
       "_index-TT1qJ6UJ.js",
+      "resources/js/components/Product/ProductCard.jsx",
       "__commonjsHelpers-4gQjN7DL.js"
     ],
     "isEntry": true,

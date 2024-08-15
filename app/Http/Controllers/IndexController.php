@@ -111,7 +111,9 @@ class IndexController extends Controller
   }
 
   public function cursosyDiplomados(){
-    return Inertia::render('CatalogGP')->rootView('app');
+    $productos =  Products::with(['tags', 'galeria', 'category'])->where('status',1)->get();
+  
+    return Inertia::render('CatalogGP', ['productos'=> $productos ,  'env_url' => env('APP_URL') ])->rootView('app');
   }
 
   public function detalleCurso(){
@@ -608,7 +610,8 @@ class IndexController extends Controller
     $resultados = Products::select('products.*')
       ->where('producto', 'like', "%$query%")
       ->join('categories', 'categories.id', 'products.categoria_id')
-      ->where('categories.visible', 1)
+      ->where('categories.visible', 1) -> where('products.status', 1)
+      ->with(['tags', 'galeria', 'category'])
       ->get();
 
 

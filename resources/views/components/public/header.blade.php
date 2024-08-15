@@ -306,18 +306,18 @@
           <nav id="menu-items"
             class=" text-[#333] text-base font-Inter_Medium flex gap-5 xl:gap-10 items-center justify-center "
             x-data="{ openCatalogo: false, openSubMenu: null }">
-            <a href="/" class="font-medium hover:opacity-75 ">
+            <a href="{{ route('Home.jsx') }}" class="font-medium hover:opacity-75 ">
               <span class="underline-this">Inicio</span>
             </a>
 
-            <a id="productos-link" href="#" class="font-medium ">
+            <a id="productos-link" href="{{ route('Nosotros.jsx') }}" class="font-medium ">
               <span class="underline-this">Nosotros</span>
               {{-- <div id="productos-link-h" class="w-0"></div> --}}
 
             </a>
 
             {{-- @if ($offerExists) --}}
-            <a href="/catalogogp" class="font-medium hover:opacity-75">
+            <a href="/docente" class="font-medium hover:opacity-75">
               <span class="underline-this">Docentes</span>
             </a>
             {{-- @endif --}}
