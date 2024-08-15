@@ -60,7 +60,16 @@ export default {
             },
             colors: {
                 azulboost: '#006BF6',
-            }
+            },
+            keyframes: {
+                'flip-down': {
+                  '0%': { transform: 'rotateX(-90deg)', opacity: '0' },
+                  '100%': { transform: 'rotateX(0deg)', opacity: '1' },
+                },
+            },
+            animation: {
+                'flip-down': 'flip-down 0.5s ease-out forwards',
+            },
 
 
         },
