@@ -66,7 +66,7 @@ use App\Models\LibroReclamaciones;
 // Route::get('/login-rev', [AuthController::class, 'loginView'])->name('Login.jsx');
 // Route::get('/register-rev', [AuthController::class, 'registerView'])->name('Register.jsx');
 // Route::get('/', [IndexController::class, 'index'])->name('index');
-// Route::get('/nosotros', [IndexController::class, 'nosotros'])->name('nosotros');
+Route::get('/nosotros', [IndexController::class, 'nosotros'])->name('nosotros');
 Route::get('/servicios', [IndexController::class, 'servicios'])->name('servicios');
 Route::get('/comentario', [IndexController::class, 'comentario'])->name('comentario');
 Route::post('/comentario/nuevo', [IndexController::class, 'hacerComentario'])->name('nuevocomentario');

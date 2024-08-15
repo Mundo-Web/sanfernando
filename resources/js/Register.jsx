@@ -1,4 +1,4 @@
-import { createRoot } from 'react-dom/client'
+/* import { createRoot } from 'react-dom/client'
 import React, { useEffect, useRef, useState } from 'react'
 import JSEncrypt from 'jsencrypt'
 import CreateReactScript from './Utils/CreateReactScript'
@@ -202,4 +202,4 @@ const Register = ({ PUBLIC_RSA_KEY, RECAPTCHA_SITE_KEY, token, terms = 'Terminos
 
 CreateReactScript((el, properties) => {
   createRoot(el).render(<Register {...properties} />);
-})
+}) */

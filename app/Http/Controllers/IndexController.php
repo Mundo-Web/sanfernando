@@ -225,11 +225,7 @@ class IndexController extends Controller
       'id_cat' => $id_cat
     ])->rootView('app');
   }
-  public function nosotros(){
-    $nosotros = AboutUs::all();
-    $benefit = Strength::where('status', '=', 1)->take(3)->get();
-    return view('public.nosotros' , compact('nosotros','benefit'));
-  }
+ 
 
 
   public function comentario()
