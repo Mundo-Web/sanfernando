@@ -232,7 +232,7 @@
       <p>Email: {{ $datosgenerales->email }}</p>
     </div>
     <nav class="flex gap-4 items-start self-stretch my-auto mx-auto md:mx-0">
-      <a href="#" aria-label="Social Media Link 1">
+      {{-- <a href="#" aria-label="Social Media Link 1">
         <img loading="lazy"
           src="https://cdn.builder.io/api/v1/image/assets/TEMP/8693f932039c2e8c0a816be060e78697a7a02b21edbfbfcf31bd73f4123f53bf?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f"
           alt="" class="object-contain shrink-0 w-6 aspect-square" />
@@ -241,7 +241,43 @@
         <img loading="lazy"
           src="https://cdn.builder.io/api/v1/image/assets/TEMP/e1adcb46e083a4104243cc7858289a099b773ab8ae97b361c2a565e5498fd619?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f"
           alt="" class="object-contain shrink-0 w-6 aspect-square" />
-      </a>
+      </a> --}}
+      @if (Auth::user() == null)
+        <a href="/login" class="text-white">Iniciar Sesion </a> </a>
+      @else
+        <div class="text-white  hidden md:inline-flex" x-data="{ open: false }">
+          <button class="px-3 py-5 inline-flex justify-center items-center group" aria-haspopup="true"
+            @click.prevent="open = !open" :aria-expanded="open">
+            <div class="flex items-center truncate">
+              <span id="username"
+                class="truncate ml-2 text-sm font-medium dark:text-slate-300 group-hover:opacity-75 dark:group-hover:text-slate-200  ">{{ Auth::user()->name }}</span>
+              <svg class="w-3 h-3 shrink-0 ml-1 fill-current text-slate-400" viewBox="0 0 12 12">
+                <path d="M5.9 11.4L.5 6l1.4-1.4 4 4 4-4L11.3 6z" />
+              </svg>
+            </div>
+          </button>
+          <div
+            class="origin-top-right z-10 absolute top-full min-w-44 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 py-1.5 rounded shadow-lg overflow-hidden mt-1"
+            @click.outside="open = false" @keydown.escape.window="open = false" x-show="open">
+            <ul>
+              <li class="hover:bg-gray-100">
+                <a class="font-medium text-sm  flex items-center py-1 px-3" href="{{ route('micuenta') }}"
+                  @click="open = false" @focus="open = true" @focusout="open = false">Mi Cuenta</a>
+              </li>
+
+              <li class="hover:bg-gray-100">
+                <form method="POST" action="{{ route('logout') }}" x-data>
+                  @csrf
+                  <button type="submit" class="font-medium text-sm  flex items-center py-1 px-3"
+                    @click.prevent="$root.submit(); open = false">
+                    {{ __('Cerrar sesión') }}
+                  </button>
+                </form>
+              </li>
+            </ul>
+          </div>
+        </div>
+      @endif
       <a href="#" aria-label="Social Media Link 3">
         <img loading="lazy"
           src="https://cdn.builder.io/api/v1/image/assets/TEMP/2cb868de28b1b49e52be101815be5c820fdf20aee19c0b5b86753f263366f629?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f"
