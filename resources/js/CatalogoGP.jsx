@@ -15,7 +15,7 @@ import FilterPagination from './components/Filter/FilterPagination'
 import axios from 'axios';
 
 
-const CatalogoGP = ({ productos, env_url }) => {
+const CatalogoGP = ({ productos, env_url, userIsLogged }) => {
   const sectionStep = 'images/img/palacio.png';
   const imgVideo = 'images/img/mujergp.png';
   const imgPlay = 'images/img/iconoplayblanco.png';
@@ -204,7 +204,7 @@ const CatalogoGP = ({ productos, env_url }) => {
         <div className="flex flex-col justify-center items-center lg:col-span-4">
           <div className="grid grid-cols-1 md:grid-cols-3  w-full gap-12  pb-12">
             {items?.map((producto, index) => {
-              return <Curse key={index} producto={producto} env_url={env_url} />
+              return <Curse key={index} producto={producto} env_url={env_url} userIsLogged={userIsLogged} />
             })}
 
 

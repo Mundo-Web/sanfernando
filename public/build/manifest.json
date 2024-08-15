@@ -6,8 +6,8 @@
       "_main-jzs2GwAM.js"
     ]
   },
-  "_Curse-mDikq5zw.js": {
-    "file": "assets/Curse-mDikq5zw.js",
+  "_Curse-xMqmFIrL.js": {
+    "file": "assets/Curse-xMqmFIrL.js",
     "imports": [
       "resources/js/Utils/HtmlContent.jsx",
       "_index-TT1qJ6UJ.js",
@@ -144,7 +144,7 @@
     "src": "resources/js/Catalogo.jsx"
   },
   "resources/js/CatalogoGP.jsx": {
-    "file": "assets/CatalogoGP-Dc8_qb1c.js",
+    "file": "assets/CatalogoGP-wlkXGIjW.js",
     "imports": [
       "resources/js/Utils/HtmlContent.jsx",
       "_index-TT1qJ6UJ.js",
@@ -152,7 +152,7 @@
       "_CreateReactScript-QuaDmwri.js",
       "_main-jzs2GwAM.js",
       "resources/js/components/Section/SliderFront.jsx",
-      "_Curse-mDikq5zw.js",
+      "_Curse-xMqmFIrL.js",
       "resources/js/components/Section/SliderTestimony.jsx",
       "_index-jtdEOcur.js",
       "_FilterPagination-_HG8TWoT.js",
@@ -259,7 +259,7 @@
     "src": "resources/js/Docente.jsx"
   },
   "resources/js/DocenteDetalle.jsx": {
-    "file": "assets/DocenteDetalle-kdCIexQ8.js",
+    "file": "assets/DocenteDetalle-Fgjms931.js",
     "imports": [
       "resources/js/Utils/HtmlContent.jsx",
       "_index-TT1qJ6UJ.js",
@@ -267,7 +267,7 @@
       "_CreateReactScript-QuaDmwri.js",
       "_main-jzs2GwAM.js",
       "resources/js/components/Section/SliderFront.jsx",
-      "_Curse-mDikq5zw.js",
+      "_Curse-xMqmFIrL.js",
       "resources/js/components/Section/SliderTestimony.jsx",
       "__commonjsHelpers-4gQjN7DL.js",
       "_index-jtdEOcur.js",
@@ -318,7 +318,7 @@
     "src": "resources/js/ExamenPregunta.jsx"
   },
   "resources/js/Home.jsx": {
-    "file": "assets/Home-MMINwasP.js",
+    "file": "assets/Home-qOAJNG86.js",
     "imports": [
       "resources/js/Utils/HtmlContent.jsx",
       "_index-TT1qJ6UJ.js",
@@ -326,7 +326,7 @@
       "_CreateReactScript-QuaDmwri.js",
       "_main-jzs2GwAM.js",
       "resources/js/components/Section/SliderFront.jsx",
-      "_Curse-mDikq5zw.js",
+      "_Curse-xMqmFIrL.js",
       "_SliderTestimony-0snjQcx5.js",
       "__commonjsHelpers-4gQjN7DL.js",
       "_index-jtdEOcur.js",

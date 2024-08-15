@@ -117,10 +117,12 @@ class IndexController extends Controller
   {
     $productos =  Products::with(['tags', 'galeria', 'category'])->where('status', 1)->take(12)->get();
 
+    //check if user is logged in
+    $userIsLogged = Auth::check();
 
 
 
-    return Inertia::render('CatalogGP', ['productos' => $productos,  'env_url' => env('APP_URL')])->rootView('app');
+    return Inertia::render('CatalogGP', ['productos' => $productos,  'env_url' => env('APP_URL'), 'userIsLogged'=> $userIsLogged])->rootView('app');
   }
 
   public function detalleCurso()

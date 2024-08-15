@@ -3,23 +3,26 @@ import truncateText from '../../Utils/truncateText'
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
 
-const Curse = ({ producto, env_url }) => {
+const Curse = ({ producto, env_url, userIsLogged }) => {
   const imgcurso = 'images/img/imagencurso.png';
   const imgcalendario = 'images/svg/gp_calendario.svg';
   const imgreloj = 'images/svg/gp_reloj.svg';
+
+
   return (
     <div className="flex relative flex-col flex-1 shrink basis-0 min-w-[240px]">
       <div className="min-w-[240px]">
         <img loading="lazy" src={`${producto.imagen}`} className="object-cover z-0 w-full rounded-t-2xl h-[280px]"
           alt="Course background image" onError={e => e.target.src = '/images/img/noimagen.jpg'} />
-        <div className="object-contain absolute top-4 right-4 z-0 w-10 h-10 aspect-square">
+        {userIsLogged && (<div className="object-contain absolute top-4 right-4 z-0 w-10 h-10 aspect-square">
           <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
             <circle cx="20" cy="20" r="20" fill="white" />
             <path
               d="M20 28.25C20 28.25 10.625 23 10.625 16.625C10.6252 15.4983 11.0156 14.4064 11.7299 13.5349C12.4442 12.6635 13.4382 12.0664 14.543 11.845C15.6478 11.6237 16.7951 11.7918 17.79 12.3208C18.7848 12.8498 19.5658 13.707 20 14.7467L20 14.7467C20.4342 13.707 21.2152 12.8498 22.21 12.3208C23.2049 11.7918 24.3522 11.6237 25.457 11.845C26.5618 12.0664 27.5558 12.6635 28.2701 13.5349C28.9844 14.4064 29.3748 15.4983 29.375 16.625C29.375 23 20 28.25 20 28.25Z"
               stroke="#CF072C" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
-        </div>
+        </div>)}
+
       </div>
 
       <div className="flex z-0 flex-col p-6 w-full bg-white border-r border-l border-rose-100 border-opacity-40 max-md:px-5">
@@ -38,12 +41,12 @@ const Curse = ({ producto, env_url }) => {
           className="flex flex-col self-start mt-4 text-sm tracking-normal font-poppins_regular leading-loose text-gray-600">
           <div className="flex flex-row gap-2 items-center justify-start">
             {/* <img loading="lazy" src={`/${imgreloj}`} className="object-contain w-6" alt="Clock icon" /> */}
-            <i className='fa fa-clock text-lg' style={{color: '#e02424'}}></i>
-            <p>{producto.duracion} horas lectivas y {producto.creditos} créditos</p>
+            <i className='fa fa-clock text-lg' style={{ color: '#e02424' }}></i>
+            <p>{producto.duracion} horas lectivas .</p>
           </div>
           <div className="flex flex-row gap-2 items-center justify-start  mt-2">
             {/* <img loading="lazy" src={`${imgcalendario}`} className="object-contain w-6 " alt="Calendar icon" /> */}
-            <i className='fa fa-calendar text-lg' style={{color: '#e02424'}}></i>
+            <i className='fa fa-calendar text-lg' style={{ color: '#e02424' }}></i>
             <p>Inicio: {producto.fecha_inicio ? producto.fecha_inicio : 'Próximamente'}</p>
           </div>
         </div>
