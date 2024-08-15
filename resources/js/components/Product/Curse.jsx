@@ -11,7 +11,7 @@ const Curse = ({ producto, env_url }) => {
     <div className="flex relative flex-col flex-1 shrink basis-0 min-w-[240px]">
       <div className="min-w-[240px]">
         <img loading="lazy" src={`${producto.imagen}`} className="object-cover z-0 w-full rounded-t-2xl h-[280px]"
-          alt="Course background image" />
+          alt="Course background image" onError={e => e.target.src = '/images/img/noimagen.jpg'}/>
         <div className="object-contain absolute top-4 right-4 z-0 w-10 h-10 aspect-square">
           <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
             <circle cx="20" cy="20" r="20" fill="white" />
@@ -37,8 +37,8 @@ const Curse = ({ producto, env_url }) => {
         <div
           className="flex flex-col self-start mt-4 text-sm tracking-normal font-poppins_regular leading-loose text-gray-600">
           <div className="flex flex-row gap-2 items-start justify-start">
-            <img loading="lazy" src={`${imgreloj}`} className="object-contain w-6"
-              alt="Clock icon" onError={e => e.target.src = '/images/img/noimagen.jpg'}/>
+            <img loading="lazy" src={`/${imgreloj}`} className="object-contain w-6"
+              alt="Clock icon" />
               <i className='fa fa-clock text-lg'></i>
             <p>{producto.duracion} horas lectivas y {producto.creditos} créditos</p>
           </div>
