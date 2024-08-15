@@ -34,7 +34,10 @@ class Products extends Model
     'image_texture',
     'slug',
     'sku',
-    'max_stock', 
+    'max_stock',
+    'creditos',
+    'duracion',
+    'fecha_inicio',
     // 'precio_reseller'
   ];
 
