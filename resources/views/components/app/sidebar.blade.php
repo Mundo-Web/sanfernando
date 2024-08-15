@@ -80,7 +80,7 @@
         </x-menu.item>
       </x-menu.group>
 
-      <x-menu.group title="Productos">
+      <x-menu.group title="Contenido">
         <x-menu.item id="categorias" href="{{ route('categorias.index') }}"
           icon="fas fa-folder">Categorias</x-menu.item>
         {{-- <x-menu.item id="subcategories" href="{{ route('subcategories.index') }}"

@@ -230,11 +230,11 @@ class ProductsController extends Controller
     $atributos = Attributes::where("status", "=", true)->get();
     $valorAtributo = AttributesValues::where("status", "=", true)->get();
     $tags = Tag::where("status", "=", true)->get();
-    $categoria = Category::all();
-    $subcategories = SubCategory::all();
+    $categoria = Category::where('status', 1)->get();
+    // $subcategories = SubCategory::where('status', 1)->get();
     $galery = [];
     $especificacion = [json_decode('{"tittle":"", "specifications":""}', false)];
-    return view('pages.products.save', compact('product', 'atributos', 'valorAtributo', 'categoria', 'tags', 'especificacion', 'subcategories', 'galery'));
+    return view('pages.products.save', compact('product', 'atributos', 'valorAtributo', 'categoria', 'tags', 'especificacion',  'galery'));
   }
 
   public function edit(string $id)
