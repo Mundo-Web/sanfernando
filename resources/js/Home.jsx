@@ -11,7 +11,23 @@ import Curse from './components/Product/Curse'
 import SliderTestimony from './components/Section/SliderTestimony'
 
 
-const Home = () => {
+const Home = ({ url_env,
+    productos,
+    ultimosProductos,
+    productosPupulares,
+    blogs,
+    banners,
+    categorias,
+    categoriasAll,
+    destacados,
+    descuentos,
+    popups,
+    general,
+    benefit,
+    faqs,
+    testimonie,
+    slider,
+    category }) => {
     const sectionStep = 'images/img/palacio.png';
     const imgVideo = 'images/img/mujergp.png';
     const imgPlay = 'images/img/iconoplayblanco.png';
@@ -19,25 +35,25 @@ const Home = () => {
 
     return (<>
         <section className="w-full relative">
-      <SliderFront  />
-    </section>
+            <SliderFront />
+        </section>
 
-    <section className="flex flex-wrap items-center">
+        <section className="flex flex-wrap items-center">
             <div className="flex flex-1 shrink self-stretch my-auto h-3 bg-orange-400 basis-0 min-w-[240px] w-1/2"
                 role="presentation"></div>
             <div className="flex flex-1 shrink self-stretch my-auto h-3 bg-cyan-600 basis-0 min-w-[240px] w-1/2"
                 role="presentation"></div>
-    </section>
+        </section>
 
-    <section className="flex flex-wrap gap-5 items-start px-24 py-8 bg-[#CF072C] text-slate-100 max-md:px-5">
-      <SliderBenefit  />
-    </section>
+        <section className="flex flex-wrap gap-5 items-start px-24 py-8 bg-[#CF072C] text-slate-100 max-md:px-5">
+            <SliderBenefit />
+        </section>
 
-    <section>
-      <TwoColumn  />
-    </section>
+        <section>
+            <TwoColumn />
+        </section>
 
-    <section className="bg-[#F9FAFB] px-[8%]">
+        <section className="bg-[#F9FAFB] px-[8%]">
             <div className="grid grid-cols-1 w-full gap-12  pt-12 xl:pt-16">
                 <div className="flex flex-col justify-center gap-5 text-center">
                     <h2 className="text-[#CF072C] font-poppins_regular font-semibold text-lg">Cursos y Diplomados</h2>
@@ -52,11 +68,13 @@ const Home = () => {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 w-full gap-12 pt-12 pb-12">
-                <Curse  />
 
-                <Curse  />
+                {productosPupulares.map((producto, index) => { <Curse /> })}
+                <Curse />
 
-                <Curse  />
+                <Curse />
+
+                <Curse />
             </div>
 
             <div className="flex flex-row justify-center items-center pb-12 xl:pb-16">
@@ -72,9 +90,9 @@ const Home = () => {
                     </svg>
                 </a>
             </div>
-    </section>
+        </section>
 
-    <section className="px-[8%] bg-cover" style={{ backgroundImage: `url(${sectionStep})` }}>
+        <section className="px-[8%] bg-cover" style={{ backgroundImage: `url(${sectionStep})` }}>
             <div className="grid grid-cols-1 w-full gap-12  pt-12 xl:pt-16">
                 <div className="flex flex-col justify-center gap-5 text-center">
                     <h2 className="text-white font-poppins_regular font-semibold text-lg">Nuestros Beneficios</h2>
@@ -140,9 +158,9 @@ const Home = () => {
                 </div>
 
             </div>
-    </section>
+        </section>
 
-    <section
+        <section
             className="flex overflow-hidden flex-wrap gap-10 justify-between items-center px-[8%] py-12 lg:py-16 bg-[#CF072C] max-md:px-5">
             <div
                 className="flex flex-col justify-center self-stretch my-auto  leading-10 min-w-[240px] w-[586px] max-md:max-w-full">
@@ -174,10 +192,10 @@ const Home = () => {
                     </p>
                 </article>
             </div>
-      </section>
+        </section>
 
 
-      <section>
+        <section>
             <div className="grid grid-cols-1 xl:grid-cols-2 w-full gap-12 px-[8%] py-12 xl:py-16">
 
                 <div className="flex flex-col justify-center items-center px-0 lg:px-[5%]">
@@ -186,8 +204,8 @@ const Home = () => {
                         <div className="absolute inset-0 flex items-center justify-center disparo bg-opacity-50 cursor-pointer"
                             onclick="showVideo(this)">
                             <button className="text-white text-2xl"><img
-                                    className="w-16 hover:animate-jump hover:animate-once hover:animate-duration-1000"
-                                    src={`${imgPlay}`} /></button>
+                                className="w-16 hover:animate-jump hover:animate-once hover:animate-duration-1000"
+                                src={`${imgPlay}`} /></button>
                         </div>
                         <iframe id="videoIframe" class="videoIframe w-full h-full hidden"
                             src="https://www.youtube.com/embed/Q5_ALBh8Qe4" frameborder="0"
@@ -207,11 +225,11 @@ const Home = () => {
                     </div>
                 </div>
             </div>
-       </section>
-       
-       <section class="px-[8%] bg-[#A90609] !font-poppins_regular mt-20">
+        </section>
+
+        <section class="px-[8%] bg-[#A90609] !font-poppins_regular mt-20">
             <div class="flex gap-5 max-md:flex-col py-10 md:py-0">
-                
+
                 <div class="flex flex-col w-[65%] max-md:ml-0 max-md:w-full">
                     <div class="grow  max-md:max-w-full">
                         <div class="flex gap-5 max-md:flex-col">
@@ -235,7 +253,7 @@ const Home = () => {
                                     </div>
                                 </div>
                             </div>
-                            
+
                             <div class="flex flex-col ml-5 w-full items-end  md:w-6/12 mt-0 md:-mt-16">
                                 <img loading="lazy"
                                     src="https://cdn.builder.io/api/v1/image/assets/TEMP/31d2a58f6fbb89e9b97d22e950300dd25ed9036762fd76d2ffd12b44657c4b72?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f"
@@ -252,58 +270,58 @@ const Home = () => {
                             Tus pasos para enseñar y ganar dinero
                         </h2>
                         <div class="grid grid-cols-2 mt-5 w-full gap-5">
-                           
-                                <div class="flex flex-col flex-1 shrink justify-start items-start basis-0">
-                                    <span class="flex flex-row items-center justify-center text-xl font-semibold leading-none text-center text-rose-700 bg-gray-50 h-[45px] rounded-full w-[45px] pt-1">
-                                        1
-                                    </span>
-                                    <p class="mt-3 text-[15px] tracking-normal leading-1 text-white !font-poppins_regular ">
-                                        Aplicar para convertirse en instructor
-                                    </p>
-                                </div>
-                                <div class="flex flex-col flex-1 shrink justify-start items-start basis-0 !text-base">
-                                    <span
-                                        class="flex items-center justify-center text-xl font-semibold leading-none text-center text-rose-700 bg-gray-50  h-[45px] rounded-full w-[45px] pt-1">
-                                        2
-                                    </span>
-                                    <p
-                                        class="mt-3 text-[15px] tracking-normal leading-1 text-white !font-poppins_regular">
-                                        Crea y edita tu perfil
-                                    </p>
-                                </div>
-                           
-                          
-                                <div
-                                    class="flex flex-col flex-1 shrink justify-start items-start  basis-0 !text-base">
-                                    <span
-                                        class="flex items-center justify-center text-xl font-semibold !font-poppins_regular leading-none text-center text-rose-700 bg-gray-50  h-[45px] rounded-full w-[45px] pt-1">
-                                        3
-                                    </span>
-                                    <p
-                                        class="mt-3 text-[15px] tracking-normal leading-1 text-white !font-poppins_regular">
-                                        Escoge un curso
-                                    </p>
-                                </div>
-                                <div
-                                    class="flex flex-col flex-1 shrink justify-start items-start  basis-0 !text-base">
-                                    <span
-                                        class="flex items-center justify-center text-xl !font-poppins_regular font-semibold leading-none text-center text-rose-700 bg-gray-50  h-[45px] rounded-full w-[45px] pt-1">
-                                        4
-                                    </span>
-                                    <p class="mt-3 text-[15px] tracking-normal leading-1 text-white !font-poppins_regular">
-                                        Comience a enseñar y ganar dinero
-                                    </p>
-                                </div>
-                            
+
+                            <div class="flex flex-col flex-1 shrink justify-start items-start basis-0">
+                                <span class="flex flex-row items-center justify-center text-xl font-semibold leading-none text-center text-rose-700 bg-gray-50 h-[45px] rounded-full w-[45px] pt-1">
+                                    1
+                                </span>
+                                <p class="mt-3 text-[15px] tracking-normal leading-1 text-white !font-poppins_regular ">
+                                    Aplicar para convertirse en instructor
+                                </p>
+                            </div>
+                            <div class="flex flex-col flex-1 shrink justify-start items-start basis-0 !text-base">
+                                <span
+                                    class="flex items-center justify-center text-xl font-semibold leading-none text-center text-rose-700 bg-gray-50  h-[45px] rounded-full w-[45px] pt-1">
+                                    2
+                                </span>
+                                <p
+                                    class="mt-3 text-[15px] tracking-normal leading-1 text-white !font-poppins_regular">
+                                    Crea y edita tu perfil
+                                </p>
+                            </div>
+
+
+                            <div
+                                class="flex flex-col flex-1 shrink justify-start items-start  basis-0 !text-base">
+                                <span
+                                    class="flex items-center justify-center text-xl font-semibold !font-poppins_regular leading-none text-center text-rose-700 bg-gray-50  h-[45px] rounded-full w-[45px] pt-1">
+                                    3
+                                </span>
+                                <p
+                                    class="mt-3 text-[15px] tracking-normal leading-1 text-white !font-poppins_regular">
+                                    Escoge un curso
+                                </p>
+                            </div>
+                            <div
+                                class="flex flex-col flex-1 shrink justify-start items-start  basis-0 !text-base">
+                                <span
+                                    class="flex items-center justify-center text-xl !font-poppins_regular font-semibold leading-none text-center text-rose-700 bg-gray-50  h-[45px] rounded-full w-[45px] pt-1">
+                                    4
+                                </span>
+                                <p class="mt-3 text-[15px] tracking-normal leading-1 text-white !font-poppins_regular">
+                                    Comience a enseñar y ganar dinero
+                                </p>
+                            </div>
+
                         </div>
                     </div>
                 </div>
 
             </div>
-      </section> 
+        </section>
 
     </>)
-  }
+}
 
 CreateReactScript((el, properties) => {
     createRoot(el).render(<Home {...properties} />);

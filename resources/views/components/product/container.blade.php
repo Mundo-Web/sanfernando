@@ -87,10 +87,11 @@
     </div>
   </div>
   <a href="{{ route('producto', $item->id) }}">
-    <h2 id="h2Container" class="text-base mt-4 text-center font-Inter_Medium tracking-tight  cortartexto tippy"
+    <h2 id="h2Container"
+      class="text-base mt-4 text-center font-Inter_Medium tracking-tight  cortartexto tippy min-h-12 md:min-h-0"
       title="{{ $item->producto }}">
 
-      {{ mb_strimwidth($item->producto, 0, 50, '...') }}
+      {{ mb_strimwidth($item->producto, 0, 30, '...') }}
     </h2>
     <div class="flex content-between flex-row gap-4 items-center justify-center font-Inter_Medium pb-4">
       @if ($item->descuento == 0)
