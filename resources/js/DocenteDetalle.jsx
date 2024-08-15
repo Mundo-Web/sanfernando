@@ -23,7 +23,7 @@ return (<>
         <div className="flex w-full bg-[#FFF0F0] h-40 lg:h-60 max-md:max-w-full" role="banner"></div>
         <div className="flex flex-col px-[8%] py-10 w-full max-md:px-5 max-md:max-w-full -mt-40">
           <div className='flex flex-col bg-white p-4 lg:p-8 rounded-2xl'>  
-            <div class="flex flex-wrap gap-10 justify-between items-center px-6 py-8 bg-red-100 rounded-xl max-md:px-5">
+            <div class="flex flex-wrap gap-5 lg:gap-10 justify-between items-center px-6 py-8 bg-red-100 rounded-xl max-md:px-5">
                 <div class="flex flex-wrap gap-6 items-center self-stretch my-auto min-w-[240px] max-md:max-w-full">
                     <img loading="lazy"
                         srcset="https://cdn.builder.io/api/v1/image/assets/TEMP/7225a071e84f16858b9225ffed876a6e0750a6be0ed3b81c8ea4e38b1619273b?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f&width=100 100w, https://cdn.builder.io/api/v1/image/assets/TEMP/7225a071e84f16858b9225ffed876a6e0750a6be0ed3b81c8ea4e38b1619273b?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f&width=200 200w, https://cdn.builder.io/api/v1/image/assets/TEMP/7225a071e84f16858b9225ffed876a6e0750a6be0ed3b81c8ea4e38b1619273b?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f&width=400 400w, https://cdn.builder.io/api/v1/image/assets/TEMP/7225a071e84f16858b9225ffed876a6e0750a6be0ed3b81c8ea4e38b1619273b?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f&width=800 800w, https://cdn.builder.io/api/v1/image/assets/TEMP/7225a071e84f16858b9225ffed876a6e0750a6be0ed3b81c8ea4e38b1619273b?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f&width=1200 1200w, https://cdn.builder.io/api/v1/image/assets/TEMP/7225a071e84f16858b9225ffed876a6e0750a6be0ed3b81c8ea4e38b1619273b?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f&width=1600 1600w, https://cdn.builder.io/api/v1/image/assets/TEMP/7225a071e84f16858b9225ffed876a6e0750a6be0ed3b81c8ea4e38b1619273b?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f&width=2000 2000w, https://cdn.builder.io/api/v1/image/assets/TEMP/7225a071e84f16858b9225ffed876a6e0750a6be0ed3b81c8ea4e38b1619273b?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f"
@@ -78,12 +78,12 @@ return (<>
                         </div>
                     </div>
                 </div>
-                <div class="flex flex-col justify-center items-end self-stretch my-auto min-w-[240px]">
+                <div class="flex flex-col justify-center items-start lg:items-end self-stretch my-auto min-w-[240px]">
                     <div
-                        class="flex gap-1.5 items-center text-sm font-medium tracking-normal leading-none text-gray-600 whitespace-nowrap">
+                        class="flex gap-1.5 items-start text-sm font-medium tracking-normal leading-none text-gray-600 ">
                         <img loading="lazy"
                             src="https://cdn.builder.io/api/v1/image/assets/TEMP/c32a1882584e21f3452a0077b8c92d2af52654e5f24bb6edfb45b4f6f4d8465e?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f"
-                            class="object-contain shrink-0 self-stretch my-auto w-6 aspect-square" />
+                            class="object-contain shrink-0   w-6 aspect-square" />
                         <div class="self-stretch my-auto">https://www.patriciaheredia.com</div>
                     </div>
                     <div class="flex gap-2.5 items-start mt-4">
@@ -123,7 +123,6 @@ return (<>
                         <Curse />
                         <Curse />
                         <Curse />
-                        
                       </div> 
                 </div>
             </div>

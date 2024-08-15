@@ -55,7 +55,7 @@
     ]
   },
   "resources/css/app.css": {
-    "file": "assets/app-BS5wqROO.css",
+    "file": "assets/app-10W0zNUM.css",
     "isEntry": true,
     "src": "resources/css/app.css"
   },
@@ -132,6 +132,23 @@
     "isEntry": true,
     "src": "resources/js/CatalogoGP.jsx"
   },
+  "resources/js/CursoDetalle.jsx": {
+    "file": "assets/CursoDetalle-fGuj4vPv.js",
+    "imports": [
+      "resources/js/components/Section/TwoColumn.jsx",
+      "_index-TykbAVkI.js",
+      "_CreateReactScript-4idoxh_H.js",
+      "_main-jzs2GwAM.js",
+      "resources/js/components/Section/SliderFront.jsx",
+      "resources/js/components/Section/SliderTestimony.jsx",
+      "__commonjsHelpers-4gQjN7DL.js",
+      "_index-T3_L0chj.js",
+      "resources/js/Utils/CreateReactScript.jsx",
+      "_axios-_sX4vCAy.js"
+    ],
+    "isEntry": true,
+    "src": "resources/js/CursoDetalle.jsx"
+  },
   "resources/js/Docente.jsx": {
     "file": "assets/Docente-g96boFbW.js",
     "imports": [
@@ -150,7 +167,7 @@
     "src": "resources/js/Docente.jsx"
   },
   "resources/js/DocenteDetalle.jsx": {
-    "file": "assets/DocenteDetalle-R0u8vX26.js",
+    "file": "assets/DocenteDetalle-HGFb_l2y.js",
     "imports": [
       "resources/js/components/Section/TwoColumn.jsx",
       "_index-TykbAVkI.js",
@@ -270,7 +287,7 @@
     "css": [
       "assets/SelectSecond-1fxfbQLv.css"
     ],
-    "file": "assets/SelectSecond-NJeIPuqD.js",
+    "file": "assets/SelectSecond-Gmrod048.js",
     "imports": [
       "resources/js/components/Section/TwoColumn.jsx",
       "_index-TykbAVkI.js",
