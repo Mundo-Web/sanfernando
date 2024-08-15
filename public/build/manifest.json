@@ -6,8 +6,8 @@
       "_main-jzs2GwAM.js"
     ]
   },
-  "_Curse-8Ng9teN2.js": {
-    "file": "assets/Curse-8Ng9teN2.js",
+  "_Curse-aSJD85fO.js": {
+    "file": "assets/Curse-aSJD85fO.js",
     "imports": [
       "resources/js/Utils/HtmlContent.jsx",
       "_index-TT1qJ6UJ.js",
@@ -136,7 +136,7 @@
     "src": "resources/js/Catalogo.jsx"
   },
   "resources/js/CatalogoGP.jsx": {
-    "file": "assets/CatalogoGP-QxMOmUM8.js",
+    "file": "assets/CatalogoGP-Z0LpMqTi.js",
     "imports": [
       "resources/js/Utils/HtmlContent.jsx",
       "_index-TT1qJ6UJ.js",
@@ -144,7 +144,7 @@
       "_CreateReactScript-QuaDmwri.js",
       "_main-jzs2GwAM.js",
       "resources/js/components/Section/SliderFront.jsx",
-      "_Curse-8Ng9teN2.js",
+      "_Curse-aSJD85fO.js",
       "resources/js/components/Section/SliderTestimony.jsx",
       "_index-jtdEOcur.js",
       "__commonjsHelpers-4gQjN7DL.js",
@@ -250,7 +250,7 @@
     "src": "resources/js/Docente.jsx"
   },
   "resources/js/DocenteDetalle.jsx": {
-    "file": "assets/DocenteDetalle-DHYt0Rnp.js",
+    "file": "assets/DocenteDetalle-llN8_JJI.js",
     "imports": [
       "resources/js/Utils/HtmlContent.jsx",
       "_index-TT1qJ6UJ.js",
@@ -258,7 +258,7 @@
       "_CreateReactScript-QuaDmwri.js",
       "_main-jzs2GwAM.js",
       "resources/js/components/Section/SliderFront.jsx",
-      "_Curse-8Ng9teN2.js",
+      "_Curse-aSJD85fO.js",
       "resources/js/components/Section/SliderTestimony.jsx",
       "__commonjsHelpers-4gQjN7DL.js",
       "_index-jtdEOcur.js",
@@ -309,7 +309,7 @@
     "src": "resources/js/ExamenPregunta.jsx"
   },
   "resources/js/Home.jsx": {
-    "file": "assets/Home-aQzPA5Yi.js",
+    "file": "assets/Home-G3KADZjV.js",
     "imports": [
       "resources/js/Utils/HtmlContent.jsx",
       "_index-TT1qJ6UJ.js",
@@ -317,7 +317,7 @@
       "_CreateReactScript-QuaDmwri.js",
       "_main-jzs2GwAM.js",
       "resources/js/components/Section/SliderFront.jsx",
-      "_Curse-8Ng9teN2.js",
+      "_Curse-aSJD85fO.js",
       "_SliderTestimony-hCbkR5iv.js",
       "__commonjsHelpers-4gQjN7DL.js",
       "_index-jtdEOcur.js",
