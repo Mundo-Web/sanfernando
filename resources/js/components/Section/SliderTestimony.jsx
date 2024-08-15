@@ -2,7 +2,7 @@ import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/swiper-bundle.css';
 
-const SliderTestimony = () => {
+const SliderTestimony = (sliders) => {
     const iconocomillas = 'images/svg/comillas_gp.svg';
 
   return (

@@ -11,8 +11,23 @@ import Curse from './components/Product/Curse'
 import SliderTestimony from './components/Section/SliderTestimony'
 
 
-const Home = ({ ...props }) => {
-    console.log(categorias)
+const Home = ({ url_env,
+    productos,
+    ultimosProductos,
+    productosPupulares,
+    blogs,
+    banners,
+    categorias,
+    categoriasAll,
+    destacados,
+    descuentos,
+    popups,
+    general,
+    benefit,
+    faqs,
+    testimonie,
+    slider,
+    category }) => {
     const sectionStep = 'images/img/palacio.png';
     const imgVideo = 'images/img/mujergp.png';
     const imgPlay = 'images/img/iconoplayblanco.png';
@@ -20,7 +35,7 @@ const Home = ({ ...props }) => {
 
     return (<>
         <section className="w-full relative">
-            <SliderFront categorias={categorias}/>
+            <SliderFront />
         </section>
 
         <section className="flex flex-wrap items-center">
@@ -53,6 +68,8 @@ const Home = ({ ...props }) => {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 w-full gap-12 pt-12 pb-12">
+
+                {productosPupulares.map((producto, index) => { <Curse /> })}
                 <Curse />
 
                 <Curse />
@@ -204,7 +221,7 @@ const Home = ({ ...props }) => {
                     </h1>
 
                     <div className="">
-                        <SliderTestimony />
+                        <SliderTestimony sliders={1} />
                     </div>
                 </div>
             </div>
