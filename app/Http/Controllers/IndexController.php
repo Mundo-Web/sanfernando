@@ -111,7 +111,9 @@ class IndexController extends Controller
   }
 
   public function cursosyDiplomados(){
-    return Inertia::render('CatalogGP')->rootView('app');
+    $productos =  Products::with(['tags', 'galeria', 'category'])->where('status',1)->get();
+  
+    return Inertia::render('CatalogGP', ['productos'=> $productos ,  'env_url' => env('APP_URL') ])->rootView('app');
   }
 
   public function detalleCurso(){

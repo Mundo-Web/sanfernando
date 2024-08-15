@@ -12,7 +12,7 @@ use Inertia\Inertia;
 
 Route::get('/', [IndexController::class, 'index'])->name('Home.jsx');
 Route::get('/catalogoGestion', [IndexController::class, 'cursosyDiplomados'])->name('CatalogoGP.jsx');
-Route::get('/detalleCurso', [IndexController::class, 'detalleCurso'])->name('CursoDetalle.jsx');
+Route::get('/detalleCurso/{id}', [IndexController::class, 'detalleCurso'])->name('CursoDetalle.jsx');
 Route::get('/docente', [IndexController::class, 'docente'])->name('Docente.jsx');
 Route::get('/detalleDocente', [IndexController::class, 'docenteDetalle'])->name('DocenteDetalle.jsx');
 Route::get('/nosotros', [IndexController::class, 'docenteDetalle'])->name('Nosotros.jsx');
