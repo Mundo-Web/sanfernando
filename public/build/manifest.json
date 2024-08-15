@@ -309,7 +309,7 @@
     "src": "resources/js/ExamenPregunta.jsx"
   },
   "resources/js/Home.jsx": {
-    "file": "assets/Home-t8nafhJc.js",
+    "file": "assets/Home-tQarU5bl.js",
     "imports": [
       "resources/js/Utils/HtmlContent.jsx",
       "_index-TT1qJ6UJ.js",
@@ -464,6 +464,16 @@
     ],
     "isEntry": true,
     "src": "resources/js/components/Benefits/BenefitCard.jsx"
+  },
+  "resources/js/components/Benefits/BenefitSlide.jsx": {
+    "file": "assets/BenefitSlide-CFe-fSeY.js",
+    "imports": [
+      "resources/js/Utils/HtmlContent.jsx",
+      "_index-TT1qJ6UJ.js",
+      "__commonjsHelpers-4gQjN7DL.js"
+    ],
+    "isEntry": true,
+    "src": "resources/js/components/Benefits/BenefitSlide.jsx"
   },
   "resources/js/components/Dropdown.jsx": {
     "file": "assets/Dropdown-CFe-fSeY.js",
