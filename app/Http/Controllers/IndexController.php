@@ -610,7 +610,8 @@ class IndexController extends Controller
     $resultados = Products::select('products.*')
       ->where('producto', 'like', "%$query%")
       ->join('categories', 'categories.id', 'products.categoria_id')
-      ->where('categories.visible', 1)
+      ->where('categories.visible', 1) -> where('products.status', 1)
+      ->with(['tags', 'galeria', 'category'])
       ->get();
 
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
-const SliderFront = () => {
+const SliderFront = ({categorias}) => {
 // const backgroundImage = item.name_image
 // ? `url(${process.env.PUBLIC_URL + '/' + item.url_image + item.name_image})`
 // : `url(${process.env.PUBLIC_URL + '/images/img/noimagenslider.jpg'})`;
@@ -74,7 +74,13 @@ return (
                         <div className="relative w-full text-left flex flex-col justify-center items-center">
                             <select name="categoria_id" id="categoria_id2"
                                      className="w-full py-3 px-3 text-base font-poppins_regular font-semibold text-[#2D464C] border-0 focus:border-0 focus:ring-0">
-                                 <option value="">Buscar por categorias</option>
+                                 <option value="">Todas las categorias</option>
+                                 {
+                      categorias.map((categoria, i) => {
+                        return <option value={categoria.id}>{categoria.name}</option>
+                      })
+                                 }
+
                             </select>     
                         </div>
                     </div>

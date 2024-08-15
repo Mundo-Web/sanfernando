@@ -9,6 +9,7 @@ import SliderBenefit from './components/Section/SliderBenefit'
 import TwoColumn from './components/Section/TwoColumn'
 import Curse from './components/Product/Curse'
 import SliderTestimony from './components/Section/SliderTestimony'
+import SelectSecond from './components/Inputs/SelectSecond'
 import Dropdown from './components/Dropdown'
 
 const CatalogoGP = ({ productos, env_url }) => {
@@ -17,21 +18,33 @@ const CatalogoGP = ({ productos, env_url }) => {
   const imgPlay = 'images/img/iconoplayblanco.png';
 
   const [isListVisible, setIsListVisible] = useState(false)
-  const [cartSelected, setCartSelected] = useState('Mas populares')
-  const [selectedOption, setSelectedOption] = useState('Selecciona una opción');
+  const [query, setQuery] = useState('');
+  const [items, setItems] = useState(productos);
 
+  console.log(productos)
   const toggleListVisibility = () => {
     setIsListVisible(!isListVisible);
   };
-  const handleOptionChange = (event) => {
-    const selectedNombre = event.target.dataset.nombre;
-    setIsListVisible(!isListVisible);
-    setSelectedOption(selectedNombre);
-    /* setPriceOrder((prevFilter) => {
-      return event.target.value
-    }) */
-    console.log(`Selected option: ${event.target.value}`);
+
+
+  const buscarProducto = async (event) => {
+    const query = event.target.value;
+    setQuery(query);
+
+    console.log(query)
+
+    try {
+      const response = await fetch(`/buscar?query=${query}`, {
+        method: 'GET',
+      });
+      const data = await response.json();
+      console.log(data)
+      setItems(data);
+    } catch (error) {
+      console.error('Error fetching search results:', error);
+    }
   };
+
 
   return (<>
     <section className="flex flex-col !font-poppins_regular !font-normal">
@@ -46,15 +59,15 @@ const CatalogoGP = ({ productos, env_url }) => {
               <div className="flex flex-wrap gap-2.5 items-center px-4 py-3 w-full bg-rose-50 rounded-xl max-md:max-w-full">
                 <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/8d0148f8eb4404f2a75a99c44c0b35db6ba68a27faeb0e05d47cc41d12c3445f?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f" className="object-contain shrink-0 self-stretch my-auto w-6 aspect-square" alt="" />
                 <label htmlFor="searchInput" className="sr-only">Buscar curso o diplomado</label>
-                <input type="text" id="searchInput" placeholder="Buscar curso o diplomado" className="flex-1 shrink self-stretch my-auto basis-0 max-md:max-w-full bg-transparent border-none focus:outline-none" />
+                <input type="text" id="searchInput" onChange={buscarProducto} placeholder="Buscar curso o diplomado" className="flex-1 shrink self-stretch my-auto basis-0 max-md:max-w-full bg-transparent border-none focus:outline-none" />
               </div>
             </form>
             <div className="flex gap-3 justify-center items-center self-stretch my-auto min-w-[240px]">
               <span className="self-stretch my-auto text-sm tracking-normal leading-loose text-gray-600">
                 Ordenar por:
               </span>
-
-              <div className="dropdown w-full order-2 md:order-4">
+              <SelectSecond title={'Seleccionar '} />
+              {/* <div className="dropdown w-full order-2 md:order-4">
                 <div
                   className="flex gap-2.5 items-center self-stretch px-4 py-3 my-auto text-base leading-tight text-red-600 whitespace-nowrap bg-rose-50 rounded-xl justify-between" role="button" tabIndex="0"
                   onClick={toggleListVisibility}
@@ -88,7 +101,7 @@ const CatalogoGP = ({ productos, env_url }) => {
 
                   </div>
                 )}
-              </div>
+              </div> */}
 
               {/* <div className="flex gap-2.5 items-center self-stretch px-4 py-3 my-auto text-base leading-tight text-red-600 whitespace-nowrap bg-rose-50 rounded-xl" role="button" tabIndex="0">
                 <span className="self-stretch my-auto">Tendencias</span>
@@ -151,7 +164,9 @@ const CatalogoGP = ({ productos, env_url }) => {
 
         <div className="flex flex-col justify-center items-center lg:col-span-4">
           <div className="grid grid-cols-1 md:grid-cols-3  w-full gap-12  pb-12">
-            {productos.map((producto, index) => { return <Curse key={index} producto={producto} env_url={env_url} /> })}
+            {items?.map((producto, index) => {
+              return <Curse key={index} producto={producto} env_url={env_url} />
+            })}
 
 
 

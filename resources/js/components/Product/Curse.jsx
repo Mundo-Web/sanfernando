@@ -26,7 +26,7 @@ const Curse = ({ producto, env_url }) => {
       <div className="flex z-0 flex-col p-6 w-full bg-white border-r border-l border-rose-100 border-opacity-40 max-md:px-5">
         <div
           className="flex gap-3 items-center w-full text-xs font-medium leading-tight text-white uppercase whitespace-nowrap">
-          <span className="gap-2.5 self-stretch px-1.5 py-1 my-auto bg-red-800 rounded font-poppins_regular">{producto.category.name}</span>
+          <span className="gap-2.5 self-stretch px-1.5 py-1 my-auto bg-red-800 rounded font-poppins_regular">{producto?.category?.name}</span>
         </div>
         <Tippy content={producto.producto}>
           <h2 className="mt-4 text-2xl font-semibold font-poppins_medium leading-7 text-neutral-800 md:h-[58px]">
