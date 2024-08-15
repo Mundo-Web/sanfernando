@@ -12,12 +12,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   {{--  <meta name="description"
     content="Somos especialistas en Wall Panel, mármol UV, piedra PU y otros productos para ti. Confía en la calidad de Deco TAB y dale otro estilo a tu ambiente favorito."> --}}
-  <title> Boots Peru </title>
+  <title> Gestion Publica </title>
   {{--   <meta name="keywords"
     content="Wall Panel, Mármol UV, Piedra PU, Piedra Cincelada, Wall Panel Negro, Pisos SPC, Panel Tipo piedra PU" /> --}}
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-  {{-- @vite(['resources/js/' . $component, 'resources/css/app.css', 'resources/js/app.js']) --}}
-  @vite(['resources/css/app.css', 'resources/js/app.js', 'resources/js/' . Route::currentRouteName()])
+  @vite(['resources/js/' . $component, 'resources/css/app.css', 'resources/js/app.js'])
   <link rel="stylesheet" href="{{ asset('css/styles.css') }}" />
 
   <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
@@ -28,7 +27,7 @@
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
-  
+
   {{-- Aqui van los CSS --}}
   @yield('css_importados')
 
@@ -44,7 +43,7 @@
 
   <script src="https://www.google.com/recaptcha/api.js" async defer></script>
   <script src="/js/tippy.all.min.js"></script>
-   
+
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
   <style>
@@ -190,7 +189,7 @@
     }
   </style>
 
- @inertiaHead
+  @inertiaHead
 </head>
 
 <body class="body">

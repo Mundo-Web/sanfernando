@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Helpers\EmailConfig;
 use App\Http\Requests\StoreIndexRequest;
 use App\Http\Requests\UpdateIndexRequest;
+use App\Models\AboutUs;
 use App\Models\Address;
 use App\Models\Attributes;
 use App\Models\AttributesValues;
@@ -210,6 +211,11 @@ class IndexController extends Controller
       'id_cat' => $id_cat
     ])->rootView('app');
   }
+  public function nosotros(){
+    $nosotros = AboutUs::all();
+    $benefit = Strength::where('status', '=', 1)->take(3)->get();
+    return view('public.nosotros' , compact('nosotros','benefit'));
+  }
 
 
   public function comentario()
@@ -293,6 +299,7 @@ class IndexController extends Controller
       ->join('provinces', 'provinces.id', 'districts.province_id')
       ->join('departments', 'departments.id', 'provinces.department_id')
       ->where('departments.active', 1)
+      ->where('status', 1)
       ->groupBy('id', 'description')
       ->get();
 
@@ -657,6 +664,14 @@ class IndexController extends Controller
   public function producto(string $id)
   {
 
+    
+    $is_reseller = false; 
+    if(Auth::check()){
+     $user = Auth::user();
+     $is_reseller = $user->hasRole('Reseller');
+     
+   }
+
     // $productos = Products::where('id', '=', $id)->first();
     // $especificaciones = Specifications::where('product_id', '=', $id)->get();
     $product = Products::findOrFail($id);
@@ -729,7 +744,7 @@ class IndexController extends Controller
 
     if (!$combo) $combo = new Offer();
 
-    return view('public.product', compact('atributos', 'isWhishList', 'testimonios', 'general', 'valorAtributo', 'ProdComplementarios', 'productosConGalerias', 'especificaciones', 'url_env', 'product', 'capitalizeFirstLetter', 'categorias', 'destacados', 'otherProducts', 'galery', 'combo'));
+    return view('public.product', compact('is_reseller', 'atributos', 'isWhishList', 'testimonios', 'general', 'valorAtributo', 'ProdComplementarios', 'productosConGalerias', 'especificaciones', 'url_env', 'product', 'capitalizeFirstLetter', 'categorias', 'destacados', 'otherProducts', 'galery', 'combo'));
   }
 
   public function wishListAdd(Request $request)
@@ -884,7 +899,7 @@ class IndexController extends Controller
                 height: 800px;
                 margin: 0 auto;
                 text-align: center;
-                background-image:url(' . $appUrl . 'images/Ellipse_18.png),  url(' . $appUrl . 'images/Tabpanel.png);
+                background-image:url(' . $appUrl . '/images/Ellipse_18.png),  url(' . $appUrl . '/images/Tabpanel.png);
                 background-repeat: no-repeat, no-repeat;
                 background-position: center bottom , center bottom;;
                 background-size: fit , fit;
@@ -902,7 +917,7 @@ class IndexController extends Controller
                       margin: 40px;
                     "
                   >
-                    <img src="' . $appUrl . 'images/Group1.png" alt="mundo web"  style="
+                    <img src="' . $appUrl . '/images/Group1.png" alt="Boost_Peru"  style="
                     margin: auto;
                   "/>
                   </th>
@@ -1051,7 +1066,7 @@ class IndexController extends Controller
                 height: 700px;
                 margin: 0 auto;
                 text-align: center;
-                 background-image:url(' . $appUrl . 'images/Ellipse_18.png),  url(' . $appUrl . 'images/Tabpanel.png);
+                 background-image:url(' . $appUrl . '/images/Ellipse_18.png),  url(' . $appUrl . '/images/Tabpanel.png);
                 background-repeat: no-repeat, no-repeat;
                 background-position: center bottom , center bottom;;
                 background-size: fit , fit;
@@ -1069,7 +1084,7 @@ class IndexController extends Controller
                       margin: 40px;
                     "
                   >
-                     <img src="' . $appUrl . 'images/Group1.png" alt="mundo web"  style="
+                     <img src="' . $appUrl . '/images/Group1.png" alt="Boost_Peru"  style="
                     margin: auto;
                   "/>
                   </th>
@@ -1257,6 +1272,4 @@ class IndexController extends Controller
 
     return response()->json($resultados);
   }
-
-
 }

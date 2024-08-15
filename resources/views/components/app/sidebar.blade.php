@@ -52,7 +52,7 @@
       <x-menu.group title="Sistema">
         <x-menu.item id="dashboard" href="{{ route('dashboard') }}" icon="fas fa-home">Dashboard</x-menu.item>
         <x-menu.item id="pedidos" href="{{ route('pedidos.index') }}" icon="fa fa-solid fa-cart-shopping">
-          Pedidos
+          Cursos Vendidos
           @if ($salesCount !== 0)
             <x-slot name="tag">
               {{ $salesCount }}
@@ -83,16 +83,20 @@
       <x-menu.group title="Productos">
         <x-menu.item id="categorias" href="{{ route('categorias.index') }}"
           icon="fas fa-folder">Categorias</x-menu.item>
-        <x-menu.item id="subcategories" href="{{ route('subcategories.index') }}"
-          icon="fas fa-folder-open">Subcategorias</x-menu.item>
+        {{-- <x-menu.item id="subcategories" href="{{ route('subcategories.index') }}"
+          icon="fas fa-folder-open">Subcategorias</x-menu.item> --}}
         <x-menu.item id="tags" href="{{ route('tags.index') }}" icon="fas fa-tag">Etiquetas</x-menu.item>
-        <x-menu.item id="products" href="{{ route('products.index') }}" icon="fas fa-box">Productos</x-menu.item>
-        <x-menu.item id="offers" href="{{ route('Admin/Offers.jsx') }}" icon="fas fa-boxes">Combos</x-menu.item>
+        <x-menu.item id="products" href="{{ route('products.index') }}" icon="fas fa-box">Cursos /
+          Diplomados</x-menu.item>
+        {{-- <x-menu.item id="offers" href="{{ route('Admin/Offers.jsx') }}" icon="fas fa-boxes">Combos</x-menu.item> --}}
       </x-menu.group>
 
       <x-menu.group title="Datos de la empresa">
         <x-menu.item id="datosgenerales" href="{{ route('datosgenerales.edit', 1) }}" icon="fas fa-address-card">
           Datos Generales
+        </x-menu.item>
+        <x-menu.item id="sobrenosotros" href="{{ route('aboutus.index') }}" icon="fas fa-address-card">
+          Sobre Nosotros
         </x-menu.item>
         <x-menu.item id="politicas-de-devolucion" href="{{ route('politicas-de-devolucion.edit', 1) }}"
           icon="fas fa-undo-alt">
@@ -102,19 +106,23 @@
           icon="fas fa-file-contract">
           Terminos y Condiciones
         </x-menu.item>
+        <x-menu.item id="politica-datos" href="{{ route('politicadatos.detalle', 1) }}" icon="fas fa-file-contract">
+          Terminos Datos
+        </x-menu.item>
         <x-menu.item id="servicios" href="{{ route('servicios.index') }}" icon="fas fa-wrench">Servicios</x-menu.item>
         <x-menu.item id="blog" href="{{ route('blog.index') }}" icon="fas fa-pencil-alt">Blog</x-menu.item>
-        <x-menu.item id="logos" href="{{ route('logos.index') }}" icon="fas fa-shapes">Logos cliente</x-menu.item>
-        <x-menu.item id="staff" href="{{ route('staff.index') }}" icon="fas fa-users">Personal</x-menu.item>
+        <x-menu.item id="logos" href="{{ route('logos.index') }}" icon="fas fa-shapes">Logos
+          cliente</x-menu.item>
+        <x-menu.item id="staff" href="{{ route('staff.index') }}" icon="fas fa-users">Docentes</x-menu.item>
         <x-menu.item id="strength" href="{{ route('strength.index') }}">Beneficios</x-menu.item>
         <x-menu.item id="aboutus" href="{{ route('aboutus.index') }}">Nosotros</x-menu.item>
         <x-menu.item id="attributes" href="{{ route('attributes.index') }}">Atributos</x-menu.item>
         <x-menu.item id="valoresattributes" href="{{ route('valoresattributes.index') }}">
           Valor de atributo
         </x-menu.item>
-        <x-menu.item id="prices" href="{{ route('prices.index') }}" icon="fas fa-truck">
+        {{--  <x-menu.item id="prices" href="{{ route('prices.index') }}" icon="fas fa-truck">
           Costos de Envio
-        </x-menu.item>
+        </x-menu.item> --}}
         <x-menu.item id="estados" href="{{ route('estados.index') }}" icon="fas fa-toggle-on">
           Estados de pedidos
         </x-menu.item>
