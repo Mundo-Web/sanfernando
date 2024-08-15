@@ -104,47 +104,59 @@ class IndexController extends Controller
       'testimonie' => $testimonie,
       'slider' => $slider,
       'category' => $category
-      
+
     ])->rootView('app');
 
-     // return view('public.index', compact('url_env', 'popups', 'banners', 'blogs', 'categoriasAll', 'productosPupulares', 'ultimosProductos', 'productos', 'destacados', 'descuentos', 'general', 'benefit', 'faqs', 'testimonie', 'slider', 'categorias', 'category'));
+    // return view('public.index', compact('url_env', 'popups', 'banners', 'blogs', 'categoriasAll', 'productosPupulares', 'ultimosProductos', 'productos', 'destacados', 'descuentos', 'general', 'benefit', 'faqs', 'testimonie', 'slider', 'categorias', 'category'));
   }
 
-  public function cursosyDiplomados(){
-    $productos =  Products::with(['tags', 'galeria', 'category'])->where('status',1)->get();
-  
-    return Inertia::render('CatalogGP', ['productos'=> $productos ,  'env_url' => env('APP_URL') ])->rootView('app');
+  public function cursosyDiplomados()
+  {
+    $productos =  Products::with(['tags', 'galeria', 'category'])->where('status', 1)->take(12)->get();
+
+
+
+
+    return Inertia::render('CatalogGP', ['productos' => $productos,  'env_url' => env('APP_URL')])->rootView('app');
   }
 
-  public function detalleCurso(){
+  public function detalleCurso()
+  {
     return Inertia::render('CursoDetalle')->rootView('app');
   }
 
-  public function docente(){
+  public function docente()
+  {
     return Inertia::render('Docente')->rootView('app');
   }
 
-  public function docenteDetalle(){
+  public function docenteDetalle()
+  {
     return Inertia::render('DocenteDetalle')->rootView('app');
   }
 
-  public function nosotros(){
+  public function nosotros()
+  {
     return Inertia::render('Nosotros')->rootView('app');
   }
 
-  public function contactof(){
+  public function contactof()
+  {
     return Inertia::render('Contacto')->rootView('app');
   }
 
-  public function desarrolloCurso(){
+  public function desarrolloCurso()
+  {
     return Inertia::render('CursoDesarrollo')->rootView('app');
   }
-  
-  public function examenFinalizado(){
+
+  public function examenFinalizado()
+  {
     return Inertia::render('ExamenFinalizado')->rootView('app');
   }
 
-  public function examenPregunta(){
+  public function examenPregunta()
+  {
     return Inertia::render('ExamenPregunta')->rootView('app');
   }
   // public function catalogo(Request $request, string $id_cat = null)
@@ -227,7 +239,7 @@ class IndexController extends Controller
       'id_cat' => $id_cat
     ])->rootView('app');
   }
- 
+
 
 
   public function comentario()
@@ -607,16 +619,42 @@ class IndexController extends Controller
   public function searchProduct(Request $request)
   {
     $query = $request->input('query');
+    $order = $request->input('order');
+
     $resultados = Products::select('products.*')
       ->where('producto', 'like', "%$query%")
       ->join('categories', 'categories.id', 'products.categoria_id')
-      ->where('categories.visible', 1) -> where('products.status', 1)
-      ->with(['tags', 'galeria', 'category'])
+      ->where('categories.visible', 1)->where('products.status', 1)
+      ->with(['tags', 'galeria', 'category']);
+
+
+    switch ($order) {
+      case 'a-z':
+        $resultados = $resultados->orderBy('producto', 'asc');
+        break;
+      case 'z-a':
+        $resultados = $resultados->orderBy('producto', 'desc');
+        break;
+      case 'ultimos':
+        $resultados = $resultados->orderBy('created_at', 'desc');
+        break;
+      default:
+        // Default ordering if no valid order is provided
+        $resultados = $resultados->orderBy('created_at', 'asc');
+        break;
+    }
+    $totalCount = 0;
+    if ($request->requireTotalCount) {
+      $totalCount = $resultados->count('*');
+    }
+
+    $resultados = $resultados->skip($request->skip ?? 0)
+      ->take($request->take ?? 10)
       ->get();
 
 
 
-    return response()->json($resultados);
+    return response()->json(['resultado' => $resultados, 'totalCount' =>  $totalCount]);
   }
 
   public function direccion()
@@ -677,13 +715,12 @@ class IndexController extends Controller
   public function producto(string $id)
   {
 
-    
-    $is_reseller = false; 
-    if(Auth::check()){
-     $user = Auth::user();
-     $is_reseller = $user->hasRole('Reseller');
-     
-   }
+
+    $is_reseller = false;
+    if (Auth::check()) {
+      $user = Auth::user();
+      $is_reseller = $user->hasRole('Reseller');
+    }
 
     // $productos = Products::where('id', '=', $id)->first();
     // $especificaciones = Specifications::where('product_id', '=', $id)->get();

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { createRoot } from 'react-dom/client'
 import CreateReactScript from './Utils/CreateReactScript'
 import { Fetch } from 'sode-extend-react'
@@ -11,6 +11,9 @@ import Curse from './components/Product/Curse'
 import SliderTestimony from './components/Section/SliderTestimony'
 import SelectSecond from './components/Inputs/SelectSecond'
 import Dropdown from './components/Dropdown'
+import FilterPagination from './components/Filter/FilterPagination'
+import axios from 'axios';
+
 
 const CatalogoGP = ({ productos, env_url }) => {
   const sectionStep = 'images/img/palacio.png';
@@ -18,35 +21,64 @@ const CatalogoGP = ({ productos, env_url }) => {
   const imgPlay = 'images/img/iconoplayblanco.png';
 
   const [isListVisible, setIsListVisible] = useState(false)
-  const [query, setQuery] = useState('');
-  const [items, setItems] = useState(productos);
+  // const query = useRef({ query: '', order: '' });
+  const [query, setQuery] = useState({ query: '', order: '' });
+  const [items, setItems] = useState();
 
-  console.log(productos)
+
   const toggleListVisibility = () => {
     setIsListVisible(!isListVisible);
   };
+  const take = 9
+  const [currentPage, setCurrentPage] = useState(1)
+  const [totalCount, setTotalCount] = useState(0)
 
+  useEffect(() => {
+    buscarProductoQuery()
+  }, [null])
+  useEffect(() => {
+    buscarProductoQuery()
+  }, [currentPage])
 
-  const buscarProducto = async (event) => {
-    const query = event.target.value;
-    setQuery(query);
-
-    console.log(query)
+  const buscarProductoQuery = async () => {
 
     try {
-      const response = await fetch(`/buscar?query=${query}`, {
-        method: 'GET',
+      const response = await axios.post(`/buscar?query=${query.query}&order=${query.order}`, {
+        skip: take * (currentPage - 1),
+        requireTotalCount: true,
+        take
       });
-      const data = await response.json();
-      console.log(data)
-      setItems(data);
+      const data = response.data;
+
+      setItems(data.resultado);
+      setTotalCount(data.totalCount ?? 0)
     } catch (error) {
       console.error('Error fetching search results:', error);
     }
+  }
+
+  const buscarProducto = async (event) => {
+
+
+    setCurrentPage(1)
+
+    setQuery((prevQuery) => ({
+      ...prevQuery,
+      query: event.target.value,
+    }));
+    buscarProductoQuery()
+
   };
 
   const handleOptionChange = (event) => {
-    console.log('current query ', query)
+
+
+    setQuery((prevQuery) => ({
+      ...prevQuery,
+      order: event.value
+    }));
+    buscarProductoQuery()
+
   }
 
 
@@ -70,7 +102,7 @@ const CatalogoGP = ({ productos, env_url }) => {
               <span className="self-stretch my-auto text-sm tracking-normal leading-loose text-gray-600">
                 Ordenar por:
               </span>
-              <SelectSecond title={'Seleccionar '} />
+              <SelectSecond title={'Seleccionar '} handleOptionChange={handleOptionChange} />
               {/* <div className="dropdown w-full order-2 md:order-4">
                 <div
                   className="flex gap-2.5 items-center self-stretch px-4 py-3 my-auto text-base leading-tight text-red-600 whitespace-nowrap bg-rose-50 rounded-xl justify-between" role="button" tabIndex="0"
@@ -123,8 +155,11 @@ const CatalogoGP = ({ productos, env_url }) => {
             <span className="self-stretch my-auto">Aliquam</span>
           </div>
           <p className="flex-1 shrink self-stretch my-auto text-left lg:text-right text-gray-600 basis-0 max-md:max-w-full">
-            <strong className="font-semibold text-gray-600 pr-3">3.145.684</strong>
-            resultados encontrados para "gestión pública"
+            <strong className="font-semibold text-gray-600 pr-3">{totalCount}</strong>
+            {console.log(query.query !== '')}
+
+            {query.query !== '' ? <span >resultados para la busqueda "{query.query}"</span> : <span > Cursos y diplomados</span>}
+
           </p>
         </div>
       </div>
@@ -175,8 +210,9 @@ const CatalogoGP = ({ productos, env_url }) => {
 
 
           </div>
+          <FilterPagination current={currentPage} setCurrent={setCurrentPage} pages={Math.ceil(totalCount / take)} />
 
-          <nav aria-label="Pagination" className="flex gap-6 justify-between items-center max-w-[393px]">
+          {/* <nav aria-label="Pagination" className="flex gap-6 justify-between items-center max-w-[393px]">
             <button aria-label="Previous page" className="flex gap-2.5 justify-center items-center self-stretch px-4 my-auto bg-red-200 h-[52px] rotate-[3.141592653589793rad] rounded-[100px] w-[52px]">
               <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/3ff0317192b011b01d7fdb120f97fc223c2c8a165930b36c0309489160d2b263?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f" alt="" className="object-contain self-stretch my-auto w-5 aspect-square" />
             </button>
@@ -190,7 +226,7 @@ const CatalogoGP = ({ productos, env_url }) => {
             <button aria-label="Next page" className="flex gap-2.5 justify-center items-center self-stretch px-4 my-auto bg-red-200 h-[52px] rounded-[100px] w-[52px]">
               <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/e4d0870444e79373617da8c7fbd2c7b6d85de83feaeb03177566a7d3daf99d91?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f" alt="" className="object-contain self-stretch my-auto w-5 aspect-square" />
             </button>
-          </nav>
+          </nav> */}
         </div>
 
 
