@@ -9,31 +9,23 @@ import SliderBenefit from './components/Section/SliderBenefit'
 import TwoColumn from './components/Section/TwoColumn'
 import Curse from './components/Product/Curse'
 import SliderTestimony from './components/Section/SliderTestimony'
+import BenefitCard from './components/Benefits/BenefitCard'
 
 
-const Home = ({ url_env,
-  productos,
-  ultimosProductos,
+const Home = ({
+  url_env,
   productosPupulares,
-  blogs,
   banners,
-  categorias,
-  categoriasAll,
-  destacados,
-  descuentos,
-  popups,
-  general,
+  aboutUs,
   benefit,
-  faqs,
-  testimonie,
-  slider,
-  category }) => {
+  testimonies
+ }) => {
   const sectionStep = 'images/img/palacio.png';
   const imgVideo = 'images/img/mujergp.png';
   const imgPlay = 'images/img/iconoplayblanco.png';
 
 
-  console.log(benefit)
+  console.log(aboutUs)
 
   return (<>
     <section className="w-full relative">
@@ -46,11 +38,11 @@ const Home = ({ url_env,
     </section>
 
     <section className="flex flex-wrap gap-5 items-start px-24 py-8 bg-[#CF072C] text-slate-100 max-md:px-5">
-      <SliderBenefit benefits={benefit}/>
+      <SliderBenefit benefits={benefit} />
     </section>
 
     <section>
-      <TwoColumn />
+      <TwoColumn aboutUs={aboutUs} />
     </section>
 
     <section className="bg-[#F9FAFB] px-[8%]">
@@ -69,7 +61,7 @@ const Home = ({ url_env,
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 w-full gap-12 pt-12 pb-12">
 
-        {productosPupulares.map((producto, index) => {
+        {productosPupulares.map((producto, i) => {
           return <Curse key={`product-${i}`} producto={producto} env_url={url_env} />
         })}
       </div>
@@ -95,65 +87,20 @@ const Home = ({ url_env,
           <h2 className="text-white font-poppins_regular font-semibold text-lg">Nuestros Beneficios</h2>
           <h1
             className="text-white font-poppins_bold tracking-tighter text-3xl md:text-5xl leading-none md:leading-tight max-w-3xl mx-auto">
-            Nunc viverra, metus quis lacinia interdum, nulla augue
+            Ventajas de Estudiar con Nosotros
           </h1>
           <p className="text-white text-base font-poppins_regular max-w-3xl mx-auto">
-            Integer bibendum ex convallis accumsan hendrerit.
+            Descubre cómo nuestra formación integral te prepara para destacar en el sector público.
           </p>
         </div>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 w-full gap-12 pt-12 pb-12 xl:pb-16">
-        <div
-          className="flex flex-col px-5 pt-5 pb-20 w-full rounded-xl border border-gray-50 border-solid min-h-[236px]">
-          <div className="flex flex-col w-full text-white font-poppins_semibold">
-            <h2 className="text-4xl text-left">01</h2>
-            <h3 className="mt-5 text-2xl leading-7">CERTICIFACIÓN FÍSICA Y VIRTUAL</h3>
-          </div>
-        </div>
-
-        <div
-          className="flex flex-col px-5 pt-5 pb-20 w-full rounded-xl border border-gray-50 border-solid min-h-[236px]">
-          <div className="flex flex-col w-full text-white font-poppins_semibold">
-            <h2 className="text-4xl text-left">02</h2>
-            <h3 className="mt-5 text-2xl leading-7">MODERNA PLATAFORMA VIRTUAL SEGÚN TU DISPONIBILIDAD
-            </h3>
-          </div>
-        </div>
-
-        <div
-          className="flex flex-col px-5 pt-5 pb-20 w-full rounded-xl border border-gray-50 border-solid min-h-[236px]">
-          <div className="flex flex-col w-full text-white font-poppins_semibold">
-            <h2 className="text-4xl text-left">03</h2>
-            <h3 className="mt-5 text-2xl leading-7">DOCENTES CON MÁS DE 20 AÑOS DE EXPERIENCIA </h3>
-          </div>
-        </div>
-
-        <div
-          className="flex flex-col px-5 pt-5 pb-20 w-full rounded-xl border border-gray-50 border-solid min-h-[236px]">
-          <div className="flex flex-col w-full text-white font-poppins_semibold">
-            <h2 className="text-4xl text-left">04</h2>
-            <h3 className="mt-5 text-2xl leading-7">NORMATIVA ACTUALIZADA Y MATERIALES DESCARGABLES </h3>
-          </div>
-        </div>
-
-        <div
-          className="flex flex-col px-5 pt-5 pb-20 w-full rounded-xl border border-gray-50 border-solid min-h-[236px]">
-          <div className="flex flex-col w-full text-white font-poppins_semibold">
-            <h2 className="text-4xl text-left">05</h2>
-            <h3 className="mt-5 text-2xl leading-7">ACCESO POR UN AÑO A LA PLATAFORMA VIRTUAL Y DISPONIBLE LAS 24
-              HORAS </h3>
-          </div>
-        </div>
-
-        <div
-          className="flex flex-col px-5 pt-5 pb-20 w-full rounded-xl border border-gray-50 border-solid min-h-[236px]">
-          <div className="flex flex-col w-full text-white font-poppins_semibold">
-            <h2 className="text-4xl text-left">06</h2>
-            <h3 className="mt-5 text-2xl leading-7">CONVENIOS CON EL COLEGIO DE ECONOMISTAS DEL PERÚ Y SERVIR </h3>
-          </div>
-        </div>
-
+        {
+          benefit.map((benefit, i) => {
+            return <BenefitCard key={`benefit-${i}`} {...benefit} />
+          })
+        }
       </div>
     </section>
 
@@ -165,7 +112,7 @@ const Home = ({ url_env,
           estudiantes en todo el Perú.</h2>
         <nav
           className="flex gap-3 items-start self-start mt-8 text-base tracking-normal font-poppins_medium text-white capitalize">
-          <a href="#"
+          <a href="/catalogoGestion"
             className="gap-3 self-stretch px-6 py-3 rounded-xl bg-slate-900 min-w-[240px] max-md:px-5 text-sm">
             Explorar todos los cursos y Diplomados
           </a>
@@ -214,11 +161,11 @@ const Home = ({ url_env,
         <div className="flex flex-col justify-center gap-5 text-textWhite pr-[5%]">
           <h1
             className="text-[#1D2026] font-poppins_bold tracking-tighter text-3xl md:text-5xl leading-none md:leading-tight ">
-            Donec at aliquam massa. Nunc tincidunt, felis ut gravida fringilla
+            Lo Que Dicen de Nuestra Escuela
           </h1>
 
           <div className="">
-            <SliderTestimony sliders={1} />
+            <SliderTestimony sliders={1} testimonies={testimonies} />
           </div>
         </div>
       </div>

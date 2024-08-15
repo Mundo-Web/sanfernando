@@ -9,6 +9,8 @@ import SliderBenefit from './components/Section/SliderBenefit'
 import TwoColumn from './components/Section/TwoColumn'
 import Curse from './components/Product/Curse'
 import SliderTestimony from './components/Section/SliderTestimony'
+import DropdownComponent from './components/Inputs/DropdownComponent'
+
 
 
 const CursoDetalle = () => {
@@ -19,17 +21,14 @@ return (<>
 
         <section className="flex flex-col rounded-none ">
             <div
-                className="flex relative flex-col pt-40 pr-20 w-full min-h-[400px] max-md:pt-24 max-md:pr-5 max-md:max-w-full">
+                className="flex relative flex-col pt-40 pr-20 w-full min-h-[400px]  max-md:pr-5 max-md:max-w-full">
                 <img loading="lazy"
                     src="https://cdn.builder.io/api/v1/image/assets/TEMP/b4e82bfe25986db29d99fb9384e4ab44a145de97336f63cc73125e430d7ff1d5?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f"
                     alt="" className="object-cover absolute inset-0 size-full" />
                 <div
-                    className="flex relative gap-2.5 items-center self-center p-6 bg-white h-[72px] rounded-[120px] w-[72px] max-md:px-5">
-                    <img loading="lazy"
-                        src="https://cdn.builder.io/api/v1/image/assets/TEMP/fe2d3d974abe73aaa1caa252790763c1211d1343861341723c3f9e4cdc18c5ce?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f"
-                        alt="" className="object-contain w-6 aspect-square" />
+                    className="flex relative gap-2.5 items-center self-center p-6  h-[72px] rounded-[120px] w-[72px] max-md:px-5">
                 </div>
-                <div className="flex relative flex-wrap items-center self-start mt-40 max-md:mt-10">
+                <div className=" relative flex-wrap items-center self-start mt-40 hidden lg:flex">
                     <div className="flex flex-1 shrink self-stretch my-auto w-28 h-3 bg-red-800 basis-0"></div>
                     <div className="flex flex-1 shrink self-stretch my-auto w-28 h-3 bg-red-600 basis-0"></div>
                     <div className="flex flex-1 shrink self-stretch my-auto h-3 bg-red-500 basis-0 w-[111px]"></div>
@@ -39,41 +38,42 @@ return (<>
             </div>
         </section>
 
-        <section
-            className="flex flex-wrap gap-10 justify-center items-center px-24 py-8 text-lg font-bold leading-6 text-white bg-rose-700 max-md:px-5">
-            <div className="flex gap-4 items-center self-stretch my-auto min-w-[240px]">
-                <img loading="lazy"
-                    src="https://cdn.builder.io/api/v1/image/assets/TEMP/8c768f03b593a9e24068932a36a5418fd85469274a7b9fdf3c193e88f2bca428?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f"
-                    alt="Calendar icon" className="object-contain shrink-0 self-stretch my-auto w-10 aspect-square" />
-                <p className="self-stretch my-auto">
-                    Inicio
-                    <span>28 de mayo al 27 de agosto del 2024</span>
-                </p>
-            </div>
-            <div className="flex gap-4 items-center self-stretch my-auto">
-                <img loading="lazy"
-                    src="https://cdn.builder.io/api/v1/image/assets/TEMP/906244440b108bcc664a19de3f761476c01c580f34424dab1729c99d082cf97e?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f"
-                    alt="Virtual learning icon"
-                    className="object-contain shrink-0 self-stretch my-auto w-10 aspect-square" />
-                <p className="self-stretch my-auto">
-                    Modalidad
-                    <span>100% Virtual</span>
-                </p>
-            </div>
-            <div className="flex gap-4 items-center self-stretch my-auto">
-                <img loading="lazy"
-                    src="https://cdn.builder.io/api/v1/image/assets/TEMP/3d74ab37b381b9442d6119d2afb893d02a820df496e84ce8ccfc7301d6fb1600?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f"
-                    alt="Certification icon"
-                    className="object-contain shrink-0 self-stretch my-auto w-10 aspect-square" />
-                <p className="self-stretch my-auto">
-                    Certificación
-                    <span>250 horas lectivas</span>
-                </p>
-            </div>
+        <section className="px-[5%] lg:px-[8%] py-8 text-lg  leading-6 text-white bg-rose-700 ">
+           <div className='flex flex-col lg:flex-row justify-between max-w-5xl items-center mx-auto gap-5'>
+              <div className="flex gap-4 items-start lg:items-center self-stretch my-auto min-w-[240px]">
+                  <img loading="lazy"
+                      src="https://cdn.builder.io/api/v1/image/assets/TEMP/8c768f03b593a9e24068932a36a5418fd85469274a7b9fdf3c193e88f2bca428?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f"
+                      alt="Calendar icon" className="object-contain shrink-0 w-10 aspect-square" />
+                  <p className="self-stretch my-auto font-bold">
+                      Inicio<br></br>
+                      <span className='font-normal'>28 de mayo al 27 de agosto del 2024</span>
+                  </p>
+              </div>
+              <div className="flex gap-4 items-center self-stretch my-auto">
+                  <img loading="lazy"
+                      src="https://cdn.builder.io/api/v1/image/assets/TEMP/906244440b108bcc664a19de3f761476c01c580f34424dab1729c99d082cf97e?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f"
+                      alt="Virtual learning icon"
+                      className="object-contain shrink-0  w-10 aspect-square" />
+                  <p className="self-stretch my-auto font-bold">
+                      Modalidad<br></br>
+                      <span className='font-normal'>100% Virtual</span>
+                  </p>
+              </div>
+              <div className="flex gap-4 items-center self-stretch my-auto">
+                  <img loading="lazy"
+                      src="https://cdn.builder.io/api/v1/image/assets/TEMP/3d74ab37b381b9442d6119d2afb893d02a820df496e84ce8ccfc7301d6fb1600?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f"
+                      alt="Certification icon"
+                      className="object-contain shrink-0  w-10 aspect-square" />
+                  <p className="self-stretch my-auto font-bold">
+                      Certificación<br></br>
+                      <span className='font-normal'>250 horas lectivas</span>
+                  </p>
+              </div>
+            </div> 
         </section>
 
-        <div className="flex flex-wrap gap-10 justify-between items-start px-40 max-md:px-5">
-            <div className="flex flex-col min-w-[240px] w-[615px] max-md:max-w-full">
+        <div className="flex flex-col lg:flex-row gap-10 justify-between items-start px-[5%] lg:px-[8%] mt-16">
+            <div className="flex flex-col min-w-[240px] w-full max-w-4xl">
                 <div className="flex flex-col w-full max-md:max-w-full">
                     <div className="flex flex-col w-full text-lg leading-8 text-gray-600 max-md:max-w-full">
                         <div
@@ -160,8 +160,8 @@ return (<>
                         Beneficios
                     </div>
                     <div
-                        className="flex flex-wrap gap-6 justify-center mt-6 w-full text-base font-medium leading-7 text-gray-600 max-md:max-w-full">
-                        <div className="flex flex-col flex-1 shrink basis-0 min-w-[240px]">
+                        className="flex flex-wrap gap-6 justify-start mt-6 w-full text-base font-medium leading-7 text-gray-600 max-md:max-w-full">
+                        <div className="grid grid-cols-1 lg:grid-cols-2  min-w-[240px] gap-5 items-start">
                             <div className="flex gap-3 items-start w-full">
                                 <img loading="lazy"
                                     src="https://cdn.builder.io/api/v1/image/assets/TEMP/3e100234612b63381b0913899134352995ff6d1ecd0c1d478b9db5d2ace8f35d?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f"
@@ -170,7 +170,7 @@ return (<>
                                     Acceso a nuestra aula virtual las 24 horas.
                                 </div>
                             </div>
-                            <div className="flex gap-3 items-start mt-10 w-full">
+                            <div className="flex gap-3 items-start  w-full">
                                 <img loading="lazy"
                                     src="https://cdn.builder.io/api/v1/image/assets/TEMP/3e100234612b63381b0913899134352995ff6d1ecd0c1d478b9db5d2ace8f35d?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f"
                                     className="object-contain shrink-0 w-6 aspect-square" />
@@ -178,14 +178,14 @@ return (<>
                                     Asesoramiento por WhatsApp y correo electrónico 24/7.
                                 </div>
                             </div>
-                            <div className="flex gap-3 items-start mt-10 w-full">
+                            <div className="flex gap-3 items-start  w-full">
                                 <img loading="lazy"
                                     src="https://cdn.builder.io/api/v1/image/assets/TEMP/3e100234612b63381b0913899134352995ff6d1ecd0c1d478b9db5d2ace8f35d?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f"
                                     className="object-contain shrink-0 w-6 aspect-square" />
                                 <div className="flex-1 shrink basis-0">Descarga tus clases.</div>
                             </div>
-                        </div>
-                        <div className="flex flex-col flex-1 shrink basis-0 min-w-[240px]">
+                       
+                        
                             <div className="flex gap-3 items-start w-full">
                                 <img loading="lazy"
                                     src="https://cdn.builder.io/api/v1/image/assets/TEMP/6126dcd57e40f0e35780d68d82ec2d614a9180a95f5a331dfa5aedbe024f0fe9?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f"
@@ -194,7 +194,7 @@ return (<>
                                     Certificación con 250 horas lectivas.
                                 </div>
                             </div>
-                            <div className="flex gap-3 items-start mt-10 w-full">
+                            <div className="flex gap-3 items-start w-full">
                                 <img loading="lazy"
                                     src="https://cdn.builder.io/api/v1/image/assets/TEMP/6126dcd57e40f0e35780d68d82ec2d614a9180a95f5a331dfa5aedbe024f0fe9?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f"
                                     className="object-contain shrink-0 w-6 aspect-square" />
@@ -202,7 +202,7 @@ return (<>
                                     Material de estudio y grabación de las sesiones en vivo.
                                 </div>
                             </div>
-                            <div className="flex gap-3 items-start mt-10 w-full">
+                            <div className="flex gap-3 items-start w-full">
                                 <img loading="lazy"
                                     src="https://cdn.builder.io/api/v1/image/assets/TEMP/6126dcd57e40f0e35780d68d82ec2d614a9180a95f5a331dfa5aedbe024f0fe9?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f"
                                     className="object-contain shrink-0 w-6 aspect-square" />
@@ -281,46 +281,42 @@ return (<>
                     <div className="text-2xl font-bold leading-tight text-neutral-800 max-md:max-w-full">
                         ¿Qué lograrás una vez terminado el Diplomado?
                     </div>
-                    <div className="flex flex-col mt-6 w-full max-md:max-w-full">
-                        <div
-                            className="flex-1 shrink gap-2 self-stretch w-full text-base font-medium leading-7 text-gray-600 max-md:max-w-full">
-                            Evaluación independiente y objetiva de los estados financieros de una
-                            empresa.
-                        </div>
-                        <div
-                            className="flex-1 shrink gap-2 self-stretch mt-3 w-full text-base font-medium leading-7 text-gray-600 max-md:max-w-full">
-                            Ejecutar el Control Interno simultáneo y posterior a los actos y
-                            operaciones sobre la base de los lineamientos y cumplimiento del Plan
-                            Anual de Control .
-                        </div>
-                        <div
-                            className="flex flex-wrap gap-2 items-start mt-3 w-full text-base font-medium leading-7 text-gray-600 max-md:max-w-full">
-                            <div className="flex gap-2.5 pt-3 min-h-[18px]"></div>
-                            <div className="flex-1 shrink basis-0 max-md:max-w-full">
-                                Elaboración y evaluación del Plan Operativo de las actividades del
-                                OCI.
+                    <div className="flex flex-col mt-6 w-full max-md:max-w-full gap-4">
+                        <div className="flex flex-row shrink gap-2 self-stretch w-full text-base font-medium leading-5 text-gray-600 max-md:max-w-full">
+                            <div className='flex flex-col items-center justify-start pt-2'>
+                              <svg xmlns="http://www.w3.org/2000/svg" width="6" height="6" viewBox="0 0 6 6" fill="none">
+                                  <circle cx="3" cy="3" r="3" fill="#31A0A1"/>
+                              </svg>
                             </div>
+                            <h2>Evaluación independiente y objetiva de los estados financieros de una
+                            empresa.</h2>
                         </div>
-                        <div className="flex flex-wrap gap-3 items-start mt-3 w-full max-md:max-w-full">
-                            <div className="flex gap-2.5 items-start">
-                                <div className="flex gap-2.5 pt-3 min-h-[18px]"></div>
+                        <div className="flex flex-row shrink gap-2 self-stretch w-full text-base font-medium leading-5 text-gray-600 max-md:max-w-full">
+                            <div className='flex flex-col items-center justify-start pt-2'>
+                              <svg xmlns="http://www.w3.org/2000/svg" width="6" height="6" viewBox="0 0 6 6" fill="none">
+                                  <circle cx="3" cy="3" r="3" fill="#31A0A1"/>
+                              </svg>
                             </div>
-                            <div
-                                className="flex-1 shrink text-base font-medium leading-7 text-gray-600 basis-0 max-md:max-w-full">
-                                Cuadro de Necesidades y Presupuesto de las actividades que tiene el
-                                OCI.
-                            </div>
+                            <h2>Evaluación independiente y objetiva de los estados financieros de una
+                            empresa.</h2>
                         </div>
-                        <div
-                            className="flex flex-wrap gap-3 mt-3 w-full text-base font-medium leading-7 text-gray-600 max-md:max-w-full">
-                            <div className="flex gap-2.5 py-3 min-h-[140px]"></div>
-                            <div className="flex-1 shrink my-auto basis-0 max-md:max-w-full">
-                                Verificar las denuncias que formulen los servidores públicos y
-                                ciudadanía en general, sobre actos y operaciones, otorgándoles el
-                                trámite que corresponda su mérito, conforme a las disposiciones
-                                emitidas sobre la materia y por disposición de la Jefatura del OCl.
-                                <br />
+                        <div className="flex flex-row shrink gap-2 self-stretch w-full text-base font-medium leading-5 text-gray-600 max-md:max-w-full">
+                            <div className='flex flex-col items-center justify-start pt-2'>
+                              <svg xmlns="http://www.w3.org/2000/svg" width="6" height="6" viewBox="0 0 6 6" fill="none">
+                                  <circle cx="3" cy="3" r="3" fill="#31A0A1"/>
+                              </svg>
                             </div>
+                            <h2>Evaluación independiente y objetiva de los estados financieros de una
+                            empresa.</h2>
+                        </div>
+                        <div className="flex flex-row shrink gap-2 self-stretch w-full text-base font-medium leading-5 text-gray-600 max-md:max-w-full">
+                            <div className='flex flex-col items-center justify-start pt-2'>
+                              <svg xmlns="http://www.w3.org/2000/svg" width="6" height="6" viewBox="0 0 6 6" fill="none">
+                                  <circle cx="3" cy="3" r="3" fill="#31A0A1"/>
+                              </svg>
+                            </div>
+                            <h2>Evaluación independiente y objetiva de los estados financieros de una
+                            empresa.</h2>
                         </div>
                     </div>
                 </div>
@@ -378,345 +374,10 @@ return (<>
                     <div className="text-2xl font-bold leading-tight text-neutral-800">
                         Temario
                     </div>
-                    <div className="flex flex-col mt-6 w-full max-md:max-w-full">
-                        <div
-                            className="flex flex-col p-5 w-full rounded-2xl border border-red-200 border-solid max-md:max-w-full">
-                            <div className="flex flex-wrap gap-6 items-start w-full max-md:max-w-full">
-                                <div
-                                    className="flex flex-1 shrink gap-2 items-start text-base font-medium leading-6 basis-0 min-w-[240px] text-neutral-800">
-                                    <img loading="lazy"
-                                        src="https://cdn.builder.io/api/v1/image/assets/TEMP/b99f6f1e6d27e66f09ea0f6250e810c5af4cda76cae97bf7801630a3d13ff88c?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f"
-                                        className="object-contain shrink-0 w-5 aspect-square" />
-                                    <div className="flex-1 shrink basis-0">
-                                        Módulo 1: Marco conceptual y normativo del Sistema Nacional de
-                                        Control - SNC y el Ejercicio de Control Gubernamental.
-                                    </div>
-                                </div>
-                                <div
-                                    className="flex gap-4 items-start text-sm tracking-normal leading-loose text-gray-600">
-                                    <div className="flex gap-1.5 items-center">
-                                        <img loading="lazy"
-                                            src="https://cdn.builder.io/api/v1/image/assets/TEMP/023d6aa6e4775bb71fca3d2a8e5c44ea433e19ced445762a9b117860305957fb?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f"
-                                            className="object-contain shrink-0 self-stretch my-auto w-5 aspect-square" />
-                                        <div className="self-stretch my-auto">4 lectures</div>
-                                    </div>
-                                    <div className="flex gap-1.5 items-center whitespace-nowrap">
-                                        <img loading="lazy"
-                                            src="https://cdn.builder.io/api/v1/image/assets/TEMP/f07d0a554c69ac7c4aed36c3e73dc4a8b92c6e3bd55bb81a1fe2f7634a0e5ba0?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f"
-                                            className="object-contain shrink-0 self-stretch my-auto w-5 aspect-square" />
-                                        <div className="self-stretch my-auto">51m</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div
-                                className="flex flex-col justify-center pb-4 mt-6 w-full text-sm tracking-normal text-gray-600 max-md:max-w-full">
-                                <div className="flex flex-wrap justify-between items-start w-full max-md:max-w-full">
-                                    <div
-                                        className="flex flex-wrap flex-1 shrink gap-2 items-start leading-6 basis-0 min-w-[240px] max-md:max-w-full">
-                                        <img loading="lazy"
-                                            src="https://cdn.builder.io/api/v1/image/assets/TEMP/b7a35fbda34504704c44102995d0f740beb1c7d9e00000a09c26b1226a182c21?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f"
-                                            className="object-contain shrink-0 w-4 aspect-square" />
-                                        <div className="flex-1 shrink basis-0 max-md:max-w-full">
-                                            Marco Normativo del Sistema Nacional de Control y el ejercicio
-                                            de control gubernamental.
-                                        </div>
-                                    </div>
-                                    <div className="leading-loose">07:31</div>
-                                </div>
-                                <div
-                                    className="flex flex-wrap justify-between items-start mt-3.5 w-full max-md:max-w-full">
-                                    <div
-                                        className="flex flex-wrap flex-1 shrink gap-2 items-start leading-6 basis-0 min-w-[240px] max-md:max-w-full">
-                                        <img loading="lazy"
-                                            src="https://cdn.builder.io/api/v1/image/assets/TEMP/b7a35fbda34504704c44102995d0f740beb1c7d9e00000a09c26b1226a182c21?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f"
-                                            className="object-contain shrink-0 w-4 aspect-square" />
-                                        <div className="flex-1 shrink basis-0 max-md:max-w-full">
-                                            El Sistema Nacional de Control-SNC, entidades sujetas,
-                                            conformación (Contraloría General de la República, Órganos de
-                                            Control Institucional, y Sociedades de Auditoría) y
-                                            atribuciones.
-                                        </div>
-                                    </div>
-                                    <div className="leading-loose">07:31</div>
-                                </div>
-                                <div
-                                    className="flex flex-wrap justify-between items-start mt-3.5 w-full max-md:max-w-full">
-                                    <div
-                                        className="flex flex-wrap flex-1 shrink gap-2 items-start leading-6 basis-0 min-w-[240px] max-md:max-w-full">
-                                        <img loading="lazy"
-                                            src="https://cdn.builder.io/api/v1/image/assets/TEMP/b7a35fbda34504704c44102995d0f740beb1c7d9e00000a09c26b1226a182c21?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f"
-                                            className="object-contain shrink-0 w-4 aspect-square" />
-                                        <div className="flex-1 shrink basis-0 max-md:max-w-full">
-                                            Clasificación del control gubernamental en función de quién lo
-                                            ejerce (interno, externo) y en el momento de su ejercicio
-                                            (previo, simultáneo y posterior).
-                                        </div>
-                                    </div>
-                                    <div className="leading-loose">07:31</div>
-                                </div>
-                                <div
-                                    className="flex flex-wrap justify-between items-start mt-3.5 w-full max-md:max-w-full">
-                                    <div
-                                        className="flex flex-wrap flex-1 shrink gap-2 items-start leading-6 basis-0 min-w-[240px] max-md:max-w-full">
-                                        <img loading="lazy"
-                                            src="https://cdn.builder.io/api/v1/image/assets/TEMP/b7a35fbda34504704c44102995d0f740beb1c7d9e00000a09c26b1226a182c21?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f"
-                                            className="object-contain shrink-0 w-4 aspect-square" />
-                                        <div className="flex-1 shrink basis-0 max-md:max-w-full">
-                                            Los principios de control gubernamental y la aplicación de las
-                                            Normas Generales de Control Gubernamental
-                                        </div>
-                                    </div>
-                                    <div className="leading-loose">07:31</div>
-                                </div>
-                                <div
-                                    className="flex flex-wrap justify-between items-start mt-3.5 w-full max-md:max-w-full">
-                                    <div
-                                        className="flex flex-wrap flex-1 shrink gap-2 items-start leading-6 basis-0 min-w-[240px] max-md:max-w-full">
-                                        <img loading="lazy"
-                                            src="https://cdn.builder.io/api/v1/image/assets/TEMP/b7a35fbda34504704c44102995d0f740beb1c7d9e00000a09c26b1226a182c21?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f"
-                                            className="object-contain shrink-0 w-4 aspect-square" />
-                                        <div className="flex-1 shrink basis-0 max-md:max-w-full">
-                                            Servicios de Control Gubernamental: Marco Conceptual, tipos y
-                                            modalidades.
-                                        </div>
-                                    </div>
-                                    <div className="leading-loose">07:31</div>
-                                </div>
-                                <div
-                                    className="flex flex-wrap gap-10 justify-between items-center mt-3.5 w-full leading-loose max-md:max-w-full">
-                                    <div className="flex gap-2 items-center self-stretch my-auto">
-                                        <img loading="lazy"
-                                            src="https://cdn.builder.io/api/v1/image/assets/TEMP/0d1964115afa9d30cb0d63ff8aae9573f8607e213ed3e511568f4f93827f6c08?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f"
-                                            className="object-contain shrink-0 self-stretch my-auto w-4 aspect-square" />
-                                        <div className="self-stretch my-auto">Examen final del bloque</div>
-                                    </div>
-                                    <div className="self-stretch my-auto">5.3 MB</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div
-                            className="flex flex-wrap gap-6 justify-center items-start p-5 mt-3 w-full rounded-2xl border border-red-200 border-solid max-md:max-w-full">
-                            <div
-                                className="flex flex-1 shrink gap-2 items-start text-base font-medium leading-6 basis-0 min-w-[240px] text-neutral-800">
-                                <img loading="lazy"
-                                    src="https://cdn.builder.io/api/v1/image/assets/TEMP/6bc0c6217d17e13ec0297cb2bc10cfc3224178f9a2c310f33da1e949ffa7a464?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f"
-                                    className="object-contain shrink-0 w-5 aspect-square" />
-                                <div className="flex-1 shrink basis-0">
-                                    Módulo 3: Servicios de Control Gubernamental Simultáneo
-                                </div>
-                            </div>
-                            <div
-                                className="flex gap-4 items-start text-sm tracking-normal leading-loose text-gray-600">
-                                <div className="flex gap-1.5 items-center">
-                                    <img loading="lazy"
-                                        src="https://cdn.builder.io/api/v1/image/assets/TEMP/023d6aa6e4775bb71fca3d2a8e5c44ea433e19ced445762a9b117860305957fb?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f"
-                                        className="object-contain shrink-0 self-stretch my-auto w-5 aspect-square" />
-                                    <div className="self-stretch my-auto">52 lectures</div>
-                                </div>
-                                <div className="flex gap-1.5 items-center">
-                                    <img loading="lazy"
-                                        src="https://cdn.builder.io/api/v1/image/assets/TEMP/f07d0a554c69ac7c4aed36c3e73dc4a8b92c6e3bd55bb81a1fe2f7634a0e5ba0?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f"
-                                        className="object-contain shrink-0 self-stretch my-auto w-5 aspect-square" />
-                                    <div className="self-stretch my-auto">5h 49m</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div
-                            className="flex flex-wrap gap-6 justify-center items-start p-5 mt-3 w-full rounded-2xl border border-red-200 border-solid max-md:max-w-full">
-                            <div
-                                className="flex flex-1 shrink gap-2 items-start text-base font-medium leading-6 basis-0 min-w-[240px] text-neutral-800">
-                                <img loading="lazy"
-                                    src="https://cdn.builder.io/api/v1/image/assets/TEMP/6bc0c6217d17e13ec0297cb2bc10cfc3224178f9a2c310f33da1e949ffa7a464?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f"
-                                    className="object-contain shrink-0 w-5 aspect-square" />
-                                <div className="flex-1 shrink basis-0">
-                                    Módulo 4: Auditoría de Cumplimiento y Servicio de Control
-                                    Específico a Hechos con Presunta Irregularidad
-                                </div>
-                            </div>
-                            <div
-                                className="flex gap-4 items-start text-sm tracking-normal leading-loose text-gray-600">
-                                <div className="flex gap-1.5 items-center">
-                                    <img loading="lazy"
-                                        src="https://cdn.builder.io/api/v1/image/assets/TEMP/023d6aa6e4775bb71fca3d2a8e5c44ea433e19ced445762a9b117860305957fb?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f"
-                                        className="object-contain shrink-0 self-stretch my-auto w-5 aspect-square" />
-                                    <div className="self-stretch my-auto">52 lectures</div>
-                                </div>
-                                <div className="flex gap-1.5 items-center">
-                                    <img loading="lazy"
-                                        src="https://cdn.builder.io/api/v1/image/assets/TEMP/f07d0a554c69ac7c4aed36c3e73dc4a8b92c6e3bd55bb81a1fe2f7634a0e5ba0?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f"
-                                        className="object-contain shrink-0 self-stretch my-auto w-5 aspect-square" />
-                                    <div className="self-stretch my-auto">5h 49m</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div
-                            className="flex flex-wrap gap-6 justify-center items-start p-5 mt-3 w-full rounded-2xl border border-red-200 border-solid max-md:max-w-full">
-                            <div
-                                className="flex flex-1 shrink gap-2 items-start text-base font-medium leading-6 basis-0 min-w-[240px] text-neutral-800">
-                                <img loading="lazy"
-                                    src="https://cdn.builder.io/api/v1/image/assets/TEMP/6bc0c6217d17e13ec0297cb2bc10cfc3224178f9a2c310f33da1e949ffa7a464?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f"
-                                    className="object-contain shrink-0 w-5 aspect-square" />
-                                <div className="flex-1 shrink basis-0">
-                                    Módulo 5: Planeamiento de la auditoría de cumplimiento y servicio
-                                    de control específico a hechos con presunta irregularidad
-                                </div>
-                            </div>
-                            <div
-                                className="flex gap-4 items-start text-sm tracking-normal leading-loose text-gray-600">
-                                <div className="flex gap-1.5 items-center">
-                                    <img loading="lazy"
-                                        src="https://cdn.builder.io/api/v1/image/assets/TEMP/023d6aa6e4775bb71fca3d2a8e5c44ea433e19ced445762a9b117860305957fb?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f"
-                                        className="object-contain shrink-0 self-stretch my-auto w-5 aspect-square" />
-                                    <div className="self-stretch my-auto">52 lectures</div>
-                                </div>
-                                <div className="flex gap-1.5 items-center">
-                                    <img loading="lazy"
-                                        src="https://cdn.builder.io/api/v1/image/assets/TEMP/f07d0a554c69ac7c4aed36c3e73dc4a8b92c6e3bd55bb81a1fe2f7634a0e5ba0?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f"
-                                        className="object-contain shrink-0 self-stretch my-auto w-5 aspect-square" />
-                                    <div className="self-stretch my-auto">5h 49m</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div
-                            className="flex flex-wrap gap-6 justify-center items-start p-5 mt-3 w-full rounded-2xl border border-red-200 border-solid max-md:max-w-full">
-                            <div
-                                className="flex flex-1 shrink gap-2 items-start text-base font-medium leading-6 basis-0 min-w-[240px] text-neutral-800">
-                                <img loading="lazy"
-                                    src="https://cdn.builder.io/api/v1/image/assets/TEMP/6bc0c6217d17e13ec0297cb2bc10cfc3224178f9a2c310f33da1e949ffa7a464?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f"
-                                    className="object-contain shrink-0 w-5 aspect-square" />
-                                <div className="flex-1 shrink basis-0">
-                                    Módulo 6: Planificación de la auditoría de cumplimiento y servicio
-                                    de control específico a hechos con presunta irregularidad
-                                </div>
-                            </div>
-                            <div
-                                className="flex gap-4 items-start text-sm tracking-normal leading-loose text-gray-600">
-                                <div className="flex gap-1.5 items-center">
-                                    <img loading="lazy"
-                                        src="https://cdn.builder.io/api/v1/image/assets/TEMP/023d6aa6e4775bb71fca3d2a8e5c44ea433e19ced445762a9b117860305957fb?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f"
-                                        className="object-contain shrink-0 self-stretch my-auto w-5 aspect-square" />
-                                    <div className="self-stretch my-auto">52 lectures</div>
-                                </div>
-                                <div className="flex gap-1.5 items-center">
-                                    <img loading="lazy"
-                                        src="https://cdn.builder.io/api/v1/image/assets/TEMP/f07d0a554c69ac7c4aed36c3e73dc4a8b92c6e3bd55bb81a1fe2f7634a0e5ba0?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f"
-                                        className="object-contain shrink-0 self-stretch my-auto w-5 aspect-square" />
-                                    <div className="self-stretch my-auto">5h 49m</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div
-                            className="flex flex-wrap gap-6 justify-center items-start p-5 mt-3 w-full rounded-2xl border border-red-200 border-solid max-md:max-w-full">
-                            <div
-                                className="flex flex-1 shrink gap-2 items-start text-base font-medium leading-6 basis-0 min-w-[240px] text-neutral-800">
-                                <img loading="lazy"
-                                    src="https://cdn.builder.io/api/v1/image/assets/TEMP/6bc0c6217d17e13ec0297cb2bc10cfc3224178f9a2c310f33da1e949ffa7a464?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f"
-                                    className="object-contain shrink-0 w-5 aspect-square" />
-                                <div className="flex-1 shrink basis-0">
-                                    Módulo 7: Técnicas y Procedimientos de Auditoría
-                                </div>
-                            </div>
-                            <div
-                                className="flex gap-4 items-start text-sm tracking-normal leading-loose text-gray-600">
-                                <div className="flex gap-1.5 items-center">
-                                    <img loading="lazy"
-                                        src="https://cdn.builder.io/api/v1/image/assets/TEMP/023d6aa6e4775bb71fca3d2a8e5c44ea433e19ced445762a9b117860305957fb?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f"
-                                        className="object-contain shrink-0 self-stretch my-auto w-5 aspect-square" />
-                                    <div className="self-stretch my-auto">52 lectures</div>
-                                </div>
-                                <div className="flex gap-1.5 items-center">
-                                    <img loading="lazy"
-                                        src="https://cdn.builder.io/api/v1/image/assets/TEMP/f07d0a554c69ac7c4aed36c3e73dc4a8b92c6e3bd55bb81a1fe2f7634a0e5ba0?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f"
-                                        className="object-contain shrink-0 self-stretch my-auto w-5 aspect-square" />
-                                    <div className="self-stretch my-auto">5h 49m</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div
-                            className="flex flex-wrap gap-6 justify-center items-start p-5 mt-3 w-full rounded-2xl border border-red-200 border-solid max-md:max-w-full">
-                            <div
-                                className="flex flex-1 shrink gap-2 items-start text-base font-medium leading-6 basis-0 min-w-[240px] text-neutral-800">
-                                <img loading="lazy"
-                                    src="https://cdn.builder.io/api/v1/image/assets/TEMP/6bc0c6217d17e13ec0297cb2bc10cfc3224178f9a2c310f33da1e949ffa7a464?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f"
-                                    className="object-contain shrink-0 w-5 aspect-square" />
-                                <div className="flex-1 shrink basis-0">
-                                    Módulo 8: Ejecución de la auditoría de cumplimiento y servicio de
-                                    control específico a hechos con presunta irregularidad
-                                </div>
-                            </div>
-                            <div
-                                className="flex gap-4 items-start text-sm tracking-normal leading-loose text-gray-600">
-                                <div className="flex gap-1.5 items-center">
-                                    <img loading="lazy"
-                                        src="https://cdn.builder.io/api/v1/image/assets/TEMP/023d6aa6e4775bb71fca3d2a8e5c44ea433e19ced445762a9b117860305957fb?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f"
-                                        className="object-contain shrink-0 self-stretch my-auto w-5 aspect-square" />
-                                    <div className="self-stretch my-auto">52 lectures</div>
-                                </div>
-                                <div className="flex gap-1.5 items-center">
-                                    <img loading="lazy"
-                                        src="https://cdn.builder.io/api/v1/image/assets/TEMP/f07d0a554c69ac7c4aed36c3e73dc4a8b92c6e3bd55bb81a1fe2f7634a0e5ba0?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f"
-                                        className="object-contain shrink-0 self-stretch my-auto w-5 aspect-square" />
-                                    <div className="self-stretch my-auto">5h 49m</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div
-                            className="flex flex-wrap gap-6 justify-center items-start p-5 mt-3 w-full rounded-2xl border border-red-200 border-solid max-md:max-w-full">
-                            <div
-                                className="flex flex-1 shrink gap-2 items-start text-base font-medium leading-6 basis-0 min-w-[240px] text-neutral-800">
-                                <img loading="lazy"
-                                    src="https://cdn.builder.io/api/v1/image/assets/TEMP/6bc0c6217d17e13ec0297cb2bc10cfc3224178f9a2c310f33da1e949ffa7a464?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f"
-                                    className="object-contain shrink-0 w-5 aspect-square" />
-                                <div className="flex-1 shrink basis-0">
-                                    Módulo 9: Elaboración de Informes de Auditoría de Cumplimiento y
-                                    Servicio de Control Específico a Hechos con Presunta Irregularidad
-                                </div>
-                            </div>
-                            <div
-                                className="flex gap-4 items-start text-sm tracking-normal leading-loose text-gray-600">
-                                <div className="flex gap-1.5 items-center">
-                                    <img loading="lazy"
-                                        src="https://cdn.builder.io/api/v1/image/assets/TEMP/023d6aa6e4775bb71fca3d2a8e5c44ea433e19ced445762a9b117860305957fb?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f"
-                                        className="object-contain shrink-0 self-stretch my-auto w-5 aspect-square" />
-                                    <div className="self-stretch my-auto">52 lectures</div>
-                                </div>
-                                <div className="flex gap-1.5 items-center">
-                                    <img loading="lazy"
-                                        src="https://cdn.builder.io/api/v1/image/assets/TEMP/f07d0a554c69ac7c4aed36c3e73dc4a8b92c6e3bd55bb81a1fe2f7634a0e5ba0?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f"
-                                        className="object-contain shrink-0 self-stretch my-auto w-5 aspect-square" />
-                                    <div className="self-stretch my-auto">5h 49m</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div
-                            className="flex flex-wrap gap-6 justify-center items-start p-5 mt-3 w-full rounded-2xl border border-red-200 border-solid max-md:max-w-full">
-                            <div
-                                className="flex flex-1 shrink gap-2 items-start text-base font-medium leading-6 basis-0 min-w-[240px] text-neutral-800">
-                                <img loading="lazy"
-                                    src="https://cdn.builder.io/api/v1/image/assets/TEMP/6bc0c6217d17e13ec0297cb2bc10cfc3224178f9a2c310f33da1e949ffa7a464?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f"
-                                    className="object-contain shrink-0 w-5 aspect-square" />
-                                <div className="flex-1 shrink basis-0">
-                                    Módulo 10: Implementación y seguimiento de las recomendaciones de
-                                    los informes de auditoría y su publicación en el portal de
-                                    transparencia
-                                </div>
-                            </div>
-                            <div
-                                className="flex gap-4 items-start text-sm tracking-normal leading-loose text-gray-600">
-                                <div className="flex gap-1.5 items-center">
-                                    <img loading="lazy"
-                                        src="https://cdn.builder.io/api/v1/image/assets/TEMP/023d6aa6e4775bb71fca3d2a8e5c44ea433e19ced445762a9b117860305957fb?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f"
-                                        className="object-contain shrink-0 self-stretch my-auto w-5 aspect-square" />
-                                    <div className="self-stretch my-auto">52 lectures</div>
-                                </div>
-                                <div className="flex gap-1.5 items-center">
-                                    <img loading="lazy"
-                                        src="https://cdn.builder.io/api/v1/image/assets/TEMP/f07d0a554c69ac7c4aed36c3e73dc4a8b92c6e3bd55bb81a1fe2f7634a0e5ba0?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f"
-                                        className="object-contain shrink-0 self-stretch my-auto w-5 aspect-square" />
-                                    <div className="self-stretch my-auto">5h 49m</div>
-                                </div>
-                            </div>
-                        </div>
+                    <div className="flex flex-col mt-6 w-full max-md:max-w-full gap-4">
+                        <DropdownComponent />
+                        <DropdownComponent />
+                        <DropdownComponent />  
                     </div>
                     <div
                         className="flex gap-3 items-center self-start px-4 py-2 mt-6 text-base font-bold leading-tight text-white bg-rose-700 rounded-xl">
@@ -861,10 +522,9 @@ return (<>
                     </div>
                 </div>
             </div>
-            <div
-                className="flex flex-col sticky top-0 justify-center py-8 bg-rose-50 rounded-2xl min-w-[240px] w-[400px]">
+            <div  className="flex flex-col sticky top-0 justify-center py-8 bg-rose-50 rounded-2xl w-full lg:w-[400px]">
                 <div className="flex flex-col px-6 w-full max-md:px-5">
-                    <div className="flex gap-10 justify-between items-center w-full">
+                    <div className="flex flex-col lg:flex-row gap-3 lg:gap-10 justify-between items-start w-full">
                         <div className="flex gap-2 items-center self-stretch my-auto text-neutral-800">
                             <div className="self-stretch my-auto text-2xl font-bold leading-none">
                                 S/ 250.00
@@ -874,7 +534,7 @@ return (<>
                             </div>
                         </div>
                         <div
-                            className="gap-2.5 self-stretch px-3 py-2 my-auto text-sm font-bold leading-none text-red-600 uppercase bg-red-100 rounded-xl">
+                            className="gap-2.5  px-3 py-2 my-auto text-sm font-bold leading-none text-red-600 uppercase bg-red-100 rounded-xl">
                             56% off
                         </div>
                     </div>
@@ -887,7 +547,7 @@ return (<>
                     </div>
                 </div>
                 <div className="mt-6 w-full border border-white border-solid min-h-[1px]"></div>
-                <div className="flex flex-col pl-6 mt-6 w-full max-md:pl-5">
+                <div className="flex flex-col px-6 mt-6 w-full max-md:pl-5">
                     <div className="text-base font-medium leading-none text-neutral-800">
                         Este curso incluye:
                     </div>
@@ -940,14 +600,14 @@ return (<>
                 </div>
                 <div className="mt-6 w-full border border-white border-solid min-h-[1px]"></div>
                 <div className="flex flex-col px-6 mt-6 w-full max-md:px-5">
-                    <div className="flex flex-col w-full text-sm font-bold tracking-normal leading-[56px]">
+                    <div className="flex flex-col lg:flex-row w-full text-sm font-bold tracking-normal text-center gap-3">
                         <div
-                            className="gap-3 self-stretch px-8 w-full h-10 text-white capitalize bg-red-400 rounded-xl max-md:px-5">
-                            añadir A La cesta
+                            className=" px-3 w-full text-white bg-red-400 rounded-xl py-3">
+                            Añadir al carrito
                         </div>
                         <div
-                            className="gap-3 self-stretch px-8 mt-2 w-full h-10 text-white bg-red-800 rounded-xl max-md:px-5">
-                            Comprar Ahora
+                            className="px-3 w-full text-white bg-red-800 rounded-xl py-3 ">
+                            Comprar ahora
                         </div>
                     </div>
                     <div className="mt-3 text-xs tracking-normal leading-5 text-neutral-800">
@@ -956,7 +616,7 @@ return (<>
                     </div>
                 </div>
                 <div className="mt-6 w-full border border-white border-solid min-h-[1px]"></div>
-                <div className="flex flex-col pl-6 mt-6 w-full max-md:pl-5">
+                <div className="flex flex-col px-6 mt-6 w-full">
                     <div className="text-sm font-medium leading-loose text-neutral-800">
                         Comparte este curso:
                     </div>
@@ -994,7 +654,7 @@ return (<>
         </div>
 
     </main>
-
+                                              
 </>)
 }
 

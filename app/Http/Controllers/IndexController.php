@@ -81,9 +81,11 @@ class IndexController extends Controller
     $general = General::all();
     $benefit = Strength::where('status', '=', 1)->take(3)->get();
     $faqs = Faqs::where('status', '=', 1)->where('visible', '=', 1)->get();
-    $testimonie = Testimony::where('status', '=', 1)->where('visible', '=', 1)->get();
+    $testimonies = Testimony::where('status', '=', 1)->where('visible', '=', 1)->get();
     $slider = Slider::where('status', '=', 1)->where('visible', '=', 1)->get();
     $category = Category::where('status', '=', 1)->where('destacar', '=', 1)->get();
+
+    $aboutUs = AboutUs::whereIn('titulo', ['TITULO', 'OBJETIVO'])->get();
 
     return Inertia::render('Home', [
       'component' => 'Home',
@@ -101,10 +103,11 @@ class IndexController extends Controller
       'general' => $general,
       'benefit' =>  $benefit,
       'faqs' => $faqs,
-      'testimonie' => $testimonie,
+      'testimonies' => $testimonies,
       'slider' => $slider,
-      'category' => $category
-
+      'category' => $category,
+      'aboutUs' => $aboutUs
+      
     ])->rootView('app');
 
     // return view('public.index', compact('url_env', 'popups', 'banners', 'blogs', 'categoriasAll', 'productosPupulares', 'ultimosProductos', 'productos', 'destacados', 'descuentos', 'general', 'benefit', 'faqs', 'testimonie', 'slider', 'categorias', 'category'));
