@@ -87,10 +87,10 @@ const Home = ({
           <h2 className="text-white font-poppins_regular font-semibold text-lg">Nuestros Beneficios</h2>
           <h1
             className="text-white font-poppins_bold tracking-tighter text-3xl md:text-5xl leading-none md:leading-tight max-w-3xl mx-auto">
-            Nunc viverra, metus quis lacinia interdum, nulla augue
+            Ventajas de Estudiar con Nosotros
           </h1>
           <p className="text-white text-base font-poppins_regular max-w-3xl mx-auto">
-            Integer bibendum ex convallis accumsan hendrerit.
+            Descubre cómo nuestra formación integral te prepara para destacar en el sector público.
           </p>
         </div>
       </div>

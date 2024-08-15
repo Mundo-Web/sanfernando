@@ -71,7 +71,7 @@
     ]
   },
   "resources/css/app.css": {
-    "file": "assets/app-VfXPGeWg.css",
+    "file": "assets/app-OyBdKBQx.css",
     "isEntry": true,
     "src": "resources/css/app.css"
   },
@@ -212,7 +212,7 @@
     "src": "resources/js/CursoDesarrollo.jsx"
   },
   "resources/js/CursoDetalle.jsx": {
-    "file": "assets/CursoDetalle-Z_-KAg4f.js",
+    "file": "assets/CursoDetalle-UUi_Rw54.js",
     "imports": [
       "resources/js/Utils/HtmlContent.jsx",
       "_index-TT1qJ6UJ.js",
@@ -309,7 +309,7 @@
     "src": "resources/js/ExamenPregunta.jsx"
   },
   "resources/js/Home.jsx": {
-    "file": "assets/Home-ZWRY1uBr.js",
+    "file": "assets/Home-BK2y8wYu.js",
     "imports": [
       "resources/js/Utils/HtmlContent.jsx",
       "_index-TT1qJ6UJ.js",
@@ -524,6 +524,16 @@
     ],
     "isEntry": true,
     "src": "resources/js/components/Filter/FilterPagination.jsx"
+  },
+  "resources/js/components/Inputs/DropdownComponent.jsx": {
+    "file": "assets/DropdownComponent-CFe-fSeY.js",
+    "imports": [
+      "resources/js/Utils/HtmlContent.jsx",
+      "_index-TT1qJ6UJ.js",
+      "__commonjsHelpers-4gQjN7DL.js"
+    ],
+    "isEntry": true,
+    "src": "resources/js/components/Inputs/DropdownComponent.jsx"
   },
   "resources/js/components/Inputs/SelectSecond.jsx": {
     "file": "assets/SelectSecond-CFe-fSeY.js",
