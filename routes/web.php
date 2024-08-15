@@ -63,7 +63,7 @@ use App\Models\LibroReclamaciones;
 /* Las rutas publicas */
 
 // Route::get('/', [IndexController::class, 'index'])->name('index');
-Route::get('/nosotros', [IndexController::class, 'nosotros'])->name('nosotros');
+// Route::get('/nosotros', [IndexController::class, 'nosotros'])->name('nosotros');
 
 
 Route::get('/servicios', [IndexController::class, 'servicios'])->name('servicios');

@@ -125,8 +125,25 @@ class IndexController extends Controller
     return Inertia::render('DocenteDetalle')->rootView('app');
   }
 
+  public function nosotros(){
+    return Inertia::render('Nosotros')->rootView('app');
+  }
 
+  public function contactof(){
+    return Inertia::render('Contacto')->rootView('app');
+  }
 
+  public function desarrolloCurso(){
+    return Inertia::render('CursoDesarrollo')->rootView('app');
+  }
+  
+  public function examenFinalizado(){
+    return Inertia::render('ExamenFinalizado')->rootView('app');
+  }
+
+  public function examenPregunta(){
+    return Inertia::render('ExamenPregunta')->rootView('app');
+  }
   // public function catalogo(Request $request, string $id_cat = null)
   // {
   //   $tag_id = null;
