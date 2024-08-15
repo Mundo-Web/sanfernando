@@ -69,7 +69,7 @@ const Home = ({ url_env,
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 w-full gap-12 pt-12 pb-12">
 
-        {productosPupulares.map((producto, index) => {
+        {productosPupulares.map((producto, i) => {
           return <Curse key={`product-${i}`} producto={producto} env_url={url_env} />
         })}
       </div>
