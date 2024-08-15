@@ -1,39 +1,77 @@
-import React, { useEffect, useRef } from 'react';
-import $ from 'jquery';
-import 'select2/dist/css/select2.min.css';
-import 'select2/dist/js/select2.full.min.js';
+import React, { useEffect, useRef  } from 'react';
+import Select from 'react-select'
 
-const SelectSecond = ({ title }) => {
-  const selectRef = useRef(null);
-
-  useEffect(() => {
-    const $select = $(selectRef.current);
-
-    $select.select2({
-      placeholder: '¿Cómo nos encontraste?',
-      minimumResultsForSearch: Infinity,
-      templateSelection: function(data, container) {
-        // Añadir estilos personalizados a la opción seleccionada
-        $(container).addClass("");
-        return data.text;
-      }
-    });
-
-    // Limpiar la instancia de select2 cuando el componente se desmonte
-    return () => {
-      $select.select2('destroy');
-    };
-  }, []);
-
-  return (
-    <select
-      ref={selectRef}
-      className="selectsecond flex gap-2.5 items-center self-stretch px-4 py-3 my-auto text-base leading-tight text-red-600 whitespace-nowrap bg-rose-50 rounded-xl"
-    >
-      <option value="">{title}</option>
-      {/* Agrega más opciones aquí si es necesario */}
-    </select>
-  );
+const customStyles = {
+  control: (provided, state) => ({
+    ...provided,
+    backgroundColor: '#F9FAFB', // Color de fondo
+    borderRadius: '12px',
+    width:'200px',
+    borderColor: state.isFocused ? '#EA1D2C' : '#F9FAFB', // Color de borde
+    boxShadow: state.isFocused ? '0 0 0 1px #EA1D2C' : 'none',
+    '&:hover': {
+      borderColor: '#EA1D2C',
+    },
+    minHeight: '48px', // Altura mínima del select
+  }),
+  option: (provided, state) => ({
+    ...provided,
+    color: state.isSelected ? '#FFFFFF' : '#EA1D2C', // Color de texto
+    paddingTop: '13px',
+    paddingBottom: '13px',
+    backgroundColor: state.isSelected ? '#EA1D2C' : '#F9FAFB', // Color de fondo
+    '&:hover': {
+      backgroundColor: state.isSelected ? '#EA1D2C' : '#FDE8E8',
+      color: state.isSelected ? '#FFFFFF' : '#EA1D2C',
+    },
+    padding: '10px 20px', // Espaciado interno de las opciones
+  }),
+  menu: (provided) => ({
+    ...provided,
+    marginTop: '0px',
+    padding: '0px',
+    borderRadius: '12px',
+  }),
+  dropdownIndicator: (provided) => ({
+    ...provided,
+    color: '#EA1D2C',
+    '&:hover': {
+      color: '#EA1D2C',
+    },
+  }),
+  indicatorSeparator: () => ({
+    display: 'none',
+  }),
+  singleValue: (provided) => ({
+    ...provided,
+    color: '#EA1D2C', // Color del texto seleccionado
+  }),
+  placeholder: (provided) => ({
+    ...provided,
+    color: '#EA1D2C', // Color del placeholder
+    fontWeight: 'bold', // Peso de la fuente
+    fontSize: '16px', // Tamaño de la fuente
+  }),
 };
 
-export default SelectComponent;
+
+
+const options = [
+  { value: 'chocolate', label: 'Chocolate' },
+  { value: 'strawberry', label: 'Strawberry' },
+  { value: 'vanilla', label: 'Vanilla' }
+]
+
+const SelectSecond = ({ title }) => {
+  
+  return (
+    <Select className='font-poppins_regular font-bold'
+      styles={customStyles}
+      options={options}
+      placeholder={title}
+    />
+  );
+
+};
+
+export default SelectSecond;

@@ -39,6 +39,7 @@
         "react-google-recaptcha": "^3.1.0",
         "react-modal": "^3.16.1",
         "react-refresh": "^0.14.2",
+        "react-select": "^5.8.0",
         "select2": "^4.1.0-rc.0",
         "sode-extend-react": "^1.1.111",
         "sweetalert2": "^11.11.1",
