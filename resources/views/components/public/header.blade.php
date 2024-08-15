@@ -152,20 +152,22 @@
 
         </ul>
       </li>
-      <li>
-        <a href="/blog/0"
-          class="text-[#272727] font-medium font-poppins text-sm py-2 px-3 block hover:opacity-75 transition-opacity duration-300 {{ $pagina == 'contacto' ? 'text-[#FF5E14]' : '' }}">
-          <span class="underline-this">
-            <svg
-              class="inline-block w-3 h-3 mb-0.5 me-2 text-gray-400 dark:text-gray-500 group-hover:text-blue-600 dark:group-hover:text-blue-500"
-              aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 14 20">
-              <path
-                d="M12 0H2a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2ZM7.5 17.5h-1a1 1 0 0 1 0-2h1a1 1 0 0 1 0 2ZM12 13H2V4h10v9Z" />
-            </svg>
-            BLOG
-          </span>
-        </a>
-      </li>
+      @if ($blog > 0)
+        <li>
+          <a href="/blog/0"
+            class="text-[#272727] font-medium font-poppins text-sm py-2 px-3 block hover:opacity-75 transition-opacity duration-300 {{ $pagina == 'contacto' ? 'text-[#FF5E14]' : '' }}">
+            <span class="underline-this">
+              <svg
+                class="inline-block w-3 h-3 mb-0.5 me-2 text-gray-400 dark:text-gray-500 group-hover:text-blue-600 dark:group-hover:text-blue-500"
+                aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 14 20">
+                <path
+                  d="M12 0H2a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2ZM7.5 17.5h-1a1 1 0 0 1 0-2h1a1 1 0 0 1 0 2ZM12 13H2V4h10v9Z" />
+              </svg>
+              BLOG
+            </span>
+          </a>
+        </li>
+      @endif
       <li>
         <a href="/contacto"
           class="text-[#272727] font-medium font-poppins text-sm py-2 px-3 block hover:opacity-75 transition-opacity duration-300 {{ $pagina == 'contacto' ? 'text-[#FF5E14]' : '' }}">
@@ -221,23 +223,32 @@
     </div>
   @endforeach --}}
 
-  <section class="flex flex-wrap gap-10 justify-between items-center px-[8%] py-2 border border-solid bg-slate-900 border-teal-800 border-opacity-10 max-md:px-5">
-    <div class="hidden md:flex gap-4 items-start self-stretch my-auto text-sm tracking-normal leading-7 text-center min-w-[240px] text-slate-100">
-        <p>Teléfono: +51 999 999 999</p>
-        <p>Email: contacto@egespp</p>
+  <section
+    class="flex flex-wrap gap-10 justify-between items-center px-[8%] py-2 border border-solid bg-slate-900 border-teal-800 border-opacity-10 max-md:px-5">
+    <div
+      class="hidden md:flex gap-4 items-start self-stretch my-auto text-sm tracking-normal leading-7 text-center min-w-[240px] text-slate-100">
+
+      <p>Teléfono: {{ $datosgenerales->cellphone }}</p>
+      <p>Email: {{ $datosgenerales->email }}</p>
     </div>
     <nav class="flex gap-4 items-start self-stretch my-auto mx-auto md:mx-0">
-        <a href="#" aria-label="Social Media Link 1">
-            <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/8693f932039c2e8c0a816be060e78697a7a02b21edbfbfcf31bd73f4123f53bf?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f" alt="" class="object-contain shrink-0 w-6 aspect-square" />
-        </a>
-        <a href="#" aria-label="Social Media Link 2">
-            <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/e1adcb46e083a4104243cc7858289a099b773ab8ae97b361c2a565e5498fd619?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f" alt="" class="object-contain shrink-0 w-6 aspect-square" />
-        </a>
-        <a href="#" aria-label="Social Media Link 3">
-            <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/2cb868de28b1b49e52be101815be5c820fdf20aee19c0b5b86753f263366f629?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f" alt="" class="object-contain shrink-0 w-6 aspect-square" />
-        </a>
+      <a href="#" aria-label="Social Media Link 1">
+        <img loading="lazy"
+          src="https://cdn.builder.io/api/v1/image/assets/TEMP/8693f932039c2e8c0a816be060e78697a7a02b21edbfbfcf31bd73f4123f53bf?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f"
+          alt="" class="object-contain shrink-0 w-6 aspect-square" />
+      </a>
+      <a href="#" aria-label="Social Media Link 2">
+        <img loading="lazy"
+          src="https://cdn.builder.io/api/v1/image/assets/TEMP/e1adcb46e083a4104243cc7858289a099b773ab8ae97b361c2a565e5498fd619?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f"
+          alt="" class="object-contain shrink-0 w-6 aspect-square" />
+      </a>
+      <a href="#" aria-label="Social Media Link 3">
+        <img loading="lazy"
+          src="https://cdn.builder.io/api/v1/image/assets/TEMP/2cb868de28b1b49e52be101815be5c820fdf20aee19c0b5b86753f263366f629?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f"
+          alt="" class="object-contain shrink-0 w-6 aspect-square" />
+      </a>
     </nav>
-</section>
+  </section>
 
   <div>
     <div id="header-menu" class="flex justify-between gap-5 w-full px-[5%] xl:px-[8%] py-3  text-[17px] relative">
@@ -270,20 +281,20 @@
             </a>
 
             {{-- @if ($offerExists) --}}
-              <a href="/catalogogp" class="font-medium hover:opacity-75">
-                <span class="underline-this">Docentes</span>
-              </a>
+            <a href="/catalogogp" class="font-medium hover:opacity-75">
+              <span class="underline-this">Docentes</span>
+            </a>
             {{-- @endif --}}
 
-            {{-- @if ($blog > 0) --}}
-              <a href="#" class="font-medium hover:opacity-75 ">
-                <span class="underline-this">Eventos </span>
-              </a>
 
+            <a href="#" class="font-medium hover:opacity-75 ">
+              <span class="underline-this">Eventos </span>
+            </a>
+            @if ($blog > 0)
               <a href="#" class="font-medium hover:opacity-75 ">
                 <span class="underline-this">Blog </span>
               </a>
-            {{-- @endif --}}
+            @endif
 
 
             <a href="#" class="font-medium hover:opacity-75  ">
@@ -304,24 +315,30 @@
         </div>
       </div>
 
-     
+
 
       <section class="flex gap-3 items-center">
-        <div class="flex gap-1.5 items-center self-stretch p-2.5 my-auto w-10 h-10 bg-red-100 rounded-[57px]">
-            <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/995e42d883b4ad4ad14f887f23504fcf5af2557fc95c8d33c27cb17fed7fef65?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f" alt="" class="object-contain self-stretch my-auto w-5 aspect-square" />
+        <div onclick="openSearch()"
+          class="flex gap-1.5 items-center self-stretch p-2.5 my-auto w-10 h-10 bg-red-100 rounded-[57px]">
+          <img loading="lazy"
+            src="https://cdn.builder.io/api/v1/image/assets/TEMP/995e42d883b4ad4ad14f887f23504fcf5af2557fc95c8d33c27cb17fed7fef65?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f"
+            alt="" class="object-contain self-stretch my-auto w-5 aspect-square" />
         </div>
-        <button class="hidden md:flex gap-2.5 justify-center items-center self-stretch px-5 py-2.5 my-auto text-sm font-semibold text-center text-red-600 bg-red-100 rounded-lg min-h-[40px]">
-            <span class="self-stretch my-auto">Crear Cuenta</span>
-            <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/75bad0eb80e4c8fa820b5a280da9560ca64547065469b69cd2c648442bf9f1c3?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f" alt="" class="object-contain shrink-0 self-stretch my-auto w-5 aspect-square" />
-        </button>
-    </section>
+        <a href="/register"
+          class="hidden md:flex gap-2.5 justify-center items-center self-stretch px-5 py-2.5 my-auto text-sm font-semibold text-center text-red-600 bg-red-100 rounded-lg min-h-[40px]">
+          <span class="self-stretch my-auto">Crear Cuenta</span>
+          <img loading="lazy"
+            src="https://cdn.builder.io/api/v1/image/assets/TEMP/75bad0eb80e4c8fa820b5a280da9560ca64547065469b69cd2c648442bf9f1c3?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f"
+            alt="" class="object-contain shrink-0 self-stretch my-auto w-5 aspect-square" />
+        </a>
+      </section>
 
     </div>
   </div>
 
   <div class="flex justify-end relative">
     <div class="fixed bottom-[36px] z-[10] right-[15px] md:right-[25px]">
-      <a href="https://api.whatsapp.com/send?phone={{ $datosgenerales[0]->whatsapp }}&text={{ $datosgenerales[0]->mensaje_whatsapp }}"
+      <a href="https://api.whatsapp.com/send?phone={{ $datosgenerales->whatsapp }}&text={{ $datosgenerales->mensaje_whatsapp }}"
         target="_blank" class="">
         <img src="{{ asset('images/img/WhatsApp.png') }}" alt="whatsapp" class="w-20" />
       </a>
