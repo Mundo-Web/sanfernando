@@ -51,7 +51,8 @@ const SliderBenefit = ({ benefits }) => {
                                 loading="lazy"
                                 src={`/${benefit.icono}`}
                                 className="object-contain shrink-0 w-10 aspect-square"
-                                alt="Ética y transparencia icon"
+                                alt={`Icono ${benefit.titulo}`}
+                                onError={e => e.target.src = '/images/img/nobenefit.png'}
                             />
                             <div className="flex flex-col">
                                 <h2 className="text-lg font-poppins_semibold leading-tight">{benefit.titulo}</h2>
