@@ -45,6 +45,10 @@ const CatalogoGP = ({ productos, env_url }) => {
     }
   };
 
+  const handleOptionChange = (event) => {
+    console.log('current query ', query)
+  }
+
 
   return (<>
     <section className="flex flex-col !font-poppins_regular !font-normal">
