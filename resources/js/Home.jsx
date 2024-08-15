@@ -12,29 +12,20 @@ import SliderTestimony from './components/Section/SliderTestimony'
 import BenefitCard from './components/Benefits/BenefitCard'
 
 
-const Home = ({ url_env,
-  productos,
-  ultimosProductos,
+const Home = ({
+  url_env,
   productosPupulares,
-  blogs,
   banners,
-  categorias,
-  categoriasAll,
-  destacados,
-  descuentos,
-  popups,
-  general,
+  aboutUs,
   benefit,
-  faqs,
-  testimonie,
-  slider,
-  category }) => {
+  testimonies
+ }) => {
   const sectionStep = 'images/img/palacio.png';
   const imgVideo = 'images/img/mujergp.png';
   const imgPlay = 'images/img/iconoplayblanco.png';
 
 
-  console.log(benefit)
+  console.log(aboutUs)
 
   return (<>
     <section className="w-full relative">
@@ -51,7 +42,7 @@ const Home = ({ url_env,
     </section>
 
     <section>
-      <TwoColumn />
+      <TwoColumn aboutUs={aboutUs} />
     </section>
 
     <section className="bg-[#F9FAFB] px-[8%]">
@@ -121,7 +112,7 @@ const Home = ({ url_env,
           estudiantes en todo el Perú.</h2>
         <nav
           className="flex gap-3 items-start self-start mt-8 text-base tracking-normal font-poppins_medium text-white capitalize">
-          <a href="#"
+          <a href="/catalogoGestion"
             className="gap-3 self-stretch px-6 py-3 rounded-xl bg-slate-900 min-w-[240px] max-md:px-5 text-sm">
             Explorar todos los cursos y Diplomados
           </a>
@@ -170,11 +161,11 @@ const Home = ({ url_env,
         <div className="flex flex-col justify-center gap-5 text-textWhite pr-[5%]">
           <h1
             className="text-[#1D2026] font-poppins_bold tracking-tighter text-3xl md:text-5xl leading-none md:leading-tight ">
-            Donec at aliquam massa. Nunc tincidunt, felis ut gravida fringilla
+            Lo Que Dicen de Nuestra Escuela
           </h1>
 
           <div className="">
-            <SliderTestimony sliders={1} />
+            <SliderTestimony sliders={1} testimonies={testimonies} />
           </div>
         </div>
       </div>

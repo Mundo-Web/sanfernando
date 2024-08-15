@@ -2,8 +2,8 @@ import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/swiper-bundle.css';
 
-const SliderTestimony = (sliders) => {
-    const iconocomillas = 'images/svg/comillas_gp.svg';
+const SliderTestimony = ({ testimonies }) => {
+  const iconocomillas = 'images/svg/comillas_gp.svg';
 
   return (
     <div className="swiper myTestimonios">
@@ -28,28 +28,19 @@ const SliderTestimony = (sliders) => {
           disableOnInteraction: false,
         }}
       >
-        <SwiperSlide>
-          <div className="bg-[#FFF0F0] relative p-5 lg:p-8 gap-3 flex flex-col rounded-xl h-auto">
-            <img className="w-12" src={`${iconocomillas}`} alt="Comillas" />
-            <p className="text-[#1D2026] text-lg lg:text-xl font-poppins_regular">
-              Nulla sed malesuada augue. Morbi interdum vulputate imperdiet.
-              Pellentesque ullamcorper auctor ante, egestas interdum quam facilisis
-              commodo. Phasellus efficitur quis ex in consectetur. Mauris tristique
-              suscipit metus, a molestie dui dapibus vel.
-            </p>
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className="bg-[#FFF0F0] relative p-5 lg:p-8 gap-3 flex flex-col rounded-xl h-auto">
-            <img className="w-12" src={`${iconocomillas}`} alt="Comillas" />
-            <p className="text-[#1D2026] text-lg lg:text-xl font-poppins_regular">
-              Nulla sed malesuada augue. Morbi interdum vulputate imperdiet.
-              Pellentesque ullamcorper auctor ante, egestas interdum quam facilisis
-              commodo. Phasellus efficitur quis ex in consectetur.
-            </p>
-          </div>
-        </SwiperSlide>
-        {/* Agrega más SwiperSlide según sea necesario */}
+        {
+          testimonies.map((testimony, i) => {
+            return <SwiperSlide>
+              <div className="bg-[#FFF0F0] relative p-5 lg:p-8 gap-3 flex flex-col rounded-xl h-auto">
+                <img className="w-12" src={`${iconocomillas}`} alt="Comillas" />
+                <p className="text-[#1D2026] text-lg lg:text-xl font-poppins_regular">
+                  {testimony.testimonie}
+                </p>
+                <p>- {testimony.ocupation}</p>
+              </div>
+            </SwiperSlide>
+          })
+        }
       </Swiper>
 
       <div className="flex flex-row gap-3 mt-3">
