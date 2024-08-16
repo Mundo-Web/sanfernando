@@ -203,7 +203,7 @@ const CursoDetalle = ({ producto }) => {
               className="object-contain mt-10 w-full rounded-xl aspect-[1.19] max-md:max-w-full" />)}
 
 
-            {producto?.curso_dirigido.length > 0 && (<div className="flex flex-col p-8 mt-10 w-full bg-red-100 rounded-2xl max-md:px-5 max-md:max-w-full">
+            {producto?.curso_dirigido?.length > 0 && (<div className="flex flex-col p-8 mt-10 w-full bg-red-100 rounded-2xl max-md:px-5 max-md:max-w-full">
               <div className="text-2xl font-bold leading-tight text-neutral-800">
                 Para quién es este curso:
               </div>
