@@ -27,6 +27,12 @@ const CursoDetalle = ({ producto }) => {
     return format(date, "dd 'de' MMMM 'del' yyyy", { locale: es });
   };
 
+  const beneficios = producto?.beneficios ? JSON.parse(producto.beneficios) : [];
+  const curso_dirigido = producto?.curso_dirigido ? JSON.parse(producto.curso_dirigido) : [];
+  const incluye = producto?.incluye ? JSON.parse(producto.incluye) : [];
+  const temario = producto?.temario ? JSON.parse(producto.temario) : [];
+
+
   return (
     <>
       <main className="z-[15] !font-poppins_regular">
@@ -169,8 +175,8 @@ const CursoDetalle = ({ producto }) => {
                 </div>
               </div>
             </div>
-            {console.log(producto.beneficios)}
-            {JSON.parse(producto?.beneficios).length > 0 && (<div className="flex flex-col p-6 mt-10 w-full bg-rose-50 rounded-2xl max-md:px-5 max-md:max-w-full">
+            {console.log(beneficios)}
+            {beneficios.length > 0 && (<div className="flex flex-col p-6 mt-10 w-full bg-rose-50 rounded-2xl max-md:px-5 max-md:max-w-full">
               <div className="text-2xl font-bold leading-tight text-neutral-800 max-md:max-w-full">
                 Beneficios
               </div>
@@ -179,7 +185,7 @@ const CursoDetalle = ({ producto }) => {
                 <div className="grid grid-cols-1 lg:grid-cols-2  min-w-[240px] gap-5 items-start">
 
                   {producto.beneficios && (
-                    JSON.parse(producto.beneficios).map((beneficio, index) => (
+                    beneficios.map((beneficio, index) => (
                       <div key={index} className="flex gap-3 items-start w-full">
                         <img
                           loading="lazy"
@@ -202,13 +208,13 @@ const CursoDetalle = ({ producto }) => {
               src={'/' + producto.imagen_ambiente}
               className="object-contain mt-10 w-full rounded-xl aspect-[1.19] max-md:max-w-full" />)}
 
-            {console.log(JSON.parse(producto?.curso_dirigido).length > 0)}
-            {JSON.parse(producto?.curso_dirigido).length > 0 && (<div className="flex flex-col p-8 mt-10 w-full bg-red-100 rounded-2xl max-md:px-5 max-md:max-w-full">
+
+            {curso_dirigido.length > 0 && (<div className="flex flex-col p-8 mt-10 w-full bg-red-100 rounded-2xl max-md:px-5 max-md:max-w-full">
               <div className="text-2xl font-bold leading-tight text-neutral-800">
                 Para quién es este curso:
               </div>
-              {producto?.curso_dirigido && (
-                JSON.parse(producto.curso_dirigido).map((dirigido, index) => (
+              {curso_dirigido && (
+                curso_dirigido.map((dirigido, index) => (
                   <div key={index} className="flex flex-col mt-6 w-full text-base font-medium leading-7 text-gray-600 max-md:max-w-full">
                     <div className="flex flex-wrap gap-3 items-start w-full max-md:max-w-full">
                       <img
@@ -282,12 +288,13 @@ const CursoDetalle = ({ producto }) => {
               </div>
             </div>
             <div className="flex flex-col mt-10 w-full max-md:max-w-full">
-              {JSON.parse(producto?.beneficios).length > 0 && (<><div className="text-2xl font-bold leading-tight text-neutral-800">
+
+              {temario > 0 && (<><div className="text-2xl font-bold leading-tight text-neutral-800">
                 Temario
               </div>
                 <div className="flex flex-col mt-6 w-full max-md:max-w-full gap-4">
 
-                  {producto?.temario && Object.entries(JSON.parse(producto.temario)).map(([key, tema]) => (
+                  {temario && Object.entries(temario).map(([key, tema]) => (
                     <DropdownComponent key={key} tema={tema} />
                   ))}
 
@@ -470,7 +477,7 @@ const CursoDetalle = ({ producto }) => {
               <div className="text-base font-medium leading-none text-neutral-800">
                 Este curso incluye:
               </div>
-              {producto?.incluye && Object.entries(JSON.parse(producto.incluye)).map(([key, incluye]) => (
+              {incluye && Object.entries(incluye).map(([key, incluye]) => (
                 console.log(incluye),
                 <div className="flex flex-col mt-4 text-sm tracking-normal leading-loose text-gray-600">
                   <div className="flex gap-3 items-center">
