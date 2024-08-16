@@ -45,7 +45,7 @@ const Nosotros = ({ testimonies, aboutUs }) => {
             className="object-contain shrink-0 w-10 aspect-square" />
           <div className="flex flex-col flex-1 shrink basis-0 gap-2">
             <div className="text-3xl font-semibold tracking-tight leading-none text-neutral-800">
-              6.3k
+              {data.ESTUDIANTES}
             </div>
             <div className="text-sm font-medium tracking-normal leading-none text-gray-600">
               Estudiantes
@@ -58,7 +58,7 @@ const Nosotros = ({ testimonies, aboutUs }) => {
             className="object-contain shrink-0 w-10 aspect-square" />
           <div className="flex flex-col flex-1 shrink basis-0 gap-2">
             <div className="text-3xl font-semibold tracking-tight leading-none text-neutral-800">
-              +20
+              {data.INSTRUCTORES}
             </div>
             <div className="text-sm font-medium tracking-normal leading-none text-gray-600">
               Instructores certificados
@@ -71,7 +71,7 @@ const Nosotros = ({ testimonies, aboutUs }) => {
             className="object-contain shrink-0 w-10 aspect-square" />
           <div className="flex flex-col flex-1 shrink basis-0 gap-2">
             <div className="text-3xl font-semibold tracking-tight leading-none text-neutral-800">
-              99.9%
+              {data['TASA-EXITO']}
             </div>
             <div className="text-sm font-medium tracking-normal leading-none text-gray-600">
               Tasa de éxito
@@ -84,7 +84,7 @@ const Nosotros = ({ testimonies, aboutUs }) => {
             className="object-contain shrink-0 w-10 aspect-square" />
           <div className="flex flex-col flex-1 shrink basis-0 gap-2">
             <div className="text-3xl font-semibold tracking-tight leading-none text-neutral-800">
-              57
+              {data.EMPRESAS}
             </div>
             <div className="text-sm font-medium tracking-normal leading-none text-gray-600">
               Empresas de confianza

@@ -35,8 +35,10 @@ class AboutUsSeeder extends Seeder
         AboutUs::updateOrCreate(['titulo' => 'DESCRIPCION-GALERIA'], [
             'descripcion' => 'En estos casi 17 años, hemos sido testigos de innumerables momentos que reflejan nuestro compromiso con la excelencia en la gestión pública. Nuestra galería captura la esencia de nuestros logros, eventos, y la dedicación de aquellos que han formado parte de este camino. Explora nuestros recuerdos y descubre cómo hemos crecido junto a nuestros alumnos y colaboradores.'
         ]);
-        AboutUs::updateOrCreate(['titulo' => 'ESTUDIANTES'], [
-            'descripcion' => 'Llevamos aquí casi 17 años'
-        ]);
+        AboutUs::updateOrCreate(['titulo' => 'CURSOS'], ['descripcion' => '6.3k']);
+        AboutUs::updateOrCreate(['titulo' => 'ESTUDIANTES'], ['descripcion' => '26k']);
+        AboutUs::updateOrCreate(['titulo' => 'INSTRUCTORES'], ['descripcion' => '+20']);
+        AboutUs::updateOrCreate(['titulo' => 'TASA-EXITO'], ['descripcion' => '99.9%']);
+        AboutUs::updateOrCreate(['titulo' => 'EMPRESAS'], ['descripcion' => '57']);
     }
 }
