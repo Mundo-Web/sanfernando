@@ -29,7 +29,8 @@ class DatabaseSeeder extends Seeder
             PoliticasDatos::class,
             AboutUsSeeder::class,
             TestimonySeeder::class,
-            productosCursosSeeder::class
+            productosCursosSeeder::class,
+            ModuleSeeder::class
         ]);
     }
 }

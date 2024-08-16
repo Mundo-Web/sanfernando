@@ -111,7 +111,7 @@
       <x-app.header />
 
       <main class="grow">
-        @inertia()
+        @inertia
       </main>
 
     </div>
