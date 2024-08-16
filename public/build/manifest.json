@@ -78,7 +78,7 @@
     ]
   },
   "resources/css/app.css": {
-    "file": "assets/app-danY6T_k.css",
+    "file": "assets/app-silR8TRj.css",
     "isEntry": true,
     "src": "resources/css/app.css"
   },
@@ -183,7 +183,7 @@
     "src": "resources/js/ConfirmEmail.jsx"
   },
   "resources/js/Contacto.jsx": {
-    "file": "assets/Contacto-0lYKeg5-.js",
+    "file": "assets/Contacto-djGJI4Zf.js",
     "imports": [
       "resources/js/Utils/HtmlContent.jsx",
       "_index-TT1qJ6UJ.js",
