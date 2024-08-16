@@ -281,17 +281,41 @@
                       placeholder="Precio para revendedor">
                   </div>
                 </div> --}}
-                <div class="md:col-span-5">
-                  <label for="costo_x_art">Costo por articulo</label>
-                  <div class="relative mb-2  mt-2">
-                    <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                      <i class="text-lg text-gray-500 dark:text-gray-400 fas fa-money-bill"></i>
+                <div class="md:col-span-5 flex justify-between gap-4">
+                  <div class="w-full">
+                    <label for="fecha_inicio"> Fecha Inicio
+
+                    </label>
+                    <div class="relative mb-2  mt-2">
+                      <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                        <i class="text-lg text-gray-500 dark:text-gray-400 fas fa-money-bill"></i>
+                      </div>
+                      <input type="date" id="fecha_inicio" name="fecha_inicio"
+                        value="{{ $product->fecha_inicio }}" step="0.1"
+                        class="mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        placeholder="Fecha inicio del Curso">
                     </div>
-                    <input type="number" id="costo_x_art" name="costo_x_art" value="{{ $product->costo_x_art }}"
-                      class="mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                      placeholder="Costo por articulo">
+
                   </div>
+                  <div class="w-full">
+                    <label for="duracion">Duracion
+                      <span class="text-red-500 font-bold">*</span>
+                    </label>
+                    <div class="relative mb-2  mt-2">
+                      <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                        <i class="text-lg text-gray-500 dark:text-gray-400 fas fa-money-bill"></i>
+                      </div>
+                      <input type="number" id="duracion" name="duracion" value="{{ $product->duracion }}"
+                        step="0.1"
+                        class="mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        placeholder="duracion" required>
+                    </div>
+
+                  </div>
+
+
                 </div>
+
                 <div class="md:col-span-3">
                   <label for="sku">Sku</label>
                   <div class="relative mb-2  mt-2">

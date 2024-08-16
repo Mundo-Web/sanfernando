@@ -58,18 +58,20 @@ const customStyles = {
 
 
 const options = [
-  { value: 'mas_valorado', label: 'Mas valorado' },
-  { value: 'mas_comprado', label: 'Mas comprado' },
+  { value: 'a-z', label: 'Desde A a Z' },
+  { value: 'z-a', label: 'Desde Z a A' },
+  { value: 'ultimos', label: 'Ultimos' },
 
 ]
 
-const SelectSecond = ({ title }) => {
+const SelectSecond = ({ title, handleOptionChange }) => {
 
   return (
     <Select className='font-poppins_regular font-bold'
       styles={customStyles}
       options={options}
       placeholder={title}
+      onChange={handleOptionChange}
     />
   );
 

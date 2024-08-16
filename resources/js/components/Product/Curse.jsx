@@ -3,23 +3,26 @@ import truncateText from '../../Utils/truncateText'
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
 
-const Curse = ({ producto, env_url }) => {
+const Curse = ({ producto, env_url, userIsLogged }) => {
   const imgcurso = 'images/img/imagencurso.png';
   const imgcalendario = 'images/svg/gp_calendario.svg';
   const imgreloj = 'images/svg/gp_reloj.svg';
+
+
   return (
     <div className="flex relative flex-col flex-1 shrink basis-0 min-w-[240px]">
       <div className="min-w-[240px]">
         <img loading="lazy" src={`${producto.imagen}`} className="object-cover z-0 w-full rounded-t-2xl h-[280px]"
           alt="Course background image" onError={e => e.target.src = '/images/img/noimagen.jpg'} />
-        <div className="object-contain absolute top-4 right-4 z-0 w-10 h-10 aspect-square">
+        {userIsLogged && (<div className="object-contain absolute top-4 right-4 z-0 w-10 h-10 aspect-square">
           <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
             <circle cx="20" cy="20" r="20" fill="white" />
             <path
               d="M20 28.25C20 28.25 10.625 23 10.625 16.625C10.6252 15.4983 11.0156 14.4064 11.7299 13.5349C12.4442 12.6635 13.4382 12.0664 14.543 11.845C15.6478 11.6237 16.7951 11.7918 17.79 12.3208C18.7848 12.8498 19.5658 13.707 20 14.7467L20 14.7467C20.4342 13.707 21.2152 12.8498 22.21 12.3208C23.2049 11.7918 24.3522 11.6237 25.457 11.845C26.5618 12.0664 27.5558 12.6635 28.2701 13.5349C28.9844 14.4064 29.3748 15.4983 29.375 16.625C29.375 23 20 28.25 20 28.25Z"
               stroke="#CF072C" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
-        </div>
+        </div>)}
+
       </div>
 
       <div className="flex z-0 flex-col p-6 w-full bg-white border-r border-l border-rose-100 border-opacity-40 max-md:px-5">
@@ -38,12 +41,12 @@ const Curse = ({ producto, env_url }) => {
           className="flex flex-col self-start mt-4 text-sm tracking-normal font-poppins_regular leading-loose text-gray-600">
           <div className="flex flex-row gap-2 items-center justify-start">
             {/* <img loading="lazy" src={`/${imgreloj}`} className="object-contain w-6" alt="Clock icon" /> */}
-            <i className='fa fa-clock text-lg' style={{color: '#e02424'}}></i>
-            <p>{producto.duracion} horas lectivas y {producto.creditos} créditos</p>
+            <i className='fa fa-clock text-lg' style={{ color: '#e02424' }}></i>
+            <p>{producto.duracion} horas lectivas .</p>
           </div>
           <div className="flex flex-row gap-2 items-center justify-start  mt-2">
             {/* <img loading="lazy" src={`${imgcalendario}`} className="object-contain w-6 " alt="Calendar icon" /> */}
-            <i className='fa fa-calendar text-lg' style={{color: '#e02424'}}></i>
+            <i className='fa fa-calendar text-lg' style={{ color: '#e02424' }}></i>
             <p>Inicio: {producto.fecha_inicio ? producto.fecha_inicio : 'Próximamente'}</p>
           </div>
         </div>
@@ -54,14 +57,14 @@ const Curse = ({ producto, env_url }) => {
         <div
           className="flex gap-1.5 items-center self-stretch my-auto font-medium tracking-normal leading-none text-gray-600 whitespace-nowrap">
           <div loading="lazy" className="object-contain shrink-0 self-stretch my-auto w-5 aspect-square">
-            <svg width="20" height="21" viewBox="0 0 20 21" fill="none"
+            {/*  <svg width="20" height="21" viewBox="0 0 20 21" fill="none"
             >
               <path
                 d="M10.3446 15.401L14.2849 17.8974C14.7886 18.2165 15.4139 17.7419 15.2644 17.154L14.126 12.6756C14.0939 12.5509 14.0977 12.4197 14.137 12.297C14.1762 12.1743 14.2492 12.0652 14.3477 11.9822L17.8811 9.04132C18.3453 8.6549 18.1057 7.88439 17.5092 7.84567L12.8949 7.5462C12.7706 7.53732 12.6514 7.49332 12.5511 7.41931C12.4509 7.34531 12.3737 7.24435 12.3286 7.12819L10.6076 2.79436C10.5609 2.67106 10.4777 2.56492 10.3692 2.49002C10.2606 2.41511 10.1319 2.375 10 2.375C9.86813 2.375 9.73938 2.41511 9.63085 2.49002C9.52232 2.56492 9.43914 2.67106 9.39236 2.79436L7.6714 7.12819C7.62631 7.24435 7.54914 7.34531 7.4489 7.41931C7.34865 7.49332 7.22944 7.53732 7.10515 7.5462L2.49078 7.84567C1.89429 7.88439 1.65466 8.6549 2.11894 9.04132L5.65232 11.9822C5.75079 12.0652 5.82383 12.1743 5.86305 12.297C5.90226 12.4197 5.90606 12.5509 5.874 12.6756L4.81824 16.8288C4.63889 17.5343 5.38929 18.1038 5.99369 17.7209L9.65539 15.401C9.75837 15.3354 9.87792 15.3006 10 15.3006C10.1221 15.3006 10.2416 15.3354 10.3446 15.401Z"
                 fill="#FD8E1F" />
-            </svg>
+            </svg> */}
           </div>
-          <span className="self-stretch my-auto">4.3</span>
+          {/* <span className="self-stretch my-auto">4.3</span> */}
         </div>
         <a href={`/detalleCurso/${producto.id}`}
           className="flex gap-1 justify-center items-center self-stretch px-5 py-3 my-auto text-center text-white bg-red-600 rounded-[100px]"
