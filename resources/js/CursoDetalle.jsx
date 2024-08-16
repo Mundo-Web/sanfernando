@@ -203,7 +203,7 @@ const CursoDetalle = ({ producto }) => {
               className="object-contain mt-10 w-full rounded-xl aspect-[1.19] max-md:max-w-full" />)}
 
 
-            {producto?.curso_dirigido && (<div className="flex flex-col p-8 mt-10 w-full bg-red-100 rounded-2xl max-md:px-5 max-md:max-w-full">
+            {producto?.curso_dirigido.length > 0 && (<div className="flex flex-col p-8 mt-10 w-full bg-red-100 rounded-2xl max-md:px-5 max-md:max-w-full">
               <div className="text-2xl font-bold leading-tight text-neutral-800">
                 Para quién es este curso:
               </div>
@@ -282,16 +282,17 @@ const CursoDetalle = ({ producto }) => {
               </div>
             </div>
             <div className="flex flex-col mt-10 w-full max-md:max-w-full">
-              <div className="text-2xl font-bold leading-tight text-neutral-800">
+              {producto?.beneficios?.length > 0 && (<><div className="text-2xl font-bold leading-tight text-neutral-800">
                 Temario
               </div>
-              <div className="flex flex-col mt-6 w-full max-md:max-w-full gap-4">
+                <div className="flex flex-col mt-6 w-full max-md:max-w-full gap-4">
 
-                {producto?.temario && Object.entries(JSON.parse(producto.temario)).map(([key, tema]) => (
-                  <DropdownComponent key={key} tema={tema} />
-                ))}
+                  {producto?.temario && Object.entries(JSON.parse(producto.temario)).map(([key, tema]) => (
+                    <DropdownComponent key={key} tema={tema} />
+                  ))}
 
-              </div>
+                </div></>)}
+
               <div
                 className="flex gap-3 items-center self-start px-4 py-2 mt-6 text-base font-bold leading-tight text-white bg-rose-700 rounded-xl">
                 <img loading="lazy"
