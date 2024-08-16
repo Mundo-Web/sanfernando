@@ -202,7 +202,8 @@ const CursoDetalle = ({ producto }) => {
               src={'/' + producto.imagen_ambiente}
               className="object-contain mt-10 w-full rounded-xl aspect-[1.19] max-md:max-w-full" />)}
 
-            <div className="flex flex-col p-8 mt-10 w-full bg-red-100 rounded-2xl max-md:px-5 max-md:max-w-full">
+
+            {producto?.curso_dirigido && (<div className="flex flex-col p-8 mt-10 w-full bg-red-100 rounded-2xl max-md:px-5 max-md:max-w-full">
               <div className="text-2xl font-bold leading-tight text-neutral-800">
                 Para quién es este curso:
               </div>
@@ -223,7 +224,9 @@ const CursoDetalle = ({ producto }) => {
                 ))
               )}
 
-            </div>
+            </div>)}
+
+
             <div className="flex flex-col mt-10 w-full max-md:max-w-full">
               <div dangerouslySetInnerHTML={{ __html: producto?.description2 ?? '' }}></div>
             </div>
