@@ -231,7 +231,7 @@
       <p>Teléfono: {{ $datosgenerales->cellphone }}</p>
       <p>Email: {{ $datosgenerales->email }}</p>
     </div>
-    <nav class="flex gap-4 items-start self-stretch my-auto mx-auto md:mx-0">
+    <nav class="flex gap-4 items-center self-stretch my-auto mx-auto md:mx-0">
       {{-- <a href="#" aria-label="Social Media Link 1">
         <img loading="lazy"
           src="https://cdn.builder.io/api/v1/image/assets/TEMP/8693f932039c2e8c0a816be060e78697a7a02b21edbfbfcf31bd73f4123f53bf?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f"
@@ -246,7 +246,7 @@
         <a href="/login" class="text-white">Iniciar Sesion </a> </a>
       @else
         <div class="text-white  hidden md:inline-flex" x-data="{ open: false }">
-          <button class="px-3 py-5 inline-flex justify-center items-center group" aria-haspopup="true"
+          <button class="px-3 py-2 inline-flex justify-center items-center group" aria-haspopup="true"
             @click.prevent="open = !open" :aria-expanded="open">
             <div class="flex items-center truncate">
               <span id="username"
