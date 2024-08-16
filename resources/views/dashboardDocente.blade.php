@@ -40,162 +40,62 @@
 
   <script src="https://www.google.com/recaptcha/api.js" async defer></script>
   <script src="/js/tippy.all.min.js"></script>
-
+  <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
-  <style>
-    .select2-container .select2-selection--single,
-    .select2-container .select2-selection--multiple {
-      margin-top: 0.25rem;
-      /* mt-1 */
-      background-color: #F9FAFB;
-      /* bg-gray-50 */
-      border: 1px solid #D1D5DB !important;
-      /* border-gray-300 */
-      color: #111827;
-      /* text-gray-900 */
-      border-radius: 0.5rem;
-      /* rounded-lg */
-      /* padding-left: 2.5rem; */
-      /* pl-10 */
-      padding: 8px;
-      /* p-2.5 */
-      height: unset;
-      font-size: 0.875rem;
-      /* text-sm */
-    }
-
-    .select2-container--open .select2-dropdown--below {
-      border-color: #D1D5DB;
-    }
-
-    .select2-container--default .select2-selection--single .select2-selection__rendered,
-    .select2-container--default .select2-selection--multiple .select2-selection__rendered {
-      color: #111827;
-      /* text-gray-900 */
-      display: flex;
-      flex-wrap: wrap;
-      gap: 4px;
-    }
-
-    .select2-container--default .select2-selection--single .select2-selection__arrow,
-    .select2-container--default .select2-selection--multiple .select2-selection__arrow {
-      height: 100%;
-      right: 1rem;
-      /* align with pl-10 */
-    }
-
-    .select2-container--default .select2-selection--single:focus,
-    .select2-container--default .select2-selection--multiple:focus {
-      border-color: #3B82F6;
-      /* focus:border-blue-500 */
-      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.5);
-      /* focus:ring-blue-500 */
-    }
-
-    .dark .select2-container .select2-selection--single,
-    .dark .select2-container .select2-selection--multiple {
-      background-color: #374151;
-      /* dark:bg-gray-700 */
-      border-color: #4B5563;
-      /* dark:border-gray-600 */
-      color: #F9FAFB;
-      /* dark:text-white */
-    }
-
-    .dark .select2-container--default .select2-selection--single .select2-selection__rendered,
-    .dark .select2-container--default .select2-selection--multiple .select2-selection__rendered {
-      color: #F9FAFB;
-      /* dark:text-white */
-    }
-
-    .dark .select2-container--default .select2-selection--single:focus,
-    .dark .select2-container--default .select2-selection--multiple:focus {
-      border-color: #3B82F6;
-      /* dark:focus:border-blue-500 */
-      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.5);
-      /* dark:focus:ring-blue-500 */
-    }
-
-    /* Adjust the width to match Tailwind CSS block w-full */
-    .select2-container {
-      width: 100% !important;
-      /* block w-full */
-    }
-
-    /* Additional styles for multiple select */
-    .select2-container .select2-selection--multiple .select2-selection__choice {
-      background-color: #3B82F6;
-      /* bg-blue-500 */
-      border: 1px solid #2563EB;
-      /* border-blue-600 */
-      color: #FFFFFF;
-      /* text-white */
-      border-radius: 0.25rem;
-      /* rounded */
-      /* margin-right: 0.25rem; mr-1 */
-      margin-top: 0;
-      margin-left: 0;
-      padding: 0.25rem 0.5rem 0.25rem 1.25rem;
-      /* p-1 px-2 */
-    }
-
-    .dark .select2-container .select2-selection--multiple .select2-selection__choice {
-      background-color: #1E40AF;
-      /* dark:bg-blue-900 */
-      border: 1px solid #1D4ED8;
-      /* dark:border-blue-700 */
-      color: #F9FAFB;
-      /* dark:text-white */
-    }
-
-    .select2-container .select2-selection--multiple .select2-selection__choice__remove {
-      cursor: pointer;
-      color: #FFFFFF;
-      cursor: pointer;
-      top: 0;
-      left: 0;
-      bottom: 0;
-    }
-
-    .dark .select2-container .select2-selection--multiple .select2-selection__choice__remove {
-      color: #F9FAFB;
-      /* dark:text-white */
-    }
-
-    .select2-container .select2-selection--multiple .select2-selection__choice__remove:hover {
-      color: #EF4444;
-      /* hover:text-red-500 */
-    }
-
-    .dark .select2-container .select2-selection--multiple .select2-selection__choice__remove:hover {
-      color: #F87171;
-      /* dark:hover:text-red-400 */
-    }
-
-    .select2-container .select2-selection--multiple .select2-search__field {
-      /* padding: 0.5rem; */
-      /* p-2 */
-      /* margin-left: 0.25rem; */
-      margin-left: 0;
-      padding: 0;
-      display: inline-block;
-      height: 22px;
-      margin-top: 0;
-      /* ml-1 */
-    }
-  </style>
-
   @inertiaHead
 </head>
 
 <body class="body">
-  <div class="overlay"></div>
-  <x-public.header />
   @inertia
-  <x-public.footer />
+  {{-- <div class="md:flex flex-col md:flex-row md:min-h-screen w-full">
+    
+    <!-- Sidebar -->
+    <div @click.away="open = false" class="flex flex-col w-full md:w-64 text-gray-700 bg-white dark-mode:text-gray-200 dark-mode:bg-gray-800 flex-shrink-0" x-data="{ open: false }">
+      <div class="flex-shrink-0 px-8 py-4 flex flex-row items-center justify-between">
+        <a href="#" class="text-lg font-semibold tracking-widest text-gray-900 uppercase rounded-lg dark-mode:text-white focus:outline-none focus:shadow-outline">Flowtrail UI</a>
+        <button class="rounded-lg md:hidden focus:outline-none focus:shadow-outline" @click="open = !open">
+          <svg fill="currentColor" viewBox="0 0 20 20" class="w-6 h-6">
+            <path x-show="!open" fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM9 15a1 1 0 011-1h6a1 1 0 110 2h-6a1 1 0 01-1-1z" clip-rule="evenodd"></path>
+            <path x-show="open" fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+          </svg>
+        </button>
+      </div>
+      <nav :class="{'block': open, 'hidden': !open}" class="flex-grow md:block px-4 pb-4 md:pb-0 md:overflow-y-auto">
+        <a class="block px-4 py-2 mt-2 text-sm font-semibold text-gray-900 bg-gray-200 rounded-lg dark-mode:bg-gray-700 dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline" href="#">Blog</a>
+        <a class="block px-4 py-2 mt-2 text-sm font-semibold text-gray-900 bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline" href="#">Portfolio</a>
+        <a class="block px-4 py-2 mt-2 text-sm font-semibold text-gray-900 bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline" href="#">About</a>
+        <a class="block px-4 py-2 mt-2 text-sm font-semibold text-gray-900 bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline" href="#">Contact</a>
+        <div @click.away="open = false" class="relative" x-data="{ open: false }">
+          <button @click="open = !open" class="flex flex-row items-center w-full px-4 py-2 mt-2 text-sm font-semibold text-left bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:focus:bg-gray-600 dark-mode:hover:bg-gray-600 md:block hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline">
+            <span>Dropdown</span>
+            <svg fill="currentColor" viewBox="0 0 20 20" :class="{'rotate-180': open, 'rotate-0': !open}" class="inline w-4 h-4 mt-1 ml-1 transition-transform duration-200 transform md:-mt-1"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+          </button>
+          <div x-show="open" x-transition:enter="transition ease-out duration-100" x-transition:enter-start="transform opacity-0 scale-95" x-transition:enter-end="transform opacity-100 scale-100" x-transition:leave="transition ease-in duration-75" x-transition:leave-start="transform opacity-100 scale-100" x-transition:leave-end="transform opacity-0 scale-95" class="absolute right-0 w-full mt-2 origin-top-right rounded-md shadow-lg">
+            <div class="px-2 py-2 bg-white rounded-md shadow dark-mode:bg-gray-800">
+              <a class="block px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline" href="#">Link #1</a>
+              <a class="block px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline" href="#">Link #2</a>
+              <a class="block px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline" href="#">Link #3</a>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </div>
+    
+    <!-- Main Content Area -->
+    <div class="flex flex-col flex-1 min-h-screen">
+      <!-- Header -->
+      <x-public.headerTeacher />
+      
+      <!-- Page Content -->
+      <div class="content p-6 flex-1">
+        @inertia
+      </div>
+    </div>
+    
+  </div>   --}}
 
   <script src="{{ asset('js/functions.js') }}?v={{ uniqid() }}"></script>
 </body>
+
 
 </html>
