@@ -132,6 +132,11 @@ class IndexController extends Controller
   {
     return Inertia::render('ExamenPregunta')->rootView('app');
   }
+
+  public function dashDocente()
+  {
+    return Inertia::render('DashDocente')->rootView('admin');
+  }
   // public function catalogo(Request $request, string $id_cat = null)
   // {
   //   $tag_id = null;
