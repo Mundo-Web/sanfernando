@@ -3,6 +3,7 @@
 use App\Http\Controllers\AddressController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\MessageController;
+use App\Http\Controllers\ModuleController;
 use App\Http\Controllers\OfferController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProductsController;
@@ -52,4 +53,10 @@ Route::middleware(['web', 'auth:sanctum', 'verified'])->group(function () {
     Route::get('/offers', [OfferController::class, 'all'])->name('offers.all');
     Route::patch('/offers', [OfferController::class, 'save'])->name('offers.save');
     Route::delete('/offers/{offer_id}', [OfferController::class, 'delete'])->name('offers.delete');
+
+    Route::get('/modules/{course}', [ModuleController::class, 'byCourse']);
+    Route::post('/modules', [ModuleController::class, 'save']);
+    Route::post('/modules/paginate', [ModuleController::class, 'paginate']);
+    Route::patch('/modules/status', [ModuleController::class, 'status']);
+    Route::delete('/modules/{id}', [ModuleController::class, 'delete']);
 });

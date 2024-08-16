@@ -88,7 +88,7 @@
         <x-menu.item id="tags" href="{{ route('tags.index') }}" icon="fas fa-tag">Etiquetas</x-menu.item>
         <x-menu.item id="products" href="{{ route('products.index') }}" icon="fas fa-box">Cursos /
           Diplomados</x-menu.item>
-        {{-- <x-menu.item id="offers" href="{{ route('Admin/Offers.jsx') }}" icon="fas fa-boxes">Combos</x-menu.item> --}}
+        <x-menu.item id="modules" href="{{ route('Admin/Modules.jsx') }}" icon="fas fa-boxes">Modulos</x-menu.item>
       </x-menu.group>
 
       <x-menu.group title="Datos de la empresa">

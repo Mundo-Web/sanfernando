@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\IndexController;
+use App\Http\Controllers\ModuleController;
 use App\Http\Controllers\OfferController;
 use App\Http\Controllers\ProductsController;
 use Illuminate\Http\Request;
@@ -27,7 +28,7 @@ Route::get('/ofertas/{id?}', [IndexController::class, 'ofertas'])->name('Ofertas
 
 Route::middleware(['auth:sanctum', 'verified', 'can:Admin'])->group(function () {
   Route::prefix('admin')->group(function () {
-    Route::get('/offers', [OfferController::class, 'reactView'])->name('Admin/Offers.jsx');
+    Route::get('/modules', [ModuleController::class, 'reactView'])->name('Admin/Modules.jsx');
     Route::get('/products2', [ProductsController::class, 'reactView'])->name('Admin/Products.jsx');
   });
 });
