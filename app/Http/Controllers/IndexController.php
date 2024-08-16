@@ -112,7 +112,10 @@ class IndexController extends Controller
 
   public function nosotros()
   {
-    return Inertia::render('Nosotros')->rootView('app');
+    $testimonies = Testimony::where('status', '=', 1)->where('visible', '=', 1)->get();
+    return Inertia::render('Nosotros', [
+      'testimonies' => $testimonies,
+    ])->rootView('app');
   }
 
   public function contactof()

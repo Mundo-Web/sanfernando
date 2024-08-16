@@ -358,20 +358,19 @@
     "src": "resources/js/Login.jsx"
   },
   "resources/js/Nosotros.jsx": {
-    "file": "assets/Nosotros-tJOZL0eO.js",
+    "file": "assets/Nosotros-QPJBu81u.js",
     "imports": [
       "resources/js/Utils/HtmlContent.jsx",
       "_index-TT1qJ6UJ.js",
       "resources/js/Utils/ReactAppend.jsx",
       "_CreateReactScript-QuaDmwri.js",
-      "_main-jzs2GwAM.js",
-      "resources/js/components/Section/SliderFront.jsx",
-      "resources/js/components/Product/ProductCard.jsx",
       "_SliderTestimony-4bJ0Crrd.js",
       "__commonjsHelpers-4gQjN7DL.js",
       "_index-jtdEOcur.js",
       "resources/js/Utils/CreateReactScript.jsx",
       "_axios-_sX4vCAy.js",
+      "_main-jzs2GwAM.js",
+      "resources/js/components/Section/SliderFront.jsx",
       "resources/js/components/Section/SliderTestimony.jsx"
     ],
     "isEntry": true,
