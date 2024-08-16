@@ -9,8 +9,10 @@ use App\Models\AttributesValues;
 use App\Models\Category;
 use App\Models\dxDataGrid;
 use App\Models\Galerie;
+use App\Models\Icon;
 use App\Models\Products;
 use App\Models\Specifications;
+use App\Models\Staff;
 use App\Models\SubCategory;
 use App\Models\Tag;
 use Illuminate\Http\Request;
@@ -231,10 +233,13 @@ class ProductsController extends Controller
     $valorAtributo = AttributesValues::where("status", "=", true)->get();
     $tags = Tag::where("status", "=", true)->get();
     $categoria = Category::where('status', 1)->get();
+    $docentes = Staff::where('status', 1)->get();
+    
+    $icons = Icon::all();
     // $subcategories = SubCategory::where('status', 1)->get();
     $galery = [];
     $especificacion = [json_decode('{"tittle":"", "specifications":""}', false)];
-    return view('pages.products.save', compact('product', 'atributos', 'valorAtributo', 'categoria', 'tags', 'especificacion',  'galery'));
+    return view('pages.products.save', compact('icons', 'docentes','product', 'atributos', 'valorAtributo', 'categoria', 'tags', 'especificacion',  'galery'));
   }
 
   public function edit(string $id)
@@ -249,8 +254,10 @@ class ProductsController extends Controller
     $categoria = Category::all();
     $subcategories = SubCategory::all();
     $galery = Galerie::where("product_id", "=", $id)->get();
+    $docentes = Staff::where('status', 1)->get();
+    $icons = Icon::all();
 
-    return view('pages.products.save', compact('product', 'atributos', 'valorAtributo', 'tags', 'categoria', 'especificacion', 'subcategories', 'galery'));
+    return view('pages.products.save', compact('product','docentes', 'icons', 'atributos', 'valorAtributo', 'tags', 'categoria', 'especificacion', 'subcategories', 'galery'));
   }
 
   private function saveImg(Request $request, string $field)
@@ -298,13 +305,29 @@ class ProductsController extends Controller
    */
   public function store(Request $request)
   {
-    
     try {
       $especificaciones = [];
       $data = $request->all();
+    
+      if(isset($request->beneficio)){
+        $data['beneficios'] = json_encode($request->beneficio);
+      }
+      if(isset($request->curso_dirigido)){
+        $data['curso_dirigido'] = json_encode($request->curso_dirigido);
+      }
+      if(isset($request->temario)){
+        $data['temario'] = json_encode($request->temario);
+      }
+      if(isset($request->incluye)){
+        $data['incluye'] = json_encode($request->incluye);
+      }
+
+      
+      
       
       $atributos = null;
       $tagsSeleccionados = $request->input('tags_id');
+      $docentesSeleccionados = $request->input('docentes');
       // $valorprecio = $request->input('precio') - 0.1;
 
       $request->validate([
@@ -396,6 +419,7 @@ class ProductsController extends Controller
 
       $this->GuardarEspecificaciones($producto->id, $especificaciones);
       $producto->tags()->sync($tagsSeleccionados);
+      $producto->docentes()->sync($docentesSeleccionados);
 
       Galerie::where('product_id', $producto->id)->delete();
       if ($request->galery) {

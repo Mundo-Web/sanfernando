@@ -45,7 +45,8 @@ class DatabaseSeeder extends Seeder
             StatusSeeder::class,
             PricesTableSeeder::class,
             PoliticasDatos::class,
-            AboutUsSeeder::class
+            AboutUsSeeder::class, 
+            IconsTableSeeder::class,
             //ServiceSeeder::class,
         ]);
     }
