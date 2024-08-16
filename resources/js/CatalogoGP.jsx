@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { createRoot } from 'react-dom/client'
 import CreateReactScript from './Utils/CreateReactScript'
-import { Fetch } from 'sode-extend-react'
+import { Fetch, GET } from 'sode-extend-react'
 import arrayJoin from './Utils/ArrayJoin'
 import { set } from 'sode-extend-react/sources/cookies'
 import SliderFront from './components/Section/SliderFront'
@@ -22,7 +22,7 @@ const CatalogoGP = ({ productos, env_url, userIsLogged }) => {
 
   const [isListVisible, setIsListVisible] = useState(false)
   // const query = useRef({ query: '', order: '' });
-  const [query, setQuery] = useState({ query: '', order: '' });
+  const [query, setQuery] = useState({ query: GET.search, order: '' });
   const [items, setItems] = useState();
 
 
@@ -95,7 +95,7 @@ const CatalogoGP = ({ productos, env_url, userIsLogged }) => {
               <div className="flex flex-wrap gap-2.5 items-center px-4 py-3 w-full bg-rose-50 rounded-xl max-md:max-w-full">
                 <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/8d0148f8eb4404f2a75a99c44c0b35db6ba68a27faeb0e05d47cc41d12c3445f?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f" className="object-contain shrink-0 self-stretch my-auto w-6 aspect-square" alt="" />
                 <label htmlFor="searchInput" className="sr-only">Buscar curso o diplomado</label>
-                <input type="text" id="searchInput" onChange={buscarProducto} placeholder="Buscar curso o diplomado" className="flex-1 shrink self-stretch my-auto basis-0 max-md:max-w-full bg-transparent border-none focus:outline-none" />
+                <input type="text" id="searchInput" onChange={buscarProducto} placeholder="Buscar curso o diplomado" className="flex-1 w-full py-3 px-3 text-base font-poppins_regular text-[#2D464C] border-0 focus:border-0 focus:ring-0 bg-transparent" style={{outline: 'none !important', border: 'none'}} defaultValue={GET.search}/>
               </div>
             </form>
             <div className="flex gap-3 justify-center items-center self-stretch my-auto min-w-[240px]">
