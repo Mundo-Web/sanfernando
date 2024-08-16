@@ -16,13 +16,10 @@ import axios from 'axios';
 
 
 const CatalogoGP = ({ productos, env_url, userIsLogged }) => {
-  const sectionStep = 'images/img/palacio.png';
-  const imgVideo = 'images/img/mujergp.png';
-  const imgPlay = 'images/img/iconoplayblanco.png';
 
   const [isListVisible, setIsListVisible] = useState(false)
   // const query = useRef({ query: '', order: '' });
-  const [query, setQuery] = useState({ query: GET.search, order: '' });
+  const [query, setQuery] = useState({ query: GET.search ?? '', order: '' });
   const [items, setItems] = useState();
 
 
