@@ -78,7 +78,7 @@
     ]
   },
   "resources/css/app.css": {
-    "file": "assets/app-OyBdKBQx.css",
+    "file": "assets/app-_uyzniPJ.css",
     "isEntry": true,
     "src": "resources/css/app.css"
   },
@@ -340,7 +340,7 @@
     "src": "resources/js/Home.jsx"
   },
   "resources/js/Login.jsx": {
-    "file": "assets/Login-IiqDpRMr.js",
+    "file": "assets/Login-BvIe94L-.js",
     "imports": [
       "resources/js/Utils/HtmlContent.jsx",
       "resources/js/Utils/ReactAppend.jsx",

@@ -17,19 +17,7 @@ class LoginResponse implements LoginResponseContract
         if ($request->wantsJson()) {
             return response()->json(['two_factor' => false]);
         }
-
-
-
-
-
-
-
-
-
-
-
-
-        
+ 
 
         switch ($role[0]) {
             case 'Admin':
