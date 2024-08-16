@@ -120,9 +120,12 @@ class IndexController extends Controller
     ])->rootView('app');
   }
 
-  public function contactof()
+  public function contacto()
   {
-    return Inertia::render('Contacto')->rootView('app');
+    $general = General::first();
+    return Inertia::render('Contacto', [
+      'general' => $general
+    ])->rootView('app');
   }
 
   public function desarrolloCurso()
@@ -268,16 +271,16 @@ class IndexController extends Controller
     return redirect()->route('comentario')->with(['mensaje' => $mensaje, 'alerta' => $alert]);
   }
 
-  public function contacto()
-  {
-    $general = General::first();
-    $categorias = Category::all();
-    $url_env = env('APP_URL');
-    $destacados = Products::where('destacar', '=', 1)->where('status', '=', 1)
-      ->where('visible', '=', 1)->with('tags')->activeDestacado()->get();
+  // public function contacto()
+  // {
+  //   $general = General::first();
+  //   $categorias = Category::all();
+  //   $url_env = env('APP_URL');
+  //   $destacados = Products::where('destacar', '=', 1)->where('status', '=', 1)
+  //     ->where('visible', '=', 1)->with('tags')->activeDestacado()->get();
 
-    return view('public.contact', compact('general', 'url_env', 'categorias', 'destacados'));
-  }
+  //   return view('public.contact', compact('general', 'url_env', 'categorias', 'destacados'));
+  // }
 
   public function carrito()
   {

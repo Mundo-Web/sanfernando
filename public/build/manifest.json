@@ -183,16 +183,14 @@
     "src": "resources/js/ConfirmEmail.jsx"
   },
   "resources/js/Contacto.jsx": {
-    "file": "assets/Contacto-djGJI4Zf.js",
+    "file": "assets/Contacto-7NNUZncG.js",
     "imports": [
       "resources/js/Utils/HtmlContent.jsx",
       "_index-TT1qJ6UJ.js",
       "resources/js/Utils/ReactAppend.jsx",
       "_CreateReactScript-QuaDmwri.js",
       "_main-jzs2GwAM.js",
-      "resources/js/components/Section/SliderFront.jsx",
-      "resources/js/components/Product/ProductCard.jsx",
-      "resources/js/components/Section/SliderTestimony.jsx",
+      "resources/js/components/Offer/OfferCard.jsx",
       "__commonjsHelpers-4gQjN7DL.js",
       "_index-jtdEOcur.js",
       "resources/js/Utils/CreateReactScript.jsx",

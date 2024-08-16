@@ -8,35 +8,15 @@ use App\Models\Message;
 use Illuminate\Http\Request;
 
 
-class MessageController extends Controller
+class MessageController extends BasicController
 {
-    /**
-     * Display a listing of the resource.
-     */
+    public $model = Message::class;
     public function index()
     {
-        //
         $mensajes = Message::where('status' , '=', 1 )->orderBy('created_at', 'DESC')->get();
         return view('pages.message.index', compact('mensajes'));
-    
-        
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
     function storePublic(Request $request)
     {
         $mensaje = new Message();
@@ -52,10 +32,6 @@ class MessageController extends Controller
         return response()->json(['message' => 'Solicitud enviada Correctamente']);
     }
 
-    /**
-     * Display the specified resource.
-     */
-    //public function show(Message $message)
     public function show($id)
     {
         //
@@ -65,30 +41,6 @@ class MessageController extends Controller
         $message->save();
 
         return view('pages.message.show', compact('message'));
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Message $message)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(UpdateMessageRequest $request, Message $message)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Message $message)
-    {
-        //
     }
 
     public function borrar(Request $request)
