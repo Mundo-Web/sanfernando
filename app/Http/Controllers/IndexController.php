@@ -67,7 +67,7 @@ class IndexController extends Controller
     $benefit = Strength::where('status', '=', 1)->take(9)->get();
     $testimonies = Testimony::where('status', '=', 1)->where('visible', '=', 1)->get();
 
-    $aboutUs = AboutUs::whereIn('titulo', ['TITULO', 'OBJETIVO'])->get();
+    $aboutUs = AboutUs::whereIn('titulo', ['TITULO-OBJETIVO', 'DESCRIPCION-OBJETIVO'])->get();
     $general = General::first();
 
     return Inertia::render('Home', [
@@ -112,8 +112,10 @@ class IndexController extends Controller
 
   public function nosotros()
   {
+    $aboutUs = AboutUs::all();
     $testimonies = Testimony::where('status', '=', 1)->where('visible', '=', 1)->get();
     return Inertia::render('Nosotros', [
+      'aboutUs' => $aboutUs,
       'testimonies' => $testimonies,
     ])->rootView('app');
   }
