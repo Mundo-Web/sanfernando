@@ -78,13 +78,28 @@ class IndexController extends Controller
       'aboutUs' => $aboutUs
     ])->rootView('app');
 
+<<<<<<< HEAD
+=======
+    // return view('public.index', compact('url_env', 'popups', 'banners', 'blogs', 'categoriasAll', 'productosPupulares', 'ultimosProductos', 'productos', 'destacados', 'descuentos', 'general', 'benefit', 'faqs', 'testimonie', 'slider', 'categorias', 'category'));
+>>>>>>> 500891dd366a4642e0310611d290a42e298abfa9
   }
 
   public function cursosyDiplomados()
   {
+<<<<<<< HEAD
     $productos =  Products::with(['tags', 'galeria', 'category'])->where('status', 1)->get();
 
     return Inertia::render('CatalogGP', ['productos' => $productos,  'env_url' => env('APP_URL')])->rootView('app');
+=======
+    $productos =  Products::with(['tags', 'galeria', 'category'])->where('status', 1)->take(12)->get();
+
+    //check if user is logged in
+    $userIsLogged = Auth::check();
+
+
+
+    return Inertia::render('CatalogGP', ['productos' => $productos,  'env_url' => env('APP_URL'), 'userIsLogged'=> $userIsLogged])->rootView('app');
+>>>>>>> 500891dd366a4642e0310611d290a42e298abfa9
   }
 
   public function detalleCurso()
@@ -586,16 +601,46 @@ class IndexController extends Controller
   public function searchProduct(Request $request)
   {
     $query = $request->input('query');
+    $order = $request->input('order');
+
     $resultados = Products::select('products.*')
       ->where('producto', 'like', "%$query%")
       ->join('categories', 'categories.id', 'products.categoria_id')
       ->where('categories.visible', 1)->where('products.status', 1)
+<<<<<<< HEAD
       ->with(['tags', 'galeria', 'category'])
+=======
+      ->with(['tags', 'galeria', 'category']);
+
+
+    switch ($order) {
+      case 'a-z':
+        $resultados = $resultados->orderBy('producto', 'asc');
+        break;
+      case 'z-a':
+        $resultados = $resultados->orderBy('producto', 'desc');
+        break;
+      case 'ultimos':
+        $resultados = $resultados->orderBy('created_at', 'desc');
+        break;
+      default:
+        // Default ordering if no valid order is provided
+        $resultados = $resultados->orderBy('created_at', 'asc');
+        break;
+    }
+    $totalCount = 0;
+    if ($request->requireTotalCount) {
+      $totalCount = $resultados->count('*');
+    }
+
+    $resultados = $resultados->skip($request->skip ?? 0)
+      ->take($request->take ?? 10)
+>>>>>>> 500891dd366a4642e0310611d290a42e298abfa9
       ->get();
 
 
 
-    return response()->json($resultados);
+    return response()->json(['resultado' => $resultados, 'totalCount' =>  $totalCount]);
   }
 
   public function direccion()
