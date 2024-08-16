@@ -170,7 +170,7 @@ const CursoDetalle = ({ producto }) => {
               </div>
             </div>
             {console.log(producto.beneficios)}
-            {producto?.beneficios?.length > 0 && (<div className="flex flex-col p-6 mt-10 w-full bg-rose-50 rounded-2xl max-md:px-5 max-md:max-w-full">
+            {JSON.parse(producto?.beneficios).length > 0 && (<div className="flex flex-col p-6 mt-10 w-full bg-rose-50 rounded-2xl max-md:px-5 max-md:max-w-full">
               <div className="text-2xl font-bold leading-tight text-neutral-800 max-md:max-w-full">
                 Beneficios
               </div>
@@ -202,8 +202,8 @@ const CursoDetalle = ({ producto }) => {
               src={'/' + producto.imagen_ambiente}
               className="object-contain mt-10 w-full rounded-xl aspect-[1.19] max-md:max-w-full" />)}
 
-
-            {producto?.curso_dirigido?.length > 0 && (<div className="flex flex-col p-8 mt-10 w-full bg-red-100 rounded-2xl max-md:px-5 max-md:max-w-full">
+            {console.log(JSON.parse(producto?.curso_dirigido).length > 0)}
+            {JSON.parse(producto?.curso_dirigido).length > 0 && (<div className="flex flex-col p-8 mt-10 w-full bg-red-100 rounded-2xl max-md:px-5 max-md:max-w-full">
               <div className="text-2xl font-bold leading-tight text-neutral-800">
                 Para quién es este curso:
               </div>
@@ -282,7 +282,7 @@ const CursoDetalle = ({ producto }) => {
               </div>
             </div>
             <div className="flex flex-col mt-10 w-full max-md:max-w-full">
-              {producto?.beneficios?.length > 0 && (<><div className="text-2xl font-bold leading-tight text-neutral-800">
+              {JSON.parse(producto?.beneficios).length > 0 && (<><div className="text-2xl font-bold leading-tight text-neutral-800">
                 Temario
               </div>
                 <div className="flex flex-col mt-6 w-full max-md:max-w-full gap-4">
