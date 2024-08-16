@@ -197,9 +197,11 @@ const CursoDetalle = ({ producto }) => {
                 </div>
               </div>
             </div>)}
-            <img loading="lazy"
-              srcset="https://cdn.builder.io/api/v1/image/assets/TEMP/ffb984d54cd5f4cc1c3a2283b893a1c3b15d53525135a49744e6132c80eab737?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f&width=100 100w, https://cdn.builder.io/api/v1/image/assets/TEMP/ffb984d54cd5f4cc1c3a2283b893a1c3b15d53525135a49744e6132c80eab737?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f&width=200 200w, https://cdn.builder.io/api/v1/image/assets/TEMP/ffb984d54cd5f4cc1c3a2283b893a1c3b15d53525135a49744e6132c80eab737?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f&width=400 400w, https://cdn.builder.io/api/v1/image/assets/TEMP/ffb984d54cd5f4cc1c3a2283b893a1c3b15d53525135a49744e6132c80eab737?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f&width=800 800w, https://cdn.builder.io/api/v1/image/assets/TEMP/ffb984d54cd5f4cc1c3a2283b893a1c3b15d53525135a49744e6132c80eab737?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f&width=1200 1200w, https://cdn.builder.io/api/v1/image/assets/TEMP/ffb984d54cd5f4cc1c3a2283b893a1c3b15d53525135a49744e6132c80eab737?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f&width=1600 1600w, https://cdn.builder.io/api/v1/image/assets/TEMP/ffb984d54cd5f4cc1c3a2283b893a1c3b15d53525135a49744e6132c80eab737?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f&width=2000 2000w, https://cdn.builder.io/api/v1/image/assets/TEMP/ffb984d54cd5f4cc1c3a2283b893a1c3b15d53525135a49744e6132c80eab737?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f"
-              className="object-contain mt-10 w-full rounded-xl aspect-[1.19] max-md:max-w-full" />
+            {console.log(producto.imagen_ambiente)}
+            {producto?.imagen_ambiente && (<img loading="lazy"
+              src={'/' + producto.imagen_ambiente}
+              className="object-contain mt-10 w-full rounded-xl aspect-[1.19] max-md:max-w-full" />)}
+
             <div className="flex flex-col p-8 mt-10 w-full bg-red-100 rounded-2xl max-md:px-5 max-md:max-w-full">
               <div className="text-2xl font-bold leading-tight text-neutral-800">
                 Para quién es este curso:
