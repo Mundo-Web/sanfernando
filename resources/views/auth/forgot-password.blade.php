@@ -1,9 +1,8 @@
 <x-authentication-layout>
 
-    <div class="flex h-screen">
+    <div class="flex flex-col md:flex-row justify-center h-screen">
       <!-- Primer div -->
-      <div class="basis-1/2 hidden md:block font-poppins">
-        <!-- Imagen ocupando toda la altura y sin desbordar -->
+      <div class="w-2/5 hidden md:block font-poppins">
         <div style="background-image: url('{{ asset('images/imagen_login.png') }}')"
           class="bg-cover bg-center bg-no-repeat w-full h-full shadow-lg">
           {{-- <h1 class="font-medium text-[24px] py-10 bg-black bg-opacity-25 text-center text-white">
@@ -11,19 +10,19 @@
           </h1> --}}
         </div>
       </div>
-  
+      
       <!-- Segundo div -->
-      <div class="w-full md:basis-1/2  text-[#151515] flex justify-center items-center font-Inter_Medium">
-        <div class="w-5/6 flex flex-col gap-5">
+      <div class="w-full md:w-3/5  text-[#151515] flex justify-center items-center">
+        <div class="w-5/6 flex flex-col gap-5 max-w-xl">
           <div class="flex flex-col gap-5 text-center md:text-left">
             @if (session('status'))
               <div class="mb-4 font-medium text-sm text-green-600">
                 {{ session('status') }}
               </div>
             @endif
-            <h1 class="font-semibold font-Inter_Medium text-4xl tracking-tight">Recuperar contraseña</h1>
-            <p class="font-normal text-base font-Inter_Medium tracking-tight">
-                Le enviaremos un correo electrónico para restablecer su contraseña.
+            <h1 class="font-bold font-poppins_semibold text-4xl tracking-tight">Recuperar contraseña</h1>
+            <p class="font-normal text-base font-poppins_regular">
+                Para crear una nueva contraseña, ingresa tu correo electrónico y te enviaremos instrucciones paso a paso.
             </p>
           </div>
           <div class="">
@@ -32,17 +31,17 @@
               <div>
                 <input type="text" placeholder="Correo electrónico" name="email"
                   id="email" type="email" :value="old('email')" required autofocus
-                  class="font-Inter_Medium w-full py-5 px-4 focus:outline-none placeholder-gray-400 font-normal text-base bg-[#F8F8F8] rounded-lg border-0 focus:border-transparent focus:ring-0" />
+                  class="w-full py-3 px-3 focus:outline-none text-[#CF072C] placeholder-[#CF072C] focus:placeholder-[#CF072C] font-normal text-base bg-[#FFF0F0] rounded-2xl border-2 border-transparent focus:border-2 focus:border-[#CF072C] focus:ring-0" />
               </div>
   
-              <div class="px-4">
+              <div class="">
                 <input type="submit" value="Enviar"
-                  class="text-white bg-[#006BF6] w-full py-4 rounded-3xl cursor-pointer font-light font-Inter_Medium tracking-wide" />
+                  class="text-white bg-[#CF072C] w-full py-3 rounded-2xl cursor-pointer font-semibold font-poppins_regular text-center" />
               </div>
   
              <div class="flex flex-row justify-center items-centerpx-4">
                 <a href="{{ route('login') }}" 
-                  class="text-[#006BF6] w-full py-2 rounded-3xl cursor-pointer font-light font-Inter_Medium tracking-normal text-center">Cancelar</a>
+                  class="text-[#CF072C] w-full py-2 rounded-3xl cursor-pointer font-semibold font-poppins_regular tracking-normal text-center">Cancelar</a>
               </div>
   
             </form>
@@ -50,6 +49,7 @@
           </div>
         </div>
       </div>
+
     </div>
   </x-authentication-layout>
   

@@ -55,18 +55,16 @@ const Login = ({ PUBLIC_RSA_KEY, token, APP_DOMAIN, APP_PROTOCOL, APP_URL }) => 
 
   return (
     <>
-      <div className="flex h-screen">
+      <div className="flex flex-col md:flex-row h-screen">
 
-        <div className="basis-1/2 hidden md:block font-poppins">
-
+        <div className="md:w-1/3 hidden md:block font-poppins">
           <div style={{ backgroundImage: `url(${APP_URL + '/images/imagen_login.png'})` }}
             className="bg-cover bg-center bg-no-repeat w-full h-full shadow-lg">
-
           </div>
         </div>
 
 
-        <div className="w-full md:basis-1/2  text-[#151515] flex justify-center items-center font-Inter_Medium">
+        <div className="w-full md:w-2/3  text-[#151515] flex justify-center items-center font-Inter_Medium">
           <div className="w-5/6 flex flex-col gap-5">
             <div className="flex flex-col gap-5 text-center md:text-left">
               {/* @if (session('status'))
