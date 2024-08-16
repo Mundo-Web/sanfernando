@@ -78,7 +78,7 @@
     ]
   },
   "resources/css/app.css": {
-    "file": "assets/app-danY6T_k.css",
+    "file": "assets/app-silR8TRj.css",
     "isEntry": true,
     "src": "resources/css/app.css"
   },
@@ -183,16 +183,14 @@
     "src": "resources/js/ConfirmEmail.jsx"
   },
   "resources/js/Contacto.jsx": {
-    "file": "assets/Contacto-0lYKeg5-.js",
+    "file": "assets/Contacto-7NNUZncG.js",
     "imports": [
       "resources/js/Utils/HtmlContent.jsx",
       "_index-TT1qJ6UJ.js",
       "resources/js/Utils/ReactAppend.jsx",
       "_CreateReactScript-QuaDmwri.js",
       "_main-jzs2GwAM.js",
-      "resources/js/components/Section/SliderFront.jsx",
-      "resources/js/components/Product/ProductCard.jsx",
-      "resources/js/components/Section/SliderTestimony.jsx",
+      "resources/js/components/Offer/OfferCard.jsx",
       "__commonjsHelpers-4gQjN7DL.js",
       "_index-jtdEOcur.js",
       "resources/js/Utils/CreateReactScript.jsx",
@@ -221,7 +219,7 @@
     "src": "resources/js/CursoDesarrollo.jsx"
   },
   "resources/js/CursoDetalle.jsx": {
-    "file": "assets/CursoDetalle-tpeM25UF.js",
+    "file": "assets/CursoDetalle-uzjSwZnI.js",
     "imports": [
       "resources/js/Utils/HtmlContent.jsx",
       "_index-TT1qJ6UJ.js",
@@ -318,7 +316,7 @@
     "src": "resources/js/ExamenPregunta.jsx"
   },
   "resources/js/Home.jsx": {
-    "file": "assets/Home-4o1nZRA2.js",
+    "file": "assets/Home-jaDIuC_z.js",
     "imports": [
       "resources/js/Utils/HtmlContent.jsx",
       "_index-TT1qJ6UJ.js",
@@ -358,7 +356,7 @@
     "src": "resources/js/Login.jsx"
   },
   "resources/js/Nosotros.jsx": {
-    "file": "assets/Nosotros-QPJBu81u.js",
+    "file": "assets/Nosotros-l2BeEICG.js",
     "imports": [
       "resources/js/Utils/HtmlContent.jsx",
       "_index-TT1qJ6UJ.js",

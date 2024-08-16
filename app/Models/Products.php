@@ -38,6 +38,12 @@ class Products extends Model
     'creditos',
     'duracion',
     'fecha_inicio',
+    'beneficios',
+    'curso_dirigido',
+    'description2',
+    'temario',
+    'incluye',
+    'que_lograras'
     // 'precio_reseller'
   ];
 
@@ -63,6 +69,12 @@ class Products extends Model
   public function tags()
   {
     return $this->belongsToMany(Tag::class, 'tags_xproducts', 'producto_id', 'tag_id');
+    
+  }
+  public function docentes()
+  {
+    return $this->belongsToMany(Staff::class, 'staff_xproducts', 'producto_id', 'staff_id');
+    
   }
 
   public function scopeActiveDestacado($query)

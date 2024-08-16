@@ -22,6 +22,11 @@ const Home = ({
   const imgVideo = 'images/img/mujergp.png';
   const imgPlay = 'images/img/iconoplayblanco.png';
 
+  const data = {}
+  aboutUs.forEach(x => {
+    data[x.titulo] = x.descripcion
+  })
+
   return (<>
     <section className="w-full relative">
       <SliderFront banners={banners} />
@@ -116,17 +121,17 @@ const Home = ({
       <div
         className="flex flex-wrap gap-10 items-center self-stretch my-auto text-white min-w-[240px] max-md:max-w-full">
         <article className="flex flex-col self-stretch my-auto">
-          <h3 className="text-4xl font-bold leading-tight font-poppins_regular">6.3k</h3>
+          <h3 className="text-4xl font-bold leading-tight font-poppins_regular">{data.CURSOS}</h3>
           <p className="self-start text-base font-medium font-poppins_regular leading-8 text-center">Cursos online
           </p>
         </article>
         <article className="flex flex-col self-stretch my-auto">
-          <h3 className="text-4xl font-bold leading-tight font-poppins_regular">26k</h3>
+          <h3 className="text-4xl font-bold leading-tight font-poppins_regular">{data.ESTUDIANTES}</h3>
           <p className="self-start text-base font-medium font-poppins_regular leading-8 text-center">Alumnos
             certificado</p>
         </article>
         <article className="flex flex-col justify-center self-stretch my-auto">
-          <h3 className="text-4xl font-bold leading-tight font-poppins_regular">99.9%</h3>
+          <h3 className="text-4xl font-bold leading-tight font-poppins_regular">{data['TASA-EXITO']}</h3>
           <p className="self-start text-base font-medium font-poppins_regular leading-8 text-center">Tasa de éxito
           </p>
         </article>

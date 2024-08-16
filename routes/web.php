@@ -27,6 +27,7 @@ use App\Http\Controllers\CarritoController;
 use App\Http\Controllers\FaqsController;
 use App\Http\Controllers\FooterController;
 use App\Http\Controllers\GalerieController;
+use App\Http\Controllers\IconController;
 use App\Http\Controllers\LogosClientController;
 
 use App\Http\Controllers\IndexController;
@@ -70,7 +71,7 @@ use App\Models\LibroReclamaciones;
 Route::get('/servicios', [IndexController::class, 'servicios'])->name('servicios');
 Route::get('/comentario', [IndexController::class, 'comentario'])->name('comentario');
 Route::post('/comentario/nuevo', [IndexController::class, 'hacerComentario'])->name('nuevocomentario');
-Route::get('/contacto', [IndexController::class, 'contacto'])->name('contacto');
+// Route::get('/contacto', [IndexController::class, 'contacto'])->name('contacto');
 Route::get('/libro-de-reclamaciones', [IndexController::class, 'librodereclamaciones'])->name('librodereclamaciones');
 Route::get('/blog/{filtro}', [IndexController::class, 'blog'])->name('blog');
 Route::get('/post/{id}', [IndexController::class, 'detalleBlog'])->name('detalleBlog');
@@ -246,6 +247,8 @@ Route::middleware(['auth:sanctum', 'verified', 'can:Admin'])->group(function () 
         Route::post('/popup/updateVisible', [PopupController::class, 'updateVisible'])->name('popup.updateVisible');
 
         Route::get('/subscripciones', [NewsletterSubscriberController::class, 'showSubscripciones'])->name('subscripciones') ;
+
+        Route::resource('icons', IconController::class);
 
         Route::fallback(function () {
             return view('pages/utility/404');

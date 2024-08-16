@@ -28,6 +28,7 @@ class DatabaseSeeder extends Seeder
             PricesTableSeeder::class,
             PoliticasDatos::class,
             AboutUsSeeder::class,
+            IconsTableSeeder::class,
             TestimonySeeder::class,
             productosCursosSeeder::class
         ]);

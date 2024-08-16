@@ -323,7 +323,7 @@
             </a>
 
             {{-- @if ($offerExists) --}}
-            <a href="/docente" class="font-medium hover:opacity-75">
+            <a href="{{route('Docente.jsx')}}" class="font-medium hover:opacity-75">
               <span class="underline-this">Docentes</span>
             </a>
             {{-- @endif --}}
@@ -339,7 +339,7 @@
             @endif
 
 
-            <a href="#" class="font-medium hover:opacity-75  ">
+            <a href="{{route('Contacto.jsx')}}" class="font-medium hover:opacity-75  ">
               <span class="underline-this">Contacto</span>
             </a>
             @if ($tags->count() > 0)

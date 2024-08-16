@@ -136,6 +136,7 @@
         <x-menu.item id="galerie" href="{{ route('galerie.index') }}" icon="fas fa-images">Galerias</x-menu.item>
         <x-menu.item id="subscripciones" href="{{ route('subscripciones') }}"
           icon="fas fa-images">Subscripciones</x-menu.item>
+        <x-menu.item id="icons" href="{{ route('icons.index') }}" icon="fas fa-images">Iconos</x-menu.item>
       </x-menu.group>
     </div>
     <!-- Expand / collapse button -->

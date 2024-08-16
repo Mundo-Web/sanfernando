@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AddressController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\MessageController;
 use App\Http\Controllers\OfferController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProductsController;
@@ -32,9 +33,12 @@ Route::post('/payment/culqi', [PaymentController::class, 'culqi'])->name('paymen
 
 Route::get('/offers/{id}', [OfferController::class, 'get'])->name('offers.get');
 
+Route::post('/messages', [MessageController::class, 'save'])->name('messages.save');
+
 Route::middleware(['web', 'auth:sanctum', 'verified'])->group(function () {
 
     Route::get('/dashboard/top-products/{orderBy}', [DashboardController::class, 'topProducts'])->name('dashboard.top-products');
+
 
     Route::post('/address', [AddressController::class, 'save'])->name('address.save');
     Route::delete('/address/{id}', [AddressController::class, 'delete'])->name('address.delete');

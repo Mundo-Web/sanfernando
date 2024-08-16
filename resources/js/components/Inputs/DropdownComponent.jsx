@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const DropdownComponent = () => {
+const DropdownComponent = ({ tema }) => {
     const [isOpen, setIsOpen] = useState(false);
 
     const toggleContent = () => {
@@ -15,7 +15,7 @@ const DropdownComponent = () => {
                         src="https://cdn.builder.io/api/v1/image/assets/TEMP/b99f6f1e6d27e66f09ea0f6250e810c5af4cda76cae97bf7801630a3d13ff88c?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f"
                         className={`object-contain shrink-0 w-5 aspect-square arrowvertical transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`} />
                     <div className="flex-1 shrink basis-0">
-                        Módulo 1: Marco conceptual y normativo del Sistema Nacional de Control - SNC y el Ejercicio de Control Gubernamental.
+                        {tema.desc}
                     </div>
                 </div>
                 <div className="flex gap-4 items-start text-sm tracking-normal leading-loose text-gray-600">
@@ -23,13 +23,13 @@ const DropdownComponent = () => {
                         <img loading="lazy"
                             src="https://cdn.builder.io/api/v1/image/assets/TEMP/023d6aa6e4775bb71fca3d2a8e5c44ea433e19ced445762a9b117860305957fb?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f"
                             className="object-contain shrink-0 self-stretch my-auto w-5 aspect-square" />
-                        <div className="self-stretch my-auto">4 lectures</div>
+                        <div className="self-stretch my-auto">{tema.recurso} RECURSOS</div>
                     </div>
                     <div className="flex gap-1.5 items-center whitespace-nowrap">
                         <img loading="lazy"
                             src="https://cdn.builder.io/api/v1/image/assets/TEMP/f07d0a554c69ac7c4aed36c3e73dc4a8b92c6e3bd55bb81a1fe2f7634a0e5ba0?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f"
                             className="object-contain shrink-0 self-stretch my-auto w-5 aspect-square" />
-                        <div className="self-stretch my-auto">51m</div>
+                        <div className="self-stretch my-auto">{tema.tiempo}m</div>
                     </div>
                 </div>
             </div>
@@ -69,14 +69,14 @@ const DropdownComponent = () => {
                         <div className="leading-loose">07:31</div>
                     </div>
                     <div class="flex flex-wrap gap-10 justify-between items-center w-full leading-loose max-md:max-w-full">
-                      <div class="flex gap-2 items-center self-stretch my-auto">
-                             <img loading="lazy"
-                                   src="https://cdn.builder.io/api/v1/image/assets/TEMP/0d1964115afa9d30cb0d63ff8aae9573f8607e213ed3e511568f4f93827f6c08?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f"
-                                   class="object-contain shrink-0 self-stretch my-auto w-4 aspect-square" />
-                             <div class="self-stretch my-auto">Examen final del bloque</div>
-                      </div>
-                      <div class="self-stretch my-auto">5.3 MB</div>
-                    </div>              
+                        <div class="flex gap-2 items-center self-stretch my-auto">
+                            <img loading="lazy"
+                                src="https://cdn.builder.io/api/v1/image/assets/TEMP/0d1964115afa9d30cb0d63ff8aae9573f8607e213ed3e511568f4f93827f6c08?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f"
+                                class="object-contain shrink-0 self-stretch my-auto w-4 aspect-square" />
+                            <div class="self-stretch my-auto">Examen final del bloque</div>
+                        </div>
+                        <div class="self-stretch my-auto">5.3 MB</div>
+                    </div>
                 </div>
             )}
         </div>

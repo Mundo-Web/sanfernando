@@ -15,9 +15,9 @@
 
           <h2 class="font-semibold text-slate-800 dark:text-slate-100 text-2xl tracking-tight">
             @if (!$product->id)
-              Nuevo producto
+              Nuevo Curso
             @else
-              Actualizar producto - {{ $product->producto }}
+              Actualizar Curso - {{ $product->producto }}
             @endif
           </h2>
         </header>
@@ -32,7 +32,7 @@
 
                   <div class="col-span-5 md:col-span-3">
 
-                    <label for="producto">Producto <span class="text-red-500 font-bold">*</span></label>
+                    <label for="producto">Curso <span class="text-red-500 font-bold">*</span></label>
 
                     <div class="relative mb-2  mt-2">
                       <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
@@ -40,12 +40,12 @@
                       </div>
                       <input type="text" id="producto" name="producto" value="{{ $product->producto }}"
                         class="mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                        placeholder="Producto" required>
+                        placeholder="Curso" required>
 
 
                     </div>
                   </div>
-                  <div class="col-span-5 md:col-span-2">
+                  {{--  <div class="col-span-5 md:col-span-2">
 
                     <label for="color">Color <span class="text-red-500 font-bold">*</span></label>
 
@@ -59,7 +59,7 @@
 
 
                     </div>
-                  </div>
+                  </div> --}}
                   <div class="col-span-5 md:col-span-5 mt-2">
 
                     <label for="extract">Extracto</label>
@@ -84,13 +84,33 @@
                       <x-form.quill id="description" :value="$product->description" />
                     </div>
                   </div>
+                  <div class="col-span-5 md:col-span-5">
+                    <label for="description">¿A quién va dirigido?
+                    </label>
+                    <div class="relative mb-2 mt-2">
+                      {{-- <textarea type="text" rows="2" id="description" name="description" value=""
+                        class="mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        placeholder="Descripción">{{ $product->description }}</textarea> --}}
+                      <x-form.quill id="description2" :value="$product->description2" />
+                    </div>
+                  </div>
+                  <div class="col-span-5 md:col-span-5">
+                    <label for="lograras">¿Que lograras?
+                    </label>
+                    <div class="relative mb-2 mt-2">
+                      {{-- <textarea type="text" rows="2" id="description" name="description" value=""
+                        class="mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        placeholder="Descripción">{{ $product->description }}</textarea> --}}
+                      <x-form.quill id="lograras" :value="$product->lograras" />
+                    </div>
+                  </div>
 
                   <hr class="col-span-5">
 
                   <div class="col-span-5 md:col-span-5 mb-2">
                     <label for=""
                       class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Previsualizacion del
-                      producto</label>
+                      Curso</label>
                     <div class="flex flex-wrap items-center gap-4">
                       <div for="imagen_ambiente" x-data="{ showAmbiente: false }" @mouseenter="showAmbiente = true"
                         @mouseleave="showAmbiente = false"
@@ -123,8 +143,7 @@
                         @else
                           <img id="imagen_ambiente_previewer" x-show="showAmbiente"
                             x-transition:enter="transition ease-out duration-300 transform"
-                            x-transition:enter-start="opacity-0 scale-95"
-                            x-transition:enter-end="opacity-100 scale-100"
+                            x-transition:enter-start="opacity-0 scale-95" x-transition:enter-end="opacity-100 scale-100"
                             x-transition:leave="transition ease-in duration-300 transform"
                             x-transition:leave-start="opacity-100 scale-100"
                             x-transition:leave-end="opacity-0 scale-95" src="{{ asset('images/img/noimagen.jpg') }}"
@@ -132,7 +151,7 @@
                         @endif
                       </div>
                       <div>
-                        <div class="mb-4">
+                        {{-- <div class="mb-4">
                           <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                             for="image_texture">Imagen de textura <span
                               class="text-red-500 font-bold">*</span></label>
@@ -144,11 +163,11 @@
                           </label>
                           <input data-id="input_img" class="hidden" id="image_texture" name="image_texture"
                             type="file" accept="image/*">
-                        </div>
+                        </div> --}}
 
                         <div class="mb-4">
                           <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                            for="imagen">Imagen del producto</label>
+                            for="imagen">Imagen del Curso</label>
                           <input data-id="input_img"
                             class="py-1 px-2 block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
                             id="imagen" name="imagen" type="file" accept="image/*"
@@ -168,8 +187,8 @@
 
                   <hr class="col-span-5">
 
-                  <div class="col-span-5">
-                    <label for="imagenes mb-2">Otras imagenes del producto</label>
+                  {{--   <div class="col-span-5">
+                    <label for="imagenes mb-2">Otras imagenes del Curso</label>
                     <div id="imagenes" class="w-full flex flex-wrap gap-1">
 
                       <div id="imagenes_sortable" class="flex flex-wrap gap-1 max-w-full">
@@ -203,7 +222,7 @@
                           src="{{ asset('images/img/image-plus.jpg') }}" alt="">
                       </label>
                     </div>
-                  </div>
+                  </div> --}}
 
                   {{-- <div class="md:col-span-5">
                     <label class="block mb-1" for="imagen">Imagen del producto</label>
@@ -316,7 +335,7 @@
 
                 </div>
 
-                <div class="md:col-span-3">
+                {{-- <div class="md:col-span-3">
                   <label for="sku">Sku</label>
                   <div class="relative mb-2  mt-2">
                     <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
@@ -328,7 +347,7 @@
                       class="mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                       placeholder="Sku">
                   </div>
-                </div>
+                </div> --}}
 
                 <div class="md:col-span-5">
                   <label for="categoria_id">Categoria <span class="text-red-500 font-bold">*</span></label>
@@ -364,10 +383,10 @@
                     </select>
                   </div>
                 </div> --}}
-
-                <div class="md:col-span-5 mt-2">
+                {{-- ESTE CURSO INCLUYE  --}}
+                {{-- <div class="md:col-span-5 mt-2">
                   <div class=" flex items-end justify-between gap-2 ">
-                    <label for="specifications">Especificaciones </label>
+                    <label for="specifications">Este Curso Incluye </label>
                     <button type="button" id="AddEspecifiacion"
                       class="text-blue-500 hover:underline focus:outline-none font-medium">
                       <i class="fa fa-plus"></i>
@@ -388,19 +407,204 @@
                           class="mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                           placeholder="Titulo">
                       </div>
+
+
+                      <div class=" mb-2 mt-2">
+
+                        <div class="relative">
+                          <button
+                            class="btn btn-secondary dropdown-toggle bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                            type="button" id="dropdownMenuButton">
+                            Selecciona un Icono
+                          </button>
+                          <div class="dropdown-menu absolute hidden bg-white shadow-lg rounded-lg mt-1 w-full z-10">
+                            @foreach ($icons as $icon)
+                              <a class="dropdown-item flex items-center p-2 hover:bg-gray-100 cursor-pointer"
+                                href="#" data-icon-id="{{ $icon->id }}">
+                                <img src="{{ asset($icon->path) }}" alt="{{ $icon->name }}" width="30"
+                                  class="mr-2">
+                                {{ $icon->name }}
+                              </a>
+                            @endforeach
+                          </div>
+                        </div>
+                        <input type="hidden" name="icon_id" id="selectedIconId">
+                      </div>
+
+                    </div>
+                  @endforeach
+                </div> --}}
+                <div class="md:col-span-5">
+                  <div class="flex items-end justify-between gap-2">
+                    <label for="specifications">Curso Incluye</label>
+                    <button type="button" id="AddEspecifiacion"
+                      class="text-blue-500 hover:underline focus:outline-none font-medium"><i class="fa fa-plus"></i>
+                      Agregar</button>
+                  </div>
+                  <div id="specifications-container" class="w-full">
+                    @php
+                      $incluye = [];
+                      if (!is_null($product->incluye) && is_string($product->incluye)) {
+                          $decoded = json_decode($product->incluye, true);
+                          if (json_last_error() === JSON_ERROR_NONE) {
+                              $incluye = $decoded;
+                          }
+                      }
+                    @endphp
+                    @foreach ($incluye as $key => $item)
+                      <div class="flex gap-2 specification-item">
+                        <div class="relative mb-2 mt-2">
+                          <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                            <i class="text-lg text-gray-500 dark:text-gray-400 fas fa-pen"></i>
+                          </div>
+                          <input type="text" name="incluye[{{ $key }}][titulo]"
+                            value="{{ $item['titulo'] ?? '' }}"
+                            class="mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                            placeholder="Titulo">
+                        </div>
+                        <div class="relative mb-2 mt-2">
+
+                          <div class="relative w-full mt-1">
+                            <button
+                              class=" btn btn-secondary dropdown-toggle bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full  p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                              type="button">
+                              Selecciona Icono
+                            </button>
+                            <div class="dropdown-menu absolute hidden bg-white shadow-lg rounded-lg mt-1 w-full z-10">
+                              @foreach ($icons as $icon)
+                                <a class="dropdown-item flex items-center p-2 hover:bg-gray-100 cursor-pointer"
+                                  href="#" data-icon-id="{{ $icon->id }}"
+                                  data-icon-path="{{ asset($icon->path) }}">
+                                  <img src="{{ asset($icon->path) }}" alt="{{ $icon->name }}" width="30"
+                                    class="mr-2">
+                                  {{ $icon->name }}
+                                </a>
+                              @endforeach
+                            </div>
+                            <input type="hidden" name="incluye[{{ $key }}][icon]" class="selected-icon-id"
+                              value={{ $item['icon'] ?? '' }}>
+                          </div>
+
+                        </div>
+                      </div>
+                    @endforeach
+
+                  </div>
+                </div>
+
+                <div class="md:col-span-5 mt-2">
+                  <div class=" flex items-end justify-between gap-2 ">
+                    <label for="specifications">Beneficios </label>
+                    <button type="button" id="AddBeneficios"
+                      class="text-blue-500 hover:underline focus:outline-none font-medium">
+                      <i class="fa fa-plus"></i>
+                      Agregar
+                    </button>
+                  </div>
+                  @php
+                    $beneficios = [];
+                    if (!is_null($product->beneficios) && is_string($product->beneficios)) {
+                        $decoded = json_decode($product->beneficios, true);
+                        if (json_last_error() === JSON_ERROR_NONE) {
+                            $beneficios = $decoded;
+                        }
+                    }
+                  @endphp
+                  @foreach ($beneficios as $key => $item)
+                    @php
+                      $counter = count($especificacion) - $key;
+                    @endphp
+                    <div class="flex gap-2">
                       <div class="relative mb-2  mt-2">
                         <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                           <i class="text-lg text-gray-500 dark:text-gray-400 fas fa-pen"></i>
                         </div>
-                        <input type="text" id="specifications" name="specifications-{{ $counter }}"
-                          value="{{ $item->specifications }}"
+                        <input type="text" id="beneficios" name="beneficio[]" value="{{ $item }}"
                           class="mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                          placeholder="Especificacion">
+                          placeholder="Titulo">
                       </div>
+
                     </div>
                   @endforeach
                 </div>
 
+                <div class="md:col-span-5 mt-2">
+                  <div class="flex items-end justify-between gap-2">
+                    <label for="specifications">Para quien va este curso</label>
+                    <button type="button" id="AddparaquienCurso"
+                      class="text-blue-500 hover:underline focus:outline-none font-medium">
+                      <i class="fa fa-plus"></i> Agregar
+                    </button>
+                  </div>
+                  @php
+                    $cursodirigido = [];
+                    if (!is_null($product->curso_dirigido) && is_string($product->curso_dirigido)) {
+                        $decoded = json_decode($product->curso_dirigido, true);
+                        if (json_last_error() === JSON_ERROR_NONE) {
+                            $cursodirigido = $decoded;
+                        }
+                    }
+                  @endphp
+
+                  @if (!empty($cursodirigido))
+                    @foreach ($cursodirigido as $key => $item)
+                      <div class="flex gap-2">
+                        <div class="relative mb-2 mt-2">
+                          <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                            <i class="text-lg text-gray-500 dark:text-gray-400 fas fa-pen"></i>
+                          </div>
+                          <input type="text" id="curso_dirigido" name="curso_dirigido[]"
+                            value="{{ $item }}"
+                            class="mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                            placeholder="Titulo">
+                        </div>
+                      </div>
+                    @endforeach
+                  @endif
+                </div>
+                <div class="md:col-span-5 mt-2">
+                  <div class="flex items-end justify-between gap-2">
+                    <label for="specifications">Temario </label>
+                    <button type="button" id="AddTEmario"
+                      class="text-blue-500 hover:underline focus:outline-none font-medium">
+                      <i class="fa fa-plus"></i> Agregar
+                    </button>
+                  </div>
+                  @php
+                    $Temario = [];
+                    if (!is_null($product->temario) && is_string($product->temario)) {
+                        $decoded = json_decode($product->temario, true);
+                        if (json_last_error() === JSON_ERROR_NONE) {
+                            $Temario = $decoded;
+                        }
+                    }
+                  @endphp
+                  @foreach ($Temario as $key => $item)
+                    <div class="flex gap-2">
+                      <div class="relative mb-2 mt-2">
+                        <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                          <i class="text-lg text-gray-500 dark:text-gray-400 fas fa-pen"></i>
+                        </div>
+                        <input type="text" name="temario[{{ $key }}][desc]"
+                          value="{{ $item['desc'] ?? '' }}"
+                          class="mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                          placeholder="Descripción">
+                      </div>
+                      <div class="relative mb-2 mt-2">
+                        <input type="number" name="temario[{{ $key }}][recurso]"
+                          value="{{ $item['recurso'] ?? '' }}"
+                          class="mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                          placeholder="Recurso">
+                      </div>
+                      <div class="relative mb-2 mt-2">
+                        <input type="number" name="temario[{{ $key }}][tiempo]"
+                          value="{{ $item['tiempo'] ?? '' }}"
+                          class="mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                          placeholder="Tiempo">
+                      </div>
+                    </div>
+                  @endforeach
+                </div>
 
                 <div class="md:col-span-5">
                   <label for="producto">Atributos</label>
@@ -517,6 +721,29 @@
                   </div> --}}
                 </div>
               </div>
+              <div class=" grid gap-4 gap-y-2 text-sm grid-cols-1 md:grid-cols-5 rounded shadow-lg p-4 px-4 border">
+                <h4 class="font-semibold text-slate-800 dark:text-slate-100 text-xl tracking-tight">
+                  Docentes</h4>
+                <div class="md:col-span-5 flex justify-between gap-4">
+                  <ul class="flex flex-wrap w-full gap-2">
+                    @foreach ($docentes as $item)
+                      <li>
+                        <input type="checkbox" id="docentes-{{ $item->id }}" name="docentes[]"
+                          value="{{ $item->id }}" class="hidden peer"
+                          @if (in_array($item->id, $product->docentes->pluck('id')->toArray())) checked @endif>
+                        <label for="docentes-{{ $item->id }}"
+                          class="inline-flex items-center justify-between w-full px-2 py-1 text-gray-500 bg-white border-2 border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 peer-checked:border-blue-600 peer-checked:bg-blue-600 hover:text-gray-600 dark:peer-checked:text-gray-300 peer-checked:text-white hover:bg-gray-50 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">
+                          <div class="block">
+                            {{ $item->nombre }}
+                          </div>
+                        </label>
+                      </li>
+                    @endforeach
+
+                  </ul>
+
+                </div>
+              </div>
 
             </div>
 
@@ -529,7 +756,7 @@
             </div>
             <div class="inline-flex items-end">
               <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded">
-                Guardar producto
+                Guardar Curso
               </button>
             </div>
           </div>
@@ -551,6 +778,29 @@
     });
   </script> --}}
 
+  <script>
+    $(document).ready(function() {
+      $('#dropdownMenuButton').on('click', function() {
+        $(this).next('.dropdown-menu').toggleClass('hidden');
+      });
+
+      $('.dropdown-item').on('click', function(e) {
+        e.preventDefault();
+        var iconId = $(this).data('icon-id');
+        var iconName = $(this).text().trim();
+        $('#selectedIconId').val(iconId);
+        $('#dropdownMenuButton').text(iconName);
+
+        $(this).closest('.dropdown-menu').addClass('hidden');
+      });
+
+      $(document).on('click', function(e) {
+        if (!$(e.target).closest('.relative').length) {
+          $('.dropdown-menu').addClass('hidden');
+        }
+      });
+    });
+  </script>
   <script>
     $('#tags_id').select2({
       placeholder: 'Seleccionar Tag...',
@@ -583,9 +833,71 @@
     });
   </script>
 
+  <script>
+    $(document).ready(function() {
+      let specificationIndex = 1;
 
+      $('#AddEspecifiacion').on('click', function() {
+        const newSpecification = `
+                <div class="flex gap-2 specification-item">
+                    <div class="relative mb-2 mt-2">
+                        <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                            <i class="text-lg text-gray-500 dark:text-gray-400 fas fa-pen"></i>
+                        </div>
+                        <input type="text" name="incluye[${specificationIndex}][titulo]" class="mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Titulo">
+                    </div>
+                    <div class="relative mb-2 mt-2">
+                        <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                            <i class="text-lg text-gray-500 dark:text-gray-400 fas fa-pen"></i>
+                        </div>
+                        <div class="relative">
+                            <button class="btn btn-secondary dropdown-toggle bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" type="button">
+                                Selecciona un Icono
+                            </button>
+                            <div class="dropdown-menu absolute hidden bg-white shadow-lg rounded-lg mt-1 w-full z-10">
+                                @foreach ($icons as $icon)
+                                    <a class="dropdown-item flex items-center p-2 hover:bg-gray-100 cursor-pointer" href="#" data-icon-id="{{ $icon->id }}" data-icon-path="{{ asset($icon->path) }}">
+                                        <img src="{{ asset($icon->path) }}" alt="{{ $icon->name }}" width="30" class="mr-2">
+                                        {{ $icon->name }}
+                                    </a>
+                                @endforeach
+                            </div>
+                            <input type="hidden" name="incluye[${specificationIndex}][icon]" class="selected-icon-id">
+                        </div>
+                        
+                    </div>
+                </div>
+            `;
+        $('#specifications-container').append(newSpecification);
+        specificationIndex++;
+      });
+
+      $(document).on('click', '.dropdown-toggle', function() {
+        $(this).next('.dropdown-menu').toggleClass('hidden');
+      });
+
+      $(document).on('click', '.dropdown-item', function(e) {
+        e.preventDefault();
+        var iconId = $(this).data('icon-id');
+        var iconName = $(this).text().trim();
+        var iconPath = $(this).data('icon-path');
+        console.log(iconId, iconName, iconPath)
+        $(this).closest('.relative').find('.dropdown-toggle').text(iconName);
+        $(this).closest('.relative').find('.selected-icon-id').val(iconPath);
+        $(this).closest('.dropdown-menu').addClass('hidden');
+      });
+
+      $(document).on('click', function(e) {
+        if (!$(e.target).closest('.relative').length) {
+          $('.dropdown-menu').addClass('hidden');
+        }
+      });
+    });
+  </script>
 
   <script>
+    let valorInput = $('[id="specifications"]').length / 2
+
     function capitalizeFirstLetter(string) {
       return string.charAt(0).toUpperCase() + string.slice(1);
     }
@@ -606,75 +918,196 @@
 
       return elemento
     }
+    $("#AddTEmario").on('click', function(e) {
+      e.preventDefault();
+      valorInput++;
+
+      const addButton = document.getElementById("AddTEmario");
+      const parentContainer = addButton.parentElement.parentElement;
+
+      const divFlex = document.createElement("div");
+      divFlex.classList.add('flex', 'gap-2');
+
+      const descInput = createInput('temario[' + valorInput + '][desc]', 'Descripción', 'text');
+      const recursoInput = createInput('temario[' + valorInput + '][recurso]', 'Recurso', 'number');
+      const tiempoInput = createInput('temario[' + valorInput + '][tiempo]', 'Tiempo', 'number');
+
+      divFlex.appendChild(descInput);
+      divFlex.appendChild(recursoInput);
+      divFlex.appendChild(tiempoInput);
+
+      const fragment = document.createDocumentFragment();
+      fragment.appendChild(divFlex);
+
+      parentContainer.insertBefore(fragment, addButton.parentElement.nextSibling);
+    });
+
+    function createInput(name, placeholder, type) {
+      const divRelative = document.createElement("div");
+      divRelative.classList.add('relative', 'mb-2', 'mt-2');
+
+      const input = document.createElement("input");
+      input.setAttribute("type", type);
+      input.setAttribute("name", name);
+      input.setAttribute("placeholder", placeholder);
+      input.classList.add("mt-1", "bg-gray-50", "border", "border-gray-300", "text-gray-900", "text-sm", "rounded-lg",
+        "focus:ring-blue-500", "focus:border-blue-500", "block", "w-full", "p-2.5", "dark:bg-gray-700",
+        "dark:border-gray-600",
+        "dark:placeholder-gray-400", "dark:text-white", "dark:focus:ring-blue-500", "dark:focus:border-blue-500");
+
+      divRelative.appendChild(input);
+      return divRelative;
+    }
+
+    function AgregarBEneficios(elemento, valorInput, name) {
+      elemento.setAttribute("type", "text");
+      elemento.setAttribute("name", `${name}[]`);
+      elemento.setAttribute("placeholder", `${name == 'tittle'? 'Titulo': 'Especificacion'}`);
+      elemento.setAttribute("id", `beneficios`);
+
+      elemento.classList.add("mt-1", "bg-gray-50", "border", "border-gray-300", "text-gray-900", "text-sm",
+        "rounded-lg",
+        "focus:ring-blue-500", "focus:border-blue-500", "block", "w-full", "pl-10", "p-2.5",
+        "dark:bg-gray-700",
+        "dark:border-gray-600", "dark:placeholder-gray-400", "dark:text-white",
+        "dark:focus:ring-blue-500",
+        "dark:focus:border-blue-500");
+
+      return elemento
+    }
+
+    function cursoDirigido(elemento, valorInput, name) {
+      elemento.setAttribute("type", "text");
+      elemento.setAttribute("name", `${name}[]`);
+      elemento.setAttribute("placeholder", `Curso Dirigido`);
+      elemento.setAttribute("id", `cursoDirigido`);
+
+      elemento.classList.add("mt-1", "bg-gray-50", "border", "border-gray-300", "text-gray-900", "text-sm",
+        "rounded-lg",
+        "focus:ring-blue-500", "focus:border-blue-500", "block", "w-full", "pl-10", "p-2.5",
+        "dark:bg-gray-700",
+        "dark:border-gray-600", "dark:placeholder-gray-400", "dark:text-white",
+        "dark:focus:ring-blue-500",
+        "dark:focus:border-blue-500");
+
+      return elemento
+    }
     $('document').ready(function() {
       let valorInput = $('[id="specifications"]').length / 2
 
-      // tinymce.init({
-      //   selector: 'textarea#description',
-      //   height: 300,
-      //   plugins: [
-      //     'advlist', 'autolink', 'lists', 'link', 'charmap', 'preview',
-      //     'searchreplace', 'visualblocks', 'code', 'fullscreen',
-      //     'insertdatetime', 'table'
-      //   ],
-      //   toolbar: 'undo redo | blocks | ' +
-      //     'bold italic backcolor | alignleft aligncenter ' +
-      //     'alignright alignjustify | bullist numlist outdent indent | ' +
-      //     'removeformat | help',
-      //   content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px;}'
-      // });
 
-      $("#AddEspecifiacion").on('click', function(e) {
-        e.preventDefault()
-        valorInput++
+      $("#AddparaquienCurso").on('click', function(e) {
+        e.preventDefault();
+        valorInput++;
 
-        const addButton = document.getElementById("AddEspecifiacion");
+        const addButton = document.getElementById("AddparaquienCurso");
+        const parentContainer = addButton.parentElement.parentElement;
+
         const divFlex = document.createElement("div");
+        divFlex.classList.add('flex', 'gap-2');
+
         const dRelative = document.createElement("div");
-        const dRelative2 = document.createElement("div");
+        dRelative.classList.add('relative', 'mb-2', 'mt-2');
 
-        divFlex.classList.add('flex', 'gap-2')
-        dRelative.classList.add('relative', 'mb-2', 'mt-2')
-        dRelative2.classList.add('relative', 'mb-2', 'mt-2')
-
-        const iconContainer = document.createElement("div");
-        const icon = `<div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-          <i class="text-lg text-gray-500 dark:text-gray-400 fas fa-pen"></i>
-        </div>`
-        iconContainer.innerHTML = icon;
-
-        // Obtener el nodo del icono
-        const iconNode = iconContainer.firstChild;
-
-
+        const icon = document.createElement("div");
+        icon.classList.add('absolute', 'inset-y-0', 'left-0', 'flex', 'items-center', 'pl-3',
+          'pointer-events-none');
+        icon.innerHTML = '<i class="text-lg text-gray-500 dark:text-gray-400 fas fa-pen"></i>';
 
         const inputTittle = document.createElement("input");
-        const inputValue = document.createElement("input");
+        let inputT = cursoDirigido(inputTittle, valorInput, 'curso_dirigido');
 
-        let inputT = agregarElementos(inputTittle, valorInput, 'tittle')
-        let inputV = agregarElementos(inputValue, valorInput, 'specifications')
-
-
+        dRelative.appendChild(icon);
         dRelative.appendChild(inputT);
-        dRelative2.appendChild(inputV);
-
-
-        // Agregar el icono como primer hijo de dRelative
-        dRelative.insertBefore(iconNode, inputT);
-
-        // Clonar el nodo del icono para agregarlo como primer hijo de dRelative2
-        const iconNodeCloned = iconNode.cloneNode(true);
-        dRelative2.insertBefore(iconNodeCloned, inputV);
-
-
         divFlex.appendChild(dRelative);
-        divFlex.appendChild(dRelative2);
 
-        const parentContainer = addButton.parentElement
-          .parentElement; // Obtener el contenedor padre
-        parentContainer.insertBefore(divFlex, addButton.parentElement
-          .nextSibling); // Insertar el input antes del siguiente elemento después del botón
-      })
+        const fragment = document.createDocumentFragment();
+        fragment.appendChild(divFlex);
+
+        parentContainer.insertBefore(fragment, addButton.parentElement.nextSibling);
+      });
+      $("#AddBeneficios").on('click', function(e) {
+        e.preventDefault();
+        valorInput++;
+
+        const addButton = document.getElementById("AddBeneficios");
+        const parentContainer = addButton.parentElement.parentElement;
+
+        const divFlex = document.createElement("div");
+        divFlex.classList.add('flex', 'gap-2');
+
+        const dRelative = document.createElement("div");
+        dRelative.classList.add('relative', 'mb-2', 'mt-2');
+
+        const icon = document.createElement("div");
+        icon.classList.add('absolute', 'inset-y-0', 'left-0', 'flex', 'items-center', 'pl-3',
+          'pointer-events-none');
+        icon.innerHTML = '<i class="text-lg text-gray-500 dark:text-gray-400 fas fa-pen"></i>';
+
+        const inputTittle = document.createElement("input");
+        let inputT = AgregarBEneficios(inputTittle, valorInput, 'beneficio');
+
+        dRelative.appendChild(icon);
+        dRelative.appendChild(inputT);
+        divFlex.appendChild(dRelative);
+
+        const fragment = document.createDocumentFragment();
+        fragment.appendChild(divFlex);
+
+        parentContainer.insertBefore(fragment, addButton.parentElement.nextSibling);
+      });
+
+      /*  $("#AddEspecifiacion").on('click', function(e) {
+                                                       e.preventDefault()
+                                                       valorInput++
+
+                                                       const addButton = document.getElementById("AddEspecifiacion");
+                                                       const divFlex = document.createElement("div");
+                                                       const dRelative = document.createElement("div");
+                                                       const dRelative2 = document.createElement("div");
+
+                                                       divFlex.classList.add('flex', 'gap-2')
+                                                       dRelative.classList.add('relative', 'mb-2', 'mt-2')
+                                                       dRelative2.classList.add('relative', 'mb-2', 'mt-2')
+
+                                                       const iconContainer = document.createElement("div");
+                                                       const icon = `<div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+       <i class="text-lg text-gray-500 dark:text-gray-400 fas fa-pen"></i>
+     </div>`
+                                                       iconContainer.innerHTML = icon;
+
+                                                       // Obtener el nodo del icono
+                                                       const iconNode = iconContainer.firstChild;
+
+
+
+                                                       const inputTittle = document.createElement("input");
+                                                       const inputValue = document.createElement("input");
+
+                                                       let inputT = agregarElementos(inputTittle, valorInput, 'tittle')
+                                                       let inputV = agregarElementos(inputValue, valorInput, 'specifications')
+
+
+                                                       dRelative.appendChild(inputT);
+                                                       dRelative2.appendChild(inputV);
+
+
+                                                       // Agregar el icono como primer hijo de dRelative
+                                                       dRelative.insertBefore(iconNode, inputT);
+
+                                                       // Clonar el nodo del icono para agregarlo como primer hijo de dRelative2
+                                                       const iconNodeCloned = iconNode.cloneNode(true);
+                                                       dRelative2.insertBefore(iconNodeCloned, inputV);
+
+
+                                                       divFlex.appendChild(dRelative);
+                                                       divFlex.appendChild(dRelative2);
+
+                                                       const parentContainer = addButton.parentElement
+                                                         .parentElement; // Obtener el contenedor padre
+                                                       parentContainer.insertBefore(divFlex, addButton.parentElement
+                                                         .nextSibling); // Insertar el input antes del siguiente elemento después del botón
+                                                     }) */
 
 
       // Note that the name "myFormDropzone" is the camelized

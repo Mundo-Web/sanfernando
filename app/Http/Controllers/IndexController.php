@@ -28,6 +28,7 @@ use App\Models\Popup;
 use App\Models\Price;
 use App\Models\Sale;
 use App\Models\Specifications;
+use App\Models\Staff;
 use App\Models\Status;
 use App\Models\Tag;
 use App\Models\TermsAndCondition;
@@ -63,11 +64,11 @@ class IndexController extends Controller
   {
     $banners = Banners::where('status',  1)->where('visible',  1)->get()->toArray();
     $popularProducts = Products::where('products.destacar', '=', 1)->where('products.status', '=', 1)
-      ->where('visible', '=', 1)->with(['tags', 'category'])->activeDestacado()->get();
+      ->where('visible', '=', 1)->with(['tags', 'category'])->activeDestacado()->take(6)->get();
     $benefit = Strength::where('status', '=', 1)->take(9)->get();
     $testimonies = Testimony::where('status', '=', 1)->where('visible', '=', 1)->get();
 
-    $aboutUs = AboutUs::whereIn('titulo', ['TITULO', 'OBJETIVO'])->get();
+    $aboutUs = AboutUs::whereIn('titulo', ['TITULO-OBJETIVO', 'DESCRIPCION-OBJETIVO', 'CURSOS','ESTUDIANTES','TASA-EXITO'])->get();
     $general = General::first();
 
     return Inertia::render('Home', [
@@ -95,9 +96,13 @@ class IndexController extends Controller
     return Inertia::render('CatalogGP', ['productos' => $productos,  'env_url' => env('APP_URL'), 'userIsLogged'=> $userIsLogged])->rootView('app');
   }
 
-  public function detalleCurso()
+  public function detalleCurso(string $id )
   {
-    return Inertia::render('CursoDetalle')->rootView('app');
+    $producto = Products::with(['tags', 'galeria', 'category', 'docentes'])->where('id', $id)->first();
+    
+    return Inertia::render('CursoDetalle', [
+      'producto' => $producto
+    ])->rootView('app');
   }
 
   public function docente()
@@ -112,15 +117,20 @@ class IndexController extends Controller
 
   public function nosotros()
   {
+    $aboutUs = AboutUs::all();
     $testimonies = Testimony::where('status', '=', 1)->where('visible', '=', 1)->get();
     return Inertia::render('Nosotros', [
+      'aboutUs' => $aboutUs,
       'testimonies' => $testimonies,
     ])->rootView('app');
   }
 
-  public function contactof()
+  public function contacto()
   {
-    return Inertia::render('Contacto')->rootView('app');
+    $general = General::first();
+    return Inertia::render('Contacto', [
+      'general' => $general
+    ])->rootView('app');
   }
 
   public function desarrolloCurso()
@@ -266,16 +276,16 @@ class IndexController extends Controller
     return redirect()->route('comentario')->with(['mensaje' => $mensaje, 'alerta' => $alert]);
   }
 
-  public function contacto()
-  {
-    $general = General::first();
-    $categorias = Category::all();
-    $url_env = env('APP_URL');
-    $destacados = Products::where('destacar', '=', 1)->where('status', '=', 1)
-      ->where('visible', '=', 1)->with('tags')->activeDestacado()->get();
+  // public function contacto()
+  // {
+  //   $general = General::first();
+  //   $categorias = Category::all();
+  //   $url_env = env('APP_URL');
+  //   $destacados = Products::where('destacar', '=', 1)->where('status', '=', 1)
+  //     ->where('visible', '=', 1)->with('tags')->activeDestacado()->get();
 
-    return view('public.contact', compact('general', 'url_env', 'categorias', 'destacados'));
-  }
+  //   return view('public.contact', compact('general', 'url_env', 'categorias', 'destacados'));
+  // }
 
   public function carrito()
   {
