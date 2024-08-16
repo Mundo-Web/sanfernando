@@ -32,7 +32,7 @@ class IconController extends Controller
         $path = $this->saveImg($request, 'icon');
         // $path = $request->file('icon')->store('images/icons', 'public');
 
-        dump($path);    
+           
         Icon::create([
             'name' => $request->name,
             'path' => $path,
