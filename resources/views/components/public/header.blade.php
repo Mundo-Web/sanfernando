@@ -310,6 +310,12 @@
               <span class="underline-this">Inicio</span>
             </a>
 
+            <a id="productos-link" href="{{ route('CatalogoGP.jsx') }}" class="font-medium ">
+              <span class="underline-this">Cursos</span>
+              {{-- <div id="productos-link-h" class="w-0"></div> --}}
+
+            </a>
+
             <a id="productos-link" href="{{ route('Nosotros.jsx') }}" class="font-medium ">
               <span class="underline-this">Nosotros</span>
               {{-- <div id="productos-link-h" class="w-0"></div> --}}

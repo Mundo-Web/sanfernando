@@ -64,7 +64,7 @@ class IndexController extends Controller
     $banners = Banners::where('status',  1)->where('visible',  1)->get()->toArray();
     $popularProducts = Products::where('products.destacar', '=', 1)->where('products.status', '=', 1)
       ->where('visible', '=', 1)->with('tags')->activeDestacado()->get();
-    $benefit = Strength::where('status', '=', 1)->take(3)->get();
+    $benefit = Strength::where('status', '=', 1)->take(9)->get();
     $testimonies = Testimony::where('status', '=', 1)->where('visible', '=', 1)->get();
 
     $aboutUs = AboutUs::whereIn('titulo', ['TITULO', 'OBJETIVO'])->get();
