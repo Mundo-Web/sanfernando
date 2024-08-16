@@ -68,6 +68,7 @@ class IndexController extends Controller
     $testimonies = Testimony::where('status', '=', 1)->where('visible', '=', 1)->get();
 
     $aboutUs = AboutUs::whereIn('titulo', ['TITULO', 'OBJETIVO'])->get();
+    $general = General::first();
 
     return Inertia::render('Home', [
       'url_env' => env('APP_URL'),
@@ -75,7 +76,8 @@ class IndexController extends Controller
       'banners' => $banners,
       'benefit' =>  $benefit,
       'testimonies' => $testimonies,
-      'aboutUs' => $aboutUs
+      'aboutUs' => $aboutUs,
+      'general' => $general
     ])->rootView('app');
 
     // return view('public.index', compact('url_env', 'popups', 'banners', 'blogs', 'categoriasAll', 'productosPupulares', 'ultimosProductos', 'productos', 'destacados', 'descuentos', 'general', 'benefit', 'faqs', 'testimonie', 'slider', 'categorias', 'category'));
