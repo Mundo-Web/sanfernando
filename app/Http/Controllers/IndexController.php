@@ -63,11 +63,12 @@ class IndexController extends Controller
   {
     $banners = Banners::where('status',  1)->where('visible',  1)->get()->toArray();
     $popularProducts = Products::where('products.destacar', '=', 1)->where('products.status', '=', 1)
-      ->where('visible', '=', 1)->with('tags')->activeDestacado()->get();
-    $benefit = Strength::where('status', '=', 1)->take(3)->get();
+      ->where('visible', '=', 1)->with(['tags', 'category'])->activeDestacado()->get();
+    $benefit = Strength::where('status', '=', 1)->take(9)->get();
     $testimonies = Testimony::where('status', '=', 1)->where('visible', '=', 1)->get();
 
     $aboutUs = AboutUs::whereIn('titulo', ['TITULO', 'OBJETIVO'])->get();
+    $general = General::first();
 
     return Inertia::render('Home', [
       'url_env' => env('APP_URL'),
@@ -75,7 +76,8 @@ class IndexController extends Controller
       'banners' => $banners,
       'benefit' =>  $benefit,
       'testimonies' => $testimonies,
-      'aboutUs' => $aboutUs
+      'aboutUs' => $aboutUs,
+      'general' => $general
     ])->rootView('app');
 
     // return view('public.index', compact('url_env', 'popups', 'banners', 'blogs', 'categoriasAll', 'productosPupulares', 'ultimosProductos', 'productos', 'destacados', 'descuentos', 'general', 'benefit', 'faqs', 'testimonie', 'slider', 'categorias', 'category'));
@@ -110,7 +112,10 @@ class IndexController extends Controller
 
   public function nosotros()
   {
-    return Inertia::render('Nosotros')->rootView('app');
+    $testimonies = Testimony::where('status', '=', 1)->where('visible', '=', 1)->get();
+    return Inertia::render('Nosotros', [
+      'testimonies' => $testimonies,
+    ])->rootView('app');
   }
 
   public function contactof()
