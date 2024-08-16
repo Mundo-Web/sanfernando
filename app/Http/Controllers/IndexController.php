@@ -78,19 +78,11 @@ class IndexController extends Controller
       'aboutUs' => $aboutUs
     ])->rootView('app');
 
-<<<<<<< HEAD
-=======
     // return view('public.index', compact('url_env', 'popups', 'banners', 'blogs', 'categoriasAll', 'productosPupulares', 'ultimosProductos', 'productos', 'destacados', 'descuentos', 'general', 'benefit', 'faqs', 'testimonie', 'slider', 'categorias', 'category'));
->>>>>>> 500891dd366a4642e0310611d290a42e298abfa9
   }
 
   public function cursosyDiplomados()
   {
-<<<<<<< HEAD
-    $productos =  Products::with(['tags', 'galeria', 'category'])->where('status', 1)->get();
-
-    return Inertia::render('CatalogGP', ['productos' => $productos,  'env_url' => env('APP_URL')])->rootView('app');
-=======
     $productos =  Products::with(['tags', 'galeria', 'category'])->where('status', 1)->take(12)->get();
 
     //check if user is logged in
@@ -99,7 +91,6 @@ class IndexController extends Controller
 
 
     return Inertia::render('CatalogGP', ['productos' => $productos,  'env_url' => env('APP_URL'), 'userIsLogged'=> $userIsLogged])->rootView('app');
->>>>>>> 500891dd366a4642e0310611d290a42e298abfa9
   }
 
   public function detalleCurso()
@@ -607,9 +598,6 @@ class IndexController extends Controller
       ->where('producto', 'like', "%$query%")
       ->join('categories', 'categories.id', 'products.categoria_id')
       ->where('categories.visible', 1)->where('products.status', 1)
-<<<<<<< HEAD
-      ->with(['tags', 'galeria', 'category'])
-=======
       ->with(['tags', 'galeria', 'category']);
 
 
@@ -635,7 +623,6 @@ class IndexController extends Controller
 
     $resultados = $resultados->skip($request->skip ?? 0)
       ->take($request->take ?? 10)
->>>>>>> 500891dd366a4642e0310611d290a42e298abfa9
       ->get();
 
 
