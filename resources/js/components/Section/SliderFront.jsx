@@ -2,15 +2,10 @@ import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 const SliderFront = ({ banners }) => {
-  // const backgroundImage = item.name_image
-  // ? `url(${process.env.PUBLIC_URL + '/' + item.url_image + item.name_image})`
-  // : `url(${process.env.PUBLIC_URL + '/images/img/noimagenslider.jpg'})`;
-  const backgroundImageUrl = 'images/img/gp_portada.png';
 
   const onFormSubmit = (e) => {
     e.preventDefault()
     const input = $(e.target).find('[name="search"')
-
     location.href = `/catalogoGestion?search=${input.val()}`
   }
 
@@ -69,30 +64,6 @@ const SliderFront = ({ banners }) => {
                     </a>
                   </div>
                   <form onSubmit={onFormSubmit} id="tab1" className="flex flex-col sm:flex-row py-2 md:py-4 px-4 tab-content bg-white justify-between items-center gap-2 rounded-2xl w-full md:max-w-[700px]">
-                    {/* <div className="w-full">
-                      <div className="relative w-full text-left flex flex-col justify-center items-center">
-                        <select name="departamento_id" id="departamento_id2"
-                          className="w-full py-3 px-3 text-base font-poppins_regular font-semibold text-[#2D464C] border-0 focus:border-0 focus:ring-0">
-                          <option value="">Buscar por curso</option>
-                        </select>
-                      </div>
-                    </div>
-                    <div className="w-[0.5px] h-[50px] bg-[#E0DEF7] hidden sm:block">
-                    </div>
-                    <div className="w-full">
-                      <div className="relative w-full text-left flex flex-col justify-center items-center">
-                        <select name="categoria_id" id="categoria_id2"
-                          className="w-full py-3 px-3 text-base font-poppins_regular font-semibold text-[#2D464C] border-0 focus:border-0 focus:ring-0">
-                          <option value="">Todas las categorias</option>
-                          {
-                            categorias.map((categoria, i) => {
-                              return <option value={categoria.id}>{categoria.name}</option>
-                            })
-                          }
-
-                        </select>
-                      </div>
-                    </div> */}
 
                     <div className="w-full">
                       <div className="relative w-full text-left flex flex-col justify-center items-center">

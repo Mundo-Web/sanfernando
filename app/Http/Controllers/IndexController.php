@@ -61,53 +61,21 @@ class IndexController extends Controller
    */
   public function index()
   {
-    // $productos = Products::all();
-    $url_env = env('APP_URL');
-    $productos =  Products::with('tags')->get();
-    $ultimosProductos = Products::select('products.*')->join('categories', 'products.categoria_id', '=', 'categories.id')->where('categories.visible', 1)->where('products.status', '=', 1)->where('products.visible', '=', 1)->orderBy('products.id', 'desc')->take(5)->get();
-    $productosPupulares = Products::select('products.*')->join('categories', 'products.categoria_id', '=', 'categories.id')->where('categories.visible', 1)->where('products.status', '=', 1)->where('products.visible', '=', 1)->where('products.destacar', '=', 1)->orderBy('products.id', 'desc')->take(8)->get();
-    $blogs = Blog::where('status', '=', 1)->where('visible', '=', 1)->orderBy('id', 'desc')->take(3)->get();
     $banners = Banners::where('status',  1)->where('visible',  1)->get()->toArray();
-
-    $categorias = Category::where('destacar', '=', 1)->where('visible', '=', 1)->get();
-    $categoriasAll = Category::where('visible', '=', 1)->get();
-    $destacados = Products::where('products.destacar', '=', 1)->where('products.status', '=', 1)
+    $popularProducts = Products::where('products.destacar', '=', 1)->where('products.status', '=', 1)
       ->where('visible', '=', 1)->with('tags')->activeDestacado()->get();
-    $descuentos = Products::where('products.descuento', '>', 0)->where('products.status', '=', 1)
-      ->where('visible', '=', 1)->with('tags')->activeDestacado()->get();
-
-    $popups = Popup::where('status', '=', 1)->where('visible', '=', 1)->get();
-
-    $general = General::all();
     $benefit = Strength::where('status', '=', 1)->take(3)->get();
-    $faqs = Faqs::where('status', '=', 1)->where('visible', '=', 1)->get();
     $testimonies = Testimony::where('status', '=', 1)->where('visible', '=', 1)->get();
-    $slider = Slider::where('status', '=', 1)->where('visible', '=', 1)->get();
-    $category = Category::where('status', '=', 1)->where('destacar', '=', 1)->get();
 
     $aboutUs = AboutUs::whereIn('titulo', ['TITULO', 'OBJETIVO'])->get();
 
     return Inertia::render('Home', [
-      'component' => 'Home',
-      'url_env' => $url_env,
-      'productos' => $productos,
-      'ultimosProductos' => $ultimosProductos,
-      'productosPupulares' => $productosPupulares,
-      'blogs' => $blogs,
+      'url_env' => env('APP_URL'),
+      'popularProducts' => $popularProducts,
       'banners' => $banners,
-      'categorias' => $categorias,
-      'categoriasAll' => $categoriasAll,
-      'destacados' => $destacados,
-      'descuentos' => $descuentos,
-      'popups' => $popups,
-      'general' => $general,
       'benefit' =>  $benefit,
-      'faqs' => $faqs,
       'testimonies' => $testimonies,
-      'slider' => $slider,
-      'category' => $category,
       'aboutUs' => $aboutUs
-      
     ])->rootView('app');
 
     // return view('public.index', compact('url_env', 'popups', 'banners', 'blogs', 'categoriasAll', 'productosPupulares', 'ultimosProductos', 'productos', 'destacados', 'descuentos', 'general', 'benefit', 'faqs', 'testimonie', 'slider', 'categorias', 'category'));

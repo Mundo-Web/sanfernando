@@ -1,9 +1,6 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { createRoot } from 'react-dom/client'
 import CreateReactScript from './Utils/CreateReactScript'
-import { Fetch } from 'sode-extend-react'
-import arrayJoin from './Utils/ArrayJoin'
-import { set } from 'sode-extend-react/sources/cookies'
 import SliderFront from './components/Section/SliderFront'
 import SliderBenefit from './components/Section/SliderBenefit'
 import TwoColumn from './components/Section/TwoColumn'
@@ -14,18 +11,15 @@ import BenefitCard from './components/Benefits/BenefitCard'
 
 const Home = ({
   url_env,
-  productosPupulares,
+  popularProducts,
   banners,
   aboutUs,
   benefit,
   testimonies
- }) => {
+}) => {
   const sectionStep = 'images/img/palacio.png';
   const imgVideo = 'images/img/mujergp.png';
   const imgPlay = 'images/img/iconoplayblanco.png';
-
-
-  console.log(aboutUs)
 
   return (<>
     <section className="w-full relative">
@@ -61,7 +55,7 @@ const Home = ({
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 w-full gap-12 pt-12 pb-12">
 
-        {productosPupulares.map((producto, i) => {
+        {popularProducts.map((producto, i) => {
           return <Curse key={`product-${i}`} producto={producto} env_url={url_env} />
         })}
       </div>
