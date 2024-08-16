@@ -9,8 +9,10 @@ use App\Models\AttributesValues;
 use App\Models\Category;
 use App\Models\dxDataGrid;
 use App\Models\Galerie;
+use App\Models\Icon;
 use App\Models\Products;
 use App\Models\Specifications;
+use App\Models\Staff;
 use App\Models\SubCategory;
 use App\Models\Tag;
 use Illuminate\Http\Request;
@@ -53,10 +55,10 @@ class ProductsController extends Controller
     // dump($user->hasRole('Reseller'));
 
     $user = false;
-   
 
-    
-    
+
+
+
     $response =  new dxResponse();
     try {
       $instance = Products::select([
@@ -66,17 +68,17 @@ class ProductsController extends Controller
         ->leftJoin('attribute_product_values AS apv', 'products.id', 'apv.product_id')
         ->leftJoin('attributes AS a', 'apv.attribute_id', 'a.id')
         ->leftJoin('tags_xproducts AS txp', 'txp.producto_id', 'products.id')
-        ->leftJoin('categories', 'categories.id', 'products.categoria_id') 
-        ->where('categories.visible', 1);    
-        
-        if(Auth::check()){
-          $user = Auth::user();
-          $user = $user->hasRole('Reseller');
-          if ($user) { // Cambia 'admin' por el rol que deseas validar
-            $instance->where('products.precio_reseller', '>', 0);
-         }
+        ->leftJoin('categories', 'categories.id', 'products.categoria_id')
+        ->where('categories.visible', 1);
+
+      if (Auth::check()) {
+        $user = Auth::user();
+        $user = $user->hasRole('Reseller');
+        if ($user) { // Cambia 'admin' por el rol que deseas validar
+          $instance->where('products.precio_reseller', '>', 0);
         }
-        
+      }
+
 
       if ($request->group != null) {
         [$grouping] = $request->group;
@@ -132,7 +134,7 @@ class ProductsController extends Controller
       $response->message = 'Operación correcta';
       $response->data = $jpas;
       $response->totalCount = $totalCount;
-      $response->is_proveedor = $user ; 
+      $response->is_proveedor = $user;
     } catch (\Throwable $th) {
       $response->status = 400;
       $response->message = $th->getMessage() . " " . $th->getFile() . ' Ln.' . $th->getLine();
@@ -231,10 +233,13 @@ class ProductsController extends Controller
     $valorAtributo = AttributesValues::where("status", "=", true)->get();
     $tags = Tag::where("status", "=", true)->get();
     $categoria = Category::where('status', 1)->get();
+    $docentes = Staff::where('status', 1)->get();
+
+    $icons = Icon::all();
     // $subcategories = SubCategory::where('status', 1)->get();
     $galery = [];
     $especificacion = [json_decode('{"tittle":"", "specifications":""}', false)];
-    return view('pages.products.save', compact('product', 'atributos', 'valorAtributo', 'categoria', 'tags', 'especificacion',  'galery'));
+    return view('pages.products.save', compact('icons', 'docentes', 'product', 'atributos', 'valorAtributo', 'categoria', 'tags', 'especificacion',  'galery'));
   }
 
   public function edit(string $id)
@@ -249,8 +254,10 @@ class ProductsController extends Controller
     $categoria = Category::all();
     $subcategories = SubCategory::all();
     $galery = Galerie::where("product_id", "=", $id)->get();
+    $docentes = Staff::where('status', 1)->get();
+    $icons = Icon::all();
 
-    return view('pages.products.save', compact('product', 'atributos', 'valorAtributo', 'tags', 'categoria', 'especificacion', 'subcategories', 'galery'));
+    return view('pages.products.save', compact('product', 'docentes', 'icons', 'atributos', 'valorAtributo', 'tags', 'categoria', 'especificacion', 'subcategories', 'galery'));
   }
 
   private function saveImg(Request $request, string $field)
@@ -289,7 +296,7 @@ class ProductsController extends Controller
       return null;
     } catch (\Throwable $th) {
       //throw $th;
-      
+
     }
   }
 
@@ -298,13 +305,60 @@ class ProductsController extends Controller
    */
   public function store(Request $request)
   {
-    
     try {
       $especificaciones = [];
       $data = $request->all();
-      
+
+      if (isset($request->beneficio)) {
+        $beneficio = array_filter($request->beneficio, function ($value) {
+          return $value !== null && $value !== '';
+        });
+        if (!empty($beneficio)) {
+          $data['beneficios'] = json_encode($beneficio);
+        } else {
+          $data['beneficios'] = json_encode([]);
+        }
+      }
+
+      if (isset($request->curso_dirigido)) {
+        $curso_dirigido = array_filter($request->curso_dirigido, function ($value) {
+          return $value !== null && $value !== '';
+        });
+        if (!empty($curso_dirigido)) {
+          $data['curso_dirigido'] = json_encode($curso_dirigido);
+        } else {
+          $data['curso_dirigido'] = json_encode([]);
+        }
+      }
+
+      if (isset($request->temario)) {
+        $temario = array_filter($request->temario, function ($value) {
+          return $value !== null && $value !== '';
+        });
+        if (!empty($temario)) {
+          $data['temario'] = json_encode($temario);
+        } else {
+          $data['temario'] = json_encode([]);
+        }
+      }
+
+      if (isset($request->incluye)) {
+        $incluye = array_filter($request->incluye, function ($value) {
+          return $value !== null && $value !== '';
+        });
+        if (!empty($incluye)) {
+          $data['incluye'] = json_encode($incluye);
+        } else {
+          $data['incluye'] = json_encode([]);
+        }
+      }
+
+
+
+
       $atributos = null;
       $tagsSeleccionados = $request->input('tags_id');
+      $docentesSeleccionados = $request->input('docentes');
       // $valorprecio = $request->input('precio') - 0.1;
 
       $request->validate([
@@ -353,7 +407,7 @@ class ProductsController extends Controller
       });
 
       if (!isset($cleanedData['stock'])) {
-         $cleanedData['stock'] = 0 ;
+        $cleanedData['stock'] = 0;
       }
 
       $slug = strtolower(str_replace(' ', '-', $request->producto . '-' . $request->color));
@@ -396,6 +450,7 @@ class ProductsController extends Controller
 
       $this->GuardarEspecificaciones($producto->id, $especificaciones);
       $producto->tags()->sync($tagsSeleccionados);
+      $producto->docentes()->sync($docentesSeleccionados);
 
       Galerie::where('product_id', $producto->id)->delete();
       if ($request->galery) {
@@ -414,7 +469,7 @@ class ProductsController extends Controller
       return redirect()->route('products.index')->with('success', 'Publicación creado exitosamente.');
     } catch (\Throwable $th) {
       //  dump($th->getMessage());
-      
+
     }
   }
 

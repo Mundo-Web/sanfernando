@@ -21,7 +21,7 @@ Route::get('/contacto', [IndexController::class, 'contacto'])->name('Contacto.js
 Route::get('/desarrolloCurso', [IndexController::class, 'desarrolloCurso'])->name('CursoDesarrollo.jsx');
 Route::get('/examenFinalizado', [IndexController::class, 'examenFinalizado'])->name('ExamenFinalizado.jsx');
 Route::get('/examenPregunta', [IndexController::class, 'examenPregunta'])->name('ExamenPregunta.jsx');
-Route::get('/dashDocente', [IndexController::class, 'dashDocente'])->name('DashDocente.jsx');
+Route::get('/dashDocente', [IndexController::class, 'dashDocente'])->name('DashboardDocente.jsx');
 
 Route::get('/catalogo/{id?}', [IndexController::class, 'catalogo'])->name('Catalogo.jsx');
 Route::get('/ofertas/{id?}', [IndexController::class, 'ofertas'])->name('Ofertas.jsx');

@@ -15,4 +15,9 @@ class Staff extends Model
     'youtube',
     'twitter',
     'status'];
+
+    public function productos()
+{
+    return $this->belongsToMany(Products::class, 'staff_xproducts', 'staff_id', 'producto_id');
+}
 }

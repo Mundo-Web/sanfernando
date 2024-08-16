@@ -28,6 +28,7 @@ use App\Models\Popup;
 use App\Models\Price;
 use App\Models\Sale;
 use App\Models\Specifications;
+use App\Models\Staff;
 use App\Models\Status;
 use App\Models\Tag;
 use App\Models\TermsAndCondition;
@@ -95,9 +96,13 @@ class IndexController extends Controller
     return Inertia::render('CatalogGP', ['productos' => $productos,  'env_url' => env('APP_URL'), 'userIsLogged'=> $userIsLogged])->rootView('app');
   }
 
-  public function detalleCurso()
+  public function detalleCurso(string $id )
   {
-    return Inertia::render('CursoDetalle')->rootView('app');
+    $producto = Products::with(['tags', 'galeria', 'category', 'docentes'])->where('id', $id)->first();
+    
+    return Inertia::render('CursoDetalle', [
+      'producto' => $producto
+    ])->rootView('app');
   }
 
   public function docente()
@@ -145,7 +150,7 @@ class IndexController extends Controller
 
   public function dashDocente()
   {
-    return Inertia::render('DashDocente')->rootView('admin');
+    return Inertia::render('DashboardDocente')->rootView('dashboardDocente');
   }
   // public function catalogo(Request $request, string $id_cat = null)
   // {
