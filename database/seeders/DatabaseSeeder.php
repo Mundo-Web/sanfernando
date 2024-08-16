@@ -2,8 +2,6 @@
 
 namespace Database\Seeders;
 
-use App\Models\Strength;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -17,20 +15,6 @@ class DatabaseSeeder extends Seeder
     {
 
         $this->call([
-            /*
-            DashboardTableSeeder::class,
-            AnalyticsTableSeeder::class,
-            FintechTableSeeder::class,
-            CustomerSeeder::class,
-            OrderSeeder::class,
-            InvoiceSeeder::class,
-            MemberSeeder::class,
-            TransactionSeeder::class,
-            JobSeeder::class,
-            CampaignSeeder::class,
-            MarketerSeeder::class,
-            CampaignMarketerSeeder::class,
-            */
             BannerSeeder::class,
             RoleSeeder::class,
             UsersSeeder::class,
@@ -40,14 +24,13 @@ class DatabaseSeeder extends Seeder
             FaqsSeeder::class,
             BeneficiosSeeder::class,
             SliderSeeder::class,
-            // SubCategorySeeder::class,
-            // ProductSeeder::class,
             StatusSeeder::class,
             PricesTableSeeder::class,
             PoliticasDatos::class,
-            AboutUsSeeder::class, 
+            AboutUsSeeder::class,
             IconsTableSeeder::class,
-            //ServiceSeeder::class,
+            TestimonySeeder::class,
+            productosCursosSeeder::class
         ]);
     }
 }

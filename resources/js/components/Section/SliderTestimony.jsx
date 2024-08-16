@@ -1,5 +1,6 @@
 import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 import 'swiper/swiper-bundle.css';
 
 const SliderTestimony = ({ testimonies }) => {
@@ -8,6 +9,7 @@ const SliderTestimony = ({ testimonies }) => {
   return (
     <div className="swiper myTestimonios">
       <Swiper
+        modules={[Navigation, Pagination, Autoplay]}  // Habilitar los módulos
         slidesPerView={1}
         spaceBetween={20}
         loop={true}
@@ -29,17 +31,17 @@ const SliderTestimony = ({ testimonies }) => {
         }}
       >
         {
-          testimonies.map((testimony, i) => {
-            return <SwiperSlide>
+          testimonies.map((testimony, i) => (
+            <SwiperSlide key={i}>
               <div className="bg-[#FFF0F0] relative p-5 lg:p-8 gap-3 flex flex-col rounded-xl h-auto">
-                <img className="w-12" src={`${iconocomillas}`} alt="Comillas" />
+                <img className="w-12" src={iconocomillas} alt="Comillas" />
                 <p className="text-[#1D2026] text-lg lg:text-xl font-poppins_regular">
                   {testimony.testimonie}
                 </p>
-                <p>- {testimony.ocupation}</p>
+                <p>- {testimony.name}</p>
               </div>
             </SwiperSlide>
-          })
+          ))
         }
       </Swiper>
 

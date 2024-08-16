@@ -14,10 +14,10 @@ const TwoColumn = ({ aboutUs }) => {
         <h2 className="text-[#CF072C] font-poppins_regular font-semibold text-lg">Sobre nosotros</h2>
         <h1
           className="text-[#1D2026] font-poppins_bold font-semibold tracking-tighter text-3xl md:text-5xl leading-none md:leading-tight">
-          <HtmlContent html={data.TITULO} />
+          <HtmlContent html={data['TITULO-OBJETIVO']} />
         </h1>
         <p className="text-[#4E5566] text-base font-poppins_regular">
-          <HtmlContent html={data.OBJETIVO} />
+          <HtmlContent html={data['DESCRIPCION-OBJETIVO']} />
         </p>
         <div className="flex flex-row gap-5 font-poppins_semibold">
           <a href='/nosotros'

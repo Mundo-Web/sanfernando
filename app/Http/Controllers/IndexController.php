@@ -62,53 +62,23 @@ class IndexController extends Controller
    */
   public function index()
   {
-    // $productos = Products::all();
-    $url_env = env('APP_URL');
-    $productos =  Products::with('tags')->get();
-    $ultimosProductos = Products::select('products.*')->join('categories', 'products.categoria_id', '=', 'categories.id')->where('categories.visible', 1)->where('products.status', '=', 1)->where('products.visible', '=', 1)->orderBy('products.id', 'desc')->take(5)->get();
-    $productosPupulares = Products::select('products.*')->join('categories', 'products.categoria_id', '=', 'categories.id')->where('categories.visible', 1)->where('products.status', '=', 1)->where('products.visible', '=', 1)->where('products.destacar', '=', 1)->orderBy('products.id', 'desc')->take(8)->get();
-    $blogs = Blog::where('status', '=', 1)->where('visible', '=', 1)->orderBy('id', 'desc')->take(3)->get();
     $banners = Banners::where('status',  1)->where('visible',  1)->get()->toArray();
-
-    $categorias = Category::where('destacar', '=', 1)->where('visible', '=', 1)->get();
-    $categoriasAll = Category::where('visible', '=', 1)->get();
-    $destacados = Products::where('products.destacar', '=', 1)->where('products.status', '=', 1)
-      ->where('visible', '=', 1)->with('tags')->activeDestacado()->get();
-    $descuentos = Products::where('products.descuento', '>', 0)->where('products.status', '=', 1)
-      ->where('visible', '=', 1)->with('tags')->activeDestacado()->get();
-
-    $popups = Popup::where('status', '=', 1)->where('visible', '=', 1)->get();
-
-    $general = General::all();
-    $benefit = Strength::where('status', '=', 1)->take(3)->get();
-    $faqs = Faqs::where('status', '=', 1)->where('visible', '=', 1)->get();
+    $popularProducts = Products::where('products.destacar', '=', 1)->where('products.status', '=', 1)
+      ->where('visible', '=', 1)->with(['tags', 'category'])->activeDestacado()->take(6)->get();
+    $benefit = Strength::where('status', '=', 1)->take(9)->get();
     $testimonies = Testimony::where('status', '=', 1)->where('visible', '=', 1)->get();
-    $slider = Slider::where('status', '=', 1)->where('visible', '=', 1)->get();
-    $category = Category::where('status', '=', 1)->where('destacar', '=', 1)->get();
 
-    $aboutUs = AboutUs::whereIn('titulo', ['TITULO', 'OBJETIVO'])->get();
+    $aboutUs = AboutUs::whereIn('titulo', ['TITULO-OBJETIVO', 'DESCRIPCION-OBJETIVO', 'CURSOS','ESTUDIANTES','TASA-EXITO'])->get();
+    $general = General::first();
 
     return Inertia::render('Home', [
-      'component' => 'Home',
-      'url_env' => $url_env,
-      'productos' => $productos,
-      'ultimosProductos' => $ultimosProductos,
-      'productosPupulares' => $productosPupulares,
-      'blogs' => $blogs,
+      'url_env' => env('APP_URL'),
+      'popularProducts' => $popularProducts,
       'banners' => $banners,
-      'categorias' => $categorias,
-      'categoriasAll' => $categoriasAll,
-      'destacados' => $destacados,
-      'descuentos' => $descuentos,
-      'popups' => $popups,
-      'general' => $general,
       'benefit' =>  $benefit,
-      'faqs' => $faqs,
       'testimonies' => $testimonies,
-      'slider' => $slider,
-      'category' => $category,
-      'aboutUs' => $aboutUs
-      
+      'aboutUs' => $aboutUs,
+      'general' => $general
     ])->rootView('app');
 
     // return view('public.index', compact('url_env', 'popups', 'banners', 'blogs', 'categoriasAll', 'productosPupulares', 'ultimosProductos', 'productos', 'destacados', 'descuentos', 'general', 'benefit', 'faqs', 'testimonie', 'slider', 'categorias', 'category'));
@@ -147,12 +117,20 @@ class IndexController extends Controller
 
   public function nosotros()
   {
-    return Inertia::render('Nosotros')->rootView('app');
+    $aboutUs = AboutUs::all();
+    $testimonies = Testimony::where('status', '=', 1)->where('visible', '=', 1)->get();
+    return Inertia::render('Nosotros', [
+      'aboutUs' => $aboutUs,
+      'testimonies' => $testimonies,
+    ])->rootView('app');
   }
 
-  public function contactof()
+  public function contacto()
   {
-    return Inertia::render('Contacto')->rootView('app');
+    $general = General::first();
+    return Inertia::render('Contacto', [
+      'general' => $general
+    ])->rootView('app');
   }
 
   public function desarrolloCurso()
@@ -168,6 +146,11 @@ class IndexController extends Controller
   public function examenPregunta()
   {
     return Inertia::render('ExamenPregunta')->rootView('app');
+  }
+
+  public function dashDocente()
+  {
+    return Inertia::render('DashDocente')->rootView('admin');
   }
   // public function catalogo(Request $request, string $id_cat = null)
   // {
@@ -293,16 +276,16 @@ class IndexController extends Controller
     return redirect()->route('comentario')->with(['mensaje' => $mensaje, 'alerta' => $alert]);
   }
 
-  public function contacto()
-  {
-    $general = General::first();
-    $categorias = Category::all();
-    $url_env = env('APP_URL');
-    $destacados = Products::where('destacar', '=', 1)->where('status', '=', 1)
-      ->where('visible', '=', 1)->with('tags')->activeDestacado()->get();
+  // public function contacto()
+  // {
+  //   $general = General::first();
+  //   $categorias = Category::all();
+  //   $url_env = env('APP_URL');
+  //   $destacados = Products::where('destacar', '=', 1)->where('status', '=', 1)
+  //     ->where('visible', '=', 1)->with('tags')->activeDestacado()->get();
 
-    return view('public.contact', compact('general', 'url_env', 'categorias', 'destacados'));
-  }
+  //   return view('public.contact', compact('general', 'url_env', 'categorias', 'destacados'));
+  // }
 
   public function carrito()
   {

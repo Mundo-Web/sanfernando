@@ -15,11 +15,12 @@ Route::get('/catalogoGestion', [IndexController::class, 'cursosyDiplomados'])->n
 Route::get('/detalleCurso/{id}', [IndexController::class, 'detalleCurso'])->name('CursoDetalle.jsx');
 Route::get('/docente', [IndexController::class, 'docente'])->name('Docente.jsx');
 Route::get('/detalleDocente', [IndexController::class, 'docenteDetalle'])->name('DocenteDetalle.jsx');
-Route::get('/nosotros', [IndexController::class, 'docenteDetalle'])->name('Nosotros.jsx');
-Route::get('/contactof', [IndexController::class, 'contactof'])->name('Contacto.jsx');
+Route::get('/nosotros', [IndexController::class, 'nosotros'])->name('Nosotros.jsx');
+Route::get('/contacto', [IndexController::class, 'contacto'])->name('Contacto.jsx');
 Route::get('/desarrolloCurso', [IndexController::class, 'desarrolloCurso'])->name('CursoDesarrollo.jsx');
 Route::get('/examenFinalizado', [IndexController::class, 'examenFinalizado'])->name('ExamenFinalizado.jsx');
 Route::get('/examenPregunta', [IndexController::class, 'examenPregunta'])->name('ExamenPregunta.jsx');
+Route::get('/dashDocente', [IndexController::class, 'dashDocente'])->name('DashDocente.jsx');
 
 Route::get('/catalogo/{id?}', [IndexController::class, 'catalogo'])->name('Catalogo.jsx');
 Route::get('/ofertas/{id?}', [IndexController::class, 'ofertas'])->name('Ofertas.jsx');

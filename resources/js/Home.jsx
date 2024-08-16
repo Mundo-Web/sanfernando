@@ -1,9 +1,6 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { createRoot } from 'react-dom/client'
 import CreateReactScript from './Utils/CreateReactScript'
-import { Fetch } from 'sode-extend-react'
-import arrayJoin from './Utils/ArrayJoin'
-import { set } from 'sode-extend-react/sources/cookies'
 import SliderFront from './components/Section/SliderFront'
 import SliderBenefit from './components/Section/SliderBenefit'
 import TwoColumn from './components/Section/TwoColumn'
@@ -14,18 +11,21 @@ import BenefitCard from './components/Benefits/BenefitCard'
 
 const Home = ({
   url_env,
-  productosPupulares,
+  popularProducts,
   banners,
   aboutUs,
   benefit,
-  testimonies
- }) => {
+  testimonies,
+  general
+}) => {
   const sectionStep = 'images/img/palacio.png';
   const imgVideo = 'images/img/mujergp.png';
   const imgPlay = 'images/img/iconoplayblanco.png';
 
-
-  console.log(aboutUs)
+  const data = {}
+  aboutUs.forEach(x => {
+    data[x.titulo] = x.descripcion
+  })
 
   return (<>
     <section className="w-full relative">
@@ -61,7 +61,7 @@ const Home = ({
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 w-full gap-12 pt-12 pb-12">
 
-        {productosPupulares.map((producto, i) => {
+        {popularProducts.map((producto, i) => {
           return <Curse key={`product-${i}`} producto={producto} env_url={url_env} />
         })}
       </div>
@@ -121,17 +121,17 @@ const Home = ({
       <div
         className="flex flex-wrap gap-10 items-center self-stretch my-auto text-white min-w-[240px] max-md:max-w-full">
         <article className="flex flex-col self-stretch my-auto">
-          <h3 className="text-4xl font-bold leading-tight font-poppins_regular">6.3k</h3>
+          <h3 className="text-4xl font-bold leading-tight font-poppins_regular">{data.CURSOS}</h3>
           <p className="self-start text-base font-medium font-poppins_regular leading-8 text-center">Cursos online
           </p>
         </article>
         <article className="flex flex-col self-stretch my-auto">
-          <h3 className="text-4xl font-bold leading-tight font-poppins_regular">26k</h3>
+          <h3 className="text-4xl font-bold leading-tight font-poppins_regular">{data.ESTUDIANTES}</h3>
           <p className="self-start text-base font-medium font-poppins_regular leading-8 text-center">Alumnos
             certificado</p>
         </article>
         <article className="flex flex-col justify-center self-stretch my-auto">
-          <h3 className="text-4xl font-bold leading-tight font-poppins_regular">99.9%</h3>
+          <h3 className="text-4xl font-bold leading-tight font-poppins_regular">{data['TASA-EXITO']}</h3>
           <p className="self-start text-base font-medium font-poppins_regular leading-8 text-center">Tasa de éxito
           </p>
         </article>
@@ -190,9 +190,9 @@ const Home = ({
                     </p>
                   </div>
                   <div>
-                    <a href="#"
+                    <a href={`//api.whatdsapp.com/send?phone=${general.whatsapp}&text=Quiero+empezar+a+enseñar`}
                       class="w-auto inline-block !font-poppins_regular mt-8 px-6 py-2 text-base font-bold tracking-normal leading-10 text-rose-700 bg-blue-50 rounded-xl max-md:px-5">
-                      empezar a enseñar
+                      Empezar a enseñar
                     </a>
                   </div>
                 </div>

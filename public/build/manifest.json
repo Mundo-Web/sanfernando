@@ -34,8 +34,8 @@
       "resources/js/components/Product/ProductCard.jsx"
     ]
   },
-  "_SliderTestimony-0snjQcx5.js": {
-    "file": "assets/SliderTestimony-0snjQcx5.js",
+  "_SliderTestimony-4bJ0Crrd.js": {
+    "file": "assets/SliderTestimony-4bJ0Crrd.js",
     "imports": [
       "resources/js/Utils/HtmlContent.jsx",
       "_index-TT1qJ6UJ.js",
@@ -78,7 +78,7 @@
     ]
   },
   "resources/css/app.css": {
-    "file": "assets/app-OyBdKBQx.css",
+    "file": "assets/app-silR8TRj.css",
     "isEntry": true,
     "src": "resources/css/app.css"
   },
@@ -144,7 +144,7 @@
     "src": "resources/js/Catalogo.jsx"
   },
   "resources/js/CatalogoGP.jsx": {
-    "file": "assets/CatalogoGP-wlkXGIjW.js",
+    "file": "assets/CatalogoGP-TD9jKrHB.js",
     "imports": [
       "resources/js/Utils/HtmlContent.jsx",
       "_index-TT1qJ6UJ.js",
@@ -183,16 +183,14 @@
     "src": "resources/js/ConfirmEmail.jsx"
   },
   "resources/js/Contacto.jsx": {
-    "file": "assets/Contacto-4KQq6P_g.js",
+    "file": "assets/Contacto-7NNUZncG.js",
     "imports": [
       "resources/js/Utils/HtmlContent.jsx",
       "_index-TT1qJ6UJ.js",
       "resources/js/Utils/ReactAppend.jsx",
       "_CreateReactScript-QuaDmwri.js",
       "_main-jzs2GwAM.js",
-      "resources/js/components/Section/SliderFront.jsx",
-      "resources/js/components/Product/ProductCard.jsx",
-      "resources/js/components/Section/SliderTestimony.jsx",
+      "resources/js/components/Offer/OfferCard.jsx",
       "__commonjsHelpers-4gQjN7DL.js",
       "_index-jtdEOcur.js",
       "resources/js/Utils/CreateReactScript.jsx",
@@ -202,7 +200,7 @@
     "src": "resources/js/Contacto.jsx"
   },
   "resources/js/CursoDesarrollo.jsx": {
-    "file": "assets/CursoDesarrollo-PAGhx2V4.js",
+    "file": "assets/CursoDesarrollo-n8QhA-4S.js",
     "imports": [
       "resources/js/Utils/HtmlContent.jsx",
       "_index-TT1qJ6UJ.js",
@@ -221,7 +219,7 @@
     "src": "resources/js/CursoDesarrollo.jsx"
   },
   "resources/js/CursoDetalle.jsx": {
-    "file": "assets/CursoDetalle-JMZ_beQq.js",
+    "file": "assets/CursoDetalle-fuHZYLwO.js",
     "imports": [
       "resources/js/Utils/HtmlContent.jsx",
       "_index-TT1qJ6UJ.js",
@@ -240,7 +238,7 @@
     "src": "resources/js/CursoDetalle.jsx"
   },
   "resources/js/Docente.jsx": {
-    "file": "assets/Docente-FIH-o1Wy.js",
+    "file": "assets/Docente-wFf-mvS2.js",
     "imports": [
       "resources/js/Utils/HtmlContent.jsx",
       "_index-TT1qJ6UJ.js",
@@ -259,7 +257,7 @@
     "src": "resources/js/Docente.jsx"
   },
   "resources/js/DocenteDetalle.jsx": {
-    "file": "assets/DocenteDetalle-Fgjms931.js",
+    "file": "assets/DocenteDetalle-7qCVOZNs.js",
     "imports": [
       "resources/js/Utils/HtmlContent.jsx",
       "_index-TT1qJ6UJ.js",
@@ -280,7 +278,7 @@
     "src": "resources/js/DocenteDetalle.jsx"
   },
   "resources/js/ExamenFinalizado.jsx": {
-    "file": "assets/ExamenFinalizado-KM7s7vGL.js",
+    "file": "assets/ExamenFinalizado-e9Nl-gDz.js",
     "imports": [
       "resources/js/Utils/HtmlContent.jsx",
       "_index-TT1qJ6UJ.js",
@@ -299,7 +297,7 @@
     "src": "resources/js/ExamenFinalizado.jsx"
   },
   "resources/js/ExamenPregunta.jsx": {
-    "file": "assets/ExamenPregunta-3WmR4Z9l.js",
+    "file": "assets/ExamenPregunta-995nZ7ib.js",
     "imports": [
       "resources/js/Utils/HtmlContent.jsx",
       "_index-TT1qJ6UJ.js",
@@ -318,20 +316,20 @@
     "src": "resources/js/ExamenPregunta.jsx"
   },
   "resources/js/Home.jsx": {
-    "file": "assets/Home-qOAJNG86.js",
+    "file": "assets/Home-jaDIuC_z.js",
     "imports": [
       "resources/js/Utils/HtmlContent.jsx",
       "_index-TT1qJ6UJ.js",
       "resources/js/Utils/ReactAppend.jsx",
       "_CreateReactScript-QuaDmwri.js",
-      "_main-jzs2GwAM.js",
       "resources/js/components/Section/SliderFront.jsx",
       "_Curse-xMqmFIrL.js",
-      "_SliderTestimony-0snjQcx5.js",
+      "_SliderTestimony-4bJ0Crrd.js",
       "__commonjsHelpers-4gQjN7DL.js",
       "_index-jtdEOcur.js",
       "resources/js/Utils/CreateReactScript.jsx",
       "_axios-_sX4vCAy.js",
+      "_main-jzs2GwAM.js",
       "_tippy-react.esm-Ethl7wjd.js",
       "resources/js/components/Product/ProductCard.jsx",
       "resources/js/components/Section/SliderTestimony.jsx"
@@ -340,7 +338,7 @@
     "src": "resources/js/Home.jsx"
   },
   "resources/js/Login.jsx": {
-    "file": "assets/Login-IiqDpRMr.js",
+    "file": "assets/Login-BvIe94L-.js",
     "imports": [
       "resources/js/Utils/HtmlContent.jsx",
       "resources/js/Utils/ReactAppend.jsx",
@@ -358,20 +356,19 @@
     "src": "resources/js/Login.jsx"
   },
   "resources/js/Nosotros.jsx": {
-    "file": "assets/Nosotros-jDeE5sTe.js",
+    "file": "assets/Nosotros-l2BeEICG.js",
     "imports": [
       "resources/js/Utils/HtmlContent.jsx",
       "_index-TT1qJ6UJ.js",
       "resources/js/Utils/ReactAppend.jsx",
       "_CreateReactScript-QuaDmwri.js",
-      "_main-jzs2GwAM.js",
-      "resources/js/components/Section/SliderFront.jsx",
-      "resources/js/components/Product/ProductCard.jsx",
-      "_SliderTestimony-0snjQcx5.js",
+      "_SliderTestimony-4bJ0Crrd.js",
       "__commonjsHelpers-4gQjN7DL.js",
       "_index-jtdEOcur.js",
       "resources/js/Utils/CreateReactScript.jsx",
       "_axios-_sX4vCAy.js",
+      "_main-jzs2GwAM.js",
+      "resources/js/components/Section/SliderFront.jsx",
       "resources/js/components/Section/SliderTestimony.jsx"
     ],
     "isEntry": true,
@@ -664,7 +661,7 @@
     "src": "resources/js/components/Product/Teacher.jsx"
   },
   "resources/js/components/Section/SliderBenefit.jsx": {
-    "file": "assets/SliderBenefit-XX9mHGov.js",
+    "file": "assets/SliderBenefit-pjVCBPcT.js",
     "imports": [
       "resources/js/Utils/HtmlContent.jsx",
       "_index-TT1qJ6UJ.js",
@@ -675,7 +672,7 @@
     "src": "resources/js/components/Section/SliderBenefit.jsx"
   },
   "resources/js/components/Section/SliderFront.jsx": {
-    "file": "assets/SliderFront-ZjstYAkf.js",
+    "file": "assets/SliderFront-WfkTt0id.js",
     "imports": [
       "resources/js/Utils/HtmlContent.jsx",
       "_index-TT1qJ6UJ.js",
@@ -688,7 +685,7 @@
     "css": [
       "assets/SliderTestimony-L9ko_Fi2.css"
     ],
-    "file": "assets/SliderTestimony-z8q8lBsS.js",
+    "file": "assets/SliderTestimony-3wURNnKg.js",
     "imports": [
       "resources/js/Utils/HtmlContent.jsx",
       "_index-TT1qJ6UJ.js",
