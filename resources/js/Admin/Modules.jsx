@@ -69,7 +69,7 @@ const Modules = ({ courses }) => {
 
     $(`#source-type-${moduleOpen?.source_type || 'image'}`).prop('checked', true)
     imageRef.current.value = null
-    videoRef.current.value = moduleOpen.source_type == 'image' ? null : `https://youtu.be/${moduleOpen.source}`
+    videoRef.current.value = moduleOpen?.source_type == 'image' ? null : `https://youtu.be/${moduleOpen.source}`
   }
 
   const onCloseModal = () => {

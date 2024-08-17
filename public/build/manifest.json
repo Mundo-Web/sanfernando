@@ -76,7 +76,7 @@
     "src": "resources/css/app.css"
   },
   "resources/js/Admin/Modules.jsx": {
-    "file": "assets/Modules-JOSbBcm4.js",
+    "file": "assets/Modules-qLCgJFrd.js",
     "imports": [
       "resources/js/Utils/HtmlContent.jsx",
       "resources/js/Utils/ReactAppend.jsx",
