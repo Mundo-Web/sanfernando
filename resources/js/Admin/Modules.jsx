@@ -55,12 +55,14 @@ const Modules = ({ courses }) => {
     setModalOpen(true)
   }
 
+  const idRef = useRef()
   const nameRef = useRef()
   const descriptionRef = useRef()
   const imageRef = useRef()
   const videoRef = useRef()
 
   const fillForm = () => {
+    idRef.current.value = moduleOpen?.id || undefined
     nameRef.current.value = moduleOpen?.name || ''
     descriptionRef.current.value = moduleOpen?.description || ''
     setSourceType(moduleOpen?.source_type || 'image')
@@ -72,6 +74,22 @@ const Modules = ({ courses }) => {
 
   const onCloseModal = () => {
     setModuleOpen(null)
+    setModalOpen(false)
+  }
+
+  const onModuleSubmit = async (e) => {
+    e.preventDefault()
+    const request = {
+      course_id: selected.id,
+      id: idRef.current.value,
+      name: nameRef.current.value,
+      description: descriptionRef.current.value,
+      source_type: sourceType,
+      source: sourceType == 'image' ? imageRef.current.value : videoRef.current.value
+    }
+    const result = await modulesRest.save(request)
+    if (!result) return
+    refreshModules()
     setModalOpen(false)
   }
 
@@ -123,47 +141,75 @@ const Modules = ({ courses }) => {
     </div>
 
     <ReactModal isOpen={modalOpen} style={customStyles} onAfterOpen={fillForm} onRequestClose={onCloseModal}>
-      <ul className="block mx-auto items-center w-max text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg sm:flex dark:bg-gray-700 dark:border-gray-600 dark:text-white">
-        <li className="w-max border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">
-          <div className="flex items-center ps-3">
-            <input id="horizontal-list-radio-id" type="radio" value="" name="list-radio" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500  cursor-pointer" defaultChecked />
-            <label htmlFor="horizontal-list-radio-id" className="w-full py-3 ps-2 pe-3 text-sm font-medium text-gray-900 dark:text-gray-300  cursor-pointer">Sesion</label>
-          </div>
-        </li>
-        {/* <li className="w-max border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">
+      <form onSubmit={onModuleSubmit}>
+        <input ref={idRef} type="hidden" name="id" />
+        <ul className="block mx-auto items-center w-max text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg sm:flex dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+          <li className="w-max border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">
+            <div className="flex items-center ps-3">
+              <input id="horizontal-list-radio-id" type="radio" value="" name="list-radio" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500  cursor-pointer" defaultChecked />
+              <label htmlFor="horizontal-list-radio-id" className="w-full py-3 ps-2 pe-3 text-sm font-medium text-gray-900 dark:text-gray-300  cursor-pointer">Sesion</label>
+            </div>
+          </li>
+          {/* <li className="w-max border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">
           <div className="flex items-center ps-3">
             <input id="horizontal-list-radio-military" type="radio" value="" name="list-radio" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500 cursor-pointer" />
             <label htmlFor="horizontal-list-radio-military" className="w-full py-3 ps-2 pe-3 text-sm font-medium text-gray-900 dark:text-gray-300 cursor-pointer">Parcial</label>
           </div>
         </li> */}
-        <li className="w-max dark:border-gray-600">
-          <div className="flex items-center ps-3">
-            <input id="horizontal-list-radio-passport" type="radio" value="" name="list-radio" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500 cursor-pointer" />
-            <label htmlFor="horizontal-list-radio-passport" className="w-full py-3 ps-2 pe-3 text-sm font-medium text-gray-900 dark:text-gray-300 cursor-pointer">Evaluacion final</label>
+          <li className="w-max dark:border-gray-600">
+            <div className="flex items-center ps-3">
+              <input id="horizontal-list-radio-passport" type="radio" value="" name="list-radio" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500 cursor-pointer" />
+              <label htmlFor="horizontal-list-radio-passport" className="w-full py-3 ps-2 pe-3 text-sm font-medium text-gray-900 dark:text-gray-300 cursor-pointer">Evaluacion final</label>
+            </div>
+          </li>
+        </ul>
+        <hr className='my-4' />
+        <FloatingInput eRef={nameRef} label='Titulo de la sesion' />
+        <FloatingInput eRef={descriptionRef} label='Descripcion de la sesion' long />
+
+        <p className='mb-2' htmlFor="">Recurso principal</p>
+        <div className="mb-4 flex w-full justify-center gap-4">
+          <div className="flex items-center ps-4 border border-gray-200 rounded dark:border-gray-700 w-full max-w-40">
+            <input id="source-type-image" type="radio" value="image" name="source-type" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600 cursor-pointer" defaultChecked
+              onChange={e => setSourceType(e.target.value)} />
+            <label htmlFor="source-type-image" className="w-full py-4 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300 cursor-pointer">Imagen</label>
           </div>
-        </li>
-      </ul>
-      <hr className='my-4' />
-      <FloatingInput eRef={nameRef} label='Titulo de la sesion' />
-      <FloatingInput eRef={descriptionRef} label='Descripcion de la sesion' long />
-
-      <p className='mb-2' htmlFor="">Recurso principal</p>
-      <div className="mb-4 flex w-full justify-center gap-4">
-        <div className="flex items-center ps-4 border border-gray-200 rounded dark:border-gray-700 w-full max-w-40">
-          <input id="source-type-image" type="radio" value="image" name="source-type" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600 cursor-pointer" defaultChecked
-            onChange={e => setSourceType(e.target.value)} />
-          <label htmlFor="source-type-image" className="w-full py-4 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300 cursor-pointer">Imagen</label>
+          <div className="flex items-center ps-4 border border-gray-200 rounded dark:border-gray-700 w-full max-w-40">
+            <input id="source-type-video" type="radio" value="video" name="source-type" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600 cursor-pointer"
+              onChange={e => setSourceType(e.target.value)} />
+            <label htmlFor="source-type-video" className="w-full py-4 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300 cursor-pointer">Video</label>
+          </div>
         </div>
-        <div className="flex items-center ps-4 border border-gray-200 rounded dark:border-gray-700 w-full max-w-40">
-          <input id="source-type-video" type="radio" value="video" name="source-type" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600 cursor-pointer"
-            onChange={e => setSourceType(e.target.value)} />
-          <label htmlFor="source-type-video" className="w-full py-4 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300 cursor-pointer">Video</label>
-        </div>
-      </div>
-      <input ref={imageRef} className={`${sourceType == 'image' ? 'block' : 'hidden'} w-full mb-5 text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400`} id="default_size" type="file"></input>
-      <FloatingInput eRef={videoRef} label='Link del video (YouTube)' hidden={sourceType == 'image'} />
+        <input ref={imageRef} className={`${sourceType == 'image' ? 'block' : 'hidden'} w-full mb-5 text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400`} id="default_size" type="file"></input>
+        <FloatingInput eRef={videoRef} label='Link del video (YouTube)' hidden={sourceType == 'image'} />
 
-      <p className='mb-2' htmlFor="">Otros recursos</p>
+        <p className='mb-2' htmlFor="">Otros recursos</p>
+
+        <div className="flex gap-10 justify-between items-center p-4 mt-5 w-full bg-rose-50 rounded-xl max-md:max-w-full">
+          <div className="flex gap-3 items-center self-stretch my-auto min-w-[240px]">
+            <img loading="lazy"
+              src="https://cdn.builder.io/api/v1/image/assets/TEMP/c5d28976a815d8ea0d04e6b48b765924274ee13e58597e6d14b658e4ff875e2d?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f"
+              className="object-contain shrink-0 self-stretch my-auto w-12 aspect-square" />
+            <div className="flex flex-col self-stretch my-auto w-[228px]">
+              <div className="text-base font-medium leading-none text-neutral-800">
+                Teoria_Gestion_Publica.pdf
+              </div>
+              <div className="mt-1 text-sm tracking-normal leading-loose text-rose-700">
+                12.6 MB
+              </div>
+            </div>
+          </div>
+          <div
+            className="gap-3 self-stretch px-4 py-2 my-auto text-base font-bold leading-tight text-white whitespace-nowrap bg-rose-700 rounded-lg">
+            <i className='fa fa-trash'></i>
+          </div>
+        </div>
+
+        <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mt-4 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
+          <i className='fa fa-save me-1'></i>
+          Guardar
+        </button>
+      </form>
     </ReactModal>
 
   </>)

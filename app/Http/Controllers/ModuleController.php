@@ -11,7 +11,7 @@ use SoDe\Extend\Response;
 
 class ModuleController extends BasicController
 {
-  public $module = Module::class;
+  public $model = Module::class;
   public $reactView = 'Admin/Modules';
 
   public function setReactViewProperties()
