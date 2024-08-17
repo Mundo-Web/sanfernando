@@ -150,7 +150,12 @@ class IndexController extends Controller
 
   public function dashDocente()
   {
-    return Inertia::render('DashboardDocente')->rootView('dashboardDocente');
+    return Inertia::render('DashboardDocente')->rootView('dashboard');
+  }
+
+  public function dashEstudiante()
+  {
+    return Inertia::render('DashboardEstudiante')->rootView('app');
   }
   // public function catalogo(Request $request, string $id_cat = null)
   // {
