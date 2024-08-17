@@ -355,6 +355,16 @@ class ProductsController extends Controller
 
 
 
+      if ($request->hasFile('brochure_url')) {
+        $file = $request->file('brochure_url');
+        $destinationPath = 'storage/docs/'; // Ruta donde se guardará el archivo
+        $fileName = time() . '_' . $file->getClientOriginalName(); // Nombre del archivo
+        $file->move($destinationPath, $fileName); // Mover el archivo a la ruta especificada
+        $data['brochure_url'] = $destinationPath. $fileName; // Guardar la ruta relativa en la base de datos
+      }
+
+
+
 
       $atributos = null;
       $tagsSeleccionados = $request->input('tags_id');

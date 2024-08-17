@@ -7,7 +7,7 @@ import { es } from 'date-fns/locale';
 
 
 
-const CursoDetalle = ({ producto }) => {
+const CursoDetalle = ({ producto, url_env }) => {
 
 
   const formatDate = (dateString) => {
@@ -158,13 +158,15 @@ const CursoDetalle = ({ producto }) => {
                 </div>)}
 
 
-                <div
-                  className="flex gap-3 items-center self-stretch px-4 py-2 my-auto text-base font-bold leading-tight text-white bg-rose-700 rounded-xl">
+                <a href={`${url_env}/${producto.brochure_url}`}
+                  target='_blank'
+                  className="flex gap-3 items-center self-start px-4 py-2 mt-6 text-base font-bold leading-tight text-white bg-rose-700 rounded-xl"
+                >
                   <img loading="lazy"
                     src="https://cdn.builder.io/api/v1/image/assets/TEMP/6951aae30f33bd543a5f70e81f55bc643f33df502d318789244486f456ed1aca?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f"
                     className="object-contain shrink-0 self-stretch my-auto w-6 aspect-square" />
                   <div className="self-stretch my-auto">Brochure del curso</div>
-                </div>
+                </a>
               </div>
             </div>
             {console.log(beneficios)}
@@ -281,24 +283,27 @@ const CursoDetalle = ({ producto }) => {
             </div>
             <div className="flex flex-col mt-10 w-full max-md:max-w-full">
 
-              {temario > 0 && (<><div className="text-2xl font-bold leading-tight text-neutral-800">
-                Temario
-              </div>
-                <div className="flex flex-col mt-6 w-full max-md:max-w-full gap-4">
+              {temario > 0 &&
+                (<><div className="text-2xl font-bold leading-tight text-neutral-800">
+                  Temario
+                </div>
+                  <div className="flex flex-col mt-6 w-full max-md:max-w-full gap-4">
 
-                  {temario && Object.entries(temario).map(([key, tema]) => (
-                    <DropdownComponent key={key} tema={tema} />
-                  ))}
+                    {temario && Object.entries(temario).map(([key, tema]) => (
+                      <DropdownComponent key={key} tema={tema} />
+                    ))}
 
-                </div></>)}
+                  </div></>)}
 
-              <div
-                className="flex gap-3 items-center self-start px-4 py-2 mt-6 text-base font-bold leading-tight text-white bg-rose-700 rounded-xl">
+              <a href={`${url_env}/${producto.brochure_url}`}
+                target='_blank'
+                className="flex gap-3 items-center self-start px-4 py-2 mt-6 text-base font-bold leading-tight text-white bg-rose-700 rounded-xl"
+              >
                 <img loading="lazy"
                   src="https://cdn.builder.io/api/v1/image/assets/TEMP/6951aae30f33bd543a5f70e81f55bc643f33df502d318789244486f456ed1aca?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f"
                   className="object-contain shrink-0 self-stretch my-auto w-6 aspect-square" />
                 <div className="self-stretch my-auto">Brochure del curso</div>
-              </div>
+              </a>
             </div>
             <div
               className="flex flex-col mt-10 w-full text-2xl font-bold leading-tight whitespace-nowrap text-neutral-800 max-md:max-w-full">
