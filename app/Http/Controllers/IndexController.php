@@ -101,7 +101,9 @@ class IndexController extends Controller
     $producto = Products::with(['tags', 'galeria', 'category', 'docentes'])->where('id', $id)->first();
     
     return Inertia::render('CursoDetalle', [
-      'producto' => $producto
+      'producto' => $producto,
+      'url_env' => env('APP_URL')
+
     ])->rootView('app');
   }
 

@@ -1,21 +1,13 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { createRoot } from 'react-dom/client'
 import CreateReactScript from './Utils/CreateReactScript'
-import { Fetch } from 'sode-extend-react'
-import arrayJoin from './Utils/ArrayJoin'
-import { set } from 'sode-extend-react/sources/cookies'
-import SliderFront from './components/Section/SliderFront'
-import SliderBenefit from './components/Section/SliderBenefit'
-import TwoColumn from './components/Section/TwoColumn'
-import Curse from './components/Product/Curse'
-import SliderTestimony from './components/Section/SliderTestimony'
 import DropdownComponent from './components/Inputs/DropdownComponent'
 import { format, parseISO } from 'date-fns';
 import { es } from 'date-fns/locale';
 
 
 
-const CursoDetalle = ({ producto }) => {
+const CursoDetalle = ({ producto, url_env }) => {
 
 
   const formatDate = (dateString) => {
@@ -26,6 +18,12 @@ const CursoDetalle = ({ producto }) => {
     const date = parseISO(dateString);
     return format(date, "dd 'de' MMMM 'del' yyyy", { locale: es });
   };
+
+  const beneficios = producto?.beneficios ? JSON.parse(producto.beneficios) : [];
+  const curso_dirigido = producto?.curso_dirigido ? JSON.parse(producto.curso_dirigido) : [];
+  const incluye = producto?.incluye ? JSON.parse(producto.incluye) : [];
+  const temario = producto?.temario ? JSON.parse(producto.temario) : [];
+
 
   return (
     <>
@@ -160,17 +158,19 @@ const CursoDetalle = ({ producto }) => {
                 </div>)}
 
 
-                <div
-                  className="flex gap-3 items-center self-stretch px-4 py-2 my-auto text-base font-bold leading-tight text-white bg-rose-700 rounded-xl">
+                <a href={`${url_env}/${producto.brochure_url}`}
+                  target='_blank'
+                  className="flex gap-3 items-center self-start px-4 py-2 mt-6 text-base font-bold leading-tight text-white bg-rose-700 rounded-xl"
+                >
                   <img loading="lazy"
                     src="https://cdn.builder.io/api/v1/image/assets/TEMP/6951aae30f33bd543a5f70e81f55bc643f33df502d318789244486f456ed1aca?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f"
                     className="object-contain shrink-0 self-stretch my-auto w-6 aspect-square" />
                   <div className="self-stretch my-auto">Brochure del curso</div>
-                </div>
+                </a>
               </div>
             </div>
-            {console.log(producto.beneficios)}
-            {producto?.beneficios?.length > 0 && (<div className="flex flex-col p-6 mt-10 w-full bg-rose-50 rounded-2xl max-md:px-5 max-md:max-w-full">
+            {console.log(beneficios)}
+            {beneficios.length > 0 && (<div className="flex flex-col p-6 mt-10 w-full bg-rose-50 rounded-2xl max-md:px-5 max-md:max-w-full">
               <div className="text-2xl font-bold leading-tight text-neutral-800 max-md:max-w-full">
                 Beneficios
               </div>
@@ -179,7 +179,7 @@ const CursoDetalle = ({ producto }) => {
                 <div className="grid grid-cols-1 lg:grid-cols-2  min-w-[240px] gap-5 items-start">
 
                   {producto.beneficios && (
-                    JSON.parse(producto.beneficios).map((beneficio, index) => (
+                    beneficios.map((beneficio, index) => (
                       <div key={index} className="flex gap-3 items-start w-full">
                         <img
                           loading="lazy"
@@ -202,12 +202,13 @@ const CursoDetalle = ({ producto }) => {
               src={'/' + producto.imagen_ambiente}
               className="object-contain mt-10 w-full rounded-xl aspect-[1.19] max-md:max-w-full" />)}
 
-            <div className="flex flex-col p-8 mt-10 w-full bg-red-100 rounded-2xl max-md:px-5 max-md:max-w-full">
+
+            {curso_dirigido.length > 0 && (<div className="flex flex-col p-8 mt-10 w-full bg-red-100 rounded-2xl max-md:px-5 max-md:max-w-full">
               <div className="text-2xl font-bold leading-tight text-neutral-800">
                 Para quién es este curso:
               </div>
-              {producto?.curso_dirigido && (
-                JSON.parse(producto.curso_dirigido).map((dirigido, index) => (
+              {curso_dirigido && (
+                curso_dirigido.map((dirigido, index) => (
                   <div key={index} className="flex flex-col mt-6 w-full text-base font-medium leading-7 text-gray-600 max-md:max-w-full">
                     <div className="flex flex-wrap gap-3 items-start w-full max-md:max-w-full">
                       <img
@@ -223,7 +224,9 @@ const CursoDetalle = ({ producto }) => {
                 ))
               )}
 
-            </div>
+            </div>)}
+
+
             <div className="flex flex-col mt-10 w-full max-md:max-w-full">
               <div dangerouslySetInnerHTML={{ __html: producto?.description2 ?? '' }}></div>
             </div>
@@ -279,23 +282,28 @@ const CursoDetalle = ({ producto }) => {
               </div>
             </div>
             <div className="flex flex-col mt-10 w-full max-md:max-w-full">
-              <div className="text-2xl font-bold leading-tight text-neutral-800">
-                Temario
-              </div>
-              <div className="flex flex-col mt-6 w-full max-md:max-w-full gap-4">
 
-                {producto?.temario && Object.entries(JSON.parse(producto.temario)).map(([key, tema]) => (
-                  <DropdownComponent key={key} tema={tema} />
-                ))}
+              {temario > 0 &&
+                (<><div className="text-2xl font-bold leading-tight text-neutral-800">
+                  Temario
+                </div>
+                  <div className="flex flex-col mt-6 w-full max-md:max-w-full gap-4">
 
-              </div>
-              <div
-                className="flex gap-3 items-center self-start px-4 py-2 mt-6 text-base font-bold leading-tight text-white bg-rose-700 rounded-xl">
+                    {temario && Object.entries(temario).map(([key, tema]) => (
+                      <DropdownComponent key={key} tema={tema} />
+                    ))}
+
+                  </div></>)}
+
+              <a href={`${url_env}/${producto.brochure_url}`}
+                target='_blank'
+                className="flex gap-3 items-center self-start px-4 py-2 mt-6 text-base font-bold leading-tight text-white bg-rose-700 rounded-xl"
+              >
                 <img loading="lazy"
                   src="https://cdn.builder.io/api/v1/image/assets/TEMP/6951aae30f33bd543a5f70e81f55bc643f33df502d318789244486f456ed1aca?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f"
                   className="object-contain shrink-0 self-stretch my-auto w-6 aspect-square" />
                 <div className="self-stretch my-auto">Brochure del curso</div>
-              </div>
+              </a>
             </div>
             <div
               className="flex flex-col mt-10 w-full text-2xl font-bold leading-tight whitespace-nowrap text-neutral-800 max-md:max-w-full">
@@ -466,7 +474,7 @@ const CursoDetalle = ({ producto }) => {
               <div className="text-base font-medium leading-none text-neutral-800">
                 Este curso incluye:
               </div>
-              {producto?.incluye && Object.entries(JSON.parse(producto.incluye)).map(([key, incluye]) => (
+              {incluye && Object.entries(incluye).map(([key, incluye]) => (
                 console.log(incluye),
                 <div className="flex flex-col mt-4 text-sm tracking-normal leading-loose text-gray-600">
                   <div className="flex gap-3 items-center">
