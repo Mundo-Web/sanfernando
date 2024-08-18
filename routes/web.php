@@ -228,6 +228,7 @@ Route::middleware(['auth:sanctum', 'verified', 'can:Admin'])->group(function () 
 
         //Sliders   
         Route::resource('/slider', SliderController::class);
+        Route::post('/slider', [SliderController::class, 'save']);
         Route::post('/slider/updateVisible', [SliderController::class, 'updateVisible'])->name('slider.updateVisible');
         Route::post('/slider/deleteSlider', [SliderController::class, 'deleteSlider'])->name('slider.deleteSlider');
 

@@ -12,7 +12,7 @@ import BenefitCard from './components/Benefits/BenefitCard'
 const Home = ({
   url_env,
   popularProducts,
-  banners,
+  sliders,
   aboutUs,
   benefit,
   testimonies,
@@ -29,7 +29,7 @@ const Home = ({
 
   return (<>
     <section className="w-full relative">
-      <SliderFront banners={banners} />
+      <SliderFront sliders={sliders} />
     </section>
 
     <section className="flex flex-wrap items-center">

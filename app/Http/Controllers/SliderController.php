@@ -29,7 +29,17 @@ class SliderController extends Controller
      */
     public function create()
     {
-        return view('pages.sliders.create');
+        $slider = new Slider();
+        return view('pages.sliders.save', compact('slider'));
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit($id)
+    {
+        $slider = Slider::find($id);
+        return view('pages.sliders.save', compact('slider'));
     }
 
     /**
@@ -87,17 +97,6 @@ class SliderController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit($id)
-    {   
-      
-        $slider = Slider::find($id);
-
-        return view('pages.sliders.edit', compact('slider'));
-    }
-
-    /**
      * Update the specified resource in storage.
      */
     public function update(Request $request, $id)
@@ -144,6 +143,10 @@ class SliderController extends Controller
         $slider->update();
 
         return redirect()->route('slider.index')->with('success', 'Slider actualizado exitosamente.');
+    }
+
+    public function save(Request $request) {
+        
     }
 
     /**
