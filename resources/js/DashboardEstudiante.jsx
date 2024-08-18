@@ -4,10 +4,15 @@ import CreateReactScript from './Utils/CreateReactScript';
 import HeaderTeacher from './components/HeaderTeacher';
 import Curse from './components/Product/Curse'; // Asegúrate de que este sea el componente correcto para "Mis Cursos"
 import FormDocente from './components/Section/FormDocente';
+import DashboardEstudianteBlock from './components/Section/DashboardEstudianteBlock';
+import FormEstudiante from './components/Section/FormEstudiante';
+import FavoritosEstudiante from './components/Section/FavoritosEstudiante';
+import CursosEstudianteBlock from './components/Section/CursosEstudianteBlock';
+import HistorialEstudiante from './components/Section/HistorialEstudiante';
 
 const DashboardDocente = () => {
 const [open, setOpen] = useState(false);
-const [selectedOption, setSelectedOption] = useState('Mis Cursos');
+const [selectedOption, setSelectedOption] = useState('Dashboard');
 
 const handleToggle = () => {
 setOpen(!open);
@@ -22,61 +27,84 @@ const logo = 'images/img/logoblancoegssp.png';
 return (
 <>
     <div className="md:flex flex-col md:flex-row md:min-h-screen w-full">
-        <div className="flex flex-col w-full md:w-64 text-gray-700 bg-[#0F1F38] gap-3">
-            <div className="flex-shrink-0 px-4 py-4 flex flex-row items-center justify-between">
-                <a href="#"
-                    className="text-lg font-semibold tracking-widest text-gray-900 uppercase rounded-lg dark:text-white focus:outline-none focus:shadow-outline">
-                    <img src={logo} alt="Logo" className="h-10" />
-                </a>
-                <button className="rounded-lg md:hidden focus:outline-none focus:shadow-outline" onClick={handleToggle}>
-                    <svg fill="#ffffff" viewBox="0 0 20 20" className="w-6 h-6">
-                        {open ? (
-                        <path fillRule="evenodd"
-                            d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                            clipRule="evenodd" />
-                        ) : (
-                        <path fillRule="evenodd"
-                            d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM9 15a1 1 0 011-1h6a1 1 0 110 2h-6a1 1 0 01-1-1z"
-                            clipRule="evenodd" />
-                        )}
-                    </svg>
-                </button>
-            </div>
-            <nav className={`flex-grow md:block font-poppins_light font-bold tracking-wide pb-4 md:pb-0
-                md:overflow-y-auto ${ open ? 'block' : 'hidden' }`}>
-                <div>
-                    <a className={`block px-4 py-4 text-sm ${ selectedOption === 'Mis Cursos'
-                        ? 'bg-[#CF072C] text-white' : 'bg-transparent text-white' } hover:bg-[#CF072C]
-                        focus:bg-[#CF072C] focus:outline-none focus:shadow-outline`} href="#" onClick={()=>
-                        handleOptionClick('Mis Cursos')}
-                        >
-                        <i className="fa-solid fa-layer-group mr-2"></i>Mis Cursos
-                    </a>
-                    <a className={`block px-4 py-4 text-sm ${ selectedOption === 'Perfil' ? 'bg-[#CF072C] text-white'
-                        : 'bg-transparent text-white' } hover:bg-[#CF072C] focus:bg-[#CF072C] focus:outline-none
-                        focus:shadow-outline`} href="#" onClick={()=> handleOptionClick('Perfil')}
-                        >
-                        <i className="fa-solid fa-gear mr-2"></i>Perfil
-                    </a>
-                </div>
-                <div>
-                    <a className={`block px-4 py-4 text-sm ${ selectedOption === 'Salir'
-                        ? 'bg-[#FFFFFF1F] text-white' : 'bg-transparent text-white' } hover:bg-[#FFFFFF1F]
-                        focus:shadow-outline`}>
-                        <i className="fa-solid fa-right-from-bracket mr-2"></i>Salir
-                    </a>
-                </div>
-            </nav>
-        </div>
-
         <div className="flex flex-col flex-1 min-h-screen">
-            <HeaderTeacher selectedOption={selectedOption} />
-            <div className="content p-6 flex-1">
-                {selectedOption === 'Mis Cursos' &&
-                <h2>asdasds</h2>} {/* Renderiza CursosDocente */}
-                {selectedOption === 'Perfil' &&
-                <FormDocente />} {/* Renderiza FormDocente */}
-            </div>
+            <HeaderTeacher selectedOption={'Mis datos'} />
+            <section className="flex flex-col !font-poppins_regular !font-normal">
+                <div className="flex w-full bg-[#FFDDDE] h-40 lg:h-60 max-md:max-w-full" role="banner"></div>
+                <div className="flex flex-col px-[8%] py-10 w-full max-md:px-5 max-md:max-w-full -mt-40">
+                    <div className="flex flex-col p-6 bg-white rounded-2xl max-md:px-5">
+                        <div className="flex flex-col w-full bg-white max-md:max-w-full">
+                            <div
+                                className="flex flex-wrap gap-10 justify-between items-center px-4 py-6 w-full border-b border-red-100 max-md:max-w-full">
+                                <div className="flex gap-4 items-center self-stretch my-auto min-w-[240px]">
+                                    <img loading="lazy"
+                                        srcset="https://cdn.builder.io/api/v1/image/assets/TEMP/1740597a5fd9f94d0637aba2a648f3d3f18f766f89e139f92c784357b3a4e52a?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f&width=100 100w, https://cdn.builder.io/api/v1/image/assets/TEMP/1740597a5fd9f94d0637aba2a648f3d3f18f766f89e139f92c784357b3a4e52a?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f&width=200 200w, https://cdn.builder.io/api/v1/image/assets/TEMP/1740597a5fd9f94d0637aba2a648f3d3f18f766f89e139f92c784357b3a4e52a?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f&width=400 400w, https://cdn.builder.io/api/v1/image/assets/TEMP/1740597a5fd9f94d0637aba2a648f3d3f18f766f89e139f92c784357b3a4e52a?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f&width=800 800w, https://cdn.builder.io/api/v1/image/assets/TEMP/1740597a5fd9f94d0637aba2a648f3d3f18f766f89e139f92c784357b3a4e52a?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f&width=1200 1200w, https://cdn.builder.io/api/v1/image/assets/TEMP/1740597a5fd9f94d0637aba2a648f3d3f18f766f89e139f92c784357b3a4e52a?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f&width=1600 1600w, https://cdn.builder.io/api/v1/image/assets/TEMP/1740597a5fd9f94d0637aba2a648f3d3f18f766f89e139f92c784357b3a4e52a?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f&width=2000 2000w, https://cdn.builder.io/api/v1/image/assets/TEMP/1740597a5fd9f94d0637aba2a648f3d3f18f766f89e139f92c784357b3a4e52a?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f"
+                                        className="object-contain shrink-0 self-stretch my-auto w-16 rounded-full aspect-square" />
+                                    <div className="flex flex-col self-stretch my-auto w-[166px]">
+                                        <div
+                                            className="text-2xl font-semibold tracking-tight leading-none text-neutral-800">
+                                            Ademir Neyra
+                                        </div>
+                                        <div className="text-base text-gray-600">Estudiante</div>
+                                    </div>
+                                </div>
+                                <div
+                                    className="flex gap-2.5 justify-center items-center self-stretch px-5 py-2.5 my-auto text-sm font-semibold text-center text-teal-50 bg-rose-700 rounded-lg min-h-[40px] min-w-[240px]">
+                                    <div className="self-stretch my-auto">Conviértete en Instructor</div>
+                                    <img loading="lazy"
+                                        src="https://cdn.builder.io/api/v1/image/assets/TEMP/f7b1d4cde5983fa32af81c6bccbb8ee6ddd270b4dce4d3312a7f025f4bc68cab?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f"
+                                        className="object-contain shrink-0 self-stretch my-auto w-5 aspect-square" />
+                                </div>
+                            </div>
+                            <div
+                                className="flex flex-wrap items-center gap-3 md:gap-0 font-semibold mt-3 w-full text-base leading-none text-center text-rose-700 max-md:max-w-full">
+                                <a
+                                    className={`flex-1 shrink gap-2.5 self-stretch py-5 my-auto  border-b-rose-700
+                                    ${ selectedOption === 'Dashboard' ? 'bg-white border-b-2 border-solid border-b-rose-700' : '' }" `}
+                                    onClick={()=>handleOptionClick('Dashboard')}>
+                                    Dashboard
+                                </a>
+                                <a className={`flex-1 shrink gap-2.5 self-stretch py-5 my-auto  border-b-rose-700
+                                    ${ selectedOption === 'Perfil' ? 'bg-white border-b-2 border-solid border-b-rose-700' : '' }" `} 
+                                    onClick={()=>handleOptionClick('Perfil')}>
+                                    Perfil
+                                </a>
+                                <a className={`flex-1 shrink gap-2.5 self-stretch py-5 my-auto  border-b-rose-700
+                                    ${ selectedOption === 'Favoritos' ? 'bg-white border-b-2 border-solid border-b-rose-700' : '' }" `}
+                                    onClick={()=>handleOptionClick('Favoritos')}>
+                                    Favoritos
+                                </a>
+                                <a className={`flex-1 shrink gap-2.5 self-stretch py-5 my-auto  border-b-rose-700
+                                    ${ selectedOption === 'Cursos y Diplomados' ? 'bg-white border-b-2 border-solid border-b-rose-700' : '' }" `}
+                                    onClick={()=>handleOptionClick('Cursos y Diplomados')}>
+                                    Cursos y Diplomados
+                                </a>
+                                <a className={`flex-1 shrink gap-2.5 self-stretch py-5 my-auto  border-b-rose-700
+                                    ${ selectedOption === 'Historial' ? 'bg-white border-b-2 border-solid border-b-rose-700' : '' }" `}
+                                    onClick={()=>handleOptionClick('Historial')}>
+                                    Historial
+                                </a>
+                                <a className="flex-1 shrink gap-2.5 self-stretch py-5 my-auto">
+                                    Cerrar Sesión
+                                </a>
+                            </div>
+                        </div>
+                        <div>
+                            {selectedOption === 'Dashboard' &&
+                            <DashboardEstudianteBlock />} 
+                            {selectedOption === 'Perfil' &&
+                            <FormEstudiante />} 
+                            {selectedOption === 'Favoritos' &&
+                            <FavoritosEstudiante />} 
+                            {selectedOption === 'Cursos y Diplomados' &&
+                            <CursosEstudianteBlock />}
+                             {selectedOption === 'Historial' &&
+                            <HistorialEstudiante />} 
+                        </div>
+                    </div>
+                </div>
+            </section>
+
         </div>
     </div>
 </>
