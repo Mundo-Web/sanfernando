@@ -4,12 +4,12 @@ import CreateReactScript from './Utils/CreateReactScript'
 import DropdownComponent from './components/Inputs/DropdownComponent'
 import { format, parseISO } from 'date-fns';
 import { es } from 'date-fns/locale';
-
+import copyToClipboard from './Utils/copyToClipboard';
 
 
 const CursoDetalle = ({ producto, url_env }) => {
 
-
+  const currentUrl = window.location.href;
   const formatDate = (dateString) => {
     console.log(dateString);
     if (dateString == null) {
@@ -492,11 +492,11 @@ const CursoDetalle = ({ producto, url_env }) => {
             <div className="flex flex-col px-6 mt-6 w-full max-md:px-5">
               <div className="flex flex-col lg:flex-row w-full text-sm font-bold tracking-normal text-center gap-3">
                 <div
-                  className=" px-3 w-full text-white bg-red-400 rounded-xl py-3">
+                  className=" px-3 w-full text-white bg-red-400 rounded-xl py-3 cursor-pointer hover:bg-red-800">
                   Añadir al carrito
                 </div>
                 <div
-                  className="px-3 w-full text-white bg-red-800 rounded-xl py-3 ">
+                  className="px-3 w-full text-white bg-red-400 rounded-xl py-3  cursor-pointer hover:bg-red-800">
                   Comprar ahora
                 </div>
               </div>
@@ -512,27 +512,47 @@ const CursoDetalle = ({ producto, url_env }) => {
               </div>
               <div className="flex flex-col mt-4 w-full">
                 <div className="flex gap-3 items-center w-full">
-                  <div
-                    className="flex flex-1 shrink gap-2.5 justify-center items-center self-stretch p-3.5 my-auto bg-red-100 rounded-lg basis-0">
-                    <img loading="lazy"
+                  <a
+                    href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(currentUrl)}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="cursor-pointer hover:bg-red-300 flex flex-1 shrink gap-2.5 justify-center items-center self-stretch p-3.5 my-auto bg-red-100 rounded-lg basis-0"
+                  >
+                    <img
+                      loading="lazy"
                       src="https://cdn.builder.io/api/v1/image/assets/TEMP/fa62c6d683fac49cc5a880eea7906f26d6f470e256e95eedc3c44316b35515ac?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f"
-                      className="object-contain self-stretch my-auto w-5 aspect-square" />
-                  </div>
-                  <div
-                    className="flex flex-1 shrink gap-2.5 justify-center items-center self-stretch p-3 my-auto bg-red-100 rounded-lg basis-0">
-                    <img loading="lazy"
+                      className="object-contain self-stretch my-auto w-5 aspect-square"
+                      alt="Compartir en Facebook"
+                    />
+                  </a>
+                  <a
+                    href={`mailto:?subject=Enlace Interesante&body=${encodeURIComponent(currentUrl)}`}
+                    className="cursor-pointer hover:bg-red-300 flex flex-1 shrink gap-2.5 justify-center items-center self-stretch p-3 my-auto bg-red-100 rounded-lg basis-0"
+                  >
+                    <img
+                      loading="lazy"
                       src="https://cdn.builder.io/api/v1/image/assets/TEMP/efde1e2a7058704810584bf8b5c90aaf3a1719cccb5095a7c811993f9d92fb6e?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f"
-                      className="object-contain self-stretch my-auto w-6 aspect-square" />
-                  </div>
-                  <div
-                    className="flex flex-1 shrink gap-2.5 justify-center items-center self-stretch p-3.5 my-auto bg-red-100 rounded-lg basis-0">
-                    <img loading="lazy"
+                      className="object-contain self-stretch my-auto w-6 aspect-square"
+                      alt="Compartir por Correo"
+                    />
+                  </a>
+                  <a
+                    href={`https://api.whatsapp.com/send?text=${encodeURIComponent(currentUrl)}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="cursor-pointer hover:bg-red-300 flex flex-1 shrink gap-2.5 justify-center items-center self-stretch p-3.5 my-auto bg-red-100 rounded-lg basis-0"
+                  >
+                    <img
+                      loading="lazy"
                       src="https://cdn.builder.io/api/v1/image/assets/TEMP/912f193523fb27114046af37fd481933e264b7f1c872b67cdcb5d8e56f1391bf?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f"
-                      className="object-contain self-stretch my-auto w-5 aspect-square" />
-                  </div>
+                      className="object-contain self-stretch my-auto w-5 aspect-square"
+                      alt="Compartir en WhatsApp"
+                    />
+                  </a>
                 </div>
                 <div
-                  className="flex gap-3 justify-center items-center px-5 py-2 mt-2 w-full text-sm font-medium tracking-normal leading-none text-white bg-red-400 rounded-lg min-h-[40px]">
+                  onClick={copyToClipboard}
+                  className="hover:bg-red-800 cursor-pointer flex gap-3 justify-center items-center px-5 py-2 mt-2 w-full text-sm font-medium tracking-normal leading-none text-white bg-red-400 rounded-lg min-h-[40px]">
                   <img loading="lazy"
                     src="https://cdn.builder.io/api/v1/image/assets/TEMP/523e4f3fbfa03ca18485d6b1725cd6b81714f16700efdac0d4303b0c2b12c9c5?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f"
                     className="object-contain shrink-0 self-stretch my-auto w-6 aspect-square" />
