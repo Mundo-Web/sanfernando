@@ -19,13 +19,16 @@ const verificarOpcionesFaltantes = (detallePedido) => {
   return false;
 };
 
+
+
 const obtenerDetalleProducto = (producto, resData) => {
   const { horario, complementos, fecha } = resData;
+  console.log(appUrl)
   return {
     id: producto.id,
     producto: producto.producto,
     precio: producto.descuento > 0 ? producto.descuento : producto.precio,
-    imagen: producto.imagen ?? '/images/img/noimagen.jpg',
+    imagen: `${producto.imagen}`  ,
     cantidad: 1,
     // fecha: fecha,
     // horario: horario,
@@ -97,13 +100,14 @@ function PintarCarrito() {
 
   articulosCarrito.forEach(element => {
 
+
     let plantilla = `<tr class=" font-poppins border-b">
         <td class="p-2">
-          <img src="${appUrl}/${element.imagen}" class="block bg-[#F3F5F7] rounded-md p-0 " alt="producto" onerror="this.onerror=null;this.src='/images/img/noimagen.jpg';"  style="width: 100px; height: 75px; object-fit: contain; object-position: center;" />
+          <img src="/${element.imagen}" class="block bg-[#F3F5F7] rounded-md p-0 " alt="producto" onerror="this.onerror=null;this.src='/images/img/noimagen.jpg';"  style="width: 100px; height: 75px; object-fit: contain; object-position: center;" />
         </td>
         <td class="p-2">
           <p class="font-semibold text-[14px] text-[#151515] mb-1">
-            ${element.producto} - ${element.tipo}
+            ${element.producto}
           </p>
           <div class="flex w-20 justify-center text-[#151515] border-[1px] border-[#6C7275] rounded-md">
             <button type="button" onClick="(deleteOnCarBtn(${element.id}))" class="w-6 h-6 flex justify-center items-center ">
@@ -132,7 +136,7 @@ function PintarCarrito() {
     itemsCarritoCheck.append(plantilla)
 
   });
-
+console.log('pintar aca')
   mostrarTotalItems()
   calcularTotal()
 }
@@ -149,7 +153,7 @@ function calcularTotal() {
   }).reduce((total, elemento) => total + elemento, 0);
 
   // const suma = total.
-  console.log(total)
+  
 
   $('#itemsTotal').text(`S/. ${total} `)
 

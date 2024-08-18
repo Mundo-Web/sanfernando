@@ -12,7 +12,7 @@ const CursoDetalle = ({ producto, url_env }) => {
 
   const currentUrl = window.location.href;
   const formatDate = (dateString) => {
-    console.log(dateString);
+
     if (dateString == null) {
       return 'Proximamente'
     }

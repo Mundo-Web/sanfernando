@@ -428,7 +428,7 @@ function PintarCarrito() {
     console.log(element)
     let plantilla = `<tr class=" font-poppins border-b">
           <td class="p-2">
-            <img src="${appUrl}/${element.imagen}" class="block bg-[#F3F5F7] rounded-md p-0 " alt="producto" onerror="this.onerror=null;this.src='/images/img/noimagen.jpg';"  style="width: 100px; height: 75px; object-fit: contain; object-position: center;" />
+            <img src="${appUrl}/${element.imagen}" class="block bg-[#F3F5F7] rounded-md p-0 " alt="producto"  style="width: 100px; height: 75px; object-fit: contain; object-position: center;" />
           </td>
           <td class="p-2">
             <p class="font-semibold text-[14px] text-[#151515] mb-1">
@@ -469,7 +469,7 @@ function PintarCarrito() {
   calcularTotal()
 }
 function calcularTotal() {
-  let articulos = Local.get('carrito')
+  let articulos = Local.get('carrito') ?? []
   let total = articulos.map(item => {
     let monto
     // if (Number(item.descuento) !== 0) {
