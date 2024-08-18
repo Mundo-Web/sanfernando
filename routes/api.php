@@ -59,4 +59,9 @@ Route::middleware(['web', 'auth:sanctum', 'verified'])->group(function () {
     Route::post('/modules/paginate', [ModuleController::class, 'paginate']);
     Route::patch('/modules/status', [ModuleController::class, 'status']);
     Route::delete('/modules/{id}', [ModuleController::class, 'delete']);
+
+    Route::post('/sources', [ModuleController::class, 'save']);
+    Route::post('/sources/paginate', [ModuleController::class, 'paginate']);
+    Route::patch('/sources/status', [ModuleController::class, 'status']);
+    Route::delete('/sources/{id}', [ModuleController::class, 'delete']);
 });
