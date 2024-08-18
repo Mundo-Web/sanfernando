@@ -278,7 +278,8 @@
           </div>
         </div>
       @endif
-      <a href="#" aria-label="Social Media Link 3">
+      <a href="#" aria-label="Social Media Link 3" id="open-cart">
+
         <img loading="lazy"
           src="https://cdn.builder.io/api/v1/image/assets/TEMP/2cb868de28b1b49e52be101815be5c820fdf20aee19c0b5b86753f263366f629?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f"
           alt="" class="object-contain shrink-0 w-6 aspect-square" />
@@ -323,7 +324,7 @@
             </a>
 
             {{-- @if ($offerExists) --}}
-            <a href="{{route('Docente.jsx')}}" class="font-medium hover:opacity-75">
+            <a href="{{ route('Docente.jsx') }}" class="font-medium hover:opacity-75">
               <span class="underline-this">Docentes</span>
             </a>
             {{-- @endif --}}
@@ -339,7 +340,7 @@
             @endif
 
 
-            <a href="{{route('Contacto.jsx')}}" class="font-medium hover:opacity-75  ">
+            <a href="{{ route('Contacto.jsx') }}" class="font-medium hover:opacity-75  ">
               <span class="underline-this">Contacto</span>
             </a>
             @if ($tags->count() > 0)
@@ -383,7 +384,7 @@
     </div>
   </div>
 
-
+  <x-header-carrito />
 
 </header>
 

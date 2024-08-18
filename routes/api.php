@@ -35,6 +35,8 @@ Route::post('/payment/culqi', [PaymentController::class, 'culqi'])->name('paymen
 Route::get('/offers/{id}', [OfferController::class, 'get'])->name('offers.get');
 
 Route::post('/messages', [MessageController::class, 'save'])->name('messages.save');
+Route::post('/products/AddOrder', [ProductsController::class, 'AddOrder'])->name('products.AddOrder');
+
 
 Route::middleware(['web', 'auth:sanctum', 'verified'])->group(function () {
 
