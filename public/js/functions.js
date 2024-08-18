@@ -425,9 +425,10 @@ function PintarCarrito() {
   let itemsCarritoCheck = $('#itemsCarritoCheck')
 
   articulosCarrito.forEach(element => {
+    console.log(element)
     let plantilla = `<tr class=" font-poppins border-b">
           <td class="p-2">
-            <img src="${appUrl}/${element.imagen}" class="block bg-[#F3F5F7] rounded-md p-0 " alt="producto" onerror="this.onerror=null;this.src='/images/img/noimagen.jpg';"  style="width: 100px; height: 75px; object-fit: contain; object-position: center;" />
+            <img src="/${element.imagen}" class="block bg-[#F3F5F7] rounded-md p-0 " alt="producto"  style="width: 100px; height: 75px; object-fit: contain; object-position: center;" />
           </td>
           <td class="p-2">
             <p class="font-semibold text-[14px] text-[#151515] mb-1">
@@ -447,7 +448,8 @@ function PintarCarrito() {
           </td>
           <td class="p-2 text-end">
             <p class="font-semibold text-[14px] text-[#151515] w-max">
-              S/${Number(element.descuento) !== 0 ? element.descuento : element.precio}
+
+              S/${Number(element.precio)}
             </p>
             <button type="button" onClick="(deleteItem(${element.id}))" class="w-6 h-6 flex justify-center items-center mx-auto">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="#272727" class="w-6 h-6">
@@ -467,15 +469,16 @@ function PintarCarrito() {
   calcularTotal()
 }
 function calcularTotal() {
-  let articulos = Local.get('carrito')
+  let articulos = Local.get('carrito') ?? []
   let total = articulos.map(item => {
     let monto
-    if (Number(item.descuento) !== 0) {
-      monto = item.cantidad * Number(item.descuento)
-    } else {
-      monto = item.cantidad * Number(item.precio)
+    // if (Number(item.descuento) !== 0) {
+    //   monto = item.cantidad * Number(item.descuento)
+    // } else {
+      
+    monto = item.cantidad * Number(item.precio)
 
-    }
+    // }
     return monto
 
   })

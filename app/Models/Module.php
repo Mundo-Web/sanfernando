@@ -23,4 +23,8 @@ class Module extends Model
         'source',
         'order',
     ];
+
+    public function sources() {
+        return $this->hasMany(Source::class, 'module_id', 'id');
+    }
 }

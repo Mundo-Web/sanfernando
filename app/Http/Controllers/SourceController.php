@@ -3,64 +3,50 @@
 namespace App\Http\Controllers;
 
 use App\Models\Source;
-use App\Http\Requests\StoreSourceRequest;
-use App\Http\Requests\UpdateSourceRequest;
+use Exception;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use SoDe\Extend\Crypto;
 
-class SourceController extends Controller
+class SourceController extends BasicController
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
+    public $model = Source::class;
+    public $softDeletion = false;
+
+    public function get(Request $request, string $source)
     {
-        //
+        try {
+            $content = Storage::get('sources/' . $source);
+            if (!$content) throw new Exception('Perfil no encontrado');
+            return response($content, 200, [
+                'Content-Type' => 'application/octet-stream'
+            ]);
+        } catch (\Throwable $th) {
+            return response(null, 404);
+        }
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+    public function beforeSave(Request $request)
     {
-        //
+        $body = $request->all();
+        $source = $request->file('source');
+
+        $route = 'sources/';
+        $name = Crypto::randomUUID() . '.' . $source->getClientOriginalExtension();
+        if (!file_exists($route)) {
+            mkdir($route, 0777, true);
+        }
+        Storage::put($route . $name, file_get_contents($source));
+
+        $body['name'] = $source->getClientOriginalName();
+        $body['size'] = $source->getSize();
+        $body['ref'] = $name;
+
+        return $body;
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(StoreSourceRequest $request)
+    public function afterSave(Request $request, object $jpa)
     {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(Source $source)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Source $source)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(UpdateSourceRequest $request, Source $source)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Source $source)
-    {
-        //
+        return $jpa;
     }
 }

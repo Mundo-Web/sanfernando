@@ -71,12 +71,12 @@
     ]
   },
   "resources/css/app.css": {
-    "file": "assets/app-K_yMyaDX.css",
+    "file": "assets/app-mqZk58Z0.css",
     "isEntry": true,
     "src": "resources/css/app.css"
   },
   "resources/js/Admin/Modules.jsx": {
-    "file": "assets/Modules-qLCgJFrd.js",
+    "file": "assets/Modules-6KxX9zAZ.js",
     "imports": [
       "resources/js/Utils/HtmlContent.jsx",
       "resources/js/Utils/ReactAppend.jsx",
@@ -85,6 +85,8 @@
       "_CreateReactScript-Eox_dAvx.js",
       "_main-jzs2GwAM.js",
       "_BasicRest-FBWcr7qe.js",
+      "_tippy-react.esm-0Rdq6bjm.js",
+      "resources/js/components/Offer/OfferCard.jsx",
       "__commonjsHelpers-4gQjN7DL.js",
       "_index-jLuiGAeD.js",
       "resources/js/Utils/CreateReactScript.jsx",
@@ -131,7 +133,7 @@
     "src": "resources/js/Catalogo.jsx"
   },
   "resources/js/CatalogoGP.jsx": {
-    "file": "assets/CatalogoGP-jxx1U8tD.js",
+    "file": "assets/CatalogoGP-_iYCpoDO.js",
     "imports": [
       "resources/js/Utils/HtmlContent.jsx",
       "resources/js/Utils/ReactAppend.jsx",
@@ -203,15 +205,15 @@
     "src": "resources/js/CursoDesarrollo.jsx"
   },
   "resources/js/CursoDetalle.jsx": {
-    "file": "assets/CursoDetalle-wpNitYII.js",
+    "file": "assets/CursoDetalle-8njSAZtb.js",
     "imports": [
       "resources/js/Utils/HtmlContent.jsx",
       "resources/js/Utils/ReactAppend.jsx",
       "_CreateReactScript-Eox_dAvx.js",
+      "_axios-_sX4vCAy.js",
       "__commonjsHelpers-4gQjN7DL.js",
       "_index-jLuiGAeD.js",
       "resources/js/Utils/CreateReactScript.jsx",
-      "_axios-_sX4vCAy.js",
       "_main-jzs2GwAM.js"
     ],
     "isEntry": true,
@@ -308,7 +310,7 @@
     "src": "resources/js/ExamenPregunta.jsx"
   },
   "resources/js/Home.jsx": {
-    "file": "assets/Home-vrbQH3Xk.js",
+    "file": "assets/Home-0f1G1tbJ.js",
     "imports": [
       "resources/js/Utils/HtmlContent.jsx",
       "resources/js/Utils/ReactAppend.jsx",

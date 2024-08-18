@@ -9,6 +9,7 @@ use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\SaleController;
 use App\Http\Controllers\SaleDetailController;
+use App\Http\Controllers\SourceController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -35,6 +36,8 @@ Route::post('/payment/culqi', [PaymentController::class, 'culqi'])->name('paymen
 Route::get('/offers/{id}', [OfferController::class, 'get'])->name('offers.get');
 
 Route::post('/messages', [MessageController::class, 'save'])->name('messages.save');
+Route::post('/products/AddOrder', [ProductsController::class, 'AddOrder'])->name('products.AddOrder');
+
 
 Route::middleware(['web', 'auth:sanctum', 'verified'])->group(function () {
 
@@ -59,4 +62,10 @@ Route::middleware(['web', 'auth:sanctum', 'verified'])->group(function () {
     Route::post('/modules/paginate', [ModuleController::class, 'paginate']);
     Route::patch('/modules/status', [ModuleController::class, 'status']);
     Route::delete('/modules/{id}', [ModuleController::class, 'delete']);
+
+    Route::get('/sources/{source}', [SourceController::class, 'get']);
+    Route::post('/sources', [SourceController::class, 'save']);
+    Route::post('/sources/paginate', [SourceController::class, 'paginate']);
+    Route::patch('/sources/status', [SourceController::class, 'status']);
+    Route::delete('/sources/{id}', [SourceController::class, 'delete']);
 });

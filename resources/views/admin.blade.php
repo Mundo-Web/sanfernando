@@ -10,7 +10,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="csrf-token" content="{{ csrf_token() }}">
 
-  <title>{{env('APP_NAME')}}</title>
+  <title>Panel | {{env('APP_NAME')}}</title>
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -79,6 +79,7 @@
   <script src="//unpkg.com/alpinejs" defer></script>
   <script src="/js/tippy.all.min.js"></script>
   <script src="/js/cookies.extend.js"></script>
+  <script src="/js/file.extend.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/flowbite@2.4.1/dist/flowbite.min.js"></script>
 
   <style>

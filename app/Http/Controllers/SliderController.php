@@ -29,7 +29,17 @@ class SliderController extends Controller
      */
     public function create()
     {
-        return view('pages.sliders.create');
+        $slider = new Slider();
+        return view('pages.sliders.save', compact('slider'));
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit($id)
+    {
+        $slider = Slider::find($id);
+        return view('pages.sliders.save', compact('slider'));
     }
 
     /**
@@ -41,7 +51,7 @@ class SliderController extends Controller
             'title' => 'required',
         ]);
 
-       
+
         $slider = new Slider();
 
 
@@ -53,27 +63,27 @@ class SliderController extends Controller
             $img =  $manager->read($request->file('imagen'));
             // $img->coverDown(968, 351, 'center');
             $ruta = 'storage/images/slider/';
-           
+
             if (!file_exists($ruta)) {
                 mkdir($ruta, 0777, true); // Se crea la ruta con permisos de lectura, escritura y ejecución
             }
-            
-            $img->save($ruta.$nombreImagen);
 
-            $slider ->url_image = $ruta;
-            $slider ->name_image = $nombreImagen;
+            $img->save($ruta . $nombreImagen);
+
+            $slider->url_image = $ruta;
+            $slider->name_image = $nombreImagen;
         }
 
-        $slider ->botontext1 = $request->botontext1;
-        $slider ->link1 = $request->link1;
-        $slider ->botontext2 = $request->botontext2;
-        $slider ->link2 = $request->link2;
-        $slider ->title = $request->title;
-        $slider ->description = $request->description;
-        
+        $slider->botontext1 = $request->botontext1;
+        $slider->link1 = $request->link1;
+        $slider->botontext2 = $request->botontext2;
+        $slider->link2 = $request->link2;
+        $slider->title = $request->title;
+        $slider->description = $request->description;
 
 
-        $slider ->save();
+
+        $slider->save();
 
         return redirect()->route('slider.index')->with('success', 'Slider creado exitosamente.');
     }
@@ -87,17 +97,6 @@ class SliderController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit($id)
-    {   
-      
-        $slider = Slider::find($id);
-
-        return view('pages.sliders.edit', compact('slider'));
-    }
-
-    /**
      * Update the specified resource in storage.
      */
     public function update(Request $request, $id)
@@ -105,11 +104,11 @@ class SliderController extends Controller
         $slider = Slider::findOrfail($id);
         $slider->title = $request->title;
         $slider->description = $request->description;
-        $slider ->botontext1 = $request->botontext1;
-        $slider ->link1 = $request->link1;
-        $slider ->botontext2 = $request->botontext2;
-        $slider ->link2 = $request->link2;
-       
+        $slider->botontext1 = $request->botontext1;
+        $slider->link1 = $request->link1;
+        $slider->botontext2 = $request->botontext2;
+        $slider->link2 = $request->link2;
+
 
         if ($request->hasFile("imagen")) {
 
@@ -127,11 +126,11 @@ class SliderController extends Controller
             $nombreImagen = Str::random(10) . '_' . $request->file('imagen')->getClientOriginalName();
             $img =  $manager->read($request->file('imagen'));
             // $img->coverDown(968, 351, 'center');
-           
+
             if (!file_exists($rutanueva)) {
                 mkdir($rutanueva, 0777, true); // Se crea la ruta con permisos de lectura, escritura y ejecución
             }
-            
+
             $img->save($rutanueva . $nombreImagen);
 
 
@@ -146,6 +145,53 @@ class SliderController extends Controller
         return redirect()->route('slider.index')->with('success', 'Slider actualizado exitosamente.');
     }
 
+    public function save(Request $request)
+    {
+        $slider = Slider::find($request->id);
+        if (!$slider) $slider = new Slider();
+        $slider->title = $request->title;
+        $slider->description = $request->description;
+        $slider->botontext1 = $request->botontext1;
+        $slider->link1 = $request->link1;
+        $slider->botontext2 = $request->botontext2;
+        $slider->link2 = $request->link2;
+
+
+        if ($request->hasFile("imagen")) {
+
+            $manager = new ImageManager(new Driver());
+
+
+            $ruta = storage_path() . '/app/public/images/slider/' . $slider->name_image;
+
+            // dd($ruta);
+            if (File::exists($ruta)) {
+                File::delete($ruta);
+            }
+
+            $rutanueva = 'storage/images/slider/';
+            $nombreImagen = Str::random(10) . '_' . $request->file('imagen')->getClientOriginalName();
+            $img =  $manager->read($request->file('imagen'));
+            // $img->coverDown(968, 351, 'center');
+
+            if (!file_exists($rutanueva)) {
+                mkdir($rutanueva, 0777, true); // Se crea la ruta con permisos de lectura, escritura y ejecución
+            }
+
+            $img->save($rutanueva . $nombreImagen);
+
+
+            $slider->url_image = $rutanueva;
+            $slider->name_image = $nombreImagen;
+        }
+
+
+
+        $slider->save();
+
+        return redirect()->route('slider.index')->with('success', 'Slider actualizado exitosamente.');
+    }
+
     /**
      * Remove the specified resource from storage.
      */
@@ -156,7 +202,7 @@ class SliderController extends Controller
 
 
 
-    
+
     public function deleteSlider(Request $request)
     {
         //Recupero el id mandado mediante ajax

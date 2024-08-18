@@ -62,7 +62,7 @@ class IndexController extends Controller
    */
   public function index()
   {
-    $banners = Banners::where('status',  1)->where('visible',  1)->get()->toArray();
+    $sliders = Slider::where('status',  1)->where('visible',  1)->get()->toArray();
     $popularProducts = Products::where('products.destacar', '=', 1)->where('products.status', '=', 1)
       ->where('visible', '=', 1)->with(['tags', 'category'])->activeDestacado()->take(6)->get();
     $benefit = Strength::where('status', '=', 1)->take(9)->get();
@@ -74,7 +74,7 @@ class IndexController extends Controller
     return Inertia::render('Home', [
       'url_env' => env('APP_URL'),
       'popularProducts' => $popularProducts,
-      'banners' => $banners,
+      'sliders' => $sliders,
       'benefit' =>  $benefit,
       'testimonies' => $testimonies,
       'aboutUs' => $aboutUs,
