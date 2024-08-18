@@ -5,6 +5,7 @@ import DropdownComponent from './components/Inputs/DropdownComponent'
 import { format, parseISO } from 'date-fns';
 import { es } from 'date-fns/locale';
 import copyToClipboard from './Utils/copyToClipboard';
+import { agregarPedido } from './Utils/carrito.js'
 
 
 const CursoDetalle = ({ producto, url_env }) => {
@@ -23,6 +24,7 @@ const CursoDetalle = ({ producto, url_env }) => {
   const curso_dirigido = producto?.curso_dirigido ? JSON.parse(producto.curso_dirigido) : [];
   const incluye = producto?.incluye ? JSON.parse(producto.incluye) : [];
   const temario = producto?.temario ? JSON.parse(producto.temario) : [];
+
 
 
   return (
@@ -492,6 +494,7 @@ const CursoDetalle = ({ producto, url_env }) => {
             <div className="flex flex-col px-6 mt-6 w-full max-md:px-5">
               <div className="flex flex-col lg:flex-row w-full text-sm font-bold tracking-normal text-center gap-3">
                 <div
+                  onClick={() => agregarPedido(producto.id)}
                   className=" px-3 w-full text-white bg-red-400 rounded-xl py-3 cursor-pointer hover:bg-red-800">
                   Añadir al carrito
                 </div>

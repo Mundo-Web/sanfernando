@@ -81,7 +81,7 @@
     ]
   },
   "resources/css/app.css": {
-    "file": "assets/app-gHleChlr.css",
+    "file": "assets/app-QcsY3moc.css",
     "isEntry": true,
     "src": "resources/css/app.css"
   },
@@ -220,16 +220,16 @@
     "src": "resources/js/CursoDesarrollo.jsx"
   },
   "resources/js/CursoDetalle.jsx": {
-    "file": "assets/CursoDetalle-mmgCDX4I.js",
+    "file": "assets/CursoDetalle-8BelJ1lQ.js",
     "imports": [
       "resources/js/Utils/HtmlContent.jsx",
       "_index-TT1qJ6UJ.js",
       "resources/js/Utils/ReactAppend.jsx",
       "_CreateReactScript-QuaDmwri.js",
+      "_axios-_sX4vCAy.js",
       "__commonjsHelpers-4gQjN7DL.js",
       "_index-jtdEOcur.js",
       "resources/js/Utils/CreateReactScript.jsx",
-      "_axios-_sX4vCAy.js",
       "_main-jzs2GwAM.js"
     ],
     "isEntry": true,

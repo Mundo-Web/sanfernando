@@ -695,4 +695,21 @@ class ProductsController extends Controller
     ]);
     return response()->json(['message' => 'registro actualizado']);
   }
+  public function AddOrder(Request $request ){
+    try {
+      //code...
+      $data = $request->all();
+      $producto = Products::with(['tags', 'galeria', 'category', 'docentes'])->where('id', $data['id'])->first();
+
+
+      return response()->json(['message' => 'orden actualizado con exito ' , 
+      'producto' => $producto,
+      
+      ]);
+    
+    } catch (\Throwable $th) {
+      //throw $th;
+      return response()->json(['message' => 'No se ha podido agregar el producto '], 400);
+    }
+  }
 }
