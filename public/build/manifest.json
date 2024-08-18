@@ -81,12 +81,12 @@
     ]
   },
   "resources/css/app.css": {
-    "file": "assets/app-QcsY3moc.css",
+    "file": "assets/app-KByICXMW.css",
     "isEntry": true,
     "src": "resources/css/app.css"
   },
   "resources/js/Admin/Modules.jsx": {
-    "file": "assets/Modules-5N3hYES1.js",
+    "file": "assets/Modules-6VGKE8R8.js",
     "imports": [
       "resources/js/Utils/HtmlContent.jsx",
       "_index-TT1qJ6UJ.js",
@@ -96,6 +96,7 @@
       "_CreateReactScript-QuaDmwri.js",
       "_main-jzs2GwAM.js",
       "_BasicRest-FBWcr7qe.js",
+      "_tippy-react.esm-Ethl7wjd.js",
       "__commonjsHelpers-4gQjN7DL.js",
       "_index-jtdEOcur.js",
       "resources/js/Utils/CreateReactScript.jsx",

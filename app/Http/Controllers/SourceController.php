@@ -5,62 +5,40 @@ namespace App\Http\Controllers;
 use App\Models\Source;
 use App\Http\Requests\StoreSourceRequest;
 use App\Http\Requests\UpdateSourceRequest;
+use Illuminate\Http\Request;
+use Illuminate\Http\Response as HttpResponse;
+use Illuminate\Routing\ResponseFactory;
+use Intervention\Image\Drivers\Gd\Driver;
+use Intervention\Image\ImageManager;
+use SoDe\Extend\Crypto;
+use SoDe\Extend\Response;
 
-class SourceController extends Controller
+class SourceController extends BasicController
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
-        //
-    }
+    public $model = Source::class;
+    public $softDeletion = false;
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+    public function save(Request $request): HttpResponse|ResponseFactory
     {
-        //
-    }
+        $response = Response::simpleTryCatch(function (Response $response) use ($request) {
+            $sourceJpa = new Source();
+            $sourceJpa->module_id = $request->module_id;
+            if ($request->hasFile('source')) {
+                $source = $request->file('source');
+                $uuid = Crypto::randomUUID();
+                $route = "storage/images/modules/";
+                $name = "{$uuid}.{$source->getClientOriginalExtension()}";
+                $manager = new ImageManager(new Driver());
+                $image = $manager->read($source);
+                if (!file_exists($route))     mkdir($route, 0777, true);
+                $image->save($route . $name);
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(StoreSourceRequest $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(Source $source)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Source $source)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(UpdateSourceRequest $request, Source $source)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Source $source)
-    {
-        //
+                $sourceJpa->name = $source->getClientOriginalName();
+                $sourceJpa->ref = $route . $name;
+                $sourceJpa->size = $source->getSize();
+            }
+            $sourceJpa->save();
+        });
+        return response($response->toArray(), $response->status);
     }
 }
