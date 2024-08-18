@@ -63,6 +63,7 @@ Route::middleware(['web', 'auth:sanctum', 'verified'])->group(function () {
     Route::patch('/modules/status', [ModuleController::class, 'status']);
     Route::delete('/modules/{id}', [ModuleController::class, 'delete']);
 
+    Route::get('/sources/{source}', [SourceController::class, 'get']);
     Route::post('/sources', [SourceController::class, 'save']);
     Route::post('/sources/paginate', [SourceController::class, 'paginate']);
     Route::patch('/sources/status', [SourceController::class, 'status']);

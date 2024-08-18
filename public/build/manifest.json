@@ -71,12 +71,12 @@
     ]
   },
   "resources/css/app.css": {
-    "file": "assets/app-KByICXMW.css",
+    "file": "assets/app-4VxzLkV3.css",
     "isEntry": true,
     "src": "resources/css/app.css"
   },
   "resources/js/Admin/Modules.jsx": {
-    "file": "assets/Modules-Hqccpgw0.js",
+    "file": "assets/Modules-6KxX9zAZ.js",
     "imports": [
       "resources/js/Utils/HtmlContent.jsx",
       "resources/js/Utils/ReactAppend.jsx",
@@ -86,6 +86,7 @@
       "_main-jzs2GwAM.js",
       "_BasicRest-FBWcr7qe.js",
       "_tippy-react.esm-0Rdq6bjm.js",
+      "resources/js/components/Offer/OfferCard.jsx",
       "__commonjsHelpers-4gQjN7DL.js",
       "_index-jLuiGAeD.js",
       "resources/js/Utils/CreateReactScript.jsx",

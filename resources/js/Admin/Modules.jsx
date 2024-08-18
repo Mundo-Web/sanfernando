@@ -8,6 +8,7 @@ import FloatingInput from '../components/Forms/FloatingInput';
 import ModulesRest from '../actions/ModulesRest';
 import SourcesRest from '../actions/SourcesRest';
 import Tippy from '@tippyjs/react';
+import Swal from 'sweetalert2';
 
 Modal.setAppElement('body')
 
@@ -33,7 +34,7 @@ const Modules = ({ courses }) => {
   const [modalOpen, setModalOpen] = useState(false)
   const [moduleOpen, setModuleOpen] = useState(null)
   const [sourceType, setSourceType] = useState('image');
-  const [sources, setSources] = useState([1, 2, 3]);
+  const [sources, setSources] = useState([]);
 
   useEffect(() => {
     refreshModules()
@@ -67,8 +68,8 @@ const Modules = ({ courses }) => {
   const imageRef = useRef()
   const videoRef = useRef()
 
-  const fillForm = () => {
-    idRef.current.value = moduleOpen?.id || undefined
+  const fillForm = async () => {
+    idRef.current.value = moduleOpen?.id || ''
     nameRef.current.value = moduleOpen?.name || ''
     descriptionRef.current.value = moduleOpen?.description || ''
     const newSourceType = moduleOpen?.source_type || 'image'
@@ -77,7 +78,7 @@ const Modules = ({ courses }) => {
     if (newSourceType == 'image') {
       $(`#source-type-image`).prop('checked', true)
       imageRef.current.value = null
-      imagePreviewRef.current.src = `/${moduleOpen?.source}`
+      imagePreviewRef.current.src = `/api/sources/${moduleOpen?.source}`
       videoRef.current.value = null
     } else {
       $(`#source-type-video`).prop('checked', true)
@@ -85,6 +86,8 @@ const Modules = ({ courses }) => {
       imagePreviewRef.current.src = null
       videoRef.current.value = `https://youtu.be/${moduleOpen?.source}`
     }
+
+    setSources(moduleOpen?.sources || [])
   }
 
   const onImageChange = async (e) => {
@@ -101,15 +104,24 @@ const Modules = ({ courses }) => {
 
   const onModuleSubmit = async (e) => {
     e.preventDefault()
-    const request = {
-      course_id: selected.id,
-      id: idRef.current.value,
-      name: nameRef.current.value,
-      description: descriptionRef.current.value,
-      source_type: sourceType,
-      source: sourceType == 'image' ? imageRef.current.value : videoRef.current.value
+    const formData = new FormData();
+    formData.append('course_id', selected.id)
+    formData.append('id', idRef.current.value || '')
+    formData.append('name', nameRef.current.value)
+    formData.append('description', descriptionRef.current.value)
+    formData.append('source_type', sourceType)
+    if (sourceType == 'image') {
+      if (imageRef.current.files?.[0]) {
+        formData.append('source', imageRef.current.files?.[0] ?? null)
+      }
+    } else {
+      formData.append('source', videoRef.current.value)
     }
-    const result = await modulesRest.save(request)
+    if (!idRef.current.value) {
+      formData.append('sources', sources.map(({ id }) => id))
+    }
+    const result = await modulesRest.save(formData)
+    console.log(result)
     if (!result) return
     refreshModules()
     setModalOpen(false)
@@ -118,12 +130,43 @@ const Modules = ({ courses }) => {
   const onSourceChange = (e) => {
     const files = [...e.target.files]
     files.forEach(async file => {
-      const result = await sourcesRest.save(file)
+      const formData = new FormData();
+      if (moduleOpen?.id) {
+        formData.append('module_id', moduleOpen.id);
+      }
+      formData.append('source', file);
+      const result = await sourcesRest.save(formData)
       if (!result) return
       const newSources = structuredClone(sources)
-      sources.push(result)
+      newSources.push(result)
       setSources(newSources)
     });
+    e.target.value = null
+  }
+
+  const onDeleteSource = async (sourceId) => {
+    const result = await sourcesRest.delete(sourceId)
+    if (!result) return
+    const newSources = structuredClone(sources).filter(({ id }) => id != sourceId)
+    setSources(newSources)
+  }
+
+  const onDeleteModule = async () => {
+    const { isConfirmed } = await Swal.fire({
+      title: '¿Estás seguro?',
+      text: 'Esta acción eliminará el módulo de forma permanente.',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Sí, eliminar',
+      cancelButtonText: 'Cancelar'
+    })
+    if (!isConfirmed) return
+    const result = await modulesRest.delete(moduleOpen.id)
+    if (!result) return
+    setModalOpen(false)
+    refreshModules()
   }
 
   return (<>
@@ -159,8 +202,22 @@ const Modules = ({ courses }) => {
 
     <div className='p-4 flex items-center justify-center gap-4 flex-wrap'>
       {modules.sort((a, b) => a.order - b.order).map((module, i) => (
-        <div key={`module-${i}`} className="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow-md md:flex-row md:max-w-sm hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700 cursor-pointer" onClick={() => onOpenModal(module)}>
-          <img className="object-cover w-full max-h-48 md:h-auto md:w-32 rounded-none rounded-t-lg md:rounded-none md:rounded-s-lg" src={module.source_type == 'video' ? `https://i.ytimg.com/vi/${module.source}/hq720.jpg` : `/${module.source}`} alt={module.name} onError={e => e.target.src = '/images/img/noimagen.jpg'} />
+        <div key={`module-${i}`} className="relative flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow-md md:flex-row md:max-w-sm hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700 cursor-pointer" onClick={() => onOpenModal(module)}>
+          {
+            module.type == 'session'
+              ? <>
+                <img className="object-cover w-full max-h-48 md:h-auto md:w-32 rounded-none rounded-t-lg md:rounded-none md:rounded-s-lg" src={module.source_type == 'video' ? `https://i.ytimg.com/vi/${module.source}/hq720.jpg` : `/api/sources/${module.source}`} alt={module.name}
+                  onError={e => e.target.src = '/images/img/noimagen.jpg'}
+                />
+                {
+                  module.source_type == 'video' && <i className='absolute top-2 left-2 fab fa-youtube text-lg text-[#FF0000]'></i>
+                }
+              </>
+              : <img className="object-cover w-full max-h-48 md:h-auto md:w-32 rounded-none rounded-t-lg md:rounded-none md:rounded-s-lg" src={'/images/img/quizz-default.png'} alt={module.name}
+                onError={e => e.target.src = '/images/img/noimagen.jpg'}
+              />
+          }
+
           <div className="flex flex-col justify-between p-4 leading-normal">
             <h5 className="mb-1 font-bold tracking-tight text-gray-900 dark:text-white line-clamp-2">{module.type == 'quick-exam'
               ? <span className="bg-yellow-100 text-yellow-800 text-xs font-medium me-1 px-2.5 py-0.5 rounded dark:bg-yellow-900 dark:text-yellow-300">Examen parcial</span>
@@ -237,17 +294,18 @@ const Modules = ({ courses }) => {
                 <div className="flex flex-col self-stretch my-auto w-[228px]">
                   <Tippy content='Ver recurso'>
                     <a href={`/${source.ref}`} className="w-[calc(100%-25px)] text-base font-medium leading-none text-neutral-800 text-ellipsis line-clamp-1 hover:underline" target='_blank'>
-                      Teoria_Gestion_Publica.pdf
+                      {source.name}
                     </a>
                   </Tippy>
                   <div className="mt-1 text-sm tracking-normal leading-loose text-rose-700">
-                    12.6 MB
+                    {Number(source.size / 1000000).toFixed(2)} MB
                   </div>
                 </div>
               </div>
               <Tippy content='Eliminar recurso'>
                 <button type='button'
-                  className="gap-3 self-stretch px-4 py-2 my-auto text-base font-bold leading-tight text-white whitespace-nowrap bg-rose-700 rounded-lg">
+                  className="gap-3 self-stretch px-4 py-2 my-auto text-base font-bold leading-tight text-white whitespace-nowrap bg-rose-700 rounded-lg"
+                  onClick={() => onDeleteSource(source.id)}>
                   <i className='fa fa-trash'></i>
                 </button>
               </Tippy>
@@ -255,9 +313,13 @@ const Modules = ({ courses }) => {
           })}
         </div>
 
-        <button type="submit" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mt-4 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
+        <button type="submit" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mt-4 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 me-2">
           <i className='fa fa-save me-1'></i>
           Guardar
+        </button>
+        <button type="button" className="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 mt-4 dark:bg-red-600 dark:hover:bg-red-700 focus:outline-none dark:focus:ring-red-800" onClick={onDeleteModule}>
+          <i className='fa fa-trash me-1'></i>
+          Eliminar
         </button>
       </form>
     </ReactModal>

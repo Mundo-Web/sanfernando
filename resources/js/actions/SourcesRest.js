@@ -1,21 +1,17 @@
-import { JSON } from "sode-extend-react";
+import { Notify } from "sode-extend-react";
 import BasicRest from "./BasicRest";
 
 class SourcesRest extends BasicRest {
   path = 'sources'
 
-  save = async (file, moduleId = null, showNotify = true) => {
+  save = async (request, showNotify = true) => {
     try {
-      const formData = new FormData();
-      formData.append('source', file);
-      formData.append('module_id', moduleId);
-
       const res = await fetch(`/api/${this.path}`, {
         method: 'POST',
         headers: {
           'X-Xsrf-Token': decodeURIComponent(Cookies.get('XSRF-TOKEN')),
         },
-        body: formData,
+        body: request,
       });
 
       if (!res.ok) {
