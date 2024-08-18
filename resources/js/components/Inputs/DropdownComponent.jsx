@@ -68,14 +68,14 @@ const DropdownComponent = ({ tema }) => {
                         </div>
                         <div className="leading-loose">07:31</div>
                     </div>
-                    <div class="flex flex-wrap gap-10 justify-between items-center w-full leading-loose max-md:max-w-full">
-                        <div class="flex gap-2 items-center self-stretch my-auto">
+                    <div className="flex flex-wrap gap-10 justify-between items-center w-full leading-loose max-md:max-w-full">
+                        <div className="flex gap-2 items-center self-stretch my-auto">
                             <img loading="lazy"
                                 src="https://cdn.builder.io/api/v1/image/assets/TEMP/0d1964115afa9d30cb0d63ff8aae9573f8607e213ed3e511568f4f93827f6c08?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f"
-                                class="object-contain shrink-0 self-stretch my-auto w-4 aspect-square" />
-                            <div class="self-stretch my-auto">Examen final del bloque</div>
+                                className="object-contain shrink-0 self-stretch my-auto w-4 aspect-square" />
+                            <div className="self-stretch my-auto">Examen final del bloque</div>
                         </div>
-                        <div class="self-stretch my-auto">5.3 MB</div>
+                        <div className="self-stretch my-auto">5.3 MB</div>
                     </div>
                 </div>
             )}

@@ -73,9 +73,9 @@ return (
             <HeaderTeacher selectedOption={selectedOption} />
             <div className="content p-6 flex-1">
                 {selectedOption === 'Mis Cursos' &&
-                <h2>asdasds</h2>} {/* Renderiza CursosDocente */}
+                <h2>asdasds</h2>} 
                 {selectedOption === 'Perfil' &&
-                <FormDocente />} {/* Renderiza FormDocente */}
+                <FormDocente />} 
             </div>
         </div>
     </div>

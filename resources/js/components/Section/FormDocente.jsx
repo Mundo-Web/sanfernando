@@ -20,8 +20,6 @@ return (
                                     name="name"
                                     id="name"
                                     placeholder="Nombre"
-                                    required
-                                    autoFocus
                                     className="w-full py-3 px-3 focus:outline-none text-[#CF072C] placeholder-[#CF072C] focus:placeholder-[#CF072C] font-normal text-base bg-[#FFF0F0] rounded-xl border-2 border-transparent focus:border-2 focus:border-[#CF072C] focus:ring-0"
                                 />
                             </div>
@@ -31,8 +29,6 @@ return (
                                     name="email"
                                     id="email"
                                     placeholder="Apellido"
-                                    required
-                                    autoFocus
                                     className="w-full py-3 px-3 focus:outline-none text-[#CF072C] placeholder-[#CF072C] focus:placeholder-[#CF072C] font-normal text-base bg-[#FFF0F0] rounded-xl border-2 border-transparent focus:border-2 focus:border-[#CF072C] focus:ring-0"
                                 />
                             </div>
@@ -46,8 +42,6 @@ return (
                                     name="nameuser"
                                     id="nameuser"
                                     placeholder="Nombre de usuario"
-                                    required
-                                    autoFocus
                                     className="w-full py-3 px-3 focus:outline-none text-[#CF072C] placeholder-[#CF072C] focus:placeholder-[#CF072C] font-normal text-base bg-[#FFF0F0] rounded-xl border-2 border-transparent focus:border-2 focus:border-[#CF072C] focus:ring-0"
                                 />
                         </div>
@@ -59,8 +53,6 @@ return (
                                     name="cellphone"
                                     id="cellphone"
                                     placeholder="+51 123456789"
-                                    required
-                                    autoFocus
                                     className="w-full py-3 px-3 focus:outline-none text-[#CF072C] placeholder-[#CF072C] focus:placeholder-[#CF072C] font-normal text-base bg-[#FFF0F0] rounded-xl border-2 border-transparent focus:border-2 focus:border-[#CF072C] focus:ring-0"
                                 />
                         </div>
@@ -92,8 +84,6 @@ return (
                         name="grade"
                         id="grade"
                         placeholder="Grado academico"
-                        required
-                        autoFocus
                         className="w-full py-3 px-3 focus:outline-none text-[#CF072C] placeholder-[#CF072C] focus:placeholder-[#CF072C] font-normal text-base bg-[#FFF0F0] rounded-xl border-2 border-transparent focus:border-2 focus:border-[#CF072C] focus:ring-0"
                     />        
             </div>
@@ -104,8 +94,6 @@ return (
                         name="biografia"
                         id="biografia"
                         placeholder="Tu título, profesión o pequeña biografía"
-                        required
-                        autoFocus
                         className="w-full py-3 px-3 focus:outline-none text-[#CF072C] placeholder-[#CF072C] focus:placeholder-[#CF072C] font-normal text-base bg-[#FFF0F0] rounded-xl border-2 border-transparent focus:border-2 focus:border-[#CF072C] focus:ring-0"
                     />   
             </div>

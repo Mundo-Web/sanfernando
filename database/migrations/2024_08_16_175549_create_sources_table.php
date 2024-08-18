@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('ref');
             $table->timestamps();
 
-            $table->foreign('module_id')->references('id')->on('modules');
+            $table->foreign('module_id')->references('id')->on('modules')->cascadeOnDelete();
         });
     }
 

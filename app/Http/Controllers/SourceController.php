@@ -3,42 +3,50 @@
 namespace App\Http\Controllers;
 
 use App\Models\Source;
-use App\Http\Requests\StoreSourceRequest;
-use App\Http\Requests\UpdateSourceRequest;
+use Exception;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response as HttpResponse;
-use Illuminate\Routing\ResponseFactory;
-use Intervention\Image\Drivers\Gd\Driver;
-use Intervention\Image\ImageManager;
+use Illuminate\Support\Facades\Storage;
 use SoDe\Extend\Crypto;
-use SoDe\Extend\Response;
 
 class SourceController extends BasicController
 {
     public $model = Source::class;
     public $softDeletion = false;
 
-    public function save(Request $request): HttpResponse|ResponseFactory
+    public function get(Request $request, string $source)
     {
-        $response = Response::simpleTryCatch(function (Response $response) use ($request) {
-            $sourceJpa = new Source();
-            $sourceJpa->module_id = $request->module_id;
-            if ($request->hasFile('source')) {
-                $source = $request->file('source');
-                $uuid = Crypto::randomUUID();
-                $route = "storage/images/modules/";
-                $name = "{$uuid}.{$source->getClientOriginalExtension()}";
-                $manager = new ImageManager(new Driver());
-                $image = $manager->read($source);
-                if (!file_exists($route))     mkdir($route, 0777, true);
-                $image->save($route . $name);
+        try {
+            $content = Storage::get('sources/' . $source);
+            if (!$content) throw new Exception('Perfil no encontrado');
+            return response($content, 200, [
+                'Content-Type' => 'application/octet-stream'
+            ]);
+        } catch (\Throwable $th) {
+            return response(null, 404);
+        }
+    }
 
-                $sourceJpa->name = $source->getClientOriginalName();
-                $sourceJpa->ref = $route . $name;
-                $sourceJpa->size = $source->getSize();
-            }
-            $sourceJpa->save();
-        });
-        return response($response->toArray(), $response->status);
+    public function beforeSave(Request $request)
+    {
+        $body = $request->all();
+        $source = $request->file('source');
+
+        $route = 'sources/';
+        $name = Crypto::randomUUID() . '.' . $source->getClientOriginalExtension();
+        if (!file_exists($route)) {
+            mkdir($route, 0777, true);
+        }
+        Storage::put($route . $name, file_get_contents($source));
+
+        $body['name'] = $source->getClientOriginalName();
+        $body['size'] = $source->getSize();
+        $body['ref'] = $name;
+
+        return $body;
+    }
+
+    public function afterSave(Request $request, object $jpa)
+    {
+        return $jpa;
     }
 }

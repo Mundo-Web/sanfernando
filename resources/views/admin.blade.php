@@ -79,6 +79,7 @@
   <script src="//unpkg.com/alpinejs" defer></script>
   <script src="/js/tippy.all.min.js"></script>
   <script src="/js/cookies.extend.js"></script>
+  <script src="/js/file.extend.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/flowbite@2.4.1/dist/flowbite.min.js"></script>
 
   <style>

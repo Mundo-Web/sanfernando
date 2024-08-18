@@ -28,6 +28,13 @@
       "_index-TT1qJ6UJ.js"
     ]
   },
+  "_HeaderTeacher-d8NAQ7hX.js": {
+    "file": "assets/HeaderTeacher-d8NAQ7hX.js",
+    "imports": [
+      "resources/js/Utils/HtmlContent.jsx",
+      "_index-TT1qJ6UJ.js"
+    ]
+  },
   "_JSEncrypt-jwo8Dr6z.js": {
     "file": "assets/JSEncrypt-jwo8Dr6z.js"
   },
@@ -81,12 +88,12 @@
     ]
   },
   "resources/css/app.css": {
-    "file": "assets/app-WrJuXVTR.css",
+    "file": "assets/app-8ZXZftV2.css",
     "isEntry": true,
     "src": "resources/css/app.css"
   },
   "resources/js/Admin/Modules.jsx": {
-    "file": "assets/Modules-6VGKE8R8.js",
+    "file": "assets/Modules-uWEDOqQn.js",
     "imports": [
       "resources/js/Utils/HtmlContent.jsx",
       "_index-TT1qJ6UJ.js",
@@ -97,6 +104,7 @@
       "_main-jzs2GwAM.js",
       "_BasicRest-FBWcr7qe.js",
       "_tippy-react.esm-Ethl7wjd.js",
+      "resources/js/components/Offer/OfferCard.jsx",
       "__commonjsHelpers-4gQjN7DL.js",
       "_index-jtdEOcur.js",
       "resources/js/Utils/CreateReactScript.jsx",
@@ -221,7 +229,7 @@
     "src": "resources/js/CursoDesarrollo.jsx"
   },
   "resources/js/CursoDetalle.jsx": {
-    "file": "assets/CursoDetalle-p85sfaaG.js",
+    "file": "assets/CursoDetalle-3vHnMwrV.js",
     "imports": [
       "resources/js/Utils/HtmlContent.jsx",
       "_index-TT1qJ6UJ.js",
@@ -237,12 +245,13 @@
     "src": "resources/js/CursoDetalle.jsx"
   },
   "resources/js/DashboardDocente.jsx": {
-    "file": "assets/DashboardDocente-ObOVjQbM.js",
+    "file": "assets/DashboardDocente-Ynzj3YfL.js",
     "imports": [
       "resources/js/Utils/HtmlContent.jsx",
       "_index-TT1qJ6UJ.js",
       "resources/js/Utils/ReactAppend.jsx",
       "_CreateReactScript-QuaDmwri.js",
+      "_HeaderTeacher-d8NAQ7hX.js",
       "resources/js/components/Product/ProductCard.jsx",
       "__commonjsHelpers-4gQjN7DL.js",
       "_index-jtdEOcur.js",
@@ -252,6 +261,24 @@
     ],
     "isEntry": true,
     "src": "resources/js/DashboardDocente.jsx"
+  },
+  "resources/js/DashboardEstudiante.jsx": {
+    "file": "assets/DashboardEstudiante-1qwgruKp.js",
+    "imports": [
+      "resources/js/Utils/HtmlContent.jsx",
+      "_index-TT1qJ6UJ.js",
+      "resources/js/Utils/ReactAppend.jsx",
+      "_CreateReactScript-QuaDmwri.js",
+      "_HeaderTeacher-d8NAQ7hX.js",
+      "resources/js/components/Product/ProductCard.jsx",
+      "__commonjsHelpers-4gQjN7DL.js",
+      "_index-jtdEOcur.js",
+      "resources/js/Utils/CreateReactScript.jsx",
+      "_axios-_sX4vCAy.js",
+      "_main-jzs2GwAM.js"
+    ],
+    "isEntry": true,
+    "src": "resources/js/DashboardEstudiante.jsx"
   },
   "resources/js/Docente.jsx": {
     "file": "assets/Docente-wFf-mvS2.js",
@@ -705,6 +732,36 @@
     "isEntry": true,
     "src": "resources/js/components/Product/Teacher.jsx"
   },
+  "resources/js/components/Section/CursosEstudianteBlock.jsx": {
+    "file": "assets/CursosEstudianteBlock-CFe-fSeY.js",
+    "imports": [
+      "resources/js/Utils/HtmlContent.jsx",
+      "_index-TT1qJ6UJ.js",
+      "__commonjsHelpers-4gQjN7DL.js"
+    ],
+    "isEntry": true,
+    "src": "resources/js/components/Section/CursosEstudianteBlock.jsx"
+  },
+  "resources/js/components/Section/DashboardEstudianteBlock.jsx": {
+    "file": "assets/DashboardEstudianteBlock-CFe-fSeY.js",
+    "imports": [
+      "resources/js/Utils/HtmlContent.jsx",
+      "_index-TT1qJ6UJ.js",
+      "__commonjsHelpers-4gQjN7DL.js"
+    ],
+    "isEntry": true,
+    "src": "resources/js/components/Section/DashboardEstudianteBlock.jsx"
+  },
+  "resources/js/components/Section/FavoritosEstudiante.jsx": {
+    "file": "assets/FavoritosEstudiante-CFe-fSeY.js",
+    "imports": [
+      "resources/js/Utils/HtmlContent.jsx",
+      "_index-TT1qJ6UJ.js",
+      "__commonjsHelpers-4gQjN7DL.js"
+    ],
+    "isEntry": true,
+    "src": "resources/js/components/Section/FavoritosEstudiante.jsx"
+  },
   "resources/js/components/Section/FormDocente.jsx": {
     "file": "assets/FormDocente-CFe-fSeY.js",
     "imports": [
@@ -714,6 +771,26 @@
     ],
     "isEntry": true,
     "src": "resources/js/components/Section/FormDocente.jsx"
+  },
+  "resources/js/components/Section/FormEstudiante.jsx": {
+    "file": "assets/FormEstudiante-CFe-fSeY.js",
+    "imports": [
+      "resources/js/Utils/HtmlContent.jsx",
+      "_index-TT1qJ6UJ.js",
+      "__commonjsHelpers-4gQjN7DL.js"
+    ],
+    "isEntry": true,
+    "src": "resources/js/components/Section/FormEstudiante.jsx"
+  },
+  "resources/js/components/Section/HistorialEstudiante.jsx": {
+    "file": "assets/HistorialEstudiante-CFe-fSeY.js",
+    "imports": [
+      "resources/js/Utils/HtmlContent.jsx",
+      "_index-TT1qJ6UJ.js",
+      "__commonjsHelpers-4gQjN7DL.js"
+    ],
+    "isEntry": true,
+    "src": "resources/js/components/Section/HistorialEstudiante.jsx"
   },
   "resources/js/components/Section/SliderBenefit.jsx": {
     "file": "assets/SliderBenefit-pjVCBPcT.js",
