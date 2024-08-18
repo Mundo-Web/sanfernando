@@ -3,11 +3,12 @@
   <div class="px-4 sm:px-6 lg:px-8 py-8 w-full max-w-9xl mx-auto">
     <form action="{{ route('slider.save') }}" method="POST" enctype="multipart/form-data">
       @csrf
+      <input type="hidden" name="id" value="{{ $slider->id }}">
       <div
         class="col-span-full xl:col-span-8 bg-white dark:bg-slate-800 shadow-lg rounded-sm border border-slate-200 dark:border-slate-700">
         <header class="px-5 py-4 border-b border-slate-100 dark:border-slate-700">
           <h2 class="font-semibold text-slate-800 dark:text-slate-100 text-2xl tracking-tight">
-            @if ($slider->id)
+            @if (!$slider->id)
               Agregar Slider
             @else
               Actualizar slider: {{ $slider->title }}
@@ -97,7 +98,7 @@
                 <label for="description">Imagen de servicio (1440x808 px)</label>
                 <div class="relative mb-2 mt-2">
                   @if ($slider->name_image)
-                    <img src="{{ asset('storage/images/slider/' . $slider->name_image) }}"
+                    <img src="{{ asset($slider->url_image . '' . $slider->name_image) }}"
                       class="max-w-xs max-h-48 object-cover  bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full  p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                   @else
                     <img src="/images/img/noimagen.jpg"
@@ -126,7 +127,7 @@
                 </div>
                 <div class="inline-flex items-end">
                   <button type="submit"
-                    class="bg-blue-500 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded">Actualizar
+                    class="bg-blue-500 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded">Guardar
                   </button>
                 </div>
               </div>

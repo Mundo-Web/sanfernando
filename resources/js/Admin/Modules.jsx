@@ -6,12 +6,15 @@ import CourseCard from '../components/Courses/CourseCard';
 import CreateReactScript from '../Utils/CreateReactScript';
 import FloatingInput from '../components/Forms/FloatingInput';
 import ModulesRest from '../actions/ModulesRest';
+import SourcesRest from '../actions/SourcesRest';
+import Tippy from '@tippyjs/react';
 
 Modal.setAppElement('body')
 
 const customStyles = {
   content: {
-    width: '480px',
+    maxWidth: '480px',
+    width: '95%',
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
@@ -20,15 +23,17 @@ const customStyles = {
 };
 
 const modulesRest = new ModulesRest()
+const sourcesRest = new SourcesRest()
 
 const Modules = ({ courses }) => {
   const dropdownRef = useRef()
 
   const [selected, setSelected] = useState(courses[0] ?? null)
-  const [modules, setModules] = useState([1, 2, 3, 4, 5, 6])
+  const [modules, setModules] = useState([0, 1, 2, 3])
   const [modalOpen, setModalOpen] = useState(false)
   const [moduleOpen, setModuleOpen] = useState(null)
   const [sourceType, setSourceType] = useState('image');
+  const [sources, setSources] = useState([1, 2, 3]);
 
   useEffect(() => {
     refreshModules()
@@ -58,6 +63,7 @@ const Modules = ({ courses }) => {
   const idRef = useRef()
   const nameRef = useRef()
   const descriptionRef = useRef()
+  const imagePreviewRef = useRef()
   const imageRef = useRef()
   const videoRef = useRef()
 
@@ -65,11 +71,27 @@ const Modules = ({ courses }) => {
     idRef.current.value = moduleOpen?.id || undefined
     nameRef.current.value = moduleOpen?.name || ''
     descriptionRef.current.value = moduleOpen?.description || ''
-    setSourceType(moduleOpen?.source_type || 'image')
+    const newSourceType = moduleOpen?.source_type || 'image'
+    setSourceType(newSourceType)
 
-    $(`#source-type-${moduleOpen?.source_type || 'image'}`).prop('checked', true)
-    imageRef.current.value = null
-    videoRef.current.value = moduleOpen?.source_type == 'image' ? null : `https://youtu.be/${moduleOpen.source}`
+    if (newSourceType == 'image') {
+      $(`#source-type-image`).prop('checked', true)
+      imageRef.current.value = null
+      imagePreviewRef.current.src = `/${moduleOpen?.source}`
+      videoRef.current.value = null
+    } else {
+      $(`#source-type-video`).prop('checked', true)
+      imageRef.current.value = null
+      imagePreviewRef.current.src = null
+      videoRef.current.value = `https://youtu.be/${moduleOpen?.source}`
+    }
+  }
+
+  const onImageChange = async (e) => {
+    const file = e.target.files[0] ?? null
+    if (!file) return imagePreviewRef.current.src = null
+    const url = URL.createObjectURL(file)
+    imagePreviewRef.current.src = url
   }
 
   const onCloseModal = () => {
@@ -91,6 +113,17 @@ const Modules = ({ courses }) => {
     if (!result) return
     refreshModules()
     setModalOpen(false)
+  }
+
+  const onSourceChange = (e) => {
+    const files = [...e.target.files]
+    files.forEach(async file => {
+      const result = await sourcesRest.save(file)
+      if (!result) return
+      const newSources = structuredClone(sources)
+      sources.push(result)
+      setSources(newSources)
+    });
   }
 
   return (<>
@@ -170,7 +203,7 @@ const Modules = ({ courses }) => {
         <p className='mb-2' htmlFor="">Recurso principal</p>
         <div className="mb-4 flex w-full justify-center gap-4">
           <div className="flex items-center ps-4 border border-gray-200 rounded dark:border-gray-700 w-full max-w-40">
-            <input id="source-type-image" type="radio" value="image" name="source-type" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600 cursor-pointer" defaultChecked
+            <input id="source-type-image" type="radio" value="image" name="source-type" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600 cursor-pointer"
               onChange={e => setSourceType(e.target.value)} />
             <label htmlFor="source-type-image" className="w-full py-4 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300 cursor-pointer">Imagen</label>
           </div>
@@ -180,32 +213,49 @@ const Modules = ({ courses }) => {
             <label htmlFor="source-type-video" className="w-full py-4 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300 cursor-pointer">Video</label>
           </div>
         </div>
-        <input ref={imageRef} className={`${sourceType == 'image' ? 'block' : 'hidden'} w-full mb-5 text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400`} id="default_size" type="file"></input>
+        <label className={`w-full ${sourceType == 'image' ? 'block' : 'hidden'} cursor-pointer mb-4`} htmlFor='input_image'>
+          <img ref={imagePreviewRef} className='block mx-auto w-[250px] h-[150px] object-cover object-center rounded-md' src="/images/img/noimagen.jpg" alt="" onError={e => e.target.src = '/images/img/noimagen.jpg'} />
+        </label>
+        <input ref={imageRef} className='hidden' id="input_image" type="file" onChange={onImageChange}></input>
         <FloatingInput eRef={videoRef} label='Link del video (YouTube)' hidden={sourceType == 'image'} />
 
-        <p className='mb-2' htmlFor="">Otros recursos</p>
-
-        <div className="flex gap-10 justify-between items-center p-4 mt-5 w-full bg-rose-50 rounded-xl max-md:max-w-full">
-          <div className="flex gap-3 items-center self-stretch my-auto min-w-[240px]">
-            <img loading="lazy"
-              src="https://cdn.builder.io/api/v1/image/assets/TEMP/c5d28976a815d8ea0d04e6b48b765924274ee13e58597e6d14b658e4ff875e2d?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f"
-              className="object-contain shrink-0 self-stretch my-auto w-12 aspect-square" />
-            <div className="flex flex-col self-stretch my-auto w-[228px]">
-              <div className="text-base font-medium leading-none text-neutral-800">
-                Teoria_Gestion_Publica.pdf
-              </div>
-              <div className="mt-1 text-sm tracking-normal leading-loose text-rose-700">
-                12.6 MB
-              </div>
-            </div>
-          </div>
-          <div
-            className="gap-3 self-stretch px-4 py-2 my-auto text-base font-bold leading-tight text-white whitespace-nowrap bg-rose-700 rounded-lg">
-            <i className='fa fa-trash'></i>
-          </div>
+        <hr className='my-4' />
+        <div className='flex justify-between items-center mb-2'>
+          <p>Otros recursos</p>
+          <label htmlFor="input-source" className="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-3 py-2 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700 cursor-pointer" >
+            <i className='fa fa-plus me-1'></i>
+            Agregar
+          </label>
+          <input className='hidden' type="file" name="input-source" id="input-source" multiple onChange={onSourceChange} />
         </div>
 
-        <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mt-4 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
+        <div className="flex gap-2 flex-col">
+          {sources.map((source, i) => {
+            return <div key={`source-${i}`} className="flex gap-2 justify-between items-center p-4 w-full bg-rose-50 rounded-xl max-md:max-w-full">
+              <div className="flex gap-3 items-center self-stretch my-auto min-w-[240px]">
+                <i className='far fa-file-alt text-[48px] text-rose-700 shrink-0 self-stretch'></i>
+                <div className="flex flex-col self-stretch my-auto w-[228px]">
+                  <Tippy content='Ver recurso'>
+                    <a href={`/${source.ref}`} className="w-[calc(100%-25px)] text-base font-medium leading-none text-neutral-800 text-ellipsis line-clamp-1 hover:underline" target='_blank'>
+                      Teoria_Gestion_Publica.pdf
+                    </a>
+                  </Tippy>
+                  <div className="mt-1 text-sm tracking-normal leading-loose text-rose-700">
+                    12.6 MB
+                  </div>
+                </div>
+              </div>
+              <Tippy content='Eliminar recurso'>
+                <button type='button'
+                  className="gap-3 self-stretch px-4 py-2 my-auto text-base font-bold leading-tight text-white whitespace-nowrap bg-rose-700 rounded-lg">
+                  <i className='fa fa-trash'></i>
+                </button>
+              </Tippy>
+            </div>
+          })}
+        </div>
+
+        <button type="submit" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mt-4 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
           <i className='fa fa-save me-1'></i>
           Guardar
         </button>

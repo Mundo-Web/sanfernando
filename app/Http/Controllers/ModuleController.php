@@ -13,6 +13,7 @@ class ModuleController extends BasicController
 {
   public $model = Module::class;
   public $reactView = 'Admin/Modules';
+  public $softDeletion = false;
 
   public function setReactViewProperties()
   {
@@ -26,9 +27,12 @@ class ModuleController extends BasicController
     ];
   }
 
-  public function byCourse (Request $request, string $course) {
+  public function byCourse(Request $request, string $course)
+  {
     $response = Response::simpleTryCatch(function (Response $response) use ($request, $course) {
-      $modules = Module::where('course_id', $course)->get();
+      $modules = Module::with(['sources'])
+        ->where('course_id', $course)
+        ->get();
       return $modules;
     });
 
