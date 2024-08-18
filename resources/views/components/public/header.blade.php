@@ -404,12 +404,22 @@
 </script>
 <script>
   function mostrarTotalItems() {
-    let articulos = Local.get('carrito')
-    let contarArticulos = articulos.reduce((total, articulo) => {
-      return total + articulo.cantidad;
-    }, 0);
+    let articulos = Local.get('carrito') ?? []
+    console.log('articulos reload ', articulos)
+    let contarArticulos
+
+    if (articulos.length == 0) {
+      contarArticulos = articulos.reduce((total, articulo) => {
+        return total + articulo.cantidad;
+      }, 0);
+
+    } else {
+      contarArticulos = 0
+
+    }
 
     $('#itemsCount').text(contarArticulos)
+
   }
   $(document).ready(function() {
     if ({{ $isIndex ? 1 : 0 }}) {
@@ -518,7 +528,7 @@
 
   }
   var appUrl = "{{ env('APP_URL') }}";
-  console.log(appUrl)
+
   $(document).ready(function() {
 
 
@@ -584,61 +594,61 @@
 <script>
   const categorias = @json($categorias);
   var activeHover = false
-  document.getElementById('productos-link').addEventListener('mouseenter', function(event) {
-    if (event.target === this) {
-      // mostrar submenú de productos 
-      let padre = document.getElementById('productos-link-h');
-      let divcontainer = document.createElement('div');
-      divcontainer.id = 'productos-link-container';
-      divcontainer.className =
-        'absolute top-[90px] left-1/2 transform -translate-x-1/2 m-0 flex flex-row bg-white z-[60] rounded-lg shadow-lg gap-4 p-4 w-[80vw] overflow-x-auto';
+  /*  document.getElementById('productos-link').addEventListener('mouseenter', function(event) {
+     if (event.target === this) {
+       // mostrar submenú de productos 
+       let padre = document.getElementById('productos-link-h');
+       let divcontainer = document.createElement('div');
+       divcontainer.id = 'productos-link-container';
+       divcontainer.className =
+         'absolute top-[90px] left-1/2 transform -translate-x-1/2 m-0 flex flex-row bg-white z-[60] rounded-lg shadow-lg gap-4 p-4 w-[80vw] overflow-x-auto';
 
-      divcontainer.addEventListener('mouseenter', function() {
-        this.addEventListener('mouseleave', cerrar);
-      });
+       divcontainer.addEventListener('mouseenter', function() {
+         this.addEventListener('mouseleave', cerrar);
+       });
 
-      categorias.forEach(element => {
-        if (element.subcategories.length == 0) return;
-        let ul = document.createElement('ul');
-        ul.className =
-          'text-[#006BF6] font-bold font-poppins text-md py-2 px-3 block   duration-300 w-full whitespace-nowrap gap-4';
+       categorias.forEach(element => {
+         if (element.subcategories.length == 0) return;
+         let ul = document.createElement('ul');
+         ul.className =
+           'text-[#006BF6] font-bold font-poppins text-md py-2 px-3 block   duration-300 w-full whitespace-nowrap gap-4';
 
-        ul.innerHTML = element.name;
-        element.subcategories.forEach(subcategoria => {
-          let li = document.createElement('li');
-          li.style.setProperty('padding-left', '4px', 'important');
-          li.style.setProperty('padding-right', '2px', 'important');
+         ul.innerHTML = element.name;
+         element.subcategories.forEach(subcategoria => {
+           let li = document.createElement('li');
+           li.style.setProperty('padding-left', '4px', 'important');
+           li.style.setProperty('padding-right', '2px', 'important');
 
-          li.className =
-            'text-[#272727] px-2 rounded-sm cursor-pointer font-normal font-poppins text-[13px] py-2 px-3 hover:bg-blue-200 hover:opacity-75 transition-opacity duration-300 w-full whitespace-nowrap';
-          // Crear el elemento 'a'
-          let a = document.createElement('a');
-          a.href = `/catalogo?subcategoria=${subcategoria.id}`;
-          a.innerHTML = subcategoria.name;
-          a.className = 'block w-full h-full'; // Para que el enlace ocupe todo el 'li'
+           li.className =
+             'text-[#272727] px-2 rounded-sm cursor-pointer font-normal font-poppins text-[13px] py-2 px-3 hover:bg-blue-200 hover:opacity-75 transition-opacity duration-300 w-full whitespace-nowrap';
+           // Crear el elemento 'a'
+           let a = document.createElement('a');
+           a.href = `/catalogo?subcategoria=${subcategoria.id}`;
+           a.innerHTML = subcategoria.name;
+           a.className = 'block w-full h-full'; // Para que el enlace ocupe todo el 'li'
 
-          // Añadir el elemento 'a' al 'li'
-          li.appendChild(a);
-          ul.appendChild(li);
-        });
-        divcontainer.appendChild(ul);
-      });
+           // Añadir el elemento 'a' al 'li'
+           li.appendChild(a);
+           ul.appendChild(li);
+         });
+         divcontainer.appendChild(ul);
+       });
 
 
 
-      // limpia sus hijos antes de agregar los nuevos
-      if (!activeHover) {
-        padre.appendChild(divcontainer);
-        activeHover = true;
-      }
-    }
-  });
+       // limpia sus hijos antes de agregar los nuevos
+       if (!activeHover) {
+         padre.appendChild(divcontainer);
+         activeHover = true;
+       }
+     }
+   }); */
 
-  function cerrar() {
-    let padre = document.getElementById('productos-link-h');
-    activeHover = false
-    padre.innerHTML = '';
-  }
+  /*  function cerrar() {
+     let padre = document.getElementById('productos-link-h');
+     activeHover = false
+     padre.innerHTML = '';
+   } */
 
   function agregarAlCarrito(item, cantidad) {
     $.ajax({

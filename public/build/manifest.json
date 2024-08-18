@@ -71,7 +71,7 @@
     ]
   },
   "resources/css/app.css": {
-    "file": "assets/app-4VxzLkV3.css",
+    "file": "assets/app-mqZk58Z0.css",
     "isEntry": true,
     "src": "resources/css/app.css"
   },
@@ -133,7 +133,7 @@
     "src": "resources/js/Catalogo.jsx"
   },
   "resources/js/CatalogoGP.jsx": {
-    "file": "assets/CatalogoGP-jxx1U8tD.js",
+    "file": "assets/CatalogoGP-_iYCpoDO.js",
     "imports": [
       "resources/js/Utils/HtmlContent.jsx",
       "resources/js/Utils/ReactAppend.jsx",
@@ -205,7 +205,7 @@
     "src": "resources/js/CursoDesarrollo.jsx"
   },
   "resources/js/CursoDetalle.jsx": {
-    "file": "assets/CursoDetalle-ZKYcXLS5.js",
+    "file": "assets/CursoDetalle-8njSAZtb.js",
     "imports": [
       "resources/js/Utils/HtmlContent.jsx",
       "resources/js/Utils/ReactAppend.jsx",

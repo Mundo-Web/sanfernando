@@ -50,13 +50,13 @@
                 <div class="flex flex-col gap-5">
                   <div>
                     <a href="{{ route('Catalogo.jsx') }}"
-                      class="text-white bg-[#006BF6] w-full py-3 rounded-2xl cursor-pointer font-semibold text-[16px] inline-block text-center">Seguir
+                      class="text-white bg-red-400 hover:bg-red-800 w-full py-3 rounded-2xl cursor-pointer font-semibold text-[16px] inline-block text-center transition duration-300 ease-in-out">Seguir
                       comprando</a>
                   </div>
 
                   <div>
                     <a href="{{ route('pedidos') }}"
-                      class="text-[#151515] bg-[#FFFFFF] w-full py-3 rounded-2xl cursor-pointer font-semibold text-[16px] inline-block text-center border-[1.5px] border-[#151515]">Historial
+                      class="text-white bg-red-400  hover:bg-red-800 w-full py-3 rounded-2xl cursor-pointer font-semibold text-[16px] inline-block text-center  transition duration-300 ease-in-out">Historial
                       de compras</a>
                   </div>
                 </div>
