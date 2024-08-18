@@ -9,6 +9,7 @@ use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\SaleController;
 use App\Http\Controllers\SaleDetailController;
+use App\Http\Controllers\SourceController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -62,8 +63,8 @@ Route::middleware(['web', 'auth:sanctum', 'verified'])->group(function () {
     Route::patch('/modules/status', [ModuleController::class, 'status']);
     Route::delete('/modules/{id}', [ModuleController::class, 'delete']);
 
-    Route::post('/sources', [ModuleController::class, 'save']);
-    Route::post('/sources/paginate', [ModuleController::class, 'paginate']);
-    Route::patch('/sources/status', [ModuleController::class, 'status']);
-    Route::delete('/sources/{id}', [ModuleController::class, 'delete']);
+    Route::post('/sources', [SourceController::class, 'save']);
+    Route::post('/sources/paginate', [SourceController::class, 'paginate']);
+    Route::patch('/sources/status', [SourceController::class, 'status']);
+    Route::delete('/sources/{id}', [SourceController::class, 'delete']);
 });
