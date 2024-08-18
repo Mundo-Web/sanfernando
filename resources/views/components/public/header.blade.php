@@ -278,11 +278,17 @@
           </div>
         </div>
       @endif
-      <a href="#" aria-label="Social Media Link 3" id="open-cart">
+      <a href="#" aria-label="Social Media Link 3">
+        <div id="open-cart" class="relative">
+          <span id="itemsCount"
+            class="bg-rose-700 text-xs font-medium text-white text-center px-[7px] py-[2px]  rounded-full absolute -bottom-4 -right-4 ml-3">0</span>
+          <img loading="lazy"
+            src="https://cdn.builder.io/api/v1/image/assets/TEMP/2cb868de28b1b49e52be101815be5c820fdf20aee19c0b5b86753f263366f629?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f"
+            alt="" class="object-contain shrink-0 w-6 aspect-square" />
+        </div>
 
-        <img loading="lazy"
-          src="https://cdn.builder.io/api/v1/image/assets/TEMP/2cb868de28b1b49e52be101815be5c820fdf20aee19c0b5b86753f263366f629?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f"
-          alt="" class="object-contain shrink-0 w-6 aspect-square" />
+
+
       </a>
     </nav>
   </section>
@@ -391,34 +397,32 @@
 <script>
   let clockSearch;
 </script>
-<script>
-  $('#open-cart').on('click', () => {
-    $('#cart-modal').modal({
-      showClose: false,
-      fadeDuration: 100
-    })
-  })
-  $('#close-cart').on('click', () => {
-    $('.jquery-modal.blocker.current').trigger('click')
-  })
-</script>
+
 <script>
   function mostrarTotalItems() {
     let articulos = Local.get('carrito') ?? []
     console.log('articulos reload ', articulos)
-    let contarArticulos
+    let contarArticulos = 0
+    console.log(articulos.length)
 
-    if (articulos.length == 0) {
+    if (articulos.length > 0) {
       contarArticulos = articulos.reduce((total, articulo) => {
         return total + articulo.cantidad;
       }, 0);
 
     } else {
+      console.log('no es mayora a 0 ')
       contarArticulos = 0
 
     }
 
-    $('#itemsCount').text(contarArticulos)
+    if (articulos.length > 0) {
+      $('#itemsCount').show()
+      $('#itemsCount').text(contarArticulos)
+
+    } else {
+      $('#itemsCount').hide()
+    }
 
   }
   $(document).ready(function() {
