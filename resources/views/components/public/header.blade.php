@@ -528,7 +528,7 @@
 
   }
   var appUrl = "{{ env('APP_URL') }}";
-  console.log(appUrl)
+
   $(document).ready(function() {
 
 

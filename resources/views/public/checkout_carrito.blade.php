@@ -6,7 +6,11 @@
 
 
 @stop
-
+<style>
+  .fixedWhastapp {
+    right: 128px !important;
+  }
+</style>
 
 @section('content')
 
@@ -28,7 +32,7 @@
         <input id="email" type="email" placeholder="Correo electrónico" required name="email" value=""
           class=" py-3 px-4 focus:outline-none placeholder-gray-400 font-normal text-[16px] border-[1.5px] border-gray-200 rounded-xl text-[#6C7275]" />
       </div> --}}
-      <div class="flex md:gap-20">
+      <div class="flex md:gap-20 flex-col  md:flex-row">
         <div class="flex justify-between items-center md:basis-8/12 w-full md:w-auto">
           <x-ecommerce.gateway.container>
             <div class="flex flex-col 2lg:flex-row pb-5  border-[#E8ECEF] gap-5">
@@ -126,6 +130,10 @@
           clickable: true,
         },
         breakpoints: {
+          0: {
+            slidesPerView: 1,
+            spaceBetween: 10,
+          },
           640: {
             slidesPerView: 2,
             spaceBetween: 20,
@@ -182,51 +190,51 @@
       return price
     }
 
-    function deleteOnCarBtn(id, operacion) {
-      console.log('Elimino un elemento del cvarrio');
-      const prodRepetido = articulosCarrito.map(item => {
-        if (item.id === id && item.cantidad > 0) {
-          item.cantidad -= Number(1);
-          return item; // retorna el objeto actualizado 
-        } else {
-          return item; // retorna los objetos que no son duplicados 
-        }
+    /*  function deleteOnCarBtn(id, operacion) {
+       console.log('Elimino un elemento del cvarrio');
+       const prodRepetido = articulosCarrito.map(item => {
+         if (item.id === id && item.cantidad > 0) {
+           item.cantidad -= Number(1);
+           return item; // retorna el objeto actualizado 
+         } else {
+           return item; // retorna los objetos que no son duplicados 
+         }
 
-      });
+       });
 
-      Local.set("carrito", articulosCarrito)
-      limpiarHTML()
-      PintarCarrito()
-
-
-    }
-
-    function addOnCarBtn(id, operacion) {
-
-      const prodRepetido = articulosCarrito.map(item => {
-        if (item.id === id) {
-          item.cantidad += Number(1);
-          return item; // retorna el objeto actualizado 
-        } else {
-          return item; // retorna los objetos que no son duplicados 
-        }
-
-      });
-      Local.set("carrito", articulosCarrito)
-      // localStorage.setItem('carrito', JSON.stringify(articulosCarrito));
-      limpiarHTML()
-      PintarCarrito()
+       Local.set("carrito", articulosCarrito)
+       limpiarHTML()
+       PintarCarrito()
 
 
-    }
+     } */
 
-    function deleteItem(id) {
-      articulosCarrito = articulosCarrito.filter(objeto => objeto.id !== id);
+    /*  function addOnCarBtn(id, operacion) {
 
-      Local.set("carrito", articulosCarrito)
-      limpiarHTML()
-      PintarCarrito()
-    }
+       const prodRepetido = articulosCarrito.map(item => {
+         if (item.id === id) {
+           item.cantidad += Number(1);
+           return item; // retorna el objeto actualizado 
+         } else {
+           return item; // retorna los objetos que no son duplicados 
+         }
+
+       });
+       Local.set("carrito", articulosCarrito)
+       // localStorage.setItem('carrito', JSON.stringify(articulosCarrito));
+       limpiarHTML()
+       PintarCarrito()
+
+
+     } */
+
+    /*  function deleteItem(id) {
+       articulosCarrito = articulosCarrito.filter(objeto => objeto.id !== id);
+
+       Local.set("carrito", articulosCarrito)
+       limpiarHTML()
+       PintarCarrito()
+     } */
 
     var appUrl = <?php echo json_encode($url_env); ?>;
     $(document).ready(function() {
