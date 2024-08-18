@@ -418,8 +418,8 @@ cuentas.forEach((cuenta) => {
 
 
 function PintarCarrito() {
-  console.log('llama a la funciuon')
-  console.log('appUrl', appUrl)
+  let articulosCarrito = Local.get('carrito') ?? []
+ 
 
   let itemsCarrito = $('#itemsCarrito')
   let itemsCarritoCheck = $('#itemsCarritoCheck')
