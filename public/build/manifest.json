@@ -88,7 +88,7 @@
     ]
   },
   "resources/css/app.css": {
-    "file": "assets/app-8ZXZftV2.css",
+    "file": "assets/app-b_bhCJbD.css",
     "isEntry": true,
     "src": "resources/css/app.css"
   },
@@ -229,7 +229,7 @@
     "src": "resources/js/CursoDesarrollo.jsx"
   },
   "resources/js/CursoDetalle.jsx": {
-    "file": "assets/CursoDetalle-3vHnMwrV.js",
+    "file": "assets/CursoDetalle-ybXYi5rm.js",
     "imports": [
       "resources/js/Utils/HtmlContent.jsx",
       "_index-TT1qJ6UJ.js",

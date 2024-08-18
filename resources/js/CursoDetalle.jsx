@@ -444,24 +444,37 @@ const CursoDetalle = ({ producto, url_env }) => {
           <div className="flex flex-col sticky top-0 justify-center py-8 bg-rose-50 rounded-2xl w-full lg:w-[400px]">
             <div className="flex flex-col px-6 w-full max-md:px-5">
               <div className="flex flex-col lg:flex-row gap-3 lg:gap-10 justify-between items-start w-full">
-                <div className="flex gap-2 items-center self-stretch my-auto text-neutral-800">
-                  <div className="self-stretch my-auto text-2xl font-bold leading-none">
-                    S/ {producto.oferta}
-                  </div>
+
+                {producto.descuento > 0 ? (
+
+                  <>
+                    <div className="flex gap-2 items-center self-stretch my-auto text-neutral-800">
+                      <div className="self-stretch my-auto text-2xl font-bold leading-none">
+
+                        S/ {producto.descuento}
+                      </div>
 
 
-                  <div className="self-stretch my-auto text-base font-medium">
-                    PEN {producto.precio}
+                      <div className="self-stretch my-auto text-base font-medium text-[14px] line-through" >
+                        PEN {producto.precio}
+                      </div>
+                    </div>
+                    <div
+                      className="gap-2.5  px-3 py-2 my-auto text-sm font-bold leading-none text-red-600 uppercase bg-red-100 rounded-xl">
+                      {((producto.precio - producto.descuento) / producto.precio * 100).toFixed(2)}% off
+                    </div>
+
+                  </>
+                ) : (producto.precio && producto.descuento && (
+                  <div className="flex gap-2 items-center self-stretch my-auto text-neutral-800">
+                    <div className="self-stretch my-auto text-2xl font-bold leading-none">
+                      {console.log(producto)}
+                      S/ {producto.precio}
+                    </div>
                   </div>
-                </div>
-                <div
-                  className="gap-2.5  px-3 py-2 my-auto text-sm font-bold leading-none text-red-600 uppercase bg-red-100 rounded-xl">
-                  {producto.precio && producto.oferta && (
-                    <>
-                      {((producto.precio - producto.oferta) / producto.precio * 100).toFixed(2)}% off
-                    </>
-                  )}
-                </div>
+                ))}
+
+
               </div>
               <div
                 className="flex gap-2 justify-center items-center self-start mt-3 text-sm font-medium tracking-normal leading-none text-red-600">

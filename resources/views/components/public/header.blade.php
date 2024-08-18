@@ -245,7 +245,7 @@
       @if (Auth::user() == null)
         <a href="/login" class="text-white">Iniciar Sesion </a> </a>
       @else
-        <div class="text-white  hidden md:inline-flex" x-data="{ open: false }">
+        <div class=" relative text-white  hidden md:inline-flex" x-data="{ open: false }">
           <button class="px-3 py-2 inline-flex justify-center items-center group" aria-haspopup="true"
             @click.prevent="open = !open" :aria-expanded="open">
             <div class="flex items-center truncate">
@@ -257,15 +257,16 @@
             </div>
           </button>
           <div
-            class="origin-top-right z-10 absolute top-full min-w-44 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 py-1.5 rounded shadow-lg overflow-hidden mt-1"
+            class="origin-top-right z-10 text-red-600 bg-red-100 absolute top-full min-w-44  dark:bg-slate-800 border border-slate-200 dark:border-slate-700 py-1.5 rounded shadow-lg overflow-hidden mt-1"
             @click.outside="open = false" @keydown.escape.window="open = false" x-show="open">
             <ul>
-              <li class="hover:bg-gray-100">
-                <a class="font-medium text-sm  flex items-center py-1 px-3" href="{{ route('micuenta') }}"
-                  @click="open = false" @focus="open = true" @focusout="open = false">Mi Cuenta</a>
+              <li class=" hover:bg-rose-700 hover:text-white transition duration-100 ease-in">
+                <a class="font-medium text-sm  flex items-center py-1 px-3 " href="{{ route('micuenta') }}"
+                  @click="open = false" @focus="open = true" @focusout="open = false">Mi
+                  Cuenta</a>
               </li>
 
-              <li class="hover:bg-gray-100">
+              <li class=" hover:bg-rose-700 hover:text-white transition duration-100 ease-in">
                 <form method="POST" action="{{ route('logout') }}" x-data>
                   @csrf
                   <button type="submit" class="font-medium text-sm  flex items-center py-1 px-3"
