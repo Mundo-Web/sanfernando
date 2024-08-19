@@ -160,7 +160,7 @@ const CursoDetalle = ({ producto, url_env }) => {
                 </div>)}
 
 
-                <a href={`${url_env}/${producto.brochure_url}`}
+                {producto?.brochure_url !== null && (<a href={`${url_env}/${producto.brochure_url}`}
                   target='_blank'
                   className="flex gap-3 items-center self-start px-4 py-2 mt-6 text-base font-bold leading-tight text-white bg-rose-700 rounded-xl"
                 >
@@ -168,7 +168,8 @@ const CursoDetalle = ({ producto, url_env }) => {
                     src="https://cdn.builder.io/api/v1/image/assets/TEMP/6951aae30f33bd543a5f70e81f55bc643f33df502d318789244486f456ed1aca?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f"
                     className="object-contain shrink-0 self-stretch my-auto w-6 aspect-square" />
                   <div className="self-stretch my-auto">Brochure del curso</div>
-                </a>
+                </a>)}
+
               </div>
             </div>
 
@@ -297,7 +298,8 @@ const CursoDetalle = ({ producto, url_env }) => {
 
                   </div></>)}
 
-              <a href={`${url_env}/${producto.brochure_url}`}
+
+              {producto?.brochure_url !== null && (<a href={`${url_env}/${producto.brochure_url}`}
                 target='_blank'
                 className="flex gap-3 items-center self-start px-4 py-2 mt-6 text-base font-bold leading-tight text-white bg-rose-700 rounded-xl"
               >
@@ -305,7 +307,8 @@ const CursoDetalle = ({ producto, url_env }) => {
                   src="https://cdn.builder.io/api/v1/image/assets/TEMP/6951aae30f33bd543a5f70e81f55bc643f33df502d318789244486f456ed1aca?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f"
                   className="object-contain shrink-0 self-stretch my-auto w-6 aspect-square" />
                 <div className="self-stretch my-auto">Brochure del curso</div>
-              </a>
+              </a>)}
+
             </div>
             <div
               className="flex flex-col mt-10 w-full text-2xl font-bold leading-tight whitespace-nowrap text-neutral-800 max-md:max-w-full">
