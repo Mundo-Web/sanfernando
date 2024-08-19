@@ -12,7 +12,7 @@ const Curse = ({ producto, env_url, userIsLogged }) => {
   return (
     <div className="flex relative flex-col flex-1 shrink basis-0 min-w-[240px]">
       <div className="min-w-[240px]">
-        <img loading="lazy" src={`${producto.imagen}`} className="object-cover z-0 w-full rounded-t-2xl h-[280px]"
+        <img loading="lazy" src={`/${producto.imagen}`} className="object-cover z-0 w-full rounded-t-2xl h-[280px]"
           alt="Course background image" onError={e => e.target.src = '/images/img/noimagen.jpg'} />
         {userIsLogged && (<div className="object-contain absolute top-4 right-4 z-0 w-10 h-10 aspect-square">
           <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
