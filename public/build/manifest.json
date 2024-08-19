@@ -88,7 +88,7 @@
     ]
   },
   "resources/css/app.css": {
-    "file": "assets/app-pr-PV1UT.css",
+    "file": "assets/app-ko1zYmup.css",
     "isEntry": true,
     "src": "resources/css/app.css"
   },
@@ -297,7 +297,7 @@
     "src": "resources/js/Diploma.jsx"
   },
   "resources/js/Docente.jsx": {
-    "file": "assets/Docente-wFf-mvS2.js",
+    "file": "assets/Docente-yawb6DUX.js",
     "imports": [
       "resources/js/Utils/HtmlContent.jsx",
       "_index-TT1qJ6UJ.js",
@@ -307,16 +307,17 @@
       "resources/js/components/Section/SliderFront.jsx",
       "resources/js/components/Product/ProductCard.jsx",
       "resources/js/components/Section/SliderTestimony.jsx",
+      "_axios-_sX4vCAy.js",
+      "_FilterPagination-_HG8TWoT.js",
       "__commonjsHelpers-4gQjN7DL.js",
       "_index-jtdEOcur.js",
-      "resources/js/Utils/CreateReactScript.jsx",
-      "_axios-_sX4vCAy.js"
+      "resources/js/Utils/CreateReactScript.jsx"
     ],
     "isEntry": true,
     "src": "resources/js/Docente.jsx"
   },
   "resources/js/DocenteDetalle.jsx": {
-    "file": "assets/DocenteDetalle-7qCVOZNs.js",
+    "file": "assets/DocenteDetalle-VMKwwF-9.js",
     "imports": [
       "resources/js/Utils/HtmlContent.jsx",
       "_index-TT1qJ6UJ.js",

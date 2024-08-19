@@ -109,12 +109,18 @@ class IndexController extends Controller
 
   public function docente()
   {
-    return Inertia::render('Docente')->rootView('app');
+    $docentes = Staff::where('status', 1)->get();
+    return Inertia::render('Docente',[
+      'docentes' => $docentes
+    ])->rootView('app');
   }
 
-  public function docenteDetalle()
+  public function docenteDetalle(string $id)
   {
-    return Inertia::render('DocenteDetalle')->rootView('app');
+    $docente = Staff::where('id', $id)->with('productos')->first();
+
+
+    return Inertia::render('DocenteDetalle', ['docente' => $docente])->rootView('app');
   }
 
   public function nosotros()
@@ -620,6 +626,14 @@ class IndexController extends Controller
     return view('public.dashboard_wishlist', compact('user', 'wishlistItems', 'productos'));
   }
 
+  public function searchDocente(Request $request){
+    $query = $request->input('query');
+    $resultados = Staff::select('staff.*')
+      ->where('nombre', 'like', "%$query%")
+      ->where('status', 1)
+      ->get();
+    return response()->json(['resultado' => $resultados]);
+  } 
 
   public function searchProduct(Request $request)
   {

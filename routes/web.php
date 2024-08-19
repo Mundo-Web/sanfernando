@@ -87,6 +87,7 @@ Route::get('/producto/{id}', [IndexController::class, 'producto'])->name('produc
 // Route::get('/catalogo/{category}/{subcategory}', [IndexController::class, 'catalogo'])->name('catalogo.sub');
 Route::post('carrito/buscarProducto', [CarritoController::class, 'buscarProducto'])->name('carrito.buscarProducto');
 Route::post('/buscar', [IndexController::class, 'searchProduct'])->name('buscar');
+Route::post('/buscarDocente', [IndexController::class, 'searchDocente'])->name('buscarDocente');
 
 /* Página 404 */
 Route::get('/404', [IndexController::class, 'error'])->name('error');
