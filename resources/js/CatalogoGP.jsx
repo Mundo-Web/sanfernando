@@ -155,11 +155,11 @@ const CatalogoGP = ({ productos, env_url, userIsLogged }) => {
         </div>
         <div className="flex flex-col lg:flex-row gap-10 items-center mt-6 text-xs leading-tight w-full">
           <div className="flex flex-wrap lg:flex-1 shrink gap-4 items-center self-stretch my-auto text-center text-red-400 whitespace-nowrap basis-0 min-w-[240px] max-w-2xl">
-            <span className="self-stretch my-auto text-gray-600">Sugerencia:</span>
+            {/* <span className="self-stretch my-auto text-gray-600">Sugerencia:</span>
             <span className="self-stretch my-auto">Dignissim</span>
             <span className="self-stretch my-auto">Proin</span>
             <span className="self-stretch my-auto">Fermentum</span>
-            <span className="self-stretch my-auto">Aliquam</span>
+            <span className="self-stretch my-auto">Aliquam</span> */}
           </div>
           <p className="flex-1 shrink self-stretch my-auto text-left lg:text-right text-gray-600 basis-0 max-md:max-w-full">
             <strong className="font-semibold text-gray-600 pr-3">{totalCount}</strong>
