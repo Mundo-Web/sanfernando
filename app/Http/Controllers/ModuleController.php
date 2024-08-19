@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Module;
 use App\Models\Products;
 use App\Models\Source;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use SoDe\Extend\Crypto;
@@ -32,8 +33,6 @@ class ModuleController extends BasicController
   public function beforeSave(Request $request)
   {
     $body = $request->all();
-
-    dump($body);
 
     if ($request->hasFile('source') && $request->source_type == 'image') {
       $source = $request->file('source');
@@ -72,5 +71,22 @@ class ModuleController extends BasicController
     });
 
     return response($response->toArray(), $response->status);
+  }
+
+  public function redirectModule(Request $request, string $courseId)
+  {
+    try {
+      $module = Module::select([
+        'modules.*'
+      ])
+        ->join('products AS course', 'course.id', 'modules.course_id')
+        ->where('course.uuid', $courseId)
+        ->orderBy('order', 'ASC')
+        ->first();
+      if (!$module) throw new Exception('El id enviado no tiene modulos activos');
+      return redirect("/micuenta/session/{$courseId}/{$module->id}");
+    } catch (\Throwable $th) {
+      return redirect('/micuenta');
+    }
   }
 }
