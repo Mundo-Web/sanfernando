@@ -18,9 +18,11 @@ return new class extends Migration
             $table->string('type')->default('session');
             $table->text('name');
             $table->longText('description')->nullable();
-            $table->string('source_type');
-            $table->string('source');
+            $table->string('source_type')->nullable();
+            $table->string('source')->nullable();
             $table->integer('order')->default(0);
+            $table->integer('duration')->nullable();
+            $table->integer('attemps')->nullable();
             $table->timestamps();
 
             $table->foreign('course_id')->references('id')->on('products')->cascadeOnDelete();

@@ -37,4 +37,5 @@ Route::middleware(['auth:sanctum', 'verified'])->prefix('micuenta')->group(funct
 
   Route::get('/session/{courseId}', [ModuleController::class, 'redirectModule'])->name('CursoDesarrollo.jsx');
   Route::get('/session/{courseId}/{sessionId}', [IndexController::class, 'desarrolloCurso'])->name('CursoDesarrollo.jsx');
+  Route::get('/evaluation/{evaluationId}', [IndexController::class, 'examenPregunta'])->name('ExamenPregunta.jsx');
 });

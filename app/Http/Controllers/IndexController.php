@@ -147,6 +147,7 @@ class IndexController extends Controller
   public function desarrolloCurso(Request $request, string $courseUUID, string $moduleId)
   {
     $courseJpa = Products::where('uuid', $courseUUID)->first();
+    if (!$courseJpa) return redirect('/micuenta');
     $modulesJpa = Module::select(['modules.*'])
       ->with(['sources'])
       ->join('products AS course', 'course.id', 'modules.course_id')
@@ -168,7 +169,12 @@ class IndexController extends Controller
 
   public function examenPregunta()
   {
-    return Inertia::render('ExamenPregunta')->rootView('app');
+    $evaluation = Module::where('type', 'final-exam')
+      ->first();
+    if (!$evaluation) return \redirect('/micuenta');
+    return Inertia::render('ExamenPregunta', [
+      'evaluation' => $evaluation
+    ])->rootView('app');
   }
 
   public function dashDocente()
@@ -664,7 +670,7 @@ class IndexController extends Controller
 
     if ($categoria == 'courses') {
       $resultados = $resultados->where('categoria_id', 1);
-    }else if ($categoria == 'diploma') {
+    } else if ($categoria == 'diploma') {
       $resultados = $resultados->where('categoria_id', 2);
     }
 

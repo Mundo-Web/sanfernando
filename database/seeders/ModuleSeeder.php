@@ -127,9 +127,11 @@ class ModuleSeeder extends Seeder
       'course_id' => 1,
       'type' => 'final-exam',
       'name' => 'Dominio de React',
-      'description' => 'Examen final para evaluar tu dominio de React y sus conceptos clave.',
+      'description' => '¡Bienvenido al Módulo de Dominio de React! Este módulo está diseñado para evaluar y fortalecer tu conocimiento en React, uno de los frameworks más populares para el desarrollo de aplicaciones frontend. A lo largo de este módulo, exploraremos conceptos clave y prácticas esenciales que te ayudarán a dominar el desarrollo con React.',
       'source_type' => 'video',
       'source' => 'EhRfM3KJXfA',
+      'duration' => 90,
+      'attemps' => 3,
       'order' => 10
     ]);
   }
