@@ -35,7 +35,7 @@ class StaffController extends Controller
     {
         $data = $request->all();
 
-        dump($data);
+        
         
         if ($request->hasFile("url_foto")) {
 
