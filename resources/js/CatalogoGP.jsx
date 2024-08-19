@@ -19,7 +19,8 @@ const CatalogoGP = ({ productos, env_url, userIsLogged }) => {
 
   const [isListVisible, setIsListVisible] = useState(false)
   // const query = useRef({ query: '', order: '' });
-  const [query, setQuery] = useState({ query: GET.search ?? '', order: '' });
+  // const [query, setQuery] = useState({ query: GET.search ?? '', order: '' });
+  const query = useRef({ query: GET.search ?? '', order: '' });
   const [items, setItems] = useState();
 
 
@@ -39,8 +40,10 @@ const CatalogoGP = ({ productos, env_url, userIsLogged }) => {
 
   const buscarProductoQuery = async () => {
 
+    let query2 = query.current
+
     try {
-      const response = await axios.post(`/buscar?query=${query.query}&order=${query.order}`, {
+      const response = await axios.post(`/buscar?query=${query2.query}&order=${query2.order}`, {
         skip: take * (currentPage - 1),
         requireTotalCount: true,
         take
@@ -57,23 +60,30 @@ const CatalogoGP = ({ productos, env_url, userIsLogged }) => {
   const buscarProducto = async (event) => {
 
 
+
     setCurrentPage(1)
 
-    setQuery((prevQuery) => ({
-      ...prevQuery,
-      query: event.target.value,
-    }));
+    // setQuery((prevQuery) => ({
+    //   ...prevQuery,
+    //   query: event.target.value,
+    // }));
+    query.current = { ...query.current, query: event.target.value }
     buscarProductoQuery()
+
+
 
   };
 
   const handleOptionChange = (event) => {
 
 
-    setQuery((prevQuery) => ({
-      ...prevQuery,
-      order: event.value
-    }));
+    // setQuery((prevQuery) => ({
+    //   ...prevQuery,
+    //   order: event.value
+    // }));
+
+    query.current = { ...query.current, order: event.value }
+
     buscarProductoQuery()
 
   }
@@ -153,7 +163,7 @@ const CatalogoGP = ({ productos, env_url, userIsLogged }) => {
           </div>
           <p className="flex-1 shrink self-stretch my-auto text-left lg:text-right text-gray-600 basis-0 max-md:max-w-full">
             <strong className="font-semibold text-gray-600 pr-3">{totalCount}</strong>
-            {console.log(query.query !== '')}
+
 
             {query.query !== '' ? <span >resultados para la busqueda "{query.query}"</span> : <span > Cursos y diplomados</span>}
 

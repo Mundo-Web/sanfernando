@@ -189,7 +189,7 @@ class LibroReclamacionesController extends Controller
                 <h2> Datos del reclamo </h2>
                 <br>
                 <hr>
-                <p> Tienda: Online BoostPeru </p>
+                <p> Tienda: Online Gestion Publica </p>
                 <p> Identificacion del bien contratado: '.$typeitem.' </p>
                 <p> Monto Reclamado: '.$amounttotal.' </p>
                 <p> Descripción : '.$description.' </p>
@@ -213,9 +213,9 @@ class LibroReclamacionesController extends Controller
             </body>
           </html>
           ';
-          $mail->addBCC('atencionalcliente@boostperu.com.pe', 'Atencion al cliente', );
-          $mail->addBCC('jefecomercial@boostperu.com.pe', 'Jefe Comercial', );
-          $mail->addBCC('luislopez@boostperu.com.pe', 'Luis Lopez',  );
+          // $mail->addBCC('atencionalcliente@boostperu.com.pe', 'Atencion al cliente', );
+          // $mail->addBCC('jefecomercial@boostperu.com.pe', 'Jefe Comercial', );
+          // $mail->addBCC('luislopez@boostperu.com.pe', 'Luis Lopez',  );
             $mail->isHTML(true);
             $mail->send();
             

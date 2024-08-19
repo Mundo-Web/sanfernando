@@ -103,7 +103,7 @@ const CursoDetalle = ({ producto, url_env }) => {
                     src="https://cdn.builder.io/api/v1/image/assets/TEMP/b1ffced907665d1171bcfd755af982685998caa1b7c77cf6aaa284d071c45939?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f"
                     className="object-contain shrink-0 self-stretch my-auto w-3.5 aspect-square" />
                   <div className="self-stretch my-auto font-medium">
-                    {console.log(producto)}
+
                     {producto?.category?.name ?? ''}
                   </div>
                 </div>
@@ -125,7 +125,7 @@ const CursoDetalle = ({ producto, url_env }) => {
                   className="flex flex-col flex-1 shrink items-start self-stretch my-auto basis-8 min-w-[240px]">
                   <div className="flex gap-3 justify-center items-center">
                     <img loading="lazy"
-                      srcset="https://cdn.builder.io/api/v1/image/assets/TEMP/13f8f9d7956eed707f93aa3139e26d13e749d7224aba213549fbc29a924cc1dc?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f&width=100 100w, https://cdn.builder.io/api/v1/image/assets/TEMP/13f8f9d7956eed707f93aa3139e26d13e749d7224aba213549fbc29a924cc1dc?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f&width=200 200w, https://cdn.builder.io/api/v1/image/assets/TEMP/13f8f9d7956eed707f93aa3139e26d13e749d7224aba213549fbc29a924cc1dc?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f&width=400 400w, https://cdn.builder.io/api/v1/image/assets/TEMP/13f8f9d7956eed707f93aa3139e26d13e749d7224aba213549fbc29a924cc1dc?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f&width=800 800w, https://cdn.builder.io/api/v1/image/assets/TEMP/13f8f9d7956eed707f93aa3139e26d13e749d7224aba213549fbc29a924cc1dc?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f&width=1200 1200w, https://cdn.builder.io/api/v1/image/assets/TEMP/13f8f9d7956eed707f93aa3139e26d13e749d7224aba213549fbc29a924cc1dc?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f&width=1600 1600w, https://cdn.builder.io/api/v1/image/assets/TEMP/13f8f9d7956eed707f93aa3139e26d13e749d7224aba213549fbc29a924cc1dc?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f&width=2000 2000w, https://cdn.builder.io/api/v1/image/assets/TEMP/13f8f9d7956eed707f93aa3139e26d13e749d7224aba213549fbc29a924cc1dc?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f"
+                      srcSet="https://cdn.builder.io/api/v1/image/assets/TEMP/13f8f9d7956eed707f93aa3139e26d13e749d7224aba213549fbc29a924cc1dc?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f&width=100 100w, https://cdn.builder.io/api/v1/image/assets/TEMP/13f8f9d7956eed707f93aa3139e26d13e749d7224aba213549fbc29a924cc1dc?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f&width=200 200w, https://cdn.builder.io/api/v1/image/assets/TEMP/13f8f9d7956eed707f93aa3139e26d13e749d7224aba213549fbc29a924cc1dc?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f&width=400 400w, https://cdn.builder.io/api/v1/image/assets/TEMP/13f8f9d7956eed707f93aa3139e26d13e749d7224aba213549fbc29a924cc1dc?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f&width=800 800w, https://cdn.builder.io/api/v1/image/assets/TEMP/13f8f9d7956eed707f93aa3139e26d13e749d7224aba213549fbc29a924cc1dc?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f&width=1200 1200w, https://cdn.builder.io/api/v1/image/assets/TEMP/13f8f9d7956eed707f93aa3139e26d13e749d7224aba213549fbc29a924cc1dc?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f&width=1600 1600w, https://cdn.builder.io/api/v1/image/assets/TEMP/13f8f9d7956eed707f93aa3139e26d13e749d7224aba213549fbc29a924cc1dc?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f&width=2000 2000w, https://cdn.builder.io/api/v1/image/assets/TEMP/13f8f9d7956eed707f93aa3139e26d13e749d7224aba213549fbc29a924cc1dc?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f"
                       className="object-contain shrink-0 self-stretch my-auto w-20 aspect-[1.6]" />
                     <div className="flex flex-col self-stretch my-auto">
                       <div className="text-sm tracking-normal leading-loose text-rose-700">
@@ -160,7 +160,7 @@ const CursoDetalle = ({ producto, url_env }) => {
                 </div>)}
 
 
-                <a href={`${url_env}/${producto.brochure_url}`}
+                {producto?.brochure_url !== null && (<a href={`${url_env}/${producto.brochure_url}`}
                   target='_blank'
                   className="flex gap-3 items-center self-start px-4 py-2 mt-6 text-base font-bold leading-tight text-white bg-rose-700 rounded-xl"
                 >
@@ -168,10 +168,11 @@ const CursoDetalle = ({ producto, url_env }) => {
                     src="https://cdn.builder.io/api/v1/image/assets/TEMP/6951aae30f33bd543a5f70e81f55bc643f33df502d318789244486f456ed1aca?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f"
                     className="object-contain shrink-0 self-stretch my-auto w-6 aspect-square" />
                   <div className="self-stretch my-auto">Brochure del curso</div>
-                </a>
+                </a>)}
+
               </div>
             </div>
-            {console.log(beneficios)}
+
             {beneficios.length > 0 && (<div className="flex flex-col p-6 mt-10 w-full bg-rose-50 rounded-2xl max-md:px-5 max-md:max-w-full">
               <div className="text-2xl font-bold leading-tight text-neutral-800 max-md:max-w-full">
                 Beneficios
@@ -199,7 +200,7 @@ const CursoDetalle = ({ producto, url_env }) => {
                 </div>
               </div>
             </div>)}
-            {console.log(producto.imagen_ambiente)}
+
             {producto?.imagen_ambiente && (<img loading="lazy"
               src={'/' + producto.imagen_ambiente}
               className="object-contain mt-10 w-full rounded-xl aspect-[1.19] max-md:max-w-full" />)}
@@ -297,7 +298,8 @@ const CursoDetalle = ({ producto, url_env }) => {
 
                   </div></>)}
 
-              <a href={`${url_env}/${producto.brochure_url}`}
+
+              {producto?.brochure_url !== null && (<a href={`${url_env}/${producto.brochure_url}`}
                 target='_blank'
                 className="flex gap-3 items-center self-start px-4 py-2 mt-6 text-base font-bold leading-tight text-white bg-rose-700 rounded-xl"
               >
@@ -305,13 +307,14 @@ const CursoDetalle = ({ producto, url_env }) => {
                   src="https://cdn.builder.io/api/v1/image/assets/TEMP/6951aae30f33bd543a5f70e81f55bc643f33df502d318789244486f456ed1aca?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f"
                   className="object-contain shrink-0 self-stretch my-auto w-6 aspect-square" />
                 <div className="self-stretch my-auto">Brochure del curso</div>
-              </a>
+              </a>)}
+
             </div>
             <div
               className="flex flex-col mt-10 w-full text-2xl font-bold leading-tight whitespace-nowrap text-neutral-800 max-md:max-w-full">
               <div className="max-md:max-w-full">Diploma</div>
               <img loading="lazy"
-                srcset="https://cdn.builder.io/api/v1/image/assets/TEMP/ccadd2ada7ecc27e927e3cecf582fc6255e077af16db82817156e0030376bbb5?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f&width=100 100w, https://cdn.builder.io/api/v1/image/assets/TEMP/ccadd2ada7ecc27e927e3cecf582fc6255e077af16db82817156e0030376bbb5?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f&width=200 200w, https://cdn.builder.io/api/v1/image/assets/TEMP/ccadd2ada7ecc27e927e3cecf582fc6255e077af16db82817156e0030376bbb5?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f&width=400 400w, https://cdn.builder.io/api/v1/image/assets/TEMP/ccadd2ada7ecc27e927e3cecf582fc6255e077af16db82817156e0030376bbb5?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f&width=800 800w, https://cdn.builder.io/api/v1/image/assets/TEMP/ccadd2ada7ecc27e927e3cecf582fc6255e077af16db82817156e0030376bbb5?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f&width=1200 1200w, https://cdn.builder.io/api/v1/image/assets/TEMP/ccadd2ada7ecc27e927e3cecf582fc6255e077af16db82817156e0030376bbb5?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f&width=1600 1600w, https://cdn.builder.io/api/v1/image/assets/TEMP/ccadd2ada7ecc27e927e3cecf582fc6255e077af16db82817156e0030376bbb5?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f&width=2000 2000w, https://cdn.builder.io/api/v1/image/assets/TEMP/ccadd2ada7ecc27e927e3cecf582fc6255e077af16db82817156e0030376bbb5?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f"
+                srcSet="https://cdn.builder.io/api/v1/image/assets/TEMP/ccadd2ada7ecc27e927e3cecf582fc6255e077af16db82817156e0030376bbb5?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f&width=100 100w, https://cdn.builder.io/api/v1/image/assets/TEMP/ccadd2ada7ecc27e927e3cecf582fc6255e077af16db82817156e0030376bbb5?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f&width=200 200w, https://cdn.builder.io/api/v1/image/assets/TEMP/ccadd2ada7ecc27e927e3cecf582fc6255e077af16db82817156e0030376bbb5?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f&width=400 400w, https://cdn.builder.io/api/v1/image/assets/TEMP/ccadd2ada7ecc27e927e3cecf582fc6255e077af16db82817156e0030376bbb5?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f&width=800 800w, https://cdn.builder.io/api/v1/image/assets/TEMP/ccadd2ada7ecc27e927e3cecf582fc6255e077af16db82817156e0030376bbb5?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f&width=1200 1200w, https://cdn.builder.io/api/v1/image/assets/TEMP/ccadd2ada7ecc27e927e3cecf582fc6255e077af16db82817156e0030376bbb5?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f&width=1600 1600w, https://cdn.builder.io/api/v1/image/assets/TEMP/ccadd2ada7ecc27e927e3cecf582fc6255e077af16db82817156e0030376bbb5?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f&width=2000 2000w, https://cdn.builder.io/api/v1/image/assets/TEMP/ccadd2ada7ecc27e927e3cecf582fc6255e077af16db82817156e0030376bbb5?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f"
                 className="object-contain mt-6 w-full aspect-[1.28] max-md:max-w-full" />
             </div>
             {producto?.docentes.length > 0 && (<div className="flex flex-col mt-10 w-full max-md:max-w-full">
@@ -322,7 +325,7 @@ const CursoDetalle = ({ producto, url_env }) => {
                 return (<div
                   className="flex flex-col items-start p-8 mt-6 w-full bg-rose-50 rounded-2xl max-md:px-5 max-md:max-w-full">
                   <img loading="lazy"
-                    srcset="https://cdn.builder.io/api/v1/image/assets/TEMP/35826865a25ac2b4c77ae4e6641929f25ecea75c3e4709ab10e426cee344f5f5?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f&width=100 100w, https://cdn.builder.io/api/v1/image/assets/TEMP/35826865a25ac2b4c77ae4e6641929f25ecea75c3e4709ab10e426cee344f5f5?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f&width=200 200w, https://cdn.builder.io/api/v1/image/assets/TEMP/35826865a25ac2b4c77ae4e6641929f25ecea75c3e4709ab10e426cee344f5f5?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f&width=400 400w, https://cdn.builder.io/api/v1/image/assets/TEMP/35826865a25ac2b4c77ae4e6641929f25ecea75c3e4709ab10e426cee344f5f5?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f&width=800 800w, https://cdn.builder.io/api/v1/image/assets/TEMP/35826865a25ac2b4c77ae4e6641929f25ecea75c3e4709ab10e426cee344f5f5?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f&width=1200 1200w, https://cdn.builder.io/api/v1/image/assets/TEMP/35826865a25ac2b4c77ae4e6641929f25ecea75c3e4709ab10e426cee344f5f5?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f&width=1600 1600w, https://cdn.builder.io/api/v1/image/assets/TEMP/35826865a25ac2b4c77ae4e6641929f25ecea75c3e4709ab10e426cee344f5f5?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f&width=2000 2000w, https://cdn.builder.io/api/v1/image/assets/TEMP/35826865a25ac2b4c77ae4e6641929f25ecea75c3e4709ab10e426cee344f5f5?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f"
+                    srcSet="https://cdn.builder.io/api/v1/image/assets/TEMP/35826865a25ac2b4c77ae4e6641929f25ecea75c3e4709ab10e426cee344f5f5?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f&width=100 100w, https://cdn.builder.io/api/v1/image/assets/TEMP/35826865a25ac2b4c77ae4e6641929f25ecea75c3e4709ab10e426cee344f5f5?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f&width=200 200w, https://cdn.builder.io/api/v1/image/assets/TEMP/35826865a25ac2b4c77ae4e6641929f25ecea75c3e4709ab10e426cee344f5f5?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f&width=400 400w, https://cdn.builder.io/api/v1/image/assets/TEMP/35826865a25ac2b4c77ae4e6641929f25ecea75c3e4709ab10e426cee344f5f5?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f&width=800 800w, https://cdn.builder.io/api/v1/image/assets/TEMP/35826865a25ac2b4c77ae4e6641929f25ecea75c3e4709ab10e426cee344f5f5?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f&width=1200 1200w, https://cdn.builder.io/api/v1/image/assets/TEMP/35826865a25ac2b4c77ae4e6641929f25ecea75c3e4709ab10e426cee344f5f5?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f&width=1600 1600w, https://cdn.builder.io/api/v1/image/assets/TEMP/35826865a25ac2b4c77ae4e6641929f25ecea75c3e4709ab10e426cee344f5f5?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f&width=2000 2000w, https://cdn.builder.io/api/v1/image/assets/TEMP/35826865a25ac2b4c77ae4e6641929f25ecea75c3e4709ab10e426cee344f5f5?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f"
                     className="object-contain max-w-full aspect-square rounded-[200px] w-[136px]" />
                   <div className="flex flex-col self-stretch mt-6 w-full max-md:max-w-full">
                     <div className="flex flex-col w-full max-md:max-w-full">
@@ -436,7 +439,7 @@ const CursoDetalle = ({ producto, url_env }) => {
                   </div>
                 </div>
                 <img loading="lazy"
-                  srcset="https://cdn.builder.io/api/v1/image/assets/TEMP/eac810d7c65f807434897557781e1c49da92e8c7d8473e985d1a5af430b124a3?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f&width=100 100w, https://cdn.builder.io/api/v1/image/assets/TEMP/eac810d7c65f807434897557781e1c49da92e8c7d8473e985d1a5af430b124a3?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f&width=200 200w, https://cdn.builder.io/api/v1/image/assets/TEMP/eac810d7c65f807434897557781e1c49da92e8c7d8473e985d1a5af430b124a3?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f&width=400 400w, https://cdn.builder.io/api/v1/image/assets/TEMP/eac810d7c65f807434897557781e1c49da92e8c7d8473e985d1a5af430b124a3?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f&width=800 800w, https://cdn.builder.io/api/v1/image/assets/TEMP/eac810d7c65f807434897557781e1c49da92e8c7d8473e985d1a5af430b124a3?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f&width=1200 1200w, https://cdn.builder.io/api/v1/image/assets/TEMP/eac810d7c65f807434897557781e1c49da92e8c7d8473e985d1a5af430b124a3?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f&width=1600 1600w, https://cdn.builder.io/api/v1/image/assets/TEMP/eac810d7c65f807434897557781e1c49da92e8c7d8473e985d1a5af430b124a3?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f&width=2000 2000w, https://cdn.builder.io/api/v1/image/assets/TEMP/eac810d7c65f807434897557781e1c49da92e8c7d8473e985d1a5af430b124a3?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f"
+                  srcSet="https://cdn.builder.io/api/v1/image/assets/TEMP/eac810d7c65f807434897557781e1c49da92e8c7d8473e985d1a5af430b124a3?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f&width=100 100w, https://cdn.builder.io/api/v1/image/assets/TEMP/eac810d7c65f807434897557781e1c49da92e8c7d8473e985d1a5af430b124a3?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f&width=200 200w, https://cdn.builder.io/api/v1/image/assets/TEMP/eac810d7c65f807434897557781e1c49da92e8c7d8473e985d1a5af430b124a3?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f&width=400 400w, https://cdn.builder.io/api/v1/image/assets/TEMP/eac810d7c65f807434897557781e1c49da92e8c7d8473e985d1a5af430b124a3?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f&width=800 800w, https://cdn.builder.io/api/v1/image/assets/TEMP/eac810d7c65f807434897557781e1c49da92e8c7d8473e985d1a5af430b124a3?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f&width=1200 1200w, https://cdn.builder.io/api/v1/image/assets/TEMP/eac810d7c65f807434897557781e1c49da92e8c7d8473e985d1a5af430b124a3?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f&width=1600 1600w, https://cdn.builder.io/api/v1/image/assets/TEMP/eac810d7c65f807434897557781e1c49da92e8c7d8473e985d1a5af430b124a3?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f&width=2000 2000w, https://cdn.builder.io/api/v1/image/assets/TEMP/eac810d7c65f807434897557781e1c49da92e8c7d8473e985d1a5af430b124a3?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f"
                   className="object-contain shrink-0 aspect-[0.98] w-[161px]" />
               </div>
             </div>
@@ -444,24 +447,37 @@ const CursoDetalle = ({ producto, url_env }) => {
           <div className="flex flex-col sticky top-0 justify-center py-8 bg-rose-50 rounded-2xl w-full lg:w-[400px]">
             <div className="flex flex-col px-6 w-full max-md:px-5">
               <div className="flex flex-col lg:flex-row gap-3 lg:gap-10 justify-between items-start w-full">
-                <div className="flex gap-2 items-center self-stretch my-auto text-neutral-800">
-                  <div className="self-stretch my-auto text-2xl font-bold leading-none">
-                    S/ {producto.oferta}
-                  </div>
+
+                {producto.descuento > 0 ? (
+
+                  <>
+                    <div className="flex gap-2 items-center self-stretch my-auto text-neutral-800">
+                      <div className="self-stretch my-auto text-2xl font-bold leading-none">
+
+                        S/ {producto.descuento}
+                      </div>
 
 
-                  <div className="self-stretch my-auto text-base font-medium">
-                    PEN {producto.precio}
+                      <div className="self-stretch my-auto text-base font-medium text-[14px] line-through" >
+                        PEN {producto.precio}
+                      </div>
+                    </div>
+                    <div
+                      className="gap-2.5  px-3 py-2 my-auto text-sm font-bold leading-none text-red-600 uppercase bg-red-100 rounded-xl">
+                      {((producto.precio - producto.descuento) / producto.precio * 100).toFixed(2)}% off
+                    </div>
+
+                  </>
+                ) : (producto.precio && producto.descuento && (
+                  <div className="flex gap-2 items-center self-stretch my-auto text-neutral-800">
+                    <div className="self-stretch my-auto text-2xl font-bold leading-none">
+                      {console.log(producto)}
+                      S/ {producto.precio}
+                    </div>
                   </div>
-                </div>
-                <div
-                  className="gap-2.5  px-3 py-2 my-auto text-sm font-bold leading-none text-red-600 uppercase bg-red-100 rounded-xl">
-                  {producto.precio && producto.oferta && (
-                    <>
-                      {((producto.precio - producto.oferta) / producto.precio * 100).toFixed(2)}% off
-                    </>
-                  )}
-                </div>
+                ))}
+
+
               </div>
               <div
                 className="flex gap-2 justify-center items-center self-start mt-3 text-sm font-medium tracking-normal leading-none text-red-600">
@@ -477,7 +493,7 @@ const CursoDetalle = ({ producto, url_env }) => {
                 Este curso incluye:
               </div>
               {incluye && Object.entries(incluye).map(([key, incluye]) => (
-                console.log(incluye),
+
                 <div className="flex flex-col mt-4 text-sm tracking-normal leading-loose text-gray-600">
                   <div className="flex gap-3 items-center">
                     <img

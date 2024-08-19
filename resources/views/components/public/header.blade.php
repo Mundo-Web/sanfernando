@@ -245,7 +245,7 @@
       @if (Auth::user() == null)
         <a href="/login" class="text-white">Iniciar Sesion </a> </a>
       @else
-        <div class="text-white  hidden md:inline-flex" x-data="{ open: false }">
+        <div class=" relative text-white  hidden md:inline-flex" x-data="{ open: false }">
           <button class="px-3 py-2 inline-flex justify-center items-center group" aria-haspopup="true"
             @click.prevent="open = !open" :aria-expanded="open">
             <div class="flex items-center truncate">
@@ -257,15 +257,16 @@
             </div>
           </button>
           <div
-            class="origin-top-right z-10 absolute top-full min-w-44 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 py-1.5 rounded shadow-lg overflow-hidden mt-1"
+            class="origin-top-right z-10 text-red-600 bg-red-100 absolute top-full min-w-44  dark:bg-slate-800 border border-slate-200 dark:border-slate-700 py-1.5 rounded shadow-lg overflow-hidden mt-1"
             @click.outside="open = false" @keydown.escape.window="open = false" x-show="open">
             <ul>
-              <li class="hover:bg-gray-100">
-                <a class="font-medium text-sm  flex items-center py-1 px-3" href="{{ route('micuenta') }}"
-                  @click="open = false" @focus="open = true" @focusout="open = false">Mi Cuenta</a>
+              <li class=" hover:bg-rose-700 hover:text-white transition duration-100 ease-in">
+                <a class="font-medium text-sm  flex items-center py-1 px-3 " href="{{ route('micuenta') }}"
+                  @click="open = false" @focus="open = true" @focusout="open = false">Mi
+                  Cuenta</a>
               </li>
 
-              <li class="hover:bg-gray-100">
+              <li class=" hover:bg-rose-700 hover:text-white transition duration-100 ease-in">
                 <form method="POST" action="{{ route('logout') }}" x-data>
                   @csrf
                   <button type="submit" class="font-medium text-sm  flex items-center py-1 px-3"
@@ -278,11 +279,17 @@
           </div>
         </div>
       @endif
-      <a href="#" aria-label="Social Media Link 3" id="open-cart">
+      <a href="#" aria-label="Social Media Link 3">
+        <div id="open-cart" class="relative">
+          <span id="itemsCount"
+            class="bg-rose-700 text-xs font-medium text-white text-center px-[7px] py-[2px]  rounded-full absolute -bottom-4 -right-4 ml-3">0</span>
+          <img loading="lazy"
+            src="https://cdn.builder.io/api/v1/image/assets/TEMP/2cb868de28b1b49e52be101815be5c820fdf20aee19c0b5b86753f263366f629?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f"
+            alt="" class="object-contain shrink-0 w-6 aspect-square" />
+        </div>
 
-        <img loading="lazy"
-          src="https://cdn.builder.io/api/v1/image/assets/TEMP/2cb868de28b1b49e52be101815be5c820fdf20aee19c0b5b86753f263366f629?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f"
-          alt="" class="object-contain shrink-0 w-6 aspect-square" />
+
+
       </a>
     </nav>
   </section>
@@ -297,8 +304,8 @@
 
       <div class="w-auto">
         <a href="#">
-          <img id="logo-boostperu" class="w-[170px] " {{-- public\images\svg\LOGO2.png --}}
-            src="{{ asset($isIndex ? 'images/svg/logogp.svg' : 'images/svg/logogp.svg') }}" alt="boostperu" />
+          <img id="logo-gestion_publica" class="w-[170px] " {{-- public\images\svg\LOGO2.png --}}
+            src="{{ asset($isIndex ? 'images/svg/logogp.svg' : 'images/svg/logogp.svg') }}" alt="gestion_publica" />
         </a>
       </div>
 
@@ -391,34 +398,32 @@
 <script>
   let clockSearch;
 </script>
-<script>
-  $('#open-cart').on('click', () => {
-    $('#cart-modal').modal({
-      showClose: false,
-      fadeDuration: 100
-    })
-  })
-  $('#close-cart').on('click', () => {
-    $('.jquery-modal.blocker.current').trigger('click')
-  })
-</script>
+
 <script>
   function mostrarTotalItems() {
     let articulos = Local.get('carrito') ?? []
     console.log('articulos reload ', articulos)
-    let contarArticulos
+    let contarArticulos = 0
+    console.log(articulos.length)
 
-    if (articulos.length == 0) {
+    if (articulos.length > 0) {
       contarArticulos = articulos.reduce((total, articulo) => {
         return total + articulo.cantidad;
       }, 0);
 
     } else {
+      console.log('no es mayora a 0 ')
       contarArticulos = 0
 
     }
 
-    $('#itemsCount').text(contarArticulos)
+    if (articulos.length > 0) {
+      $('#itemsCount').show()
+      $('#itemsCount').text(contarArticulos)
+
+    } else {
+      $('#itemsCount').hide()
+    }
 
   }
   $(document).ready(function() {
@@ -472,11 +477,8 @@
 
 
 <script>
-  var articulosCarrito = []
-  articulosCarrito = Local.get('carrito') || [];
-
   function addOnCarBtn(id, operacion) {
-
+    let articulosCarrito = Local.get('carrito') || [];
     const prodRepetido = articulosCarrito.map(item => {
       if (item.id === id) {
         item.cantidad += Number(1);
@@ -495,6 +497,7 @@
   }
 
   function deleteOnCarBtn(id, operacion) {
+    let articulosCarrito = Local.get('carrito') || [];
     const prodRepetido = articulosCarrito.map(item => {
       if (item.id === id && item.cantidad > 0) {
         item.cantidad -= Number(1);
@@ -512,6 +515,7 @@
   }
 
   function deleteItem(id) {
+    let articulosCarrito = Local.get('carrito') || [];
     articulosCarrito = articulosCarrito.filter(objeto => objeto.id !== id);
 
     Local.set('carrito', articulosCarrito)

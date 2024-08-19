@@ -922,7 +922,7 @@ class IndexController extends Controller
   {
     $appUrl = env('APP_URL');
     $name = $data['full_name'];
-    $mensaje = "Gracias por comunicarte con BoostPeru";
+    $mensaje = "Gracias por comunicarte con Gestion Publica";
     $mail = EmailConfig::config($name, $mensaje);
     // dd($mail);
     try {
@@ -972,7 +972,7 @@ class IndexController extends Controller
                       margin: 40px;
                     "
                   >
-                    <img src="' . $appUrl . '/images/Group1.png" alt="Boost_Peru"  style="
+                    <img src="' . $appUrl . '/images/Group1.png" alt="Gestion_Publica"  style="
                     margin: auto;
                   "/>
                   </th>
@@ -1139,7 +1139,7 @@ class IndexController extends Controller
                       margin: 40px;
                     "
                   >
-                     <img src="' . $appUrl . '/images/Group1.png" alt="Boost_Peru"  style="
+                     <img src="' . $appUrl . '/images/Group1.png" alt="Gestion_Publica"  style="
                     margin: auto;
                   "/>
                   </th>
