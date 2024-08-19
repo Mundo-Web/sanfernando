@@ -8,16 +8,21 @@ use Illuminate\Database\Eloquent\Model;
 class Staff extends Model
 {
     use HasFactory;
-    protected $fillable = ['nombre',
-    'cargo',
-    'facebook',
-    'instagram',
-    'youtube',
-    'twitter',
-    'status'];
+    protected $fillable = [
+        'nombre',
+        'cargo',
+        'facebook',
+        'instagram',
+        'youtube',
+        'twitter',
+        'status',
+        'url_foto',
+        'linkedin',
+        'resume'
+    ];
 
     public function productos()
-{
-    return $this->belongsToMany(Products::class, 'staff_xproducts', 'staff_id', 'producto_id');
-}
+    {
+        return $this->belongsToMany(Products::class, 'staff_xproducts', 'staff_id', 'producto_id');
+    }
 }

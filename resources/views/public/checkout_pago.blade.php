@@ -319,9 +319,21 @@
                 <p>Total</p>
                 <p id="itemTotal">S/. 0.00 </p>
               </div>
+              @if (Auth::check())
+                <button id="btnPagar"
+                  class="text-white bg-red-800 w-full py-4 rounded-3xl cursor-pointer font-semibold text-[16px] inline-block text-center">Pagar</button>
+              @else
+                <span> <i class="fa fa-info-circle" aria-hidden="true"></i> Por favor inicie sesion para continuar con
+                  la compra</span>
+                <a href="{{ route('login') }}" target="_blank"
+                  class="text-white bg-red-800 w-full py-4 rounded-3xl cursor-pointer font-semibold text-[16px] inline-block text-center">
+                  Iniciar Sesion</a>
+                <span class="text-center ">
+                  o <a href="{{ route('register') }}" target="_blank" class="underline">
+                    Registrate</a>
+                </span>
+              @endif
 
-              <button id="btnPagar"
-                class="text-white bg-red-800 w-full py-4 rounded-3xl cursor-pointer font-semibold text-[16px] inline-block text-center">Pagar</button>
             </div>
           </div>
         </div>

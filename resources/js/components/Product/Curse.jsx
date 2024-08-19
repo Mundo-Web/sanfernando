@@ -36,6 +36,7 @@ const Curse = ({ producto, env_url, userIsLogged }) => {
             {truncateText(producto.producto, 55)}
           </h2>
         </Tippy>
+        {console.log(producto)}
 
         <div
           className="flex flex-col self-start mt-4 text-sm tracking-normal font-poppins_regular leading-loose text-gray-600">
