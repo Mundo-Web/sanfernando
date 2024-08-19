@@ -20,8 +20,12 @@ const CatalogoGP = ({ productos, env_url, userIsLogged }) => {
   const [isListVisible, setIsListVisible] = useState(false)
   // const query = useRef({ query: '', order: '' });
   // const [query, setQuery] = useState({ query: GET.search ?? '', order: '' });
-  const query = useRef({ query: GET.search ?? '', order: '' });
+
+  const query = useRef({ query: '', order: '', category: GET.category ?? '' });
   const [items, setItems] = useState();
+
+  console.log(query.current)
+
 
 
   const toggleListVisibility = () => {
@@ -43,7 +47,7 @@ const CatalogoGP = ({ productos, env_url, userIsLogged }) => {
     let query2 = query.current
 
     try {
-      const response = await axios.post(`/buscar?query=${query2.query}&order=${query2.order}`, {
+      const response = await axios.post(`/buscar?query=${query2.query}&order=${query2.order}&&category=${query2.category}`, {
         skip: take * (currentPage - 1),
         requireTotalCount: true,
         take
