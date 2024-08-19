@@ -57,7 +57,7 @@ class StaffController extends Controller
             $data['url_foto'] = $ruta.$nombreImagen;
             
         }
-        dump($data);
+        
         Staff::create($request->all());
 
         return redirect()->route('staff.index')->with('success', 'Publicación creado exitosamente.');
@@ -113,7 +113,7 @@ class StaffController extends Controller
             $data['url_foto'] = $ruta.$nombreImagen;
             
         }
-        dump($data);
+        
         
         Staff::updateOrCreate(
             ['id' => $id],
