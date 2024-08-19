@@ -159,6 +159,11 @@ class IndexController extends Controller
   {
     return Inertia::render('DashboardEstudiante')->rootView('dashboard');
   }
+
+  public function diploma()
+  {
+    return Inertia::render('Diploma')->rootView('app');
+  }
   // public function catalogo(Request $request, string $id_cat = null)
   // {
   //   $tag_id = null;
