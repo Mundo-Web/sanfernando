@@ -18,7 +18,6 @@ Route::get('/docente', [IndexController::class, 'docente'])->name('Docente.jsx')
 Route::get('/detalleDocente/{id}', [IndexController::class, 'docenteDetalle'])->name('DocenteDetalle.jsx');
 Route::get('/nosotros', [IndexController::class, 'nosotros'])->name('Nosotros.jsx');
 Route::get('/contacto', [IndexController::class, 'contacto'])->name('Contacto.jsx');
-Route::get('/desarrolloCurso', [IndexController::class, 'desarrolloCurso'])->name('CursoDesarrollo.jsx');
 Route::get('/examenFinalizado', [IndexController::class, 'examenFinalizado'])->name('ExamenFinalizado.jsx');
 Route::get('/examenPregunta', [IndexController::class, 'examenPregunta'])->name('ExamenPregunta.jsx');
 Route::get('/dashDocente', [IndexController::class, 'dashDocente'])->name('DashboardDocente.jsx');
@@ -34,32 +33,8 @@ Route::middleware(['auth:sanctum', 'verified', 'can:Admin'])->group(function () 
     Route::get('/products2', [ProductsController::class, 'reactView'])->name('Admin/Products.jsx');
   });
 });
-// foreach (Router::components as $path => $page) {
-//   if (Auth::check()) {
-//     Auth::user()->getAllPermissions();
-//   }
-//   if (isset($page['adminto-instance']) && $page['adminto-instance']) {
-//     Route::get('/' . $path, function (Request $request) use ($page) {
-//       $properties = [
-//         'token' => csrf_token(),
-//         'session' => Auth::user(),
-//         'WA_URL' => env('WA_URL'),
-//         'APP_URL' => env('APP_URL')
-//       ];
-//       if (isset($page['compact'])) {
-//         foreach ($page['compact'] as $key => $compact) {
-//           if (isset($compact['select'])) {
-//             $query = $compact['class']::select($compact['select']);
-//           } else {
-//             $query = $compact['class']::select();
-//           }
-//           if (isset($compact['filter'])) {
-//             $query = $query->where($compact['filter']);
-//           }
-//           $properties[$key] = $query->get();
-//         }
-//       }
-//       return Inertia::render($page['component'], $properties)->rootView('app');
-//     })->name($path);
-//   }
-// }
+Route::middleware(['auth:sanctum', 'verified'])->prefix('micuenta')->group(function () {
+
+  Route::get('/session/{courseId}', [ModuleController::class, 'redirectModule'])->name('CursoDesarrollo.jsx');
+  Route::get('/session/{courseId}/{sessionId}', [IndexController::class, 'desarrolloCurso'])->name('CursoDesarrollo.jsx');
+});

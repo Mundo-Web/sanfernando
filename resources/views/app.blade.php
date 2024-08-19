@@ -196,6 +196,11 @@
   <x-public.footer />
 
   <script src="{{ asset('js/functions.js') }}?v={{ uniqid() }}"></script>
+  <script src="/js/moment/min/moment.min.js"></script>
+  <script src="/js/moment/min/locales.min.js"></script>
+  <script>
+    moment.locale('es')
+  </script>
 </body>
 
 </html>

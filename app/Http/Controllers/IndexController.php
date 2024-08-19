@@ -22,6 +22,7 @@ use App\Models\Testimony;
 use App\Models\Category;
 use App\Models\Department;
 use App\Models\Galerie;
+use App\Models\Module;
 use App\Models\Offer;
 use App\Models\PolyticsCondition;
 use App\Models\Popup;
@@ -68,7 +69,7 @@ class IndexController extends Controller
     $benefit = Strength::where('status', '=', 1)->take(9)->get();
     $testimonies = Testimony::where('status', '=', 1)->where('visible', '=', 1)->get();
 
-    $aboutUs = AboutUs::whereIn('titulo', ['TITULO-OBJETIVO', 'DESCRIPCION-OBJETIVO', 'CURSOS','ESTUDIANTES','TASA-EXITO'])->get();
+    $aboutUs = AboutUs::whereIn('titulo', ['TITULO-OBJETIVO', 'DESCRIPCION-OBJETIVO', 'CURSOS', 'ESTUDIANTES', 'TASA-EXITO'])->get();
     $general = General::first();
 
     return Inertia::render('Home', [
@@ -93,13 +94,13 @@ class IndexController extends Controller
 
 
 
-    return Inertia::render('CatalogGP', ['productos' => $productos,  'env_url' => env('APP_URL'), 'userIsLogged'=> $userIsLogged])->rootView('app');
+    return Inertia::render('CatalogGP', ['productos' => $productos,  'env_url' => env('APP_URL'), 'userIsLogged' => $userIsLogged])->rootView('app');
   }
 
-  public function detalleCurso(string $id )
+  public function detalleCurso(string $id)
   {
     $producto = Products::with(['tags', 'galeria', 'category', 'docentes'])->where('id', $id)->first();
-    
+
     return Inertia::render('CursoDetalle', [
       'producto' => $producto,
       'url_env' => env('APP_URL')
@@ -141,9 +142,21 @@ class IndexController extends Controller
     ])->rootView('app');
   }
 
-  public function desarrolloCurso()
+  public function desarrolloCurso(Request $request, string $courseUUID, string $moduleId)
   {
-    return Inertia::render('CursoDesarrollo')->rootView('app');
+    $courseJpa = Products::where('uuid', $courseUUID)->first();
+    $modulesJpa = Module::select(['modules.*'])
+      ->with(['sources'])
+      ->join('products AS course', 'course.id', 'modules.course_id')
+      ->where('course.uuid', $courseUUID)
+      ->get();
+    $moduleJpa = Module::select(['modules.*'])
+      ->with(['sources'])->find($moduleId);
+    return Inertia::render('CursoDesarrollo', [
+      'course' => $courseJpa,
+      'modules' => $modulesJpa,
+      'module' => $moduleJpa
+    ])->rootView('app');
   }
 
   public function examenFinalizado()

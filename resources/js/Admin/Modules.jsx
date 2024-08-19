@@ -283,7 +283,7 @@ const Modules = ({ courses }) => {
             <i className='fa fa-plus me-1'></i>
             Agregar
           </label>
-          <input className='hidden' type="file" name="input-source" id="input-source" multiple onChange={onSourceChange} />
+          <input className='hidden' type="file" name="input-source" id="input-source" onChange={onSourceChange} />
         </div>
 
         <div className="flex gap-2 flex-col">
