@@ -34,6 +34,8 @@ class StaffController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
+
+        dump($data);
         
         if ($request->hasFile("url_foto")) {
 
@@ -58,7 +60,7 @@ class StaffController extends Controller
             
         }
         
-        Staff::create($request->all());
+        Staff::create($data);
 
         return redirect()->route('staff.index')->with('success', 'Publicación creado exitosamente.');
 

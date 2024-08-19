@@ -118,7 +118,9 @@ class IndexController extends Controller
 
   public function docenteDetalle(string $id)
   {
-    $docente = Staff::where('id', $id)->with('productos')->first();
+    $docente = Staff::where('id', $id)->with(['productos', 'productos.category'])->first();
+    $cursos = Staff::find($id)->productos()->where('status', 1)->get()->toArray();
+    dump($cursos);
 
 
     return Inertia::render('DocenteDetalle', ['docente' => $docente])->rootView('app');

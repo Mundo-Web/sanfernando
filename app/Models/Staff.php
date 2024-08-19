@@ -16,7 +16,9 @@ class Staff extends Model
         'youtube',
         'twitter',
         'status',
-        'url_foto'
+        'url_foto',
+        'linkedin',
+        'resume'
     ];
 
     public function productos()

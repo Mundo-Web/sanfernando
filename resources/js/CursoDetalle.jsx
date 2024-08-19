@@ -29,7 +29,7 @@ const CursoDetalle = ({ producto, url_env }) => {
 
   return (
     <>
-      <main className="z-[15] !font-poppins_regular">
+      <main className="z-[15] !font-poppins_regular mb-8">
 
         <section className="flex flex-col rounded-none ">
           <div
@@ -121,43 +121,34 @@ const CursoDetalle = ({ producto, url_env }) => {
                 </div>
               </div>
               <div className="flex flex-wrap gap-10 justify-center items-center mt-10 w-full max-md:max-w-full">
-                {producto?.docentes.length > 0 && (<div
-                  className="flex flex-col flex-1 shrink items-start self-stretch my-auto basis-8 min-w-[240px]">
-                  <div className="flex gap-3 justify-center items-center">
-                    <img loading="lazy"
-                      srcSet="https://cdn.builder.io/api/v1/image/assets/TEMP/13f8f9d7956eed707f93aa3139e26d13e749d7224aba213549fbc29a924cc1dc?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f&width=100 100w, https://cdn.builder.io/api/v1/image/assets/TEMP/13f8f9d7956eed707f93aa3139e26d13e749d7224aba213549fbc29a924cc1dc?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f&width=200 200w, https://cdn.builder.io/api/v1/image/assets/TEMP/13f8f9d7956eed707f93aa3139e26d13e749d7224aba213549fbc29a924cc1dc?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f&width=400 400w, https://cdn.builder.io/api/v1/image/assets/TEMP/13f8f9d7956eed707f93aa3139e26d13e749d7224aba213549fbc29a924cc1dc?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f&width=800 800w, https://cdn.builder.io/api/v1/image/assets/TEMP/13f8f9d7956eed707f93aa3139e26d13e749d7224aba213549fbc29a924cc1dc?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f&width=1200 1200w, https://cdn.builder.io/api/v1/image/assets/TEMP/13f8f9d7956eed707f93aa3139e26d13e749d7224aba213549fbc29a924cc1dc?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f&width=1600 1600w, https://cdn.builder.io/api/v1/image/assets/TEMP/13f8f9d7956eed707f93aa3139e26d13e749d7224aba213549fbc29a924cc1dc?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f&width=2000 2000w, https://cdn.builder.io/api/v1/image/assets/TEMP/13f8f9d7956eed707f93aa3139e26d13e749d7224aba213549fbc29a924cc1dc?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f"
-                      className="object-contain shrink-0 self-stretch my-auto w-20 aspect-[1.6]" />
-                    <div className="flex flex-col self-stretch my-auto">
-                      <div className="text-sm tracking-normal leading-loose text-rose-700">
-                        Dictado por:
-                      </div>
-                      <div
-                        className="flex gap-1.5 items-start mt-1 text-base font-medium leading-none text-gray-600">
-                        {producto?.docentes?.map((profesor, index) => (
-                          <>
-                            <div>{profesor.nombre}</div>
-                            <div className="text-gray-600">•</div>
-                          </>))}
+                {console.log(producto.docentes)}
+                {producto?.docentes.length > 0 && (
+                  <div
+                    className="flex flex-col flex-1 shrink items-start self-stretch my-auto basis-8 min-w-[240px]">
+                    <div className="flex gap-3 justify-center items-center ms-8">
+                      {producto?.docentes?.map((profesor, index) => (
+                        <img loading="lazy"
+                          src={`/${profesor.url_foto}`}
+                          className="object-cover shrink-0 self-stretch my-auto w-14 h-14  aspect-[1.6] rounded-full -ms-8 border-4 border-white" />
+                      ))}
 
+                      <div className="flex flex-col self-stretch my-auto">
+                        <div className="text-sm tracking-normal leading-loose text-rose-700">
+                          Dictado por:
+                        </div>
+                        <div
+                          className="flex gap-1.5 items-start mt-1 text-base font-medium leading-none text-gray-600">
+                          {producto?.docentes?.map((profesor, index) => (
+                            <>
+                              <div>{profesor.nombre}</div>
+                              <div className="text-gray-600">•</div>
+                            </>))}
+
+                        </div>
                       </div>
                     </div>
-                  </div>
-                  {/* <div className="flex gap-2 justify-center items-center mt-6">
-                    <img loading="lazy"
-                      src="https://cdn.builder.io/api/v1/image/assets/TEMP/dbaceea11f6a3f905103b5b188c28d8e0ff1a5bd47388b20a48abf6a1f56d225?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f"
-                      className="object-contain shrink-0 self-stretch my-auto aspect-[5] w-[120px]" />
-                    <div className="flex gap-1 items-center self-stretch my-auto">
-                      <div
-                        className="self-stretch my-auto text-base font-medium leading-none text-gray-600">
-                        4.8
-                      </div>
-                      <div
-                        className="self-stretch my-auto text-sm tracking-normal leading-loose text-rose-700">
-                        (451,444 Calificación)
-                      </div>
-                    </div>
-                  </div> */}
-                </div>)}
+
+                  </div>)}
 
 
                 {producto?.brochure_url !== null && (<a href={`${url_env}/${producto.brochure_url}`}
@@ -324,12 +315,12 @@ const CursoDetalle = ({ producto, url_env }) => {
               {producto?.docentes?.map((profesor, index) => {
                 return (<div
                   className="flex flex-col items-start p-8 mt-6 w-full bg-rose-50 rounded-2xl max-md:px-5 max-md:max-w-full">
-                  <img loading="lazy"
-                    srcSet="https://cdn.builder.io/api/v1/image/assets/TEMP/35826865a25ac2b4c77ae4e6641929f25ecea75c3e4709ab10e426cee344f5f5?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f&width=100 100w, https://cdn.builder.io/api/v1/image/assets/TEMP/35826865a25ac2b4c77ae4e6641929f25ecea75c3e4709ab10e426cee344f5f5?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f&width=200 200w, https://cdn.builder.io/api/v1/image/assets/TEMP/35826865a25ac2b4c77ae4e6641929f25ecea75c3e4709ab10e426cee344f5f5?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f&width=400 400w, https://cdn.builder.io/api/v1/image/assets/TEMP/35826865a25ac2b4c77ae4e6641929f25ecea75c3e4709ab10e426cee344f5f5?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f&width=800 800w, https://cdn.builder.io/api/v1/image/assets/TEMP/35826865a25ac2b4c77ae4e6641929f25ecea75c3e4709ab10e426cee344f5f5?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f&width=1200 1200w, https://cdn.builder.io/api/v1/image/assets/TEMP/35826865a25ac2b4c77ae4e6641929f25ecea75c3e4709ab10e426cee344f5f5?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f&width=1600 1600w, https://cdn.builder.io/api/v1/image/assets/TEMP/35826865a25ac2b4c77ae4e6641929f25ecea75c3e4709ab10e426cee344f5f5?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f&width=2000 2000w, https://cdn.builder.io/api/v1/image/assets/TEMP/35826865a25ac2b4c77ae4e6641929f25ecea75c3e4709ab10e426cee344f5f5?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f"
-                    className="object-contain max-w-full aspect-square rounded-[200px] w-[136px]" />
-                  <div className="flex flex-col self-stretch mt-6 w-full max-md:max-w-full">
+                  <div className="flex flex-row gap-8 items-center">
+                    <img loading="lazy"
+                      src={`/${profesor.url_foto}`}
+                      className="object-cover max-w-full aspect-square rounded-full w-[100px] h-[100px]" />
                     <div className="flex flex-col w-full max-md:max-w-full">
-                      <div className="text-xl font-bold leading-tight text-slate-700 max-md:max-w-full">
+                      <div className="text-xl md:text-2xl font-bold leading-tight text-slate-700 max-md:max-w-full">
                         {profesor.nombre}
                       </div>
                       <div
@@ -337,14 +328,21 @@ const CursoDetalle = ({ producto, url_env }) => {
                         {profesor.cargo}
                       </div>
                     </div>
+                  </div>
+
+
+                  <div className="flex flex-col self-stretch mt-6 w-full max-md:max-w-full">
+
                     <div
-                      className="mt-4 w-full text-sm tracking-normal leading-6 text-gray-600 rounded-none max-md:max-w-full">
-                      {profesor.cargo}
+                      className="mt-4 w-full text-sm tracking-normal leading-6 text-gray-600 rounded-none max-md:max-w-full line-clamp-6">
+                      {profesor.resume}
                     </div>
                   </div>
                   <a
+                    href={'/detalleDocente/' + profesor.id}
+                    target='_blank'
                     className="flex gap-2.5 justify-center items-center px-5 py-2.5 mt-6 text-sm font-bold text-center text-white bg-rose-700 min-h-[40px] rounded-[100px]">
-                    <div className="self-stretch my-auto cursor-pointer hover:scale-105 transition-all ">Perfil del decente</div>
+                    <div className="self-stretch my-auto cursor-pointer hover:scale-105 transition-all ">Perfil del docente</div>
                     <img loading="lazy"
                       src="https://cdn.builder.io/api/v1/image/assets/TEMP/750b30a75e1a11903416d34d5658b5bf616a3d859daa9372126fdab98a9b8f15?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f"
                       className="object-contain shrink-0 self-stretch my-auto w-5 aspect-square hover:scale-125" />
@@ -412,7 +410,7 @@ const CursoDetalle = ({ producto, url_env }) => {
                 </div>
               </div>
               <div
-                className="flex flex-wrap gap-5 mb-20 items-start p-6 mt-6 w-full bg-red-200 rounded-2xl max-md:px-5 max-md:max-w-full">
+                className="flex flex-wrap gap-5  items-start p-6 mt-6 w-full bg-red-200 rounded-2xl max-md:px-5 max-md:max-w-full">
                 <div className="flex flex-col flex-1 shrink basis-0 min-w-[240px]">
                   <div className="text-xl font-bold leading-tight text-neutral-800">
                     Yape o Plin
@@ -444,7 +442,7 @@ const CursoDetalle = ({ producto, url_env }) => {
               </div>
             </div>
           </div>
-          <div className="flex flex-col sticky top-0 justify-center py-8 bg-rose-50 rounded-2xl w-full lg:w-[400px]">
+          <div className="flex flex-col sticky top-8 justify-center py-8 bg-rose-50 rounded-2xl w-full lg:w-[400px]">
             <div className="flex flex-col px-6 w-full max-md:px-5">
               <div className="flex flex-col lg:flex-row gap-3 lg:gap-10 justify-between items-start w-full">
 
@@ -582,7 +580,7 @@ const CursoDetalle = ({ producto, url_env }) => {
           </div>
         </div>
 
-      </main>
+      </main >
 
     </>)
 }

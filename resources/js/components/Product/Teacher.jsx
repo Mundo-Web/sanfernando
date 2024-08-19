@@ -8,9 +8,14 @@ const Teacher = ({ docentes }) => {
     return (
         <div className="flex flex-col max-w-[336px]">
             {console.log(docentes)}
-            <img loading="lazy"
-                className='h-[331px] object-cover'
-                src={`/${docentes.url_foto}`} />
+            <img loading="lazy "
+                className='h-[331px] object-cover rounded-lg shadow-xl'
+                src={`/${docentes.url_foto}`}
+                onError={e => {
+                    e.target.onerror = null; // Evita un bucle infinito
+                    e.target.src = '/images/img/noStaff.jpg';
+                }}
+            />
             <div className="flex flex-col mt-4 w-full">
                 <div className="flex flex-col w-full">
                     <div className="flex gap-10 justify-between items-center w-full font-medium whitespace-nowrap">
@@ -34,7 +39,7 @@ const Teacher = ({ docentes }) => {
                         <div className="text-xl font-bold leading-tight text-neutral-800">
                             {docentes.nombre}
                         </div>
-                        <div className="mt-1.5 text-xs font-medium tracking-normal leading-6 text-gray-600">
+                        <div className="mt-1.5 text-xs font-medium tracking-normal leading-6 text-gray-600 line-clamp-1">
                             {docentes.cargo}
                         </div>
                     </div>

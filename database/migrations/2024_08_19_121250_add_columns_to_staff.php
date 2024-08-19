@@ -14,6 +14,8 @@ return new class extends Migration
         Schema::table('staff', function (Blueprint $table) {
             //
             $table->string('url_foto')->nullable();
+            $table->string('linkedin')->nullable();
+            $table->text('resume')->nullable();
         });
     }
 
@@ -25,6 +27,8 @@ return new class extends Migration
         Schema::table('staff', function (Blueprint $table) {
             //
             $table->dropColumn('url_foto');
+            $table->dropColumn('linkedin');
+            $table->dropColumn('resume');
         });
     }
 };
