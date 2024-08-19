@@ -88,7 +88,7 @@
     ]
   },
   "resources/css/app.css": {
-    "file": "assets/app-b_bhCJbD.css",
+    "file": "assets/app-pr-PV1UT.css",
     "isEntry": true,
     "src": "resources/css/app.css"
   },
@@ -279,6 +279,22 @@
     ],
     "isEntry": true,
     "src": "resources/js/DashboardEstudiante.jsx"
+  },
+  "resources/js/Diploma.jsx": {
+    "file": "assets/Diploma-MOtWT6e_.js",
+    "imports": [
+      "resources/js/Utils/HtmlContent.jsx",
+      "_index-TT1qJ6UJ.js",
+      "_CreateReactScript-QuaDmwri.js",
+      "resources/js/Utils/ReactAppend.jsx",
+      "__commonjsHelpers-4gQjN7DL.js",
+      "resources/js/Utils/CreateReactScript.jsx",
+      "_axios-_sX4vCAy.js",
+      "_main-jzs2GwAM.js",
+      "_index-jtdEOcur.js"
+    ],
+    "isEntry": true,
+    "src": "resources/js/Diploma.jsx"
   },
   "resources/js/Docente.jsx": {
     "file": "assets/Docente-wFf-mvS2.js",
