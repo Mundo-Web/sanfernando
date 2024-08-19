@@ -262,7 +262,11 @@
         caption: 'STOCK'
       },
       {
-        caption: 'ESTADO',
+        caption: 'CATEGORIA',
+        dataField: 'category.name',
+      },
+      {
+        caption: 'IMAGEN',
         cellTemplate: (container, {
           data
         }) => {
