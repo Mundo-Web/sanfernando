@@ -19,7 +19,8 @@ const customStyles = {
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
-    height: 'calc(100vh - 140px)'
+    height: 'max-content',
+    maxHeight: 'calc(100vh - 140px)'
   },
 };
 
@@ -35,6 +36,8 @@ const Modules = ({ courses }) => {
   const [moduleOpen, setModuleOpen] = useState(null)
   const [sourceType, setSourceType] = useState('image');
   const [sources, setSources] = useState([]);
+  const [moduleType, setModuleType] = useState('session');
+  const [questions, setQuestions] = useState([{}]);
 
   useEffect(() => {
     refreshModules()
@@ -69,6 +72,8 @@ const Modules = ({ courses }) => {
   const videoRef = useRef()
 
   const fillForm = async () => {
+    const newModuleType = moduleOpen?.type || 'session'
+    setModuleType(newModuleType)
     idRef.current.value = moduleOpen?.id || ''
     nameRef.current.value = moduleOpen?.name || ''
     descriptionRef.current.value = moduleOpen?.description || ''
@@ -169,6 +174,10 @@ const Modules = ({ courses }) => {
     refreshModules()
   }
 
+  const onQuestionAdd = async () => {
+
+  }
+
   return (<>
     <div className='p-4 flex justify-center'>
       <div className='w-full max-w-sm'>
@@ -236,81 +245,88 @@ const Modules = ({ courses }) => {
         <ul className="block mx-auto items-center w-max text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg sm:flex dark:bg-gray-700 dark:border-gray-600 dark:text-white">
           <li className="w-max border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">
             <div className="flex items-center ps-3">
-              <input id="horizontal-list-radio-id" type="radio" value="" name="list-radio" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500  cursor-pointer" defaultChecked />
+              <input id="horizontal-list-radio-id" type="radio" value="session" name="list-radio" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500  cursor-pointer" defaultChecked onChange={(e) => setModuleType(e.target.value)} />
               <label htmlFor="horizontal-list-radio-id" className="w-full py-3 ps-2 pe-3 text-sm font-medium text-gray-900 dark:text-gray-300  cursor-pointer">Sesion</label>
             </div>
           </li>
           {/* <li className="w-max border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">
           <div className="flex items-center ps-3">
-            <input id="horizontal-list-radio-military" type="radio" value="" name="list-radio" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500 cursor-pointer" />
+            <input id="horizontal-list-radio-military" type="radio" value="quick-exam" name="list-radio" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500 cursor-pointer" />
             <label htmlFor="horizontal-list-radio-military" className="w-full py-3 ps-2 pe-3 text-sm font-medium text-gray-900 dark:text-gray-300 cursor-pointer">Parcial</label>
           </div>
         </li> */}
           <li className="w-max dark:border-gray-600">
             <div className="flex items-center ps-3">
-              <input id="horizontal-list-radio-passport" type="radio" value="" name="list-radio" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500 cursor-pointer" />
+              <input id="horizontal-list-radio-passport" type="radio" value="final-exam" name="list-radio" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500 cursor-pointer" onChange={(e) => setModuleType(e.target.value)} />
               <label htmlFor="horizontal-list-radio-passport" className="w-full py-3 ps-2 pe-3 text-sm font-medium text-gray-900 dark:text-gray-300 cursor-pointer">Evaluacion final</label>
             </div>
           </li>
         </ul>
         <hr className='my-4' />
-        <FloatingInput eRef={nameRef} label='Titulo de la sesion' />
-        <FloatingInput eRef={descriptionRef} label='Descripcion de la sesion' long />
+        <FloatingInput eRef={nameRef} label={moduleType == 'session' ? 'Titulo de la sesion' : 'Titulo del examen'} />
+        <FloatingInput eRef={descriptionRef} label={moduleType == 'session' ? 'Descripcion de la sesion' : 'Descripcion del examen'} long />
 
-        <p className='mb-2' htmlFor="">Recurso principal</p>
-        <div className="mb-4 flex w-full justify-center gap-4">
-          <div className="flex items-center ps-4 border border-gray-200 rounded dark:border-gray-700 w-full max-w-40">
-            <input id="source-type-image" type="radio" value="image" name="source-type" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600 cursor-pointer"
-              onChange={e => setSourceType(e.target.value)} />
-            <label htmlFor="source-type-image" className="w-full py-4 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300 cursor-pointer">Imagen</label>
+        <div className={moduleType == 'session' ? 'block' : 'hidden'}>
+          <p className='mb-2' htmlFor="">Recurso principal</p>
+          <div className="mb-4 flex w-full justify-center gap-4">
+            <div className="flex items-center ps-4 border border-gray-200 rounded dark:border-gray-700 w-full max-w-40">
+              <input id="source-type-image" type="radio" value="image" name="source-type" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600 cursor-pointer"
+                onChange={e => setSourceType(e.target.value)} />
+              <label htmlFor="source-type-image" className="w-full py-4 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300 cursor-pointer">Imagen</label>
+            </div>
+            <div className="flex items-center ps-4 border border-gray-200 rounded dark:border-gray-700 w-full max-w-40">
+              <input id="source-type-video" type="radio" value="video" name="source-type" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600 cursor-pointer"
+                onChange={e => setSourceType(e.target.value)} />
+              <label htmlFor="source-type-video" className="w-full py-4 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300 cursor-pointer">Video</label>
+            </div>
           </div>
-          <div className="flex items-center ps-4 border border-gray-200 rounded dark:border-gray-700 w-full max-w-40">
-            <input id="source-type-video" type="radio" value="video" name="source-type" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600 cursor-pointer"
-              onChange={e => setSourceType(e.target.value)} />
-            <label htmlFor="source-type-video" className="w-full py-4 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300 cursor-pointer">Video</label>
-          </div>
-        </div>
-        <label className={`w-full ${sourceType == 'image' ? 'block' : 'hidden'} cursor-pointer mb-4`} htmlFor='input_image'>
-          <img ref={imagePreviewRef} className='block mx-auto w-[250px] h-[150px] object-cover object-center rounded-md' src="/images/img/noimagen.jpg" alt="" onError={e => e.target.src = '/images/img/noimagen.jpg'} />
-        </label>
-        <input ref={imageRef} className='hidden' id="input_image" type="file" onChange={onImageChange}></input>
-        <FloatingInput eRef={videoRef} label='Link del video (YouTube)' hidden={sourceType == 'image'} />
-
-        <hr className='my-4' />
-        <div className='flex justify-between items-center mb-2'>
-          <p>Otros recursos</p>
-          <label htmlFor="input-source" className="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-3 py-2 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700 cursor-pointer" >
-            <i className='fa fa-plus me-1'></i>
-            Agregar
+          <label className={`w-full ${sourceType == 'image' ? 'block' : 'hidden'} cursor-pointer mb-4`} htmlFor='input_image'>
+            <img ref={imagePreviewRef} className='block mx-auto w-[250px] h-[150px] object-cover object-center rounded-md' src="/images/img/noimagen.jpg" alt="" onError={e => e.target.src = '/images/img/noimagen.jpg'} />
           </label>
-          <input className='hidden' type="file" name="input-source" id="input-source" onChange={onSourceChange} />
-        </div>
+          <input ref={imageRef} className='hidden' id="input_image" type="file" onChange={onImageChange}></input>
+          <FloatingInput eRef={videoRef} label='Link del video (YouTube)' hidden={sourceType == 'image'} />
 
-        <div className="flex gap-2 flex-col">
-          {sources.map((source, i) => {
-            return <div key={`source-${i}`} className="flex gap-2 justify-between items-center p-4 w-full bg-rose-50 rounded-xl max-md:max-w-full">
-              <div className="flex gap-3 items-center self-stretch my-auto min-w-[240px]">
-                <i className='far fa-file-alt text-[48px] text-rose-700 shrink-0 self-stretch'></i>
-                <div className="flex flex-col self-stretch my-auto w-[228px]">
-                  <Tippy content='Ver recurso'>
-                    <a href={`/${source.ref}`} className="w-[calc(100%-25px)] text-base font-medium leading-none text-neutral-800 text-ellipsis line-clamp-1 hover:underline" target='_blank'>
-                      {source.name}
-                    </a>
-                  </Tippy>
-                  <div className="mt-1 text-sm tracking-normal leading-loose text-rose-700">
-                    {Number(source.size / 1000000).toFixed(2)} MB
+          <hr className='my-4' />
+          <div className='flex justify-between items-center mb-2'>
+            <p>Otros recursos</p>
+            <label htmlFor="input-source" className="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-3 py-2 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700 cursor-pointer" >
+              <i className='fa fa-plus me-1'></i>
+              Agregar
+            </label>
+            <input className='hidden' type="file" name="input-source" id="input-source" onChange={onSourceChange} />
+          </div>
+
+          <div className="flex gap-2 flex-col">
+            {sources.map((source, i) => {
+              return <div key={`source-${i}`} className="flex gap-2 justify-between items-center p-4 w-full bg-rose-50 rounded-xl max-md:max-w-full">
+                <div className="flex gap-3 items-center self-stretch my-auto min-w-[240px]">
+                  <i className='far fa-file-alt text-[48px] text-rose-700 shrink-0 self-stretch'></i>
+                  <div className="flex flex-col self-stretch my-auto w-[228px]">
+                    <Tippy content='Ver recurso'>
+                      <a href={`/${source.ref}`} className="w-[calc(100%-25px)] text-base font-medium leading-none text-neutral-800 text-ellipsis line-clamp-1 hover:underline" target='_blank'>
+                        {source.name}
+                      </a>
+                    </Tippy>
+                    <div className="mt-1 text-sm tracking-normal leading-loose text-rose-700">
+                      {Number(source.size / 1000000).toFixed(2)} MB
+                    </div>
                   </div>
                 </div>
+                <Tippy content='Eliminar recurso'>
+                  <button type='button'
+                    className="gap-3 self-stretch px-4 py-2 my-auto text-base font-bold leading-tight text-white whitespace-nowrap bg-rose-700 rounded-lg"
+                    onClick={() => onDeleteSource(source.id)}>
+                    <i className='fa fa-trash'></i>
+                  </button>
+                </Tippy>
               </div>
-              <Tippy content='Eliminar recurso'>
-                <button type='button'
-                  className="gap-3 self-stretch px-4 py-2 my-auto text-base font-bold leading-tight text-white whitespace-nowrap bg-rose-700 rounded-lg"
-                  onClick={() => onDeleteSource(source.id)}>
-                  <i className='fa fa-trash'></i>
-                </button>
-              </Tippy>
-            </div>
-          })}
+            })}
+          </div>
+        </div>
+
+        <div className={`${moduleType == 'final-exam' ? 'flex' : 'hidden'} flex-col md:flex-row gap-2`}>
+          <FloatingInput eRef={nameRef} label='Duracion' type='number' />
+          <FloatingInput eRef={nameRef} label='Intentos' type='number' />
         </div>
 
         <button type="submit" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mt-4 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 me-2">
