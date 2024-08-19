@@ -303,7 +303,7 @@
       </div>
 
       <div class="w-auto">
-        <a href="#">
+        <a href="/">
           <img id="logo-gestion_publica" class="w-[170px] " {{-- public\images\svg\LOGO2.png --}}
             src="{{ asset($isIndex ? 'images/svg/logogp.svg' : 'images/svg/logogp.svg') }}" alt="gestion_publica" />
         </a>

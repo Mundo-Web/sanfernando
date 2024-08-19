@@ -172,6 +172,11 @@ class IndexController extends Controller
   {
     return Inertia::render('DashboardEstudiante')->rootView('dashboard');
   }
+
+  public function diploma()
+  {
+    return Inertia::render('Diploma')->rootView('app');
+  }
   // public function catalogo(Request $request, string $id_cat = null)
   // {
   //   $tag_id = null;
@@ -633,12 +638,20 @@ class IndexController extends Controller
   {
     $query = $request->input('query');
     $order = $request->input('order');
+    $categoria =  $request->input('category');
 
     $resultados = Products::select('products.*')
       ->where('producto', 'like', "%$query%")
       ->join('categories', 'categories.id', 'products.categoria_id')
       ->where('categories.visible', 1)->where('products.status', 1)
       ->with(['tags', 'galeria', 'category']);
+
+    if ($categoria == 'courses') {
+      $resultados = $resultados->where('categoria_id', 1);
+    }else if ($categoria == 'diploma') {
+      $resultados = $resultados->where('categoria_id', 2);
+    }
+
 
 
     switch ($order) {

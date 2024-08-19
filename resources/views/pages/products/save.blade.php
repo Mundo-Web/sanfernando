@@ -307,7 +307,7 @@
                     </label>
                     <div class="relative mb-2  mt-2">
                       <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                        <i class="text-lg text-gray-500 dark:text-gray-400 fas fa-money-bill"></i>
+                        <i class="fa-regular fa-calendar-days"></i>
                       </div>
                       <input type="date" id="fecha_inicio" name="fecha_inicio"
                         value="{{ $product->fecha_inicio }}" step="0.1"
@@ -322,7 +322,7 @@
                     </label>
                     <div class="relative mb-2  mt-2">
                       <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                        <i class="text-lg text-gray-500 dark:text-gray-400 fas fa-money-bill"></i>
+                        <i class="fa-regular fa-clock"></i>
                       </div>
                       <input type="number" id="duracion" name="duracion" value="{{ $product->duracion }}"
                         step="0.1"
@@ -671,7 +671,7 @@
 
                     <div class="relative mb-2  mt-2">
                       <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                        <i class="text-lg text-gray-500 dark:text-gray-400 fas fa-pen"></i>
+                        <i class="fa-solid fa-scale-balanced"></i>
                       </div>
                       <input type="string" id="peso" name="peso" value="{{ $product->peso }}"
                         step="0.1"
@@ -1076,56 +1076,56 @@
       });
 
       /*  $("#AddEspecifiacion").on('click', function(e) {
-                                                                       e.preventDefault()
-                                                                       valorInput++
+                                                                         e.preventDefault()
+                                                                         valorInput++
 
-                                                                       const addButton = document.getElementById("AddEspecifiacion");
-                                                                       const divFlex = document.createElement("div");
-                                                                       const dRelative = document.createElement("div");
-                                                                       const dRelative2 = document.createElement("div");
+                                                                         const addButton = document.getElementById("AddEspecifiacion");
+                                                                         const divFlex = document.createElement("div");
+                                                                         const dRelative = document.createElement("div");
+                                                                         const dRelative2 = document.createElement("div");
 
-                                                                       divFlex.classList.add('flex', 'gap-2')
-                                                                       dRelative.classList.add('relative', 'mb-2', 'mt-2')
-                                                                       dRelative2.classList.add('relative', 'mb-2', 'mt-2')
+                                                                         divFlex.classList.add('flex', 'gap-2')
+                                                                         dRelative.classList.add('relative', 'mb-2', 'mt-2')
+                                                                         dRelative2.classList.add('relative', 'mb-2', 'mt-2')
 
-                                                                       const iconContainer = document.createElement("div");
-                                                                       const icon = `<div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                                                                         const iconContainer = document.createElement("div");
+                                                                         const icon = `<div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
        <i class="text-lg text-gray-500 dark:text-gray-400 fas fa-pen"></i>
      </div>`
-                                                                       iconContainer.innerHTML = icon;
+                                                                         iconContainer.innerHTML = icon;
 
-                                                                       // Obtener el nodo del icono
-                                                                       const iconNode = iconContainer.firstChild;
-
-
-
-                                                                       const inputTittle = document.createElement("input");
-                                                                       const inputValue = document.createElement("input");
-
-                                                                       let inputT = agregarElementos(inputTittle, valorInput, 'tittle')
-                                                                       let inputV = agregarElementos(inputValue, valorInput, 'specifications')
+                                                                         // Obtener el nodo del icono
+                                                                         const iconNode = iconContainer.firstChild;
 
 
-                                                                       dRelative.appendChild(inputT);
-                                                                       dRelative2.appendChild(inputV);
+
+                                                                         const inputTittle = document.createElement("input");
+                                                                         const inputValue = document.createElement("input");
+
+                                                                         let inputT = agregarElementos(inputTittle, valorInput, 'tittle')
+                                                                         let inputV = agregarElementos(inputValue, valorInput, 'specifications')
 
 
-                                                                       // Agregar el icono como primer hijo de dRelative
-                                                                       dRelative.insertBefore(iconNode, inputT);
-
-                                                                       // Clonar el nodo del icono para agregarlo como primer hijo de dRelative2
-                                                                       const iconNodeCloned = iconNode.cloneNode(true);
-                                                                       dRelative2.insertBefore(iconNodeCloned, inputV);
+                                                                         dRelative.appendChild(inputT);
+                                                                         dRelative2.appendChild(inputV);
 
 
-                                                                       divFlex.appendChild(dRelative);
-                                                                       divFlex.appendChild(dRelative2);
+                                                                         // Agregar el icono como primer hijo de dRelative
+                                                                         dRelative.insertBefore(iconNode, inputT);
 
-                                                                       const parentContainer = addButton.parentElement
-                                                                         .parentElement; // Obtener el contenedor padre
-                                                                       parentContainer.insertBefore(divFlex, addButton.parentElement
-                                                                         .nextSibling); // Insertar el input antes del siguiente elemento después del botón
-                                                                     }) */
+                                                                         // Clonar el nodo del icono para agregarlo como primer hijo de dRelative2
+                                                                         const iconNodeCloned = iconNode.cloneNode(true);
+                                                                         dRelative2.insertBefore(iconNodeCloned, inputV);
+
+
+                                                                         divFlex.appendChild(dRelative);
+                                                                         divFlex.appendChild(dRelative2);
+
+                                                                         const parentContainer = addButton.parentElement
+                                                                           .parentElement; // Obtener el contenedor padre
+                                                                         parentContainer.insertBefore(divFlex, addButton.parentElement
+                                                                           .nextSibling); // Insertar el input antes del siguiente elemento después del botón
+                                                                       }) */
 
 
       // Note that the name "myFormDropzone" is the camelized

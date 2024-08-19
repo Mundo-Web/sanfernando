@@ -34,7 +34,7 @@ class ProductsController extends Controller
    */
   public function index()
   {
-    $products =  Products::where("status", "=", true)->get();
+    $products =  Products::with('category')->where("status", "=", true)->get();
 
     return view('pages.products.index', compact('products'));
   }

@@ -262,7 +262,11 @@
         caption: 'STOCK'
       },
       {
-        caption: 'ESTADO',
+        caption: 'CATEGORIA',
+        dataField: 'category.name',
+      },
+      {
+        caption: 'IMAGEN',
         cellTemplate: (container, {
           data
         }) => {
@@ -294,7 +298,7 @@
           </form>`)
         }
       },
-      {
+      /* {
         dataField: 'recomendar',
         caption: 'RECOMENDAR',
         cellTemplate: (container, {
@@ -314,7 +318,7 @@
             <label for="r_${data.id}"></label>
           </form>`)
         }
-      },
+      }, */
       {
         dataField: 'visible',
         caption: 'VISIBLE',
