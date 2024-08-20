@@ -14,10 +14,10 @@ return new class extends Migration
     {
         Schema::create('attemps', function (Blueprint $table) {
             $table->uuid('id')->default(DB::raw('(UUID())'))->primary();
-            $table->boolean('finished');
+            $table->boolean('finished')->default(false);
             $table->char('evaluation_id')->index();
             $table->unsignedBigInteger('course_id');
-            $table->char('user_id')->index();
+            $table->unsignedBigInteger('user_id')->index();
             $table->timestamps();
 
             $table->foreign('evaluation_id')->references('id')->on('modules');

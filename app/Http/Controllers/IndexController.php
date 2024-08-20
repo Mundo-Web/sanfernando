@@ -8,6 +8,7 @@ use App\Http\Requests\UpdateIndexRequest;
 use App\Models\AboutUs;
 use App\Models\Address;
 use App\Models\Answer;
+use App\Models\Attemp;
 use App\Models\Attributes;
 use App\Models\AttributesValues;
 use App\Models\Banners;
@@ -172,11 +173,19 @@ class IndexController extends Controller
 
   public function evaluation()
   {
-    $evaluation = Module::with(['questions.answers'])
+    $evaluation = Module::with(['course', 'questions', 'questions.answers'])
       ->where('type', 'final-exam')
       ->first();
 
     if (!$evaluation) return \redirect('/micuenta');
+
+    $attemp = Attemp::select()
+      ->where('evaluation_id', $evaluation->id)
+      ->where('user_id', Auth::user()->id)
+      ->orderBy('created_at', 'DESC')
+      ->first();
+
+    if (!$attemp) return redirect("/micuenta/session/{$evaluation->course->uuid}/{$evaluation->id}");
 
     $questions = $evaluation->questions->map(function ($question) {
       $question->random_answers = $question->randomAnswers();

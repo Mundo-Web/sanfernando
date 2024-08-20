@@ -2,6 +2,11 @@ import React, { useEffect, useState } from 'react'
 import { createRoot } from 'react-dom/client'
 import CreateReactScript from './Utils/CreateReactScript'
 import Tippy from '@tippyjs/react'
+import AttempsRest from './actions/AttempsRest'
+
+
+const attempsRest = new AttempsRest()
+
 const CursoDesarrollo = ({ course, modules, module }) => {
 
   const sessions = modules.filter(({ type }) => type == 'session')
@@ -31,7 +36,13 @@ const CursoDesarrollo = ({ course, modules, module }) => {
   }, [null])
 
   const onStartAttemp = async (e) => {
-
+    const request = {
+      evaluation_id: module.id,
+      course_id: course.id
+    }
+    const result = await attempsRest.save(request)
+    if (!result) return
+    location.href = `/micuenta/evaluation/${module.id}`
   }
 
   return (<>
@@ -237,10 +248,10 @@ const CursoDesarrollo = ({ course, modules, module }) => {
                     - Revisa tus respuestas antes de enviar el examen.
                   </div>
                 </div>
-                <a href={`/micuenta/evaluation/${module.id}`} className="w-max px-8 py-4 mt-10 text-sm font-semibold text-white bg-rose-700 rounded-xl"
-                onClick={onStartAttemp}>
+                <button className="w-max px-8 py-4 mt-10 text-sm font-semibold text-white bg-rose-700 rounded-xl"
+                  onClick={onStartAttemp}>
                   Realizar evaluación
-                </a>
+                </button>
               </div>
           }
         </div>

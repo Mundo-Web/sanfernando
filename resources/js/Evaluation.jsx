@@ -4,6 +4,7 @@ import CreateReactScript from './Utils/CreateReactScript'
 import Swal from 'sweetalert2'
 
 const Evaluation = ({ evaluation, questions }) => {
+  console.log(evaluation, questions)
   const [answers, setAnswers] = useState(questions)
   const index = questions.findIndex(({ done }) => !done)
   const question = questions[index]
@@ -67,7 +68,7 @@ const Evaluation = ({ evaluation, questions }) => {
             </div>
           </div>
           <div className="flex flex-col gap-4 mt-10 w-full text-base font-medium leading-6 text-gray-600 max-md:max-w-full">
-            {question.random_answers.map((answer, i) => (
+            {question.random_answers.filter(Boolean).map((answer, i) => (
               <div key={`answer-${i}`}>
                 <label htmlFor={`answer-${answer.id}`} className="flex items-center gap-4 p-5 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-red-500 peer-checked:border-red-600 peer-checked:text-red-600 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700 peer-checked:bg-rose-50">
                   <input

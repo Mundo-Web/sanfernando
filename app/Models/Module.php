@@ -26,6 +26,10 @@ class Module extends Model
         'order',
     ];
 
+    public function course()
+    {
+        return $this->hasOne(Products::class, 'id', 'course_id');
+    }
     public function sources()
     {
         return $this->hasMany(Source::class, 'module_id', 'id');

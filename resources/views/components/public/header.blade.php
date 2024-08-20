@@ -402,9 +402,7 @@
 <script>
   function mostrarTotalItems() {
     let articulos = Local.get('carrito') ?? []
-    console.log('articulos reload ', articulos)
     let contarArticulos = 0
-    console.log(articulos.length)
 
     if (articulos.length > 0) {
       contarArticulos = articulos.reduce((total, articulo) => {
@@ -412,7 +410,6 @@
       }, 0);
 
     } else {
-      console.log('no es mayora a 0 ')
       contarArticulos = 0
 
     }

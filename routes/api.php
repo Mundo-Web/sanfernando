@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AddressController;
 use App\Http\Controllers\AnswerController;
+use App\Http\Controllers\AttempController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\ModuleController;
@@ -81,4 +82,7 @@ Route::middleware(['web', 'auth:sanctum', 'verified'])->group(function () {
     Route::post('/answers/paginate', [AnswerController::class, 'paginate']);
     Route::patch('/answers/status', [AnswerController::class, 'status']);
     Route::delete('/answers/{id}', [AnswerController::class, 'delete']);
+
+    Route::post('/attemps', [AttempController::class, 'save']);
+    Route::post('/attemps/paginate', [AttempController::class, 'paginate']);
 });
