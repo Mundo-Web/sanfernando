@@ -134,6 +134,7 @@ const Contacto = ({ general }) => {
               </div>
             </div>
             <form onSubmit={onFormSubmit}>
+             
               <div
                 className="flex flex-wrap gap-4 items-start mt-4 w-full whitespace-nowrap max-md:max-w-full">
                 <div className="flex flex-col flex-1 shrink basis-0 min-w-[240px]">

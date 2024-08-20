@@ -105,4 +105,8 @@ class Products extends Model
       ->join('sale_details', 'sale_details.product_id', 'products.id')
       ->where('user_id', $userId);
   }
+
+  public function detalleSales(){
+    return $this->hasMany(SaleDetail::class, 'product_id');
+  }
 }

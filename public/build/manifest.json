@@ -57,8 +57,8 @@
   "_axios-_sX4vCAy.js": {
     "file": "assets/axios-_sX4vCAy.js"
   },
-  "_carrito-Cemwbjyl.js": {
-    "file": "assets/carrito-Cemwbjyl.js",
+  "_es-ER8Oyc_M.js": {
+    "file": "assets/es-ER8Oyc_M.js",
     "imports": [
       "_axios-_sX4vCAy.js"
     ]
@@ -83,7 +83,7 @@
     ]
   },
   "resources/css/app.css": {
-    "file": "assets/app-RF9l2AfQ.css",
+    "file": "assets/app-c_RXfyu3.css",
     "isEntry": true,
     "src": "resources/css/app.css"
   },
@@ -217,12 +217,12 @@
     "src": "resources/js/CursoDesarrollo.jsx"
   },
   "resources/js/CursoDetalle.jsx": {
-    "file": "assets/CursoDetalle-tir0aoU7.js",
+    "file": "assets/CursoDetalle-8JSZbDmE.js",
     "imports": [
       "resources/js/Utils/InitialsImage.jsx",
       "resources/js/Utils/ReactAppend.jsx",
       "_CreateReactScript-IbCTOT6z.js",
-      "_carrito-Cemwbjyl.js",
+      "_es-ER8Oyc_M.js",
       "__commonjsHelpers-4gQjN7DL.js",
       "_index-pEm_mg_4.js",
       "resources/js/Utils/CreateReactScript.jsx",
@@ -249,14 +249,14 @@
     "src": "resources/js/DashboardDocente.jsx"
   },
   "resources/js/DashboardEstudiante.jsx": {
-    "file": "assets/DashboardEstudiante-puA57GTD.js",
+    "file": "assets/DashboardEstudiante-Af1Hp5vQ.js",
     "imports": [
       "resources/js/Utils/InitialsImage.jsx",
       "resources/js/Utils/ReactAppend.jsx",
       "_CreateReactScript-IbCTOT6z.js",
       "_axios-_sX4vCAy.js",
       "resources/js/components/Section/FormEstudiante.jsx",
-      "_carrito-Cemwbjyl.js",
+      "_es-ER8Oyc_M.js",
       "__commonjsHelpers-4gQjN7DL.js",
       "_index-pEm_mg_4.js",
       "resources/js/Utils/CreateReactScript.jsx",

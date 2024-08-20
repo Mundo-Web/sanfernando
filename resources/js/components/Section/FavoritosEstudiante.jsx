@@ -8,7 +8,7 @@ const FavoritosEstudiante = ({ Wishlist, user }) => {
 
 
   const handleComprarAhora = async (id) => {
-    console.log('comprar ahora')
+
     await agregarPedido(id)
     window.location.href = '/carrito'
   }
@@ -50,7 +50,7 @@ const FavoritosEstudiante = ({ Wishlist, user }) => {
         <p className="self-stretch my-auto w-[130px]">Precio</p>
         <p className="self-stretch my-auto w-[356px]">Acción</p>
       </div>
-      {console.log(Wishlist)}
+
 
       {Wishlist.length > 0 ? (
         <>

@@ -34,4 +34,9 @@ class Sale extends Model
     {
         return $this->belongsTo(Status::class, 'status_id');
     }
+
+    public function detalleSale()
+    {
+        return $this->hasMany(SaleDetail::class, 'sale_id');
+    }
 }
