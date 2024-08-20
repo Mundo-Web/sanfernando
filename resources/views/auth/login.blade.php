@@ -66,6 +66,8 @@
               </div>
             @endif --}}
 
+            <p class="mt-4">No tienes una cuenta aun? <a href="/register" class="font-semibold">Registrate</a></p>
+
           </form>
           <x-validation-errors class="mt-4" />
         </div>

@@ -79,7 +79,7 @@
                             @enderror
                         </div>
 
-                        <div class="flex gap-3">
+                        <div class="flex gap-3 my-4">
                             <input type="checkbox" id="acepto_terminos" class="w-5 h-5 appearance-none rounded-[0.25rem] border border-solid  outline-none focus:ring-[#CF072C] checked:bg-[#CF072C] text-[#CF072C] focus:ring-0 focus:border-[#CF072C] border-[#CF072C]" required />
                             <label name="newsletter" id="newsletter" class="font-normal text-sm font-poppins_regular">
 
@@ -100,6 +100,8 @@
                                 class="text-white bg-[#CF072C] w-full py-3 rounded-2xl cursor-pointer font-semibold font-poppins_regular text-center" />
                         </div>
                     </form>
+
+                    <p class="mt-4">Ya tienes una cuenta? <a href="/login" class="font-semibold">Iniciar sesion</a></p>
                     {{-- <x-validation-errors class="mt-4" /> --}}
                 </div>
             </div>
