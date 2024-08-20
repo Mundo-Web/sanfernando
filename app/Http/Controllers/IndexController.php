@@ -195,7 +195,8 @@ class IndexController extends Controller
 
     return Inertia::render('Evaluation', [
       'evaluation' => $evaluation,
-      'questions' => $questions
+      'questions' => $questions,
+      'attemp' => $attemp
     ])->rootView('app');
   }
 

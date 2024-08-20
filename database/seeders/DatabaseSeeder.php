@@ -31,7 +31,8 @@ class DatabaseSeeder extends Seeder
             TestimonySeeder::class,
             productosCursosSeeder::class,
             ModuleSeeder::class,
-            QuestionSeeder::class
+            QuestionSeeder::class,
+            AnswerSeeder::class,
         ]);
     }
 }

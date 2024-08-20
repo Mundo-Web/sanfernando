@@ -534,9 +534,6 @@
 
 
     PintarCarrito()
-    console.log('pintar carrito ')
-
-
 
     $('#buscarblog').keyup(function() {
 

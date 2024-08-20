@@ -17,6 +17,10 @@ return new class extends Migration
             $table->char('answer_id', 36)->index();
             $table->char('attemp_id', 36);
             $table->timestamps();
+
+            $table->foreign('question_id')->references('id')->on('questions')->cascadeOnDelete();
+            $table->foreign('answer_id')->references('id')->on('answers')->cascadeOnDelete();
+            $table->foreign('attemp_id')->references('id')->on('attemps')->cascadeOnDelete();
         });
     }
 

@@ -1,13 +1,38 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { createRoot } from 'react-dom/client'
 import CreateReactScript from './Utils/CreateReactScript'
 import Swal from 'sweetalert2'
 
-const Evaluation = ({ evaluation, questions }) => {
-  console.log(evaluation, questions)
+const Evaluation = ({ evaluation, questions, attemp }) => {
+
   const [answers, setAnswers] = useState(questions)
+  const [percentage, setPercentaje] = useState(0)
+  const [seconds, setSeconds] = useState(0)
+
   const index = questions.findIndex(({ done }) => !done)
   const question = questions[index]
+
+  const moduleDuration = {
+    hours: Math.floor(evaluation.duration / 60),
+    minutes: evaluation.duration % 60
+  }
+
+  useEffect(() => {
+    const startsAt = moment(attemp.created_at);
+    const durationInSeconds = evaluation.duration * 60;
+
+    const intervalId = setInterval(() => {
+      const now = moment();
+      const diffInSeconds = now.diff(startsAt, 'seconds')
+      const percentageElapsed = (diffInSeconds / durationInSeconds) * 100
+      const finalPercentage = Math.min(percentageElapsed, 100)
+      setPercentaje(finalPercentage)
+      setSeconds(diffInSeconds)
+    }, 1000);
+
+    return () => clearInterval(intervalId);
+
+  }, [attemp.created_at, evaluation.duration]);
 
   const onNextClicked = async () => {
     const { isConfirmed } = await Swal.fire({
@@ -24,6 +49,15 @@ const Evaluation = ({ evaluation, questions }) => {
     if (!isConfirmed) return
   }
 
+  const hours = Math.floor(seconds / 3600);
+  const minutes = Math.floor((seconds % 3600) / 60);
+  const remainingSeconds = seconds % 60;
+
+  let formattedTime = '';
+  if (hours > 0) formattedTime += `${hours}h `;
+  if (minutes > 0) formattedTime += `${minutes}m `;
+  if (remainingSeconds > 0 || formattedTime === '') formattedTime += `${remainingSeconds}s`;
+
   return (<>
     <section>
       <div
@@ -33,6 +67,14 @@ const Evaluation = ({ evaluation, questions }) => {
             <div className="text-2xl font-bold font-poppins_bold leading-none text-neutral-800 ">
               Examen final: {evaluation.name}
             </div>
+            {
+              evaluation.duration != null &&
+              <div className='mt-4 mb-2'>
+                <i className='far fa-clock me-1'></i>
+                <span className='me-1'>Duración</span>
+                <span>{moduleDuration.hours > 0 && <>{moduleDuration.hours}h</>} {moduleDuration.minutes > 0 && <>{moduleDuration.minutes}m</>}</span>
+              </div>
+            }
             <div className="mt-2 text-base font-medium leading-6 text-gray-600 ">
               {evaluation.description}
             </div>
@@ -50,9 +92,9 @@ const Evaluation = ({ evaluation, questions }) => {
     <section className='px-[5%] lg:px-[8%] font-poppins_regular'>
 
       <div className='mx-auto mt-12 w-full max-w-3xl bg-white sticky top-4 p-4 pb-2 border rounded-md shadow-md'>
-        <p className='mb-2'>Tiempo transcurrido: </p>
+        <p className='mb-2'>Tiempo transcurrido: {formattedTime}</p>
         <div className="w-full bg-gray-200 rounded-full h-2.5 mb-4 dark:bg-gray-700">
-          <div className="bg-red-600 h-2.5 rounded-full dark:bg-red-500" style={{ width: '45%' }}></div>
+          <div className="bg-red-600 h-2.5 rounded-full dark:bg-red-500" style={{ width: `${percentage}%` }}></div>
         </div>
       </div>
 

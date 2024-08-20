@@ -16,14 +16,14 @@ class QuestionSeeder extends Seeder
         $preguntas = [
             ['id' => '6b9fef6a-99c3-402c-bcc7-6150fc7b1284', 'name' => '¿Qué es React?'],
             ['id' => 'cb02c4ae-b676-4c6b-a62d-2c1caffd7e97', 'name' => '¿Cómo se crea un componente en React?'],
-            ['id' => '3b1df1d1-c1e5-4099-ae60-33b88b835c3b', 'name' => '¿Qué es el estado (state) en React?'],
-            ['id' => 'e073d7e4-d46b-4b02-bf3b-4df3e74df540', 'name' => '¿Cómo se pasa información entre componentes en React?'],
-            ['id' => 'f5b2cc93-17ef-485c-9462-5f3e423d5075', 'name' => '¿Qué es JSX en React?'],
-            ['id' => 'ae56f0b8-78ef-4a36-93e4-7e9a3b76b6d8', 'name' => '¿Qué función tiene el Hook useState?'],
-            ['id' => 'b3a0e6d7-2e1a-43a8-bc37-5c9b8b1e9640', 'name' => '¿Cómo se maneja el ciclo de vida de un componente en React?'],
-            ['id' => '2d8e1e4e-1fd9-432f-8cde-1e3b0e2d071c', 'name' => '¿Qué es un Hook en React?'],
-            ['id' => 'ce74e97e-312c-4b7e-a82e-2290aabbec0c', 'name' => '¿Cómo se puede optimizar el rendimiento en React?'],
-            ['id' => 'abc8f4d9-2ef6-4f4d-918a-9d10eb0f383d', 'name' => '¿Qué diferencia hay entre un componente funcional y un componente de clase en React?']
+            ['id' => '7e2d3f21-67eb-4f70-99b8-35e8ef676a6b', 'name' => '¿Qué es JSX?'],
+            ['id' => 'e82a9e31-4f78-4786-83a5-c98cf0563d6a', 'name' => '¿Qué es un estado en React?'],
+            ['id' => '4c3f75b8-8b0a-4e6b-b3fa-eed9f08e9a4e', 'name' => '¿Cuál es el uso de los hooks en React?'],
+            ['id' => 'bb73f172-b2b7-4a79-8180-b21f08ec3f65', 'name' => '¿Qué hace el hook useState en React?'],
+            ['id' => '2a9f88d4-4a29-4b68-8adf-3f237c76a7d4', 'name' => '¿Qué es Redux en el contexto de React?'],
+            ['id' => '1e65338f-fb08-4713-8333-1486ed7bb6bc', 'name' => '¿Cómo se pasan datos de un componente padre a un componente hijo en React?'],
+            ['id' => '0d06a50e-1f6f-4d53-9147-7eaf1891dd8c', 'name' => '¿Cuál es el propósito del hook useEffect en React?'],
+            ['id' => 'f8473761-5c9d-4d8a-8df3-67fd5a31d154', 'name' => '¿Qué es el Context API en React?']
         ];
 
         foreach ($preguntas as $pregunta) {

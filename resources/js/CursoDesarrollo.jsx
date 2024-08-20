@@ -187,31 +187,33 @@ const CursoDesarrollo = ({ course, modules, module }) => {
                   </div>
                 </div>
                 <div className="flex flex-col mt-10 gap-6 w-full text-base leading-none text-gray-600 max-md:max-w-full">
-                  {module.duration == null ? <div className="flex flex-col items-start w-full max-md:max-w-full">
-                    <div className="flex gap-2 items-start font-bold">
-                      <i className='shrink-0 fa fa-check text-[#CF072C] text-xl me-1'></i>
-                      <div>
-                        <span className='block'>Tiempo ilimitado</span>
-                        <span className="block gap-2.5 self-stretch mt-2 font-medium max-md:pl-5 max-md:max-w-full">
-                          No hay un tiempo limite para la resolucion de esta evaluación
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                    : <div className="flex flex-col items-start w-full max-md:max-w-full">
+                  {
+                    module.duration == null ? <div className="flex flex-col items-start w-full max-md:max-w-full">
                       <div className="flex gap-2 items-start font-bold">
                         <i className='shrink-0 fa fa-check text-[#CF072C] text-xl me-1'></i>
                         <div>
-                          <span className='block'>
-                            <span className='me-1'>Duración</span>
-                            {moduleDuration.hours > 0 && <>{moduleDuration.hours}h</>} {moduleDuration.minutes > 0 && <>{moduleDuration.minutes}m</>}</span>
+                          <span className='block'>Tiempo ilimitado</span>
                           <span className="block gap-2.5 self-stretch mt-2 font-medium max-md:pl-5 max-md:max-w-full">
-                            Si finaliza el tiempo se enviará las respuestas que hayas
-                            contestado.
+                            No hay un tiempo limite para la resolucion de esta evaluación
                           </span>
                         </div>
                       </div>
-                    </div>}
+                    </div>
+                      : <div className="flex flex-col items-start w-full max-md:max-w-full">
+                        <div className="flex gap-2 items-start font-bold">
+                          <i className='shrink-0 fa fa-check text-[#CF072C] text-xl me-1'></i>
+                          <div>
+                            <span className='block'>
+                              <span className='me-1'>Duración</span>
+                              {moduleDuration.hours > 0 && <>{moduleDuration.hours}h</>} {moduleDuration.minutes > 0 && <>{moduleDuration.minutes}m</>}</span>
+                            <span className="block gap-2.5 self-stretch mt-2 font-medium max-md:pl-5 max-md:max-w-full">
+                              Si finaliza el tiempo se enviará las respuestas que hayas
+                              contestado.
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                  }
                   <div className="flex flex-col items-start w-full max-md:max-w-full">
                     <div className="flex gap-2 items-start font-bold">
                       <i className='shrink-0 fa fa-check text-[#CF072C] text-xl me-1'></i>
