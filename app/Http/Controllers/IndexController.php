@@ -183,10 +183,11 @@ class IndexController extends Controller
     ])->rootView('app');
   }
 
-  public function evaluation()
+  public function evaluation(Request $request, string $evaluationId)
   {
     $evaluation = Module::with(['course', 'questions', 'questions.answers'])
       ->where('type', 'final-exam')
+      ->where('id', $evaluationId)
       ->first();
 
     if (!$evaluation) return \redirect('/micuenta');
