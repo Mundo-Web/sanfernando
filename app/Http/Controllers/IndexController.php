@@ -234,12 +234,14 @@ class IndexController extends Controller
       ->get();
 
     $courses = Products::byUser(Auth::user()->id)->get();
+    $Wishlist = Wishlist::where('user_id', $session->id)->with(['products', 'products.docentes'])->get();
 
     return Inertia::render('DashboardEstudiante', [
       'session' => $session,
       'general' => $general,
       'finishedCourses' => $finishedCourses,
-      'courses' => $courses
+      'courses' => $courses,
+      'Wishlist' => $Wishlist
     ])->rootView('dashboard');
   }
 

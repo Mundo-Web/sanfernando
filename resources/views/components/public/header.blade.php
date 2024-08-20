@@ -657,7 +657,7 @@
           //sumar al articulo actual 
           const prodRepetido = articulosCarrito.map(item => {
             if (item.id === detalleProducto.id) {
-              item.cantidad += Number(detalleProducto.cantidad);
+              // item.cantidad += Number(detalleProducto.cantidad);
               return item; // retorna el objeto actualizado 
             } else {
               return item; // retorna los objetos que no son duplicados 
