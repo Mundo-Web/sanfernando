@@ -17,7 +17,7 @@ const DashboardEstudiante = ({ session, general, finishedCourses, courses, Wishl
 		setSelectedOption(option);
 	};
 	const handleCerrarSesion = () => {
-		console.log('cerrando sesion handle')
+
 		axios.post('/logout')
 			.then(() => {
 				window.location.href = '/';
