@@ -55,7 +55,7 @@
                   </div>
 
                   <div>
-                    <a href="{{ route('pedidos') }}"
+                    <a href="/micuenta#historial"
                       class="text-white bg-red-400  hover:bg-red-800 w-full py-3 rounded-2xl cursor-pointer font-semibold text-[16px] inline-block text-center  transition duration-300 ease-in-out">Historial
                       de compras</a>
                   </div>
