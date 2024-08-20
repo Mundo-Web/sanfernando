@@ -111,8 +111,7 @@
         </x-menu.item>
         <x-menu.item id="servicios" href="{{ route('servicios.index') }}" icon="fas fa-wrench">Servicios</x-menu.item>
         <x-menu.item id="blog" href="{{ route('blog.index') }}" icon="fas fa-pencil-alt">Blog</x-menu.item>
-        <x-menu.item id="logos" href="{{ route('logos.index') }}" icon="fas fa-shapes">Logos
-          cliente</x-menu.item>
+        <x-menu.item id="logos" href="{{ route('logos.index') }}" icon="fas fa-shapes">Convenios</x-menu.item>
         <x-menu.item id="staff" href="{{ route('staff.index') }}" icon="fas fa-users">Docentes</x-menu.item>
         <x-menu.item id="strength" href="{{ route('strength.index') }}">Beneficios</x-menu.item>
         <x-menu.item id="aboutus" href="{{ route('aboutus.index') }}">Nosotros</x-menu.item>

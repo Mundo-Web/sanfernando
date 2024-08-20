@@ -6,49 +6,253 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Certificado de Finalización</title>
-  <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    /* @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap'); */
-
-    body {
+    * {
       font-family: 'Poppins', sans-serif;
+      box-sizing: border-box;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      justify-content: start;
+    }
+
+    .image-container {
+      display: flex;
+      width: 100%;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .image-wrapper {
+      display: flex;
+      width: 95vw;
+      margin: auto;
+      align-items: center;
+      /* gap: 40px 100px; */
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    .image-wrapper img {
+      align-self: stretch;
+      margin: auto 0;
+      height: 95px;
+      width: auto;
+    }
+
+    .main-image,
+    .logo-image {
+      object-fit: contain;
+      object-position: center;
+      height: 95px;
+      width: auto;
+    }
+
+    .text-container {
+      display: flex;
+      width: 100%;
+      flex-direction: column;
+      align-items: start;
+      margin-top: 0;
+      color: rgba(15, 31, 56, 1);
+      text-align: center;
+      justify-content: start;
+      font-size: 40px;
+    }
+
+    .title {
+      color: rgba(207, 7, 44, 1);
+      font-weight: 700;
+      text-transform: uppercase;
+      margin: auto;
+    }
+
+    .description {
+      margin: auto;
+      font-size: 24px;
+      font-weight: 400;
+      line-height: 26px;
+      text-align: center;
+    }
+
+    .bold-italic {
+      font-weight: 600;
+      /* font-style: italic; */
+    }
+
+    .name {
+      margin: auto;
+      font-weight: 600;
+      /* line-height: 1.2; */
+      margin-top: 40px;
+    }
+
+    .signature-section {
+      display: flex;
+      margin-top: 60px;
+      width: 95vw;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .signature-container {
+      display: flex;
+      width: 100%;
+      align-items: center;
+      gap: 40px 100px;
+      color: rgba(15, 31, 56, 1);
+      text-align: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    .signature-card {
+      border-color: rgba(15, 31, 56, 1);
+      border-top-width: 1px;
+      align-self: stretch;
+      display: flex;
+      padding-top: 24px;
+      flex-direction: column;
+      justify-content: start;
+      width: 217px;
+    }
+
+    .signature-title {
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 2;
+    }
+
+    .signature-name {
+      font-size: 18px;
+      font-weight: 600;
+      line-height: 1;
+    }
+
+    .agreements-section {
+      display: flex;
+      margin-top: 64px;
+      width: 232px;
+      max-width: 100%;
+      flex-direction: column;
+      justify-content: start;
+    }
+
+    .agreements-title {
+      color: rgba(15, 31, 56, 1);
+      font-weight: 600;
+      font-size: 12px;
+      line-height: 1.2;
+    }
+
+    .agreements-logos {
+      display: flex;
+      margin-top: 8px;
+      align-items: start;
+      gap: 16px;
+      justify-content: start;
+    }
+
+    .agreements-logo {
+      aspect-ratio: 0.84;
+      object-fit: contain;
+      object-position: center;
+      width: 67px;
+      border-radius: 2px;
+    }
+
+    @media (max-width: 991px) {
+
+      .image-container,
+      .image-wrapper,
+      .text-container,
+      .signature-section {
+        max-width: 100%;
+      }
+
+      .main-image,
+      .title,
+      .description,
+      .name,
+      .signature-section,
+      .agreements-section {
+        margin-top: 40px;
+      }
     }
   </style>
 </head>
 
 <body class="bg-white">
 
-  <div class="w-full max-w-6xl mx-auto p-12 bg-white border border-gray-200 shadow-2xl rounded-xl">
-    <div class="text-center mb-8">
-      <h1 class="text-5xl font-bold text-gray-900 tracking-wide uppercase">Certificado de Finalización</h1>
-      <p class="text-2xl text-gray-500 mt-4">Se otorga a</p>
-    </div>
-
-    <div class="text-center mb-12">
-      <h2 class="text-6xl font-semibold text-rose-600">{{ $attemp->user->name }}</h2>
-      <p class="text-xl text-gray-600 mt-4">Por haber completado con éxito el curso</p>
-      <h3 class="text-4xl font-bold text-gray-800 mt-6">{{ $attemp->evaluation->course->producto }}</h3>
-    </div>
-
-    <div class="flex justify-between items-center mt-16 mb-12 px-6">
-      <div class="text-left">
-        <p class="text-sm text-gray-500">Fecha de finalización</p>
-        <p class="text-lg font-semibold text-gray-900">{{ $attemp->created_at->format('d/m/Y') }}</p>
+  <section class="container">
+    <div class="image-container">
+      <table style="width: 100%">
+        <tbody>
+          <tr>
+            <td align="left" style="vertical-align: middle">
+              <img
+                src="https://cdn.builder.io/api/v1/image/assets/TEMP/72318f99933ec24f075e143dfcf0d49da68332f7946bcaabdec7f2c94e46db8a?placeholderIfAbsent=true&apiKey=0f2111aa112942eda6dda1d2ced51822"
+                alt="Main Visual" class="main-image" loading="lazy" />
+            </td>
+            <td align="right" style="vertical-align: middle">
+              <img
+                src="https://api.qrserver.com/v1/create-qr-code/?data={{ rawurlencode(env('APP_NAME') . '/certificate/' . $attemp->id) }}"
+                alt="Logo" class="logo-image" loading="lazy" />
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="text-container">
+        <h4 class="title" style="text-transform: uppercase">DIPLOMADO EN {{ $attemp->evaluation->course->producto }}
+        </h4>
+        <p class="description">En mérito a su participación en nuestro <span class="bold-italic"
+            style="text-transform: uppercase">DIPLOMADO DE
+            {{ $attemp->evaluation->course->producto }}.</span> Organizado por <b>EGESPP</b>, con una duración de
+          {{ $attemp->evaluation->course->duration / 60 }} horas lectivas del {{ date('Y') }}.</p>
+        <p class="name">{{ $attemp->user->name }}</p>
       </div>
-      <div class="w-32 h-32 border border-gray-300">
-        {!! QrCode::size(128)->generate(env('APP_URL') . '/certificate/' . $attemp->id) !!}
-      </div>
-      <div class="text-right">
-        <p class="text-sm text-gray-500">Instructor</p>
-        <p class="text-lg font-semibold text-gray-900">{{ $attemp->evaluation->course->instructor }}</p>
-      </div>
     </div>
+    <section class="signature-section">
+      <table style="margin: auto; text=align: center; margin-top: 80px">
+        <tbody>
+          <tr>
+            <td align="center" style="padding: 0 40px">
+              <p class="signature-name" style="margin: 0; border-top: 1px solid #333; padding-top: 10px">Patricia
+                Heredia Olivera</p>
+              <p class="signature-title" style="margin: 0">Gerente General</p>
+            </td>
+            <td align="center" style="padding: 0 40px">
+              <p class="signature-name" style="margin: 0; border-top: 1px solid #333; padding-top: 10px">Edwin Chichipe
+                Salazar</p>
+              <p class="signature-title" style="margin: 0">Sub. Gerente Académico</p>
+            </td>
+            <td align="center" style="padding: 0 40px">
+              <p class="signature-name" style="margin: 0; border-top: 1px solid #333; padding-top: 10px">Edwin Chichipe
+                Salazar</p>
+              <p class="signature-title" style="margin: 0">Sub. Gerente Académico</p>
+            </td>
+          </tr>
+        </tbody>
+      </table>
 
-    <div class="text-center border-t border-gray-300 pt-8">
-      <p class="text-sm text-gray-500">Este certificado acredita la finalización exitosa del curso y el dominio de los
-        conocimientos impartidos.</p>
-    </div>
-  </div>
+      <section class="agreements-section" style="margin-top: 10px">
+        <p class="agreements-title" style="margin-bottom: 20px">Nuestros convenios</p>
+        <div class="agreements-logos">
+          <img
+            src="https://cdn.builder.io/api/v1/image/assets/TEMP/2e035b51907acddd8242408a9668baf54b544831e1aab26c57344b33ee99cfa8?placeholderIfAbsent=true&apiKey=0f2111aa112942eda6dda1d2ced51822"
+            alt="Convenio Logo 1" class="agreements-logo" loading="lazy" />
+          <img
+            src="https://cdn.builder.io/api/v1/image/assets/TEMP/cbcff7432f010eec9ed530d9243dffda70b428a0940a30a17632b7fa756a47fe?placeholderIfAbsent=true&apiKey=0f2111aa112942eda6dda1d2ced51822"
+            alt="Convenio Logo 2" class="agreements-logo" loading="lazy" />
+          <img
+            src="https://cdn.builder.io/api/v1/image/assets/TEMP/29505368281a22ff9bf6d085f2e30040108fbe8d3c3cc2819e4404a9987a47d9?placeholderIfAbsent=true&apiKey=0f2111aa112942eda6dda1d2ced51822"
+            alt="Convenio Logo 3" class="agreements-logo" loading="lazy" />
+        </div>
+      </section>
+    </section>
+  </section>
 
 </body>
 

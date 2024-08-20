@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Certificado de Finalización</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+      box-sizing: border-box;
+    }
+  </style>
+</head>
+
+<body>
+
+  <table style=" width: 100%">
+    <tbody>
+      <tr>
+        <td colspan="3" align="left" style="vertical-align: middle">
+          <img
+            src="https://cdn.builder.io/api/v1/image/assets/TEMP/72318f99933ec24f075e143dfcf0d49da68332f7946bcaabdec7f2c94e46db8a?placeholderIfAbsent=true&apiKey=0f2111aa112942eda6dda1d2ced51822"
+            alt="Main Visual" loading="lazy" style="height: 90px;" />
+        </td>
+        <td colspan="3" align="right" style="vertical-align: middle">
+          <img
+            src="https://api.qrserver.com/v1/create-qr-code/?data={{ rawurlencode(env('APP_NAME') . '/certificate/' . $attemp->id) }}"
+            alt="Logo" loading="lazy" style="height: 90px;" />
+        </td>
+      </tr>
+      <tr>
+        <td colspan="6">
+          <h4 style="text-transform: uppercase">DIPLOMADO EN {{ $attemp->evaluation->course->producto }}</h4>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="6">
+          En mérito a su participación en nuestro <b style="text-transform: uppercase">DIPLOMADO DE
+            {{ $attemp->evaluation->course->producto }}</b>. Organizado por <b>EGESPP</b>, con una duración de
+          {{ $attemp->evaluation->course->duration / 60 }} horas lectivas del {{ date('Y') }}.
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2" align="center" style="padding: 0 40px">
+          <b style="margin: 0; border-top: 1px solid #333; padding-top: 10px">
+            Patricia
+            Heredia Olivera
+          </b>
+          <p style="margin: 0">Gerente General</p>
+        </td>
+        <td colspan="2" align="center" style="padding: 0 40px">
+          <b style="margin: 0; border-top: 1px solid #333; padding-top: 10px">
+            Edwin Chichipe
+            Salazar
+          </b>
+          <p style="margin: 0">Sub. Gerente Académico</p>
+        </td>
+        <td colspan="2" align="center" style="padding: 0 40px">
+          <b style="margin: 0; border-top: 1px solid #333; padding-top: 10px">
+            Edwin Chichipe
+            Salazar
+          </b>
+          <p style="margin: 0">Sub. Gerente Académico</p>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="6">
+          <b>Nuestro convenios</b>
+          <div style="display: flex; gap: 8px">
+            <img
+              src="https://cdn.builder.io/api/v1/image/assets/TEMP/2e035b51907acddd8242408a9668baf54b544831e1aab26c57344b33ee99cfa8?placeholderIfAbsent=true&apiKey=0f2111aa112942eda6dda1d2ced51822"
+              alt="Convenio Logo 1" class="agreements-logo" loading="lazy" style="height: 80px;" />
+            <img
+              src="https://cdn.builder.io/api/v1/image/assets/TEMP/cbcff7432f010eec9ed530d9243dffda70b428a0940a30a17632b7fa756a47fe?placeholderIfAbsent=true&apiKey=0f2111aa112942eda6dda1d2ced51822"
+              alt="Convenio Logo 2" class="agreements-logo" loading="lazy"  style="height: 80px;"/>
+            <img
+              src="https://cdn.builder.io/api/v1/image/assets/TEMP/29505368281a22ff9bf6d085f2e30040108fbe8d3c3cc2819e4404a9987a47d9?placeholderIfAbsent=true&apiKey=0f2111aa112942eda6dda1d2ced51822"
+              alt="Convenio Logo 3" class="agreements-logo" loading="lazy"  style="height: 80px;"/>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+</body>
+
+</html>
