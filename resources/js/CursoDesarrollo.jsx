@@ -30,6 +30,10 @@ const CursoDesarrollo = ({ course, modules, module }) => {
     }
   }, [null])
 
+  const onStartAttemp = async (e) => {
+
+  }
+
   return (<>
     <section className='font-poppins_regular'>
       <div className="flex flex-col justify-center px-[5%] lg:px-[8%] py-10 bg-rose-50 max-md:px-5">
@@ -160,7 +164,7 @@ const CursoDesarrollo = ({ course, modules, module }) => {
                       </div>
                       <div className="flex gap-1 justify-center items-center self-stretch px-2 py-1 my-auto text-xs leading-tight text-right text-gray-600 bg-amber-200 rounded-2xl">
                         <i className='fa fas fa-info-circle'></i>
-                        <div className="self-stretch my-auto">Por entregar</div>
+                        <div className="self-stretch my-auto">Por realizar</div>
                       </div>
                     </div>
                     <div className="mt-3 text-base font-medium leading-6 text-gray-600 max-md:max-w-full">
@@ -172,14 +176,38 @@ const CursoDesarrollo = ({ course, modules, module }) => {
                   </div>
                 </div>
                 <div className="flex flex-col mt-10 gap-6 w-full text-base leading-none text-gray-600 max-md:max-w-full">
+                  {module.duration == null ? <div className="flex flex-col items-start w-full max-md:max-w-full">
+                    <div className="flex gap-2 items-start font-bold">
+                      <i className='shrink-0 fa fa-check text-[#CF072C] text-xl me-1'></i>
+                      <div>
+                        <span className='block'>Tiempo ilimitado</span>
+                        <span className="block gap-2.5 self-stretch mt-2 font-medium max-md:pl-5 max-md:max-w-full">
+                          No hay un tiempo limite para la resolucion de esta evaluación
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                    : <div className="flex flex-col items-start w-full max-md:max-w-full">
+                      <div className="flex gap-2 items-start font-bold">
+                        <i className='shrink-0 fa fa-check text-[#CF072C] text-xl me-1'></i>
+                        <div>
+                          <span className='block'>
+                            <span className='me-1'>Duración</span>
+                            {moduleDuration.hours > 0 && <>{moduleDuration.hours}h</>} {moduleDuration.minutes > 0 && <>{moduleDuration.minutes}m</>}</span>
+                          <span className="block gap-2.5 self-stretch mt-2 font-medium max-md:pl-5 max-md:max-w-full">
+                            Si finaliza el tiempo se enviará las respuestas que hayas
+                            contestado.
+                          </span>
+                        </div>
+                      </div>
+                    </div>}
                   <div className="flex flex-col items-start w-full max-md:max-w-full">
                     <div className="flex gap-2 items-start font-bold">
                       <i className='shrink-0 fa fa-check text-[#CF072C] text-xl me-1'></i>
                       <div>
-                        <span className='block'>Duración {moduleDuration.hours > 0 && <>{moduleDuration.hours}h</>} {moduleDuration.minutes > 0 && <>{moduleDuration.minutes}m</>}</span>
+                        <span className='block'>Intentos permitidos</span>
                         <span className="block gap-2.5 self-stretch mt-2 font-medium max-md:pl-5 max-md:max-w-full">
-                          Si finaliza el tiempo se enviará las respuestas que hayas
-                          contestado.
+                          Tendrás {module.attemps == 1 ? <><b>1</b> intento permitido</> : <><b>{module.attemps}</b> intentos permitidos</>} para desarrollar tu evaluación.
                         </span>
                       </div>
                     </div>
@@ -188,9 +216,9 @@ const CursoDesarrollo = ({ course, modules, module }) => {
                     <div className="flex gap-2 items-start font-bold">
                       <i className='shrink-0 fa fa-check text-[#CF072C] text-xl me-1'></i>
                       <div>
-                        <span className='block'>Intentos permitidos</span>
+                        <span className='block'>Total de preguntas</span>
                         <span className="block gap-2.5 self-stretch mt-2 font-medium max-md:pl-5 max-md:max-w-full">
-                          Tendrás {module.attemps == 1 ? <><b>1</b> intento permitido</> : <><b>{module.attemps}</b> intentos permitidos</>} para desarrollar tu evaluación.
+                          El examen consta de <b>{module.questions_count}</b> preguntas
                         </span>
                       </div>
                     </div>
@@ -209,7 +237,8 @@ const CursoDesarrollo = ({ course, modules, module }) => {
                     - Revisa tus respuestas antes de enviar el examen.
                   </div>
                 </div>
-                <a href={`/micuenta/evaluation/${module.id}`} className="w-max px-8 py-4 mt-10 text-sm font-semibold text-white bg-rose-700 rounded-xl">
+                <a href={`/micuenta/evaluation/${module.id}`} className="w-max px-8 py-4 mt-10 text-sm font-semibold text-white bg-rose-700 rounded-xl"
+                onClick={onStartAttemp}>
                   Realizar evaluación
                 </a>
               </div>

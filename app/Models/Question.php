@@ -22,4 +22,20 @@ class Question extends Model
     {
         return $this->hasMany(Answer::class, 'question_id', 'id');
     }
+
+    public function randomAnswers () {
+        $correctAnswer = $this->answers()
+        ->select(['id', 'name'])
+            ->where('correct', 1)
+            ->inRandomOrder()
+            ->first();
+        $incorrectAnswers = $this->answers()
+        ->select(['id', 'name'])
+            ->where('correct', 0)
+            ->inRandomOrder()
+            ->take(3)
+            ->get();
+        $answers = collect([$correctAnswer])->merge($incorrectAnswers);
+        return $answers->shuffle();
+    }
 }

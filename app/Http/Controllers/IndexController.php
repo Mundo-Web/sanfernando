@@ -7,6 +7,7 @@ use App\Http\Requests\StoreIndexRequest;
 use App\Http\Requests\UpdateIndexRequest;
 use App\Models\AboutUs;
 use App\Models\Address;
+use App\Models\Answer;
 use App\Models\Attributes;
 use App\Models\AttributesValues;
 use App\Models\Banners;
@@ -111,7 +112,7 @@ class IndexController extends Controller
   public function docente()
   {
     $docentes = Staff::where('status', 1)->get();
-    return Inertia::render('Docente',[
+    return Inertia::render('Docente', [
       'docentes' => $docentes
     ])->rootView('app');
   }
@@ -120,7 +121,7 @@ class IndexController extends Controller
   {
     $docente = Staff::where('id', $id)->with(['productos', 'productos.category'])->first();
     $cursos = Staff::find($id)->productos()->where('status', 1)->get()->toArray();
-    
+
 
 
     return Inertia::render('DocenteDetalle', ['docente' => $docente])->rootView('app');
@@ -154,7 +155,9 @@ class IndexController extends Controller
       ->where('course.uuid', $courseUUID)
       ->get();
     $moduleJpa = Module::select(['modules.*'])
-      ->with(['sources'])->find($moduleId);
+      ->with(['sources'])
+      ->withCount(['questions'])
+      ->find($moduleId);
     return Inertia::render('CursoDesarrollo', [
       'course' => $courseJpa,
       'modules' => $modulesJpa,
@@ -167,15 +170,26 @@ class IndexController extends Controller
     return Inertia::render('ExamenFinalizado')->rootView('app');
   }
 
-  public function examenPregunta()
+  public function evaluation()
   {
-    $evaluation = Module::where('type', 'final-exam')
+    $evaluation = Module::with(['questions.answers'])
+      ->where('type', 'final-exam')
       ->first();
+
     if (!$evaluation) return \redirect('/micuenta');
-    return Inertia::render('ExamenPregunta', [
-      'evaluation' => $evaluation
+
+    $questions = $evaluation->questions->map(function ($question) {
+      $question->random_answers = $question->randomAnswers();
+      unset($question->answers);
+      return $question;
+    });
+
+    return Inertia::render('Evaluation', [
+      'evaluation' => $evaluation,
+      'questions' => $questions
     ])->rootView('app');
   }
+
 
   public function dashDocente()
   {
@@ -647,14 +661,15 @@ class IndexController extends Controller
     return view('public.dashboard_wishlist', compact('user', 'wishlistItems', 'productos'));
   }
 
-  public function searchDocente(Request $request){
+  public function searchDocente(Request $request)
+  {
     $query = $request->input('query');
     $resultados = Staff::select('staff.*')
       ->where('nombre', 'like', "%$query%")
       ->where('status', 1)
       ->get();
     return response()->json(['resultado' => $resultados]);
-  } 
+  }
 
   public function searchProduct(Request $request)
   {
