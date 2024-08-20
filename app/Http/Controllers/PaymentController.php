@@ -131,6 +131,8 @@ class PaymentController extends Controller
         $price = $productJpa->descuento > 0 ? $productJpa->descuento : $productJpa->precio;
 
         SaleDetail::create([
+          'user_id' => Auth::user()->id,
+          'product_id' => $productJpa->id,
           'sale_id' => $sale->id,
           'product_image' => $productJpa->imagen,
           'product_name' => $productJpa->producto,

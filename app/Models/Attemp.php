@@ -19,4 +19,26 @@ class Attemp extends Model
         'course_id',
         'user_id',
     ];
+
+    public function evaluation()
+    {
+        return $this->hasOne(Module::class, 'id', 'evaluation_id');
+    }
+
+    public function user()
+    {
+        return $this->hasOne(User::class, 'id', 'user_id');
+    }
+    public function getScore()
+    {
+        $corrects = AttempDetail::select([
+            'attemp_details.*',
+        ])
+            ->join('answers', 'answers.id', 'attemp_details.answer_id')
+            ->where('answers.correct', true)
+            ->where('attemp_id', $this->id)
+            ->count();
+        $this->questions = Module::find($this->evaluation_id)->questions()->count();
+        $this->score = $corrects;
+    }
 }

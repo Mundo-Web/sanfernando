@@ -25,6 +25,7 @@ use App\Models\Module;
 use App\Models\Offer;
 use App\Models\PolyticsCondition;
 use App\Models\Price;
+use App\Models\SaleDetail;
 use App\Models\Specifications;
 use App\Models\Staff;
 use App\Models\Tag;
@@ -138,6 +139,9 @@ class IndexController extends Controller
   {
     $courseJpa = Products::where('uuid', $courseUUID)->first();
     if (!$courseJpa) return redirect('/micuenta');
+
+    if (!SaleDetail::where('product_id', $courseJpa->id)->where('user_id', Auth::user()->id)->exists()) return redirect('/micuenta');
+
     $modulesJpa = Module::select(['modules.*'])
       ->with(['sources'])
       ->join('products AS course', 'course.id', 'modules.course_id')
@@ -145,18 +149,30 @@ class IndexController extends Controller
       ->get();
     $moduleJpa = Module::select(['modules.*'])
       ->with(['sources'])
-      ->withCount(['questions'])
+      ->withCount(['questions', 'attemps'])
       ->find($moduleId);
+    $attemps = Attemp::select()
+      ->with('evaluation')
+      ->where('course_id', $courseJpa->id)
+      ->where('user_id', Auth::user()->id)
+      ->get();
+
+    $attemps->map(fn($attemp) => $attemp->getScore());
+
     return Inertia::render('CursoDesarrollo', [
       'course' => $courseJpa,
       'modules' => $modulesJpa,
-      'module' => $moduleJpa
+      'module' => $moduleJpa,
+      'attemps' => $attemps
     ])->rootView('app');
   }
 
-  public function examenFinalizado()
+  public function evaluationFinished(Request $request, string $evaluationId)
   {
-    return Inertia::render('ExamenFinalizado')->rootView('app');
+    $evaluationJpa = Module::with(['course'])->find($evaluationId);
+    return Inertia::render('EvaluationFinished', [
+      'evaluation' => $evaluationJpa
+    ])->rootView('app');
   }
 
   public function evaluation()
@@ -200,7 +216,23 @@ class IndexController extends Controller
 
   public function dashEstudiante()
   {
-    return Inertia::render('DashboardEstudiante')->rootView('dashboard');
+    $session = Auth()->user();
+    $general = General::first();
+    $finishedCourses = Attemp::select([
+      DB::raw('DISTINCT course_id')
+    ])
+      ->where('finished', true)
+      ->where('user_id', Auth::user()->id)
+      ->get();
+
+    $courses = Products::byUser(Auth::user()->id)->get();
+
+    return Inertia::render('DashboardEstudiante', [
+      'session' => $session,
+      'general' => $general,
+      'finishedCourses' => $finishedCourses,
+      'courses' => $courses
+    ])->rootView('dashboard');
   }
 
   public function diploma()

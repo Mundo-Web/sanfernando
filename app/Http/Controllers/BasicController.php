@@ -22,9 +22,7 @@ class BasicController extends Controller
   public $reactRootView = 'admin';
 
 
-  public function all(Request $request) {
-    
-  }
+  public function all(Request $request) {}
 
   public function setPaginationInstance(string $model)
   {
@@ -115,7 +113,8 @@ class BasicController extends Controller
     }
   }
 
-  public function beforeSave(Request $request) {
+  public function beforeSave(Request $request)
+  {
     return $request->all();
   }
   public function save(Request $request): HttpResponse|ResponseFactory
@@ -124,7 +123,7 @@ class BasicController extends Controller
     try {
 
       $body = $this->beforeSave($request);
-      $jpa = $this->model::find($request->id);
+      $jpa = $this->model::find($body['id'] ?? $request->id);
 
       if (!$jpa) {
         $jpa = $this->model::create($body);
@@ -150,7 +149,8 @@ class BasicController extends Controller
     }
   }
 
-  public function afterSave(Request $request, object $jpa) {
+  public function afterSave(Request $request, object $jpa)
+  {
     return null;
   }
 

@@ -22,7 +22,7 @@ class SourcesRest extends BasicRest {
       const result = await res.json();
       showNotify &&
         Notify.add({
-          icon: '/assets/img/logo-login.svg',
+          icon: '/images/icon.svg',
           title: 'Correcto',
           body: result.message,
           type: 'success',
@@ -32,7 +32,7 @@ class SourcesRest extends BasicRest {
     } catch (error) {
       showNotify &&
         Notify.add({
-          icon: '/assets/img/logo-login.svg',
+          icon: '/images/icon.svg',
           title: 'Error',
           body: error.message,
           type: 'danger',

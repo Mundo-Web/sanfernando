@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AboutUsController;
+use App\Http\Controllers\AttempController;
 use App\Http\Controllers\AttributesController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BannersController;
@@ -244,10 +245,11 @@ Route::middleware(['auth:sanctum', 'verified', 'can:Admin'])->group(function () 
     });
 });
 
+Route::get('/certificate/{attempId}', [AttempController::class, 'certificateBlade']);
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 
-    Route::get('/micuenta', [IndexController::class, 'micuenta'])->name('micuenta');
+    // Route::get('/micuenta', [IndexController::class, 'micuenta'])->name('micuenta');
     Route::get('/micuenta/pedidos', [IndexController::class, 'pedidos'])->name('pedidos');
     Route::get('/micuenta/direccion', [IndexController::class, 'direccion'])->name('direccion');
     Route::get('/micuenta/listadeseos', [IndexController::class, 'listadeseos'])->name('listadeseos');

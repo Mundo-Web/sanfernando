@@ -8,6 +8,8 @@
 
   <title>{{ env('APP_NAME') }}</title>
 
+  <link rel="shortcut icon" href="/images/icon.svg" type="image/x-icon">
+
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

@@ -38,4 +38,9 @@ class Module extends Model
     {
         return $this->hasMany(Question::class, 'module_id', 'id');
     }
+
+    public function attemps()
+    {
+        return $this->hasMany(Attemp::class, 'evaluation_id', 'id');
+    }
 }

@@ -5,6 +5,7 @@ namespace App\Models;
 use Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 class Products extends Model
 {
@@ -70,12 +71,10 @@ class Products extends Model
   public function tags()
   {
     return $this->belongsToMany(Tag::class, 'tags_xproducts', 'producto_id', 'tag_id');
-    
   }
   public function docentes()
   {
     return $this->belongsToMany(Staff::class, 'staff_xproducts', 'producto_id', 'staff_id');
-    
   }
 
   public function scopeActiveDestacado($query)
@@ -96,5 +95,14 @@ class Products extends Model
   public function wishedByUsers()
   {
     return $this->hasMany(Wishlist::class, 'product_id');
+  }
+
+  static function byUser($userId)
+  {
+    return Products::select([
+      'products.*'
+    ])
+      ->join('sale_details', 'sale_details.product_id', 'products.id')
+      ->where('user_id', $userId);
   }
 }

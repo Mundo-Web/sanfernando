@@ -566,7 +566,7 @@
 
 
       Culqi.settings({
-        title: 'Boost .its more',
+        title: '{{ env('APP_NAME') }}',
         currency: 'PEN',
         amount: Math.round((precioProductos + precioEnvio) * 100),
       });
@@ -574,8 +574,8 @@
         paymentMethods: paymentMethods,
         paymentMethodsSort: Object.keys(paymentMethods),
         style: {
-          logo: `${location.origin}/images/svg/logo_boost_header.svg`,
-          bannerColor: '#272727'
+          logo: `${location.origin}/images/icon.svg`,
+          bannerColor: '#be123c'
 
         }
       })

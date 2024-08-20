@@ -3,7 +3,9 @@ import { createRoot } from 'react-dom/client'
 import CreateReactScript from './Utils/CreateReactScript'
 import Swal from 'sweetalert2'
 import AttempDetailsRest from './actions/AttempDetailsRest'
+import AttempsRest from './actions/AttempsRest'
 
+const attempsRest = new AttempsRest()
 const attempDetailsRest = new AttempDetailsRest()
 
 const Evaluation = ({ evaluation, questions: questionsFromDB, attemp }) => {
@@ -31,6 +33,11 @@ const Evaluation = ({ evaluation, questions: questionsFromDB, attemp }) => {
       const finalPercentage = Math.min(percentageElapsed, 100)
       setPercentaje(finalPercentage)
       setSeconds(diffInSeconds)
+
+      if (percentage >= 100) {
+        clearInterval(intervalId)
+        finishEvaluation()
+      }
     }, 1000);
 
     return () => clearInterval(intervalId);
@@ -64,14 +71,45 @@ const Evaluation = ({ evaluation, questions: questionsFromDB, attemp }) => {
       'attemp_id': attemp.id
     }
     const result = await attempDetailsRest.save(request)
+    $(`[name="answer"]`).prop('checked', false)
     if (!result) return
     const newQuestions = structuredClone(questions)
     newQuestions.forEach(x => {
       if (x.id == question.id) x.done = true
     });
-    setAnswers(newQuestions)
+    setQuestions(newQuestions)
   }
 
+  const onFinishEvaluation = async () => {
+    const { isConfirmed } = await Swal.fire({
+      title: '¿Estás seguro?',
+      text: 'Estas a punto de finalizar esta evaluacion. Asegurate de haber marcado la respuesta correcta.',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Sí, finalizar',
+      cancelButtonText: 'Cancelar'
+    })
+    if (!isConfirmed) return
+    const request = {
+      'question_id': question.id,
+      'answer_id': $(`[name="answer"]:checked`).val(),
+      'attemp_id': attemp.id
+    }
+    const result = await attempDetailsRest.save(request)
+    if (!result) return
+
+    finishEvaluation()
+  }
+
+  const finishEvaluation = async () => {
+    const result = attempsRest.delete(attemp.id)
+    if (!result) return
+    location.href = `/micuenta/evaluation-finished/${evaluation.id}`
+  }
+
+  if (!question) return finishEvaluation()
 
   return (<>
     <section>
@@ -82,14 +120,21 @@ const Evaluation = ({ evaluation, questions: questionsFromDB, attemp }) => {
             <div className="text-2xl font-bold font-poppins_bold leading-none text-neutral-800 ">
               Examen final: {evaluation.name}
             </div>
-            {
-              evaluation.duration != null &&
-              <div className='mt-4 mb-2'>
-                <i className='far fa-clock me-1'></i>
-                <span className='me-1'>Duración</span>
-                <span>{moduleDuration.hours > 0 && <>{moduleDuration.hours}h</>} {moduleDuration.minutes > 0 && <>{moduleDuration.minutes}m</>}</span>
+            <div className='mt-4 mb-2'>
+              {
+                evaluation.duration != null &&
+                <div>
+                  <i className='far fa-clock w-6 block text-center'></i>
+                  <span className='me-1'>Duración</span>
+                  <span>{moduleDuration.hours > 0 && <>{moduleDuration.hours}h</>} {moduleDuration.minutes > 0 && <>{moduleDuration.minutes}m</>}</span>
+
+                </div>
+              }
+              <div>
+                <i className='fas fa-question w-6 block text-center'></i>
+                <span className='me-1'>{questions.length} preguntas</span>
               </div>
-            }
+            </div>
             <div className="mt-2 text-base font-medium leading-6 text-gray-600 ">
               {evaluation.description}
             </div>
@@ -97,21 +142,23 @@ const Evaluation = ({ evaluation, questions: questionsFromDB, attemp }) => {
         </div>
         {
           evaluation.duration == null &&
-          <button className="px-6 py-3 text-sm font-semibold tracking-normal text-white bg-[#CF072C] rounded-xl">
+          <a href={`/micuenta/session/${evaluation.course.uuid}/${evaluation.id}`} className="px-6 py-3 text-sm font-semibold tracking-normal text-white bg-[#CF072C] rounded-xl">
             Completar después
-          </button>
+          </a>
         }
       </div>
     </section>
 
     <section className='px-[5%] lg:px-[8%] font-poppins_regular'>
 
-      <div className='mx-auto mt-12 w-full max-w-3xl bg-white sticky top-4 p-4 pb-2 border rounded-md shadow-md'>
-        <p className='mb-2'>Tiempo transcurrido: {formattedTime}</p>
-        <div className="w-full bg-gray-200 rounded-full h-2.5 mb-4 dark:bg-gray-700">
-          <div className="bg-red-600 h-2.5 rounded-full dark:bg-red-500" style={{ width: `${percentage}%` }}></div>
+      {
+        evaluation.duration != null && <div className='mx-auto mt-12 w-full max-w-3xl bg-white sticky top-4 p-4 pb-2 border rounded-md shadow-md'>
+          <p className='mb-2'>Tiempo transcurrido: {formattedTime}</p>
+          <div className="w-full bg-gray-200 rounded-full h-2.5 mb-4 dark:bg-gray-700">
+            <div className="bg-red-600 h-2.5 rounded-full dark:bg-red-500" style={{ width: `${percentage}%` }}></div>
+          </div>
         </div>
-      </div>
+      }
 
       <div className="flex flex-col py-16 max-w-3xl mx-auto">
         <div className="flex flex-col w-full max-md:max-w-full">
@@ -144,10 +191,17 @@ const Evaluation = ({ evaluation, questions: questionsFromDB, attemp }) => {
         </div>
         <div
           className="flex flex-col lg:flex-row mt-16  text-sm tracking-normal text-white w-full gap-5 items-end">
-          <button
-            className="font-semibold bg-[#CF072C] rounded-2xl w-max text-center py-4 px-8" onClick={() => onNextClicked()}>
-            Responder
-          </button>
+          {
+            index == questions.length - 1
+              ? <button
+                className="font-semibold bg-[#CF072C] rounded-2xl w-max text-center py-4 px-8" onClick={() => onFinishEvaluation()}>
+                Finalizar evaluación
+              </button>
+              : <button
+                className="font-semibold bg-[#CF072C] rounded-2xl w-max text-center py-4 px-8" onClick={() => onNextClicked()}>
+                Responder
+              </button>
+          }
         </div>
       </div>
     </section>

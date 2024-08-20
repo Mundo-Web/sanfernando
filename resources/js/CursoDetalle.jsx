@@ -25,8 +25,6 @@ const CursoDetalle = ({ producto, url_env }) => {
   const incluye = producto?.incluye ? JSON.parse(producto.incluye) : [];
   const temario = producto?.temario ? JSON.parse(producto.temario) : [];
 
-
-
   return (
     <>
       <main className="z-[15] !font-poppins_regular mb-8">

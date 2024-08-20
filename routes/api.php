@@ -86,6 +86,8 @@ Route::middleware(['web', 'auth:sanctum', 'verified'])->group(function () {
 
     Route::post('/attemps', [AttempController::class, 'save']);
     Route::post('/attemps/paginate', [AttempController::class, 'paginate']);
-
+    Route::delete('/attemps/{id}', [AttempController::class, 'delete']);
+    Route::get('/certificate/{attempId}', [AttempController::class, 'certificate']);
+    
     Route::post('/attemp-details', [AttempDetailController::class, 'save']);
 });

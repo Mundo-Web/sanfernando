@@ -172,6 +172,7 @@ return [
         App\Providers\JetstreamServiceProvider::class,
         Spatie\Permission\PermissionServiceProvider::class,
         Anhskohbo\NoCaptcha\NoCaptchaServiceProvider::class,
+        SimpleSoftwareIO\QrCode\QrCodeServiceProvider::class,
        
 
         
@@ -197,6 +198,7 @@ return [
         'NoCaptcha' => Anhskohbo\NoCaptcha\Facades\NoCaptcha::class,
         //Add Image Intervention
         //'Image' => Intervention\Image\Facades\Image::class,
+        'QrCode' => SimpleSoftwareIO\QrCode\Facades\QrCode::class,
     ])->toArray(),
 
 ];

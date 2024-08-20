@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { createRoot } from 'react-dom/client'
 import CreateReactScript from './Utils/CreateReactScript'
 import Tippy from '@tippyjs/react'
@@ -7,7 +7,7 @@ import AttempsRest from './actions/AttempsRest'
 
 const attempsRest = new AttempsRest()
 
-const CursoDesarrollo = ({ course, modules, module }) => {
+const CursoDesarrollo = ({ course, modules, module, attemps }) => {
 
   const sessions = modules.filter(({ type }) => type == 'session')
   const sources = []
@@ -45,6 +45,8 @@ const CursoDesarrollo = ({ course, modules, module }) => {
     location.href = `/micuenta/evaluation/${module.id}`
   }
 
+  const finished = attemps.sort((a, b) => b.score - a.score).find(({ finished }) => finished == 1);
+
   return (<>
     <section className='font-poppins_regular'>
       <div className="flex flex-col justify-center px-[5%] lg:px-[8%] py-10 bg-rose-50 max-md:px-5">
@@ -70,6 +72,13 @@ const CursoDesarrollo = ({ course, modules, module }) => {
             <div className="mt-2 text-base font-medium leading-6 text-gray-600 max-md:max-w-full">
               Extracto: {course.extract}
             </div>
+            {
+              (finished && finished.score > (finished.questions / 2)) &&
+              <a href={`/api/certificate/${finished.id}`} download={`Certificado de finalizacion - ${course.producto}.pdf`} target='_blank' class="block mt-4 w-max text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">
+                <i className='fa fa-download me-1'></i>
+                Descargar certificado
+              </a>
+            }
           </div>
         </div>
       </div>
@@ -172,12 +181,56 @@ const CursoDesarrollo = ({ course, modules, module }) => {
                     <div className="flex flex-wrap gap-6 items-center w-full font-semibold max-md:max-w-full">
                       <div className="self-stretch my-auto text-xl tracking-normal leading-none text-neutral-800">
                         Examen final: {module.name}
-                      </div>
-                      <div className="flex gap-1 justify-center items-center self-stretch px-2 py-1 my-auto text-xs leading-tight text-right text-gray-600 bg-amber-200 rounded-2xl">
-                        <i className='fa fas fa-info-circle'></i>
-                        <div className="self-stretch my-auto">Por realizar</div>
-                      </div>
+                      </div> {
+                        finished ? <div className="flex gap-1 justify-center items-center self-stretch px-2 py-1 my-auto text-xs leading-tight text-right text-gray-600 bg-blue-200 rounded-2xl">
+                          <i className='fa fa-check ms-1'></i>
+                          <div className="self-stretch my-auto">Realizado</div>
+                        </div>
+                          : <div className="flex gap-1 justify-center items-center self-stretch px-2 py-1 my-auto text-xs leading-tight text-right text-gray-600 bg-amber-200 rounded-2xl">
+                            <i className='fa fa-info-circle ms-1'></i>
+                            <div className="self-stretch my-auto">Por realizar</div>
+                          </div>
+                      }
                     </div>
+                    {
+                      attemps.length > 0 &&
+                      <table class="my-4 w-max text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 border">
+
+                        <thead class="text-xs text-gray-700 uppercase dark:text-gray-400">
+                          <tr className='border-b'>
+                            <th colSpan={3} className='px-2 py-1.5 text-center bg-gray-50 dark:bg-gray-800'>Intentos</th>
+                          </tr>
+                          <tr className='border-b'>
+                            <th scope="col" class="px-2 py-1.5 bg-gray-50 dark:bg-gray-800 border-e">
+                              Fecha
+                            </th>
+                            <th scope="col" class="px-2 py-1.5 bg-gray-50 dark:bg-gray-800 border-e">
+                              Nota
+                            </th>
+                            <th scope="col" class="px-2 py-1.5 bg-gray-50 dark:bg-gray-800">
+                              Estado
+                            </th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {
+                            attemps.map((attemp, i) => {
+                              return <tr class=" border-gray-200 dark:border-gray-700">
+                                <th scope="row" class="px-2 py-1.5 font-medium text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800 border-e">
+                                  {moment(attemp.created_at).format('lll')}
+                                </th>
+                                <td class="px-2 py-1.5 border-e">
+                                  {attemp.score}/{module.questions_count}
+                                </td>
+                                <td class="px-2 py-1.5 ">
+                                  {attemp.finished ? 'Completado' : 'En curso'}
+                                </td>
+                              </tr>
+                            })
+                          }
+                        </tbody>
+                      </table>
+                    }
                     <div className="mt-3 text-base font-medium leading-6 text-gray-600 max-md:max-w-full">
                       {module.description}
                       <span className='block mt-2'>
@@ -250,10 +303,13 @@ const CursoDesarrollo = ({ course, modules, module }) => {
                     - Revisa tus respuestas antes de enviar el examen.
                   </div>
                 </div>
-                <button className="w-max px-8 py-4 mt-10 text-sm font-semibold text-white bg-rose-700 rounded-xl"
-                  onClick={onStartAttemp}>
-                  Realizar evaluación
-                </button>
+                {
+                  attemps.filter(({ finished }) => finished == 1).length < module.attemps &&
+                  <button className="w-max px-8 py-4 mt-10 text-sm font-semibold text-white bg-rose-700 rounded-xl"
+                    onClick={onStartAttemp}>
+                    {attemps.find(({ finished }) => finished == 0) ? 'Continuar evaluación' : 'Realizar evaluación'}
+                  </button>
+                }
               </div>
           }
         </div>

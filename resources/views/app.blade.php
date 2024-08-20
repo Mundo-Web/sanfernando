@@ -10,6 +10,7 @@
   <meta charset="UTF-8">
   <meta name="language" content="es">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="/images/icon.svg" type="image/x-icon">
   {{--  <meta name="description"
     content="Somos especialistas en Wall Panel, mármol UV, piedra PU y otros productos para ti. Confía en la calidad de Deco TAB y dale otro estilo a tu ambiente favorito."> --}}
   <title> Gestion Publica </title>

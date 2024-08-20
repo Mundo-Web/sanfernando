@@ -16,7 +16,7 @@ Route::get('/contacto', [IndexController::class, 'contacto'])->name('Contacto.js
 Route::get('/examenFinalizado', [IndexController::class, 'examenFinalizado'])->name('ExamenFinalizado.jsx');
 // Route::get('/examenPregunta', [IndexController::class, 'examenPregunta'])->name('ExamenPregunta.jsx');
 Route::get('/dashDocente', [IndexController::class, 'dashDocente'])->name('DashboardDocente.jsx');
-Route::get('/dashEstudiante', [IndexController::class, 'dashEstudiante'])->name('DashboardEstudiante.jsx');
+// Route::get('/dashEstudiante', [IndexController::class, 'dashEstudiante'])->name('DashboardEstudiante.jsx');
 Route::get('/diploma', [IndexController::class, 'diploma'])->name('Diploma.jsx');
 
 Route::get('/catalogo/{id?}', [IndexController::class, 'catalogo'])->name('Catalogo.jsx');
@@ -29,8 +29,9 @@ Route::middleware(['auth:sanctum', 'verified', 'can:Admin'])->group(function () 
   });
 });
 Route::middleware(['auth:sanctum', 'verified'])->prefix('micuenta')->group(function () {
-
+  Route::get('/', [IndexController::class, 'dashEstudiante'])->name('DashboardEstudiante.jsx');
   Route::get('/session/{courseId}', [ModuleController::class, 'redirectModule'])->name('CursoDesarrollo.jsx');
   Route::get('/session/{courseId}/{sessionId}', [IndexController::class, 'desarrolloCurso'])->name('CursoDesarrollo.jsx');
   Route::get('/evaluation/{evaluationId}', [IndexController::class, 'evaluation'])->name('Evaluation.jsx');
+  Route::get('/evaluation-finished/{evaluationId}', [IndexController::class, 'evaluation'])->name('EvaluationFinished.jsx');
 });

@@ -17,7 +17,7 @@
   <meta name="keywords"
     content="Accesorios Celulares, Accesorios Gamers, Accesorios Laptop, Accesorios Auto, Accesorios Carro, Cargadores, Cases, Gaming, Gamer" />
 
-  <link rel="icon" type="image/svg+xml" href="{{ asset('images/svg/Boost.svg') }}">
+  <link rel="shortcut icon" href="/images/icon.svg" type="image/x-icon">
 
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
   @vite([...$sources, 'resources/css/app.css', 'resources/js/app.js'])
