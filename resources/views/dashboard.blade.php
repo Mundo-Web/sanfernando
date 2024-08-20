@@ -47,6 +47,7 @@
 </head>
 
 <body class="body">
+   <x-public.header />
   @inertia
   {{-- <div class="md:flex flex-col md:flex-row md:min-h-screen w-full">
     
