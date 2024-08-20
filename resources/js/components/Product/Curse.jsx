@@ -3,7 +3,7 @@ import truncateText from '../../Utils/truncateText'
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
 
-const Curse = ({ producto, userIsLogged }) => {
+const Curse = ({ producto, userIsLogged, deseoActivo = false }) => {
   const handleAddWishlist = async (e) => {
     e.preventDefault();
     try {
@@ -12,15 +12,7 @@ const Curse = ({ producto, userIsLogged }) => {
         product_id: producto.id
       });
 
-      // Cambiar el color del botón
-      const button = document.getElementById('addWishlist');
-      if (response.data.message === 'Producto agregado a la lista de deseos') {
-        button.classList.remove('bg-[#99b9eb]');
-        button.classList.add('bg-[#0D2E5E]');
-      } else {
-        button.classList.remove('bg-[#0D2E5E]');
-        button.classList.add('bg-[#99b9eb]');
-      }
+
 
       Swal.fire({
         icon: 'success',
@@ -45,7 +37,12 @@ const Curse = ({ producto, userIsLogged }) => {
               <circle cx="20" cy="20" r="20" fill="white" />
               <path
                 d="M20 28.25C20 28.25 10.625 23 10.625 16.625C10.6252 15.4983 11.0156 14.4064 11.7299 13.5349C12.4442 12.6635 13.4382 12.0664 14.543 11.845C15.6478 11.6237 16.7951 11.7918 17.79 12.3208C18.7848 12.8498 19.5658 13.707 20 14.7467L20 14.7467C20.4342 13.707 21.2152 12.8498 22.21 12.3208C23.2049 11.7918 24.3522 11.6237 25.457 11.845C26.5618 12.0664 27.5558 12.6635 28.2701 13.5349C28.9844 14.4064 29.3748 15.4983 29.375 16.625C29.375 23 20 28.25 20 28.25Z"
-                stroke="#CF072C" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                stroke={deseoActivo ? "#CF072C" : "#272727"}
+                fill={deseoActivo ? "#CF072C" : "white"}
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
             </svg>
           </button>)}
 

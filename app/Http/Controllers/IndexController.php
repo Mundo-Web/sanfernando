@@ -82,10 +82,22 @@ class IndexController extends Controller
 
     //check if user is logged in
     $userIsLogged = Auth::check();
+    if ($userIsLogged) {
+      $user = Auth::user();
+      $Wishlist = Wishlist::where('user_id', $user->id)->with(['products', 'products.docentes'])->get();
+    }
 
 
 
-    return Inertia::render('CatalogGP', ['productos' => $productos,  'env_url' => env('APP_URL'), 'userIsLogged' => $userIsLogged])->rootView('app');
+    return Inertia::render(
+      'CatalogGP',
+      [
+        'productos' => $productos,
+        'env_url' => env('APP_URL'),
+        'userIsLogged' => $userIsLogged,
+        'Wishlist' => $Wishlist
+      ]
+    )->rootView('app');
   }
 
   public function detalleCurso(string $id)
@@ -1040,15 +1052,15 @@ class IndexController extends Controller
 
   private function envioCorreo($data)
   {
-     
+
     $appUrl = env('APP_URL');
     $name = $data['name'];
-    $mensaje = "Gracias por registrarse en ".env('APP_NAME');
+    $mensaje = "Gracias por registrarse en " . env('APP_NAME');
     $mail = EmailConfig::config($name, $mensaje);
     $datosGenerales = General::first();
     try {
-        $mail->addAddress($data['email']);
-        $mail->Body = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+      $mail->addAddress($data['email']);
+      $mail->Body = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html lang="en">
 
 <head>
@@ -1165,26 +1177,25 @@ class IndexController extends Controller
 </html>
 
       ';
-        $mail->isHTML(true);
-        $mail->send();
-        
+      $mail->isHTML(true);
+      $mail->send();
     } catch (\Throwable $th) {
-        //throw $th;
+      //throw $th;
     }
   }
 
   private function envioCorreoCompra($data)
   {
 
-     
+
     $appUrl = env('APP_URL');
     $name = $data['name'];
-    $mensaje = "Gracias por registrarse en ".env('APP_NAME');
+    $mensaje = "Gracias por registrarse en " . env('APP_NAME');
     $mail = EmailConfig::config($name, $mensaje);
     $datosGenerales = General::first();
     try {
-        $mail->addAddress($data['email']);
-        $mail->Body = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+      $mail->addAddress($data['email']);
+      $mail->Body = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html lang="en">
 
 <head>
@@ -1301,11 +1312,10 @@ class IndexController extends Controller
 </html>
 
       ';
-        $mail->isHTML(true);
-        $mail->send();
-        
+      $mail->isHTML(true);
+      $mail->send();
     } catch (\Throwable $th) {
-        //throw $th;
+      //throw $th;
     }
   }
 

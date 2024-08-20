@@ -225,7 +225,8 @@
             @click.prevent="open = !open" :aria-expanded="open">
             <div class="flex items-center truncate mt-[4px]">
               <span id="username"
-                class="truncate ml-2 text-sm font-medium dark:text-slate-300 group-hover:opacity-75 dark:group-hover:text-slate-200  ">{{ Auth::user()->name }}</span>
+                class="truncate ml-2 text-sm font-medium dark:text-slate-300 group-hover:opacity-75 dark:group-hover:text-slate-200  ">
+              </span>
               <i class="fas fa-angle-down ms-2"></i>
             </div>
           </button>
@@ -371,6 +372,27 @@
 
 <script>
   let clockSearch;
+  @auth
+  $(document).ready(function() {
+    let name = "{{ Auth::user()->name }}" ?? ''
+    let lastname = "{{ Auth::user()->lastname }}" ?? ''
+
+    lastname = lastname.toLowerCase()
+    let [firstName, SecondName] = name.split(' ')
+    let [firstLName, SecondLName] = lastname.split(' ')
+
+
+    firstLName = firstLName ? firstLName.charAt(0).toUpperCase() + firstLName.slice(1) : ''
+    SecondLName = SecondLName ? SecondLName.charAt(0).toUpperCase() + SecondLName.slice(1) : ''
+
+    console.log(firstName, SecondName, firstLName, SecondLName)
+
+    $('#username').text(
+      `${firstName ? firstName : ''} ${SecondName ? SecondName : ''} ${firstLName ? firstLName : ''} ${SecondLName ? SecondLName : ''}`
+    )
+
+  })
+  @endauth
 </script>
 
 <script>

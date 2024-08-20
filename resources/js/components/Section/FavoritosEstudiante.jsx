@@ -60,10 +60,10 @@ const FavoritosEstudiante = ({ Wishlist, user }) => {
                 <img
                   loading="lazy"
                   src={`/${course.products.imagen}`}
-                  className="object-contain shrink-0 rounded-lg aspect-square w-[120px]"
+                  className="object-cover shrink-0 rounded-lg aspect-square w-[120px] shadow-md"
                   alt="Course thumbnail"
                 />
-                <div className="flex flex-col justify-between min-h-[119px] min-w-[240px] w-[356px]">
+                <div className="flex flex-col  min-h-[119px] min-w-[240px] w-[356px]">
                   <div className="flex flex-col w-full max-w-[356px]">
                     <div className="flex gap-1.5 justify-center items-center self-start text-sm tracking-normal">
                       {/* <img
@@ -77,7 +77,7 @@ const FavoritosEstudiante = ({ Wishlist, user }) => {
                         <p className="self-stretch my-auto leading-loose text-red-300">(451,444 Reseñas)</p> */}
                       </div>
                     </div>
-                    <h3 className="mt-2 text-base font-medium leading-6 text-neutral-800">
+                    <h3 className="mt-2 text-base font-semibold leading-6 text-neutral-800">
                       {course.products.producto}
                     </h3>
                   </div>
