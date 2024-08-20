@@ -32,8 +32,8 @@
       "resources/js/Utils/HtmlContent.jsx"
     ]
   },
-  "_HeaderTeacher-ORt5yNh3.js": {
-    "file": "assets/HeaderTeacher-ORt5yNh3.js",
+  "_HeaderTeacher-ooaJfgvG.js": {
+    "file": "assets/HeaderTeacher-ooaJfgvG.js",
     "imports": [
       "resources/js/Utils/HtmlContent.jsx"
     ]
@@ -232,12 +232,12 @@
     "src": "resources/js/CursoDetalle.jsx"
   },
   "resources/js/DashboardDocente.jsx": {
-    "file": "assets/DashboardDocente-dAh3M8MB.js",
+    "file": "assets/DashboardDocente-Tqw9T17X.js",
     "imports": [
       "resources/js/Utils/HtmlContent.jsx",
       "resources/js/Utils/ReactAppend.jsx",
       "_CreateReactScript-Eox_dAvx.js",
-      "_HeaderTeacher-ORt5yNh3.js",
+      "_HeaderTeacher-ooaJfgvG.js",
       "resources/js/components/Product/ProductCard.jsx",
       "__commonjsHelpers-4gQjN7DL.js",
       "_index-jLuiGAeD.js",
@@ -249,12 +249,12 @@
     "src": "resources/js/DashboardDocente.jsx"
   },
   "resources/js/DashboardEstudiante.jsx": {
-    "file": "assets/DashboardEstudiante-CUEFP-03.js",
+    "file": "assets/DashboardEstudiante-2OZQatPA.js",
     "imports": [
       "resources/js/Utils/HtmlContent.jsx",
       "resources/js/Utils/ReactAppend.jsx",
       "_CreateReactScript-Eox_dAvx.js",
-      "_HeaderTeacher-ORt5yNh3.js",
+      "_HeaderTeacher-ooaJfgvG.js",
       "__commonjsHelpers-4gQjN7DL.js",
       "_index-jLuiGAeD.js",
       "resources/js/Utils/CreateReactScript.jsx",
@@ -352,7 +352,7 @@
     "src": "resources/js/EvaluationFinished.jsx"
   },
   "resources/js/Home.jsx": {
-    "file": "assets/Home-ObHCWlf_.js",
+    "file": "assets/Home-pqsz5mhP.js",
     "imports": [
       "resources/js/Utils/HtmlContent.jsx",
       "resources/js/Utils/ReactAppend.jsx",

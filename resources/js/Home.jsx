@@ -190,7 +190,7 @@ const Home = ({
                     </p>
                   </div>
                   <div>
-                    <a href={`//api.whatdsapp.com/send?phone=${general.whatsapp}&text=Quiero+empezar+a+enseñar`}
+                    <a href={`//api.whatsapp.com/send?phone=${general.whatsapp}&text=Quiero+empezar+a+enseñar`}
                       class="w-auto inline-block !font-poppins_regular mt-8 px-6 py-2 text-base font-bold tracking-normal leading-10 text-rose-700 bg-blue-50 rounded-xl max-md:px-5">
                       Empezar a enseñar
                     </a>

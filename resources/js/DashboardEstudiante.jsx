@@ -41,13 +41,13 @@ const DashboardEstudiante = ({ session, general, finishedCourses, courses }) => 
                         <div className="text-base text-gray-600">Estudiante</div>
                       </div>
                     </div>
-                    <a href={`//api.whatdsapp.com/send?phone=${general.whatsapp}&text=Quiero+empezar+a+enseñar`}
+                    {/* <a href={`//api.whatsapp.com/send?phone=${general.whatsapp}&text=Quiero+empezar+a+enseñar`}
                       className="flex gap-2.5 justify-center items-center self-stretch px-5 py-2.5 my-auto text-sm font-semibold text-center text-teal-50 bg-rose-700 rounded-lg min-h-[40px] min-w-[240px]">
                       <div className="self-stretch my-auto">Conviértete en Instructor</div>
                       <img loading="lazy"
                         src="https://cdn.builder.io/api/v1/image/assets/TEMP/f7b1d4cde5983fa32af81c6bccbb8ee6ddd270b4dce4d3312a7f025f4bc68cab?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f"
                         className="object-contain shrink-0 self-stretch my-auto w-5 aspect-square" />
-                    </a>
+                    </a> */}
                   </div>
                   <div
                     className="flex flex-nowrap items-center gap-3 md:gap-0 font-semibold mt-3 w-full text-base leading-none text-center text-rose-700 max-md:max-w-full overflow-x-auto">

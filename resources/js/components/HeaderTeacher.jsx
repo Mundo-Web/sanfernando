@@ -3,7 +3,7 @@ import React from 'react';
 const HeaderTeacher = ({ selectedOption }) => {
 return (
 <div
-    className="flex flex-wrap gap-5 justify-between items-center px-[5%] py-6 bg-rose-50  font-poppins_regular">
+    className="flex flex-wrap gap-5 justify-between items-center px-[8%] py-6 bg-rose-50  font-poppins_regular">
     <div className="flex flex-col self-stretch my-auto min-w-[240px] text-neutral-800 w-[312px]">
         <div className="text-sm font-medium tracking-normal leading-none">Buenos días</div>
         <div className="mt-1.5 text-xl font-semibold leading-tight">{selectedOption}</div>
