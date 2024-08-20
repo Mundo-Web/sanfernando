@@ -167,11 +167,19 @@ class IndexController extends Controller
     ])->rootView('app');
   }
 
-  public function evaluationFinished(Request $request, string $evaluationId)
+  public function evaluationFinished(Request $request, string $attempId)
   {
-    $evaluationJpa = Module::with(['course'])->find($evaluationId);
+    $attempJpa = Attemp::with(['evaluation.course'])->find($attempId);
+    $attempJpa->getScore();
+
+    $attempsCount = Attemp::where('user_id', Auth::user()->id)
+      ->where('course_id', $attempJpa->evaluation->course->id)
+      ->count();
     return Inertia::render('EvaluationFinished', [
-      'evaluation' => $evaluationJpa
+      'attemp' => $attempJpa,
+      'evaluation' => $attempJpa->evaluation,
+      'course' => $attempJpa->evaluation->course,
+      'attempsCount' => $attempsCount,
     ])->rootView('app');
   }
 

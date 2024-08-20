@@ -77,7 +77,7 @@
     ]
   },
   "resources/css/app.css": {
-    "file": "assets/app-nSaIAShL.css",
+    "file": "assets/app-xDIb-za1.css",
     "isEntry": true,
     "src": "resources/css/app.css"
   },
@@ -193,7 +193,7 @@
     "src": "resources/js/Contacto.jsx"
   },
   "resources/js/CursoDesarrollo.jsx": {
-    "file": "assets/CursoDesarrollo-WrgCdHh9.js",
+    "file": "assets/CursoDesarrollo-_LJ9Ee3h.js",
     "imports": [
       "resources/js/Utils/HtmlContent.jsx",
       "resources/js/Utils/ReactAppend.jsx",
@@ -311,7 +311,7 @@
     "src": "resources/js/DocenteDetalle.jsx"
   },
   "resources/js/Evaluation.jsx": {
-    "file": "assets/Evaluation-ZomPCNgS.js",
+    "file": "assets/Evaluation-cM97raPp.js",
     "imports": [
       "resources/js/Utils/HtmlContent.jsx",
       "resources/js/Utils/ReactAppend.jsx",
@@ -329,16 +329,18 @@
     "src": "resources/js/Evaluation.jsx"
   },
   "resources/js/EvaluationFinished.jsx": {
-    "file": "assets/EvaluationFinished-NbdpcKik.js",
+    "file": "assets/EvaluationFinished-gd08oxDF.js",
     "imports": [
       "resources/js/Utils/HtmlContent.jsx",
       "resources/js/Utils/ReactAppend.jsx",
       "_CreateReactScript-Eox_dAvx.js",
+      "_AttempsRest-wcd1LXN_.js",
       "__commonjsHelpers-4gQjN7DL.js",
       "_index-jLuiGAeD.js",
       "resources/js/Utils/CreateReactScript.jsx",
       "_axios-_sX4vCAy.js",
-      "_main-jzs2GwAM.js"
+      "_main-jzs2GwAM.js",
+      "_BasicRest-hjYVP1Sk.js"
     ],
     "isEntry": true,
     "src": "resources/js/EvaluationFinished.jsx"
