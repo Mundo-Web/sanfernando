@@ -45,7 +45,7 @@ const actualizarCarrito = (carrito, detalleProducto) => {
       if (item.id === detalleProducto.id && !item.isCombo) {
         return {
           ...item,
-          cantidad: item.cantidad + Number(detalleProducto.cantidad),
+          cantidad: item.cantidad ,
         };
       }
       return item;

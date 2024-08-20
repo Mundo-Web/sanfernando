@@ -9,7 +9,7 @@ import CursosEstudianteBlock from './components/Section/CursosEstudianteBlock';
 import HistorialEstudiante from './components/Section/HistorialEstudiante';
 import axios from 'axios';
 
-const DashboardEstudiante = ({ session, general, finishedCourses, courses }) => {
+const DashboardEstudiante = ({ session, general, finishedCourses, courses, Wishlist }) => {
 
 	const [selectedOption, setSelectedOption] = useState('Dashboard');
 
@@ -96,7 +96,7 @@ const DashboardEstudiante = ({ session, general, finishedCourses, courses }) => 
 									{selectedOption === 'Perfil' &&
 										<FormEstudiante user={session} />}
 									{selectedOption === 'Favoritos' &&
-										<FavoritosEstudiante />}
+										<FavoritosEstudiante user={session} Wishlist={Wishlist} />}
 									{selectedOption === 'Cursos y Diplomados' &&
 										<CursosEstudianteBlock finished={finishedCourses} courses={courses} />}
 									{selectedOption === 'Historial' &&
