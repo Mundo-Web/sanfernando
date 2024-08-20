@@ -106,7 +106,7 @@ const Evaluation = ({ evaluation, questions: questionsFromDB, attemp }) => {
   const finishEvaluation = async () => {
     const result = attempsRest.delete(attemp.id)
     if (!result) return
-    location.href = `/micuenta/evaluation-finished/${evaluation.id}`
+    location.href = `/micuenta/evaluation-finished/${attemp.id}`
   }
 
   if (!question) return finishEvaluation()

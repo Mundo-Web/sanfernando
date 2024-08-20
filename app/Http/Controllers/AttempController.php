@@ -25,6 +25,7 @@ class AttempController extends BasicController
         $attemps = Attemp::select()
             ->where('user_id', Auth::user()->id)
             ->where('evaluation_id', $request->evaluation_id)
+            ->where('finished', true)
             ->count();
 
         if ($attemps >= $evaluation->attemps) throw new Exception("No tienes intentos disponibles");

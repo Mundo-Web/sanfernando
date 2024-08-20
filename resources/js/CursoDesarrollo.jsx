@@ -74,7 +74,7 @@ const CursoDesarrollo = ({ course, modules, module, attemps }) => {
             </div>
             {
               (finished && finished.score > (finished.questions / 2)) &&
-              <a href={`/api/certificate/${finished.id}`} download={`Certificado de finalizacion - ${course.producto}.pdf`} target='_blank' class="block mt-4 w-max text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">
+              <a href={`/api/certificate/${finished.id}`} download={`Certificado de finalizacion - ${course.producto}.pdf`} target='_blank' className="block mt-4 w-max text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">
                 <i className='fa fa-download me-1'></i>
                 Descargar certificado
               </a>
@@ -112,7 +112,7 @@ const CursoDesarrollo = ({ course, modules, module, attemps }) => {
                   {
                     module.source_type == 'image'
                       ? <img src={`/api/sources/${module.source}`} className="object-cover inset-0 aspect-video size-full rounded-lg" />
-                      : <iframe href={`//www.youtube.com/watch?v=${module.source}`} data-videoid={module.source} class="embedded-video-large aspect-video size-full h-full rounded-lg" frameborder="0" allowfullscreen="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" title="Embed videos and playlists" width="400" height="230" src={`https://www.youtube.com/embed/${module.source}`} id="widget2" ></iframe>
+                      : <iframe href={`//www.youtube.com/watch?v=${module.source}`} data-videoid={module.source} className="embedded-video-large aspect-video size-full h-full rounded-lg" frameborder="0" allowfullscreen="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" title="Embed videos and playlists" width="400" height="230" src={`https://www.youtube.com/embed/${module.source}`} id="widget2" ></iframe>
                   }
                 </div>
                 <div className="flex flex-col pb-10 mt-8 w-full max-md:max-w-full">
@@ -194,20 +194,20 @@ const CursoDesarrollo = ({ course, modules, module, attemps }) => {
                     </div>
                     {
                       attemps.length > 0 &&
-                      <table class="my-4 w-max text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 border">
+                      <table className="my-4 w-max text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 border">
 
-                        <thead class="text-xs text-gray-700 uppercase dark:text-gray-400">
+                        <thead className="text-xs text-gray-700 uppercase dark:text-gray-400">
                           <tr className='border-b'>
                             <th colSpan={3} className='px-2 py-1.5 text-center bg-gray-50 dark:bg-gray-800'>Intentos</th>
                           </tr>
                           <tr className='border-b'>
-                            <th scope="col" class="px-2 py-1.5 bg-gray-50 dark:bg-gray-800 border-e">
+                            <th scope="col" className="px-2 py-1.5 bg-gray-50 dark:bg-gray-800 border-e">
                               Fecha
                             </th>
-                            <th scope="col" class="px-2 py-1.5 bg-gray-50 dark:bg-gray-800 border-e">
+                            <th scope="col" className="px-2 py-1.5 bg-gray-50 dark:bg-gray-800 border-e">
                               Nota
                             </th>
-                            <th scope="col" class="px-2 py-1.5 bg-gray-50 dark:bg-gray-800">
+                            <th scope="col" className="px-2 py-1.5 bg-gray-50 dark:bg-gray-800">
                               Estado
                             </th>
                           </tr>
@@ -215,14 +215,14 @@ const CursoDesarrollo = ({ course, modules, module, attemps }) => {
                         <tbody>
                           {
                             attemps.map((attemp, i) => {
-                              return <tr class=" border-gray-200 dark:border-gray-700">
-                                <th scope="row" class="px-2 py-1.5 font-medium text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800 border-e">
+                              return <tr className=" border-gray-200 dark:border-gray-700">
+                                <th scope="row" className="px-2 py-1.5 font-medium text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800 border-e">
                                   {moment(attemp.created_at).format('lll')}
                                 </th>
-                                <td class="px-2 py-1.5 border-e">
+                                <td className="px-2 py-1.5 border-e">
                                   {attemp.score}/{module.questions_count}
                                 </td>
-                                <td class="px-2 py-1.5 ">
+                                <td className="px-2 py-1.5 ">
                                   {attemp.finished ? 'Completado' : 'En curso'}
                                 </td>
                               </tr>
