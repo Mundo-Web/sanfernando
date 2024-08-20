@@ -211,7 +211,7 @@
     "src": "resources/js/CursoDesarrollo.jsx"
   },
   "resources/js/CursoDetalle.jsx": {
-    "file": "assets/CursoDetalle-1wBmMP3q.js",
+    "file": "assets/CursoDetalle-6KriWv-S.js",
     "imports": [
       "resources/js/Utils/HtmlContent.jsx",
       "resources/js/Utils/ReactAppend.jsx",

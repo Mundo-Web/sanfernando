@@ -434,17 +434,7 @@ function PintarCarrito() {
             <p class="font-semibold text-[14px] text-[#151515] mb-1">
               ${element.producto}
             </p>
-            <div class="flex w-20 justify-center text-[#151515] border-[1px] border-[#6C7275] rounded-md">
-              <button type="button" onClick="(deleteOnCarBtn(${element.id}, '-'))" class="w-6 h-6 flex justify-center items-center ">
-                <span  class="text-[20px]">-</span>
-              </button>
-              <div class="w-6 h-6 flex justify-center items-center">
-                <span  class="font-semibold text-[12px]">${element.cantidad}</span>
-              </div>
-              <button type="button" onClick="(addOnCarBtn(${element.id}, '+'))" class="w-6 h-6 flex justify-center items-center ">
-                <span class="text-[20px]">+</span>
-              </button>
-            </div>
+            
           </td>
           <td class="p-2 text-end">
             <p class="font-semibold text-[14px] text-[#151515] w-max">

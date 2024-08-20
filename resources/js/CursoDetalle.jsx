@@ -385,66 +385,7 @@ const CursoDetalle = ({ producto, url_env }) => {
               </div>
             </div>
             <div className="flex flex-col mt-10 w-full max-md:max-w-full">
-              <div className="text-2xl font-bold leading-tight text-neutral-800 max-md:max-w-full">
-                Método de Pago
-              </div>
-              <div
-                className="flex flex-col p-6 mt-6 w-full bg-red-100 rounded-2xl max-md:px-5 max-md:max-w-full">
-                <div className="text-xl font-bold leading-tight text-neutral-800 max-md:max-w-full">
-                  Cuenta Bancaria BBVA
-                </div>
-                <div className="flex flex-col mt-5 w-full max-md:max-w-full">
-                  <div className="flex flex-col w-full whitespace-nowrap max-md:max-w-full">
-                    <div className="text-sm tracking-normal leading-loose text-gray-600 max-md:max-w-full">
-                      Titular
-                    </div>
-                    <div
-                      className="w-full text-lg font-bold tracking-normal leading-none rounded-none text-neutral-800 max-md:pr-5 max-md:max-w-full">
-                      EGESPP
-                    </div>
-                  </div>
-                  <div className="flex flex-col mt-3 w-full max-md:max-w-full">
-                    <div className="text-sm tracking-normal leading-loose text-gray-600 max-md:max-w-full">
-                      Número de cuenta
-                    </div>
-                    <div
-                      className="w-full text-lg font-bold tracking-normal leading-none whitespace-nowrap rounded-none text-neutral-800 max-md:pr-5 max-md:max-w-full">
-                      0011-0615-0200240417
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div
-                className="flex flex-wrap gap-5  items-start p-6 mt-6 w-full bg-red-200 rounded-2xl max-md:px-5 max-md:max-w-full">
-                <div className="flex flex-col flex-1 shrink basis-0 min-w-[240px]">
-                  <div className="text-xl font-bold leading-tight text-neutral-800">
-                    Yape o Plin
-                  </div>
-                  <div className="flex flex-col mt-5 w-full">
-                    <div className="flex flex-col w-full">
-                      <div className="text-sm tracking-normal leading-loose text-gray-600">
-                        Titular
-                      </div>
-                      <div
-                        className="w-full text-lg font-bold tracking-normal leading-none rounded-none text-neutral-800 max-md:pr-5">
-                        Edwin Williams
-                      </div>
-                    </div>
-                    <div className="flex flex-col mt-3 w-full">
-                      <div className="text-sm tracking-normal leading-loose text-gray-600">
-                        Número Yape o Plin
-                      </div>
-                      <div
-                        className="w-full text-lg font-bold tracking-normal leading-none rounded-none text-neutral-800 max-md:pr-5">
-                        976 019 977
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <img loading="lazy"
-                  srcSet="https://cdn.builder.io/api/v1/image/assets/TEMP/eac810d7c65f807434897557781e1c49da92e8c7d8473e985d1a5af430b124a3?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f&width=100 100w, https://cdn.builder.io/api/v1/image/assets/TEMP/eac810d7c65f807434897557781e1c49da92e8c7d8473e985d1a5af430b124a3?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f&width=200 200w, https://cdn.builder.io/api/v1/image/assets/TEMP/eac810d7c65f807434897557781e1c49da92e8c7d8473e985d1a5af430b124a3?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f&width=400 400w, https://cdn.builder.io/api/v1/image/assets/TEMP/eac810d7c65f807434897557781e1c49da92e8c7d8473e985d1a5af430b124a3?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f&width=800 800w, https://cdn.builder.io/api/v1/image/assets/TEMP/eac810d7c65f807434897557781e1c49da92e8c7d8473e985d1a5af430b124a3?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f&width=1200 1200w, https://cdn.builder.io/api/v1/image/assets/TEMP/eac810d7c65f807434897557781e1c49da92e8c7d8473e985d1a5af430b124a3?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f&width=1600 1600w, https://cdn.builder.io/api/v1/image/assets/TEMP/eac810d7c65f807434897557781e1c49da92e8c7d8473e985d1a5af430b124a3?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f&width=2000 2000w, https://cdn.builder.io/api/v1/image/assets/TEMP/eac810d7c65f807434897557781e1c49da92e8c7d8473e985d1a5af430b124a3?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f"
-                  className="object-contain shrink-0 aspect-[0.98] w-[161px]" />
-              </div>
+
             </div>
           </div>
           <div className="flex flex-col sticky top-8 justify-center py-8 bg-rose-50 rounded-2xl w-full lg:w-[400px]">
