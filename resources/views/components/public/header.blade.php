@@ -203,28 +203,9 @@
 
 
 <header class="font-poppins_regular">
-  {{-- @foreach ($datosgenerales as $item)
-    <div class="bg-[#0F1F38] h-[44px] flex lg:justify-between justify-center w-full px-[5%] xl:px-[8%] py-2 text-sm items-center">
-      <div class="text-white text-start flex gap-3">
-        <h3>
-          Teléfono: {{ $item->cellphone }}
-        </h3>
-        <div>|</div>
-        <a href="#">
-          Email: contacto@egespp
-        </a>
-      </div>
-
-      <div class="text-white text-end hidden lg:flex">
-        @if (Auth::user() == null)
-          <a href="/login">Log In </a> / <a href="/register">Sign Up</a>
-        @endif
-      </div>
-    </div>
-  @endforeach --}}
 
   <section
-    class="flex flex-wrap gap-10 justify-between items-center px-[8%] py-2 border border-solid bg-slate-900 border-teal-800 border-opacity-10 max-md:px-5">
+    class="flex flex-wrap gap-10 justify-between items-center px-[8%] py-3 border border-solid bg-slate-900 border-teal-800 border-opacity-10 max-md:px-5">
     <div
       class="hidden md:flex gap-4 items-start self-stretch my-auto text-sm tracking-normal leading-7 text-center min-w-[240px] text-slate-100">
 
@@ -232,28 +213,20 @@
       <p>Email: {{ $datosgenerales->email }}</p>
     </div>
     <nav class="flex gap-4 items-center self-stretch my-auto mx-auto md:mx-0">
-      {{-- <a href="#" aria-label="Social Media Link 1">
-        <img loading="lazy"
-          src="https://cdn.builder.io/api/v1/image/assets/TEMP/8693f932039c2e8c0a816be060e78697a7a02b21edbfbfcf31bd73f4123f53bf?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f"
-          alt="" class="object-contain shrink-0 w-6 aspect-square" />
-      </a>
-      <a href="#" aria-label="Social Media Link 2">
-        <img loading="lazy"
-          src="https://cdn.builder.io/api/v1/image/assets/TEMP/e1adcb46e083a4104243cc7858289a099b773ab8ae97b361c2a565e5498fd619?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f"
-          alt="" class="object-contain shrink-0 w-6 aspect-square" />
-      </a> --}}
       @if (Auth::user() == null)
-        <a href="/login" class="text-white">Iniciar Sesion </a> </a>
+        <div class="text-white">
+          <a href="/login" class="text-white">Inicia sesion </a>
+          <span class="text-slate-200">o</span>
+          <a href="/register" class="text-white">Registrate</a>
+        </div>
       @else
         <div class=" relative text-white  hidden md:inline-flex" x-data="{ open: false }">
-          <button class="px-3 py-2 inline-flex justify-center items-center group" aria-haspopup="true"
+          <button class="inline-flex justify-center items-center group" aria-haspopup="true"
             @click.prevent="open = !open" :aria-expanded="open">
-            <div class="flex items-center truncate">
+            <div class="flex items-center truncate mt-[4px]">
               <span id="username"
                 class="truncate ml-2 text-sm font-medium dark:text-slate-300 group-hover:opacity-75 dark:group-hover:text-slate-200  ">{{ Auth::user()->name }}</span>
-              <svg class="w-3 h-3 shrink-0 ml-1 fill-current text-slate-400" viewBox="0 0 12 12">
-                <path d="M5.9 11.4L.5 6l1.4-1.4 4 4 4-4L11.3 6z" />
-              </svg>
+              <i class="fas fa-angle-down ms-2"></i>
             </div>
           </button>
           <div
@@ -261,8 +234,8 @@
             @click.outside="open = false" @keydown.escape.window="open = false" x-show="open">
             <ul>
               <li class=" hover:bg-rose-700 hover:text-white transition duration-100 ease-in">
-                <a class="font-medium text-sm  flex items-center py-1 px-3 " href="/micuenta"
-                  @click="open = false" @focus="open = true" @focusout="open = false">Mi
+                <a class="font-medium text-sm  flex items-center py-1 px-3 " href="/micuenta" @click="open = false"
+                  @focus="open = true" @focusout="open = false">Mi
                   Cuenta</a>
               </li>
 
@@ -370,13 +343,13 @@
       <section class="flex gap-3 items-center">
         <x-header-search />
 
-        <a href="/register"
+        {{-- <a href="/register"
           class="hidden md:flex  gap-2.5 justify-center items-center self-stretch px-5 py-2.5 my-auto text-sm font-semibold text-center text-red-600 bg-red-100 rounded-lg min-h-[40px]">
           <span class="self-stretch my-auto hover:scale-110 transition-transform">Crear Cuenta</span>
           <img loading="lazy"
             src="https://cdn.builder.io/api/v1/image/assets/TEMP/75bad0eb80e4c8fa820b5a280da9560ca64547065469b69cd2c648442bf9f1c3?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f"
             alt="" class="object-contain shrink-0 self-stretch my-auto w-5 aspect-square" />
-        </a>
+        </a> --}}
       </section>
 
     </div>

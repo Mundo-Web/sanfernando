@@ -59,12 +59,12 @@
               </div>
             </div>
 
-            @if (Route::has('password.request'))
+            {{-- @if (Route::has('password.request'))
               <div class="flex flex-row justify-center items-centerpx-4">
                 <a href="{{ route('password.request') }}"
                   class="text-[#CF072C] bg-[#FFDDDE] w-full py-3 rounded-2xl cursor-pointer font-semibold font-poppins_regular tracking-normal text-center">Olvidé mi contraseña</a>
               </div>
-            @endif
+            @endif --}}
 
           </form>
           <x-validation-errors class="mt-4" />
