@@ -3,6 +3,7 @@
 namespace App\Http\Responses;
 
 use App\Helpers\EmailConfig;
+use App\Models\General;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Laravel\Fortify\Contracts\RegisterResponse as RegisterResponseContract;
@@ -39,19 +40,19 @@ class RegisterResponse implements RegisterResponseContract
         $name = $data['name'];
         $mensaje = "Gracias por registrarse en ".env('APP_NAME');
         $mail = EmailConfig::config($name, $mensaje);
+        $datosGenerales = General::first();
         try {
             $mail->addAddress($data['email']);
-            $mail->Body = '<html lang="es">
+            $mail->Body = '<html lang="en">
+
             <head>
               <meta charset="UTF-8" />
               <meta name="viewport" content="width=device-width, initial-scale=1.0" />
               <title>Mundo web</title>
               <link rel="preconnect" href="https://fonts.googleapis.com" />
               <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-              <link
-                href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
-                rel="stylesheet"
-              />
+              <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+                rel="stylesheet" />
               <style>
                 * {
                   margin: 0;
@@ -60,140 +61,144 @@ class RegisterResponse implements RegisterResponseContract
                 }
               </style>
             </head>
+
             <body>
               <main>
                 <table
                   style="
-                    width: 600px;
-                    height: 700px;
-                    margin: 0 auto;
-                    text-align: center;
-                    background-image:url(' . $appUrl . '/images/Ellipse_18.png),  url(' . $appUrl . '/images/Tabpanel.png);
-                  background-repeat: no-repeat, no-repeat;
-                  background-position: center bottom , center bottom;;
-                  background-size: fit , fit;
-                  background-color: #f9f9f9;
-                  "
-                >
+                width: 600px;
+                margin: 0 auto;
+                text-align: center;
+                background-image: url("'.$appUrl.'/mail/fondo.png)");
+                background-repeat: no-repeat;
+                background-position: center;
+                background-size: cover;
+            "
                   <thead>
-                    <tr>
-                      <th
-                        style="
-                          display: flex;
-                          flex-direction: row;
-                          justify-content: center;
-                          align-items: center;
-                          margin: 40px;
-                        "
-                      >
-                        <img src="' . $appUrl . '/images/Group1.png" alt="Gestion_Publica"  style="
-                    margin: auto;
-                  "/>
-                      </th>
-                    </tr>
+                  <tr>
+                    <th
+                      style="
+                                            display: flex;
+                                            flex-direction: row;
+                                            justify-content: center;
+                                            align-items: center;
+                                            margin: 40px;
+                                            padding: 0 200px;
+                                        ">
+                      <a href="' .
+                            $appUrl .
+                            '" target="_blank" style="text-align: center"><img
+                          src="'.$appUrl.'/mail/logo.png" alt="Gestion publica" /></a>
+                    </th>
+                  </tr>
                   </thead>
                   <tbody>
                     <tr>
-                      <td style="height: 10px">
+                      <td>
                         <p
                           style="
-                            color: #ffffff;
-                            font-weight: 500;
-                            font-size: 18px;
-                            text-align: center;
-                            width: 500px;
-                            margin: 0 auto;
-                            font-family: Montserrat, sans-serif;
-                            line-height: 30px;
-                          "
-                        >
-                          <span style="display: block">Hola </span>
-                        </p>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td style="height: 10px">
-                        <p
-                          style="
-                            color: #ffffff;
-                            font-size: 40px;
-                            font-family: Montserrat, sans-serif;
-                            line-height: 60px;
-                          "
-                        >
-                          <span style="display: block">' . $name . ' </span>
-                        </p>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td style="height: 10px">
-                        <p
-                          style="
-                            color: #006BF6;
-                            font-size: 40px;
-                            font-family: Montserrat, sans-serif;
-                            font-weight: bold;
-                            line-height: 60px;
-                          "
-                        >
-                          !Gracias
-                          <span style="color: #ffffff">por escribirnos!</span>
-                        </p>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td style="height: 10px">
-                        <p
-                          style="
-                            color: #ffffff;
-                            font-weight: 500;
-                            font-size: 18px;
-                            text-align: center;
-                            width: 250px;
-                            margin: 0 auto;
-                            font-family: Montserrat, sans-serif;
-                            line-height: 30px;
-                          "
-                        >
-                          En breve estaremos comunicandonos contigo.
-                        </p>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td
-                        style="
-                          display: flex;
-                          align-items: start;
-                          justify-content: center;
-                          padding-top: 20px;
-                        "
-                      >
-                        <a
-                      href="' . $appUrl . '"
-                      style="
-                        text-decoration: none;
-                        background-color: #006bf6;
-                        color: white;
-                        padding: 10px 16px;
-                        display: inline-flex;
-                        justify-content: center;
-                        align-items: center;
-                        gap: 10px;
-                        font-weight: 600;
+                        color: #ffffff;
+                        font-weight: 500;
+                        font-size: 40px;
+                        text-align: center;
+                        width: 500px;
+                        margin: 0 auto;
+                        padding: 20px 0;
                         font-family: Montserrat, sans-serif;
-                        font-size: 16px;
-                        border-radius: 30px;
-                      "
-                    >
-                      <span>Visita nuestra web</span>
-                    </a>
+                    ">
+
+                          Gracias Por Registrarte!
+                        </p>
+                      </td>
+                    </tr>
+                    <tr>
+
+                      <td>
+                        <p
+                          style="
+                                                color: #ffffff;
+                                                font-weight: 400;
+                                                font-size: 20px;
+                                                text-align: center;
+                                                width: 500px;
+                                                margin: 0 auto;
+                                                padding: 20px 0;
+                                                font-family: Montserrat, sans-serif;
+                                            ">
+                          <span style="display: block">Hola ' . $name . '</span>
+                          <span style="display: block">En breve estaremos cominicandonos contigo </span>
+                        </p>
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td>
+                        <a target="_blank" href="' .
+                            $appUrl .
+                            '"
+                          style="
+                                                text-decoration: none;
+                                                background-color: #fdfefd;
+                                                color: #254f9a;
+                                                padding: 16px 20px;
+                                                display: inline-flex;
+                                                justify-content: center;
+                                                border-radius: 10px;
+                                                align-items: center;
+                                                gap: 10px;
+                                                font-weight: 600;
+                                                font-family: Montserrat, sans-serif;
+                                                font-size: 16px;
+                                                margin-bottom: 350px;
+                                            ">
+                          <span>Visita nuestra web</span>
+                        </a>
+                      </td>
+                    </tr>
+                    <tr style="margin-top: 300px">
+                      <td>
+                        <a href="'.$datosGenerales->facebook.'" target="_blank"
+                          style="   padding: 0 5px 30px 0;
+                                                display: inline-block;
+                                            ">
+                          <img src="'.$appUrl.'/mail/facebook.png" alt="facebook" /></a>
+
+                        <a href="'.$datosGenerales->instagram.'" target="_blank"
+                          style="
+                                                padding: 0 5px 30px 0;
+                                                display: inline-block;
+                                            ">
+                          <img src="'.$appUrl.'/mail/instagram.png" alt="instagram" /></a>
+
+
+
+                        <a href="'.$datosGenerales->linkedin.'" target="_blank"
+                          style="padding: 0 5px 30px 0;
+                                display: inline-block;
+                                            ">
+                          <img src="'.$appUrl.'/mail/linkedin.png" alt="linkedin" /></a>
+
+                        <a href="'.$datosGenerales->tiktok.'" target="_blank"
+                          style="padding: 0 5px 30px 0;
+                                display: inline-block;
+                                            ">
+                          <img src="'.$appUrl.'/mail/tiktok.png" alt="tiktok" /></a>
+                        <a href="https://api.whatsapp.com/send?phone='. $datosgenerales->whatsapp.'&text='. $datosgenerales->mensaje_whatsapp.'" target="_blank"
+                          style="padding: 0 5px 30px 0;
+                                display: inline-block;
+                                            ">
+                          <img src="'.$appUrl.'/mail/whatsapp.png" alt="whastapp" /></a>
+
+
                       </td>
                     </tr>
                   </tbody>
                 </table>
               </main>
             </body>
-          </html>
+
+            </html>
+
           ';
             $mail->isHTML(true);
             $mail->send();
