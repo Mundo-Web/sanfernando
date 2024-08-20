@@ -7,13 +7,11 @@ use App\Http\Requests\StoreIndexRequest;
 use App\Http\Requests\UpdateIndexRequest;
 use App\Models\AboutUs;
 use App\Models\Address;
-use App\Models\Answer;
 use App\Models\Attemp;
+use App\Models\AttempDetail;
 use App\Models\Attributes;
 use App\Models\AttributesValues;
-use App\Models\Banners;
 use App\Models\Blog;
-use App\Models\Faqs;
 use App\Models\General;
 use App\Models\Index;
 use App\Models\Message;
@@ -22,27 +20,20 @@ use App\Models\Slider;
 use App\Models\Strength;
 use App\Models\Testimony;
 use App\Models\Category;
-use App\Models\Department;
 use App\Models\Galerie;
 use App\Models\Module;
 use App\Models\Offer;
 use App\Models\PolyticsCondition;
-use App\Models\Popup;
 use App\Models\Price;
-use App\Models\Sale;
 use App\Models\Specifications;
 use App\Models\Staff;
-use App\Models\Status;
 use App\Models\Tag;
 use App\Models\TermsAndCondition;
 use App\Models\User;
 use App\Models\UserDetails;
 use App\Models\Wishlist;
-use Attribute;
 use Culqi\Culqi;
 use Illuminate\Http\Request;
-use Illuminate\Pagination\LengthAwarePaginator;
-use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
@@ -53,10 +44,7 @@ use Intervention\Image\ImageManager;
 use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
 use Inertia\Inertia;
-use phpseclib3\File\ASN1\Maps\AttributeValue;
 use SoDe\Extend\Response;
-
-use function PHPUnit\Framework\isNull;
 
 class IndexController extends Controller
 {
@@ -187,8 +175,12 @@ class IndexController extends Controller
 
     if (!$attemp) return redirect("/micuenta/session/{$evaluation->course->uuid}/{$evaluation->id}");
 
-    $questions = $evaluation->questions->map(function ($question) {
+    $questions = $evaluation->questions->map(function ($question) use ($attemp) {
       $question->random_answers = $question->randomAnswers();
+      $isDone = AttempDetail::where('question_id', $question->id)
+        ->where('attemp_id', $attemp->id)
+        ->exists();
+      $question->done = $isDone;
       unset($question->answers);
       return $question;
     });

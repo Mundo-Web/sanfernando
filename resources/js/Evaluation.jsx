@@ -2,10 +2,13 @@ import React, { useEffect, useState } from 'react'
 import { createRoot } from 'react-dom/client'
 import CreateReactScript from './Utils/CreateReactScript'
 import Swal from 'sweetalert2'
+import AttempDetailsRest from './actions/AttempDetailsRest'
 
-const Evaluation = ({ evaluation, questions, attemp }) => {
+const attempDetailsRest = new AttempDetailsRest()
 
-  const [answers, setAnswers] = useState(questions)
+const Evaluation = ({ evaluation, questions: questionsFromDB, attemp }) => {
+
+  const [questions, setQuestions] = useState(questionsFromDB)
   const [percentage, setPercentaje] = useState(0)
   const [seconds, setSeconds] = useState(0)
 
@@ -34,6 +37,15 @@ const Evaluation = ({ evaluation, questions, attemp }) => {
 
   }, [attemp.created_at, evaluation.duration]);
 
+  const hours = Math.floor(seconds / 3600);
+  const minutes = Math.floor((seconds % 3600) / 60);
+  const remainingSeconds = seconds % 60;
+
+  let formattedTime = '';
+  if (hours > 0) formattedTime += `${hours}h `;
+  if (minutes > 0) formattedTime += `${minutes}m `;
+  if (remainingSeconds > 0 || formattedTime === '') formattedTime += `${remainingSeconds}s`;
+
   const onNextClicked = async () => {
     const { isConfirmed } = await Swal.fire({
       title: '¿Estás seguro?',
@@ -45,18 +57,21 @@ const Evaluation = ({ evaluation, questions, attemp }) => {
       confirmButtonText: 'Sí, continuar',
       cancelButtonText: 'Cancelar'
     })
-
     if (!isConfirmed) return
+    const request = {
+      'question_id': question.id,
+      'answer_id': $(`[name="answer"]:checked`).val(),
+      'attemp_id': attemp.id
+    }
+    const result = await attempDetailsRest.save(request)
+    if (!result) return
+    const newQuestions = structuredClone(questions)
+    newQuestions.forEach(x => {
+      if (x.id == question.id) x.done = true
+    });
+    setAnswers(newQuestions)
   }
 
-  const hours = Math.floor(seconds / 3600);
-  const minutes = Math.floor((seconds % 3600) / 60);
-  const remainingSeconds = seconds % 60;
-
-  let formattedTime = '';
-  if (hours > 0) formattedTime += `${hours}h `;
-  if (minutes > 0) formattedTime += `${minutes}m `;
-  if (remainingSeconds > 0 || formattedTime === '') formattedTime += `${remainingSeconds}s`;
 
   return (<>
     <section>
@@ -116,7 +131,7 @@ const Evaluation = ({ evaluation, questions, attemp }) => {
                   <input
                     type="radio"
                     id={`answer-${answer.id}`}
-                    name="hosting"
+                    name="answer"
                     value={answer.id}
                     className="peer w-4 h-4 text-red-600 bg-gray-100 border-gray-300 focus:ring-red-500 dark:focus:ring-red-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
                     required

@@ -313,12 +313,13 @@
     "src": "resources/js/DocenteDetalle.jsx"
   },
   "resources/js/Evaluation.jsx": {
-    "file": "assets/Evaluation-fKMrqsgX.js",
+    "file": "assets/Evaluation-zSBeIkan.js",
     "imports": [
       "resources/js/Utils/HtmlContent.jsx",
       "resources/js/Utils/ReactAppend.jsx",
       "_CreateReactScript-Eox_dAvx.js",
       "resources/js/components/Offer/OfferCard.jsx",
+      "_BasicRest-szwNhfy8.js",
       "__commonjsHelpers-4gQjN7DL.js",
       "_index-jLuiGAeD.js",
       "resources/js/Utils/CreateReactScript.jsx",
