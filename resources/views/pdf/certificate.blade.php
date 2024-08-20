@@ -211,7 +211,7 @@
             style="text-transform: uppercase">DIPLOMADO DE
             {{ $attemp->evaluation->course->producto }}.</span> Organizado por <b>EGESPP</b>, con una duración de
           {{ $attemp->evaluation->course->duration / 60 }} horas lectivas del {{ date('Y') }}.</p>
-        <p class="name">{{ $attemp->user->name }}</p>
+        <p class="name">{{ $attemp->user->name }} {{ $attemp->user->lastname }}</p>
       </div>
     </div>
     <section class="signature-section">
