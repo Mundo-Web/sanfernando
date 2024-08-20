@@ -129,6 +129,10 @@ const CursoDetalle = ({ producto, url_env }) => {
                       {producto?.docentes?.map((profesor, index) => (
                         <img loading="lazy"
                           src={`/${profesor.url_foto}`}
+                          onError={e => {
+                            e.target.onerror = null; // Evita un bucle infinito
+                            e.target.src = '/images/img/noStaff.jpg';
+                          }}
                           className="object-cover shrink-0 self-stretch my-auto w-14 h-14  aspect-[1.6] rounded-full -ms-8 border-4 border-white" />
                       ))}
 
@@ -318,7 +322,10 @@ const CursoDetalle = ({ producto, url_env }) => {
                   <div className="flex flex-row gap-8 items-center">
                     <img loading="lazy"
                       src={`/${profesor.url_foto}`}
-                      className="object-cover max-w-full aspect-square rounded-full w-[100px] h-[100px]" />
+                      className="object-cover max-w-full aspect-square rounded-full w-[100px] h-[100px]" onError={e => {
+                        e.target.onerror = null; // Evita un bucle infinito
+                        e.target.src = '/images/img/noStaff.jpg';
+                      }} />
                     <div className="flex flex-col w-full max-md:max-w-full">
                       <div className="text-xl md:text-2xl font-bold leading-tight text-slate-700 max-md:max-w-full">
                         {profesor.nombre}
