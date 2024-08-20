@@ -12,38 +12,39 @@ use Laravel\Fortify\Contracts\RegisterResponse as RegisterResponseContract;
 class RegisterResponse implements RegisterResponseContract
 {
 
-    public function toResponse($request)
-    {
-        $role = Auth::user()->roles->pluck('name');
-        $usuario = Auth::user();
-        
-        if ($request->wantsJson()) {
-            return response()->json(['two_factor' => false]);
-        }
+  public function toResponse($request)
+  {
+    $role = Auth::user()->roles->pluck('name');
+    $usuario = Auth::user();
 
-        switch ($role[0]) {
-            case 'Admin':
-                return redirect()->intended(config('fortify.home'));
-            case 'Customer':
-                $this-> envioCorreo($usuario);
-                return redirect()->intended(config('fortify.home_public'));
-            default:
-                return redirect()->intended(config('fortify.home_public'));
-        }
+    if ($request->wantsJson()) {
+      return response()->json(['two_factor' => false]);
     }
 
+    switch ($role[0]) {
+      case 'Admin':
+        return redirect()->intended(config('fortify.home'));
+      case 'Customer':
+        $this->envioCorreo($usuario);
+        return redirect()->intended(config('fortify.home_public'));
+      default:
+        return redirect()->intended(config('fortify.home_public'));
+    }
+  }
 
 
-    private function envioCorreo($data){
-        
-        $appUrl = env('APP_URL');
-        $name = $data['name'];
-        $mensaje = "Gracias por registrarse en ".env('APP_NAME');
-        $mail = EmailConfig::config($name, $mensaje);
-        $datosGenerales = General::first();
-        try {
-            $mail->addAddress($data['email']);
-            $mail->Body = '<html lang="en">
+
+  private function envioCorreo($data)
+  {
+
+    $appUrl = env('APP_URL');
+    $name = $data['name'];
+    $mensaje = "Gracias por registrarse en " . env('APP_NAME');
+    $mail = EmailConfig::config($name, $mensaje);
+    $datosGenerales = General::first();
+    try {
+      $mail->addAddress($data['email']);
+      $mail->Body = '<html lang="en">
 
             <head>
               <meta charset="UTF-8" />
@@ -69,7 +70,7 @@ class RegisterResponse implements RegisterResponseContract
                 width: 600px;
                 margin: 0 auto;
                 text-align: center;
-                background-image: url("'.$appUrl.'/mail/fondo.png)");
+                background-image: url("' . $appUrl . '/mail/fondo.png)");
                 background-repeat: no-repeat;
                 background-position: center;
                 background-size: cover;
@@ -86,9 +87,9 @@ class RegisterResponse implements RegisterResponseContract
                                             padding: 0 200px;
                                         ">
                       <a href="' .
-                            $appUrl .
-                            '" target="_blank" style="text-align: center"><img
-                          src="'.$appUrl.'/mail/logo.png" alt="Gestion publica" /></a>
+        $appUrl .
+        '" target="_blank" style="text-align: center"><img
+                          src="' . $appUrl . '/mail/logo.png" alt="Gestion publica" /></a>
                     </th>
                   </tr>
                   </thead>
@@ -134,8 +135,8 @@ class RegisterResponse implements RegisterResponseContract
                     <tr>
                       <td>
                         <a target="_blank" href="' .
-                            $appUrl .
-                            '"
+        $appUrl .
+        '"
                           style="
                                                 text-decoration: none;
                                                 background-color: #fdfefd;
@@ -157,37 +158,37 @@ class RegisterResponse implements RegisterResponseContract
                     </tr>
                     <tr style="margin-top: 300px">
                       <td>
-                        <a href="'.$datosGenerales->facebook.'" target="_blank"
+                        <a href="' . $datosGenerales->facebook . '" target="_blank"
                           style="   padding: 0 5px 30px 0;
                                                 display: inline-block;
                                             ">
-                          <img src="'.$appUrl.'/mail/facebook.png" alt="facebook" /></a>
+                          <img src="' . $appUrl . '/mail/facebook.png" alt="facebook" /></a>
 
-                        <a href="'.$datosGenerales->instagram.'" target="_blank"
+                        <a href="' . $datosGenerales->instagram . '" target="_blank"
                           style="
                                                 padding: 0 5px 30px 0;
                                                 display: inline-block;
                                             ">
-                          <img src="'.$appUrl.'/mail/instagram.png" alt="instagram" /></a>
+                          <img src="' . $appUrl . '/mail/instagram.png" alt="instagram" /></a>
 
 
 
-                        <a href="'.$datosGenerales->linkedin.'" target="_blank"
+                        <a href="' . $datosGenerales->linkedin . '" target="_blank"
                           style="padding: 0 5px 30px 0;
                                 display: inline-block;
                                             ">
-                          <img src="'.$appUrl.'/mail/linkedin.png" alt="linkedin" /></a>
+                          <img src="' . $appUrl . '/mail/linkedin.png" alt="linkedin" /></a>
 
-                        <a href="'.$datosGenerales->tiktok.'" target="_blank"
+                        <a href="' . $datosGenerales->tiktok . '" target="_blank"
                           style="padding: 0 5px 30px 0;
                                 display: inline-block;
                                             ">
-                          <img src="'.$appUrl.'/mail/tiktok.png" alt="tiktok" /></a>
-                        <a href="https://api.whatsapp.com/send?phone='. $datosgenerales->whatsapp.'&text='. $datosgenerales->mensaje_whatsapp.'" target="_blank"
+                          <img src="' . $appUrl . '/mail/tiktok.png" alt="tiktok" /></a>
+                        <a href="https://api.whatsapp.com/send?phone=' . $datosGenerales->whatsapp . '&text=' . $datosGenerales->mensaje_whatsapp . '" target="_blank"
                           style="padding: 0 5px 30px 0;
                                 display: inline-block;
                                             ">
-                          <img src="'.$appUrl.'/mail/whatsapp.png" alt="whastapp" /></a>
+                          <img src="' . $appUrl . '/mail/whatsapp.png" alt="whastapp" /></a>
 
 
                       </td>
@@ -200,12 +201,10 @@ class RegisterResponse implements RegisterResponseContract
             </html>
 
           ';
-            $mail->isHTML(true);
-            $mail->send();
-            
-        } catch (\Throwable $th) {
-            //throw $th;
-        }
-}
-
+      $mail->isHTML(true);
+      $mail->send();
+    } catch (\Throwable $th) {
+      //throw $th;
+    }
+  }
 }
