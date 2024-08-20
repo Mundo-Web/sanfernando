@@ -1078,7 +1078,7 @@ class IndexController extends Controller
             background-repeat: no-repeat;
             background-position: center;
             background-size: cover;
-        "
+        ">
               <thead>
               <tr>
                 <th
@@ -1255,7 +1255,7 @@ class IndexController extends Controller
             background-repeat: no-repeat;
             background-position: center;
             background-size: cover;
-        "
+        ">
               <thead>
               <tr>
                 <th
