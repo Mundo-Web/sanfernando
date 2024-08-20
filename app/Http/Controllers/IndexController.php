@@ -1074,7 +1074,7 @@ class IndexController extends Controller
             width: 600px;
             margin: 0 auto;
             text-align: center;
-            background-image: url("'.$appUrl.'/mail/fondo.png)");
+            background-image: url('.$appUrl.'/mail/fondo.png);
             background-repeat: no-repeat;
             background-position: center;
             background-size: cover;
@@ -1250,7 +1250,8 @@ class IndexController extends Controller
             width: 600px;
             margin: 0 auto;
             text-align: center;
-            background-image: url("'.$appUrl.'/mail/fondo.png)");
+           
+            background-image: url('.$appUrl.'/mail/fondo.png);
             background-repeat: no-repeat;
             background-position: center;
             background-size: cover;
