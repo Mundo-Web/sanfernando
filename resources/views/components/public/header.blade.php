@@ -278,7 +278,8 @@
       <div class="w-auto">
         <a href="/">
           <img id="logo-gestion_publica" class="w-[170px] " {{-- public\images\svg\LOGO2.png --}}
-            src="{{ asset($isIndex ? 'images/img/logorojo.png' : 'images/img/logorojo.png') }}" alt="gestion_publica" />
+            src="{{ asset($isIndex ? 'images/img/logorojo.png' : 'images/img/logorojo.png') }}"
+            alt="gestion_publica" />
         </a>
       </div>
 
@@ -310,9 +311,9 @@
             {{-- @endif --}}
 
 
-            <a href="#" class="font-medium hover:opacity-75 ">
+            {{--  <a href="#" class="font-medium hover:opacity-75 ">
               <span class="underline-this">Eventos </span>
-            </a>
+            </a> --}}
             @if ($blog > 0)
               <a href="#" class="font-medium hover:opacity-75 ">
                 <span class="underline-this">Blog </span>
@@ -515,7 +516,7 @@
       if (query !== '') {
         $.ajax({
           url: '{{ route('buscarblog') }}',
-          method: 'GET',
+          method: 'POST',
           data: {
             query: query
           },

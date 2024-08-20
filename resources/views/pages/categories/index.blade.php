@@ -26,7 +26,7 @@
                 <th>Descripción</th>
                 <th class="w-32">Destacar</th>
                 <th class="w-32">Visible</th>
-                <th class="w-32">Menu</th>
+                {{-- <th class="w-32">Menu</th> --}}
 
                 <th class="w-32">Acciones</th>
               </tr>
@@ -73,7 +73,7 @@
 
 
                   </td>
-                  <td class="">
+                  {{-- <td class="">
                     <form method="POST" action="">
                       @csrf
                       <input type="checkbox" id="hs-basic-usage"
@@ -90,7 +90,7 @@
 
 
 
-                  </td>
+                  </td> --}}
                   <td class="flex flex-row justify-end items-center gap-5 ">
 
                     <a href="{{ route('categorias.edit', $item->id) }}"
