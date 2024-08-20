@@ -2,14 +2,9 @@
 
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\ModuleController;
-use App\Http\Controllers\OfferController;
 use App\Http\Controllers\ProductsController;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-use Inertia\Inertia;
 
-// require __DIR__ . '/router.php';
 
 Route::get('/', [IndexController::class, 'index'])->name('Home.jsx');
 Route::get('/catalogoGestion', [IndexController::class, 'cursosyDiplomados'])->name('CatalogoGP.jsx');

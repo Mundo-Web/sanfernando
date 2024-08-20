@@ -1,12 +1,14 @@
 <?php
 
 use App\Http\Controllers\AddressController;
+use App\Http\Controllers\AnswerController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\ModuleController;
 use App\Http\Controllers\OfferController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProductsController;
+use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\SaleController;
 use App\Http\Controllers\SaleDetailController;
 use App\Http\Controllers\SourceController;
@@ -68,4 +70,15 @@ Route::middleware(['web', 'auth:sanctum', 'verified'])->group(function () {
     Route::post('/sources/paginate', [SourceController::class, 'paginate']);
     Route::patch('/sources/status', [SourceController::class, 'status']);
     Route::delete('/sources/{id}', [SourceController::class, 'delete']);
+
+    Route::post('/questions', [QuestionController::class, 'save']);
+    Route::post('/questions/paginate', [QuestionController::class, 'paginate']);
+    Route::patch('/questions/status', [QuestionController::class, 'status']);
+    Route::delete('/questions/{id}', [QuestionController::class, 'delete']);
+
+    Route::get('/answers/{question}', [AnswerController::class, 'byQuestion']);
+    Route::post('/answers', [AnswerController::class, 'save']);
+    Route::post('/answers/paginate', [AnswerController::class, 'paginate']);
+    Route::patch('/answers/status', [AnswerController::class, 'status']);
+    Route::delete('/answers/{id}', [AnswerController::class, 'delete']);
 });

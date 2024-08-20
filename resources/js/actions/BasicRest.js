@@ -23,11 +23,11 @@ class BasicRest {
     return await res.json()
   }
 
-  save = async (client, showNotify = true) => {
+  save = async (data, showNotify = true) => {
     try {
       const { status, result } = await Fetch(`/api/${this.path}`, {
         method: 'POST',
-        body: JSON.stringify(client)
+        body: JSON.stringify(data)
       })
 
       if (!status) throw new Error(result?.message || 'Ocurrio un error inesperado')
@@ -65,7 +65,7 @@ class BasicRest {
         type: 'success'
       })
 
-      return true
+      return result.data || true
     } catch (error) {
       Notify.add({
         icon: '/assets/img/logo-login.svg',

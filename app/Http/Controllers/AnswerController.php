@@ -3,64 +3,28 @@
 namespace App\Http\Controllers;
 
 use App\Models\Answer;
-use App\Http\Requests\StoreAnswerRequest;
-use App\Http\Requests\UpdateAnswerRequest;
+use Illuminate\Http\Request;
+use SoDe\Extend\Response;
 
-class AnswerController extends Controller
+class AnswerController extends BasicController
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
-        //
-    }
+  public $model = Answer::class;
+  public $softDeletion = false;
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
+  public function afterSave(Request $request, object $jpa)
+  {
+    return $jpa;
+  }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(StoreAnswerRequest $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(Answer $answer)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Answer $answer)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(UpdateAnswerRequest $request, Answer $answer)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Answer $answer)
-    {
-        //
-    }
+  public function status(Request $request)
+  {
+    $response = Response::simpleTryCatch(function (Response $response) use ($request) {
+      $this->model::where('id', $request->id)
+        ->update([
+          'correct' => $request->status
+        ]);
+      return $this->model::find($request->id);
+    });
+    return response($response->toArray(), $response->status);
+  }
 }

@@ -21,10 +21,17 @@ class Module extends Model
         'description',
         'source_type',
         'source',
+        'duration',
+        'attemps',
         'order',
     ];
 
-    public function sources() {
+    public function sources()
+    {
         return $this->hasMany(Source::class, 'module_id', 'id');
+    }
+    public function questions()
+    {
+        return $this->hasMany(Question::class, 'module_id', 'id');
     }
 }

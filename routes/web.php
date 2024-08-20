@@ -1,31 +1,20 @@
 <?php
 
 use App\Http\Controllers\AboutUsController;
-use App\Http\Controllers\AddressController;
 use App\Http\Controllers\AttributesController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BannersController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\DataFeedController;
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\CustomerController;
-use App\Http\Controllers\OrderController;
-use App\Http\Controllers\InvoiceController;
-use App\Http\Controllers\MemberController;
-use App\Http\Controllers\TransactionController;
-use App\Http\Controllers\JobController;
-use App\Http\Controllers\CampaignController;
 
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\GeneralController;
 use App\Http\Controllers\ServiceController;
-use App\Http\Controllers\ContactController;
 use App\Http\Controllers\TestimonyController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CarritoController;
 use App\Http\Controllers\FaqsController;
-use App\Http\Controllers\FooterController;
 use App\Http\Controllers\GalerieController;
 use App\Http\Controllers\IconController;
 use App\Http\Controllers\LogosClientController;
@@ -33,7 +22,6 @@ use App\Http\Controllers\LogosClientController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\LibroReclamacionesController;
 use App\Http\Controllers\NewsletterSubscriberController;
-use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\PoliticaDatosController;
 use App\Http\Controllers\PolyticsConditionController;
 use App\Http\Controllers\PopupController;
@@ -49,8 +37,6 @@ use App\Http\Controllers\ValoresAtributosController;
 
 use App\Http\Controllers\TagController;
 use App\Http\Controllers\TermsAndConditionController;
-use App\Models\AboutUs;
-use App\Models\LibroReclamaciones;
 
 /*
 |--------------------------------------------------------------------------

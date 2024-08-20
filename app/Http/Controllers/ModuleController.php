@@ -64,7 +64,7 @@ class ModuleController extends BasicController
   public function byCourse(Request $request, string $course)
   {
     $response = Response::simpleTryCatch(function (Response $response) use ($request, $course) {
-      $modules = Module::with(['sources'])
+      $modules = Module::with(['sources', 'questions', 'questions.answers'])
         ->where('course_id', $course)
         ->get();
       return $modules;
