@@ -630,14 +630,16 @@ class IndexController extends Controller
     $phone = $request->phone;
     $user = User::findOrFail($request->id);
 
+    $imprimir = '';
+    $imrimirPassword = '';
 
     if ($request->password !== null || $request->newpassword !== null || $request->confirmnewpassword !== null) {
       if (!Hash::check($request->password, $user->password)) {
-        $imprimir = "La contraseña actual no es correcta";
+        $imrimirPassword = "La contraseña actual no es correcta";
         $alert = "error";
       } else {
         $user->password = Hash::make($request->newpassword);
-        $imprimir = "Cambio de contraseña exitosa";
+        $imrimirPassword = "Cambio de contraseña exitosa";
         $alert = "success";
       }
     }
@@ -657,7 +659,7 @@ class IndexController extends Controller
 
 
     $user->save();
-    return response()->json(['message' => $imprimir, 'alert' => $alert]);
+    return response()->json(['message' => "Datos Personales: $imprimir, Contraseña: $imrimirPassword ", 'alert' => $alert]);
   }
 
   public function micuenta()

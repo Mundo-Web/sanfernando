@@ -5,6 +5,7 @@ use App\Http\Controllers\AnswerController;
 use App\Http\Controllers\AttempController;
 use App\Http\Controllers\AttempDetailController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\IndexController;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\ModuleController;
 use App\Http\Controllers\OfferController;
@@ -46,6 +47,9 @@ Route::post('/products/AddOrder', [ProductsController::class, 'AddOrder'])->name
 Route::middleware(['web', 'auth:sanctum', 'verified'])->group(function () {
 
     Route::get('/dashboard/top-products/{orderBy}', [DashboardController::class, 'topProducts'])->name('dashboard.top-products');
+
+    Route::post('/savePerfil',[IndexController::class, 'savePerfil'] );
+    Route::post('/savePassword',[IndexController::class, 'actualizarPerfil'] );
 
 
     Route::post('/address', [AddressController::class, 'save'])->name('address.save');

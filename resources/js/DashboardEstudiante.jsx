@@ -94,7 +94,7 @@ const DashboardEstudiante = ({ session, general, finishedCourses, courses }) => 
 									{selectedOption === 'Dashboard' &&
 										<DashboardEstudianteBlock finished={finishedCourses} session={session} courses={courses} />}
 									{selectedOption === 'Perfil' &&
-										<FormEstudiante />}
+										<FormEstudiante user={session} />}
 									{selectedOption === 'Favoritos' &&
 										<FavoritosEstudiante />}
 									{selectedOption === 'Cursos y Diplomados' &&
