@@ -78,6 +78,7 @@ class IndexController extends Controller
 
   public function cursosyDiplomados()
   {
+    $Wishlist = [];
     $productos =  Products::with(['tags', 'galeria', 'category'])->where('status', 1)->take(12)->get();
 
     //check if user is logged in
