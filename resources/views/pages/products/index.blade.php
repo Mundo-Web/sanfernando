@@ -258,8 +258,8 @@
         caption: 'REVENDEDOR'
       }, */
       {
-        dataField: 'stock',
-        caption: 'STOCK'
+        dataField: 'alumnos',
+        caption: 'ALUMNOS'
       },
       {
         caption: 'CATEGORIA',

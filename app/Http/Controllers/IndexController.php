@@ -667,6 +667,21 @@ class IndexController extends Controller
       $alert = "success";
       $imprimir = "Datos actualizados";
     }
+    if ($request->hasFile("image")) {
+
+      $file = $request->file('image');
+      $route = 'storage/images/users/';
+      $nombreImagen = Str::random(10) . '_' . $file->getClientOriginalName();
+
+      if (File::exists(storage_path() . '/app/public/' . $user->profile_photo_path)) {
+        File::delete(storage_path() . '/app/public/' . $user->profile_photo_path);
+      }
+
+      $this->saveImg($file, $route, $nombreImagen);
+
+      $routeforshow = 'images/users/';
+      $user->profile_photo_path = $routeforshow . $nombreImagen;
+    }
 
 
     $user->save();

@@ -29,7 +29,7 @@ class SaleController extends Controller
     {
         $response =  new dxResponse();
         try {
-            $instance = Sale::select()->with('status');
+            $instance = Sale::select()->with(['status', 'detalleSale', 'detalleSale.product.docentes']);
 
             if ($request->group != null) {
                 [$grouping] = $request->group;

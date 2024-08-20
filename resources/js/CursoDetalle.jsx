@@ -440,10 +440,10 @@ const CursoDetalle = ({ producto, url_env }) => {
 
                 <div className="flex flex-col mt-4 text-sm tracking-normal leading-loose text-gray-600">
                   <div className="flex gap-3 items-center">
-                    <img
+                    {incluye.icon ? (<img
                       src={incluye.icon}
                       alt="Icono"
-                      className="object-contain shrink-0 self-stretch my-auto w-6 aspect-square" />
+                      className="object-contain shrink-0 self-stretch my-auto w-6 aspect-square" />) : (<div>•</div>)}
                     <div className="self-stretch my-auto w-[340px]">{incluye.titulo}</div>
                   </div>
                 </div>
