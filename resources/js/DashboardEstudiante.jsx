@@ -20,14 +20,14 @@ const DashboardEstudiante = ({ session, general, finishedCourses, courses }) => 
     <>
       <div className="md:flex flex-col md:flex-row md:min-h-screen w-full">
         <div className="flex flex-col flex-1 min-h-screen">
-          <HeaderTeacher selectedOption={session.name} />
+          {/* <HeaderTeacher selectedOption={session.name} /> */}
           <section className="flex flex-col !font-poppins_regular !font-normal">
-            <div className="flex w-full bg-[#FFDDDE] h-40 lg:h-60 max-md:max-w-full" role="banner"></div>
+            <div className="flex w-full bg-[#FFDDDE] h-32 lg:h-40 max-md:max-w-full" role="banner"></div>
             <div className="flex flex-col px-[8%] py-10 w-full max-md:px-5 max-md:max-w-full -mt-40">
               <div className="flex flex-col p-6 bg-white rounded-2xl max-md:px-5">
                 <div className="flex flex-col w-full bg-white max-md:max-w-full">
                   <div
-                    className="flex flex-wrap gap-10 justify-between items-center px-4 py-6 w-full border-b border-red-100 max-md:max-w-full">
+                    className="flex flex-wrap gap-10 justify-between items-center px-4 py-4 w-full border-b border-red-100 max-md:max-w-full">
                     <div className="flex gap-4 items-center self-stretch my-auto min-w-[240px]">
                       <img loading="lazy"
                         srcset={session?.profile_photo_url}
