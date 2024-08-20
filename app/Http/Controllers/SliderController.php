@@ -75,6 +75,7 @@ class SliderController extends Controller
         }
 
         $slider->botontext1 = $request->botontext1;
+        $slider->color = $request->color;
         $slider->link1 = $request->link1;
         $slider->botontext2 = $request->botontext2;
         $slider->link2 = $request->link2;
@@ -106,6 +107,7 @@ class SliderController extends Controller
         $slider->description = $request->description;
         $slider->botontext1 = $request->botontext1;
         $slider->link1 = $request->link1;
+        $slider->color = $request->color;
         $slider->botontext2 = $request->botontext2;
         $slider->link2 = $request->link2;
 
@@ -155,6 +157,7 @@ class SliderController extends Controller
         $slider->link1 = $request->link1;
         $slider->botontext2 = $request->botontext2;
         $slider->link2 = $request->link2;
+        $slider->color = $request->color;
 
 
         if ($request->hasFile("imagen")) {
