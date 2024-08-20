@@ -24,7 +24,7 @@ const DashboardEstudiante = ({ session, general, finishedCourses, courses }) => 
           <section className="flex flex-col !font-poppins_regular !font-normal">
             <div className="flex w-full bg-[#FFDDDE] h-32 lg:h-40 max-md:max-w-full" role="banner"></div>
             <div className="flex flex-col px-[8%] py-10 w-full max-md:px-5 max-md:max-w-full -mt-40">
-              <div className="flex flex-col px-10 pt-8 bg-white rounded-2xl max-md:px-5 shadow-xl">
+              <div className="flex flex-col p-10 pt-8 bg-white rounded-2xl max-md:px-5 shadow-xl">
                 <div className="flex flex-col w-full bg-white max-md:max-w-full">
                   <div
                     className="flex flex-wrap gap-10 justify-between items-center px-4 py-4 w-full border-b border-red-100 max-md:max-w-full">
