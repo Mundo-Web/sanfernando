@@ -93,7 +93,7 @@
     ]
   },
   "resources/css/app.css": {
-    "file": "assets/app-JA4nysjE.css",
+    "file": "assets/app-C3fOhGqR.css",
     "isEntry": true,
     "src": "resources/css/app.css"
   },
@@ -322,7 +322,7 @@
     "src": "resources/js/Docente.jsx"
   },
   "resources/js/DocenteDetalle.jsx": {
-    "file": "assets/DocenteDetalle-pTCOp9cQ.js",
+    "file": "assets/DocenteDetalle-HMQsLw-F.js",
     "imports": [
       "resources/js/Utils/InitialsImage.jsx",
       "_index-TT1qJ6UJ.js",

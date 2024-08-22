@@ -1351,7 +1351,7 @@ class IndexController extends Controller
     return view('public.terminosycondiciones', compact('termsAndCondicitions'));
   }
 
-  public function blog($filtro)
+  public function blog($filtro = 0)
   {
     try {
       $categorias = Category::where('status', '=', 1)->where('visible', '=', 1)->get();

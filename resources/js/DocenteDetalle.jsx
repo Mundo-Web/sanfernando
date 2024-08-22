@@ -95,7 +95,7 @@ const Docente = ({ docente, cursos }) => {
 							<h2 className='font-poppins_regular font-bold text-2xl'>Cursos de {docente.name}</h2>
 							<div className='grid grid-cols-1 md:grid-cols-2 gap-6 mt-6'>
 								{docente.productos.map((curso, index) => { return <Curse key={index} producto={curso} /> })}
-								{console.log(docente.productos)}
+
 
 							</div>
 						</div>

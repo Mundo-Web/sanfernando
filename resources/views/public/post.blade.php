@@ -9,68 +9,68 @@
 
 @section('content')
 
-    @php
+  {{--  @php
         $breadcrumbs = [['title' => 'Inicio', 'url' => route('index')], ['title' => 'Blogs', 'url' => route('blog', 0)], ['title' => $post->title, 'url' => '']];
     @endphp
 
     @component('components.breadcrumbs', ['breadcrumbs' => $breadcrumbs])
-    @endcomponent
+    @endcomponent --}}
 
-    <main>
-        <section class="w-full px-[5%] lg:px-[10%] flex flex-col gap-10 py-12 lg:py-16" data-aos="fade-up" data-aos-offset="150">
-            <div class="flex flex-col gap-3">
-               
-                <h3 class="font-semibold font-Inter_Bold text-base text-[#E52E06]">{{$post->categories->name}}</h3>
-                  
-               
-                <h2 class="font-Inter_Bold font-bold text-3xl  text-[#333] leading-tight tracking-tight">
-                    {{ $post->title }}
-                </h2>
-                <div class="flex justify-start items-center gap-2">
+  <main>
+    <section class="w-full px-[5%] lg:px-[10%] flex flex-col gap-10 py-12 lg:py-16" data-aos="fade-up" data-aos-offset="150">
+      <div class="flex flex-col gap-3">
 
-                    <svg width="13" height="14" viewBox="0 0 13 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <g clip-path="url(#clip0_44_1067)">
-                            <path
-                                d="M10.9375 1.75C11.3021 1.75 11.612 1.8776 11.8672 2.13281C12.1224 2.38802 12.25 2.69792 12.25 3.0625V12.6875C12.25 13.0521 12.1224 13.362 11.8672 13.6172C11.612 13.8724 11.3021 14 10.9375 14H1.3125C0.947917 14 0.638021 13.8724 0.382812 13.6172C0.127604 13.362 0 13.0521 0 12.6875V3.0625C0 2.69792 0.127604 2.38802 0.382812 2.13281C0.638021 1.8776 0.947917 1.75 1.3125 1.75H2.625V0.328125C2.625 0.109375 2.73438 0 2.95312 0H4.04688C4.26562 0 4.375 0.109375 4.375 0.328125V1.75H7.875V0.328125C7.875 0.109375 7.98438 0 8.20312 0H9.29688C9.51562 0 9.625 0.109375 9.625 0.328125V1.75H10.9375ZM10.7734 12.6875C10.8828 12.6875 10.9375 12.6328 10.9375 12.5234V4.375H1.3125V12.5234C1.3125 12.6328 1.36719 12.6875 1.47656 12.6875H10.7734Z"
-                                fill="#444444" />
-                        </g>
-                        <defs>
-                            <clipPath id="clip0_44_1067">
-                                <rect width="12.25" height="14" fill="white" transform="matrix(1 0 0 -1 0 14)" />
-                            </clipPath>
-                        </defs>
-                    </svg>
-                    <p class="text-[#444444] font-Inter_Regular font-normal text-sm">Publicado
-                        {{ \Carbon\Carbon::parse($post->created_at)->diffForHumans() }}</p>
-                </div>
+        <h3 class="font-semibold font-Inter_Bold text-base text-[#E52E06]">{{ $post->categories->name }}</h3>
 
 
-                @if ($post->url_video)
-                    <div class="w-full mt-2" data-aos="fade-up" data-aos-offset="150">
-                        <iframe width="100%" height="600px" src="https://www.youtube.com/embed/{{ $post->url_video }}"
-                            frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                            allowfullscreen></iframe>
-                    </div>
-                @endif
+        <h2 class="font-Inter_Bold font-bold text-3xl  text-[#333] leading-tight tracking-tight">
+          {{ $post->title }}
+        </h2>
+        <div class="flex justify-start items-center gap-2">
+
+          <svg width="13" height="14" viewBox="0 0 13 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g clip-path="url(#clip0_44_1067)">
+              <path
+                d="M10.9375 1.75C11.3021 1.75 11.612 1.8776 11.8672 2.13281C12.1224 2.38802 12.25 2.69792 12.25 3.0625V12.6875C12.25 13.0521 12.1224 13.362 11.8672 13.6172C11.612 13.8724 11.3021 14 10.9375 14H1.3125C0.947917 14 0.638021 13.8724 0.382812 13.6172C0.127604 13.362 0 13.0521 0 12.6875V3.0625C0 2.69792 0.127604 2.38802 0.382812 2.13281C0.638021 1.8776 0.947917 1.75 1.3125 1.75H2.625V0.328125C2.625 0.109375 2.73438 0 2.95312 0H4.04688C4.26562 0 4.375 0.109375 4.375 0.328125V1.75H7.875V0.328125C7.875 0.109375 7.98438 0 8.20312 0H9.29688C9.51562 0 9.625 0.109375 9.625 0.328125V1.75H10.9375ZM10.7734 12.6875C10.8828 12.6875 10.9375 12.6328 10.9375 12.5234V4.375H1.3125V12.5234C1.3125 12.6328 1.36719 12.6875 1.47656 12.6875H10.7734Z"
+                fill="#444444" />
+            </g>
+            <defs>
+              <clipPath id="clip0_44_1067">
+                <rect width="12.25" height="14" fill="white" transform="matrix(1 0 0 -1 0 14)" />
+              </clipPath>
+            </defs>
+          </svg>
+          <p class="text-[#444444] font-Inter_Regular font-normal text-sm">Publicado
+            {{ \Carbon\Carbon::parse($post->created_at)->diffForHumans() }}</p>
+        </div>
+
+
+        @if ($post->url_video)
+          <div class="w-full mt-2" data-aos="fade-up" data-aos-offset="150">
+            <iframe width="100%" height="600px" src="https://www.youtube.com/embed/{{ $post->url_video }}"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen></iframe>
+          </div>
+        @endif
 
 
 
-                <div class="flex flex-col gap-2 text-[#333] font-Inter_Regular font-normal text-base py-4">
-                    {!! $post->description !!}
-                </div>
+        <div class="flex flex-col gap-2 text-[#333] font-Inter_Regular font-normal text-base py-4">
+          {!! $post->description !!}
+        </div>
 
-                @if ($post->url_image)
-                    <div class="w-full" data-aos="fade-up" data-aos-offset="150">
-                        <img src="{{ asset($post->url_image . $post->name_image) }}" alt="catedral"
-                            class="w-full h-[563px] object-cover hidden md:block rounded-xl" />
-                        <img src="{{ asset($post->url_image . $post->name_image) }}" alt="catedral"
-                            class="w-full h-[563px] object-cover block md:hidden rounded-xl" />
-                    </div>
-                @endif
-            </div>
+        @if ($post->url_image)
+          <div class="w-full" data-aos="fade-up" data-aos-offset="150">
+            <img src="{{ asset($post->url_image . $post->name_image) }}" alt="catedral"
+              class="w-full h-[563px] object-cover hidden md:block rounded-xl" />
+            <img src="{{ asset($post->url_image . $post->name_image) }}" alt="catedral"
+              class="w-full h-[563px] object-cover block md:hidden rounded-xl" />
+          </div>
+        @endif
+      </div>
 
-            {{-- <div>
+      {{-- <div>
                 <div class="mb-4 flex justify-between border-t-2 pt-5" aria-label="Pagination">
                     <a class="px-2 py-2 text-[#3F76BB] flex gap-2" href="#">
                         <svg xmlns="http://www.w3.org/2000/svg" width="14" height="16" viewBox="0 0 14 16" fill="none">
@@ -92,8 +92,8 @@
                     </a>
                 </div>
             </div> --}}
-        </section>
-    </main>
+    </section>
+  </main>
 
 
 @section('scripts_importados')

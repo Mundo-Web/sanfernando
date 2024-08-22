@@ -65,40 +65,42 @@
     <div class="flex gap-2.5 items-start self-stretch my-auto">
 
       @if ($datosgenerales->instagram)
-        <a href="{{ $datosgenerales->instagram }}" aria-label="Instagram">
+        <a target="_blank" href="{{ $datosgenerales->instagram }}" aria-label="Instagram">
           <img loading="lazy"
             src="https://cdn.builder.io/api/v1/image/assets/TEMP/b923cc1833af09337dc143c7c3d54c19cfe840deec4df793c6d96201779c7718"
             class="object-contain shrink-0 w-8 aspect-square" alt="" />
         </a>
       @endif
       @if ($datosgenerales->facebook)
-        <a href="{{ $datosgenerales->facebook }}" aria-label="Facebook">
+        <a target="_blank" href="{{ $datosgenerales->facebook }}" aria-label="Facebook">
           <img loading="lazy"
             src="https://cdn.builder.io/api/v1/image/assets/TEMP/3c44a8c6d2e998706681aefde9edcecc1a8c578bd58b7870eb2a1f803e056be5"
             class="object-contain shrink-0 w-8 aspect-square" alt="" />
         </a>
       @endif
       @if ($datosgenerales->linkedin)
-        <a href="{{ $datosgenerales->linkedin }}" aria-label="Linkedin">
+        <a target="_blank" href="{{ $datosgenerales->linkedin }}" aria-label="Linkedin">
           <img loading="lazy"
             src="https://cdn.builder.io/api/v1/image/assets/TEMP/b66ec4cdec5c308e6417c85e86eb12d327f5bcedaa96b3e65ca3c9d2259a126c"
             class="object-contain shrink-0 w-8 aspect-square" alt="" />
         </a>
       @endif
       @if ($datosgenerales->tiktok)
-        <a href="{{ $datosgenerales->tiktok }}" aria-label="Tiktok">
+        <a target="_blank" href="{{ $datosgenerales->tiktok }}" aria-label="Tiktok">
           <img loading="lazy"
             src="https://cdn.builder.io/api/v1/image/assets/TEMP/3607abf1fa88fd120d941c5e99b8e4bb76763247b76cd8982cfbb664d0cf5113"
             class="object-contain shrink-0 w-8 aspect-square" alt="" />
         </a>
       @endif
       @if ($datosgenerales->youtube)
-        <a href="{{ $datosgenerales->youtube }}" aria-label="YouTube">
-          <img loading="lazy"
-            src="https://cdn.builder.io/api/v1/image/assets/TEMP/5fc26ec50783276560ca9943a64bd811beb64489abceec1aa5a530ee4cd62991"
-            class="object-contain shrink-0 w-8 aspect-square" alt="" />
-        </a>
+        <a target="_blank" href="{{ $datosgenerales->youtube }}" class='text-center' aria-label="YouTube">
+          <i class="fa-brands fa-youtube text-lg w-8 bg-[#fa080c] text-white rounded-full p-1.5"></i></a>
       @endif
+      @if ($datosgenerales->twitter)
+        <a target="_blank" href="{{ $datosgenerales->twitter }}" class='text-center' aria-labe="twitter">
+          <i class="fa-brands fa-x-twitter text-lg w-8 bg-[#fa080c] text-white rounded-full p-1.5"></i></a>
+      @endif
+
     </div>
   </div>
 </footer>

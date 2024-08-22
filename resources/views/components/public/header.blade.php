@@ -154,7 +154,7 @@
       </li>
       @if ($blog > 0)
         <li>
-          <a href="/blog/0"
+          <a href="/blog"
             class="text-[#272727] font-medium font-poppins text-sm py-2 px-3 block hover:opacity-75 transition-opacity duration-300 {{ $pagina == 'contacto' ? 'text-[#FF5E14]' : '' }}">
             <span class="underline-this">
               <svg
@@ -316,7 +316,7 @@
               <span class="underline-this">Eventos </span>
             </a> --}}
             @if ($blog > 0)
-              <a href="#" class="font-medium hover:opacity-75 ">
+              <a href="/blog" class="font-medium hover:opacity-75 ">
                 <span class="underline-this">Blog </span>
               </a>
             @endif
