@@ -428,7 +428,7 @@ const CursoDetalle = ({ producto, url_env }) => {
                 <img loading="lazy"
                   src="https://cdn.builder.io/api/v1/image/assets/TEMP/25fd0fa9e16611447f71de6665b5e2da08b305774b61b232d6688e6c7f2503c2?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f"
                   className="object-contain shrink-0 self-stretch my-auto w-5 aspect-square" />
-                <div className="self-stretch my-auto">¡Quedan 2 días a este precio!</div>
+                <div className="self-stretch my-auto">{producto.offer_message}</div>
               </div>
             </div>
             <div className="mt-6 w-full border border-white border-solid min-h-[1px]"></div>
