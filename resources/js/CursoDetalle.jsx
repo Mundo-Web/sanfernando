@@ -92,7 +92,7 @@ const CursoDetalle = ({ producto, url_env }) => {
                   <img loading="lazy"
                     src="https://cdn.builder.io/api/v1/image/assets/TEMP/b1ffced907665d1171bcfd755af982685998caa1b7c77cf6aaa284d071c45939?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f"
                     className="object-contain shrink-0 self-stretch my-auto w-3.5 aspect-square" />
-                  <div className="self-stretch my-auto">Cursos</div>
+                  <div className="self-stretch my-auto">Programas</div>
                   <img loading="lazy"
                     src="https://cdn.builder.io/api/v1/image/assets/TEMP/b1ffced907665d1171bcfd755af982685998caa1b7c77cf6aaa284d071c45939?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f"
                     className="object-contain shrink-0 self-stretch my-auto w-3.5 aspect-square" />
