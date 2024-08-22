@@ -89,17 +89,20 @@ const CursoDetalle = ({ producto, url_env }) => {
                 <div
                   className="flex flex-wrap gap-2 items-center w-full text-sm tracking-normal leading-loose text-slate-400 max-md:max-w-full">
                   <div className="self-stretch my-auto">Home</div>
-                  <img loading="lazy"
+                  <i className='fas fa-angle-right'></i>
+                  {/* <img loading="lazy"
                     src="https://cdn.builder.io/api/v1/image/assets/TEMP/b1ffced907665d1171bcfd755af982685998caa1b7c77cf6aaa284d071c45939?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f"
-                    className="object-contain shrink-0 self-stretch my-auto w-3.5 aspect-square" />
+                    className="object-contain shrink-0 self-stretch my-auto w-3.5 aspect-square" /> */}
                   <div className="self-stretch my-auto">Programas</div>
-                  <img loading="lazy"
+                  <i className='fas fa-angle-right'></i>
+                  {/* <img loading="lazy"
                     src="https://cdn.builder.io/api/v1/image/assets/TEMP/b1ffced907665d1171bcfd755af982685998caa1b7c77cf6aaa284d071c45939?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f"
-                    className="object-contain shrink-0 self-stretch my-auto w-3.5 aspect-square" />
+                    className="object-contain shrink-0 self-stretch my-auto w-3.5 aspect-square" /> */}
                   <div className="self-stretch my-auto">Categoria</div>
-                  <img loading="lazy"
+                  <i className='fas fa-angle-right'></i>
+                  {/* <img loading="lazy"
                     src="https://cdn.builder.io/api/v1/image/assets/TEMP/b1ffced907665d1171bcfd755af982685998caa1b7c77cf6aaa284d071c45939?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f"
-                    className="object-contain shrink-0 self-stretch my-auto w-3.5 aspect-square" />
+                    className="object-contain shrink-0 self-stretch my-auto w-3.5 aspect-square" /> */}
                   <div className="self-stretch my-auto font-medium">
 
                     {producto?.category?.name ?? ''}
