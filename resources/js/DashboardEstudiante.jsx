@@ -44,7 +44,7 @@ const DashboardEstudiante = ({ session, general, finishedCourses, courses, Wishl
 											<div className="flex flex-col self-stretch my-auto w-full">
 												<div
 													className="text-2xl font-semibold tracking-tight leading-none text-neutral-800">
-													{session.name}
+													{session.name} {session.lastname} {console.log(session)}
 												</div>
 												<div className="text-base text-gray-600">Estudiante</div>
 											</div>

@@ -102,9 +102,10 @@ const HistorialEstudiante = () => {
                   {item.detalle_sale.map((detalle, index) => (
                     <div key={index} className="flex flex-wrap gap-10 justify-center items-center w-full max-md:max-w-full">
                       <div className="flex gap-5 items-start self-stretch my-auto min-w-[240px] max-md:max-w-full">
+
                         <img
                           loading="lazy"
-                          src={`/${detalle.product_image}`}
+                          src={`/${detalle.product.imagen}`}
                           alt="Course thumbnail"
                           className="object-cover shrink-0 aspect-square w-[120px] shadow-xl"
                         />

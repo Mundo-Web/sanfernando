@@ -15,7 +15,7 @@ import FilterPagination from './components/Filter/FilterPagination'
 import axios from 'axios';
 
 
-const CatalogoGP = ({ productos, env_url, userIsLogged }) => {
+const CatalogoGP = ({ productos, env_url, userIsLogged, Wishlist }) => {
 
   const [isListVisible, setIsListVisible] = useState(false)
   // const query = useRef({ query: '', order: '' });
@@ -24,7 +24,9 @@ const CatalogoGP = ({ productos, env_url, userIsLogged }) => {
   const query = useRef({ query: '', order: '', category: GET.category ?? '' });
   const [items, setItems] = useState();
 
-  console.log(query.current)
+  const deseosactivos = Wishlist.map((item) => item.product_id)
+
+
 
 
 
@@ -214,8 +216,10 @@ const CatalogoGP = ({ productos, env_url, userIsLogged }) => {
 
         <div className="flex flex-col justify-center items-center lg:col-span-4">
           <div className="grid grid-cols-1 md:grid-cols-3  w-full gap-12  pb-12">
+
             {items?.map((producto, index) => {
-              return <Curse key={index} producto={producto} env_url={env_url} userIsLogged={userIsLogged} />
+              let deseoActivo = deseosactivos.includes(producto.id) ? producto.wishlist = true : producto.wishlist = false
+              return <Curse key={index} producto={producto} env_url={env_url} userIsLogged={userIsLogged} deseoActivo={deseoActivo} />
             })}
 
 

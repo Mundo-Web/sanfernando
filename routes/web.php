@@ -96,7 +96,9 @@ Route::post('guardarUserNewsLetter', [NewsletterSubscriberController::class, 'gu
 
 Route::get('/confirm-email/{token}', [AuthController::class, 'confirmEmailView'])->name('ConfirmEmail.jsx');
 Route::get('/confirmation/{token}', [AuthController::class, 'loginView']);
-
+ Route::get('/mailing', function () {
+     return view('public.mailing');
+ });
 
 Route::middleware(['auth:sanctum', 'verified', 'can:Admin'])->group(function () {
 
