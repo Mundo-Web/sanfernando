@@ -3,6 +3,7 @@
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\ModuleController;
 use App\Http\Controllers\ProductsController;
+use App\Http\Controllers\SignController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -25,6 +26,7 @@ Route::get('/ofertas/{id?}', [IndexController::class, 'ofertas'])->name('Ofertas
 Route::middleware(['auth:sanctum', 'verified', 'can:Admin'])->group(function () {
   Route::prefix('admin')->group(function () {
     Route::get('/modules', [ModuleController::class, 'reactView'])->name('Admin/Modules.jsx');
+    Route::get('/signs', [SignController::class, 'reactView'])->name('Admin/Signs.jsx');
     Route::get('/products2', [ProductsController::class, 'reactView'])->name('Admin/Products.jsx');
   });
 });

@@ -13,7 +13,8 @@ return new class extends Migration
     {
         Schema::create('signs', function (Blueprint $table) {
             $table->id();
-            $table->string('sign_path');
+            $table->string('correlative');
+            $table->string('sign_path')->nullable();
             $table->string('name');
             $table->string('occupation');
             $table->timestamps();

@@ -37,41 +37,24 @@ class LogosClientController extends Controller
 
     if ($request->hasFile("imagen")) {
 
-      $manager = new ImageManager(new Driver());
+      $manager = new ImageManager(Driver::class);
 
       $nombreImagen = Str::random(10) . '_' . $request->file('imagen')->getClientOriginalName();
 
-      // Cambia 'read' por 'make' para manejar la imagen correctamente
-      $img = $manager->make($request->file('imagen'));
+      $img =  $manager->read($request->file('imagen'));
 
-      //seteamos el tamaño que deben tener las imágenes que se suban
-      $qwidth = 808;
-      $qheight = 445;
-
-      // Obtener las dimensiones de la imagen que se está subiendo
-      $width = $img->width();
-      $height = $img->height();
-
-      if ($width > $height) {
-        // Si la imagen es horizontal, igualamos el alto y croppeamos
-        $img->resize(null, 445, function ($constraint) {
-          $constraint->aspectRatio();
-        })->crop(808, 445);
-      } else {
-        // Si la imagen es vertical, igualamos el ancho y croppeamos
-        $img->resize(808, null, function ($constraint) {
-          $constraint->aspectRatio();
-        })->crop(808, 445);
-      }
+      // Obtener las dimensiones de la imagen que se esta subiendo
+      // $img->coverDown(640, 640, 'center');
 
       $ruta = 'storage/images/logos/';
+
       if (!file_exists($ruta)) {
-        mkdir($ruta, 0777, true); // Crea la ruta si no existe
+        mkdir($ruta, 0777, true); // Se crea la ruta con permisos de lectura, escritura y ejecución
       }
 
       $img->save($ruta . $nombreImagen);
 
-      $post->url_image = $ruta . $nombreImagen;
+      $post->url_image = $ruta.$nombreImagen;
     }
 
     $post->title = $request->title;

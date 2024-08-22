@@ -33,6 +33,7 @@ class DatabaseSeeder extends Seeder
             ModuleSeeder::class,
             QuestionSeeder::class,
             AnswerSeeder::class,
+            SignSeeder::class,
         ]);
     }
 }

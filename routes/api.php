@@ -14,6 +14,7 @@ use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\SaleController;
 use App\Http\Controllers\SaleDetailController;
+use App\Http\Controllers\SignController;
 use App\Http\Controllers\SourceController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -94,4 +95,6 @@ Route::middleware(['web', 'auth:sanctum', 'verified'])->group(function () {
     Route::get('/certificate/{attempId}', [AttempController::class, 'certificate']);
     
     Route::post('/attemp-details', [AttempDetailController::class, 'save']);
+
+    Route::post('/signs', [SignController::class, 'save']);
 });
