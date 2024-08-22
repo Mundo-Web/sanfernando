@@ -30,9 +30,9 @@ class DatabaseSeeder extends Seeder
             IconsTableSeeder::class,
             TestimonySeeder::class,
             // productosCursosSeeder::class,
-            ModuleSeeder::class,
-            QuestionSeeder::class,
-            AnswerSeeder::class,
+            // ModuleSeeder::class,
+            // QuestionSeeder::class,
+            // AnswerSeeder::class,
             SignSeeder::class,
         ]);
     }
