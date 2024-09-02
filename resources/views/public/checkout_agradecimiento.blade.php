@@ -47,16 +47,16 @@
                   </div>
                 </div>
 
-                <div class="flex flex-col gap-5">
-                  <div>
+                <div class="flex flex-col gap-5 mt-4">
+                  <div class="text-center">
                     <a href="{{ route('CatalogoGP.jsx') }}"
-                      class="text-white bg-red-400 hover:bg-red-800 w-full max-w-md py-3 rounded-2xl cursor-pointer font-semibold text-[16px] inline-block text-center transition duration-300 ease-in-out">Seguir
+                      class="text-white bg-red-400 hover:bg-red-800 w-full max-w-md py-3 rounded-2xl cursor-pointer font-semibold text-[16px] inline-block text-center transition duration-300 ease-in-out mx-auto">Seguir
                       comprando</a>
                   </div>
 
-                  <div>
+                  <div class="text-center">
                     <a href="/micuenta#historial"
-                      class="text-white bg-red-400  hover:bg-red-800 w-full max-w-md py-3 rounded-2xl cursor-pointer font-semibold text-[16px] inline-block text-center  transition duration-300 ease-in-out">Historial
+                      class="text-white bg-red-400  hover:bg-red-800 w-full max-w-md py-3 rounded-2xl cursor-pointer font-semibold text-[16px] inline-block text-center  transition duration-300 ease-in-out mx-auto">Historial
                       de compras</a>
                   </div>
                 </div>

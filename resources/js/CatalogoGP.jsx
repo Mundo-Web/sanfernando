@@ -101,7 +101,7 @@ const CatalogoGP = ({ productos, env_url, userIsLogged, Wishlist }) => {
       <div className="flex flex-col px-[8%] py-10 w-full max-md:px-5 max-md:max-w-full">
         <div className="flex flex-col w-full max-md:max-w-full">
           <h1 className="text-2xl lg:text-3xl font-semibold leading-tight text-neutral-800 max-md:max-w-full">
-            Nuestros Cursos y Diplomados
+            Nuestros Programas
           </h1>
           <div className="flex flex-wrap gap-5 lg:gap-10 justify-between items-center mt-6 w-full max-md:max-w-full">
             <div className="flex flex-col self-stretch my-auto text-base leading-tight text-red-600 min-w-[240px] w-[493px] max-md:max-w-full">

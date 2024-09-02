@@ -3,6 +3,7 @@
   <div class="px-4 sm:px-6 lg:px-8 py-8 w-full max-w-9xl mx-auto">
     <form action="{{ route('logos.store') }}" method="POST" enctype="multipart/form-data">
       @csrf
+      <input type="hidden" name="id" value="{{ $category->id }}">
       <div
         class="col-span-full xl:col-span-8 bg-white dark:bg-slate-800 shadow-lg rounded-sm border border-slate-200 dark:border-slate-700">
         <header class="px-5 py-4 border-b border-slate-100 dark:border-slate-700">
@@ -19,7 +20,7 @@
                   <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                     <i class="text-lg text-gray-500 dark:text-gray-400 fas fa-pen"></i>
                   </div>
-                  <input type="text" id="name" name="name"
+                  <input type="text" id="name" name="name" value="{{ $category->name }}"
                     class="mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     placeholder="Nombre">
                 </div>
@@ -33,14 +34,16 @@
                   </div>
                   <textarea type="text" rows="2" id="description" name="description" value=""
                     class="mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                    placeholder="Descripción"></textarea>
+                    placeholder="Descripción">{{ $category->description }}</textarea>
                 </div>
               </div>
 
               <div class="md:col-span-5">
                 <label for="imagen">Subir una Foto</label>
                 <div class="relative mb-2  mt-2 flex flex-wrap items-center gap-2">
-                  <img class="block w-40 h-40 mb-2" src="{{ asset('images/img/image-plus.jpg') }}" alt="">
+                  <img class="block w-40 h-40 mb-2"
+                    src="{{ $category->name_image ? asset($category->url_image . $category->name_image) : asset('images/img/image-plus.jpg') }}"
+                    alt="">
                   <input name="imagen"
                     class="p-2.5 block w-max text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
                     aria-describedby="user_avatar_help" id="user_avatar" type="file">

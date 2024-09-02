@@ -45,7 +45,8 @@ class Products extends Model
     'temario',
     'incluye',
     'que_lograras',
-    'brochure_url'
+    'brochure_url',
+    'offer_message'
     // 'precio_reseller'
   ];
 

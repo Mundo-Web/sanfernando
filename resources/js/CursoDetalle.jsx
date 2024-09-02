@@ -89,17 +89,20 @@ const CursoDetalle = ({ producto, url_env }) => {
                 <div
                   className="flex flex-wrap gap-2 items-center w-full text-sm tracking-normal leading-loose text-slate-400 max-md:max-w-full">
                   <div className="self-stretch my-auto">Home</div>
-                  <img loading="lazy"
+                  <i className='fas fa-angle-right'></i>
+                  {/* <img loading="lazy"
                     src="https://cdn.builder.io/api/v1/image/assets/TEMP/b1ffced907665d1171bcfd755af982685998caa1b7c77cf6aaa284d071c45939?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f"
-                    className="object-contain shrink-0 self-stretch my-auto w-3.5 aspect-square" />
-                  <div className="self-stretch my-auto">Cursos</div>
-                  <img loading="lazy"
+                    className="object-contain shrink-0 self-stretch my-auto w-3.5 aspect-square" /> */}
+                  <div className="self-stretch my-auto">Programas</div>
+                  <i className='fas fa-angle-right'></i>
+                  {/* <img loading="lazy"
                     src="https://cdn.builder.io/api/v1/image/assets/TEMP/b1ffced907665d1171bcfd755af982685998caa1b7c77cf6aaa284d071c45939?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f"
-                    className="object-contain shrink-0 self-stretch my-auto w-3.5 aspect-square" />
+                    className="object-contain shrink-0 self-stretch my-auto w-3.5 aspect-square" /> */}
                   <div className="self-stretch my-auto">Categoria</div>
-                  <img loading="lazy"
+                  <i className='fas fa-angle-right'></i>
+                  {/* <img loading="lazy"
                     src="https://cdn.builder.io/api/v1/image/assets/TEMP/b1ffced907665d1171bcfd755af982685998caa1b7c77cf6aaa284d071c45939?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f"
-                    className="object-contain shrink-0 self-stretch my-auto w-3.5 aspect-square" />
+                    className="object-contain shrink-0 self-stretch my-auto w-3.5 aspect-square" /> */}
                   <div className="self-stretch my-auto font-medium">
 
                     {producto?.category?.name ?? ''}
@@ -423,13 +426,16 @@ const CursoDetalle = ({ producto, url_env }) => {
 
 
               </div>
-              <div
-                className="flex gap-2 justify-center items-center self-start mt-3 text-sm font-medium tracking-normal leading-none text-red-600">
-                <img loading="lazy"
-                  src="https://cdn.builder.io/api/v1/image/assets/TEMP/25fd0fa9e16611447f71de6665b5e2da08b305774b61b232d6688e6c7f2503c2?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f"
-                  className="object-contain shrink-0 self-stretch my-auto w-5 aspect-square" />
-                <div className="self-stretch my-auto">¡Quedan 2 días a este precio!</div>
-              </div>
+              {
+                producto.offer_message &&
+                <div
+                  className="flex gap-2 justify-center items-center self-start mt-3 text-sm font-medium tracking-normal leading-none text-red-600">
+                  <img loading="lazy"
+                    src="https://cdn.builder.io/api/v1/image/assets/TEMP/25fd0fa9e16611447f71de6665b5e2da08b305774b61b232d6688e6c7f2503c2?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f"
+                    className="object-contain shrink-0 self-stretch my-auto w-5 aspect-square" />
+                  <div className="self-stretch my-auto">{producto.offer_message}</div>
+                </div>
+              }
             </div>
             <div className="mt-6 w-full border border-white border-solid min-h-[1px]"></div>
             <div className="flex flex-col px-6 mt-6 w-full max-md:pl-5">

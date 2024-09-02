@@ -173,6 +173,7 @@ return [
         Spatie\Permission\PermissionServiceProvider::class,
         Anhskohbo\NoCaptcha\NoCaptchaServiceProvider::class,
         SimpleSoftwareIO\QrCode\QrCodeServiceProvider::class,
+        // Intervention\Image\ImageServiceProvider::class,
        
 
         
@@ -199,6 +200,7 @@ return [
         //Add Image Intervention
         //'Image' => Intervention\Image\Facades\Image::class,
         'QrCode' => SimpleSoftwareIO\QrCode\Facades\QrCode::class,
+        // 'Image' => Intervention\Image\Facades\Image::class,
     ])->toArray(),
 
 ];

@@ -11,13 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('signs', function (Blueprint $table) {
-            $table->id();
-            $table->string('correlative');
-            $table->string('sign_path')->nullable();
-            $table->string('name');
-            $table->string('occupation');
-            $table->timestamps();
+        Schema::table('products', function (Blueprint $table) {
+            $table->string('offer_message')->default('¡Quedan 2 días a este precio!');
         });
     }
 
@@ -26,6 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('signs');
+        Schema::table('products', function (Blueprint $table) {
+            $table->dropColumn('offer_message');
+        });
     }
 };

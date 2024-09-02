@@ -14,7 +14,7 @@
         "culqi/culqi-php": "*",
         "guzzlehttp/guzzle": "^7.2",
         "inertiajs/inertia-laravel": "^1.3",
-        "intervention/image": "*",
+        "intervention/image": "^3.8",
         "laravel/framework": "^10.10",
         "laravel/jetstream": "^4.2",
         "laravel/sanctum": "^3.3",

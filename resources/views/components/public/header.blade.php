@@ -294,7 +294,7 @@
             </a>
 
             <a id="productos-link" href="{{ route('CatalogoGP.jsx') }}" class="font-medium ">
-              <span class="underline-this">Cursos</span>
+              <span class="underline-this">Programas</span>
               {{-- <div id="productos-link-h" class="w-0"></div> --}}
 
             </a>
