@@ -231,9 +231,14 @@ const CursoDetalle = ({ producto, url_env }) => {
             </div>
 
 
-            <div className="flex flex-col mt-10 w-full max-md:max-w-full">
+            {producto.que_lograras && (<div className="flex flex-col mt-10 w-full max-md:max-w-full">
+              <div className="text-2xl font-bold leading-tight text-neutral-800">
+                ¿Qué lograrás una vez terminado el Diplomado?
+
+              </div>
               <div dangerouslySetInnerHTML={{ __html: producto?.que_lograras ?? '' }}></div>
-            </div>
+            </div>)}
+
 
             <div className="flex flex-col mt-10 w-full max-md:max-w-full">
               <div className="text-2xl font-bold leading-tight text-neutral-800">
@@ -479,7 +484,8 @@ const CursoDetalle = ({ producto, url_env }) => {
             <div className="mt-6 w-full border border-white border-solid min-h-[1px]"></div>
             <div className="flex flex-col px-6 mt-6 w-full">
               <div className="text-sm font-medium leading-loose text-neutral-800">
-                Comparte este curso:
+
+                Comparte este {producto.category.name ?? 'Curso'}:
               </div>
               <div className="flex flex-col mt-4 w-full">
                 <div className="flex gap-3 items-center w-full">
