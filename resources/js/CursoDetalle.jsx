@@ -25,6 +25,15 @@ const CursoDetalle = ({ producto, url_env }) => {
   const incluye = producto?.incluye ? JSON.parse(producto.incluye) : [];
   const temario = producto?.temario ? JSON.parse(producto.temario) : [];
 
+  const removeLastS = (str) => {
+    if (!str || typeof str !== 'string') return str;
+    const lastChar = str.slice(-1);
+    if (lastChar === 'S' || lastChar === 's') {
+      return str.slice(0, -1);
+    }
+    return str;
+  };
+
   return (
     <>
       <main className="z-[15] !font-poppins_regular mb-8">
@@ -485,7 +494,7 @@ const CursoDetalle = ({ producto, url_env }) => {
             <div className="flex flex-col px-6 mt-6 w-full">
               <div className="text-sm font-medium leading-loose text-neutral-800">
 
-                Comparte este {producto.category.name ?? 'Curso'}:
+                Comparte este {removeLastS(producto.category.name) ?? 'Curso'}:
               </div>
               <div className="flex flex-col mt-4 w-full">
                 <div className="flex gap-3 items-center w-full">
