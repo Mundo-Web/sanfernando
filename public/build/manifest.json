@@ -93,7 +93,7 @@
     ]
   },
   "resources/css/app.css": {
-    "file": "assets/app-xv6gfEZa.css",
+    "file": "assets/app-2nal26ML.css",
     "isEntry": true,
     "src": "resources/css/app.css"
   },
@@ -175,7 +175,7 @@
     "src": "resources/js/Catalogo.jsx"
   },
   "resources/js/CatalogoGP.jsx": {
-    "file": "assets/CatalogoGP-wTycW7EU.js",
+    "file": "assets/CatalogoGP-mmnJNNiX.js",
     "imports": [
       "resources/js/Utils/InitialsImage.jsx",
       "_index-TT1qJ6UJ.js",

@@ -139,7 +139,7 @@ const CatalogoGP = ({ productos, env_url, userIsLogged, Wishlist, categorias }) 
                           onClick={(e) => handleCategoryChange(item.id, e.target.previousSibling.checked)}
                           htmlFor={`react-option-${index}`}
                           type="button"
-                          className="text-black bg-white border border-red-700 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2 text-center me-2 mb-2  peer-checked:bg-red-700 peer-checked:text-white "
+                          className="text-red-700 font-bold bg-white border-2 border-red-700 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800  rounded-lg text-sm px-5 py-2 text-center me-2 mb-2  peer-checked:bg-red-700 peer-checked:text-white "
                         >
                           {item.name}
                         </label>
