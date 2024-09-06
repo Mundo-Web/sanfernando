@@ -64,7 +64,7 @@ class AttempController extends BasicController
                 ->setPaper('a4', 'landscape');
             return $pdf->download('Certificado de finalización - ' . $attemp->evaluation->course->producto . '.pdf');
         } catch (\Throwable $th) {
-            dump($th->getMessage());
+            
         }
     }
 
@@ -74,7 +74,7 @@ class AttempController extends BasicController
             $attemp = Attemp::with(['evaluation.course'])->find($attempId);
             return view('pdf.certificate')->with('attemp', $attemp);
         } catch (\Throwable $th) {
-            dump($th->getMessage());
+            // dump($th->getMessage());
         }
     }
 }

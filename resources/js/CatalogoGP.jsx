@@ -21,7 +21,7 @@ const CatalogoGP = ({ productos, env_url, userIsLogged, Wishlist, categorias }) 
   // const query = useRef({ query: '', order: '' });
   // const [query, setQuery] = useState({ query: GET.search ?? '', order: '' });
 
-  const query = useRef({ query: '', order: '', category: GET.category ?? '' });
+  const query = useRef({ query: '', order: '', category: GET.category ?? '', tag: GET.tag ?? '' });
   const [items, setItems] = useState();
 
   const deseosactivos = Wishlist.map((item) => item.product_id)
@@ -49,7 +49,7 @@ const CatalogoGP = ({ productos, env_url, userIsLogged, Wishlist, categorias }) 
     let query2 = query.current
 
     try {
-      const response = await axios.post(`/buscar?query=${query2.query}&order=${query2.order}&&category=${query2.category}`, {
+      const response = await axios.post(`/buscar?query=${query2.query}&order=${query2.order}&&category=${query2.category}&&tag=${query2.tag}`, {
         skip: take * (currentPage - 1),
         requireTotalCount: true,
         take
@@ -139,7 +139,7 @@ const CatalogoGP = ({ productos, env_url, userIsLogged, Wishlist, categorias }) 
                           onClick={(e) => handleCategoryChange(item.id, e.target.previousSibling.checked)}
                           htmlFor={`react-option-${index}`}
                           type="button"
-                          className="text-white bg-gradient-to-r from-red-500 via-red-600 to-red-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2 text-center me-2 mb-2 peer-checked:border-slate-900 peer-checked:from-slate-900 peer-checked:via-slate-900 peer-checked:to-slate-900 dark:peer-checked:bg-blue-800"
+                          className="text-black bg-white border border-red-700 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2 text-center me-2 mb-2  peer-checked:bg-red-700 peer-checked:text-white "
                         >
                           {item.name}
                         </label>

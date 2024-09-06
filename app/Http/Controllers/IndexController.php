@@ -82,7 +82,7 @@ class IndexController extends Controller
     $productos =  Products::with(['tags', 'galeria', 'category'])->where('status', 1)->take(12)->get();
 
     $categorias = Category::select('categories.*')
-    ->join('products', 'products.categoria_id', 'categories.id')
+      ->join('products', 'products.categoria_id', 'categories.id')
       ->where('categories.visible', 1)
       ->where('products.status', 1)
       ->groupBy('categories.id')
@@ -759,7 +759,9 @@ class IndexController extends Controller
     $query = $request->input('query');
     $order = $request->input('order');
     $categoria =  $request->input('category');
-    
+
+    $tag = $request->input('tag');
+
 
     $resultados = Products::select('products.*')
       ->where('producto', 'like', "%$query%")
@@ -767,17 +769,22 @@ class IndexController extends Controller
       ->where('categories.visible', 1)->where('products.status', 1)
       ->with(['tags', 'galeria', 'category']);
 
-      dump($categoria);
-      if(isset($categoria)){
-        $categoriaSplit = explode(',', $categoria); 
-      dump($categoriaSplit);
-    if(count($categoriaSplit) > 0){
-      $resultados = $resultados->whereIn('products.categoria_id', $categoriaSplit);
-    }
-      }
+    
+    if (isset($categoria)) {
+      $categoriaSplit = explode(',', $categoria);
       
+      if (count($categoriaSplit) > 0) {
+        $resultados = $resultados->whereIn('products.categoria_id', $categoriaSplit);
+      }
+    }
 
-   /*  if ($categoria == 'courses') {
+    if (isset($tag)){
+      $tagsxProducts = DB::table('tags_xproducts')->select('producto_id')->where('tag_id', $tag)->get()->pluck('producto_id');
+      
+      $resultados = $resultados->whereIn('products.id', $tagsxProducts);
+    }
+
+    /*  if ($categoria == 'courses') {
       $resultados = $resultados->where('categoria_id', 1);
     } else if ($categoria == 'diploma') {
       $resultados = $resultados->where('categoria_id', 2);
