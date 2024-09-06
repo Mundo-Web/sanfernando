@@ -46,8 +46,7 @@
     .logo-image {
       object-fit: contain;
       object-position: center;
-      height: 95px;
-      width: auto;
+      width: 90px;
     }
 
     .text-container {
@@ -222,11 +221,6 @@
               <p class="signature-name" style="margin: 0; border-top: 1px solid #333; padding-top: 10px">Patricia
                 Heredia Olivera</p>
               <p class="signature-title" style="margin: 0">Gerente General</p>
-            </td>
-            <td align="center" style="padding: 0 40px">
-              <p class="signature-name" style="margin: 0; border-top: 1px solid #333; padding-top: 10px">Edwin Chichipe
-                Salazar</p>
-              <p class="signature-title" style="margin: 0">Sub. Gerente Académico</p>
             </td>
             <td align="center" style="padding: 0 40px">
               <p class="signature-name" style="margin: 0; border-top: 1px solid #333; padding-top: 10px">Edwin Chichipe
