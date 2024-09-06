@@ -81,11 +81,11 @@ class IndexController extends Controller
     $Wishlist = [];
     $productos =  Products::with(['tags', 'galeria', 'category'])->where('status', 1)->take(12)->get();
 
-    $categorias = Category::select('categories.*')
+    $categorias = Category::select('categories.id', 'categories.name', 'categories.visible')
       ->join('products', 'products.categoria_id', 'categories.id')
       ->where('categories.visible', 1)
       ->where('products.status', 1)
-      ->groupBy('categories.id')
+      ->groupBy('categories.id', 'categories.name', 'categories.visible')
       ->get();
 
     //check if user is logged in
