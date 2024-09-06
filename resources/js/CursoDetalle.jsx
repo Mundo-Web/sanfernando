@@ -474,10 +474,7 @@ const CursoDetalle = ({ producto, url_env }) => {
                   Comprar ahora
                 </div>
               </div>
-              <div className="mt-3 text-xs tracking-normal leading-5 text-neutral-800">
-                Nota: todos los cursos tienen garantía de devolución de dinero de 30
-                días.
-              </div>
+
             </div>
             <div className="mt-6 w-full border border-white border-solid min-h-[1px]"></div>
             <div className="flex flex-col px-6 mt-6 w-full">
