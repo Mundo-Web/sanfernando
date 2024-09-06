@@ -230,6 +230,11 @@ const CursoDetalle = ({ producto, url_env }) => {
               <div dangerouslySetInnerHTML={{ __html: producto?.description2 ?? '' }}></div>
             </div>
 
+
+            <div className="flex flex-col mt-10 w-full max-md:max-w-full">
+              <div dangerouslySetInnerHTML={{ __html: producto?.que_lograras ?? '' }}></div>
+            </div>
+
             <div className="flex flex-col mt-10 w-full max-md:max-w-full">
               <div className="text-2xl font-bold leading-tight text-neutral-800">
                 ¿Por qué elegir a EGESPP?
