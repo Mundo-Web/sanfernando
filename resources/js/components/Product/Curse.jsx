@@ -70,7 +70,7 @@ const Curse = ({ producto, userIsLogged, deseoActivo = false }) => {
           <div className="flex flex-row gap-2 items-center justify-start  mt-2">
             {/* <img loading="lazy" src={`${imgcalendario}`} className="object-contain w-6 " alt="Calendar icon" /> */}
             <i className='fa fa-calendar text-lg' style={{ color: '#e02424' }}></i>
-            <p>Inicio: {producto.fecha_inicio ? producto.fecha_inicio : 'Próximamente'}</p>
+            <p>Inicio: {producto.fecha_inicio ? moment(producto.fecha_inicio).format('LL') : 'Próximamente'}</p>
           </div>
         </div>
       </div>
