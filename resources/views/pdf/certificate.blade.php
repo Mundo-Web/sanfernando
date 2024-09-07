@@ -17,10 +17,10 @@
 <body class="bg-white">
 
   <div style="margin-left: auto; margin-right: auto;">
-    <div style="width: 1000px; height: 700px; display: flex; margin-left: auto; margin-right: auto; margin-top: 2.5rem; margin-bottom: 2.5rem;">
-        <div style="width: 150px; height: 100%; background-color: #CF072C; border-top-right-radius: 50px; background-size: cover; background-image: url({{asset('images/img/fondoizquierdo.png')}});">
+    <div style="width: 800px; height: 700px; display: flex; margin-left: auto; margin-right: auto; margin-top: 2.5rem; margin-bottom: 2.5rem;">
+        <div style="width: 100px; height: 100%; background-color: #CF072C; border-top-right-radius: 50px; background-size: cover; background-image: url({{asset('images/img/fondoizquierdo.png')}});">
         </div>
-        <div style="width: 850px; height: 100%; padding-left: 5rem; padding-right: 5rem; padding-top: 2.5rem; padding-bottom: 2.5rem; position: relative;">
+        <div style="width: 700px; height: 100%; padding-left: 5rem; padding-right: 5rem; padding-top: 2.5rem; padding-bottom: 2.5rem; position: relative;">
             <div style="display: flex; flex-direction: column; gap: 3rem; align-items: flex-start; justify-content: center;">
                 <div style="display: flex; flex-direction: row; justify-content: space-between; width: 100%; align-items: center;">
                     <div style="width: 200px;">
