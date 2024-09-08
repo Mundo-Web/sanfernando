@@ -14,7 +14,7 @@
 .container {
   margin-left: auto;
   margin-right: auto;
-  display: flex;
+  /*display: flex;*/
   justify-content: center;
   align-items: center; /* Centra verticalmente si es necesario */
   height: 100vh; /* O asegurarte de que ocupe el 100% del viewport */
