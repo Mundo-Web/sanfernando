@@ -196,8 +196,8 @@
     
      <tbody class="diploma">
         <tr>
-            <td class="diploma-left" align="left"></td>
-            <td class="diploma-right" align="right">
+            <td class="diploma-left"></td>
+            <td class="diploma-right">
                     <table style="width: 100%">
                         <tbody>
                         <tr>
