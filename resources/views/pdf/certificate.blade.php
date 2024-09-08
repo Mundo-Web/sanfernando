@@ -21,7 +21,7 @@
 }
 
 .diploma {
-  width: 800px;
+  width: 1000px;
   height: 700px;
   display: flex;
   flex-wrap: nowrap;
@@ -39,7 +39,7 @@
 }
 
 .diploma-right {
-  width: calc(100% - 150px);
+  width: 850px;
   height: 100%;
   padding: 2rem;
   display: inline;
