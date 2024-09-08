@@ -21,7 +21,7 @@
 }
 
 .diploma {
-  width: 1000px;
+  width: 800px;
   height: 700px;
   display: flex;
   flex-wrap: nowrap;
