@@ -3,62 +3,223 @@ import CreateReactScript from './Utils/CreateReactScript'
 import { createRoot } from 'react-dom/client'
 
 const Diploma = () => {
-const imgPlay = 'images/img/logorojodiploma.png';
-const qrprueba = 'images/img/qrprueba.png';
-const fondoizquierdo = 'images/img/fondoizquierdo.png';
-const puntosderecha = 'images/img/puntosderecha.png';
-const certif = 'images/img/certif.png';
-return (<>
-    <div className='mx-auto'>
-        <div className='w-[800px] h-[600px] flex mx-auto my-10'>
-            <div className='w-[100px] h-full bg-[#CF072C] rounded-tr-[50px] bg-cover' style={{ backgroundImage: `url(${fondoizquierdo})` }}>
-
-            </div>
-
-            <div className='w-[700px] h-full pl-10 pr-20 py-10 relative'>
-                <div className='flex flex-col gap-8 items-start justify-center'>
-                    <div className='flex flex-row justify-between w-full items-center'>
-                        <div className='w-[200px]'>
-                            <img src={imgPlay} alt='logo' className='w-full' />
-                        </div>
-                        <div className='w-[90px]'>
-                            <img src={qrprueba} alt='logo' className='w-full' />
-                        </div>
-                    </div>
-                    <div className='text-[#CF072C] uppercase text-3xl text-center font-bold mx-auto'>
-                        DIPLOMADO EN AUDITORÍA Y CONTROL GUBERNAMENTAL
-                    </div>
-                    <div className='text-lg text-black  px-3 max-w-[700px] text-center  mx-auto'>
-                            En mérito a su participación en nuestro<span
-                            className='uppercase italic font-bold text-2xl'> DIPLOMADO DE AUDITORÍA
-                                Y CONTROL GUBERNAMENTAL.</span>
-                        <br></br>Organizado por EGESPP, con una duracion de 300 horas lectivas del 2024.
-                    </div>
-                    <div className='text-center text-xl font-bold w-full mx-auto'>
-                            Diego Martinez Martinez
-                    </div>
-                    <div className='flex flex-row gap-20 mt-8'>
-                        <div className='text-center text-black text-lg font-bold border-t border-black w-[250px]'>
-                            Gerente General<br></br>
-                            <span className='font-normal text-base'>Patricia Heredia Olivera</span>
-                        </div>
-                        <div className='text-center text-black text-lg font-bold border-t border-black w-[250px]'>
-                            Sub. Gerente Académico<br></br>
-                            <span className='font-normal text-base'>Edwin Chichipe Salazar</span>
-                        </div>
-                    </div>
-                   
+    const imgPlay = 'images/img/logorojodiploma.png';
+    const qrprueba = 'images/img/qrprueba.png';
+    const fondoizquierdo = 'images/img/fondoizquierdo.png';
+    const puntosderecha = 'images/img/puntosderecha.png';
+    const certif = 'images/img/certif.png';
+  
+    return (
+      <>
+        <div style={{ marginLeft: 'auto', marginRight: 'auto' }}>
+          <div
+            style={{
+              width: '1200px',
+              height: '650px',
+              display: 'flex',
+              marginLeft: 'auto',
+              marginRight: 'auto',
+              marginTop: '2.5rem',
+              marginBottom: '2.5rem',
+            }}
+          >
+            <div
+              style={{
+                width: '150px',
+                height: '100%',
+                backgroundColor: '#CF072C',
+                borderTopRightRadius: '50px',
+                backgroundSize: 'cover',
+                backgroundImage: `url(${fondoizquierdo})`,
+              }}
+            ></div>
+            <div
+              style={{
+                width: '1050px',
+                height: '100%',
+                paddingLeft: '5rem',
+                paddingRight: '5rem',
+                paddingTop: '2.5rem',
+                paddingBottom: '2.5rem',
+                position: 'relative',
+              }}
+            >
+              <div
+                style={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  gap: '3rem',
+                  alignItems: 'flex-start',
+                  justifyContent: 'center',
+                }}
+              >
+                <div
+                  style={{
+                    display: 'flex',
+                    flexDirection: 'row',
+                    justifyContent: 'space-between',
+                    width: '100%',
+                    alignItems: 'center',
+                  }}
+                >
+                  <div style={{ width: '200px' }}>
+                    <img
+                      src={imgPlay}
+                      alt="logo"
+                      style={{ width: '100%' }}
+                    />
+                  </div>
+                  <div style={{ width: '90px' }}>
+                    <img src={qrprueba} alt="logo" style={{ width: '100%' }} />
+                  </div>
                 </div>
-                <div className='absolute top-20 right-0'><img src={puntosderecha} alt='logo' className='w-[25px]' /></div>
+                <div
+                  style={{
+                    color: '#CF072C',
+                    textTransform: 'uppercase',
+                    fontSize: '2.25rem',
+                    textAlign: 'center',
+                    fontWeight: 'bold',
+                    marginLeft: 'auto',
+                    marginRight: 'auto',
+                  }}
+                >
+                  DIPLOMADO EN REACT AVANZADO
+                </div>
+                <div
+                  style={{
+                    fontSize: '1.25rem',
+                    color: 'black',
+                    paddingLeft: '0.75rem',
+                    paddingRight: '0.75rem',
+                    maxWidth: '700px',
+                    textAlign: 'center',
+                    marginLeft: 'auto',
+                    marginRight: 'auto',
+                  }}
+                >
+                  En mérito a su participación en nuestro{' '}
+                  <span
+                    style={{
+                      textTransform: 'uppercase',
+                      fontStyle: 'italic',
+                      fontWeight: 'bold',
+                      fontSize: '1.875rem',
+                    }}
+                  >
+                    REACT AVANZADO.
+                  </span>
+                  <br />
+                  Organizado por EGESPP, con una duracion de 300 horas lectivas
+                  del 2024.
+                </div>
+                <div
+                  style={{
+                    textAlign: 'center',
+                    fontSize: '1.875rem',
+                    fontWeight: 'bold',
+                    width: '100%',
+                    marginLeft: 'auto',
+                    marginRight: 'auto',
+                  }}
+                >
+                  DIEGO MARTINEZ RAYME
+                </div>
+                <div
+                  style={{
+                    display: 'flex',
+                    flexDirection: 'row',
+                    gap: '5rem',
+                    marginTop: '4rem',
+                  }}
+                >
+                  <div
+                    style={{
+                      textAlign: 'center',
+                      color: 'black',
+                      fontSize: '1.25rem',
+                      fontWeight: 'bold',
+                      borderTop: '1px solid black',
+                      width: '250px',
+                    }}
+                  >
+                    Gerente General
+                    <br />
+                    <span
+                      style={{
+                        fontWeight: 'normal',
+                        fontSize: '1.125rem',
+                      }}
+                    >
+                      Patricia Heredia Olivera
+                    </span>
+                  </div>
+                  <div
+                    style={{
+                      textAlign: 'center',
+                      color: 'black',
+                      fontSize: '1.25rem',
+                      fontWeight: 'bold',
+                      borderTop: '1px solid black',
+                      width: '250px',
+                    }}
+                  >
+                    Sub. Gerente Académico
+                    <br />
+                    <span
+                      style={{
+                        fontWeight: 'normal',
+                        fontSize: '1.125rem',
+                      }}
+                    >
+                      Edwin Chichipe Salazar
+                    </span>
+                  </div>
+                </div>
+                <div>
+                  <h2 style={{ fontWeight: 600, fontSize: '1.125rem' }}>
+                    Nuestros Convenios
+                  </h2>
+                  <div
+                    style={{
+                      marginTop: '0.75rem',
+                      display: 'flex',
+                      flexDirection: 'row',
+                      gap: '1.25rem',
+                    }}
+                  >
+                    <img
+                      src={certif}
+                      alt="certif_1"
+                      style={{ width: '5rem' }}
+                    />
+                    <img
+                      src={certif}
+                      alt="certif_1"
+                      style={{ width: '5rem' }}
+                    />
+                    <img
+                      src={certif}
+                      alt="certif_1"
+                      style={{ width: '5rem' }}
+                    />
+                  </div>
+                </div>
+              </div>
+              <div style={{ position: 'absolute', top: '5rem', right: 0 }}>
+                <img
+                  src={puntosderecha}
+                  alt="logo"
+                  style={{ width: '25px' }}
+                />
+              </div>
             </div>
+          </div>
         </div>
-    </div>
-
-
-    
-
-</>)
-}
+      </>
+    );
+  };
+  
 
 CreateReactScript((el, properties) => {
 createRoot(el).render(
