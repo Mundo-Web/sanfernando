@@ -187,21 +187,36 @@
 </div>
 
 </body> --}}
-
+ {{-- <img
+                    src="https://api.qrserver.com/v1/create-qr-code/?data={{ rawurlencode(env('APP_NAME') . '/certificate/' . $attemp->id) }}"
+                    alt="Logo" class="logo-image" loading="lazy" /> --}}
 
 <body>
   <div class="container">
     <div class="diploma">
       <div class="diploma-left"></div>
       <div class="diploma-right">
-        <div class="header">
-          <div class="logo">
-            <img src="images/img/logorojodiploma.png" alt="logo" />
-          </div>
-          <div class="qr-code">
-            <img src="images/img/qrprueba.png" alt="QR Code" />
-          </div>
-        </div>
+        <table style="width: 100%">
+            <tbody>
+            <tr>
+                <td align="left" style="vertical-align: middle">
+                    <div class="logo">
+                        <img src="images/img/logorojodiploma.png" alt="logo" />
+                    </div>
+                </td>
+                <td align="right" style="vertical-align: middle; margin-right:25px">
+                    <div class="qr-code">
+                        <img src="images/img/qrprueba.png" alt="QR Code" />
+                    </div>
+                </td>
+               
+            </tr>
+            </tbody>
+       </table>    
+        {{-- <div class="header">
+         
+         
+        </div> --}}
         <div class="title">
           DIPLOMADO EN REACT AVANZADO REACT AVANZADO REACT AVANZADO
         </div>
