@@ -14,13 +14,10 @@ const Diploma = () => {
         <div style={{ marginLeft: 'auto', marginRight: 'auto' }}>
           <div
             style={{
-              width: '1100px',
+              width: '1000px', // Ajusta el ancho para que quepa todo en la página
               height: '700px',
               display: 'flex',
-              marginLeft: 'auto',
-              marginRight: 'auto',
-              marginTop: '2.5rem',
-              marginBottom: '2.5rem',
+              margin: '0', // Elimina márgenes innecesarios
             }}
           >
             <div
@@ -35,12 +32,9 @@ const Diploma = () => {
             ></div>
             <div
               style={{
-                width: '950px',
+                width: '850px', // Ajusta el ancho para que todo encaje
                 height: '100%',
-                paddingLeft: '5rem',
-                paddingRight: '5rem',
-                paddingTop: '2.5rem',
-                paddingBottom: '2.5rem',
+                padding: '2rem', // Ajusta el padding para que sea más compacto
                 position: 'relative',
               }}
             >
@@ -48,7 +42,7 @@ const Diploma = () => {
                 style={{
                   display: 'flex',
                   flexDirection: 'column',
-                  gap: '3rem',
+                  gap: '2rem', // Reduce el gap para que no se extienda demasiado
                   alignItems: 'flex-start',
                   justifyContent: 'center',
                 }}
@@ -92,7 +86,7 @@ const Diploma = () => {
                     color: 'black',
                     paddingLeft: '0.75rem',
                     paddingRight: '0.75rem',
-                    maxWidth: '700px',
+                    maxWidth: '600px', // Reduce el tamaño del texto
                     textAlign: 'center',
                     marginLeft: 'auto',
                     marginRight: 'auto',
@@ -129,8 +123,8 @@ const Diploma = () => {
                   style={{
                     display: 'flex',
                     flexDirection: 'row',
-                    gap: '5rem',
-                    marginTop: '4rem',
+                    gap: '2rem', // Ajusta la separación de los elementos
+                    marginTop: '3rem',
                   }}
                 >
                   <div
@@ -195,18 +189,18 @@ const Diploma = () => {
                     />
                     <img
                       src={certif}
-                      alt="certif_1"
+                      alt="certif_2"
                       style={{ width: '5rem' }}
                     />
                     <img
                       src={certif}
-                      alt="certif_1"
+                      alt="certif_3"
                       style={{ width: '5rem' }}
                     />
                   </div>
                 </div>
               </div>
-              <div style={{ position: 'absolute', top: '5rem', right: 0 }}>
+              <div style={{ position: 'absolute', top: '3rem', right: 0 }}>
                 <img
                   src={puntosderecha}
                   alt="logo"
@@ -219,6 +213,7 @@ const Diploma = () => {
       </>
     );
   };
+
   
 
 CreateReactScript((el, properties) => {
