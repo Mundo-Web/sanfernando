@@ -14,7 +14,7 @@
 .container {
   margin-left: auto;
   margin-right: auto;
-  /*display: flex;*/
+  display: flex;*/
   justify-content: center;
   align-items: center; /* Centra verticalmente si es necesario */
   height: 100vh; /* O asegurarte de que ocupe el 100% del viewport */
@@ -31,6 +31,7 @@
 .diploma-left {
   width: 150px;
   height: 100%;
+  display: inline;
   background-color: #CF072C;
   border-top-right-radius: 50px;
   background-size: cover;
@@ -41,8 +42,8 @@
   width: calc(100% - 150px);
   height: 100%;
   padding: 2rem;
+  display: inline;
   position: relative;
-  display: flex;
   flex-direction: column;
 }
 
@@ -198,13 +199,13 @@
                     alt="Logo" class="logo-image" loading="lazy" /> --}}
 
 <body>
-  <table style="width: 100%">
+  <div class="container">
     
-     <tr class="diploma">
+     <div class="diploma">
        
-            <td align="left"></td>
-            <td align="right">
-                    {{-- <table style="width: 100%">
+            <div class="diploma-left"></div>
+            <div class="diploma-right">
+                    <table style="width: 100%">
                         <tbody>
                         <tr>
                             <td align="left" style="vertical-align: middle">
@@ -220,7 +221,7 @@
                         
                         </tr>
                         </tbody>
-                    </table>     --}}
+                    </table>    
                    
                     <div class="title">
                         DIPLOMADO EN REACT AVANZADO REACT AVANZADO REACT AVANZADO
@@ -258,11 +259,11 @@
                         <img src="images/img/puntosderecha.png" alt="puntos" />
                     </div>
 
-            </td>
+            </div>
        
-     </tr>
+     </div>
    
-  </table>
+  </div>
 </body>
 
 
