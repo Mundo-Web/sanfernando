@@ -19,13 +19,13 @@
 }
 
 .diploma {
-  width: 1000px;
+  width: 980px;
   height: 700px;
   display: flex;
 }
 
 .diploma-left {
-  width: 150px;
+  width: 130px;
   height: 100%;
   background-color: #CF072C;
   border-top-right-radius: 50px;
@@ -192,12 +192,12 @@
                     alt="Logo" class="logo-image" loading="lazy" /> --}}
 
 <body>
-  <table class="container">
-    <tbody>
-     <tr class="diploma">
+  <div class="container">
+    
+     <div class="diploma">
        
-            <td class="diploma-left"></td>
-            <td class="diploma-right">
+            <div class="diploma-left"></div>
+            <div class="diploma-right">
                     <table style="width: 100%">
                         <tbody>
                         <tr>
@@ -252,11 +252,11 @@
                         <img src="images/img/puntosderecha.png" alt="puntos" />
                     </div>
 
-            </td>
+            </div>
        
-     </tr>
-   </tbody>
-  </table>
+     </div>
+   
+  </div>
 </body>
 
 
