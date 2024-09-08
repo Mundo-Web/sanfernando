@@ -21,10 +21,11 @@
 }
 
 .diploma {
-  width: 900px;
-  height: 600px;
+  width: 1000px;
+  height: 700px;
   display: flex;
   flex-wrap: nowrap;
+  flex-direction: row;
 }
 
 .diploma-left {
