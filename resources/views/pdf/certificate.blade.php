@@ -21,7 +21,7 @@
 .diploma {
   width: 1000px;
   height: 700px;
-  display: inline-flex;
+  display: flex;
 }
 
 .diploma-left {
@@ -193,62 +193,65 @@
 
 <body>
   <div class="container">
-    <div class="diploma">
-      <div class="diploma-left"></div>
-      <div class="diploma-right">
-        <table style="width: 100%">
-            <tbody>
-            <tr>
-                <td align="left" style="vertical-align: middle">
-                    <div class="logo">
-                        <img src="images/img/logorojodiploma.png" alt="logo" />
-                    </div>
-                </td>
-                <td align="right" style="vertical-align: middle; margin-right:25px">
-                    <div class="qr-code">
-                        <img src="images/img/qrprueba.png" alt="QR Code" />
-                    </div>
-                </td>
-               
-            </tr>
-            </tbody>
-       </table>    
-        {{-- <div class="header">
-         
-         
-        </div> --}}
-        <div class="title">
-          DIPLOMADO EN REACT AVANZADO REACT AVANZADO REACT AVANZADO
-        </div>
-        <div class="description">
-          En mérito a su participación en nuestro
-          <span class="highlighted">REACT AVANZADO</span>. <br />
-          Organizado por EGESPP, con una duración de 300 horas lectivas del 2024.
-        </div>
-        <div class="student-name">DIEGO MARTINEZ RAYME</div>
-        <div class="signatures">
-          <div class="signature">
-            Gerente General <br />
-            <span>Patricia Heredia Olivera</span>
-          </div>
-          <div class="signature">
-            Sub. Gerente Académico <br />
-            <span>Edwin Chichipe Salazar</span>
-          </div>
-        </div>
-        <div class="certifications">
-          <h2>Nuestros Convenios</h2>
-          <div class="certificates">
-            <img src="images/img/certif.png" alt="certif_1" />
-            <img src="images/img/certif.png" alt="certif_2" />
-            <img src="images/img/certif.png" alt="certif_3" />
-          </div>
-        </div>
-        <div class="puntos-derecha">
-          <img src="images/img/puntosderecha.png" alt="puntos" />
-        </div>
-      </div>
-    </div>
+    
+     <tbody class="diploma">
+        <tr>
+        <td class="diploma-left" align="left"></td>
+        <td class="diploma-right" align="right">
+                <table style="width: 100%">
+                    <tbody>
+                    <tr>
+                        <td align="left" style="vertical-align: middle">
+                            <div class="logo">
+                                <img src="images/img/logorojodiploma.png" alt="logo" />
+                            </div>
+                        </td>
+                        <td align="right" style="vertical-align: middle; margin-right:25px">
+                            <div class="qr-code">
+                                <img src="images/img/qrprueba.png" alt="QR Code" />
+                            </div>
+                        </td>
+                    
+                    </tr>
+                    </tbody>
+                </table>    
+                {{-- <div class="header">
+                </div> --}}
+                <div class="title">
+                DIPLOMADO EN REACT AVANZADO REACT AVANZADO REACT AVANZADO
+                </div>
+                <div class="description">
+                En mérito a su participación en nuestro
+                <span class="highlighted">REACT AVANZADO</span>. <br />
+                Organizado por EGESPP, con una duración de 300 horas lectivas del 2024.
+                </div>
+                <div class="student-name">DIEGO MARTINEZ RAYME</div>
+                <div class="signatures">
+                <div class="signature">
+                    Gerente General <br />
+                    <span>Patricia Heredia Olivera</span>
+                </div>
+                <div class="signature">
+                    Sub. Gerente Académico <br />
+                    <span>Edwin Chichipe Salazar</span>
+                </div>
+                </div>
+                <div class="certifications">
+                <h2>Nuestros Convenios</h2>
+                <div class="certificates">
+                    <img src="images/img/certif.png" alt="certif_1" />
+                    <img src="images/img/certif.png" alt="certif_2" />
+                    <img src="images/img/certif.png" alt="certif_3" />
+                </div>
+                </div>
+                <div class="puntos-derecha">
+                <img src="images/img/puntosderecha.png" alt="puntos" />
+                </div>
+
+        </td>
+        </tr>
+     </tbody>
+   
   </div>
 </body>
 
