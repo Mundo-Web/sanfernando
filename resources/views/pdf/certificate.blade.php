@@ -49,7 +49,8 @@
 }
 
 .logo, .qr-code{
-      display: inline;
+    display: inline;
+    justify-content: space-between;
 }
 
 .logo img {
