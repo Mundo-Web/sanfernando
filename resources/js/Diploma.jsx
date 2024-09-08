@@ -14,7 +14,7 @@ const Diploma = () => {
         <div style={{ marginLeft: 'auto', marginRight: 'auto' }}>
           <div
             style={{
-              width: '1200px',
+              width: '1100px',
               height: '700px',
               display: 'flex',
               marginLeft: 'auto',
