@@ -204,7 +204,7 @@
        
             <td align="left"></td>
             <td align="right">
-                    <table style="width: 100%">
+                    {{-- <table style="width: 100%">
                         <tbody>
                         <tr>
                             <td align="left" style="vertical-align: middle">
@@ -220,7 +220,7 @@
                         
                         </tr>
                         </tbody>
-                    </table>    
+                    </table>     --}}
                    
                     <div class="title">
                         DIPLOMADO EN REACT AVANZADO REACT AVANZADO REACT AVANZADO
