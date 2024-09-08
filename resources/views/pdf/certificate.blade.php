@@ -192,12 +192,12 @@
                     alt="Logo" class="logo-image" loading="lazy" /> --}}
 
 <body>
-  <div class="container">
+  <table class="container">
     
-     <div class="diploma">
+     <tr class="diploma">
        
-            <div class="diploma-left"></div>
-            <div class="diploma-right">
+            <td class="diploma-left"></td>
+            <td class="diploma-right">
                     <table style="width: 100%">
                         <tbody>
                         <tr>
@@ -252,11 +252,11 @@
                         <img src="images/img/puntosderecha.png" alt="puntos" />
                     </div>
 
-            </div>
+            </td>
        
-     </div>
+     </tr>
    
-  </div>
+  </table>
 </body>
 
 
