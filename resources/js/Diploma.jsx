@@ -15,7 +15,7 @@ const Diploma = () => {
           <div
             style={{
               width: '1200px',
-              height: '650px',
+              height: '700px',
               display: 'flex',
               marginLeft: 'auto',
               marginRight: 'auto',
@@ -35,7 +35,7 @@ const Diploma = () => {
             ></div>
             <div
               style={{
-                width: '1050px',
+                width: '950px',
                 height: '100%',
                 paddingLeft: '5rem',
                 paddingRight: '5rem',
