@@ -21,7 +21,7 @@
 .diploma {
   width: 1000px;
   height: 700px;
-  display: flex;
+  display: inline-flex;
 }
 
 .diploma-left {
