@@ -193,7 +193,7 @@
 
 <body>
   <table class="container">
-    
+    <tbody>
      <tr class="diploma">
        
             <td class="diploma-left"></td>
@@ -255,7 +255,7 @@
             </td>
        
      </tr>
-   
+   </tbody>
   </table>
 </body>
 
