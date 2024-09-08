@@ -39,7 +39,7 @@
   height: 100%;
   padding: 2rem;
   position: relative;
-  display: inline;
+  display: block;
 }
 
 .header {
@@ -202,10 +202,10 @@
       <div class="diploma-left"></div>
       <div class="diploma-right">
         <div class="header">
-          <div class="logo" style="float:left;">
+          <div class="logo" style="">
             <img src="images/img/logorojodiploma.png" alt="logo" />
           </div>
-          <div class="qr-code" style="float:right;">
+          <div class="qr-code" style="">
             <img src="images/img/qrprueba.png" alt="QR Code" />
           </div>
         </div>
