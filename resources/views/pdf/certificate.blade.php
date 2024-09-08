@@ -14,37 +14,32 @@
 .container {
   margin-left: auto;
   margin-right: auto;
-  display: flex;*/
+  display: flex;
   justify-content: center;
-  align-items: center; /* Centra verticalmente si es necesario */
-  height: 100vh; /* O asegurarte de que ocupe el 100% del viewport */
 }
 
 .diploma {
   width: 1000px;
   height: 700px;
   display: flex;
-  flex-wrap: nowrap;
-  flex-direction: row;
 }
 
 .diploma-left {
   width: 150px;
   height: 100%;
-  display: inline;
   background-color: #CF072C;
   border-top-right-radius: 50px;
   background-size: cover;
   background-image: url('images/img/fondoizquierdo.png');
+  display: inline;
 }
 
 .diploma-right {
   width: 850px;
   height: 100%;
   padding: 2rem;
-  display: inline;
   position: relative;
-  flex-direction: column;
+  display: inline;
 }
 
 .header {
@@ -194,75 +189,53 @@
 </div>
 
 </body> --}}
- {{-- <img
-                    src="https://api.qrserver.com/v1/create-qr-code/?data={{ rawurlencode(env('APP_NAME') . '/certificate/' . $attemp->id) }}"
-                    alt="Logo" class="logo-image" loading="lazy" /> --}}
+
 
 <body>
   <div class="container">
-    
-     <div class="diploma">
-       
-            <div class="diploma-left"></div>
-            <div class="diploma-right">
-                    <table style="width: 100%">
-                        <tbody>
-                        <tr>
-                            <td align="left" style="vertical-align: middle">
-                                <div class="logo">
-                                    <img src="images/img/logorojodiploma.png" alt="logo" />
-                                </div>
-                            </td>
-                            <td align="right" style="vertical-align: middle; margin-right:25px">
-                                <div class="qr-code">
-                                    <img src="images/img/qrprueba.png" alt="QR Code" />
-                                </div>
-                            </td>
-                        
-                        </tr>
-                        </tbody>
-                    </table>    
-                   
-                    <div class="title">
-                        DIPLOMADO EN REACT AVANZADO REACT AVANZADO REACT AVANZADO
-                    </div>
-
-                    <div class="description">
-                        En mérito a su participación en nuestro
-                        <span class="highlighted">REACT AVANZADO</span>. <br />
-                        Organizado por EGESPP, con una duración de 300 horas lectivas del 2024.
-                    </div>
-
-                    <div class="student-name">DIEGO MARTINEZ RAYME</div>
-
-                    <div class="signatures">
-                        <div class="signature">
-                            Gerente General <br />
-                            <span>Patricia Heredia Olivera</span>
-                        </div>
-                        <div class="signature">
-                            Sub. Gerente Académico <br />
-                            <span>Edwin Chichipe Salazar</span>
-                        </div>
-                    </div>
-
-                    <div class="certifications">
-                        <h2>Nuestros Convenios</h2>
-                        <div class="certificates">
-                            <img src="images/img/certif.png" alt="certif_1" />
-                            <img src="images/img/certif.png" alt="certif_2" />
-                            <img src="images/img/certif.png" alt="certif_3" />
-                        </div>
-                    </div>
-                    
-                    <div class="puntos-derecha">
-                        <img src="images/img/puntosderecha.png" alt="puntos" />
-                    </div>
-
-            </div>
-       
-     </div>
-   
+    <div class="diploma">
+      <div class="diploma-left"></div>
+      <div class="diploma-right">
+        <div class="header">
+          <div class="logo">
+            <img src="images/img/logorojodiploma.png" alt="logo" />
+          </div>
+          <div class="qr-code">
+            <img src="images/img/qrprueba.png" alt="QR Code" />
+          </div>
+        </div>
+        <div class="title">
+          DIPLOMADO EN REACT AVANZADO REACT AVANZADO REACT AVANZADO
+        </div>
+        <div class="description">
+          En mérito a su participación en nuestro
+          <span class="highlighted">REACT AVANZADO</span>. <br />
+          Organizado por EGESPP, con una duración de 300 horas lectivas del 2024.
+        </div>
+        <div class="student-name">DIEGO MARTINEZ RAYME</div>
+        <div class="signatures">
+          <div class="signature">
+            Gerente General <br />
+            <span>Patricia Heredia Olivera</span>
+          </div>
+          <div class="signature">
+            Sub. Gerente Académico <br />
+            <span>Edwin Chichipe Salazar</span>
+          </div>
+        </div>
+        <div class="certifications">
+          <h2>Nuestros Convenios</h2>
+          <div class="certificates">
+            <img src="images/img/certif.png" alt="certif_1" />
+            <img src="images/img/certif.png" alt="certif_2" />
+            <img src="images/img/certif.png" alt="certif_3" />
+          </div>
+        </div>
+        <div class="puntos-derecha">
+          <img src="images/img/puntosderecha.png" alt="puntos" />
+        </div>
+      </div>
+    </div>
   </div>
 </body>
 
