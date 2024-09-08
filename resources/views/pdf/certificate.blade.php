@@ -48,6 +48,10 @@
   align-items: center;
 }
 
+.logo, .qr-code{
+      display: inline;
+}
+
 .logo img {
   width: 200px;
 }
