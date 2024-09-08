@@ -16,16 +16,19 @@
   margin-right: auto;
   display: flex;
   justify-content: center;
+  align-items: center; /* Centra verticalmente si es necesario */
+  height: 100vh; /* O asegurarte de que ocupe el 100% del viewport */
 }
 
 .diploma {
-  width: 980px;
+  width: 1000px;
   height: 700px;
   display: flex;
+  flex-wrap: nowrap;
 }
 
 .diploma-left {
-  width: 130px;
+  width: 150px;
   height: 100%;
   background-color: #CF072C;
   border-top-right-radius: 50px;
@@ -34,10 +37,12 @@
 }
 
 .diploma-right {
-  width: 850px;
+  width: calc(100% - 150px);
   height: 100%;
   padding: 2rem;
   position: relative;
+  display: flex;
+  flex-direction: column;
 }
 
 .header {
