@@ -49,8 +49,8 @@
 }
 
 .logo, .qr-code{
-    display: inline-flex;
-    justify-content: space-between;
+    display: inline;
+   
 }
 
 .logo img {
@@ -202,10 +202,10 @@
       <div class="diploma-left"></div>
       <div class="diploma-right">
         <div class="header">
-          <div class="logo">
+          <div class="logo" style="float:left;">
             <img src="images/img/logorojodiploma.png" alt="logo" />
           </div>
-          <div class="qr-code">
+          <div class="qr-code" style="float:right;">
             <img src="images/img/qrprueba.png" alt="QR Code" />
           </div>
         </div>
