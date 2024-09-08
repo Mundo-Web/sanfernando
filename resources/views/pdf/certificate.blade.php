@@ -7,14 +7,134 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Certificado de Finalización</title>
   <style>
-    * {
-      font-family: 'Poppins', sans-serif;
-      box-sizing: border-box;
-    }
+   body {
+  font-family: Arial, sans-serif;
+}
+
+.container {
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  justify-content: center;
+}
+
+.diploma {
+  width: 1000px;
+  height: 700px;
+  display: flex;
+}
+
+.diploma-left {
+  width: 150px;
+  height: 100%;
+  background-color: #CF072C;
+  border-top-right-radius: 50px;
+  background-size: cover;
+  background-image: url('images/img/fondoizquierdo.png');
+}
+
+.diploma-right {
+  width: 850px;
+  height: 100%;
+  padding: 2rem;
+  position: relative;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo img {
+  width: 200px;
+}
+
+.qr-code img {
+  width: 90px;
+}
+
+.title {
+  color: #CF072C;
+  text-transform: uppercase;
+  font-size: 30px;
+  text-align: center;
+  font-weight: bold;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.description {
+  font-size: 17px;
+  color: black;
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.highlighted {
+  text-transform: uppercase;
+  font-style: italic;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.student-name {
+  text-align: center;
+  font-size: 25px;
+  font-weight: bold;
+  margin: 0 auto;
+}
+
+.signatures {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 4rem;
+}
+
+.signature {
+  text-align: center;
+  color: black;
+  font-size: 18px;
+  font-weight: bold;
+  border-top: 1px solid black;
+  width: 250px;
+}
+
+.signature span {
+  font-weight: normal;
+  font-size: 17px;
+}
+
+.certifications h2 {
+  font-weight: 600;
+  font-size: 17px;
+}
+
+.certificates {
+  margin-top: 0.75rem;
+  display: flex;
+  gap: 1.25rem;
+}
+
+.certificates img {
+  width: 4.5rem;
+}
+
+.puntos-derecha {
+  position: absolute;
+  top: 8rem;
+  right: 0;
+}
+
+.puntos-derecha img {
+  width: 25px;
+}
   </style>
 </head>
 
-<body class="bg-white">
+{{-- <body class="bg-white">
 
   <div style="margin-left: auto; margin-right: auto;">
     <div style="width: 1000px; height: 650px; display: flex; margin-left: auto; margin-right: auto; margin-top: 2.5rem; margin-bottom: 2.5rem;">
@@ -66,6 +186,56 @@
     </div>
 </div>
 
+</body> --}}
+
+
+<body>
+  <div class="container">
+    <div class="diploma">
+      <div class="diploma-left"></div>
+      <div class="diploma-right">
+        <div class="header">
+          <div class="logo">
+            <img src="images/img/logorojodiploma.png" alt="logo" />
+          </div>
+          <div class="qr-code">
+            <img src="images/img/qrprueba.png" alt="QR Code" />
+          </div>
+        </div>
+        <div class="title">
+          DIPLOMADO EN REACT AVANZADO REACT AVANZADO REACT AVANZADO
+        </div>
+        <div class="description">
+          En mérito a su participación en nuestro
+          <span class="highlighted">REACT AVANZADO</span>. <br />
+          Organizado por EGESPP, con una duración de 300 horas lectivas del 2024.
+        </div>
+        <div class="student-name">DIEGO MARTINEZ RAYME</div>
+        <div class="signatures">
+          <div class="signature">
+            Gerente General <br />
+            <span>Patricia Heredia Olivera</span>
+          </div>
+          <div class="signature">
+            Sub. Gerente Académico <br />
+            <span>Edwin Chichipe Salazar</span>
+          </div>
+        </div>
+        <div class="certifications">
+          <h2>Nuestros Convenios</h2>
+          <div class="certificates">
+            <img src="images/img/certif.png" alt="certif_1" />
+            <img src="images/img/certif.png" alt="certif_2" />
+            <img src="images/img/certif.png" alt="certif_3" />
+          </div>
+        </div>
+        <div class="puntos-derecha">
+          <img src="images/img/puntosderecha.png" alt="puntos" />
+        </div>
+      </div>
+    </div>
+  </div>
 </body>
+
 
 </html>

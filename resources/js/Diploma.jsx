@@ -14,10 +14,10 @@ const Diploma = () => {
         <div style={{ marginLeft: 'auto', marginRight: 'auto' }}>
           <div
             style={{
-              width: '1000px', // Ajusta el ancho para que quepa todo en la página
+              width: '1000px', 
               height: '700px',
               display: 'flex',
-              margin: '0', // Elimina márgenes innecesarios
+              margin: '0', 
             }}
           >
             <div
@@ -42,7 +42,7 @@ const Diploma = () => {
                 style={{
                   display: 'flex',
                   flexDirection: 'column',
-                  gap: '2rem', // Reduce el gap para que no se extienda demasiado
+                  gap: '1.5rem', // Reduce el gap para que no se extienda demasiado
                   alignItems: 'flex-start',
                   justifyContent: 'center',
                 }}
@@ -63,7 +63,7 @@ const Diploma = () => {
                       style={{ width: '100%' }}
                     />
                   </div>
-                  <div style={{ width: '90px' }}>
+                  <div style={{ width: '90px', marginRight: '25px' }}>
                     <img src={qrprueba} alt="logo" style={{ width: '100%' }} />
                   </div>
                 </div>
@@ -71,22 +71,23 @@ const Diploma = () => {
                   style={{
                     color: '#CF072C',
                     textTransform: 'uppercase',
-                    fontSize: '2.25rem',
+                    fontSize: '30px',
                     textAlign: 'center',
                     fontWeight: 'bold',
                     marginLeft: 'auto',
                     marginRight: 'auto',
+                    maxWidth:'700px',
                   }}
                 >
-                  DIPLOMADO EN REACT AVANZADO
+                  DIPLOMADO EN REACT AVANZADO REACT AVANZADO REACT AVANZADO
                 </div>
                 <div
                   style={{
-                    fontSize: '1.25rem',
+                    fontSize: '17px',
                     color: 'black',
                     paddingLeft: '0.75rem',
                     paddingRight: '0.75rem',
-                    maxWidth: '600px', // Reduce el tamaño del texto
+                    maxWidth: '700px', // Reduce el tamaño del texto
                     textAlign: 'center',
                     marginLeft: 'auto',
                     marginRight: 'auto',
@@ -98,7 +99,7 @@ const Diploma = () => {
                       textTransform: 'uppercase',
                       fontStyle: 'italic',
                       fontWeight: 'bold',
-                      fontSize: '1.875rem',
+                      fontSize: '18px',
                     }}
                   >
                     REACT AVANZADO.
@@ -110,7 +111,7 @@ const Diploma = () => {
                 <div
                   style={{
                     textAlign: 'center',
-                    fontSize: '1.875rem',
+                    fontSize: '25px',
                     fontWeight: 'bold',
                     width: '100%',
                     marginLeft: 'auto',
@@ -122,16 +123,19 @@ const Diploma = () => {
                 <div
                   style={{
                     display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
                     flexDirection: 'row',
                     gap: '2rem', // Ajusta la separación de los elementos
-                    marginTop: '3rem',
+                    margin: 'auto',
+                    marginTop:'4rem',
                   }}
                 >
                   <div
                     style={{
                       textAlign: 'center',
                       color: 'black',
-                      fontSize: '1.25rem',
+                      fontSize: '18px',
                       fontWeight: 'bold',
                       borderTop: '1px solid black',
                       width: '250px',
@@ -142,7 +146,7 @@ const Diploma = () => {
                     <span
                       style={{
                         fontWeight: 'normal',
-                        fontSize: '1.125rem',
+                        fontSize: '17px',
                       }}
                     >
                       Patricia Heredia Olivera
@@ -152,7 +156,7 @@ const Diploma = () => {
                     style={{
                       textAlign: 'center',
                       color: 'black',
-                      fontSize: '1.25rem',
+                      fontSize: '18px',
                       fontWeight: 'bold',
                       borderTop: '1px solid black',
                       width: '250px',
@@ -163,7 +167,7 @@ const Diploma = () => {
                     <span
                       style={{
                         fontWeight: 'normal',
-                        fontSize: '1.125rem',
+                        fontSize: '17px',
                       }}
                     >
                       Edwin Chichipe Salazar
@@ -171,7 +175,7 @@ const Diploma = () => {
                   </div>
                 </div>
                 <div>
-                  <h2 style={{ fontWeight: 600, fontSize: '1.125rem' }}>
+                  <h2 style={{ fontWeight: 600, fontSize: '17px' }}>
                     Nuestros Convenios
                   </h2>
                   <div
@@ -185,22 +189,22 @@ const Diploma = () => {
                     <img
                       src={certif}
                       alt="certif_1"
-                      style={{ width: '5rem' }}
+                      style={{ width: '4.5rem' }}
                     />
                     <img
                       src={certif}
                       alt="certif_2"
-                      style={{ width: '5rem' }}
+                      style={{ width: '4.5rem' }}
                     />
                     <img
                       src={certif}
                       alt="certif_3"
-                      style={{ width: '5rem' }}
+                      style={{ width: '4.5rem' }}
                     />
                   </div>
                 </div>
               </div>
-              <div style={{ position: 'absolute', top: '3rem', right: 0 }}>
+              <div style={{ position: 'absolute', top: '8rem', right: 0 }}>
                 <img
                   src={puntosderecha}
                   alt="logo"
