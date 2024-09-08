@@ -49,7 +49,7 @@
 }
 
 .logo, .qr-code{
-    display: inline;
+    display: inline-flex;
     justify-content: space-between;
 }
 
