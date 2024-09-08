@@ -192,9 +192,9 @@
                     alt="Logo" class="logo-image" loading="lazy" /> --}}
 
 <body>
-  <div class="container">
+  <table class="container">
     
-     <tbody class="diploma">
+     <tbody>
         <tr>
             <td class="diploma-left"></td>
             <td class="diploma-right">
@@ -215,44 +215,48 @@
                         </tr>
                         </tbody>
                     </table>    
-                    {{-- <div class="header">
-                    </div> --}}
+                   
                     <div class="title">
-                    DIPLOMADO EN REACT AVANZADO REACT AVANZADO REACT AVANZADO
+                        DIPLOMADO EN REACT AVANZADO REACT AVANZADO REACT AVANZADO
                     </div>
+
                     <div class="description">
-                    En mérito a su participación en nuestro
-                    <span class="highlighted">REACT AVANZADO</span>. <br />
-                    Organizado por EGESPP, con una duración de 300 horas lectivas del 2024.
+                        En mérito a su participación en nuestro
+                        <span class="highlighted">REACT AVANZADO</span>. <br />
+                        Organizado por EGESPP, con una duración de 300 horas lectivas del 2024.
                     </div>
+
                     <div class="student-name">DIEGO MARTINEZ RAYME</div>
+
                     <div class="signatures">
-                    <div class="signature">
-                        Gerente General <br />
-                        <span>Patricia Heredia Olivera</span>
+                        <div class="signature">
+                            Gerente General <br />
+                            <span>Patricia Heredia Olivera</span>
+                        </div>
+                        <div class="signature">
+                            Sub. Gerente Académico <br />
+                            <span>Edwin Chichipe Salazar</span>
+                        </div>
                     </div>
-                    <div class="signature">
-                        Sub. Gerente Académico <br />
-                        <span>Edwin Chichipe Salazar</span>
-                    </div>
-                    </div>
+
                     <div class="certifications">
-                    <h2>Nuestros Convenios</h2>
-                    <div class="certificates">
-                        <img src="images/img/certif.png" alt="certif_1" />
-                        <img src="images/img/certif.png" alt="certif_2" />
-                        <img src="images/img/certif.png" alt="certif_3" />
+                        <h2>Nuestros Convenios</h2>
+                        <div class="certificates">
+                            <img src="images/img/certif.png" alt="certif_1" />
+                            <img src="images/img/certif.png" alt="certif_2" />
+                            <img src="images/img/certif.png" alt="certif_3" />
+                        </div>
                     </div>
-                    </div>
+                    
                     <div class="puntos-derecha">
-                    <img src="images/img/puntosderecha.png" alt="puntos" />
+                        <img src="images/img/puntosderecha.png" alt="puntos" />
                     </div>
 
             </td>
         </tr>
      </tbody>
    
-  </div>
+  </table>
 </body>
 
 
