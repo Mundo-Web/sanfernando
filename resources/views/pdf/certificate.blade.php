@@ -2,143 +2,145 @@
 <html lang="es">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Certificado de Finalización</title>
-  <style>
-   body {
-  font-family: Arial, sans-serif;
-}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Certificado de Finalización</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
 
-.container {
-  margin-left: auto;
-  margin-right: auto;
-  display: flex;
-  justify-content: center;
-}
+        .container {
+            margin-left: auto;
+            margin-right: auto;
+            display: flex;
+            justify-content: center;
+        }
 
-.diploma {
-  width: 1000px;
-  height: 700px;
-  display: flex;
-}
+        .diploma {
+            width: 1000px;
+            height: 700px;
+            display: flex;
+        }
 
-.diploma-left {
-  width: 150px;
-  height: 100%;
-  background-color: #CF072C;
-  border-top-right-radius: 50px;
-  background-size: cover;
-  background-image: url('images/img/fondoizquierdo.png');
-  display: inline;
-}
+        .diploma-left {
+            width: 150px;
+            height: 100%;
+            background-color: #CF072C;
+            border-top-right-radius: 50px;
+            background-size: cover;
+            background-image: url('images/img/fondoizquierdo.png');
+            display: inline;
+        }
 
-.diploma-right {
-  width: 850px;
-  height: 100%;
-  padding: 2rem;
-  position: relative;
-  display: block;
-}
+        .diploma-right {
+            width: 850px;
+            height: 100%;
+            padding: 2rem;
+            position: relative;
+            display: block;
+            background-color: red;
+        }
 
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-.logo, .qr-code{
-    display: inline;
-   
-}
+        .logo,
+        .qr-code {
+            display: inline;
 
-.logo img {
-  width: 200px;
-}
+        }
 
-.qr-code img {
-  width: 90px;
-}
+        .logo img {
+            width: 200px;
+        }
 
-.title {
-  color: #CF072C;
-  text-transform: uppercase;
-  font-size: 30px;
-  text-align: center;
-  font-weight: bold;
-  max-width: 700px;
-  margin: 0 auto;
-}
+        .qr-code img {
+            width: 90px;
+        }
 
-.description {
-  font-size: 17px;
-  color: black;
-  text-align: center;
-  max-width: 700px;
-  margin: 0 auto;
-}
+        .title {
+            color: #CF072C;
+            text-transform: uppercase;
+            font-size: 30px;
+            text-align: center;
+            font-weight: bold;
+            max-width: 700px;
+            margin: 0 auto;
+        }
 
-.highlighted {
-  text-transform: uppercase;
-  font-style: italic;
-  font-weight: bold;
-  font-size: 18px;
-}
+        .description {
+            font-size: 17px;
+            color: black;
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto;
+        }
 
-.student-name {
-  text-align: center;
-  font-size: 25px;
-  font-weight: bold;
-  margin: 0 auto;
-}
+        .highlighted {
+            text-transform: uppercase;
+            font-style: italic;
+            font-weight: bold;
+            font-size: 18px;
+        }
 
-.signatures {
-  display: flex;
-  justify-content: center;
-  gap: 2rem;
-  margin-top: 4rem;
-}
+        .student-name {
+            text-align: center;
+            font-size: 25px;
+            font-weight: bold;
+            margin: 0 auto;
+        }
 
-.signature {
-  text-align: center;
-  color: black;
-  font-size: 18px;
-  font-weight: bold;
-  border-top: 1px solid black;
-  width: 250px;
-}
+        .signatures {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 4rem;
+        }
 
-.signature span {
-  font-weight: normal;
-  font-size: 17px;
-}
+        .signature {
+            text-align: center;
+            color: black;
+            font-size: 18px;
+            font-weight: bold;
+            border-top: 1px solid black;
+            width: 250px;
+        }
 
-.certifications h2 {
-  font-weight: 600;
-  font-size: 17px;
-}
+        .signature span {
+            font-weight: normal;
+            font-size: 17px;
+        }
 
-.certificates {
-  margin-top: 0.75rem;
-  display: flex;
-  gap: 1.25rem;
-}
+        .certifications h2 {
+            font-weight: 600;
+            font-size: 17px;
+        }
 
-.certificates img {
-  width: 4.5rem;
-}
+        .certificates {
+            margin-top: 0.75rem;
+            display: flex;
+            gap: 1.25rem;
+        }
 
-.puntos-derecha {
-  position: absolute;
-  top: 8rem;
-  right: 0;
-}
+        .certificates img {
+            width: 4.5rem;
+        }
 
-.puntos-derecha img {
-  width: 25px;
-}
-  </style>
+        .puntos-derecha {
+            position: absolute;
+            top: 8rem;
+            right: 0;
+        }
+
+        .puntos-derecha img {
+            width: 25px;
+        }
+    </style>
 </head>
 
 {{-- <body class="bg-white">
@@ -194,55 +196,17 @@
 </div>
 
 </body> --}}
-
-
 <body>
-  <div class="container">
-    <div class="diploma">
-      <div class="diploma-left"></div>
-      <div class="diploma-right">
-        <div class="header">
-          <div class="logo" style="">
-            <img src="images/img/logorojodiploma.png" alt="logo" />
-          </div>
-          <div class="qr-code" style="">
-            <img src="images/img/qrprueba.png" alt="QR Code" />
-          </div>
-        </div>
-        <div class="title">
-          DIPLOMADO EN REACT AVANZADO REACT AVANZADO REACT AVANZADO
-        </div>
-        <div class="description">
-          En mérito a su participación en nuestro
-          <span class="highlighted">REACT AVANZADO</span>. <br />
-          Organizado por EGESPP, con una duración de 300 horas lectivas del 2024.
-        </div>
-        <div class="student-name">DIEGO MARTINEZ RAYME</div>
-        <div class="signatures">
-          <div class="signature">
-            Gerente General <br />
-            <span>Patricia Heredia Olivera</span>
-          </div>
-          <div class="signature">
-            Sub. Gerente Académico <br />
-            <span>Edwin Chichipe Salazar</span>
-          </div>
-        </div>
-        <div class="certifications">
-          <h2>Nuestros Convenios</h2>
-          <div class="certificates">
-            <img src="images/img/certif.png" alt="certif_1" />
-            <img src="images/img/certif.png" alt="certif_2" />
-            <img src="images/img/certif.png" alt="certif_3" />
-          </div>
-        </div>
-        <div class="puntos-derecha">
-          <img src="images/img/puntosderecha.png" alt="puntos" />
-        </div>
-      </div>
-    </div>
-  </div>
+    <table class="container">
+      <tbody>
+        <tr class="diploma">
+            <td class="diploma-left"></td>
+            <td class="diploma-right">
+                
+            </td>
+        </tr>
+      </tbody>
+    </table>
 </body>
-
 
 </html>
