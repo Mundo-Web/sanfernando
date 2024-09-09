@@ -198,14 +198,14 @@
 </body> --}}
 <body>
     <table class="container">
-      <tbody>
+      
         <tr class="diploma">
             <td class="diploma-left"></td>
             <td class="diploma-right">
                 
             </td>
         </tr>
-      </tbody>
+     
     </table>
 </body>
 
