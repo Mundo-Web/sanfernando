@@ -42,7 +42,12 @@
       width: auto;
     }
 
-    .main-image,
+    .main-image{
+      object-fit: contain;
+      object-position: center;
+      width: 200px;
+    }
+
     .logo-image {
       object-fit: contain;
       object-position: center;
