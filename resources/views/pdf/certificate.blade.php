@@ -2,211 +2,252 @@
 <html lang="es">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Certificado de Finalización</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Certificado de Finalización</title>
+  <style>
+    * {
+      font-family: 'Poppins', sans-serif;
+      box-sizing: border-box;
+    }
 
-        .container {
-            margin-left: auto;
-            margin-right: auto;
-            display: flex;
-            justify-content: center;
-        }
+    .container {
+      display: flex;
+      flex-direction: column;
+      justify-content: start;
+    }
 
-        .diploma {
-            width: 1000px;
-            height: 700px;
-            display: flex;
-        }
+    .image-container {
+      display: flex;
+      width: 100%;
+      flex-direction: column;
+      justify-content: center;
+    }
 
-        .diploma-left {
-            width: 150px;
-            height: 100%;
-            background-color: #CF072C;
-            border-top-right-radius: 50px;
-            background-size: cover;
-            background-image: url('images/img/fondoizquierdo.png');
-            display: inline;
-        }
+    .image-wrapper {
+      display: flex;
+      width: 95vw;
+      margin: auto;
+      align-items: center;
+      /* gap: 40px 100px; */
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
 
-        .diploma-right {
-            width: 850px;
-            height: 100%;
-            padding: 2rem;
-            position: relative;
-            display: block;
-            background-color: red;
-        }
+    .image-wrapper img {
+      align-self: stretch;
+      margin: auto 0;
+      height: 95px;
+      width: auto;
+    }
 
-        .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+    .main-image,
+    .logo-image {
+      object-fit: contain;
+      object-position: center;
+      width: 90px;
+    }
 
-        .logo,
-        .qr-code {
-            display: inline;
+    .text-container {
+      display: flex;
+      width: 100%;
+      flex-direction: column;
+      align-items: start;
+      margin-top: 0;
+      color: rgba(15, 31, 56, 1);
+      text-align: center;
+      justify-content: start;
+      font-size: 40px;
+    }
 
-        }
+    .title {
+      color: rgba(207, 7, 44, 1);
+      font-weight: 700;
+      text-transform: uppercase;
+      margin: auto;
+    }
 
-        .logo img {
-            width: 200px;
-        }
+    .description {
+      margin: auto;
+      font-size: 24px;
+      font-weight: 400;
+      line-height: 26px;
+      text-align: center;
+    }
 
-        .qr-code img {
-            width: 90px;
-        }
+    .bold-italic {
+      font-weight: 600;
+      /* font-style: italic; */
+    }
 
-        .title {
-            color: #CF072C;
-            text-transform: uppercase;
-            font-size: 30px;
-            text-align: center;
-            font-weight: bold;
-            max-width: 700px;
-            margin: 0 auto;
-        }
+    .name {
+      margin: auto;
+      font-weight: 600;
+      /* line-height: 1.2; */
+      margin-top: 40px;
+    }
 
-        .description {
-            font-size: 17px;
-            color: black;
-            text-align: center;
-            max-width: 700px;
-            margin: 0 auto;
-        }
+    .signature-section {
+      display: flex;
+      margin-top: 60px;
+      width: 95vw;
+      flex-direction: column;
+      justify-content: center;
+    }
 
-        .highlighted {
-            text-transform: uppercase;
-            font-style: italic;
-            font-weight: bold;
-            font-size: 18px;
-        }
+    .signature-container {
+      display: flex;
+      width: 100%;
+      align-items: center;
+      gap: 40px 100px;
+      color: rgba(15, 31, 56, 1);
+      text-align: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
 
-        .student-name {
-            text-align: center;
-            font-size: 25px;
-            font-weight: bold;
-            margin: 0 auto;
-        }
+    .signature-card {
+      border-color: rgba(15, 31, 56, 1);
+      border-top-width: 1px;
+      align-self: stretch;
+      display: flex;
+      padding-top: 24px;
+      flex-direction: column;
+      justify-content: start;
+      width: 217px;
+    }
 
-        .signatures {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-top: 4rem;
-        }
+    .signature-title {
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 2;
+    }
 
-        .signature {
-            text-align: center;
-            color: black;
-            font-size: 18px;
-            font-weight: bold;
-            border-top: 1px solid black;
-            width: 250px;
-        }
+    .signature-name {
+      font-size: 18px;
+      font-weight: 600;
+      line-height: 1;
+    }
 
-        .signature span {
-            font-weight: normal;
-            font-size: 17px;
-        }
+    .agreements-section {
+      display: flex;
+      margin-top: 64px;
+      width: 232px;
+      max-width: 100%;
+      flex-direction: column;
+      justify-content: start;
+    }
 
-        .certifications h2 {
-            font-weight: 600;
-            font-size: 17px;
-        }
+    .agreements-title {
+      color: rgba(15, 31, 56, 1);
+      font-weight: 600;
+      font-size: 12px;
+      line-height: 1.2;
+    }
 
-        .certificates {
-            margin-top: 0.75rem;
-            display: flex;
-            gap: 1.25rem;
-        }
+    .agreements-logos {
+      display: flex;
+      margin-top: 8px;
+      align-items: start;
+      gap: 16px;
+      justify-content: start;
+    }
 
-        .certificates img {
-            width: 4.5rem;
-        }
+    .agreements-logo {
+      aspect-ratio: 0.84;
+      object-fit: contain;
+      object-position: center;
+      width: 67px;
+      border-radius: 2px;
+    }
 
-        .puntos-derecha {
-            position: absolute;
-            top: 8rem;
-            right: 0;
-        }
+    @media (max-width: 991px) {
 
-        .puntos-derecha img {
-            width: 25px;
-        }
-    </style>
+      .image-container,
+      .image-wrapper,
+      .text-container,
+      .signature-section {
+        max-width: 100%;
+      }
+
+      .main-image,
+      .title,
+      .description,
+      .name,
+      .signature-section,
+      .agreements-section {
+        margin-top: 40px;
+      }
+    }
+  </style>
 </head>
 
-{{-- <body class="bg-white">
+<body class="bg-white">
 
-  <div style="margin-left: auto; margin-right: auto;">
-    <div style="width: 1000px; height: 650px; display: flex; margin-left: auto; margin-right: auto; margin-top: 2.5rem; margin-bottom: 2.5rem;">
-        <div style="width: 150px; height: 100%; background-color: #CF072C; border-top-right-radius: 50px; background-size: cover; background-image: url({{asset('images/img/fondoizquierdo.png')}});">
-        </div>
-        <div style="width: 850px; height: 100%; padding-left: 5rem; padding-right: 5rem; padding-top: 2.5rem; padding-bottom: 2.5rem; position: relative;">
-            <div style="display: flex; flex-direction: column; gap: 3rem; align-items: flex-start; justify-content: center;">
-                <div style="display: flex; flex-direction: row; justify-content: space-between; width: 100%; align-items: center;">
-                    <div style="width: 200px;">
-                        <img src="{{asset('images/img/logorojordiploma.png')}}" alt="logo" style="width: 100%;" />
-                    </div>
-                    <div style="width: 90px;">
-                        <img src="{{asset('images/img/qrprueba.png')}}" alt="logo" style="width: 100%;" />
-                    </div>
-                </div>
-                <div style="color: #CF072C; text-transform: uppercase; font-size: 2.25rem; text-align: center; font-weight: bold; margin-left: auto; margin-right: auto;">
-                    DIPLOMADO EN {{ $attemp->evaluation->course->producto }}
-                </div>
-                <div style="font-size: 1.25rem; color: black; padding-left: 0.75rem; padding-right: 0.75rem; max-width: 700px; text-align: center; margin-left: auto; margin-right: auto;">
-                    En mérito a su participación en nuestro <span style="text-transform: uppercase; font-style: italic; font-weight: bold; font-size: 1.875rem;">{{ $attemp->evaluation->course->producto }}.</span>
-                    <br>Organizado por EGESPP, con una duracion de {{ $attemp->evaluation->course->duration / 60 }} horas lectivas del {{ date('Y') }}.
-                </div>
-                <div style="text-align: center; font-size: 1.875rem; font-weight: bold; width: 100%; margin-left: auto; margin-right: auto;">
-                    {{ $attemp->user->name }} {{ $attemp->user->lastname }}
-                </div>
-                <div style="display: flex; flex-direction: row; gap: 5rem; margin-top: 4rem;">
-                    <div style="text-align: center; color: black; font-size: 1.25rem; font-weight: bold; border-top: 1px solid black; width: 250px;">
-                        Gerente General<br>
-                        <span style="font-weight: normal; font-size: 1.125rem;">Patricia Heredia Olivera</span>
-                    </div>
-                    <div style="text-align: center; color: black; font-size: 1.25rem; font-weight: bold; border-top: 1px solid black; width: 250px;">
-                        Sub. Gerente Académico<br>
-                        <span style="font-weight: normal; font-size: 1.125rem;">Edwin Chichipe Salazar</span>
-                    </div>
-                </div>
-                <div>
-                    <h2 style="font-weight: 600; font-size: 1.125rem;">Nuestros Convenios</h2>
-                    <div style="margin-top: 0.75rem; display: flex; flex-direction: row; gap: 1.25rem;">
-                        <img src="{{asset('images/img/certif.png')}}" alt="certif_1" style="width: 5rem;" />
-                        <img src="{{asset('images/img/certif.png')}}" alt="certif_1" style="width: 5rem;" />
-                        <img src="{{asset('images/img/certif.png')}}" alt="certif_1" style="width: 5rem;" />
-                    </div>
-                </div>
-            </div>
-            <div style="position: absolute; top: 5rem; right: 0;">
-                <img src="{{asset('images/img/puntosderecha.png')}}" alt="logo" style="width: 25px" />
-            </div>
-        </div>
-    </div>
-</div>
-
-</body> --}}
-<body>
-    <table class="container">
-      
-        <tr class="diploma">
-            <td class="diploma-left"></td>
-            <td class="diploma-right">
-                
+  <section class="container">
+    <div class="image-container">
+      <table style="width: 100%">
+        <tbody>
+          <tr>
+            <td align="left" style="vertical-align: middle">
+              <img
+                src="https://cdn.builder.io/api/v1/image/assets/TEMP/72318f99933ec24f075e143dfcf0d49da68332f7946bcaabdec7f2c94e46db8a?placeholderIfAbsent=true&apiKey=0f2111aa112942eda6dda1d2ced51822"
+                alt="Main Visual" class="main-image" loading="lazy" />
             </td>
-        </tr>
-     
-    </table>
+            <td align="right" style="vertical-align: middle">
+              <img
+                src="https://api.qrserver.com/v1/create-qr-code/?data={{ rawurlencode(env('APP_NAME') . '/certificate/' . $attemp->id) }}"
+                alt="Logo" class="logo-image" loading="lazy" />
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="text-container">
+        <h4 class="title" style="text-transform: uppercase">DIPLOMADO EN {{ $attemp->evaluation->course->producto }}
+        </h4>
+        <p class="description">En mérito a su participación en nuestro <span class="bold-italic"
+            style="text-transform: uppercase">DIPLOMADO DE
+            {{ $attemp->evaluation->course->producto }}.</span> Organizado por <b>EGESPP</b>, con una duración de
+          {{ $attemp->evaluation->course->duration / 60 }} horas lectivas del {{ date('Y') }}.</p>
+        <p class="name">{{ $attemp->user->name }} {{ $attemp->user->lastname }}</p>
+      </div>
+    </div>
+    <section class="signature-section">
+      <table style="margin: auto; text=align: center; margin-top: 80px">
+        <tbody>
+          <tr>
+            <td align="center" style="padding: 0 40px">
+              <p class="signature-name" style="margin: 0; border-top: 1px solid #333; padding-top: 10px">Patricia
+                Heredia Olivera</p>
+              <p class="signature-title" style="margin: 0">Gerente General</p>
+            </td>
+            <td align="center" style="padding: 0 40px">
+              <p class="signature-name" style="margin: 0; border-top: 1px solid #333; padding-top: 10px">Edwin Chichipe
+                Salazar</p>
+              <p class="signature-title" style="margin: 0">Sub. Gerente Académico</p>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <section class="agreements-section" style="margin-top: 10px">
+        <p class="agreements-title" style="margin-bottom: 20px">Nuestros convenios</p>
+        <div class="agreements-logos">
+          <img
+            src="https://cdn.builder.io/api/v1/image/assets/TEMP/2e035b51907acddd8242408a9668baf54b544831e1aab26c57344b33ee99cfa8?placeholderIfAbsent=true&apiKey=0f2111aa112942eda6dda1d2ced51822"
+            alt="Convenio Logo 1" class="agreements-logo" loading="lazy" />
+          <img
+            src="https://cdn.builder.io/api/v1/image/assets/TEMP/cbcff7432f010eec9ed530d9243dffda70b428a0940a30a17632b7fa756a47fe?placeholderIfAbsent=true&apiKey=0f2111aa112942eda6dda1d2ced51822"
+            alt="Convenio Logo 2" class="agreements-logo" loading="lazy" />
+          <img
+            src="https://cdn.builder.io/api/v1/image/assets/TEMP/29505368281a22ff9bf6d085f2e30040108fbe8d3c3cc2819e4404a9987a47d9?placeholderIfAbsent=true&apiKey=0f2111aa112942eda6dda1d2ced51822"
+            alt="Convenio Logo 3" class="agreements-logo" loading="lazy" />
+        </div>
+      </section>
+    </section>
+  </section>
+
 </body>
 
 </html>
