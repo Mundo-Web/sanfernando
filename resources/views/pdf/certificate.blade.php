@@ -198,12 +198,12 @@
             <td align="left" style="vertical-align: middle">
               <img
                 src="https://cdn.builder.io/api/v1/image/assets/TEMP/72318f99933ec24f075e143dfcf0d49da68332f7946bcaabdec7f2c94e46db8a?placeholderIfAbsent=true&apiKey=0f2111aa112942eda6dda1d2ced51822"
-                alt="Main Visual" class="main-image" loading="lazy" />
+                alt="Main Visual" class="main-image" loading="lazy" style="width:200px" />
             </td>
             <td align="right" style="vertical-align: middle">
               <img
                 src="https://api.qrserver.com/v1/create-qr-code/?data={{ rawurlencode(env('APP_NAME') . '/certificate/' . $attemp->id) }}"
-                alt="Logo" class="logo-image" loading="lazy" />
+                alt="Logo" class="logo-image" loading="lazy" style="width:90px" />
             </td>
           </tr>
         </tbody>
