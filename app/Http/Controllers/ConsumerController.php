@@ -13,8 +13,8 @@ class ConsumerController extends BasicController
     public function setPaginationInstance(string $model)
     {
         return $model::select([
+            'users.*',
             DB::raw('DISTINCT(users.*)'),
-            // 'users.*'
         ])
             ->with([
                 'courses',
