@@ -112,7 +112,7 @@
     "src": "resources/js/Admin/Consumers.jsx"
   },
   "resources/js/Admin/Modules.jsx": {
-    "file": "assets/Modules-FzJZe3hJ.js",
+    "file": "assets/Modules-HpIRm8-d.js",
     "imports": [
       "resources/js/Utils/InitialsImage.jsx",
       "resources/js/Utils/ReactAppend.jsx",

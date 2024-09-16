@@ -10,7 +10,7 @@ const CourseCard = ({ imagen, producto, extract, description, hasShadow = false,
       </div>
       <div className="w-full ps-3 text-start">
         <h4 className='w-[calc(100%-40px)] font-semibold text-ellipsis text-nowrap overflow-hidden '>{producto}</h4>
-        <div className="text-gray-500 text-xs mb-1.5 dark:text-gray-400">
+        <div className="text-gray-500 text-xs mb-1.5 dark:text-gray-400 line-clamp-2 text-ellipsis">
           {extract || html2string(description)}
         </div>
       </div>
