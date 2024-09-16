@@ -14,12 +14,12 @@ class ConsumerController extends BasicController
     {
         return $model::select([
             'users.*',
-            DB::raw('DISTINCT(users.id)'),
         ])
             ->with([
                 'courses',
                 // 'certificates'
             ])
+            ->groupBy('users.id')
             ->join('model_has_roles AS mhr', 'mhr.model_id', 'users.id')
             ->where('mhr.role_id', 3);
     }
