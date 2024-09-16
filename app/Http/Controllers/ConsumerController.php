@@ -14,7 +14,7 @@ class ConsumerController extends BasicController
     {
         return $model::select([
             'users.*',
-            DB::raw('DISTINCT(users.*)'),
+            DB::raw('DISTINCT(users.id)'),
         ])
             ->with([
                 'courses',
