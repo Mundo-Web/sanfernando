@@ -90,9 +90,13 @@ class BasicController extends Controller
 
       $totalCount = 0;
       if ($request->requireTotalCount) {
-        $instance4count = clone $instance;
-        $instance4count->getQuery()->groups = null;
-        $totalCount = $instance4count->select(DB::raw('COUNT(*) as total_count'))->value('total_count');
+        // $instance4count = clone $instance;
+        // $instance4count->getQuery()->groups = null;
+        // $totalCount = $instance4count->select(DB::raw('COUNT(DISTINCT(id)) as total_count'))->value('total_count');
+        $totalCount = DB::table(DB::raw("({$instance->toSql()}) as subquery"))
+          ->mergeBindings($instance->getQuery()) // Mantenemos los bindings de la consulta original
+          ->select(DB::raw('COUNT(DISTINCT(subquery.id)) as total_count'))
+          ->value('total_count');
       }
 
       $jpas = $request->isLoadingAll
