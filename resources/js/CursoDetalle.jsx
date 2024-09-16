@@ -8,8 +8,9 @@ import copyToClipboard from './Utils/copyToClipboard';
 import { agregarPedido } from './Utils/carrito.js'
 
 
-const CursoDetalle = ({ producto, url_env }) => {
+const CursoDetalle = ({ producto, modules, url_env }) => {
 
+  console.log(modules)
   const currentUrl = window.location.href;
   const formatDate = (dateString) => {
 
@@ -277,6 +278,35 @@ const CursoDetalle = ({ producto, url_env }) => {
                       Metodología innovadora de enseñanza especializada
                     </div>
                   </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="flex flex-col mt-10 w-full max-md:max-w-full">
+              <div className="text-2xl font-bold leading-tight text-neutral-800">
+                Temario
+
+                <div className="max-w-2xl py-4 space-y-2">
+                  {modules.sort((a,b) => a.order - b.order).map((module, index) => (
+                    <div key={index} className="bg-white rounded-lg overflow-hidden border border-rose-200">
+                      <div className="p-4 flex items-start justify-between cursor-pointer">
+                        <div className="flex-1">
+                          <h3 className="text-lg font-semibold text-gray-800">{module.type == 'session' ? `Módulo ${index + 1}`: 'Evaluación final'}: {module.name}</h3>
+                          <div className="mt-2 flex items-center text-sm text-gray-600 space-x-4">
+                            <span className="flex items-center">
+                              <i className="fa fa-book mr-2 text-blue-500" />
+                              {module.sources_count} recursos
+                            </span>
+                            <span className="flex items-center">
+                              <i className="fa fa-clock mr-2 text-rose-500" />
+                              {module.duration || 0}m
+                            </span>
+                          </div>
+                        </div>
+                        {/* <FontAwesomeIcon icon={faChevronDown} className="text-gray-400 mt-1" /> */}
+                      </div>
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>

@@ -43,6 +43,14 @@
                                 <span class="text-red-500 text-sm">{{ $message }}</span>
                             @enderror
                         </div>
+                        {{-- <div>
+                            <input type="text" placeholder="Apellidos" id="lastname" name="lastname"
+                                :value="old('lastname')" required autofocus
+                                class="w-full py-3 px-3 focus:outline-none text-[#CF072C] placeholder-[#CF072C] focus:placeholder-[#CF072C] font-normal text-base bg-[#FFF0F0] rounded-2xl border-2 border-transparent focus:border-2 focus:border-[#CF072C] focus:ring-0" />
+                            @error('lastname')
+                                <span class="text-red-500 text-sm">{{ $message }}</span>
+                            @enderror
+                        </div> --}}
                         <div>
                             <input type="text" placeholder="Correo electrónico" id="email" name="email"
                                 :value="old('email')" required

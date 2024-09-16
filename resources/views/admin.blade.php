@@ -10,7 +10,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="csrf-token" content="{{ csrf_token() }}">
 
-  <title>Panel | {{env('APP_NAME')}}</title>
+  <title>Panel | {{ env('APP_NAME') }}</title>
   <link rel="shortcut icon" href="/images/icon.svg" type="image/x-icon">
 
   <!-- Fonts -->
@@ -58,6 +58,17 @@
   <!-- Select2 -->
   <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
   <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+  @if ($component == 'Admin/Consumers.jsx')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/exceljs/4.1.1/exceljs.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.2/FileSaver.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <link href="/js/dxdatagrid/css/dx.light.css?v=06d3ebc8-645c-4d80-a600-c9652743c425" rel="stylesheet" type="text/css"
+      id="dg-default-stylesheet" />
+    <script src="/js/dxdatagrid/js/dx.all.js"></script>
+    <script src="/js/dxdatagrid/js/localization/dx.messages.es.js"></script>
+  @endif
+
   <!-- Scripts -->
   @vite(['resources/js/' . $component, 'resources/css/app.css', 'resources/js/app.js'])
 
@@ -86,6 +97,10 @@
   <style>
     .jquery-modal.blocker.current {
       z-index: 40;
+    }
+
+    .ReactModal__Overlay.ReactModal__Overlay--after-open {
+      z-index: 40 !important;
     }
   </style>
 

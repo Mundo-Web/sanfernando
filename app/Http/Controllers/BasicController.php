@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response as HttpResponse;
 use Illuminate\Routing\ResponseFactory;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Inertia\Inertia;
 use SoDe\Extend\JSON;
 use SoDe\Extend\Response;
@@ -22,7 +23,9 @@ class BasicController extends Controller
   public $reactRootView = 'admin';
 
 
-  public function all(Request $request) {}
+  public function all(Request $request) {
+    
+  }
 
   public function setPaginationInstance(string $model)
   {
@@ -54,7 +57,8 @@ class BasicController extends Controller
 
       if ($request->group != null) {
         [$grouping] = $request->group;
-        $selector = str_replace('.', '__', $grouping['selector']);
+        // $selector = str_replace('.', '__', $grouping['selector']);
+        $selector = $grouping['selector'];
         $instance = $this->model::select([
           "{$selector} AS key"
         ])
@@ -73,7 +77,8 @@ class BasicController extends Controller
 
       if ($request->sort != null) {
         foreach ($request->sort as $sorting) {
-          $selector = \str_replace('.', '__', $sorting['selector']);
+          // $selector = \str_replace('.', '__', $sorting['selector']);
+          $selector = $sorting['selector'];
           $instance->orderBy(
             $selector,
             $sorting['desc'] ? 'DESC' : 'ASC'
@@ -83,7 +88,13 @@ class BasicController extends Controller
         $instance->orderBy('id', 'DESC');
       }
 
-      $totalCount = $instance->count('*');
+      $totalCount = 0;
+      if ($request->requireTotalCount) {
+        $instance4count = clone $instance;
+        $instance4count->getQuery()->groups = null;
+        $totalCount = $instance4count->select(DB::raw('COUNT(DISTINCT(id)) as total_count'))->value('total_count');
+      }
+
       $jpas = $request->isLoadingAll
         ? $instance->get()
         : $instance
@@ -93,14 +104,15 @@ class BasicController extends Controller
 
       $results = [];
 
-      foreach ($jpas as $jpa) {
-        $result = JSON::unflatten($jpa->toArray(), '__');
-        $results[] = $result;
-      }
+      // foreach ($jpas as $jpa) {
+      //   $result = JSON::unflatten($jpa->toArray(), '__');
+      //   $results[] = $result;
+      // }
 
       $response->status = 200;
       $response->message = 'Operación correcta';
-      $response->data = $results;
+      // $response->data = $results;
+      $response->data = $jpas;
       $response->totalCount = $totalCount;
     } catch (\Throwable $th) {
       $response->status = 400;
@@ -113,8 +125,7 @@ class BasicController extends Controller
     }
   }
 
-  public function beforeSave(Request $request)
-  {
+  public function beforeSave(Request $request) {
     return $request->all();
   }
   public function save(Request $request): HttpResponse|ResponseFactory
@@ -123,7 +134,7 @@ class BasicController extends Controller
     try {
 
       $body = $this->beforeSave($request);
-      $jpa = $this->model::find($body['id'] ?? $request->id);
+      $jpa = $this->model::find($request->id);
 
       if (!$jpa) {
         $jpa = $this->model::create($body);
@@ -149,8 +160,7 @@ class BasicController extends Controller
     }
   }
 
-  public function afterSave(Request $request, object $jpa)
-  {
+  public function afterSave(Request $request, object $jpa) {
     return null;
   }
 

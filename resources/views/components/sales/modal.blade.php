@@ -10,8 +10,8 @@
     <b class="block" id="address-tipo-comprobante"></b>
     <b class="block" id="n_document"></b>
     <h4 class="h4 mb-1">S/. <span id="invoice-price"></span></h4>
-    <span id="invoice-address-price"
-      class="w-max block mx-auto text-xs font-medium px-2.5 py-0.5 mb-1 rounded-full"></span>
+    {{-- <span id="invoice-address-price"
+      class="w-max block mx-auto text-xs font-medium px-2.5 py-0.5 mb-1 rounded-full"></span> --}}
   </div>
   <h4 class="h4 mb-2 mt-2">Orden #<span id="invoice-code"></span></h4>
   <p id="invoice-client" class="font-bold mb-2"></p>
@@ -110,14 +110,13 @@
     $('#razonS').text(data.razon_fact)
     $('#dirFact').text(data.direccion_fact)
     $('#invoice-price').text(data.total)
-    $('#invoice-address-price').text(isFree ? 'Envio gratis' :
-      `S/. ${Number(data.address_price).toFixed(2)}`)
-    if (isFree) $('#invoice-address-price')
-      .addClass('bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300')
-      .removeClass('bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300')
-    else $('#invoice-address-price')
-      .addClass('bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300')
-      .removeClass('bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300')
+    // $('#invoice-address-price').text(isFree ? 'Envio gratis' : `S/. ${Number(data.address_price).toFixed(2)}`)
+    // if (isFree) $('#invoice-address-price')
+    //   .addClass('bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300')
+    //   .removeClass('bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300')
+    // else $('#invoice-address-price')
+    //   .addClass('bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300')
+    //   .removeClass('bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300')
     $('#invoice-code').text(data.code)
     $('#invoice-client').text(`${data.name} ${data.lastname}`)
     $('#invoice-address').text(data.address_description ?

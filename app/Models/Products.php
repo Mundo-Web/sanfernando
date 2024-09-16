@@ -104,7 +104,9 @@ class Products extends Model
       'products.*'
     ])
       ->join('sale_details', 'sale_details.product_id', 'products.id')
-      ->where('user_id', $userId);
+      ->join('sales', 'sales.id', '=', 'sale_details.sale_id')
+      ->where('user_id', $userId)
+      ->where('sales.status_id', 3);
   }
 
   public function detalleSales(){

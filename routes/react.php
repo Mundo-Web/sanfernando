@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ConsumerController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\ModuleController;
 use App\Http\Controllers\ProductsController;
@@ -28,6 +29,7 @@ Route::middleware(['auth:sanctum', 'verified', 'can:Admin'])->group(function () 
     Route::get('/modules', [ModuleController::class, 'reactView'])->name('Admin/Modules.jsx');
     Route::get('/signs', [SignController::class, 'reactView'])->name('Admin/Signs.jsx');
     Route::get('/products2', [ProductsController::class, 'reactView'])->name('Admin/Products.jsx');
+    Route::get('/consumers', [ConsumerController::class, 'reactView'])->name('Admin/Consumers.jsx');
   });
 });
 Route::middleware(['auth:sanctum', 'verified'])->prefix('micuenta')->group(function () {

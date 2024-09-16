@@ -165,7 +165,7 @@ const FormEstudiante = ({ user }) => {
                   type="text"
                   aria-label="Apellido"
                   name="lastname"
-                  defaultValue={formUser.current.lastname}
+                  defaultValue={formUser.current.lastname || ''}
                   onChange={handleForm}
                   className="overflow-hidden flex-1 shrink w-full py-3 px-3 focus:outline-none text-[#CF072C] placeholder-[#CF072C] focus:placeholder-[#CF072C] font-normal text-base bg-[#FFF0F0] rounded-xl border-2 border-transparent focus:border-2 focus:border-[#CF072C] focus:ring-0"
                   placeholder="Apellido"
