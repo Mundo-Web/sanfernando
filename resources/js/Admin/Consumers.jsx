@@ -304,7 +304,7 @@ const Consumers = () => {
           <ul className="max-h-48 py-2 overflow-y-auto text-gray-700 " aria-labelledby="dropdownUsersButton">
             {
               foundCourses?.map((course, index) => (<li key={index} className="w-full">
-                <Tippy content="Clic para agregar">
+                <Tippy content={`Clic para agregar ${course.producto}`}>
                   <button className="flex items-center w-full px-4 py-2 hover:bg-gray-100 text-start" onClick={() => {
                     setAssignedCourses(old => ([...old, course]))
                     setFoundCourses([])
@@ -409,7 +409,7 @@ const Consumers = () => {
               <ul className="max-h-48 py-2 overflow-y-auto text-gray-700 " aria-labelledby="dropdownUsersButton">
                 {
                   foundCourses?.map((course, index) => (<li key={index} className="w-full">
-                    <Tippy content="Clic para agregar">
+                    <Tippy content={`Clic para agregar ${course.producto}`}>
                       <button className="flex items-center w-full px-4 py-2 hover:bg-gray-100 text-start" onClick={() => {
                         setAssignedCourses(old => ([...old, course]))
                         setFoundCourses([])
