@@ -92,7 +92,7 @@ class BasicController extends Controller
       if ($request->requireTotalCount) {
         $instance4count = clone $instance;
         $instance4count->getQuery()->groups = null;
-        $totalCount = $instance4count->select(DB::raw('COUNT(DISTINCT(id)) as total_count'))->value('total_count');
+        $totalCount = $instance4count->select(DB::raw('COUNT(*) as total_count'))->value('total_count');
       }
 
       $jpas = $request->isLoadingAll
