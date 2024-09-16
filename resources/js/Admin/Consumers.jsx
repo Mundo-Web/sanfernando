@@ -311,7 +311,7 @@ const Consumers = () => {
                     searchRef.current.value = ''
                   }}>
                     <img className="w-6 h-6 me-2 rounded-full" src={`/${course.imagen}`} alt={course.producto} onError={e => e.target.src = '/images/img/noimagen.jpg'} />
-                    <span className="flex-1 truncate">{course.producto}</span>
+                    <span className="flex-1 line-clamp-2 text-ellipsis text-sm">{course.producto}</span>
                   </button>
                 </Tippy>
               </li>))
@@ -416,7 +416,7 @@ const Consumers = () => {
                         searchRef.current.value = ''
                       }}>
                         <img className="w-6 h-6 me-2 rounded-full" src={`/${course.imagen}`} alt={course.producto} onError={e => e.target.src = '/images/img/noimagen.jpg'} />
-                        <span className="flex-1 truncate">{course.producto}</span>
+                        <span className="flex-1 line-clamp-2 text-ellipsis text-sm">{course.producto}</span>
                       </button>
                     </Tippy>
                   </li>))
