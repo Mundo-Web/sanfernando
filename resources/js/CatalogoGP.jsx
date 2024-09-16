@@ -15,13 +15,13 @@ import FilterPagination from './components/Filter/FilterPagination'
 import axios from 'axios';
 
 
-const CatalogoGP = ({ productos, env_url, userIsLogged, Wishlist }) => {
+const CatalogoGP = ({ productos, env_url, userIsLogged, Wishlist, categorias }) => {
 
   const [isListVisible, setIsListVisible] = useState(false)
   // const query = useRef({ query: '', order: '' });
   // const [query, setQuery] = useState({ query: GET.search ?? '', order: '' });
 
-  const query = useRef({ query: '', order: '', category: GET.category ?? '' });
+  const query = useRef({ query: '', order: '', category: GET.category ?? '', tag: GET.tag ?? '' });
   const [items, setItems] = useState();
 
   const deseosactivos = Wishlist.map((item) => item.product_id)
@@ -49,7 +49,7 @@ const CatalogoGP = ({ productos, env_url, userIsLogged, Wishlist }) => {
     let query2 = query.current
 
     try {
-      const response = await axios.post(`/buscar?query=${query2.query}&order=${query2.order}&&category=${query2.category}`, {
+      const response = await axios.post(`/buscar?query=${query2.query}&order=${query2.order}&&category=${query2.category}&&tag=${query2.tag}`, {
         skip: take * (currentPage - 1),
         requireTotalCount: true,
         take
@@ -93,6 +93,26 @@ const CatalogoGP = ({ productos, env_url, userIsLogged, Wishlist }) => {
     buscarProductoQuery()
 
   }
+  const handleCategoryChange = (id, check) => {
+    console.log(id, check)
+
+    if (check) {
+      // Si el checkbox está marcado, quita el id del array
+      query.current = {
+        ...query.current,
+        category: query.current.category.filter(catId => catId !== id)
+      };
+    } else {
+      // Si el checkbox no está marcado, agrega el id al array
+      query.current = {
+        ...query.current,
+        category: [...(query.current.category || []), id]
+      };
+    }
+
+    console.log(query.current)
+    buscarProductoQuery()
+  }
 
 
   return (<>
@@ -105,6 +125,30 @@ const CatalogoGP = ({ productos, env_url, userIsLogged, Wishlist }) => {
           </h1>
           <div className="flex flex-wrap gap-5 lg:gap-10 justify-between items-center mt-6 w-full max-md:max-w-full">
             <div className="flex flex-col self-stretch my-auto text-base leading-tight text-red-600 min-w-[240px] w-[493px] max-md:max-w-full">
+              <div className='mb-5'>
+                {console.log(categorias)}
+                <ul className='flex flex-row w-full gap-4 md:grid-cols-3'>
+
+
+                  {categorias.length > 0 && categorias.map((item, index) => {
+
+                    return (
+                      <li>
+                        <input type="checkbox" id={`react-option-${index}`} value={item.id} className="hidden peer" required=""></input>
+                        <label
+                          onClick={(e) => handleCategoryChange(item.id, e.target.previousSibling.checked)}
+                          htmlFor={`react-option-${index}`}
+                          type="button"
+                          className="text-red-700 font-bold bg-white border-2 border-red-700 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800  rounded-lg text-sm px-5 py-2 text-center me-2 mb-2  peer-checked:bg-red-700 peer-checked:text-white "
+                        >
+                          {item.name}
+                        </label>
+                      </li>
+
+                    );
+                  })}
+                </ul>
+              </div>
               <div className="flex flex-wrap gap-2.5 items-center px-4 py-3 w-full bg-rose-50 rounded-xl max-md:max-w-full">
                 <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/8d0148f8eb4404f2a75a99c44c0b35db6ba68a27faeb0e05d47cc41d12c3445f?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f" className="object-contain shrink-0 self-stretch my-auto w-6 aspect-square" alt="" />
                 <label htmlFor="searchInput" className="sr-only">Buscar curso o diplomado</label>

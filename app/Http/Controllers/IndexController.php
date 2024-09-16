@@ -81,6 +81,13 @@ class IndexController extends Controller
     $Wishlist = [];
     $productos =  Products::with(['tags', 'galeria', 'category'])->where('status', 1)->take(12)->get();
 
+    $categorias = Category::select('categories.id', 'categories.name', 'categories.visible')
+      ->join('products', 'products.categoria_id', 'categories.id')
+      ->where('categories.visible', 1)
+      ->where('products.status', 1)
+      ->groupBy('categories.id', 'categories.name', 'categories.visible')
+      ->get();
+
     //check if user is logged in
     $userIsLogged = Auth::check();
     if ($userIsLogged) {
@@ -96,7 +103,8 @@ class IndexController extends Controller
         'productos' => $productos,
         'env_url' => env('APP_URL'),
         'userIsLogged' => $userIsLogged,
-        'Wishlist' => $Wishlist
+        'Wishlist' => $Wishlist,
+        'categorias' => $categorias
       ]
     )->rootView('app');
   }
@@ -758,17 +766,35 @@ class IndexController extends Controller
     $order = $request->input('order');
     $categoria =  $request->input('category');
 
+    $tag = $request->input('tag');
+
+
     $resultados = Products::select('products.*')
       ->where('producto', 'like', "%$query%")
       ->join('categories', 'categories.id', 'products.categoria_id')
       ->where('categories.visible', 1)->where('products.status', 1)
       ->with(['tags', 'galeria', 'category']);
 
-    if ($categoria == 'courses') {
+    
+    if (isset($categoria)) {
+      $categoriaSplit = explode(',', $categoria);
+      
+      if (count($categoriaSplit) > 0) {
+        $resultados = $resultados->whereIn('products.categoria_id', $categoriaSplit);
+      }
+    }
+
+    if (isset($tag)){
+      $tagsxProducts = DB::table('tags_xproducts')->select('producto_id')->where('tag_id', $tag)->get()->pluck('producto_id');
+      
+      $resultados = $resultados->whereIn('products.id', $tagsxProducts);
+    }
+
+    /*  if ($categoria == 'courses') {
       $resultados = $resultados->where('categoria_id', 1);
     } else if ($categoria == 'diploma') {
       $resultados = $resultados->where('categoria_id', 2);
-    }
+    } */
 
 
 

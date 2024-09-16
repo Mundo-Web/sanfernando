@@ -327,7 +327,7 @@
             </a>
             @if ($tags->count() > 0)
               @foreach ($tags as $item)
-                <a href="/catalogo?tag={{ $item->id }}" class="font-medium hover:opacity-75    "
+                <a href="/catalogoGestion?tag={{ $item->id }}" class="font-medium hover:opacity-75    "
                   style="color: {{ $item->color }}">
                   <span class="underline-this  ">
                     {{ $item->name }} </span>

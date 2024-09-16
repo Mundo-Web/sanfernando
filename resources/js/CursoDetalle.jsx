@@ -26,6 +26,15 @@ const CursoDetalle = ({ producto, modules, url_env }) => {
   const incluye = producto?.incluye ? JSON.parse(producto.incluye) : [];
   const temario = producto?.temario ? JSON.parse(producto.temario) : [];
 
+  const removeLastS = (str) => {
+    if (!str || typeof str !== 'string') return str;
+    const lastChar = str.slice(-1);
+    if (lastChar === 'S' || lastChar === 's') {
+      return str.slice(0, -1);
+    }
+    return str;
+  };
+
   return (
     <>
       <main className="z-[15] !font-poppins_regular mb-8">
@@ -230,6 +239,16 @@ const CursoDetalle = ({ producto, modules, url_env }) => {
             <div className="flex flex-col mt-10 w-full max-md:max-w-full">
               <div dangerouslySetInnerHTML={{ __html: producto?.description2 ?? '' }}></div>
             </div>
+
+
+            {producto.que_lograras && (<div className="flex flex-col mt-10 w-full max-md:max-w-full">
+              <div className="text-2xl font-bold leading-tight text-neutral-800">
+                ¿Qué lograrás una vez terminado el Diplomado?
+
+              </div>
+              <div dangerouslySetInnerHTML={{ __html: producto?.que_lograras ?? '' }}></div>
+            </div>)}
+
 
             <div className="flex flex-col mt-10 w-full max-md:max-w-full">
               <div className="text-2xl font-bold leading-tight text-neutral-800">
@@ -499,15 +518,13 @@ const CursoDetalle = ({ producto, modules, url_env }) => {
                   Comprar ahora
                 </div>
               </div>
-              <div className="mt-3 text-xs tracking-normal leading-5 text-neutral-800">
-                Nota: todos los cursos tienen garantía de devolución de dinero de 30
-                días.
-              </div>
+
             </div>
             <div className="mt-6 w-full border border-white border-solid min-h-[1px]"></div>
             <div className="flex flex-col px-6 mt-6 w-full">
               <div className="text-sm font-medium leading-loose text-neutral-800">
-                Comparte este curso:
+
+                Comparte este {removeLastS(producto.category.name) ?? 'Curso'}:
               </div>
               <div className="flex flex-col mt-4 w-full">
                 <div className="flex gap-3 items-center w-full">

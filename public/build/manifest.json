@@ -86,7 +86,7 @@
     ]
   },
   "resources/css/app.css": {
-    "file": "assets/app-2pD4tSg6.css",
+    "file": "assets/app-lsnJZ5QQ.css",
     "isEntry": true,
     "src": "resources/css/app.css"
   },
@@ -186,7 +186,7 @@
     "src": "resources/js/Catalogo.jsx"
   },
   "resources/js/CatalogoGP.jsx": {
-    "file": "assets/CatalogoGP-jYhT_6TW.js",
+    "file": "assets/CatalogoGP-ghe8z0QQ.js",
     "imports": [
       "resources/js/Utils/InitialsImage.jsx",
       "resources/js/Utils/ReactAppend.jsx",
@@ -258,7 +258,7 @@
     "src": "resources/js/CursoDesarrollo.jsx"
   },
   "resources/js/CursoDetalle.jsx": {
-    "file": "assets/CursoDetalle-85vJfmfG.js",
+    "file": "assets/CursoDetalle-9EeJfym5.js",
     "imports": [
       "resources/js/Utils/InitialsImage.jsx",
       "resources/js/Utils/ReactAppend.jsx",
@@ -307,7 +307,7 @@
     "src": "resources/js/DashboardEstudiante.jsx"
   },
   "resources/js/Diploma.jsx": {
-    "file": "assets/Diploma-DzGBX2Ue.js",
+    "file": "assets/Diploma-cLcCFaso.js",
     "imports": [
       "resources/js/Utils/InitialsImage.jsx",
       "_CreateReactScript-IbCTOT6z.js",
