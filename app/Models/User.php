@@ -101,7 +101,7 @@ class User extends Authenticatable
                 ->on('attemps.user_id', '=', 'best_attemps.user_id');
             }
         )
-            ->groupBy('products.id','products.uuid', 'best_attemps.score', 'best_attemps.questions', 'best_attemps.user_id');
+            ->groupBy('products.id','products.uuid', 'products.producto', 'best_attemps.score', 'best_attemps.questions', 'best_attemps.user_id');
     }
 
     public function courses()
