@@ -139,7 +139,7 @@ class User extends Authenticatable
                 'products.incluye',
                 'products.que_lograras',
                 'products.brochure_url',
-                'products.offer_messag',
+                'products.offer_message',
                 'best_attemps.score',
                 'best_attemps.questions',
                 'best_attemps.user_id'
