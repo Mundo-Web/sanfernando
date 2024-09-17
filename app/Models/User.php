@@ -143,6 +143,7 @@ class User extends Authenticatable
                 'products.created_at',
                 'products.updated_at',
                 'products.precio_reseller',
+                'attemps.user_id',
                 'best_attemps.score',
                 'best_attemps.questions',
                 'best_attemps.user_id'
