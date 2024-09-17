@@ -37,17 +37,18 @@
       clockSearch = setTimeout(() => {
         $.ajax({
           url: '{{ route('buscar') }}',
-          method: 'GET',
+          method: 'POST',
           data: {
             query: query
           },
           success: function(data) {
+            console.log(data)
             var resultsHtml = '';
             var url = '{{ asset('') }}';
-            data.forEach(function(result) {
+            data.resultado.forEach(function(result) {
               const price = Number(result.precio) || 0
               const discount = Number(result.descuento) || 0
-              resultsHtml += `<a href="/producto/${result.id}">
+              resultsHtml += `<a href="/detalleCurso/${result.id}">
               <div class="w-full flex flex-row py-3 px-5 hover:bg-slate-200">
                 <div class="w-[10%]">
                   <img class="w-14 rounded-md" src="${url}${result.imagen}" onerror="imagenError(this)" />
