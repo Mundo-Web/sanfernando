@@ -250,7 +250,7 @@
         </div>
       </div>
       <section class="signature-section">
-        <table style="margin: auto; text=align: center; margin-top: 80px">
+        <table style="margin: auto; text=align: center; margin-top: 60px">
           <tbody>
             <tr>
               <td align="center" style="padding: 0 40px">
@@ -268,8 +268,8 @@
           </tbody>
         </table>
       </section>
-      <section class="agreements-section" style="margin-top: 10px;">
-        <p class="agreements-title" style="margin-bottom: 20px">Nuestros convenios</p>
+      <section class="agreements-section" style="margin-top: 5px;">
+        <p class="agreements-title" style="margin-bottom: 10px">Nuestros convenios</p>
         <div class="agreements-logos">
           <img
             src="https://cdn.builder.io/api/v1/image/assets/TEMP/2e035b51907acddd8242408a9668baf54b544831e1aab26c57344b33ee99cfa8?placeholderIfAbsent=true&apiKey=0f2111aa112942eda6dda1d2ced51822"
