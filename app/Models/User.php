@@ -85,23 +85,23 @@ class User extends Authenticatable
     public function certificates()
     {
         return $this->hasManyThrough(Products::class, Attemp::class, 'user_id', 'id', 'id', 'course_id')
-        ->select('products.*', 'best_attemps.score', 'best_attemps.questions')
-        ->joinSub(
-            function ($query) {
-                $query->select('course_id', 'user_id')
-                ->selectRaw('MAX(score) as score, MAX(questions) as questions')
-                ->from('attemps')
-                ->where('finished', true)
-                    ->whereRaw('score > (questions / 2)')
-                    ->groupBy('course_id', 'user_id');
-            },
-            'best_attemps',
-            function ($join) {
-                $join->on('products.id', '=', 'best_attemps.course_id')
-                ->on('attemps.user_id', '=', 'best_attemps.user_id');
-            }
-        )
-            ->groupBy('products.id','products.uuid', 'products.producto', 'best_attemps.score', 'best_attemps.questions', 'best_attemps.user_id');
+            ->select('products.*', 'best_attemps.score', 'best_attemps.questions')
+            ->joinSub(
+                function ($query) {
+                    $query->select('course_id', 'user_id')
+                        ->selectRaw('MAX(score) as score, MAX(questions) as questions')
+                        ->from('attemps')
+                        ->where('finished', true)
+                        ->whereRaw('score > (questions / 2)')
+                        ->groupBy('course_id', 'user_id');
+                },
+                'best_attemps',
+                function ($join) {
+                    $join->on('products.id', '=', 'best_attemps.course_id')
+                        ->on('attemps.user_id', '=', 'best_attemps.user_id');
+                }
+            )
+            ->groupBy('products.id', 'products.uuid', 'products.producto', 'products.extract', 'best_attemps.score', 'best_attemps.questions', 'best_attemps.user_id');
     }
 
     public function courses()
