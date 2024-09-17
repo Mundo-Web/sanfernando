@@ -13,35 +13,29 @@
     }
 
     .container-row {
-
-      width: 1000px;
+      width: 100%;
+      max-width: 800px; /* Limitar el ancho para tamaños de carta */
       min-height: 100vh;
       page-break-inside: avoid;
-      /* Evitar quiebre de página */
-
     }
 
     .first {
       width: 150px;
       background-color: red;
       min-height: 100vh;
-      height: 100%;
-      display: inline;
+      display: inline-block;
       vertical-align: top;
-      /* Alinear al inicio si hay problemas de altura */
       page-break-inside: avoid;
-      /* Evitar quiebre de página */
     }
 
-
     .second {
-      display: inline;
+      display: inline-block;
       vertical-align: top;
-      /* Alinear al inicio */
-      width: 850px;
+      width: calc(100% - 150px);
       min-height: 100vh;
       page-break-inside: avoid;
-      /* Evitar quiebre de página */
+      padding: 20px;
+      position: relative;
     }
 
     .image-container {
@@ -53,10 +47,9 @@
 
     .image-wrapper {
       display: flex;
-      width: 95vw;
+      width: 100%;
       margin: auto;
       align-items: center;
-      /* gap: 40px 100px; */
       justify-content: space-between;
       flex-wrap: wrap;
     }
@@ -71,58 +64,56 @@
     .main-image {
       object-fit: contain;
       object-position: center;
-      width: 200px;
+      width: 20%;
     }
 
     .logo-image {
       object-fit: contain;
       object-position: center;
-      width: 90px;
+      width: 10%;
     }
 
     .text-container {
       display: flex;
       width: 100%;
       flex-direction: column;
-      align-items: start;
+      align-items: center;
       margin-top: 0;
       color: rgba(15, 31, 56, 1);
       text-align: center;
-      justify-content: start;
-      font-size: 40px;
+      justify-content: center;
+      font-size: 24px;
     }
 
     .title {
       color: rgba(207, 7, 44, 1);
       font-weight: 700;
       text-transform: uppercase;
-      margin: auto;
+      margin: 10px auto;
+      font-size: 32px;
     }
 
     .description {
       margin: auto;
-      font-size: 24px;
+      font-size: 20px;
       font-weight: 400;
-      line-height: 26px;
-      text-align: center;
+      line-height: 1.4;
     }
 
     .bold-italic {
       font-weight: 600;
-      /* font-style: italic; */
     }
 
     .name {
-      margin: auto;
+      margin-top: 20px;
       font-weight: 600;
-      /* line-height: 1.2; */
-      margin-top: 40px;
+      font-size: 24px;
+      line-height: 1.2;
     }
 
     .signature-section {
       display: flex;
-      margin-top: 60px;
-      width: 95vw;
+      margin-top: 40px;
       flex-direction: column;
       justify-content: center;
     }
@@ -139,8 +130,6 @@
     }
 
     .signature-card {
-      border-color: rgba(15, 31, 56, 1);
-      border-top-width: 1px;
       align-self: stretch;
       display: flex;
       padding-top: 24px;
@@ -149,22 +138,17 @@
       width: 217px;
     }
 
-    .signature-title {
-      font-size: 16px;
-      font-weight: 400;
-      line-height: 2;
-    }
-
     .signature-name {
+      margin-top: 10px;
       font-size: 18px;
       font-weight: 600;
-      line-height: 1;
+      border-top: 1px solid #333;
+      padding-top: 10px;
     }
 
     .agreements-section {
       display: flex;
-      margin-top: 64px;
-      width: 232px;
+      margin-top: 40px;
       max-width: 100%;
       flex-direction: column;
       justify-content: start;
@@ -174,7 +158,6 @@
       color: rgba(15, 31, 56, 1);
       font-weight: 600;
       font-size: 12px;
-      line-height: 1.2;
     }
 
     .agreements-logos {
@@ -186,106 +169,86 @@
     }
 
     .agreements-logo {
-      aspect-ratio: 0.84;
       object-fit: contain;
       object-position: center;
       width: 67px;
-      border-radius: 2px;
     }
 
     @media (max-width: 991px) {
-
-      .image-container,
-      .image-wrapper,
-      .text-container,
-      .signature-section {
-        max-width: 100%;
+      .container-row {
+        width: 100%;
       }
 
-      .main-image,
+      .second {
+        width: calc(100% - 80px);
+        padding: 15px;
+      }
+
       .title,
       .description,
       .name,
-      .signature-section,
       .agreements-section {
-        margin-top: 40px;
+        margin-top: 20px;
       }
     }
   </style>
 </head>
 
-<body class="bg-white">
+<body>
   <section class="container-row">
-    <section class="first">
-    </section>
-    <section class="second" style="position:relative;">
-      {{-- <img style="position: absolute; z-index: 0; background-image: linear-gradient(white 50%, #cf072c 50%); height: 100vh; object-fit: contain; object-position: top" src="{{ asset('/images/pdf/tab.svg') }}" width="100px"> --}}
-      <div class="image-container" style="position: relative; z-index: 1;">
+    <section class="first"></section>
+    <section class="second">
+      <div class="image-container">
         <table style="width: 100%">
           <tbody>
             <tr>
               <td align="left" style="vertical-align: middle">
-                <img
-                  src="https://cdn.builder.io/api/v1/image/assets/TEMP/72318f99933ec24f075e143dfcf0d49da68332f7946bcaabdec7f2c94e46db8a?placeholderIfAbsent=true&apiKey=0f2111aa112942eda6dda1d2ced51822"
-                  alt="Main Visual" loading="lazy" style="width:400px" />
+                <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/72318f99933ec24f075e143dfcf0d49da68332f7946bcaabdec7f2c94e46db8a"
+                  alt="Main Visual" style="width: 100%; max-width: 400px;" />
               </td>
               <td align="right" style="vertical-align: middle">
-                <img
-                  src="https://api.qrserver.com/v1/create-qr-code/?data={{ rawurlencode(env('APP_NAME') . '/certificate/' . $attemp->id) }}"
-                  alt="Logo" class="logo-image" loading="lazy" style="width:90px" />
+                <img src="https://api.qrserver.com/v1/create-qr-code/?data={{ rawurlencode(env('APP_NAME') . '/certificate/' . $attemp->id) }}"
+                  alt="QR" class="logo-image" style="width: 90px;" />
               </td>
             </tr>
           </tbody>
         </table>
         <div class="text-container">
-          <h4 class="title" style="text-transform: uppercase">DIPLOMADO EN
-            {{ $attemp->course->producto }}
-          </h4>
-          <p class="description">En mérito a su participación en nuestro <span class="bold-italic"
-              style="text-transform: uppercase">DIPLOMADO DE
-              {{ $attemp->course->producto }}.</span> Organizado por <b>EGESPP</b>, con una
-            duración de
-            {{ $attemp->course->duration / 60 }} horas lectivas del {{ date('Y') }}.</p>
+          <h4 class="title">DIPLOMADO EN {{ $attemp->course->producto }}</h4>
+          <p class="description">En mérito a su participación en nuestro <span class="bold-italic">DIPLOMADO DE {{ $attemp->course->producto }}</span>,
+            organizado por <b>EGESPP</b>, con una duración de {{ $attemp->course->duration / 60 }} horas lectivas del {{ date('Y') }}.</p>
           <p class="name">{{ $attemp->user->name }} {{ $attemp->user->lastname }}</p>
         </div>
       </div>
       <section class="signature-section">
-        <table style="margin: auto; text=align: center; margin-top: 80px">
+        <table style="margin: auto; text-align: center; margin-top: 40px;">
           <tbody>
             <tr>
-              <td align="center" style="padding: 0 40px">
-                <p class="signature-name" style="margin: 0; border-top: 1px solid #333; padding-top: 10px">Patricia
-                  Heredia Olivera</p>
-                <p class="signature-title" style="margin: 0">Gerente General</p>
+              <td align="center" style="padding: 0 40px;">
+                <p class="signature-name">Patricia Heredia Olivera</p>
+                <p class="signature-title">Gerente General</p>
               </td>
-              <td align="center" style="padding: 0 40px">
-                <p class="signature-name" style="margin: 0; border-top: 1px solid #333; padding-top: 10px">Edwin
-                  Chichipe
-                  Salazar</p>
-                <p class="signature-title" style="margin: 0">Sub. Gerente Académico</p>
+              <td align="center" style="padding: 0 40px;">
+                <p class="signature-name">Edwin Chichipe Salazar</p>
+                <p class="signature-title">Sub. Gerente Académico</p>
               </td>
             </tr>
           </tbody>
         </table>
       </section>
-      <section class="agreements-section" style="margin-top: 10px;">
-        <p class="agreements-title" style="margin-bottom: 20px">Nuestros convenios</p>
+      <section class="agreements-section">
+        <p class="agreements-title">Nuestros convenios</p>
         <div class="agreements-logos">
-          <img
-            src="https://cdn.builder.io/api/v1/image/assets/TEMP/2e035b51907acddd8242408a9668baf54b544831e1aab26c57344b33ee99cfa8?placeholderIfAbsent=true&apiKey=0f2111aa112942eda6dda1d2ced51822"
-            alt="Convenio Logo 1" class="agreements-logo" loading="lazy" />
-          <img
-            src="https://cdn.builder.io/api/v1/image/assets/TEMP/cbcff7432f010eec9ed530d9243dffda70b428a0940a30a17632b7fa756a47fe?placeholderIfAbsent=true&apiKey=0f2111aa112942eda6dda1d2ced51822"
-            alt="Convenio Logo 2" class="agreements-logo" loading="lazy" />
-          <img
-            src="https://cdn.builder.io/api/v1/image/assets/TEMP/29505368281a22ff9bf6d085f2e30040108fbe8d3c3cc2819e4404a9987a47d9?placeholderIfAbsent=true&apiKey=0f2111aa112942eda6dda1d2ced51822"
-            alt="Convenio Logo 3" class="agreements-logo" loading="lazy" />
+          <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/2e035b51907acddd8242408a9668baf54b544831e1aab26c57344b33ee99cfa8"
+            alt="Convenio Logo 1" class="agreements-logo" />
+          <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/cbcff7432f010eec9ed530d9243dffda70b428a0940a30a17632b7fa756a47fe"
+            alt="Convenio Logo 2" class="agreements-logo" />
+          <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/29505368281a22ff9bf6d085f2e30040108fbe8d3c3cc2819e4404a9987a47d9"
+            alt="Convenio Logo 3" class="agreements-logo" />
         </div>
       </section>
     </section>
   </section>
-
-
 </body>
 
 </html>
