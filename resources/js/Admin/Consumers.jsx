@@ -13,9 +13,11 @@ import arrayJoin from '../Utils/arrayJoin';
 import Swal from 'sweetalert2';
 import SimpleCard from '../components/Users/SimpleCard';
 import findIntersections from '../Utils/findIntersections';
+import AttempsRest from '../actions/Admin/AttempsRest';
 
 const consumersRest = new ConsumersRest()
 const coursesRest = new CoursesRest()
+const attempsRest = new AttempsRest()
 
 ReactModal.setAppElement('#app')
 
@@ -54,11 +56,16 @@ const Consumers = () => {
   const [coursesModalOpen, setCoursesModalOpen] = useState(false)
   const [certificatesModalOpen, setCertificatesModalOpen] = useState(false)
   const [massiveCoursesModalOpen, setMassiveCoursesModalOpen] = useState(false)
+  const [massiveCertificatesModalOpen, setMassiveCertificatesModalOpen] = useState(false)
 
   const [individualLoaded, setIndividualLoaded] = useState(null)
   const [massiveLoaded, setMassiveLoaded] = useState(null)
+
   const [assignedCourses, setAssignedCourses] = useState([])
+  const [assignedCertificates, setAssignedCertificates] = useState([])
+
   const [foundCourses, setFoundCourses] = useState([])
+  const [foundCertificates, setFoundCertificates] = useState([])
 
   const onCoursesModalOpen = (data) => {
     setCoursesModalOpen(true)
@@ -68,6 +75,7 @@ const Consumers = () => {
 
   const onCertificatesModalOpen = (data) => {
     setCertificatesModalOpen(true)
+    setAssignedCertificates([])
     setIndividualLoaded(data)
   }
 
@@ -94,8 +102,24 @@ const Consumers = () => {
     setFoundCourses(result?.data ?? [])
   }
 
+  const onCertificatesSearchChange = (e) => {
+    const search = e.target.value.trim()
+    let courses = individualLoaded?.courses
+    if (massiveCertificatesModalOpen) {
+      courses = findIntersections(massiveLoaded.map(x => x.courses), (a, b) => a.id == b.id)
+        .filter(a => ![...findIntersections(massiveLoaded.map(x => x.certificates), (a, b) => a.id == b.id), ...assignedCertificates].some(b => b.id == a.id))
+    } else {
+      courses = courses.filter(a => ![...individualLoaded?.certificates, ...assignedCertificates].some(b => b.id == a.id))
+    }
+    setFoundCertificates(courses.filter(x => x.producto.toLowerCase().includes(search.toLowerCase())))
+  }
+
   const onRemoveAssigned = (id) => {
     setAssignedCourses(old => {
+      const newCourses = old.filter(x => x.id != id)
+      return newCourses
+    })
+    setAssignedCertificates(old => {
       const newCourses = old.filter(x => x.id != id)
       return newCourses
     })
@@ -188,6 +212,93 @@ const Consumers = () => {
     setAssignedCourses([])
   }
 
+  const assignIndividualCertificates = async () => {
+    const { isConfirmed } = await Swal.fire({
+      title: 'Asignar certificados',
+      text: `¿Está seguro de asignar ${assignedCertificates.length} ${assignedCertificates.length == 1 ? 'certificado' : 'certificados'} a ${individualLoaded?.name?.split(' ')[0]}?`,
+      icon: 'question',
+      showCancelButton: true,
+      confirmButtonText: 'Asignar',
+      cancelButtonText: 'Cancelar',
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33'
+    })
+    if (!isConfirmed) return
+
+    const request = {
+      user_id: individualLoaded?.id,
+      courses: assignedCertificates.map(({ id }) => id)
+    }
+    const result = await attempsRest.assign(request)
+    if (!result) return
+    setIndividualLoaded(result)
+    setAssignedCertificates([])
+    $(gridRef.current).dxDataGrid('instance').refresh();
+  }
+
+  const assignMassiveCertificates = async () => {
+    const { isConfirmed } = await Swal.fire({
+      title: 'Asignar certificados',
+      text: `¿Está seguro de asignar ${assignedCertificates.length} ${assignedCertificates.length == 1 ? 'certificado' : 'certificados'} a ${massiveLoaded.length} ${massiveLoaded.length == 1 ? 'alumno' : 'alumnos'}?`,
+      icon: 'question',
+      showCancelButton: true,
+      confirmButtonText: 'Asignar',
+      cancelButtonText: 'Cancelar',
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33'
+    })
+    if (!isConfirmed) return
+
+    let assignedCount = 0
+    const totalStudents = massiveLoaded.length
+
+    const progressSwal = Swal.mixin({
+      title: 'Asignación en curso',
+      allowOutsideClick: false,
+      allowEscapeKey: false,
+      showConfirmButton: false
+    })
+
+    progressSwal.fire({
+      html: `Se han asignado certificados a ${assignedCount}/${totalStudents} alumnos`
+    })
+
+    for (const user of massiveLoaded) {
+      const certificates = assignedCertificates.filter(a => !user.certificates.find(b => a.id === b.id))
+      if (certificates.length > 0) {
+        const result = await attempsRest.assign({
+          user_id: user.id,
+          courses: certificates.map(({ id }) => id)
+        })
+        if (result) {
+          assignedCount++
+          progressSwal.update({
+            html: `Se han asignado certificados a ${assignedCount}/${totalStudents} alumnos`
+          })
+        }
+      } else {
+        assignedCount++
+        progressSwal.update({
+          html: `Se han asignado certificados a ${assignedCount}/${totalStudents} alumnos`
+        })
+      }
+    }
+
+    progressSwal.close()
+
+    await Swal.fire({
+      title: 'Asignación completada',
+      text: 'Todos los certificados han sido asignados correctamente.',
+      icon: 'success',
+      confirmButtonText: 'Aceptar'
+    })
+
+    $(gridRef.current).dxDataGrid('instance').refresh()
+    $(gridRef.current).dxDataGrid('instance').deselectAll();
+    setMassiveCertificatesModalOpen(false)
+    setAssignedCertificates([])
+  }
+
   return (<>
     <Table gridRef={gridRef} title='Alumnos' rest={consumersRest} selectable
       toolBar={(container) => {
@@ -196,6 +307,24 @@ const Consumers = () => {
           options: {
             icon: 'refresh', hint: 'Refrescar tabla',
             onClick: () => $(gridRef.current).dxDataGrid('instance').refresh()
+          }
+        });
+        container.unshift({
+          widget: 'dxButton', location: 'after',
+          options: {
+            icon: 'fas fa-mortar-board', hint: 'Asignar certificados',
+            onClick: () => {
+              const rows = $(gridRef.current).dxDataGrid('instance').getSelectedRowKeys()
+              if (rows.length == 0) return Swal.fire({
+                title: 'Selecciona un alumno',
+                text: 'Selecciona al menos un alumno para asignar certificados',
+                icon: 'warning',
+                confirmButtonText: 'Ok'
+              })
+              setMassiveLoaded(rows)
+              setAssignedCertificates([])
+              setMassiveCertificatesModalOpen(true)
+            }
           }
         });
         container.unshift({
@@ -231,7 +360,7 @@ const Consumers = () => {
           caption: 'Correo',
         },
         {
-          dataField: 'courses',
+          // dataField: 'courses',
           caption: 'Cursos',
           cellTemplate: (container, { data }) => {
             ReactAppend(container, <Tippy content="Ver/Asignar cursos">
@@ -244,13 +373,13 @@ const Consumers = () => {
           allowFiltering: false
         },
         {
-          dataField: 'certificates_count',
+          // dataField: 'certificates',
           caption: 'Certificados',
           cellTemplate: (container, { data }) => {
             ReactAppend(container, <Tippy content="Ver/Asignar certificados">
               <button onClick={() => onCertificatesModalOpen(data)}>
                 <i className='fa fa-mortar-board me-1'></i>
-                {data.cetificates?.length || 0}
+                {data.certificates?.length || 0}
               </button>
             </Tippy>)
           }
@@ -475,7 +604,7 @@ const Consumers = () => {
             assignedCourses.length > 0 &&
             <div className='text-end'>
               <Tippy content={`Asignar ${assignedCourses.length} ${assignedCourses.length == 1 ? 'curso' : 'cursos'} a ${individualLoaded?.name?.split(' ')[0]}`}>
-                  <button type="button" className="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-full text-sm px-5 py-2 me-2 mb-2" onClick={assignMassiveCourses}>
+                <button type="button" className="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-full text-sm px-5 py-2 me-2 mb-2" onClick={assignMassiveCourses}>
                   Asignar
                 </button>
               </Tippy>
@@ -490,6 +619,199 @@ const Consumers = () => {
       setIndividualLoaded(null)
     }}>
       <h4 className='text-lg font-semibold mb-4'>Ver/Asignar certificados</h4>
+      <SimpleCard {...individualLoaded} className='mb-4' />
+      <div className='mb-2 flex justify-between text-md text-start text-gray-700 font-semibold'>
+        Lista de cursos certificados
+      </div>
+      <div className='relative mb-2'>
+        <div className="relative">
+          <div className="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
+            <i className="fa fa-book"></i>
+          </div>
+          <input ref={searchRef} type="search" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full ps-10 p-2.5  outline-none" placeholder="Ingrese el nombre de un curso" onChange={onCertificatesSearchChange} autoComplete='off' onFocus={onCertificatesSearchChange} onBlur={() => setTimeout(() => setFoundCertificates([]), 250)} />
+        </div>
+        <div className={`${foundCertificates.length > 0 ? 'absolute' : 'hidden'} z-10 bg-white rounded border w-full shadow mt-1`}>
+          <ul className="max-h-48 py-2 overflow-y-auto text-gray-700 " aria-labelledby="dropdownUsersButton">
+            {
+              foundCertificates?.map((course, index) => (<li key={index} className="w-full">
+                <Tippy content={`Clic para agregar certificado de ${course.producto}`}>
+                  <button className="flex items-center w-full px-4 py-2 hover:bg-gray-100 text-start" onClick={() => {
+                    setAssignedCertificates(old => ([...old, course]))
+                    setFoundCertificates([])
+                    searchRef.current.value = ''
+                  }}>
+                    <img className="w-6 h-6 me-2 rounded-full" src={`/${course.imagen}`} alt={course.producto} onError={e => e.target.src = '/images/img/noimagen.jpg'} />
+                    <span className="flex-1 line-clamp-2 text-ellipsis text-sm">{course.producto}</span>
+                  </button>
+                </Tippy>
+              </li>))
+            }
+          </ul>
+        </div>
+      </div>
+      <div className="relative border shadow rounded mb-4">
+        <table className="w-full text-sm text-left rtl:text-right text-gray-500">
+          <thead className="text-xs text-gray-700 uppercase bg-gray-50">
+            <tr>
+              <th scope="col" className="px-6 py-3">Curso</th>
+              <th scope="col" className="px-6 py-3 text-center">Nota</th>
+            </tr>
+          </thead>
+          <tbody>
+            {
+              individualLoaded?.certificates?.length > 0 || assignedCertificates.length > 0
+                ? individualLoaded?.certificates?.map((course, index) => {
+                  return <tr key={index} className='bg-white border-t'>
+                    <th scope="row" className="px-6 py-4 font-medium">
+                      <div className='line-clamp-1 text-ellipsis w-full'>
+                        {course.producto}
+                      </div>
+                    </th>
+                    <td className="px-6 py-4 text-blue-500 text-nowrap text-center font-bold font-mono">
+                      {course.score}/{course.questions}
+                    </td>
+                  </tr>
+                })
+                : <tr>
+                  <td className='px-6 py-4 text-center text-nowrap' colSpan={2}>- Sin cursos certificados -</td>
+                </tr>
+            }
+            {
+              assignedCertificates.map((course, index) => {
+                return <tr key={index} className='bg-white border-t'>
+                  <th scope="row" className="px-6 py-4 font-medium">
+                    <div className='line-clamp-1 text-ellipsis w-full'>
+                      <Tippy content={`Quitar certificado de ${course.producto}`}>
+                        <i className='fa fa-times text-red-500 font-semibold me-1 cursor-pointer' onClick={() => onRemoveAssigned(course.id)}></i>
+                      </Tippy>
+                      {course.producto}
+                    </div>
+                  </th>
+                  <td className="px-6 py-4 text-gray-500 text-nowrap">
+                    Por asignar
+                  </td>
+                </tr>
+              })
+            }
+          </tbody>
+        </table>
+      </div>
+      {
+        assignedCertificates.length > 0 &&
+        <div className='text-end'>
+          <Tippy content={`Asignar ${assignedCertificates.length} ${assignedCertificates.length == 1 ? 'certificado' : 'certificados'} a ${individualLoaded?.name?.split(' ')[0]}`}>
+              <button type="button" className="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-full text-sm px-5 py-2 me-2 mb-2" onClick={assignIndividualCertificates}>
+              Asignar
+            </button>
+          </Tippy>
+        </div>
+      }
+    </ReactModal>
+    <ReactModal isOpen={massiveCertificatesModalOpen} style={bigModalStyles} onRequestClose={() => {
+      setMassiveCertificatesModalOpen(false)
+      setMassiveLoaded([])
+    }}>
+      <h4 className='text-lg font-semibold mb-4'>Asignar certificados (Masivo)</h4>
+      <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
+        <div className='col-span-1 md:col-span-2'>
+          <div className='mb-2 flex justify-between text-md text-start text-gray-700 font-semibold'>
+            Lista de Alumnos
+          </div>
+          <div className='flex flex-col gap-2'>
+            {
+              massiveLoaded?.map((user, index) => <SimpleCard key={index} {...user} />)
+            }
+          </div>
+        </div>
+        <div className='col-span-1 md:col-span-3'>
+          <div className='mb-2 flex justify-between text-md text-start text-gray-700 font-semibold'>
+            Lista de cursos certificados
+          </div>
+          <div className='relative mb-2'>
+            <div className="relative">
+              <div className="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
+                <i className="fa fa-book"></i>
+              </div>
+              <input ref={searchRef} type="search" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full ps-10 p-2.5  outline-none" placeholder="Ingrese el nombre de un curso" onChange={onCertificatesSearchChange} autoComplete='off' onFocus={onCertificatesSearchChange} onBlur={() => setTimeout(() => setFoundCertificates([]), 250)} />
+            </div>
+            <div className={`${foundCertificates.length > 0 ? 'absolute' : 'hidden'} z-10 bg-white rounded border w-full shadow mt-1`}>
+              <ul className="max-h-48 py-2 overflow-y-auto text-gray-700 " aria-labelledby="dropdownUsersButton">
+                {
+                  foundCertificates?.map((course, index) => (<li key={index} className="w-full">
+                    <Tippy content={`Clic para agregar certificado de ${course.producto}`}>
+                      <button className="flex items-center w-full px-4 py-2 hover:bg-gray-100 text-start" onClick={() => {
+                        setAssignedCertificates(old => ([...old, course]))
+                        setFoundCertificates([])
+                        searchRef.current.value = ''
+                      }}>
+                        <img className="w-6 h-6 me-2 rounded-full" src={`/${course.imagen}`} alt={course.producto} onError={e => e.target.src = '/images/img/noimagen.jpg'} />
+                        <span className="flex-1 line-clamp-2 text-ellipsis text-sm">{course.producto}</span>
+                      </button>
+                    </Tippy>
+                  </li>))
+                }
+              </ul>
+            </div>
+          </div>
+          <div className="relative border shadow rounded mb-4">
+            <table className="w-full text-sm text-left rtl:text-right text-gray-500">
+              <thead className="text-xs text-gray-700 uppercase bg-gray-50">
+                <tr>
+                  <th scope="col" className="px-6 py-3">Curso</th>
+                  <th scope="col" className="px-6 py-3 text-center">Nota</th>
+                </tr>
+              </thead>
+              <tbody>
+                {
+                  individualLoaded?.certificates?.length > 0 || assignedCertificates.length > 0
+                    ? individualLoaded?.certificates?.map((course, index) => {
+                      return <tr key={index} className='bg-white border-t'>
+                        <th scope="row" className="px-6 py-4 font-medium">
+                          <div className='line-clamp-1 text-ellipsis w-full'>
+                            {course.producto}
+                          </div>
+                        </th>
+                        <td className="px-6 py-4 text-blue-500 text-nowrap text-center font-bold font-mono">
+                          {course.score}/{course.questions}
+                        </td>
+                      </tr>
+                    })
+                    : <tr>
+                      <td className='px-6 py-4 text-center text-nowrap' colSpan={2}>- Sin cursos certificados -</td>
+                    </tr>
+                }
+                {
+                  assignedCertificates.map((course, index) => {
+                    return <tr key={index} className='bg-white border-t'>
+                      <th scope="row" className="px-6 py-4 font-medium">
+                        <div className='line-clamp-1 text-ellipsis w-full'>
+                          <Tippy content={`Quitar certificado de ${course.producto}`}>
+                            <i className='fa fa-times text-red-500 font-semibold me-1 cursor-pointer' onClick={() => onRemoveAssigned(course.id)}></i>
+                          </Tippy>
+                          {course.producto}
+                        </div>
+                      </th>
+                      <td className="px-6 py-4 text-gray-500 text-nowrap">
+                        Por asignar
+                      </td>
+                    </tr>
+                  })
+                }
+              </tbody>
+            </table>
+          </div>
+          {
+            assignedCertificates.length > 0 &&
+            <div className='text-end'>
+              <Tippy content={`Asignar ${assignedCertificates.length} ${assignedCertificates.length == 1 ? 'certificado' : 'certificados'} a ${individualLoaded?.name?.split(' ')[0]}`}>
+                  <button type="button" className="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-full text-sm px-5 py-2 me-2 mb-2" onClick={assignMassiveCertificates}>
+                  Asignar
+                </button>
+              </Tippy>
+            </div>
+          }
+        </div>
+      </div>
     </ReactModal>
   </>)
 }

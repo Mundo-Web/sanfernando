@@ -38,7 +38,7 @@ const DashboardEstudiante = ({ session, general, finishedCourses, courses, Wishl
 										className="flex flex-wrap gap-10 justify-between items-center px-4 py-4 w-full border-b border-red-100 max-md:max-w-full">
 										<div className="flex gap-4 items-center self-stretch my-auto min-w-[240px]">
 											<img loading="lazy"
-												srcset={session?.profile_photo_url}
+												src={`/storage/${session?.profile_photo_path}`}
 												className="object-contain shrink-0 self-stretch my-auto w-16 rounded-full aspect-square"
 												onError={e => e.target.src = '/images/img/user-404.svg'} />
 											<div className="flex flex-col self-stretch my-auto w-full">

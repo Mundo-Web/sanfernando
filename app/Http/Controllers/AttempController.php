@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Attemp;
 use App\Http\Requests\StoreAttempRequest;
 use App\Http\Requests\UpdateAttempRequest;
+use App\Models\AttempDetail;
 use App\Models\Module;
 use Egulias\EmailValidator\Result\Reason\AtextAfterCFWS;
 use Exception;
@@ -47,34 +48,44 @@ class AttempController extends BasicController
     public function delete(Request $request, string $id)
     {
         $response = Response::simpleTryCatch(function (Response $response) use ($id) {
-            $this->model::where('id', $id)
-                ->update(['finished' => 1]);
-        });
+            $attempJpa = Attemp::find($id);
+            $corrects = AttempDetail::select([
+                'attemp_details.*',
+            ])
+                ->join('answers', 'answers.id', 'attemp_details.answer_id')
+                ->where('answers.correct', true)
+                ->where('attemp_id', $attempJpa->id)
+                ->count();
 
+            $attempJpa->finished = true;
+            $attempJpa->questions = Module::find($attempJpa->evaluation_id)->questions()->count();
+            $attempJpa->score = $corrects;
+            $attempJpa->save();
+        });
         return response($response->toArray(), $response->status);
     }
 
     public function certificate(Request $request, string $attempId)
     {
         try {
-            $attemp = Attemp::with(['evaluation.course'])->find($attempId);
+            $attemp = Attemp::with(['evaluation', 'course'])->find($attempId);
             $pdf = Pdf::loadView('pdf.certificate', compact('attemp'))
                 ->setOption('isRemoteEnabled', true)
                 ->setOption('isHtml5ParserEnabled', true)
                 ->setPaper('a4', 'landscape');
-            return $pdf->download('Certificado de finalización - ' . $attemp->evaluation->course->producto . '.pdf');
+            return $pdf->download('Certificado de finalización - ' . $attemp->course->producto . '.pdf');
         } catch (\Throwable $th) {
-            
+            // \dump($th->getMessage());
         }
     }
 
     public function certificateBlade(Request $request, string $attempId)
     {
         try {
-            $attemp = Attemp::with(['evaluation.course'])->find($attempId);
+            $attemp = Attemp::with(['evaluation', 'course'])->find($attempId);
             return view('pdf.certificate')->with('attemp', $attemp);
         } catch (\Throwable $th) {
-            // dump($th->getMessage());
+            // \dump($th->getMessage());
         }
     }
 }

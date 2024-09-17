@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AddressController;
+use App\Http\Controllers\Admin\AttempController as AdminAttempController;
 use App\Http\Controllers\AnswerController;
 use App\Http\Controllers\AttempController;
 use App\Http\Controllers\AttempDetailController;
@@ -105,5 +106,7 @@ Route::middleware(['web', 'auth:sanctum', 'verified'])->group(function () {
         
         Route::post('/courses/paginate', [CourseController::class, 'paginate']);
         Route::post('/courses/assign', [CourseController::class, 'assign']);
+
+        Route::post('/certificates/assign', [AdminAttempController::class, 'assign']);
     });
 });

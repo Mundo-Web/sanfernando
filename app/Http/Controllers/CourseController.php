@@ -75,7 +75,7 @@ class CourseController extends BasicController
             ])
                 ->with([
                     'courses',
-                    // 'certificates'
+                    'certificates'
                 ])
                 ->join('model_has_roles AS mhr', 'mhr.model_id', 'users.id')
                 ->where('mhr.role_id', 3)

@@ -329,7 +329,7 @@ const CursoDetalle = ({ producto, modules, url_env }) => {
                 </div>
               </div>
             </div>
-            <div className="flex flex-col mt-10 w-full max-md:max-w-full">
+            {/* <div className="flex flex-col mt-10 w-full max-md:max-w-full">
 
               {temario > 0 &&
                 (<><div className="text-2xl font-bold leading-tight text-neutral-800">
@@ -354,14 +354,14 @@ const CursoDetalle = ({ producto, modules, url_env }) => {
                 <div className="self-stretch my-auto">Brochure del curso</div>
               </a>)}
 
-            </div>
-            <div
+            </div> */}
+            {/* <div
               className="flex flex-col mt-10 w-full text-2xl font-bold leading-tight whitespace-nowrap text-neutral-800 max-md:max-w-full">
               <div className="max-md:max-w-full">Diploma</div>
               <img loading="lazy"
                 srcSet="https://cdn.builder.io/api/v1/image/assets/TEMP/ccadd2ada7ecc27e927e3cecf582fc6255e077af16db82817156e0030376bbb5?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f&width=100 100w, https://cdn.builder.io/api/v1/image/assets/TEMP/ccadd2ada7ecc27e927e3cecf582fc6255e077af16db82817156e0030376bbb5?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f&width=200 200w, https://cdn.builder.io/api/v1/image/assets/TEMP/ccadd2ada7ecc27e927e3cecf582fc6255e077af16db82817156e0030376bbb5?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f&width=400 400w, https://cdn.builder.io/api/v1/image/assets/TEMP/ccadd2ada7ecc27e927e3cecf582fc6255e077af16db82817156e0030376bbb5?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f&width=800 800w, https://cdn.builder.io/api/v1/image/assets/TEMP/ccadd2ada7ecc27e927e3cecf582fc6255e077af16db82817156e0030376bbb5?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f&width=1200 1200w, https://cdn.builder.io/api/v1/image/assets/TEMP/ccadd2ada7ecc27e927e3cecf582fc6255e077af16db82817156e0030376bbb5?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f&width=1600 1600w, https://cdn.builder.io/api/v1/image/assets/TEMP/ccadd2ada7ecc27e927e3cecf582fc6255e077af16db82817156e0030376bbb5?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f&width=2000 2000w, https://cdn.builder.io/api/v1/image/assets/TEMP/ccadd2ada7ecc27e927e3cecf582fc6255e077af16db82817156e0030376bbb5?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f"
                 className="object-contain mt-6 w-full aspect-[1.28] max-md:max-w-full" />
-            </div>
+            </div> */}
             {producto?.docentes.length > 0 && (<div className="flex flex-col mt-10 w-full max-md:max-w-full">
               <div className="text-2xl font-bold leading-tight text-neutral-800 max-md:max-w-full">
                 Docente

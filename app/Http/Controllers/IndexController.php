@@ -184,7 +184,7 @@ class IndexController extends Controller
       ->where('user_id', Auth::user()->id)
       ->get();
 
-    $attemps->map(fn($attemp) => $attemp->getScore());
+    // $attemps->map(fn($attemp) => $attemp->getScore());
 
     return Inertia::render('CursoDesarrollo', [
       'course' => $courseJpa,
@@ -197,7 +197,7 @@ class IndexController extends Controller
   public function evaluationFinished(Request $request, string $attempId)
   {
     $attempJpa = Attemp::with(['evaluation.course'])->find($attempId);
-    $attempJpa->getScore();
+    // $attempJpa->getScore();
 
     $attempsCount = Attemp::where('user_id', Auth::user()->id)
       ->where('course_id', $attempJpa->evaluation->course->id)
@@ -255,7 +255,8 @@ class IndexController extends Controller
     $session = Auth()->user();
     $general = General::first();
     $finishedCourses = Attemp::select([
-      DB::raw('DISTINCT course_id')
+      DB::raw('DISTINCT course_id'),
+      'attemps.id',
     ])
       ->where('finished', true)
       ->where('user_id', Auth::user()->id)

@@ -17,7 +17,7 @@ class ConsumerController extends BasicController
         ])
             ->with([
                 'courses',
-                // 'certificates'
+                'certificates'
             ])
             // ->groupBy('users.id', 'users.name')
             ->join('model_has_roles AS mhr', 'mhr.model_id', 'users.id')

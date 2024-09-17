@@ -91,7 +91,7 @@
     "src": "resources/css/app.css"
   },
   "resources/js/Admin/Consumers.jsx": {
-    "file": "assets/Consumers-R4QqvqHl.js",
+    "file": "assets/Consumers-Woe0uZ6C.js",
     "imports": [
       "resources/js/Utils/InitialsImage.jsx",
       "resources/js/Utils/ReactAppend.jsx",
@@ -258,7 +258,7 @@
     "src": "resources/js/CursoDesarrollo.jsx"
   },
   "resources/js/CursoDetalle.jsx": {
-    "file": "assets/CursoDetalle-9EeJfym5.js",
+    "file": "assets/CursoDetalle-QVkmVsUx.js",
     "imports": [
       "resources/js/Utils/InitialsImage.jsx",
       "resources/js/Utils/ReactAppend.jsx",
@@ -290,7 +290,7 @@
     "src": "resources/js/DashboardDocente.jsx"
   },
   "resources/js/DashboardEstudiante.jsx": {
-    "file": "assets/DashboardEstudiante-DasOdMen.js",
+    "file": "assets/DashboardEstudiante-TRhfwAmf.js",
     "imports": [
       "resources/js/Utils/InitialsImage.jsx",
       "resources/js/Utils/ReactAppend.jsx",

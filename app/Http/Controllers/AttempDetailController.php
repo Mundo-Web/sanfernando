@@ -17,8 +17,8 @@ class AttempDetailController extends BasicController
         $body = $request->all();
 
         $already = $this->model::where('question_id', $request->question_id)
-        ->where('attemp_id', $request->attemp_id)
-        ->exists();
+            ->where('attemp_id', $request->attemp_id)
+            ->exists();
 
         if ($already) throw new Exception('Esta pregunta ya ha sido resuelta');
 
