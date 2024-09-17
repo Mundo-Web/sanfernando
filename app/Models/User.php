@@ -109,6 +109,7 @@ class User extends Authenticatable
                 'products.description',
                 'products.precio',
             'products.descuento',
+            'products.stock',
                 'best_attemps.score',
                 'best_attemps.questions',
                 'best_attemps.user_id'
