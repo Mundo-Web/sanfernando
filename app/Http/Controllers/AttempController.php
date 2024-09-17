@@ -72,7 +72,7 @@ class AttempController extends BasicController
             $pdf = Pdf::loadView('pdf.certificate', compact('attemp'))
                 ->setOption('isRemoteEnabled', true)
                 ->setOption('isHtml5ParserEnabled', true)
-                ->setPaper('letter', 'landscape');
+                ->setPaper('a4', 'landscape');
             return $pdf->download('Certificado de finalización - ' . $attemp->course->producto . '.pdf');
         } catch (\Throwable $th) {
             // \dump($th->getMessage());
