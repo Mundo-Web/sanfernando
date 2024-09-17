@@ -249,7 +249,7 @@
           <p class="name">{{ $attemp->user->name }} {{ $attemp->user->lastname }}</p>
         </div>
       </div>
-      <section class="signature-section" style=">
+      <section class="signature-section">
         <table style="margin: auto; text=align: center; margin-top: 80px">
           <tbody>
             <tr>
