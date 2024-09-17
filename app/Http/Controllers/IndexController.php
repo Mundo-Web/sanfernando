@@ -112,9 +112,15 @@ class IndexController extends Controller
   public function detalleCurso(string $id)
   {
     $producto = Products::with(['tags', 'galeria', 'category', 'docentes'])->where('id', $id)->first();
-
+    $modules = Module::select([
+      'name', 'duration', 'order', 'type'
+    ])
+    ->withCount(['sources'])
+      ->where('course_id', $producto->id)
+      ->get();
     return Inertia::render('CursoDetalle', [
       'producto' => $producto,
+      'modules' => $modules,
       'url_env' => env('APP_URL')
 
     ])->rootView('app');

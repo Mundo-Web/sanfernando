@@ -4,6 +4,8 @@ use App\Http\Controllers\AddressController;
 use App\Http\Controllers\AnswerController;
 use App\Http\Controllers\AttempController;
 use App\Http\Controllers\AttempDetailController;
+use App\Http\Controllers\ConsumerController;
+use App\Http\Controllers\CourseController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\MessageController;
@@ -97,4 +99,11 @@ Route::middleware(['web', 'auth:sanctum', 'verified'])->group(function () {
     Route::post('/attemp-details', [AttempDetailController::class, 'save']);
 
     Route::post('/signs', [SignController::class, 'save']);
+
+    Route::middleware(['can:Admin'])->prefix('admin')->group(function () {
+        Route::post('/consumers/paginate', [ConsumerController::class, 'paginate']);
+        
+        Route::post('/courses/paginate', [CourseController::class, 'paginate']);
+        Route::post('/courses/assign', [CourseController::class, 'assign']);
+    });
 });

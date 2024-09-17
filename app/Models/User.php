@@ -80,4 +80,20 @@ class User extends Authenticatable
     {
         return $this->hasMany(Wishlist::class);
     }
+
+    public function certificates() {}
+
+    public function courses()
+    {
+        return $this->hasManyThrough(
+            Products::class,
+            SaleDetail::class,
+            'user_id',
+            'id',
+            'id',
+            'product_id'
+        )
+            ->join('sales', 'sales.id', '=', 'sale_details.sale_id')
+            ->where('sales.status_id', 3);
+    }
 }

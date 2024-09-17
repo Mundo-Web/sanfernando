@@ -574,7 +574,7 @@
                     @endforeach
                   @endif
                 </div>
-                <div class="md:col-span-5 mt-2">
+                <div class="md:col-span-5 mt-2 hidden">
                   <div class="flex items-end justify-between gap-2">
                     <label for="specifications">Temario </label>
                     <button type="button" id="AddTEmario"

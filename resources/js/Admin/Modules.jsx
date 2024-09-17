@@ -301,11 +301,11 @@ const Modules = ({ courses }) => {
         <CourseCard producto={selected.producto} extract={selected.extract} imagen={selected.imagen} id="dropdownNotificationButton" data-dropdown-toggle="dropdownNotification" hasShadow />
 
         <div ref={dropdownRef} id="dropdownNotification" className="z-20 hidden w-full max-w-sm bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-800 dark:divide-gray-700" aria-labelledby="dropdownNotificationButton">
-          <label htmlFor='inputSearch' className="flex font-medium text-center text-gray-700 rounded-t-lg bg-gray-50 dark:bg-gray-800 dark:text-white items-center">
+          {/* <label htmlFor='inputSearch' className="flex font-medium text-center text-gray-700 rounded-t-lg bg-gray-50 dark:bg-gray-800 dark:text-white items-center">
             <i className='fa fa-search text-lg py-2 px-3'></i>
             <input id='inputSearch' className='w-full bg-transparent outline-none border-none' type="text" placeholder='Buscar curso...' />
-          </label>
-          <div className="divide-y divide-gray-100 dark:divide-gray-700">
+          </label> */}
+          <div className="divide-y divide-gray-100 dark:divide-gray-700 max-h-80 overflow-y-auto overflow-x-hidden">
             {
               courses.map((course, i) => {
                 return <CourseCard key={`course-${i}`} {...course} onClick={() => onCourseClicked(course)} />

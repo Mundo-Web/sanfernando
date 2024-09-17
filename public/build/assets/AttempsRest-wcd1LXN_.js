@@ -1,1 +1,0 @@
-var p=Object.defineProperty;var m=(t,s,e)=>s in t?p(t,s,{enumerable:!0,configurable:!0,writable:!0,value:e}):t[s]=e;var a=(t,s,e)=>(m(t,typeof s!="symbol"?s+"":s,e),e);import{B as o}from"./BasicRest-hjYVP1Sk.js";class i extends o{constructor(){super(...arguments);a(this,"path","attemps")}}export{i as A};

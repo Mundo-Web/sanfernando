@@ -134,18 +134,18 @@
             arrow: true
           })
           orderContainer.on('click', () => openSaleModal(data))
-          const addressContainer = $('<p>', {
-            class: 'text-sm text-gray-500 dark:text-gray-400',
-            text: data.address_description ?
-              `${data.address_department}, ${data.address_province}, ${data.address_district} - ${data.address_street} #${data.address_number}` :
-              'Recojo en tienda'
-          })
+          // const addressContainer = $('<p>', {
+          //   class: 'text-sm text-gray-500 dark:text-gray-400',
+          //   text: data.address_description ?
+          //     `${data.address_department}, ${data.address_province}, ${data.address_district} - ${data.address_street} #${data.address_number}` :
+          //     'Recojo en tienda'
+          // })
           const dateContainer = $('<p>', {
             class: 'text-xs text-gray-400',
             text: moment(data.created_at).format('YYYY-MM-DD HH:mm:ss')
-          }).prepend(isAdmin ? `<span class="me-1 text-gray-800">${data.name} ${data.lastname}</span>` : '')
+          }).prepend(isAdmin ? `<span class="block me-1 text-gray-800">${data.name} ${data.lastname}</span>` : '')
           div.append(orderContainer)
-          div.append(addressContainer)
+          // div.append(addressContainer)
           div.append(dateContainer)
 
           container.html(div)
@@ -181,15 +181,15 @@
             class: 'block w-max mx-auto',
             text: `S/. ${data.total}`
           })
-          const envioContainer = $('<span>', {
-              class: `inline-flex items-center ${ isFree ? 'bg-green-100' : 'bg-blue-100'} ${ isFree ? 'text-green-800' : 'text-blue-800'} text-xs font-medium px-2.5 py-0.5 rounded-full dark:${ isFree ? 'bg-green-900' : 'bg-blue-900'} dark:${ isFree ? 'text-green-300' : 'text-blue-300'} w-max`
-            })
-            .append(
-              `<span class="/w-2 h-2 me-1 ${isFree ? 'bg-green-500' : 'bg-blue-500' } rounded-full"></span>`)
-            .append(isFree ? 'Envio gratis' : `S/. ${Number(data.address_price).toFixed(2)}`)
+          // const envioContainer = $('<span>', {
+          //     class: `inline-flex items-center ${ isFree ? 'bg-green-100' : 'bg-blue-100'} ${ isFree ? 'text-green-800' : 'text-blue-800'} text-xs font-medium px-2.5 py-0.5 rounded-full dark:${ isFree ? 'bg-green-900' : 'bg-blue-900'} dark:${ isFree ? 'text-green-300' : 'text-blue-300'} w-max`
+          //   })
+          //   .append(
+          //     `<span class="/w-2 h-2 me-1 ${isFree ? 'bg-green-500' : 'bg-blue-500' } rounded-full"></span>`)
+          //   .append(isFree ? 'Envio gratis' : `S/. ${Number(data.address_price).toFixed(2)}`)
 
           div.append(priceContainer)
-          div.append(envioContainer)
+          // div.append(envioContainer)
 
           container.html(div)
         }

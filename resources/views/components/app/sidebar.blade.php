@@ -89,6 +89,7 @@
         <x-menu.item id="products" href="{{ route('products.index') }}" icon="fas fa-box">Cursos /
           Diplomados</x-menu.item>
         <x-menu.item id="modules" href="{{ route('Admin/Modules.jsx') }}" icon="fas fa-boxes">Modulos</x-menu.item>
+        <x-menu.item id="consumers" href="{{ route('Admin/Consumers.jsx') }}" icon="fas fa-users">Alumnos</x-menu.item>
       </x-menu.group>
 
       <x-menu.group title="Datos de la empresa">
