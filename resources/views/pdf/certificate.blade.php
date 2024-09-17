@@ -219,8 +219,8 @@
     <section class="first">
     </section>
     <section class="second" style="position:relative;">
-      <img style="position: absolute; z-index: 0; background-image: linear-gradient(white 50%, #cf072c 50%); height: 100vh; object-fit: contain; object-position: top" src="{{ asset('/images/pdf/tab.svg') }}" width="100px">
-      <div class="image-container" style="position: relative; z-index: 1; padding-left: 110px">
+      {{-- <img style="position: absolute; z-index: 0; background-image: linear-gradient(white 50%, #cf072c 50%); height: 100vh; object-fit: contain; object-position: top" src="{{ asset('/images/pdf/tab.svg') }}" width="100px"> --}}
+      <div class="image-container" style="position: relative; z-index: 1;">
         <table style="width: 100%">
           <tbody>
             <tr>
@@ -249,7 +249,7 @@
           <p class="name">{{ $attemp->user->name }} {{ $attemp->user->lastname }}</p>
         </div>
       </div>
-      <section class="signature-section" style="padding-left: 110px">
+      <section class="signature-section" style=">
         <table style="margin: auto; text=align: center; margin-top: 80px">
           <tbody>
             <tr>
@@ -268,7 +268,7 @@
           </tbody>
         </table>
       </section>
-      <section class="agreements-section" style="margin-top: 10px; padding-left: 110px">
+      <section class="agreements-section" style="margin-top: 10px;">
         <p class="agreements-title" style="margin-bottom: 20px">Nuestros convenios</p>
         <div class="agreements-logos">
           <img
