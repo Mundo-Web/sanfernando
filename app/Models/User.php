@@ -140,6 +140,8 @@ class User extends Authenticatable
                 'products.que_lograras',
                 'products.brochure_url',
                 'products.offer_message',
+                'products.created_at',
+                'products.updated_at',
                 'best_attemps.score',
                 'best_attemps.questions',
                 'best_attemps.user_id'
