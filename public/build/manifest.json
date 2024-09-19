@@ -32,6 +32,14 @@
       "resources/js/Utils/InitialsImage.jsx"
     ]
   },
+  "_HtmlContent-4qia-abN.js": {
+    "file": "assets/HtmlContent-4qia-abN.js",
+    "imports": [
+      "resources/js/Utils/InitialsImage.jsx",
+      "resources/js/components/Section/SliderFront.jsx",
+      "resources/js/components/Section/SliderTestimony.jsx"
+    ]
+  },
   "_JSEncrypt-jwo8Dr6z.js": {
     "file": "assets/JSEncrypt-jwo8Dr6z.js"
   },
@@ -41,14 +49,6 @@
       "resources/js/Utils/InitialsImage.jsx",
       "_tippy-react.esm-XNE3m1lc.js",
       "resources/js/components/Product/ProductCard.jsx"
-    ]
-  },
-  "_SliderTestimony-DPeBXPWQ.js": {
-    "file": "assets/SliderTestimony-DPeBXPWQ.js",
-    "imports": [
-      "resources/js/Utils/InitialsImage.jsx",
-      "resources/js/components/Section/SliderFront.jsx",
-      "resources/js/components/Section/SliderTestimony.jsx"
     ]
   },
   "__commonjsHelpers-4gQjN7DL.js": {
@@ -186,7 +186,7 @@
     "src": "resources/js/Catalogo.jsx"
   },
   "resources/js/CatalogoGP.jsx": {
-    "file": "assets/CatalogoGP-ghe8z0QQ.js",
+    "file": "assets/CatalogoGP-WJzWzHBc.js",
     "imports": [
       "resources/js/Utils/InitialsImage.jsx",
       "resources/js/Utils/ReactAppend.jsx",
@@ -322,7 +322,7 @@
     "src": "resources/js/Diploma.jsx"
   },
   "resources/js/Docente.jsx": {
-    "file": "assets/Docente-oQZZon7S.js",
+    "file": "assets/Docente-rXyCNimz.js",
     "imports": [
       "resources/js/Utils/InitialsImage.jsx",
       "resources/js/Utils/ReactAppend.jsx",
@@ -341,7 +341,7 @@
     "src": "resources/js/Docente.jsx"
   },
   "resources/js/DocenteDetalle.jsx": {
-    "file": "assets/DocenteDetalle-crXHVVfh.js",
+    "file": "assets/DocenteDetalle-Bm757VJh.js",
     "imports": [
       "resources/js/Utils/InitialsImage.jsx",
       "resources/js/Utils/ReactAppend.jsx",
@@ -396,22 +396,22 @@
     "src": "resources/js/EvaluationFinished.jsx"
   },
   "resources/js/Home.jsx": {
-    "file": "assets/Home-at4CW6ff.js",
+    "file": "assets/Home-nt3-Sv5A.js",
     "imports": [
       "resources/js/Utils/InitialsImage.jsx",
       "resources/js/Utils/ReactAppend.jsx",
       "_CreateReactScript-IbCTOT6z.js",
       "resources/js/components/Section/SliderFront.jsx",
+      "_HtmlContent-4qia-abN.js",
       "_Curse-s8L87D4I.js",
-      "_SliderTestimony-DPeBXPWQ.js",
       "__commonjsHelpers-4gQjN7DL.js",
       "_index-pEm_mg_4.js",
       "resources/js/Utils/CreateReactScript.jsx",
       "_axios-_sX4vCAy.js",
       "_main-jzs2GwAM.js",
+      "resources/js/components/Section/SliderTestimony.jsx",
       "_tippy-react.esm-XNE3m1lc.js",
-      "resources/js/components/Product/ProductCard.jsx",
-      "resources/js/components/Section/SliderTestimony.jsx"
+      "resources/js/components/Product/ProductCard.jsx"
     ],
     "isEntry": true,
     "src": "resources/js/Home.jsx"
@@ -434,12 +434,12 @@
     "src": "resources/js/Login.jsx"
   },
   "resources/js/Nosotros.jsx": {
-    "file": "assets/Nosotros-HIcO-axv.js",
+    "file": "assets/Nosotros-S2eT1k0K.js",
     "imports": [
       "resources/js/Utils/InitialsImage.jsx",
       "resources/js/Utils/ReactAppend.jsx",
       "_CreateReactScript-IbCTOT6z.js",
-      "_SliderTestimony-DPeBXPWQ.js",
+      "_HtmlContent-4qia-abN.js",
       "__commonjsHelpers-4gQjN7DL.js",
       "_index-pEm_mg_4.js",
       "resources/js/Utils/CreateReactScript.jsx",
@@ -817,7 +817,7 @@
     "src": "resources/js/components/Section/HistorialEstudiante.jsx"
   },
   "resources/js/components/Section/SliderBenefit.jsx": {
-    "file": "assets/SliderBenefit-nUJMZEJi.js",
+    "file": "assets/SliderBenefit-m6NtKRCA.js",
     "imports": [
       "resources/js/Utils/InitialsImage.jsx",
       "resources/js/components/Section/SliderFront.jsx",
@@ -827,7 +827,7 @@
     "src": "resources/js/components/Section/SliderBenefit.jsx"
   },
   "resources/js/components/Section/SliderFront.jsx": {
-    "file": "assets/SliderFront-fyBbKr2h.js",
+    "file": "assets/SliderFront-wjp7qf_l.js",
     "imports": [
       "resources/js/Utils/InitialsImage.jsx",
       "__commonjsHelpers-4gQjN7DL.js"
@@ -839,7 +839,7 @@
     "css": [
       "assets/SliderTestimony-L9ko_Fi2.css"
     ],
-    "file": "assets/SliderTestimony-wef6xR7P.js",
+    "file": "assets/SliderTestimony-ngvXwDWB.js",
     "imports": [
       "resources/js/Utils/InitialsImage.jsx",
       "resources/js/components/Section/SliderFront.jsx",

@@ -2,6 +2,7 @@ import React from 'react'
 import { createRoot } from 'react-dom/client'
 import CreateReactScript from './Utils/CreateReactScript'
 import SliderTestimony from './components/Section/SliderTestimony'
+import HtmlContent from './Utils/HtmlContent'
 
 
 const Nosotros = ({ testimonies, aboutUs }) => {
@@ -24,10 +25,10 @@ const Nosotros = ({ testimonies, aboutUs }) => {
           <h2 className="text-[#CF072C] font-poppins_regular font-semibold text-5xl">{data['INICIO-FIN']}</h2>
           <h1
             className="text-[#1D2026] font-poppins_bold font-semibold tracking-tighter text-3xl md:text-5xl leading-none md:leading-tight">
-            {data['TITULO-OBJETIVO']}
+            <HtmlContent html={data['TITULO-OBJETIVO']} />
           </h1>
           <p className="text-[#4E5566] text-base font-poppins_regular">
-            {data['DESCRIPCION-OBJETIVO']}
+            <HtmlContent html={data['DESCRIPCION-OBJETIVO']} />
           </p>
         </div>
 
@@ -104,10 +105,10 @@ const Nosotros = ({ testimonies, aboutUs }) => {
           <h2 className="text-[#CF072C] font-poppins_regular font-semibold text-lg">Nuestra misión</h2>
           <h1
             className="text-[#1D2026] font-poppins_bold font-semibold tracking-tighter text-3xl xl:text-5xl leading-none md:leading-tight">
-            {data['TITULO-MISION']}
+              <HtmlContent html={data['TITULO-MISION']}/>
           </h1>
           <p className="text-[#4E5566] text-base font-poppins_regular">
-            {data['DESCRIPCION-MISION']}
+            <HtmlContent html={data['DESCRIPCION-MISION']}/>
           </p>
         </div>
       </div>
@@ -119,10 +120,10 @@ const Nosotros = ({ testimonies, aboutUs }) => {
           <h2 className="text-[#CF072C] font-poppins_regular font-semibold text-lg">Galeria</h2>
           <h1
             className="text-[#1D2026] font-poppins_bold font-semibold tracking-tighter text-3xl md:text-5xl leading-none md:leading-tight">
-            {data['TITULO-GALERIA']}
+            <HtmlContent html={data['TITULO-GALERIA']} />
           </h1>
           <p className="text-[#4E5566] text-base font-poppins_regular">
-            {data['DESCRIPCION-GALERIA']}
+            <HtmlContent html={data['DESCRIPCION-GALERIA']} />
           </p>
           <div className="flex flex-row gap-5 font-poppins_semibold ">
             <a
