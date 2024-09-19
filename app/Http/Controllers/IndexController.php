@@ -1153,7 +1153,7 @@ class IndexController extends Controller
                         margin: 0 auto;
                         padding: 20px 0;
                         font-family: Montserrat, sans-serif;
-                    "> Gracias Por Registrarte! </p>
+                    "> ¡Gracias Por Registrarte! </p>
                     </td>
                 </tr>
                 <tr>
@@ -1167,7 +1167,7 @@ class IndexController extends Controller
                                                 margin: 0 auto;
                                                 padding: 20px 0;
                                                 font-family: Montserrat, sans-serif;
-                                            "><span style="display: block">Hola ' . $name . '</span><span style="display: block">En breve estaremos cominicandonos contigo </span></p>
+                                            "><span style="display: block">Hola ' . $name . '</span><span style="display: block">En breve estaremos comunicandonos contigo </span></p>
                     </td>
                 </tr>
                 <tr>
@@ -1288,7 +1288,7 @@ class IndexController extends Controller
                         margin: 0 auto;
                         padding: 20px 0;
                         font-family: Montserrat, sans-serif;
-                    "> Gracias Por Registrarte! </p>
+                    "> ¡Gracias Por Registrarte! </p>
                     </td>
                 </tr>
                 <tr>
@@ -1302,7 +1302,7 @@ class IndexController extends Controller
                                                 margin: 0 auto;
                                                 padding: 20px 0;
                                                 font-family: Montserrat, sans-serif;
-                                            "><span style="display: block">Hola ' . $name . '</span><span style="display: block">En breve estaremos cominicandonos contigo </span></p>
+                                            "><span style="display: block">Hola ' . $name . '</span><span style="display: block">En breve estaremos comunicandonos contigo </span></p>
                     </td>
                 </tr>
                 <tr>
