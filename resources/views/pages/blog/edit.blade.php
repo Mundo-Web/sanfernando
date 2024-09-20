@@ -102,7 +102,10 @@
               <div class="md:col-span-5">
                 <label for="description">Descripcion de post</label>
                 <div class="relative mb-2 mt-2">
-                  <x-textarea name="description" value="{!! $blog->description !!}" />
+                  {{-- <x-textarea name="description" :value3="$blog->description" /> --}}
+                  <x-form.quill id="description" name="description" :value="$blog->description" />
+
+
                 </div>
               </div>
 
