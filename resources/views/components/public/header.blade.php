@@ -231,7 +231,7 @@
             </div>
           </button>
           <div
-            class="origin-top-right z-10 text-red-600 bg-red-100 absolute top-full min-w-44  dark:bg-slate-800 border border-slate-200 dark:border-slate-700 py-1.5 rounded shadow-lg overflow-hidden mt-1"
+            class="origin-top-right z-40 text-red-600 bg-red-100 absolute top-full min-w-44  dark:bg-slate-800 border border-slate-200 dark:border-slate-700 py-1.5 rounded shadow-lg overflow-hidden mt-1"
             @click.outside="open = false" @keydown.escape.window="open = false" x-show="open">
             <ul>
               <li class=" hover:bg-rose-700 hover:text-white transition duration-100 ease-in">
