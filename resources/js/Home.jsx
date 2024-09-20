@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { createRoot } from 'react-dom/client'
 import CreateReactScript from './Utils/CreateReactScript'
 import SliderFront from './components/Section/SliderFront'
@@ -27,6 +27,40 @@ const Home = ({
   aboutUs.forEach(x => {
     data[x.titulo] = x.descripcion
   })
+
+  const [showIframe, setShowIframe] = useState(false);
+  const iframeRef = useRef(null);
+  let videoUrl = general.url_testimonios;
+
+  let queryParams = {};
+
+  if (videoUrl) {
+    const url = new URL(videoUrl);
+    queryParams = Object.fromEntries(url.searchParams.entries());
+  }
+
+  const videoId = queryParams['v'] ?? null;
+  const showVideo = () => {
+    setShowIframe(true);
+  };
+  useEffect(() => {
+    const handleScroll = () => {
+      if (iframeRef.current) {
+        const rect = iframeRef.current.getBoundingClientRect();
+        const isVisible = rect.top >= 0 && rect.bottom <= window.innerHeight;
+        if (!isVisible) {
+          iframeRef.current.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
+
 
   return (<>
     <section className="w-full relative">
@@ -145,17 +179,34 @@ const Home = ({
 
         <div className="flex flex-col justify-center items-center px-0 lg:px-[5%]">
           <div className="w-full h-[500px] lg:h-[700px] border border-gray-200 rounded-3xl overflow-hidden relative bg-cover bg-center"
-            style={{ backgroundImage: `url(${imgVideo})` }}>
-            <div className="absolute inset-0 flex items-center justify-center disparo bg-opacity-50 cursor-pointer"
+            style={{ backgroundImage: `url(${imgVideo})` }}
+          >
+            {/* <div className="absolute inset-0 flex items-center justify-center disparo bg-opacity-50 cursor-pointer"
               onclick="showVideo(this)">
               <button className="text-white text-2xl"><img
                 className="w-16 hover:animate-jump hover:animate-once hover:animate-duration-1000"
                 src={`${imgPlay}`} /></button>
             </div>
             <iframe id="videoIframe" class="videoIframe w-full h-full hidden"
-              src="https://www.youtube.com/embed/Q5_ALBh8Qe4" frameborder="0"
+              src={`https://www.youtube.com/embed/${videoId}`} frameborder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen></iframe>
+              allowfullscreen></iframe> */}
+            {!showIframe && (
+              <div className="absolute inset-0 flex items-center justify-center disparo bg-opacity-50 cursor-pointer"
+                onClick={showVideo}>
+                <button className="text-white text-2xl">
+                  <img className="w-16 hover:animate-jump hover:animate-once hover:animate-duration-1000"
+                    src={`${imgPlay}`} alt="Play" />
+                </button>
+              </div>
+            )}
+            {showIframe && (
+              <iframe id="videoIframe" className="videoIframe w-full h-full"
+                ref={iframeRef}
+                src={`https://www.youtube.com/embed/${videoId}?enablejsapi=1&autoplay=1`} frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen></iframe>
+            )}
           </div>
         </div>
 

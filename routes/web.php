@@ -133,6 +133,7 @@ Route::middleware(['auth:sanctum', 'verified', 'can:Admin'])->group(function () 
         Route::resource('/testimonios', TestimonyController::class);
         Route::post('/testimonios/deleteTestimony', [TestimonyController::class, 'deleteTestimony'])->name('testimonios.deleteTestimony');
         Route::post('/testimonios/updateVisible', [TestimonyController::class, 'updateVisible'])->name('testimonios.updateVisible');
+        Route::post('/testimonios/updateurl', [TestimonyController::class, 'updateurl'])->name('testimonios.updateurl');
 
         // Estados
         Route::resource('/estados', StatusController::class);

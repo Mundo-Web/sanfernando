@@ -86,7 +86,7 @@
     ]
   },
   "resources/css/app.css": {
-    "file": "assets/app-M5nUr56N.css",
+    "file": "assets/app-wQCnP6qg.css",
     "isEntry": true,
     "src": "resources/css/app.css"
   },
@@ -396,7 +396,7 @@
     "src": "resources/js/EvaluationFinished.jsx"
   },
   "resources/js/Home.jsx": {
-    "file": "assets/Home-RXhD7_gt.js",
+    "file": "assets/Home-uUQnl_D5.js",
     "imports": [
       "resources/js/Utils/InitialsImage.jsx",
       "resources/js/Utils/ReactAppend.jsx",
