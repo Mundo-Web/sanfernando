@@ -38,7 +38,7 @@
          <h2 class="text-lg font-Inter_SemiBold font-normal text-[#333333]">{{ $post->title }}
          </h2>
        </a>
-       <p class="text-[#444444]">{{ $post->extract }}</p>
+       <p class="text-[#444444] line-clamp-2">{{ $post->extract }}</p>
 
        <a href="{{ route('detalleBlog', $post->id) }}"
          class="text-sm font-Inter_Bold font-bold text-[#006BF6]  leading-tight flex flex-row gap-2 items-center">
