@@ -35,7 +35,7 @@
           <li class="mt-3"><a href="{{ route('CatalogoGP.jsx') }}">Cursos</a></li>
           <li class="mt-3"><a href="{{ route('Nosotros.jsx') }}">Nosotros</a></li>
           <li class="mt-3"><a href="{{ route('Docente.jsx') }}">Docentes</a></li>
-          <li class="mt-3"><a href="#">Eventos</a></li>
+          <li class="mt-3"><a href="/blog">Blog</a></li>
           <li class="mt-3"><a href="{{ route('Contacto.jsx') }}">Contacto</a></li>
         </ul>
       </div>
