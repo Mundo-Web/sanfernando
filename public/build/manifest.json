@@ -60,8 +60,8 @@
   "_axios-_sX4vCAy.js": {
     "file": "assets/axios-_sX4vCAy.js"
   },
-  "_es-LAAa9IV6.js": {
-    "file": "assets/es-LAAa9IV6.js",
+  "_carrito-FgrgfZsg.js": {
+    "file": "assets/carrito-FgrgfZsg.js",
     "imports": [
       "_axios-_sX4vCAy.js"
     ]
@@ -258,12 +258,12 @@
     "src": "resources/js/CursoDesarrollo.jsx"
   },
   "resources/js/CursoDetalle.jsx": {
-    "file": "assets/CursoDetalle-QVkmVsUx.js",
+    "file": "assets/CursoDetalle-tkQoAD_5.js",
     "imports": [
       "resources/js/Utils/InitialsImage.jsx",
       "resources/js/Utils/ReactAppend.jsx",
       "_CreateReactScript-IbCTOT6z.js",
-      "_es-LAAa9IV6.js",
+      "_carrito-FgrgfZsg.js",
       "__commonjsHelpers-4gQjN7DL.js",
       "_index-pEm_mg_4.js",
       "resources/js/Utils/CreateReactScript.jsx",
@@ -290,14 +290,14 @@
     "src": "resources/js/DashboardDocente.jsx"
   },
   "resources/js/DashboardEstudiante.jsx": {
-    "file": "assets/DashboardEstudiante-TRhfwAmf.js",
+    "file": "assets/DashboardEstudiante-0IsEJGyj.js",
     "imports": [
       "resources/js/Utils/InitialsImage.jsx",
       "resources/js/Utils/ReactAppend.jsx",
       "_CreateReactScript-IbCTOT6z.js",
       "_axios-_sX4vCAy.js",
       "resources/js/components/Section/FormEstudiante.jsx",
-      "_es-LAAa9IV6.js",
+      "_carrito-FgrgfZsg.js",
       "__commonjsHelpers-4gQjN7DL.js",
       "_index-pEm_mg_4.js",
       "resources/js/Utils/CreateReactScript.jsx",
@@ -396,7 +396,7 @@
     "src": "resources/js/EvaluationFinished.jsx"
   },
   "resources/js/Home.jsx": {
-    "file": "assets/Home-nt3-Sv5A.js",
+    "file": "assets/Home-RXhD7_gt.js",
     "imports": [
       "resources/js/Utils/InitialsImage.jsx",
       "resources/js/Utils/ReactAppend.jsx",
@@ -563,6 +563,15 @@
     ],
     "isEntry": true,
     "src": "resources/js/components/Benefits/BenefitSlide.jsx"
+  },
+  "resources/js/components/BlogsContainer.jsx": {
+    "file": "assets/BlogsContainer-MR4GACE8.js",
+    "imports": [
+      "resources/js/Utils/InitialsImage.jsx",
+      "__commonjsHelpers-4gQjN7DL.js"
+    ],
+    "isEntry": true,
+    "src": "resources/js/components/BlogsContainer.jsx"
   },
   "resources/js/components/Courses/CourseCard.jsx": {
     "file": "assets/CourseCard-MR4GACE8.js",
