@@ -304,7 +304,7 @@
           class=" text-[#333] text-base font-Inter_Medium flex gap-5 xl:gap-10 items-center justify-center "
           x-data="{ openCatalogo: false, openSubMenu: null }">
           <a href="{{ route('Home.jsx') }}" class="font-medium hover:opacity-75 ">
-            <span class="underline-this">Iniciooo</span>
+            <span class="underline-this">Inicio</span>
           </a>
 
           <a id="productos-link" href="{{ route('CatalogoGP.jsx') }}" class="font-medium ">
