@@ -67,9 +67,9 @@
         @if ($post->url_image)
           <div class="w-full" data-aos="fade-up" data-aos-offset="150">
             <img src="{{ asset($post->url_image . $post->name_image) }}" alt="catedral"
-              class="w-full h-[563px] object-cover hidden md:block rounded-xl" />
+              class="w-full h-[563px] object-cover object-top  hidden md:block rounded-xl" />
             <img src="{{ asset($post->url_image . $post->name_image) }}" alt="catedral"
-              class="w-full h-[563px] object-cover block md:hidden rounded-xl" />
+              class="w-full h-[563px] object-cover  object-top block md:hidden rounded-xl" />
           </div>
         @endif
       </div>

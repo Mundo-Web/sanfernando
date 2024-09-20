@@ -5,8 +5,8 @@
    <div class="flex flex-col gap-4">
      <div class="relative flex justify-center items-center">
        <a href="{{ route('detalleBlog', $post->id) }}" class="w-full">
-         <img src="{{ asset($post->url_image . $post->name_image) }}" class="w-full object-cover h-56 sm:h-64 md:h-64"
-           alt="blog"></a>
+         <img src="{{ asset($post->url_image . $post->name_image) }}"
+           class="w-full object-cover object-top  h-56 sm:h-64 md:h-64" alt="blog"></a>
        <div class="absolute top-0 left-0 pt-4 pl-4">
          <h3 class="text-sm md:text-base font-Inter_Medium bg-[#E52E06] text-white px-3 py-2 rounded-full">
            {{ $category->name }}</h3>
@@ -35,10 +35,10 @@
 
      <div class="flex flex-col justify-start items-start gap-1 -mt-2 md:-mt-3">
        <a href="{{ route('detalleBlog', $post->id) }}">
-         <h2 class="text-lg font-Inter_Regular font-normal text-[#333333]">{{ $post->title }}
+         <h2 class="text-lg font-Inter_SemiBold font-normal text-[#333333]">{{ $post->title }}
          </h2>
        </a>
-       <p class="line-clamp-3">{{ $post->extract }}</p>
+       <p class="text-[#444444]">{{ $post->extract }}</p>
 
        <a href="{{ route('detalleBlog', $post->id) }}"
          class="text-sm font-Inter_Bold font-bold text-[#006BF6]  leading-tight flex flex-row gap-2 items-center">
