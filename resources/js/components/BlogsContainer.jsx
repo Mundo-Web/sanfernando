@@ -4,7 +4,8 @@ import { formatDistanceToNow } from 'date-fns';
 import { es } from 'date-fns/locale';
 
 const BlogsContainer = ({ post }) => {
-  const category = post.categoria;
+  const category = post.categories;
+
 
   return (
     <div className="flex flex-col gap-3 font">
@@ -13,7 +14,7 @@ const BlogsContainer = ({ post }) => {
           <a href={`/detalleBlog/${post.id}`} className="w-full">
             <img
               src={`${post.url_image}${post.name_image}`}
-              className="w-full object-cover h-56 sm:h-64 md:h-64"
+              className="w-full object-cover object-top h-56 sm:h-64 md:h-64"
               alt="blog"
             />
           </a>
@@ -44,12 +45,13 @@ const BlogsContainer = ({ post }) => {
         </div>
 
         <div className="flex flex-col justify-start items-start gap-1 -mt-2 md:-mt-3">
-          <a href={`/detalleBlog/${post.id}`}>
-            <h2 className="text-lg font-Inter_Regular font-normal text-[#333333]">{post.title}</h2>
+          <a href={`/post/${post.id}`}>
+            <h2 className="text-lg font-Inter_SemiBold font-normal text-[#333333] min-h-[84px]">{post.title}</h2>
           </a>
+          <p class="text-[#444444] line-clamp-2">{post.extract}</p>
 
           <a
-            href={`/detalleBlog/${post.id}`}
+            href={`/post/${post.id}`}
             className="text-sm font-Inter_Bold font-bold text-[#006BF6] leading-tight flex flex-row gap-2 items-center"
           >
             Leer más

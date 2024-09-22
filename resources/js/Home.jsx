@@ -315,19 +315,19 @@ const Home = ({
 
       </div>
     </section>
-    {/*  <section className="bg-[#F9FAFB] px-[8%]">
+    <section className="bg-[#F9FAFB] px-[8%]">
       <div className="grid grid-cols-1 w-full gap-12  pt-12 xl:pt-16">
         <div className="flex flex-col justify-center gap-5 text-center">
-          
+
           <h1
             className="text-[#1D2026] font-poppins_bold tracking-tighter text-3xl md:text-5xl leading-none md:leading-tight">
             Ultimas Noticias e Historias
           </h1>
-         
+
         </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 w-full gap-12 pt-12 pb-12">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 w-full gap-5 pt-12 pb-12">
 
         {blogs.map((post, i) => {
           return <BlogsContainer post={post} />
@@ -347,7 +347,7 @@ const Home = ({
           </svg>
         </a>
       </div>
-    </section> */}
+    </section>
 
   </>)
 }

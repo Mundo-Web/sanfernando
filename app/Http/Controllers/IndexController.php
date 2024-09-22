@@ -60,7 +60,7 @@ class IndexController extends Controller
     $benefit = Strength::where('status', '=', 1)->take(9)->get();
     $testimonies = Testimony::where('status', '=', 1)->where('visible', '=', 1)->get();
 
-    $blogs = Blog::where('status', '=', 1)->where('visible', '=', 1)->orderBy('id', 'desc')->take(3)->get();
+    $blogs = Blog::where('status', '=', 1)->where('visible', '=', 1)->with('categories')->orderBy('id', 'desc')->take(3)->get();
 
     $aboutUs = AboutUs::whereIn('titulo', ['TITULO-OBJETIVO', 'DESCRIPCION-OBJETIVO', 'CURSOS', 'ESTUDIANTES', 'TASA-EXITO'])->get();
     $general = General::first();
