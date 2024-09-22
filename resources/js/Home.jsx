@@ -191,7 +191,7 @@ const Home = ({
               src={`https://www.youtube.com/embed/${videoId}`} frameborder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowfullscreen></iframe> */}
-            {!showIframe && (
+            {/*  {!showIframe && (
               <div className="absolute inset-0 flex items-center justify-center disparo bg-opacity-50 cursor-pointer"
                 onClick={showVideo}>
                 <button className="text-white text-2xl">
@@ -203,10 +203,15 @@ const Home = ({
             {showIframe && (
               <iframe id="videoIframe" className="videoIframe w-full h-full"
                 ref={iframeRef}
-                src={`https://www.youtube.com/embed/${videoId}?enablejsapi=1&autoplay=1`} frameBorder="0"
+                src={`https://www.youtube.com/embed/${videoId}?enablejsapi=1`} frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen></iframe>
-            )}
+            )} */}
+            <iframe id="videoIframe" className="videoIframe w-full h-full"
+              ref={iframeRef}
+              src={`https://www.youtube.com/embed/${videoId}?enablejsapi=1`} frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen></iframe>
           </div>
         </div>
 
