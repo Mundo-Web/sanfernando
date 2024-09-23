@@ -26,8 +26,10 @@ class CertificateController extends Controller
         // resources\views\pdf\certificate.blade.php
         $imagePath = storage_path('/public/certificate.png');
         Browsershot::html(view('pdf.certificate', compact('attemp', 'convenios', 'signs'))->render())
-        ->setNodeBinary('C:\Program Files\nodejs\node.exe') // Ajusta la ruta a tu instalación de Node.js
-        ->setNpmBinary('C:\Program Files\nodejs\npm.cmd') // Ajusta la ruta a tu instalación de npm
+        // ->setNodeBinary('C:\Program Files\nodejs\node.exe') // Ajusta la ruta a tu instalación de Node.js
+        // ->setNpmBinary('C:\Program Files\nodejs\npm.cmd') // Ajusta la ruta a tu instalación de npm
+        ->setNodeBinary('/usr/bin/node') // Ajusta la ruta a tu instalación de Node.js
+        ->setNpmBinary('/usr/bin/npm') // Ajusta la ruta a tu instalación de npm
         
             ->windowSize(1200, 800)
             // ->waitForFunction('document.querySelector("img[src=\'http://127.0.0.1:8000/images/icongest.png\']").complete')
