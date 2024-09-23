@@ -19,7 +19,7 @@ class CertificateController extends Controller
         
         $attemp = Attemp::with(['evaluation', 'course'])->find($attempId);
         $convenios = ClientLogos::where("status", "=", true)->get();
-        $signs = Sign::all();
+        $signs = Sign::where('name' , '!=', null)->where('occupation', '!=', null )->get();
         $htmlPath = resource_path('views/pdf/certificate.blade.php');
 
         // Generar la imagen a partir del HTML

@@ -84,7 +84,7 @@ class AttempController extends BasicController
     public function certificateBlade(Request $request, string $attempId)
     {
         try {
-            $signs = Sign::all();
+            $signs = Sign::where('name' , '!=', null)->where('occupation', '!=', null )->get();
             $convenios = ClientLogos::where("status", "=", true)->get();
             $attemp = Attemp::with(['evaluation', 'course'])->find($attempId);
             return view('pdf.certificate')->with(['attemp'=>  $attemp, 'convenios' => $convenios, 'signs'=> $signs]);
