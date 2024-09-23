@@ -138,7 +138,7 @@ class BasicController extends Controller
     try {
 
       $body = $this->beforeSave($request);
-      $jpa = $this->model::find($request->id);
+      $jpa = $this->model::find(isset($body['id']) ? $body['id'] : null);
 
       if (!$jpa) {
         $jpa = $this->model::create($body);

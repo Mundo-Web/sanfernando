@@ -6,7 +6,9 @@ use App\Models\Attemp;
 use App\Http\Requests\StoreAttempRequest;
 use App\Http\Requests\UpdateAttempRequest;
 use App\Models\AttempDetail;
+use App\Models\ClientLogos;
 use App\Models\Module;
+use App\Models\Sign;
 use Egulias\EmailValidator\Result\Reason\AtextAfterCFWS;
 use Exception;
 use Illuminate\Http\Request;
@@ -82,8 +84,10 @@ class AttempController extends BasicController
     public function certificateBlade(Request $request, string $attempId)
     {
         try {
+            $signs = Sign::all();
+            $convenios = ClientLogos::where("status", "=", true)->get();
             $attemp = Attemp::with(['evaluation', 'course'])->find($attempId);
-            return view('pdf.certificate')->with('attemp', $attemp);
+            return view('pdf.certificate')->with(['attemp'=>  $attemp, 'convenios' => $convenios, 'signs'=> $signs]);
         } catch (\Throwable $th) {
             // \dump($th->getMessage());
         }

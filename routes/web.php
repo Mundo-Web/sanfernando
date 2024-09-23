@@ -38,6 +38,8 @@ use App\Http\Controllers\ValoresAtributosController;
 
 use App\Http\Controllers\TagController;
 use App\Http\Controllers\TermsAndConditionController;
+use App\Http\Controllers\CertificateController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -99,6 +101,9 @@ Route::get('/confirmation/{token}', [AuthController::class, 'loginView']);
  Route::get('/mailing', function () {
      return view('public.mailing');
  });
+
+
+Route::get('/generate-certificate/{attempId}', [CertificateController::class, 'generateCertificate']);
 
 Route::middleware(['auth:sanctum', 'verified', 'can:Admin'])->group(function () {
 

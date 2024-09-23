@@ -26,6 +26,7 @@
         "simplesoftwareio/simple-qrcode": "^4.2",
         "sode/extend": "dev-master",
         "spatie/browsershot": "^4.3",
+        "spatie/image": "^3.7",
         "spatie/laravel-permission": "^6.7"
     },
     "require-dev": {

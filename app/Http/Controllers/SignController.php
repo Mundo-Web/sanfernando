@@ -25,7 +25,7 @@ class SignController extends BasicController
     {
         $manager = new ImageManager(new Driver());
         $img =  $manager->read($file);
-        $img->coverDown(340, 340, 'center');
+        // $img->coverDown(340, 340, 'center');
 
         if (!file_exists($route)) {
             mkdir($route, 0777, true); // Se crea la ruta con permisos de lectura, escritura y ejecución
@@ -37,6 +37,7 @@ class SignController extends BasicController
 
     public function beforeSave(Request $request)
     {
+        // dump($request->all());
         $body = $request->all();
         $sign = Sign::where('correlative', $request->correlative)->first();
         if (!$sign) throw new Exception('No se pueden crear nuevas firmas');
@@ -49,6 +50,8 @@ class SignController extends BasicController
         } else {
             unset($body['sign_path']);
         }
+
+        
 
         return $body;
     }
