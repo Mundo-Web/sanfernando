@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { createRoot } from 'react-dom/client'
 import CreateReactScript from './Utils/CreateReactScript'
 import SliderFront from './components/Section/SliderFront'
@@ -8,6 +8,7 @@ import Curse from './components/Product/Curse'
 import SliderTestimony from './components/Section/SliderTestimony'
 import BenefitCard from './components/Benefits/BenefitCard'
 
+import BlogsContainer from './components/BlogsContainer'
 
 const Home = ({
   url_env,
@@ -16,7 +17,7 @@ const Home = ({
   aboutUs,
   benefit,
   testimonies,
-  general
+  general, blogs
 }) => {
   const sectionStep = 'images/img/palacio.png';
   const imgVideo = 'images/img/mujergp.png';
@@ -26,6 +27,40 @@ const Home = ({
   aboutUs.forEach(x => {
     data[x.titulo] = x.descripcion
   })
+
+  const [showIframe, setShowIframe] = useState(false);
+  const iframeRef = useRef(null);
+  let videoUrl = general.url_testimonios;
+
+  let queryParams = {};
+
+  if (videoUrl) {
+    const url = new URL(videoUrl);
+    queryParams = Object.fromEntries(url.searchParams.entries());
+  }
+
+  const videoId = queryParams['v'] ?? null;
+  const showVideo = () => {
+    setShowIframe(true);
+  };
+  useEffect(() => {
+    const handleScroll = () => {
+      if (iframeRef.current) {
+        const rect = iframeRef.current.getBoundingClientRect();
+        const isVisible = rect.top >= 0 && rect.bottom <= window.innerHeight;
+        if (!isVisible) {
+          iframeRef.current.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
+
 
   return (<>
     <section className="w-full relative">
@@ -144,17 +179,39 @@ const Home = ({
 
         <div className="flex flex-col justify-center items-center px-0 lg:px-[5%]">
           <div className="w-full h-[500px] lg:h-[700px] border border-gray-200 rounded-3xl overflow-hidden relative bg-cover bg-center"
-            style={{ backgroundImage: `url(${imgVideo})` }}>
-            <div className="absolute inset-0 flex items-center justify-center disparo bg-opacity-50 cursor-pointer"
+            style={{ backgroundImage: `url(${imgVideo})` }}
+          >
+            {/* <div className="absolute inset-0 flex items-center justify-center disparo bg-opacity-50 cursor-pointer"
               onclick="showVideo(this)">
               <button className="text-white text-2xl"><img
                 className="w-16 hover:animate-jump hover:animate-once hover:animate-duration-1000"
                 src={`${imgPlay}`} /></button>
             </div>
             <iframe id="videoIframe" class="videoIframe w-full h-full hidden"
-              src="https://www.youtube.com/embed/Q5_ALBh8Qe4" frameborder="0"
+              src={`https://www.youtube.com/embed/${videoId}`} frameborder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen></iframe>
+              allowfullscreen></iframe> */}
+            {/*  {!showIframe && (
+              <div className="absolute inset-0 flex items-center justify-center disparo bg-opacity-50 cursor-pointer"
+                onClick={showVideo}>
+                <button className="text-white text-2xl">
+                  <img className="w-16 hover:animate-jump hover:animate-once hover:animate-duration-1000"
+                    src={`${imgPlay}`} alt="Play" />
+                </button>
+              </div>
+            )}
+            {showIframe && (
+              <iframe id="videoIframe" className="videoIframe w-full h-full"
+                ref={iframeRef}
+                src={`https://www.youtube.com/embed/${videoId}?enablejsapi=1`} frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen></iframe>
+            )} */}
+            <iframe id="videoIframe" className="videoIframe w-full h-full"
+              ref={iframeRef}
+              src={`https://www.youtube.com/embed/${videoId}?enablejsapi=1`} frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen></iframe>
           </div>
         </div>
 
@@ -261,6 +318,39 @@ const Home = ({
           </div>
         </div>
 
+      </div>
+    </section>
+    <section className="bg-[#F9FAFB] px-[8%]">
+      <div className="grid grid-cols-1 w-full gap-12  pt-12 xl:pt-16">
+        <div className="flex flex-col justify-center gap-5 text-center">
+
+          <h1
+            className="text-[#1D2026] font-poppins_bold tracking-tighter text-3xl md:text-5xl leading-none md:leading-tight">
+            Ultimas Noticias e Historias
+          </h1>
+
+        </div>
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 w-full gap-5 pt-12 pb-12">
+
+        {blogs.map((post, i) => {
+          return <BlogsContainer post={post} />
+        })}
+      </div>
+
+      <div className="flex flex-row justify-center items-center pb-12 xl:pb-16">
+        <a href="/catalogoGestion"
+          className="flex w-48 gap-1 justify-center items-center self-stretch px-5 py-3 my-auto text-center text-white bg-[#FFDDDE] rounded-xl"
+          role="button">
+          <span className="self-stretch my-auto font-poppins_semibold text-[#CF072C]">Ver Todos</span>
+          <svg width="21" height="21" viewBox="0 0 21 21" fill="none"
+            xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M9.75131 16.5833C9.59853 16.4306 9.51853 16.2361 9.5113 16C9.50408 15.7639 9.57714 15.5694 9.73047 15.4167L13.8138 11.3333H4.5013C4.26519 11.3333 4.06714 11.2533 3.90714 11.0933C3.74714 10.9333 3.66742 10.7356 3.66797 10.5C3.66797 10.2639 3.74797 10.0658 3.90797 9.90583C4.06797 9.74583 4.26575 9.66611 4.5013 9.66667H13.8138L9.73047 5.58333C9.57769 5.43056 9.50464 5.23611 9.5113 5C9.51797 4.76389 9.59797 4.56944 9.75131 4.41667C9.90408 4.26389 10.0985 4.1875 10.3346 4.1875C10.5707 4.1875 10.7652 4.26389 10.918 4.41667L16.418 9.91667C16.5013 9.98611 16.5605 10.0731 16.5955 10.1775C16.6305 10.2819 16.6477 10.3894 16.6471 10.5C16.6471 10.6111 16.6299 10.7153 16.5955 10.8125C16.561 10.9097 16.5019 11 16.418 11.0833L10.918 16.5833C10.7652 16.7361 10.5707 16.8125 10.3346 16.8125C10.0985 16.8125 9.90408 16.7361 9.75131 16.5833Z"
+              fill="#CF072C" />
+          </svg>
+        </a>
       </div>
     </section>
 

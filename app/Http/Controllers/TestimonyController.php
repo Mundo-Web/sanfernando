@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Testimony;
 use App\Http\Requests\StoreTestimonyRequest;
 use App\Http\Requests\UpdateTestimonyRequest;
+use App\Models\General;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -16,8 +17,9 @@ class TestimonyController extends Controller
     public function index()
     {
         $testimony = Testimony::where("status", "=", true)->get();
+        $general = General::where('id', 1)->first();
 
-        return view('pages.testimonies.index', compact('testimony'));
+        return view('pages.testimonies.index', compact('testimony', 'general'));
 
         
     }
@@ -129,5 +131,22 @@ class TestimonyController extends Controller
 
          return response()->json(['message' => 'Estado modificado.']);
     
+    }
+
+    public function updateurl(Request $request)
+    {
+        try {
+            //code...
+            General::where('id', 1)->update(['url_testimonios' => $request->url]);
+
+            $general = General::where('id', 1)->first();
+            // Lógica para manejar la solicitud AJAX
+            //return response()->json(['mensaje' => 
+            return response()->json(['mensaje' => 'Solicitud AJAX manejada con éxito' ,'data' => $general]);
+        } catch (\Throwable $th) {
+            //throw $th;
+            return response()->json(['mensaje' => 'Error al actualizar la url'],400);
+        }
+       
     }
 }

@@ -38,6 +38,8 @@ use App\Http\Controllers\ValoresAtributosController;
 
 use App\Http\Controllers\TagController;
 use App\Http\Controllers\TermsAndConditionController;
+use App\Http\Controllers\CertificateController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -100,6 +102,9 @@ Route::get('/confirmation/{token}', [AuthController::class, 'loginView']);
      return view('public.mailing');
  });
 
+
+Route::get('/generate-certificate/{attempId}', [CertificateController::class, 'generateCertificate']);
+
 Route::middleware(['auth:sanctum', 'verified', 'can:Admin'])->group(function () {
 
     Route::prefix('admin')->group(function () {
@@ -133,6 +138,7 @@ Route::middleware(['auth:sanctum', 'verified', 'can:Admin'])->group(function () 
         Route::resource('/testimonios', TestimonyController::class);
         Route::post('/testimonios/deleteTestimony', [TestimonyController::class, 'deleteTestimony'])->name('testimonios.deleteTestimony');
         Route::post('/testimonios/updateVisible', [TestimonyController::class, 'updateVisible'])->name('testimonios.updateVisible');
+        Route::post('/testimonios/updateurl', [TestimonyController::class, 'updateurl'])->name('testimonios.updateurl');
 
         // Estados
         Route::resource('/estados', StatusController::class);

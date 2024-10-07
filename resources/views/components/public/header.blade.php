@@ -231,7 +231,7 @@
             </div>
           </button>
           <div
-            class="origin-top-right z-10 text-red-600 bg-red-100 absolute top-full min-w-44  dark:bg-slate-800 border border-slate-200 dark:border-slate-700 py-1.5 rounded shadow-lg overflow-hidden mt-1"
+            class="origin-top-right z-40 text-red-600 bg-red-100 absolute top-full min-w-44  dark:bg-slate-800 border border-slate-200 dark:border-slate-700 py-1.5 rounded shadow-lg overflow-hidden mt-1"
             @click.outside="open = false" @keydown.escape.window="open = false" x-show="open">
             <ul>
               <li class=" hover:bg-rose-700 hover:text-white transition duration-100 ease-in">
@@ -268,94 +268,7 @@
     </nav>
   </section>
 
-  <div>
-    <div id="header-menu" class="flex justify-between gap-5 w-full px-[5%] xl:px-[8%] py-3  text-[17px] relative">
 
-      <div id="menu-burguer" class="lg:hidden z-10 w-max">
-        <img class="h-10 w-10 cursor-pointer" src="{{ asset('images/img/menu_hamburguer.png') }}"
-          alt="menu hamburguesa" onclick="show()" />
-      </div>
-
-      <div class="w-auto">
-        <a href="/">
-          <img id="logo-gestion_publica" class="w-[170px] " {{-- public\images\svg\LOGO2.png --}}
-            src="{{ asset($isIndex ? 'images/img/logorojo.png' : 'images/img/logorojo.png') }}"
-            alt="gestion_publica" />
-        </a>
-      </div>
-
-      <div class="hidden lg:flex items-center justify-center ">
-        <div>
-          <nav id="menu-items"
-            class=" text-[#333] text-base font-Inter_Medium flex gap-5 xl:gap-10 items-center justify-center "
-            x-data="{ openCatalogo: false, openSubMenu: null }">
-            <a href="{{ route('Home.jsx') }}" class="font-medium hover:opacity-75 ">
-              <span class="underline-this">Inicio</span>
-            </a>
-
-            <a id="productos-link" href="{{ route('CatalogoGP.jsx') }}" class="font-medium ">
-              <span class="underline-this">Programas</span>
-              {{-- <div id="productos-link-h" class="w-0"></div> --}}
-
-            </a>
-
-            <a id="productos-link" href="{{ route('Nosotros.jsx') }}" class="font-medium ">
-              <span class="underline-this">Nosotros</span>
-              {{-- <div id="productos-link-h" class="w-0"></div> --}}
-
-            </a>
-
-            {{-- @if ($offerExists) --}}
-            <a href="{{ route('Docente.jsx') }}" class="font-medium hover:opacity-75">
-              <span class="underline-this">Docentes</span>
-            </a>
-            {{-- @endif --}}
-
-
-            {{--  <a href="#" class="font-medium hover:opacity-75 ">
-              <span class="underline-this">Eventos </span>
-            </a> --}}
-            @if ($blog > 0)
-              <a href="/blog" class="font-medium hover:opacity-75 ">
-                <span class="underline-this">Blog </span>
-              </a>
-            @endif
-
-
-            <a href="{{ route('Contacto.jsx') }}" class="font-medium hover:opacity-75  ">
-              <span class="underline-this">Contacto</span>
-            </a>
-            @if ($tags->count() > 0)
-              @foreach ($tags as $item)
-                <a href="/catalogoGestion?tag={{ $item->id }}" class="font-medium hover:opacity-75    "
-                  style="color: {{ $item->color }}">
-                  <span class="underline-this  ">
-                    {{ $item->name }} </span>
-                </a>
-              @endforeach
-
-            @endif
-
-          </nav>
-        </div>
-      </div>
-
-
-
-      <section class="flex gap-3 items-center">
-        <x-header-search />
-
-        {{-- <a href="/register"
-          class="hidden md:flex  gap-2.5 justify-center items-center self-stretch px-5 py-2.5 my-auto text-sm font-semibold text-center text-red-600 bg-red-100 rounded-lg min-h-[40px]">
-          <span class="self-stretch my-auto hover:scale-110 transition-transform">Crear Cuenta</span>
-          <img loading="lazy"
-            src="https://cdn.builder.io/api/v1/image/assets/TEMP/75bad0eb80e4c8fa820b5a280da9560ca64547065469b69cd2c648442bf9f1c3?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f"
-            alt="" class="object-contain shrink-0 self-stretch my-auto w-5 aspect-square" />
-        </a> --}}
-      </section>
-
-    </div>
-  </div>
 
   <div class="flex justify-end relative">
     <div class="fixed bottom-[36px] z-[10] right-[15px] md:right-[25px]">
@@ -369,7 +282,94 @@
   <x-header-carrito />
 
 </header>
+<div class="sticky top-0 z-30 bg-white border-b shadow-lg">
+  <div id="header-menu" class="flex justify-between gap-5 w-full px-[5%] xl:px-[8%] py-3  text-[17px] ">
 
+    <div id="menu-burguer" class="lg:hidden z-10 w-max">
+      <img class="h-10 w-10 cursor-pointer" src="{{ asset('images/img/menu_hamburguer.png') }}"
+        alt="menu hamburguesa" onclick="show()" />
+    </div>
+
+    <div class="w-auto">
+      <a href="/">
+        <img id="logo-gestion_publica" class="w-[170px] " {{-- public\images\svg\LOGO2.png --}}
+          src="{{ asset($isIndex ? 'images/img/logorojo.png' : 'images/img/logorojo.png') }}"
+          alt="gestion_publica" />
+      </a>
+    </div>
+
+    <div class="hidden lg:flex items-center justify-center ">
+      <div>
+        <nav id="menu-items"
+          class=" text-[#333] text-base font-Inter_Medium flex gap-5 xl:gap-10 items-center justify-center "
+          x-data="{ openCatalogo: false, openSubMenu: null }">
+          <a href="{{ route('Home.jsx') }}" class="font-medium hover:opacity-75 ">
+            <span class="underline-this">Inicio</span>
+          </a>
+
+          <a id="productos-link" href="{{ route('CatalogoGP.jsx') }}" class="font-medium ">
+            <span class="underline-this">Programas</span>
+            {{-- <div id="productos-link-h" class="w-0"></div> --}}
+
+          </a>
+
+          <a id="productos-link" href="{{ route('Nosotros.jsx') }}" class="font-medium ">
+            <span class="underline-this">Nosotros</span>
+            {{-- <div id="productos-link-h" class="w-0"></div> --}}
+
+          </a>
+
+          {{-- @if ($offerExists) --}}
+          <a href="{{ route('Docente.jsx') }}" class="font-medium hover:opacity-75">
+            <span class="underline-this">Docentes</span>
+          </a>
+          {{-- @endif --}}
+
+
+          {{--  <a href="#" class="font-medium hover:opacity-75 ">
+            <span class="underline-this">Eventos </span>
+          </a> --}}
+          @if ($blog > 0)
+            <a href="/blog" class="font-medium hover:opacity-75 ">
+              <span class="underline-this">Blog </span>
+            </a>
+          @endif
+
+
+          <a href="{{ route('Contacto.jsx') }}" class="font-medium hover:opacity-75  ">
+            <span class="underline-this">Contacto</span>
+          </a>
+          @if ($tags->count() > 0)
+            @foreach ($tags as $item)
+              <a href="/catalogoGestion?tag={{ $item->id }}" class="font-medium hover:opacity-75    "
+                style="color: {{ $item->color }}">
+                <span class="underline-this  ">
+                  {{ $item->name }} </span>
+              </a>
+            @endforeach
+
+          @endif
+
+        </nav>
+      </div>
+    </div>
+
+
+
+    <section class="flex gap-3 items-center">
+      <x-header-search />
+
+      {{-- <a href="/register"
+        class="hidden md:flex  gap-2.5 justify-center items-center self-stretch px-5 py-2.5 my-auto text-sm font-semibold text-center text-red-600 bg-red-100 rounded-lg min-h-[40px]">
+        <span class="self-stretch my-auto hover:scale-110 transition-transform">Crear Cuenta</span>
+        <img loading="lazy"
+          src="https://cdn.builder.io/api/v1/image/assets/TEMP/75bad0eb80e4c8fa820b5a280da9560ca64547065469b69cd2c648442bf9f1c3?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f"
+          alt="" class="object-contain shrink-0 self-stretch my-auto w-5 aspect-square" />
+      </a> --}}
+    </section>
+
+  </div>
+</div>
 <script>
   let clockSearch;
   @auth

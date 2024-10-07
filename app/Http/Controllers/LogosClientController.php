@@ -35,13 +35,13 @@ class LogosClientController extends Controller
 
     $post = new ClientLogos();
 
-    if ($request->hasFile("imagen")) {
+    if ($request->hasFile("url_image")) {
 
       $manager = new ImageManager(Driver::class);
 
-      $nombreImagen = Str::random(10) . '_' . $request->file('imagen')->getClientOriginalName();
+      $nombreImagen = Str::random(10) . '_' . $request->file('url_image')->getClientOriginalName();
 
-      $img =  $manager->read($request->file('imagen'));
+      $img =  $manager->read($request->file('url_image'));
 
       // Obtener las dimensiones de la imagen que se esta subiendo
       // $img->coverDown(640, 640, 'center');
