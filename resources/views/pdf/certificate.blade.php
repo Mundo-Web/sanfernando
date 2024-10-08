@@ -325,22 +325,22 @@
                 <table style="width: 100%">
                   <tbody>
                     <tr>
-                      <td align="left" style="vertical-align: middle ; ">
+                      <td align="left" valign="middle" style="vertical-align: middle; padding: 15px">
                         <img
                           src="https://cdn.builder.io/api/v1/image/assets/TEMP/72318f99933ec24f075e143dfcf0d49da68332f7946bcaabdec7f2c94e46db8a?placeholderIfAbsent=true&apiKey=0f2111aa112942eda6dda1d2ced51822"
-                          alt="Main Visual" style="width:400px ;   margin-top: 15px;
+                          alt="Main Visual" style="width:400px;
 " />
                       </td>
-                      <td align="right" style="vertical-align: middle ; position: relative ">
+                      <td align="right" valign="middle" style="vertical-align: middle; padding: 15px">
                         <img
                           src="https://api.qrserver.com/v1/create-qr-code/?data={{ rawurlencode(env('APP_URL') . '/certificate/' . $attemp->id) }}"
                           alt="Logo" class="logo-image"
-                          style="width:100px; position: absolute ;   top: 16px;  right: 15px;" />
+                          style="width:100px" />
                       </td>
                     </tr>
                   </tbody>
                 </table>
-                <div class="text-container" id="text-container" style="position: relative ; margin-top:93px;">
+                <div class="text-container" id="text-container" style="position: relative ; margin-top:40px;">
 
 
                   <h4 class="title" style="text-transform: uppercase">DIPLOMADO EN
@@ -359,12 +359,12 @@
                     lectivas
                     del {{ date('Y') }}.
                   </p>
-                  <p class="name" style="padding-top: 40px;">{{ $attemp->user->name }} {{ $attemp->user->lastname }}
+                  <p class="name" style="padding-top: 20px;">{{ $attemp->user->name }} {{ $attemp->user->lastname }}
                   </p>
                 </div>
               </div>
               <section class="signature-section">
-                <table style="margin: auto; text=align: center; margin-top: 60px">
+                <table style="margin: auto; text=align: center; margin-top: 10px">
                   <tbody>
                     <tr>
                       @foreach ($signs as $item)
