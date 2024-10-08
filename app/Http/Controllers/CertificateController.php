@@ -6,42 +6,74 @@ use App\Models\Attemp;
 use App\Models\ClientLogos;
 use App\Models\Sign;
 use Illuminate\Http\Request;
-use Spatie\Browsershot\Browsershot;
 use Barryvdh\DomPDF\Facade\Pdf as PDF;
-
-
+use Illuminate\Support\Facades\Http;
+use SoDe\Extend\Fetch;
 
 class CertificateController extends Controller
 {
-    public function generateCertificate(Request $request , string $attempId)
+    public function generateCertificate(Request $request, string $attempId)
     {
-        // Ruta del archivo HTML
-        
-        $attemp = Attemp::with(['evaluation', 'course'])->find($attempId);
-        $convenios = ClientLogos::where("status", "=", true)->get();
-        $signs = Sign::where('name' , '!=', null)->where('occupation', '!=', null )->get();
-        $htmlPath = resource_path('views/pdf/certificate.blade.php');
+        try {
+            $attemp = Attemp::with(['evaluation', 'course'])->findOrFail($attempId);
+            $convenios = ClientLogos::where("status", "=", true)->get();
+            $signs = Sign::where('name', '!=', null)->where('occupation', '!=', null)->get();
 
-        // Generar la imagen a partir del HTML
-        // resources\views\pdf\certificate.blade.php
-        $imagePath = storage_path('/public/certificate.png');
-        Browsershot::html(view('pdf.certificate', compact('attemp', 'convenios', 'signs'))->render())
-        // ->setNodeBinary('C:\Program Files\nodejs\node.exe') // Ajusta la ruta a tu instalación de Node.js
-        // ->setNpmBinary('C:\Program Files\nodejs\npm.cmd') // Ajusta la ruta a tu instalación de npm
-        ->setNodeBinary('/usr/bin/node') // Ajusta la ruta a tu instalación de Node.js
-        ->setNpmBinary('/usr/bin/npm') // Ajusta la ruta a tu instalación de npm
-        
-            ->windowSize(1200, 800)
-            // ->waitForFunction('document.querySelector("img[src=\'http://127.0.0.1:8000/images/icongest.png\']").complete')
-            ->waitUntilNetworkIdle()
-            ->save($imagePath);
+            // Generar el HTML del certificado
+            $html = view('pdf.certificate', compact('attemp', 'convenios', 'signs'))->render();
 
-            
+            // echo (htmlentities(str_replace('"', '\"', $html)));
 
-        // Generar el PDF a partir de la imagen
-        $pdf = PDF::loadView('pdf.certificate_image', ['imagePath' => $imagePath])
-        ->setPaper('a4', 'landscape');
-        
-        return $pdf->download('certificate.pdf');
+            $response = new Fetch('https://whatsapp.atalaya.pe/api/utils/html2image', [
+                'method' => 'POST',
+                'headers' => [
+                    'Accept' => 'image/png',
+                    'Content-Type' => 'application/json'
+                ],
+                'body' => [
+                    'html' => $html,
+                    'imageType' => 'jpeg',
+                    'width' => 1200,
+                    'height' => 800
+                ]
+            ]);
+
+            if (!$response->ok) {
+                throw new \Exception('La API no pudo generar la imagen del certificado. Código de estado: ' . $response->status);
+            }
+
+            // La respuesta es la imagen PNG
+            $imageContent = $response->blob();
+
+            if (strlen($imageContent) == 0) {
+                throw new \Exception('La API devolvió una imagen vacía.');
+            }
+
+            // Guardar la imagen PNG temporalmente
+            $imagePath = storage_path('app/certificates/certificate_' . $attempId . '.png');
+            if (file_put_contents($imagePath, $imageContent) === false) {
+                throw new \Exception('No se pudo guardar la imagen temporal.');
+            }
+
+            // Generar el PDF a partir de la imagen PNG
+            $pdf = PDF::loadView('pdf.certificate_image', ['imagePath' => $imagePath])
+                ->setPaper('a4', 'landscape');
+
+            // Eliminar la imagen temporal
+            // unlink($imagePath);
+
+            return $pdf->download('certificate_' . $attempId . '.pdf');
+        } catch (\Exception $e) {
+
+            // Si ya se creó la imagen temporal, intentamos eliminarla
+            if (isset($imagePath) && file_exists($imagePath)) {
+                // unlink($imagePath);
+            }
+
+            return response()->json([
+                'error' => 'No se pudo generar el certificado',
+                'message' => $e->getMessage()
+            ], 500);
+        }
     }
 }
