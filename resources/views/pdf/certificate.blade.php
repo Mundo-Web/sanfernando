@@ -340,13 +340,13 @@
                     </tr>
                   </tbody>
                 </table>
-                <div class="text-container" id="text-container" style="position: relative ; margin-top:40px;">
+                <div class="text-container" id="text-container" style="position: relative ; margin-top:20px;">
 
 
                   <h4 class="title" style="text-transform: uppercase">DIPLOMADO EN
                     {{ $attemp->course->producto }}
                   </h4>
-                  <p class="description " style="padding-left: 5%; padding-right: 5%;">En mérito a su participación
+                  <p class="description " style="padding-left: 5%; padding-right: 5%; margin-top: 10px">En mérito a su participación
                     en nuestro <span class="bold-italic" style="text-transform: uppercase ;">DIPLOMADO DE
                       {{ $attemp->course->producto }}.</span> Organizado por <b>EGESPP</b>, con una
                     duración de
