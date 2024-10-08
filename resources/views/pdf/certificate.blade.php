@@ -359,12 +359,12 @@
                     lectivas
                     del {{ date('Y') }}.
                   </p>
-                  <p class="name" style="padding-top: 20px;">{{ $attemp->user->name }} {{ $attemp->user->lastname }}
+                  <p class="name" style="padding-top: 10px;">{{ $attemp->user->name }} {{ $attemp->user->lastname }}
                   </p>
                 </div>
               </div>
               <section class="signature-section">
-                <table style="margin: auto; text=align: center; margin-top: 10px">
+                <table style="margin: auto; text=align: center; margin-top: 20px">
                   <tbody>
                     <tr>
                       @foreach ($signs as $item)
