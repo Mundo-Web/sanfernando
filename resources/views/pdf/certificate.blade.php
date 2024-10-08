@@ -359,7 +359,7 @@
                     lectivas
                     del {{ date('Y') }}.
                   </p>
-                  <p class="name" style="padding-top: 64px;">{{ $attemp->user->name }} {{ $attemp->user->lastname }}
+                  <p class="name" style="padding-top: 40px;">{{ $attemp->user->name }} {{ $attemp->user->lastname }}
                   </p>
                 </div>
               </div>
