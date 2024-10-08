@@ -7,6 +7,7 @@ use Exception;
 use Illuminate\Http\Request;
 use Intervention\Image\Drivers\Gd\Driver;
 use Intervention\Image\ImageManager;
+use SoDe\Extend\Text;
 
 class SignController extends BasicController
 {
@@ -32,7 +33,7 @@ class SignController extends BasicController
         }
 
         $img->save($route . $name);
-        return $route.$name;
+        return $route . $name;
     }
 
     public function beforeSave(Request $request)
@@ -51,7 +52,9 @@ class SignController extends BasicController
             unset($body['sign_path']);
         }
 
-        
+        if (Text::nullOrEmpty($body['name'])) {
+            $body['sign_path'] = null;
+        }
 
         return $body;
     }
