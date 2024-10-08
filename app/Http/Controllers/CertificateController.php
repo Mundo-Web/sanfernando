@@ -7,7 +7,6 @@ use App\Models\ClientLogos;
 use App\Models\Sign;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\Pdf as PDF;
-use Illuminate\Support\Facades\Http;
 use SoDe\Extend\Fetch;
 
 class CertificateController extends Controller
