@@ -410,9 +410,9 @@
                     <img src="{{ asset($item->url_image) }}" alt="Convenio Logo 1" class="agreements-logo" />
                   @endforeach
 
-                  <img
+                  {{-- <img
                     src="https://cdn.builder.io/api/v1/image/assets/TEMP/cbcff7432f010eec9ed530d9243dffda70b428a0940a30a17632b7fa756a47fe?placeholderIfAbsent=true&apiKey=0f2111aa112942eda6dda1d2ced51822"
-                    alt="Convenio Logo 2" class="agreements-logo" />
+                    alt="Convenio Logo 2" class="agreements-logo" /> --}}
 
                 </div>
               </section>

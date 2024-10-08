@@ -31,7 +31,9 @@
             <tbody>
               @foreach ($logos as $logo)
                 <tr>
-                  <td class="dark:bg-slate-800">{{ $logo->url_image }}</td>
+                  <td class="dark:bg-slate-800">
+                  <img class="bg-[#f2f2f2] w-16 h-10 object-cover object-center rounded-sm" src="/{{ $logo->url_image }}" alt=""></td>
+                  </td>
                   <td class="dark:bg-slate-800">{{ $logo->title }}</td>
                   <td class="dark:bg-slate-800">{{ $logo->description }}</td>
                   <td class="dark:bg-slate-800">
@@ -136,7 +138,7 @@
 
             $.ajax({
 
-              url: '{{ route('logos.deleteLogo') }}',
+              url: "{{ route('logos.deleteLogo') }}",
               method: 'POST',
               data: {
                 _token: $('input[name="_token"]').val(),
