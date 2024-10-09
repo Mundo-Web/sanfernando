@@ -61,7 +61,8 @@ class CertificateController extends Controller
             // Eliminar la imagen temporal
             // unlink($imagePath);
 
-            return $pdf->download('certificate_' . $attempId . '.pdf');
+            // return $pdf->download('certificate_' . $attempId . '.pdf');
+            return $pdf->stream('certificate_' . $attempId . '.pdf');
         } catch (\Exception $e) {
 
             // Si ya se creó la imagen temporal, intentamos eliminarla
