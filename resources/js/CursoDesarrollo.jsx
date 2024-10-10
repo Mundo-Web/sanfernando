@@ -121,7 +121,8 @@ const CursoDesarrollo = ({ course, modules, module, attemps }) => {
                   <div className="flex flex-col pb-8 w-full border-b border-rose-50 max-md:max-w-full">
                     <div className="flex flex-col w-full font-semibold max-md:max-w-full">
                       <div className="text-lg leading-tight text-rose-700 max-md:max-w-full">
-                        Modulo {selectedIndex + 1} - {module.name}
+                        {/* Modulo {selectedIndex + 1} - */}
+                        {module.name}
                       </div>
                       <div className="mt-2 text-xl tracking-normal leading-7 text-neutral-800 max-md:max-w-full">
                         {module.description}

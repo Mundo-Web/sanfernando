@@ -310,7 +310,10 @@ const CursoDetalle = ({ producto, modules, url_env }) => {
                     <div key={index} className="bg-white rounded-lg overflow-hidden border border-rose-200">
                       <div className="p-4 flex items-start justify-between cursor-pointer">
                         <div className="flex-1">
-                          <h3 className="text-lg font-semibold text-gray-800">{module.type == 'session' ? `Módulo ${index + 1}`: 'Evaluación final'}: {module.name}</h3>
+                          <h3 className="text-lg font-semibold text-gray-800">
+                                {/* {module.type == 'session' ? `Módulo ${index + 1}`: 'Evaluación final'}:  */}
+                            {module.name}
+                            </h3>
                           <div className="mt-2 flex items-center text-sm text-gray-600 space-x-4">
                             <span className="flex items-center">
                               <i className="fa fa-book mr-2 text-blue-500" />
