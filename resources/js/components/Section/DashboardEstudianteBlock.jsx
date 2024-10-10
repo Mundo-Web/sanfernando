@@ -28,7 +28,7 @@ const DashboardEstudianteBlock = ({ finished, session, courses }) => {
             </div>
             <div className="flex flex-col justify-center self-stretch my-auto w-[180px]">
               <div className="text-2xl font-medium leading-none text-neutral-800">
-                3
+                {courses.length - finished.length}
               </div>
               <div className="mt-1.5 text-sm tracking-normal leading-loose text-gray-600">
                 Cursos activos
