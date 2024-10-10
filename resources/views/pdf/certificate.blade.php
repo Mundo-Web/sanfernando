@@ -1,7 +1,7 @@
 @php
   use SoDe\Extend\Math;
-  $hours = Math::floor($attemp->course->duracion / 60);
-  $minutes = $attemp->course->duracion % 60;
+  $hours = Math::floor($attemp->course->duracion / 1);
+  $minutes = $attemp->course->duracion % 1;
 
 @endphp
 
