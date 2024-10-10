@@ -212,7 +212,7 @@
       <p>Teléfono: {{ $datosgenerales->cellphone }}</p>
       <p>Email: {{ $datosgenerales->email }}</p>
     </div>
-    <nav class="flex gap-4 items-center self-stretch my-auto mx-auto md:mx-0">
+    <nav class="flex gap-4 items-center self-stretch justify-between my-auto mx-auto md:mx-0">
       @if (Auth::user() == null)
         <div class="text-white">
           <a href="/login" class="text-white">Inicia sesion </a>
@@ -220,7 +220,7 @@
           <a href="/register" class="text-white">Registrate</a>
         </div>
       @else
-        <div class=" relative text-white  hidden md:inline-flex" x-data="{ open: false }">
+        <div class=" relative text-white inline-flex" x-data="{ open: false }">
           <button class="inline-flex justify-center items-center group" aria-haspopup="true"
             @click.prevent="open = !open" :aria-expanded="open">
             <div class="flex items-center truncate mt-[4px]">
