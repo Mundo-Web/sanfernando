@@ -212,7 +212,7 @@
       <p>Teléfono: {{ $datosgenerales->cellphone }}</p>
       <p>Email: {{ $datosgenerales->email }}</p>
     </div>
-    <nav class="flex gap-4 items-center self-stretch justify-between my-auto mx-auto md:mx-0">
+    <nav class="flex gap-4 items-center self-stretch my-auto mx-auto md:mx-0">
       @if (Auth::user() == null)
         <div class="text-white">
           <a href="/login" class="text-white">Inicia sesion </a>
