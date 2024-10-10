@@ -343,7 +343,7 @@
                 <div class="text-container" id="text-container" style="position: relative ; margin-top:20px;">
 
 
-                  <h4 class="title" style="text-transform: uppercase">DIPLOMADO EN
+                  <h4 class="title" style="text-transform: uppercase">
                     {{ $attemp->course->producto }}
                   </h4>
                   <p class="description " style="padding-left: 5%; padding-right: 5%; margin-top: 10px">En mérito a su participación
