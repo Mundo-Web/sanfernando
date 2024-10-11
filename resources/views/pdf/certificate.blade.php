@@ -344,11 +344,10 @@
 
 
                   <h4 class="title" style="text-transform: uppercase">
-                    {{ $attemp->course->producto }}
+                    ESCUELA DE GESTION PUBLICA Y NEGOCIOS DEL PERU
                   </h4>
                   <p class="description " style="padding-left: 5%; padding-right: 5%; margin-top: 10px">En mérito a su participación
-                    en nuestro <span class="bold-italic" style="text-transform: uppercase ;">DIPLOMADO DE
-                      {{ $attemp->course->producto }}.</span> Organizado por <b>EGESPP</b>, con una
+                    en nuestro <i class="bold-italic" style="text-transform: uppercase ;">{{ $attemp->course->producto }}.</i> Organizado por <b>EGESPP</b>, con una
                     duración de
                     @if ($hours > 0)
                       {{ $hours }} horas
