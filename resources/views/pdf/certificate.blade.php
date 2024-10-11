@@ -369,7 +369,7 @@
                       @foreach ($signs as $item)
                         <td align="center" valign="middle" style="padding: 0 40px" style="position: relative;">
                           <img src="{{ asset($item->sign_path) }}" alt=""
-                            style=" width:130px; height: 100px;  object-fit: contain; object-position: center; margin-bottom: -30px">
+                            style=" width:180px; height: 150px;  object-fit: contain; object-position: center; margin-bottom: -30px">
                         </td>
                       @endforeach
 
