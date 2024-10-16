@@ -95,11 +95,11 @@ const CursoDesarrollo = ({ course, modules, module, attemps }) => {
               return <a key={`module-${i}`} data-pos={`module-${i}`}
                 href={`/micuenta/session/${course.uuid}/${id}`}
                 className={`gap-3 self-stretch px-8 text-center max-w-full py-3 capitalize ${id == module.id ? 'bg-[#CF072C]' : 'bg-red-400'} hover:bg-[#CF072C] rounded-xl w-full cursor-pointer`}>
-                {
+                {/* {
                   type == 'session'
                     ? <>Módulo {i + 1}</>
                     : <>Examen final</>
-                }
+                } */}
                 <span className='block text-xs line-clamp-1 text-ellipsis text-nowrap'>{name}</span>
               </a>
             })

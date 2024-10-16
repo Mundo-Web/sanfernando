@@ -344,7 +344,7 @@
 
 
                   <h4 class="title" style="text-transform: uppercase">
-                    ESCUELA DE GESTION PUBLICA Y NEGOCIOS DEL PERU
+                    ESCUELA DE GESTIÓN PÚBLICA Y NEGOCIOS DEL PERÚ
                   </h4>
                   <p class="description " style="padding-left: 5%; padding-right: 5%; margin-top: 10px">En mérito a su participación
                     en nuestro <i class="bold-italic" style="text-transform: uppercase ;">{{ $attemp->course->producto }}.</i> Organizado por <b>EGESPP</b>, con una
