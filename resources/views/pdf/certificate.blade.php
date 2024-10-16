@@ -403,7 +403,7 @@
                 </table>
               </section>
               <section class="agreements-section" style="margin-top: 5px; width:100%">
-                <p class="agreements-title" style="margin-bottom: 10px">Convenio con</p>
+                <p class="agreements-title" style="margin-bottom: 10px">Convenio con:</p>
                 <div class="agreements-logos">
                   @foreach ($convenios as $item)
                     <img src="{{ asset($item->url_image) }}" alt="Convenio Logo 1" class="agreements-logo" />
