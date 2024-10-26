@@ -51,7 +51,7 @@
       <div class="flex flex-col flex-1 shrink leading-tight basis-0">
         <h3 class="text-sm font-medium text-white">Aviso Legal</h3>
         <ul class="flex flex-col mt-5 w-full text-xs text-white text-opacity-80">
-          @if (isset($politicas->text_content) && $politicas->text_content)
+          @if (isset($politicaDatos->text_content) && $politicaDatos->text_content)
             <li><a id="linkPoliticas">Política de Privacidad</a></li>
           @endif
           @if (isset($terminos->text_content) && $terminos->text_content)
@@ -120,7 +120,7 @@
     <div class="p-4 ">
       <h1 class="font-Inter_SemiBold">Politicas de devolucion</h1>
 
-      <p class="font-Inter_Regular p-2">{!! $politicas->content ?? '' !!}</p>
+      <p class="font-Inter_Regular p-2">{!! $politicaDatos->content ?? '' !!}</p>
 
 
     </div>
