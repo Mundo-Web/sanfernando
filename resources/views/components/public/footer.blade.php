@@ -51,8 +51,12 @@
       <div class="flex flex-col flex-1 shrink leading-tight basis-0">
         <h3 class="text-sm font-medium text-white">Aviso Legal</h3>
         <ul class="flex flex-col mt-5 w-full text-xs text-white text-opacity-80">
-          <li><a href="#">Política de Privacidad</a></li>
-          <li class="mt-3"><a href="#">Términos y Condiciones</a></li>
+          @if (isset($politicas->text_content) && $politicas->text_content)
+            <li><a id="linkPoliticas">Política de Privacidad</a></li>
+          @endif
+          @if (isset($terminos->text_content) && $terminos->text_content)
+            <li class="mt-3"><a id="linkTerminos">Términos y Condiciones</a></li>
+          @endif
         </ul>
       </div>
     </nav>
@@ -103,4 +107,42 @@
 
     </div>
   </div>
+
+  <div id="modalTerminosCondiciones" class="modal" style="max-width: 900px !important;width: 100% !important;  ">
+    <!-- Modal body -->
+    <div class="p-4 ">
+      <h1 class="font-Inter_SemiBold">Terminos y condiciones</h1>
+      <p class="font-Inter_Regular p-2 prose">{!! $terminos->content ?? '' !!}</p>
+    </div>
+  </div>
+  <div id="modalPoliticasDev" class="modal" style="max-width: 900px !important; width: 100% !important;  ">
+    <!-- Modal body -->
+    <div class="p-4 ">
+      <h1 class="font-Inter_SemiBold">Politicas de devolucion</h1>
+
+      <p class="font-Inter_Regular p-2">{!! $politicas->content ?? '' !!}</p>
+
+
+    </div>
+  </div>
 </footer>
+
+<script>
+  $(document).ready(function() {
+    $(document).on('click', '#linkTerminos', function() {
+      $('#modalTerminosCondiciones').modal({
+        show: true,
+        fadeDuration: 400,
+
+      })
+    })
+    $(document).on('click', '#linkPoliticas', function() {
+      $('#modalPoliticasDev').modal({
+        show: true,
+        fadeDuration: 400,
+
+
+      })
+    })
+  })
+</script>

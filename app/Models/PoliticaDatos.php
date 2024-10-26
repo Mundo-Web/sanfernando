@@ -8,5 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class PoliticaDatos extends Model
 {
     use HasFactory;
-    protected $fillable = ['title', 'content', 'finaltitle'];
+    protected $fillable = ['title', 'content', 'text_content', 'finaltitle'];
 }

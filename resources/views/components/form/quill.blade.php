@@ -5,9 +5,13 @@
   class="h-60 mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-b-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-0  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
   {!! $value !!}</div>
 <textarea style="display: none" id="{{ $id }}" name="{{ $id }}">{!! $value !!}</textarea>
+<input type="text" id="{{ $id }}_raw" name="{{ $id }}_raw" hidden>
 
 <script>
   $('document').ready(function() {
+
+    const raw = $('<main>' + $('#{{$id}}').val() + '</main>')
+    $('#{{$id}}_raw').val(raw.text())
 
     const quill = new Quill('#quill-{{ $id }}', {
       theme: 'snow'
@@ -26,6 +30,7 @@
 
         $('#{{ $id }}').val(tempElem.outerHTML);
         $('#{{ $id }}').text(tempElem.outerHTML);
+        $('#{{ $id }}_raw').val(tempElem.textContent.trim());
       }
     });
 

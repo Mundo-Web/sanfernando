@@ -64,7 +64,9 @@ class TermsAndConditionController extends Controller
         ]);
     
         $terms = TermsAndCondition::findOrfail($id); 
-        $terms->update($request->all());
+        $body = $request->all();
+        $body['text_content'] = $request->content_raw;
+        $terms->update($body);
         $terms->save();
 
         return back()->with('success', 'Registro actualizado correctamente');

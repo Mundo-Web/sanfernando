@@ -9,5 +9,5 @@ class TermsAndCondition extends Model
 {
     use HasFactory;
     
-    protected $fillable = ['title', 'content', 'phone', 'finaltitle'];
+    protected $fillable = ['title', 'content', 'text_content', 'phone', 'finaltitle'];
 }
