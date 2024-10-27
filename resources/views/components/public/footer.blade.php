@@ -53,9 +53,13 @@
         <ul class="flex flex-col mt-5 w-full text-xs text-white text-opacity-80">
           @if (isset($politicaDatos->text_content) && $politicaDatos->text_content)
             <li><a id="linkPoliticas">Política de Privacidad</a></li>
+          @else
+            <li><a href="#">Política de Privacidad</a></li>
           @endif
           @if (isset($terminos->text_content) && $terminos->text_content)
             <li class="mt-3"><a id="linkTerminos">Términos y Condiciones</a></li>
+          @else
+            <li class="mt-3"><a href="#">Términos y Condiciones</a></li>
           @endif
         </ul>
       </div>
