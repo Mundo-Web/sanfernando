@@ -61,6 +61,9 @@
           @else
             <li class="mt-3"><a href="#">Términos y Condiciones</a></li>
           @endif
+
+          <a class="mt-3" href="{{ route('librodereclamaciones') }}"><img class="w-20"
+            src="{{ asset('images/img/reclamaciones.png') }}" /></a>
         </ul>
       </div>
     </nav>
