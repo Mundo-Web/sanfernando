@@ -24,6 +24,7 @@ class Module extends Model
         'duration',
         'attemps',
         'order',
+        'aprove_with',
     ];
 
     public function course()

@@ -73,7 +73,7 @@ const CursoDesarrollo = ({ course, modules, module, attemps }) => {
               Extracto: {course.extract}
             </div>
             {
-              (finished && finished.score > (finished.questions / 2)) &&
+              (finished && finished.score > (module?.aprove_with || (finished.questions / 2))) &&
               <a href={`/api/certificate/${finished.id}`}
                 //  download={`Certificado de finalizacion - ${course.producto}.pdf`} 
                 target='_blank' className="block mt-4 w-max text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">

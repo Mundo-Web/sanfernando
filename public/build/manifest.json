@@ -43,8 +43,8 @@
   "_JSEncrypt-jwo8Dr6z.js": {
     "file": "assets/JSEncrypt-jwo8Dr6z.js"
   },
-  "_ProductCard-HNCwrBD5.js": {
-    "file": "assets/ProductCard-HNCwrBD5.js",
+  "_ProductCard-BPQB444v.js": {
+    "file": "assets/ProductCard-BPQB444v.js",
     "imports": [
       "resources/js/Utils/InitialsImage.jsx",
       "_tippy-react.esm-XNE3m1lc.js",
@@ -53,6 +53,9 @@
   },
   "__commonjsHelpers-4gQjN7DL.js": {
     "file": "assets/_commonjsHelpers-4gQjN7DL.js"
+  },
+  "_arrayJoin-X0k7NUGR.js": {
+    "file": "assets/arrayJoin-X0k7NUGR.js"
   },
   "_axios-_sX4vCAy.js": {
     "file": "assets/axios-_sX4vCAy.js"
@@ -92,7 +95,7 @@
     "src": "resources/css/app.css"
   },
   "resources/js/Admin/Consumers.jsx": {
-    "file": "assets/Consumers-G2p8C3LH.js",
+    "file": "assets/Consumers-Woe0uZ6C.js",
     "imports": [
       "resources/js/Utils/InitialsImage.jsx",
       "resources/js/Utils/ReactAppend.jsx",
@@ -102,6 +105,7 @@
       "_tippy-react.esm-XNE3m1lc.js",
       "resources/js/components/Offer/OfferForm.jsx",
       "_main-jzs2GwAM.js",
+      "_arrayJoin-X0k7NUGR.js",
       "resources/js/components/Section/FormEstudiante.jsx",
       "__commonjsHelpers-4gQjN7DL.js",
       "_index-pEm_mg_4.js",
@@ -112,7 +116,7 @@
     "src": "resources/js/Admin/Consumers.jsx"
   },
   "resources/js/Admin/Modules.jsx": {
-    "file": "assets/Modules-DIrQqcQi.js",
+    "file": "assets/Modules-fzWJzQSH.js",
     "imports": [
       "resources/js/Utils/InitialsImage.jsx",
       "resources/js/Utils/ReactAppend.jsx",
@@ -166,14 +170,15 @@
     "src": "resources/js/Admin/Signs.jsx"
   },
   "resources/js/Catalogo.jsx": {
-    "file": "assets/Catalogo-kS1hZged.js",
+    "file": "assets/Catalogo-0_NV-e5a.js",
     "imports": [
       "resources/js/Utils/InitialsImage.jsx",
       "resources/js/Utils/ReactAppend.jsx",
       "_CreateReactScript-IbCTOT6z.js",
-      "_ProductCard-HNCwrBD5.js",
+      "_ProductCard-BPQB444v.js",
       "_main-jzs2GwAM.js",
       "_FilterPagination-LEV-1BCD.js",
+      "_arrayJoin-X0k7NUGR.js",
       "__commonjsHelpers-4gQjN7DL.js",
       "_index-pEm_mg_4.js",
       "resources/js/Utils/CreateReactScript.jsx",
@@ -239,7 +244,7 @@
     "src": "resources/js/Contacto.jsx"
   },
   "resources/js/CursoDesarrollo.jsx": {
-    "file": "assets/CursoDesarrollo-c8INZ3kT.js",
+    "file": "assets/CursoDesarrollo-Vr7tcOtj.js",
     "imports": [
       "resources/js/Utils/InitialsImage.jsx",
       "resources/js/Utils/ReactAppend.jsx",
@@ -380,7 +385,7 @@
     "src": "resources/js/Evaluation.jsx"
   },
   "resources/js/EvaluationFinished.jsx": {
-    "file": "assets/EvaluationFinished-J6orvfKt.js",
+    "file": "assets/EvaluationFinished-CEhy5BKE.js",
     "imports": [
       "resources/js/Utils/InitialsImage.jsx",
       "resources/js/Utils/ReactAppend.jsx",
@@ -454,14 +459,15 @@
     "src": "resources/js/Nosotros.jsx"
   },
   "resources/js/Ofertas.jsx": {
-    "file": "assets/Ofertas-eLt1JqtS.js",
+    "file": "assets/Ofertas-8Ksq1yEc.js",
     "imports": [
       "resources/js/Utils/InitialsImage.jsx",
       "resources/js/Utils/ReactAppend.jsx",
       "_CreateReactScript-IbCTOT6z.js",
-      "_ProductCard-HNCwrBD5.js",
+      "_ProductCard-BPQB444v.js",
       "_main-jzs2GwAM.js",
       "_FilterPagination-LEV-1BCD.js",
+      "_arrayJoin-X0k7NUGR.js",
       "__commonjsHelpers-4gQjN7DL.js",
       "_index-pEm_mg_4.js",
       "resources/js/Utils/CreateReactScript.jsx",

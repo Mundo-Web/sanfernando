@@ -88,12 +88,13 @@ class User extends Authenticatable
             ->select('products.*', 'best_attemps.score', 'best_attemps.questions')
             ->joinSub(
                 function ($query) {
-                    $query->select('course_id', 'user_id')
-                        ->selectRaw('MAX(score) as score, MAX(questions) as questions')
+                    $query->select('attemps.course_id', 'attemps.user_id')
+                        ->selectRaw('MAX(attemps.score) as score, MAX(attemps.questions) as questions')
                         ->from('attemps')
-                        ->where('finished', true)
-                        ->whereRaw('score > (questions / 2)')
-                        ->groupBy('course_id', 'user_id');
+                        ->leftJoin('modules', 'modules.id', '=', 'attemps.evaluation_id')
+                        ->where('attemps.finished', true)
+                        ->whereRaw('(attemps.score * 20.0) / attemps.questions >= COALESCE(modules.aprove_with, attemps.questions / 2)')
+                        ->groupBy('attemps.course_id', 'attemps.user_id');
                 },
                 'best_attemps',
                 function ($join) {

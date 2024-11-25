@@ -7,7 +7,7 @@ const attempsRest = new AttempsRest()
 
 const ExamenFinalizado = ({ attemp, course, evaluation, attempsCount }) => {
 
-  const passed = attemp.score > (attemp.questions / 2)
+  const passed = attemp.score > (evaluation.module?.aprove_with || (attemp.questions / 2))
 
   const onStartAttemp = async (e) => {
     const request = {
