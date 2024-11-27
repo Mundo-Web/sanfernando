@@ -202,87 +202,87 @@
 </div>
 
 
-<header class="font-poppins_regular">
-
-  <section
-    class="flex flex-wrap gap-10 justify-between items-center px-[8%] py-3 border border-solid bg-slate-900 border-teal-800 border-opacity-10 max-md:px-5">
-    <div
-      class="hidden md:flex gap-4 items-start self-stretch my-auto text-sm tracking-normal leading-7 text-center min-w-[240px] text-slate-100">
-
-      <p>Teléfono: {{ $datosgenerales->cellphone }}</p>
-      <p>Email: {{ $datosgenerales->email }}</p>
-    </div>
-    <nav class="flex gap-4 items-center self-stretch my-auto mx-auto md:mx-0">
-      @if (Auth::user() == null)
-        <div class="text-white">
-          <a href="/login" class="text-white">Inicia sesion </a>
-          <span class="text-slate-200">o</span>
-          <a href="/register" class="text-white">Registrate</a>
-        </div>
-      @else
-        <div class=" relative text-white inline-flex" x-data="{ open: false }">
-          <button class="inline-flex justify-center items-center group" aria-haspopup="true"
-            @click.prevent="open = !open" :aria-expanded="open">
-            <div class="flex items-center truncate mt-[4px]">
-              <span id="username"
-                class="truncate ml-2 text-sm font-medium dark:text-slate-300 group-hover:opacity-75 dark:group-hover:text-slate-200  ">
-              </span>
-              <i class="fas fa-angle-down ms-2"></i>
-            </div>
-          </button>
-          <div
-            class="origin-top-right z-40 text-red-600 bg-red-100 absolute top-full min-w-44  dark:bg-slate-800 border border-slate-200 dark:border-slate-700 py-1.5 rounded shadow-lg overflow-hidden mt-1"
-            @click.outside="open = false" @keydown.escape.window="open = false" x-show="open">
-            <ul>
-              <li class=" hover:bg-rose-700 hover:text-white transition duration-100 ease-in">
-                <a class="font-medium text-sm  flex items-center py-1 px-3 " href="/micuenta" @click="open = false"
-                  @focus="open = true" @focusout="open = false">Mi
-                  Cuenta</a>
-              </li>
-
-              <li class=" hover:bg-rose-700 hover:text-white transition duration-100 ease-in">
-                <form method="POST" action="{{ route('logout') }}" x-data>
-                  @csrf
-                  <button type="submit" class="font-medium text-sm  flex items-center py-1 px-3"
-                    @click.prevent="$root.submit(); open = false">
-                    {{ __('Cerrar sesión') }}
-                  </button>
-                </form>
-              </li>
-            </ul>
-          </div>
-        </div>
-      @endif
-      <a href="#" aria-label="Social Media Link 3">
-        <div id="open-cart" class="relative">
-          <span id="itemsCount"
-            class="bg-rose-700 text-xs font-medium text-white text-center px-[7px] py-[2px]  rounded-full absolute -bottom-4 -right-4 ml-3">0</span>
-          <img loading="lazy"
-            src="https://cdn.builder.io/api/v1/image/assets/TEMP/2cb868de28b1b49e52be101815be5c820fdf20aee19c0b5b86753f263366f629?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f"
-            alt="" class="object-contain shrink-0 w-6 aspect-square" />
-        </div>
-
-
-
-      </a>
-    </nav>
-  </section>
-
-
-
-  <div class="flex justify-end relative">
-    <div class="fixed bottom-[36px] z-[10] right-[15px] md:right-[25px]">
-      <a href="https://api.whatsapp.com/send?phone={{ $datosgenerales->whatsapp }}&text={{ $datosgenerales->mensaje_whatsapp }}"
-        target="_blank" class="">
-        <img src="{{ asset('images/img/WhatsApp.png') }}" alt="whatsapp" class="w-20" />
-      </a>
-    </div>
-  </div>
-
-  <x-header-carrito />
-
-</header>
 <div class="sticky top-0 z-30 bg-white border-b shadow-lg">
+  <header class="font-poppins_regular">
+  
+    <section
+      class="flex flex-wrap gap-10 justify-between items-center px-[8%] py-3 border border-solid bg-slate-900 border-teal-800 border-opacity-10 max-md:px-5">
+      <div
+        class="hidden md:flex gap-4 items-start self-stretch my-auto text-sm tracking-normal leading-7 text-center min-w-[240px] text-slate-100">
+  
+        <p>Teléfono: {{ $datosgenerales->cellphone }}</p>
+        <p>Email: {{ $datosgenerales->email }}</p>
+      </div>
+      <nav class="flex gap-4 items-center self-stretch my-auto mx-auto md:mx-0">
+        @if (Auth::user() == null)
+          <div class="text-white">
+            <a href="/login" class="text-white">Inicia sesion </a>
+            <span class="text-slate-200">o</span>
+            <a href="/register" class="text-white">Registrate</a>
+          </div>
+        @else
+          <div class=" relative text-white inline-flex" x-data="{ open: false }">
+            <button class="inline-flex justify-center items-center group" aria-haspopup="true"
+              @click.prevent="open = !open" :aria-expanded="open">
+              <div class="flex items-center truncate mt-[4px]">
+                <span id="username"
+                  class="truncate ml-2 text-sm font-medium dark:text-slate-300 group-hover:opacity-75 dark:group-hover:text-slate-200  ">
+                </span>
+                <i class="fas fa-angle-down ms-2"></i>
+              </div>
+            </button>
+            <div
+              class="origin-top-right z-40 text-red-600 bg-red-100 absolute top-full min-w-44  dark:bg-slate-800 border border-slate-200 dark:border-slate-700 py-1.5 rounded shadow-lg overflow-hidden mt-1"
+              @click.outside="open = false" @keydown.escape.window="open = false" x-show="open">
+              <ul>
+                <li class=" hover:bg-rose-700 hover:text-white transition duration-100 ease-in">
+                  <a class="font-medium text-sm  flex items-center py-1 px-3 " href="/micuenta" @click="open = false"
+                    @focus="open = true" @focusout="open = false">Mi
+                    Cuenta</a>
+                </li>
+  
+                <li class=" hover:bg-rose-700 hover:text-white transition duration-100 ease-in">
+                  <form method="POST" action="{{ route('logout') }}" x-data>
+                    @csrf
+                    <button type="submit" class="font-medium text-sm  flex items-center py-1 px-3"
+                      @click.prevent="$root.submit(); open = false">
+                      {{ __('Cerrar sesión') }}
+                    </button>
+                  </form>
+                </li>
+              </ul>
+            </div>
+          </div>
+        @endif
+        <a href="#" aria-label="Social Media Link 3">
+          <div id="open-cart" class="relative">
+            <span id="itemsCount"
+              class="bg-rose-700 text-xs font-medium text-white text-center px-[7px] py-[2px]  rounded-full absolute -bottom-4 -right-4 ml-3">0</span>
+            <img loading="lazy"
+              src="https://cdn.builder.io/api/v1/image/assets/TEMP/2cb868de28b1b49e52be101815be5c820fdf20aee19c0b5b86753f263366f629?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f"
+              alt="" class="object-contain shrink-0 w-6 aspect-square" />
+          </div>
+  
+  
+  
+        </a>
+      </nav>
+    </section>
+  
+  
+  
+    <div class="flex justify-end relative">
+      <div class="fixed bottom-[36px] z-[10] right-[15px] md:right-[25px]">
+        <a href="https://api.whatsapp.com/send?phone={{ $datosgenerales->whatsapp }}&text={{ $datosgenerales->mensaje_whatsapp }}"
+          target="_blank" class="">
+          <img src="{{ asset('images/img/WhatsApp.png') }}" alt="whatsapp" class="w-20" />
+        </a>
+      </div>
+    </div>
+  
+    <x-header-carrito />
+  
+  </header>
   <div id="header-menu" class="flex justify-between gap-5 w-full px-[5%] xl:px-[8%] py-3  text-[17px] ">
 
     <div id="menu-burguer" class="lg:hidden z-10 w-max">
