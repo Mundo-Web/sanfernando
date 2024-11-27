@@ -87,7 +87,7 @@ class AttempController extends BasicController
             $signs = Sign::where('name' , '!=', null)->where('occupation', '!=', null )->get();
             $convenios = ClientLogos::where("status", "=", true)->get();
             $attemp = Attemp::with(['evaluation', 'course'])->find($attempId);
-            return view('pdf.certificate')->with(['attemp'=>  $attemp, 'convenios' => $convenios, 'signs'=> $signs]);
+            return view('pdf.certificate_verify')->with(['attemp'=>  $attemp, 'convenios' => $convenios, 'signs'=> $signs]);
         } catch (\Throwable $th) {
             // \dump($th->getMessage());
         }

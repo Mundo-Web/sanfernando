@@ -342,7 +342,7 @@
                 </table>
                 <div class="text-container" id="text-container" style="position: relative ; margin-top:20px;">
 
-
+                  <span style="position: absolute; top: -50px; color: rgba(207, 7, 44, 1); font-weight: bold; ">CERTIFICADO</span>
                   <h4 class="title" style="text-transform: uppercase">
                     ESCUELA DE GESTIÓN PÚBLICA Y NEGOCIOS DEL PERÚ
                   </h4>

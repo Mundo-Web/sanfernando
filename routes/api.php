@@ -48,6 +48,7 @@ Route::get('/offers/{id}', [OfferController::class, 'get'])->name('offers.get');
 Route::post('/messages', [MessageController::class, 'save'])->name('messages.save');
 Route::post('/products/AddOrder', [ProductsController::class, 'AddOrder'])->name('products.AddOrder');
 
+Route::get('/certificate/{attempId}', [CertificateController::class, 'generateCertificate']);
 
 Route::middleware(['web', 'auth:sanctum', 'verified'])->group(function () {
 
@@ -97,7 +98,7 @@ Route::middleware(['web', 'auth:sanctum', 'verified'])->group(function () {
     Route::post('/attemps/paginate', [AttempController::class, 'paginate']);
     Route::delete('/attemps/{id}', [AttempController::class, 'delete']);
     // Route::get('/certificate/{attempId}', [AttempController::class, 'certificate']);
-    Route::get('/certificate/{attempId}', [CertificateController::class, 'generateCertificate']);
+    // Route::get('/certificate/{attempId}', [CertificateController::class, 'generateCertificate']);
     
     Route::post('/attemp-details', [AttempDetailController::class, 'save']);
 
