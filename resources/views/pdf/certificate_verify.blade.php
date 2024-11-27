@@ -6,7 +6,7 @@
   $nota = ($attemp->score * 20) / $attemp->questions;
   $nota = round($nota * 100) / 100;
 
-  $date_begin = date('d/m/Y', strtotime($attemp->course->fecha_inicio));
+  $date_begin = $attemp->course->fecha_inicio ? date('d/m/Y', strtotime($attemp->course->fecha_inicio)) : '';
   $date_end = date('d/m/Y', strtotime($attemp->created_at));
 
 @endphp
