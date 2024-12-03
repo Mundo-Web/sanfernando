@@ -6,6 +6,7 @@ import { format, parseISO } from 'date-fns';
 import { es } from 'date-fns/locale';
 import copyToClipboard from './Utils/copyToClipboard';
 import { agregarPedido } from './Utils/carrito.js'
+import YTEmbed from './Utils/YTEmbed.jsx';
 
 
 const CursoDetalle = ({ producto, modules, url_env }) => {
@@ -42,9 +43,27 @@ const CursoDetalle = ({ producto, modules, url_env }) => {
         <section className="flex flex-col rounded-none ">
           <div
             className="flex relative flex-col pt-40 pr-20 w-full min-h-[400px]  max-md:pr-5 max-md:max-w-full">
-            <img loading="lazy"
-              src="https://cdn.builder.io/api/v1/image/assets/TEMP/b4e82bfe25986db29d99fb9384e4ab44a145de97336f63cc73125e430d7ff1d5?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f"
-              alt="" className="object-cover absolute inset-0 size-full" />
+            {
+              producto.tipo_portada ?
+                <>
+                  {
+                    producto.tipo_portada == 'imagen' ?
+                      <img loading="lazy"
+                        src={`/${producto.portada_detalle}`}
+                        onError={e => {
+                          e.target.onerror = null;
+                          e.target.src = 'https://cdn.builder.io/api/v1/image/assets/TEMP/b4e82bfe25986db29d99fb9384e4ab44a145de97336f63cc73125e430d7ff1d5?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f';
+                        }}
+                        alt="" className="object-cover object-center absolute inset-0 size-full" />
+                      : <YTEmbed videoId={producto.portada_detalle} />
+                  }
+                </>
+
+                : <img loading="lazy"
+                  src='https://cdn.builder.io/api/v1/image/assets/TEMP/b4e82bfe25986db29d99fb9384e4ab44a145de97336f63cc73125e430d7ff1d5?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f'
+                  alt="" className="object-cover object-center absolute inset-0 size-full" />
+            }
+
             <div
               className="flex relative gap-2.5 items-center self-center p-6  h-[72px] rounded-[120px] w-[72px] max-md:px-5">
             </div>
@@ -306,14 +325,14 @@ const CursoDetalle = ({ producto, modules, url_env }) => {
                 Temario
 
                 <div className="max-w-2xl py-4 space-y-2">
-                  {modules.sort((a,b) => a.order - b.order).map((module, index) => (
+                  {modules.sort((a, b) => a.order - b.order).map((module, index) => (
                     <div key={index} className="bg-white rounded-lg overflow-hidden border border-rose-200">
                       <div className="p-4 flex items-start justify-between cursor-pointer">
                         <div className="flex-1">
                           <h3 className="text-lg font-semibold text-gray-800">
-                                {/* {module.type == 'session' ? `Módulo ${index + 1}`: 'Evaluación final'}:  */}
+                            {/* {module.type == 'session' ? `Módulo ${index + 1}`: 'Evaluación final'}:  */}
                             {module.name}
-                            </h3>
+                          </h3>
                           <div className="mt-2 flex items-center text-sm text-gray-600 space-x-4">
                             <span className="flex items-center">
                               <i className="fa fa-book mr-2 text-blue-500" />

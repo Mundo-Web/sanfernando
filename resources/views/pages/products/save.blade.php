@@ -107,6 +107,59 @@
 
                   <hr class="col-span-5">
 
+                  <div class="col-span-5 md:col-span-5">
+                    <label for="portada_detalle">Portada superior (Detalle)</label>
+                    <div class="flex gap-4 mt-2 mb-2">
+                      <label class="flex gap-2 items-center cursor-pointer" for="tipo_portada_imagen">
+                        <input class="cursor-pointer" type="radio" name="tipo_portada" id="tipo_portada_imagen"
+                          value="imagen" @if ($product->tipo_portada == null || $product->tipo_portada == 'imagen') checked @endif>
+                        <span>Imagen</span>
+                      </label>
+                      <label class="flex gap-2 items-center cursor-pointer" for="tipo_portada_video">
+                        <input class="cursor-pointer" type="radio" name="tipo_portada" id="tipo_portada_video"
+                          value="video" @if ($product->tipo_portada == 'video') checked @endif>
+                        <span>Video de Youtube</span>
+                      </label>
+                    </div>
+                    <div data-tipo-portada="imagen" class="relative mb-2 mt-2"
+                      @if ($product->tipo_portada != null && $product->tipo_portada != 'imagen') hidden @endif>
+                      @if ($product->tipo_portada == 'imagen' && $product->portada_detalle)
+                      <label for="portada_detalle_imagen">
+                        <img src="/{{ $product->portada_detalle }}" alt=""
+                          class="w-full h-full aspect-[8/3] object-cover rounded cursor-pointer">
+                      </label>
+                      @endif
+                      <div class="relative">
+                        <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                          <i class="text-lg text-gray-500 dark:text-gray-400 fas fa-image"></i>
+                        </div>
+                        <input type="file" id="portada_detalle_imagen" name="portada_detalle_imagen" accept="image/*"
+                          class="mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-14 p-0 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                          placeholder="Imagen">
+                      </div>
+                    </div>
+                    <div data-tipo-portada="video" class="relative mb-2  mt-2"
+                      @if ($product->tipo_portada != 'video') hidden @endif>
+                      <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                        <i class="text-lg text-gray-500 dark:text-gray-400 fas fa-video"></i>
+                      </div>
+                      <input type="text" id="portada_detalle_video" name="portada_detalle_video"
+                        value="{{ $product->tipo_portada == 'video' && $product->portada_detalle ? 'https://youtu.be/' . $product->portada_detalle : '' }}"
+                        class="mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        placeholder="Link de youtube">
+                    </div>
+                  </div>
+
+                  <script>
+                    $(document).on('change', '[name="tipo_portada"]', function() {
+                      const tipo_portada = this.value
+                      $('[data-tipo-portada]').attr('hidden', 'true')
+                      $(`[data-tipo-portada="${tipo_portada}"]`).removeAttr('hidden')
+                    })
+                  </script>
+
+                  <hr class="col-span-5">
+
                   <div class="col-span-5 md:col-span-5 mb-2">
                     <label for=""
                       class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Previsualizacion del
@@ -118,32 +171,39 @@
                         @if ($product->imagen)
                           <img id="imagen_previewer" x-show="!showAmbiente"
                             x-transition:enter="transition ease-out duration-300 transform"
-                            x-transition:enter-start="opacity-0 scale-95" x-transition:enter-end="opacity-100 scale-100"
+                            x-transition:enter-start="opacity-0 scale-95"
+                            x-transition:enter-end="opacity-100 scale-100"
                             x-transition:leave="transition ease-in duration-300 transform"
-                            x-transition:leave-start="opacity-100 scale-100" x-transition:leave-end="opacity-0 scale-95"
-                            src="{{ asset($product->imagen) }}" alt="{{ $product->name }}"
+                            x-transition:leave-start="opacity-100 scale-100"
+                            x-transition:leave-end="opacity-0 scale-95" src="{{ asset($product->imagen) }}"
+                            alt="{{ $product->name }}"
                             class="bg-[#f2f2f2] w-full h-full object-contain absolute inset-0 rounded-lg" />
                         @else
                           <img id="imagen_previewer" x-show="!showAmbiente"
                             x-transition:enter="transition ease-out duration-300 transform"
-                            x-transition:enter-start="opacity-0 scale-95" x-transition:enter-end="opacity-100 scale-100"
+                            x-transition:enter-start="opacity-0 scale-95"
+                            x-transition:enter-end="opacity-100 scale-100"
                             x-transition:leave="transition ease-in duration-300 transform"
-                            x-transition:leave-start="opacity-100 scale-100" x-transition:leave-end="opacity-0 scale-95"
-                            src="{{ asset('images/img/noimagen.jpg') }}" alt="imagen_alternativa"
+                            x-transition:leave-start="opacity-100 scale-100"
+                            x-transition:leave-end="opacity-0 scale-95" src="{{ asset('images/img/noimagen.jpg') }}"
+                            alt="imagen_alternativa"
                             class="bg-[#f2f2f2] w-full h-full object-contain absolute inset-0 rounded-lg" />
                         @endif
                         @if ($product->imagen_ambiente)
                           <img id="imagen_ambiente_previewer" x-show="showAmbiente"
                             x-transition:enter="transition ease-out duration-300 transform"
-                            x-transition:enter-start="opacity-0 scale-95" x-transition:enter-end="opacity-100 scale-100"
+                            x-transition:enter-start="opacity-0 scale-95"
+                            x-transition:enter-end="opacity-100 scale-100"
                             x-transition:leave="transition ease-in duration-300 transform"
-                            x-transition:leave-start="opacity-100 scale-100" x-transition:leave-end="opacity-0 scale-95"
-                            src="{{ asset($product->imagen_ambiente) }}" alt="{{ $product->name }}"
+                            x-transition:leave-start="opacity-100 scale-100"
+                            x-transition:leave-end="opacity-0 scale-95" src="{{ asset($product->imagen_ambiente) }}"
+                            alt="{{ $product->name }}"
                             class="w-full h-full object-cover absolute inset-0 rounded-lg" />
                         @else
                           <img id="imagen_ambiente_previewer" x-show="showAmbiente"
                             x-transition:enter="transition ease-out duration-300 transform"
-                            x-transition:enter-start="opacity-0 scale-95" x-transition:enter-end="opacity-100 scale-100"
+                            x-transition:enter-start="opacity-0 scale-95"
+                            x-transition:enter-end="opacity-100 scale-100"
                             x-transition:leave="transition ease-in duration-300 transform"
                             x-transition:leave-start="opacity-100 scale-100"
                             x-transition:leave-end="opacity-0 scale-95" src="{{ asset('images/img/noimagen.jpg') }}"
@@ -1088,56 +1148,56 @@
       });
 
       /*  $("#AddEspecifiacion").on('click', function(e) {
-                                                                               e.preventDefault()
-                                                                               valorInput++
+                                                                                       e.preventDefault()
+                                                                                       valorInput++
 
-                                                                               const addButton = document.getElementById("AddEspecifiacion");
-                                                                               const divFlex = document.createElement("div");
-                                                                               const dRelative = document.createElement("div");
-                                                                               const dRelative2 = document.createElement("div");
+                                                                                       const addButton = document.getElementById("AddEspecifiacion");
+                                                                                       const divFlex = document.createElement("div");
+                                                                                       const dRelative = document.createElement("div");
+                                                                                       const dRelative2 = document.createElement("div");
 
-                                                                               divFlex.classList.add('flex', 'gap-2')
-                                                                               dRelative.classList.add('relative', 'mb-2', 'mt-2')
-                                                                               dRelative2.classList.add('relative', 'mb-2', 'mt-2')
+                                                                                       divFlex.classList.add('flex', 'gap-2')
+                                                                                       dRelative.classList.add('relative', 'mb-2', 'mt-2')
+                                                                                       dRelative2.classList.add('relative', 'mb-2', 'mt-2')
 
-                                                                               const iconContainer = document.createElement("div");
-                                                                               const icon = `<div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                                                                                       const iconContainer = document.createElement("div");
+                                                                                       const icon = `<div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
        <i class="text-lg text-gray-500 dark:text-gray-400 fas fa-pen"></i>
      </div>`
-                                                                               iconContainer.innerHTML = icon;
+                                                                                       iconContainer.innerHTML = icon;
 
-                                                                               // Obtener el nodo del icono
-                                                                               const iconNode = iconContainer.firstChild;
-
-
-
-                                                                               const inputTittle = document.createElement("input");
-                                                                               const inputValue = document.createElement("input");
-
-                                                                               let inputT = agregarElementos(inputTittle, valorInput, 'tittle')
-                                                                               let inputV = agregarElementos(inputValue, valorInput, 'specifications')
+                                                                                       // Obtener el nodo del icono
+                                                                                       const iconNode = iconContainer.firstChild;
 
 
-                                                                               dRelative.appendChild(inputT);
-                                                                               dRelative2.appendChild(inputV);
+
+                                                                                       const inputTittle = document.createElement("input");
+                                                                                       const inputValue = document.createElement("input");
+
+                                                                                       let inputT = agregarElementos(inputTittle, valorInput, 'tittle')
+                                                                                       let inputV = agregarElementos(inputValue, valorInput, 'specifications')
 
 
-                                                                               // Agregar el icono como primer hijo de dRelative
-                                                                               dRelative.insertBefore(iconNode, inputT);
-
-                                                                               // Clonar el nodo del icono para agregarlo como primer hijo de dRelative2
-                                                                               const iconNodeCloned = iconNode.cloneNode(true);
-                                                                               dRelative2.insertBefore(iconNodeCloned, inputV);
+                                                                                       dRelative.appendChild(inputT);
+                                                                                       dRelative2.appendChild(inputV);
 
 
-                                                                               divFlex.appendChild(dRelative);
-                                                                               divFlex.appendChild(dRelative2);
+                                                                                       // Agregar el icono como primer hijo de dRelative
+                                                                                       dRelative.insertBefore(iconNode, inputT);
 
-                                                                               const parentContainer = addButton.parentElement
-                                                                                 .parentElement; // Obtener el contenedor padre
-                                                                               parentContainer.insertBefore(divFlex, addButton.parentElement
-                                                                                 .nextSibling); // Insertar el input antes del siguiente elemento después del botón
-                                                                             }) */
+                                                                                       // Clonar el nodo del icono para agregarlo como primer hijo de dRelative2
+                                                                                       const iconNodeCloned = iconNode.cloneNode(true);
+                                                                                       dRelative2.insertBefore(iconNodeCloned, inputV);
+
+
+                                                                                       divFlex.appendChild(dRelative);
+                                                                                       divFlex.appendChild(dRelative2);
+
+                                                                                       const parentContainer = addButton.parentElement
+                                                                                         .parentElement; // Obtener el contenedor padre
+                                                                                       parentContainer.insertBefore(divFlex, addButton.parentElement
+                                                                                         .nextSibling); // Insertar el input antes del siguiente elemento después del botón
+                                                                                     }) */
 
 
       // Note that the name "myFormDropzone" is the camelized

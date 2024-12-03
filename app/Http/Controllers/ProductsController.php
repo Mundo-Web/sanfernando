@@ -24,6 +24,7 @@ use Illuminate\Support\Facades\DB;
 use Inertia\Inertia;
 use SoDe\Extend\JSON;
 use Illuminate\Support\Facades\Auth;
+use SoDe\Extend\Text;
 
 use function PHPUnit\Framework\isNull;
 
@@ -362,7 +363,7 @@ class ProductsController extends Controller
         $destinationPath = 'storage/docs/'; // Ruta donde se guardará el archivo
         $fileName = time() . '_' . $file->getClientOriginalName(); // Nombre del archivo
         $file->move($destinationPath, $fileName); // Mover el archivo a la ruta especificada
-        $data['brochure_url'] = $destinationPath. $fileName; // Guardar la ruta relativa en la base de datos
+        $data['brochure_url'] = $destinationPath . $fileName; // Guardar la ruta relativa en la base de datos
       }
 
 
@@ -389,6 +390,15 @@ class ProductsController extends Controller
       }
       if ($request->hasFile('image_texture')) {
         $data['image_texture'] = $this->saveImg($request, 'image_texture');
+      }
+
+      if ($data['tipo_portada']) {
+        if (strtolower($data['tipo_portada']) == 'imagen' && $request->hasFile('portada_detalle_imagen')) {
+          $data['portada_detalle'] = $this->saveImg($request, 'portada_detalle_imagen');
+        }
+        if (strtolower($data['tipo_portada']) == 'video') {
+          $data['portada_detalle'] = Text::getYTVideoId($request->portada_detalle_video);
+        }
       }
       // $data['imagen_2'] = $this->saveImg($request, 'imagen_2');
       // $data['imagen_3'] = $this->saveImg($request, 'imagen_3');
@@ -697,18 +707,19 @@ class ProductsController extends Controller
     ]);
     return response()->json(['message' => 'registro actualizado']);
   }
-  public function AddOrder(Request $request ){
+  public function AddOrder(Request $request)
+  {
     try {
       //code...
       $data = $request->all();
       $producto = Products::with(['tags', 'galeria', 'category', 'docentes'])->where('id', $data['id'])->first();
 
 
-      return response()->json(['message' => 'orden actualizado con exito ' , 
-      'producto' => $producto,
-      
+      return response()->json([
+        'message' => 'orden actualizado con exito ',
+        'producto' => $producto,
+
       ]);
-    
     } catch (\Throwable $th) {
       //throw $th;
       return response()->json(['message' => 'No se ha podido agregar el producto '], 400);

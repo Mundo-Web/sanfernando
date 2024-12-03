@@ -46,8 +46,9 @@ class Products extends Model
     'incluye',
     'que_lograras',
     'brochure_url',
-    'offer_message'
-    // 'precio_reseller'
+    'offer_message',
+    'tipo_portada',
+    'portada_detalle'
   ];
 
   public function categoria()
