@@ -147,7 +147,9 @@ class User extends Authenticatable
                 'attemps.user_id',
                 'best_attemps.score',
                 'best_attemps.questions',
-                'best_attemps.user_id'
+                'best_attemps.user_id',
+                'best_attemps.tipo_portada',
+                'best_attemps.portada_detalle',
             );
     }
 
