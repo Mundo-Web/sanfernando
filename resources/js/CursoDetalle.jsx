@@ -64,10 +64,10 @@ const CursoDetalle = ({ producto, modules, url_env }) => {
                   alt="" className="object-cover object-center absolute inset-0 size-full" />
             }
 
-            <div
+            {/* <div
               className="flex relative gap-2.5 items-center self-center p-6  h-[72px] rounded-[120px] w-[72px] max-md:px-5">
-            </div>
-            <div className=" relative flex-wrap items-center self-start mt-40 hidden lg:flex">
+            </div> */}
+            <div className=" absolute bottom-0 flex-wrap items-center self-start hidden lg:flex">
               <div className="flex flex-1 shrink self-stretch my-auto w-28 h-3 bg-red-800 basis-0"></div>
               <div className="flex flex-1 shrink self-stretch my-auto w-28 h-3 bg-red-600 basis-0"></div>
               <div className="flex flex-1 shrink self-stretch my-auto h-3 bg-red-500 basis-0 w-[111px]"></div>
