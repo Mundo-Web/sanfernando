@@ -144,12 +144,12 @@ class User extends Authenticatable
                 'products.created_at',
                 'products.updated_at',
                 'products.precio_reseller',
+                'products.tipo_portada',
+                'products.portada_detalle',
                 'attemps.user_id',
                 'best_attemps.score',
                 'best_attemps.questions',
                 'best_attemps.user_id',
-                'best_attemps.tipo_portada',
-                'best_attemps.portada_detalle',
             );
     }
 
