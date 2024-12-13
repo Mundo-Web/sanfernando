@@ -22,7 +22,7 @@ const Nosotros = ({ testimonies, aboutUs }) => {
       <div className="flex w-full bg-[#FFF0F0] h-10 lg:h-20 max-md:max-w-full" role="banner"></div>
       <div className="grid grid-cols-1 lg:grid-cols-2 w-full gap-12 px-[8%] py-12 xl:py-16">
         <div className="flex flex-col justify-center gap-5 text-textWhite ">
-          <h2 className="text-[#CF072C] font-poppins_regular font-semibold text-5xl">{data['INICIO-FIN']}</h2>
+          <h2 className="text-[#CF072C] font-poppins_regular font-semibold text-5xl"><HtmlContent html={data['INICIO-FIN']}/></h2>
           <h1
             className="text-[#1D2026] font-poppins_bold font-semibold tracking-tighter text-3xl md:text-5xl leading-none md:leading-tight">
             <HtmlContent html={data['TITULO-OBJETIVO']} />
