@@ -469,15 +469,13 @@ const CursoDetalle = ({ producto, modules, url_env }) => {
                 {producto.descuento > 0 ? (
 
                   <>
-                    <div className="flex gap-2 items-center self-stretch my-auto text-neutral-800">
+                    <div className="flex flex-col gap-2 items-center self-stretch my-auto text-neutral-800">
+                      <div className="self-stretch my-auto text-base font-medium text-[14px] line-through" >
+                        S/ {producto.precio}
+                      </div>
                       <div className="self-stretch my-auto text-2xl font-bold leading-none">
 
-                        S/ {producto.descuento}
-                      </div>
-
-
-                      <div className="self-stretch my-auto text-base font-medium text-[14px] line-through" >
-                        S/ {producto.precio} + IGV
+                        S/ {producto.descuento} + IGV
                       </div>
                     </div>
                     <div
