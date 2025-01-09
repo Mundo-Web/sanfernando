@@ -477,7 +477,7 @@ const CursoDetalle = ({ producto, modules, url_env }) => {
 
 
                       <div className="self-stretch my-auto text-base font-medium text-[14px] line-through" >
-                        PEN {producto.precio}
+                        S/ {producto.precio} + IGV
                       </div>
                     </div>
                     <div
@@ -490,7 +490,7 @@ const CursoDetalle = ({ producto, modules, url_env }) => {
                   <div className="flex gap-2 items-center self-stretch my-auto text-neutral-800">
                     <div className="self-stretch my-auto text-2xl font-bold leading-none">
                       {console.log(producto)}
-                      S/ {producto.precio}
+                      S/ {producto.precio} + IGV
                     </div>
                   </div>
                 ))}

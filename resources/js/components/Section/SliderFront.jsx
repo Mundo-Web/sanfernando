@@ -76,18 +76,14 @@ const SliderFront = ({ sliders }) => {
                       </div>
                     </div>
 
-                    <div className="w-[0.5px] h-[50px] bg-[#E0DEF7] hidden sm:block">
-                    </div>
-
                     <div className="flex justify-start items-center ml-3">
                       <div
                         className="flex flex-row-reverse 2md:flex-row justify-center items-center">
                         <div className="flex flex-row justify-start items-center w-auto">
                           <button id="linkExplirarAlquileres"
                             className="bg-[#CF072C] rounded-lg font-poppins_semibold font-medium text-white px-0 md:px-6 py-0 md:py-3 text-center h-full inline-block">
-                            <span
-                              className="flex w-full md:flex-row md:items-center gap-2 px-10 py-3 md:py-0 sm:px-0">Buscar
-                              <i className="fa-solid fa-magnifying-glass"></i></span>
+                            <i className="fa-solid fa-magnifying-glass"></i>
+                            Buscar
                           </button>
                         </div>
                       </div>
