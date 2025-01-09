@@ -15,10 +15,10 @@
               class="object-contain max-w-full aspect-[16.67] w-[100px]" alt="Company slogan" />
           </div>
         </div>
-        <p class="mt-4 text-xs leading-4 text-white">
+        {{-- <p class="mt-4 text-xs leading-4 text-white">
           Nunc gravida sodales lectus et finibus. Duis vehicula pretium odio, nec efficitur purus tempor at. Donec eget
           tellus id tellus convallis malesuada at eget justo.
-        </p>
+        </p> --}}
       </div>
       <a href="/catalogoGestion"
         class="flex gap-3 items-start mt-6 text-sm font-semibold tracking-normal leading-10 text-white rounded-xl min-h-[40px]">
