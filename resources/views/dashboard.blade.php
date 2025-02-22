@@ -13,7 +13,7 @@
   {{--  <meta name="description"
     content="Somos especialistas en Wall Panel, mármol UV, piedra PU y otros productos para ti. Confía en la calidad de Deco TAB y dale otro estilo a tu ambiente favorito."> --}}
   <title> Academia San Fernando </title>
-  <link rel="shortcut icon" href="/images/icon.svg" type="image/x-icon">
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
   {{--   <meta name="keywords"
     content="Wall Panel, Mármol UV, Piedra PU, Piedra Cincelada, Wall Panel Negro, Pisos SPC, Panel Tipo piedra PU" /> --}}
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>

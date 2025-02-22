@@ -10,14 +10,14 @@
   <meta charset="UTF-8">
   <meta name="language" content="spanish">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description"
-    content="Especialistas en la Venta, reparacion y servicios tecnologicos. Con mas de 13 años de experiencia obtendras calidad en todos nuestros servicios , no dejes pasar esta oportunidad de ver nuestros excelentes productos.">
+  {{-- <meta name="description"
+    content="Especialistas en la Venta, reparacion y servicios tecnologicos. Con mas de 13 años de experiencia obtendras calidad en todos nuestros servicios , no dejes pasar esta oportunidad de ver nuestros excelentes productos."> --}}
   {{-- <title> Boost Peru</title> --}}
   <title>@yield('title', config('app.name', 'Laravel'))</title>
-  <meta name="keywords"
-    content="Accesorios Celulares, Accesorios Gamers, Accesorios Laptop, Accesorios Auto, Accesorios Carro, Cargadores, Cases, Gaming, Gamer" />
+  {{-- <meta name="keywords"
+    content="Accesorios Celulares, Accesorios Gamers, Accesorios Laptop, Accesorios Auto, Accesorios Carro, Cargadores, Cases, Gaming, Gamer" /> --}}
 
-  {{-- <link rel="shortcut icon" href="/images/icon.svg" type="image/x-icon"> --}}
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
 
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
   @vite([...$sources, 'resources/css/app.css', 'resources/js/app.js'])

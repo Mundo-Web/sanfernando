@@ -686,7 +686,7 @@
         mostrarTotalItems()
 
         Notify.add({
-          icon: '/images/svg/Boost.svg',
+          icon: '/favicon.ico',
           title: 'Producto agregado',
           body: 'El producto se agregó correctamente al carrito',
           type: 'success',
