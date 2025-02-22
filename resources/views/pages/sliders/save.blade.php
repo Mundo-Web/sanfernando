@@ -78,7 +78,7 @@
               </div>
 
 
-              <div class="md:col-span-2">
+              {{-- <div class="md:col-span-2">
                 <label for="botontext2">Titulo boton 2</label>
                 <div class="relative mb-2  mt-2">
                   <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
@@ -101,12 +101,12 @@
                     class="mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     placeholder="Url para botón 2">
                 </div>
-              </div>
+              </div> --}}
 
 
 
               <div class="md:col-span-2">
-                <label for="description">Imagen de servicio (1440x808 px)</label>
+                <label for="description">Imagen de Fondo (1440x808 px)</label>
                 <div class="relative mb-2 mt-2">
                   @if ($slider->name_image)
                     <img src="{{ asset($slider->url_image . '' . $slider->name_image) }}"
@@ -124,6 +124,31 @@
                 <label for="imagen">Subir una foto</label>
                 <div class="relative mb-2  mt-2">
                   <input name="imagen"
+                    class="p-2.5 block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
+                    aria-describedby="user_avatar_help" id="user_avatar" type="file">
+                </div>
+              </div>
+
+
+              <div class="md:col-span-2">
+                <label for="description">Imagen lateral (540x632 px)</label>
+                <div class="relative mb-2 mt-2">
+                  @if ($slider->name_image_second)
+                    <img src="{{ asset($slider->url_image_second . '' . $slider->name_image_second) }}"
+                      class="max-w-xs w-auto max-h-32 object-contain bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block  p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                  @else
+                    <img src="/images/img/noimagen.jpg"
+                      class="max-w-xs max-h-48 object-cover  bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full  p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                  @endif
+                </div>
+              </div>
+
+
+
+              <div class="md:col-span-3">
+                <label for="imagen_second">Subir una foto</label>
+                <div class="relative mb-2  mt-2">
+                  <input name="imagen_second"
                     class="p-2.5 block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
                     aria-describedby="user_avatar_help" id="user_avatar" type="file">
                 </div>

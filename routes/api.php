@@ -5,6 +5,8 @@ use App\Http\Controllers\Admin\AttempController as AdminAttempController;
 use App\Http\Controllers\AnswerController;
 use App\Http\Controllers\AttempController;
 use App\Http\Controllers\AttempDetailController;
+use App\Http\Controllers\AttempSimulationController;
+use App\Http\Controllers\AttempSimulationDetailController;
 use App\Http\Controllers\CertificateController;
 use App\Http\Controllers\ConsumerController;
 use App\Http\Controllers\CourseController;
@@ -99,8 +101,15 @@ Route::middleware(['web', 'auth:sanctum', 'verified'])->group(function () {
     Route::delete('/attemps/{id}', [AttempController::class, 'delete']);
     // Route::get('/certificate/{attempId}', [AttempController::class, 'certificate']);
     // Route::get('/certificate/{attempId}', [CertificateController::class, 'generateCertificate']);
-    
     Route::post('/attemp-details', [AttempDetailController::class, 'save']);
+    
+    Route::post('/attemps-simulation', [AttempSimulationController::class, 'save']);
+    Route::post('/attemps-simulation/paginate', [AttempSimulationController::class, 'paginate']);
+    Route::delete('/attemps-simulation/{id}', [AttempSimulationController::class, 'delete']);
+
+    Route::post('/attemps-detail-simulation', [AttempSimulationDetailController::class, 'save']);
+
+
 
     Route::post('/signs', [SignController::class, 'save']);
 

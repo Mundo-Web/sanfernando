@@ -88,6 +88,7 @@ const CursoDesarrollo = ({ course, modules, module, attemps }) => {
 
     <section className='px-[5%] lg:px-[8%] font-poppins_regular'>
       <div className="flex flex-wrap gap-10 items-start py-16">
+        
         <div id='modules' className="w-full flex flex-row overflow-x-auto md:overflow-hidden md:flex-col text-sm font-semibold tracking-normal text-white md:w-[200px] gap-2 md:sticky top-8">
           {
             modules.sort((a, b) => a.order - b.order).map(({ id, type, name }, i) => {
@@ -105,6 +106,7 @@ const CursoDesarrollo = ({ course, modules, module, attemps }) => {
             })
           }
         </div>
+
         <div className="flex flex-col flex-1 shrink basis-0 min-w-[240px] max-md:max-w-full">
           {
             module.type == 'session'
@@ -179,143 +181,147 @@ const CursoDesarrollo = ({ course, modules, module, attemps }) => {
                 </div>
               </>
               : <div className="flex flex-col max-w-[724px]">
-                <div className="flex gap-3 items-start w-full max-md:max-w-full">
-                  <div className="flex flex-col flex-1 shrink w-full basis-0 min-w-[240px] max-md:max-w-full">
-                    <div className="flex flex-wrap gap-6 items-center w-full font-semibold max-md:max-w-full">
-                      <div className="self-stretch my-auto text-xl tracking-normal leading-none text-neutral-800">
-                        Examen final: {module.name}
-                      </div> {
-                        finished ? <div className="flex gap-1 justify-center items-center self-stretch px-2 py-1 my-auto text-xs leading-tight text-right text-gray-600 bg-blue-200 rounded-2xl">
-                          <i className='fa fa-check ms-1'></i>
-                          <div className="self-stretch my-auto">Realizado</div>
-                        </div>
-                          : <div className="flex gap-1 justify-center items-center self-stretch px-2 py-1 my-auto text-xs leading-tight text-right text-gray-600 bg-amber-200 rounded-2xl">
-                            <i className='fa fa-info-circle ms-1'></i>
-                            <div className="self-stretch my-auto">Por realizar</div>
+                  <div className="flex gap-3 items-start w-full max-md:max-w-full">
+                    <div className="flex flex-col flex-1 shrink w-full basis-0 min-w-[240px] max-md:max-w-full">
+                      <div className="flex flex-wrap gap-6 items-center w-full font-semibold max-md:max-w-full">
+                        <div className="self-stretch my-auto text-xl tracking-normal leading-none text-neutral-800">
+                          Examen final: {module.name}
+                        </div> {
+                          finished ? <div className="flex gap-1 justify-center items-center self-stretch px-2 py-1 my-auto text-xs leading-tight text-right text-gray-600 bg-blue-200 rounded-2xl">
+                            <i className='fa fa-check ms-1'></i>
+                            <div className="self-stretch my-auto">Realizado</div>
                           </div>
-                      }
-                    </div>
-                    {
-                      attemps.length > 0 &&
-                      <table className="my-4 w-max text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 border">
+                            : <div className="flex gap-1 justify-center items-center self-stretch px-2 py-1 my-auto text-xs leading-tight text-right text-gray-600 bg-amber-200 rounded-2xl">
+                              <i className='fa fa-info-circle ms-1'></i>
+                              <div className="self-stretch my-auto">Por realizar</div>
+                            </div>
+                        }
+                      </div>
+                      {
+                        attemps.length > 0 &&
+                        <table className="my-4 w-max text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 border">
 
-                        <thead className="text-xs text-gray-700 uppercase dark:text-gray-400">
-                          <tr className='border-b'>
-                            <th colSpan={3} className='px-2 py-1.5 text-center bg-gray-50 dark:bg-gray-800'>Intentos</th>
-                          </tr>
-                          <tr className='border-b'>
-                            <th scope="col" className="px-2 py-1.5 bg-gray-50 dark:bg-gray-800 border-e">
-                              Fecha
-                            </th>
-                            <th scope="col" className="px-2 py-1.5 bg-gray-50 dark:bg-gray-800 border-e">
-                              Nota
-                            </th>
-                            <th scope="col" className="px-2 py-1.5 bg-gray-50 dark:bg-gray-800">
-                              Estado
-                            </th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          {
-                            attemps.map((attemp, i) => {
-                              return <tr className=" border-gray-200 dark:border-gray-700">
-                                <th scope="row" className="px-2 py-1.5 font-medium text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800 border-e">
-                                  {moment(attemp.created_at).format('lll')}
-                                </th>
-                                <td className="px-2 py-1.5 border-e">
-                                  {attemp.score}/{module.questions_count}
-                                </td>
-                                <td className="px-2 py-1.5 ">
-                                  {attemp.finished ? 'Completado' : 'En curso'}
-                                </td>
-                              </tr>
-                            })
-                          }
-                        </tbody>
-                      </table>
-                    }
-                    <div className="mt-3 text-base font-medium leading-6 text-gray-600 max-md:max-w-full">
-                      {module.description}
-                      <span className='block mt-2'>
-                        Te proporcionaremos recomendaciones y detalles importantes para maximizar tu aprendizaje
-                      </span>
-                    </div>
-                  </div>
-                </div>
-                <div className="flex flex-col mt-10 gap-6 w-full text-base leading-none text-gray-600 max-md:max-w-full">
-                  {
-                    module.duration == null ? <div className="flex flex-col items-start w-full max-md:max-w-full">
-                      <div className="flex gap-2 items-start font-bold">
-                        <i className='shrink-0 fa fa-check text-[#CF072C] text-xl me-1'></i>
-                        <div>
-                          <span className='block'>Tiempo ilimitado</span>
-                          <span className="block gap-2.5 self-stretch mt-2 font-medium max-md:pl-5 max-md:max-w-full">
-                            No hay un tiempo limite para la resolucion de esta evaluación
-                          </span>
-                        </div>
+                          <thead className="text-xs text-gray-700 uppercase dark:text-gray-400">
+                            <tr className='border-b'>
+                              <th colSpan={3} className='px-2 py-1.5 text-center bg-gray-50 dark:bg-gray-800'>Intentos</th>
+                            </tr>
+                            <tr className='border-b'>
+                              <th scope="col" className="px-2 py-1.5 bg-gray-50 dark:bg-gray-800 border-e">
+                                Fecha
+                              </th>
+                              <th scope="col" className="px-2 py-1.5 bg-gray-50 dark:bg-gray-800 border-e">
+                                Nota
+                              </th>
+                              <th scope="col" className="px-2 py-1.5 bg-gray-50 dark:bg-gray-800">
+                                Estado
+                              </th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {
+                              attemps.map((attemp, i) => {
+                                return <tr className=" border-gray-200 dark:border-gray-700">
+                                  <th scope="row" className="px-2 py-1.5 font-medium text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800 border-e">
+                                    {moment(attemp.created_at).format('lll')}
+                                  </th>
+                                  <td className="px-2 py-1.5 border-e">
+                                    {attemp.score}/{module.questions_count}
+                                  </td>
+                                  <td className="px-2 py-1.5 ">
+                                    {attemp.finished ? 'Completado' : 'En curso'}
+                                  </td>
+                                </tr>
+                              })
+                            }
+                          </tbody>
+                        </table>
+                      }
+                      <div className="mt-3 text-base font-medium leading-6 text-gray-600 max-md:max-w-full">
+                        {module.description}
+                        <span className='block mt-2'>
+                          Te proporcionaremos recomendaciones y detalles importantes para maximizar tu aprendizaje
+                        </span>
                       </div>
                     </div>
-                      : <div className="flex flex-col items-start w-full max-md:max-w-full">
+                  </div>
+                  <div className="flex flex-col mt-10 gap-6 w-full text-base leading-none text-gray-600 max-md:max-w-full">
+                    {
+                      module.duration == null ? <div className="flex flex-col items-start w-full max-md:max-w-full">
                         <div className="flex gap-2 items-start font-bold">
                           <i className='shrink-0 fa fa-check text-[#CF072C] text-xl me-1'></i>
                           <div>
-                            <span className='block'>
-                              <span className='me-1'>Duración</span>
-                              {moduleDuration.hours > 0 && <>{moduleDuration.hours}h</>} {moduleDuration.minutes > 0 && <>{moduleDuration.minutes}m</>}</span>
+                            <span className='block'>Tiempo ilimitado</span>
                             <span className="block gap-2.5 self-stretch mt-2 font-medium max-md:pl-5 max-md:max-w-full">
-                              Si finaliza el tiempo se enviará las respuestas que hayas
-                              contestado.
+                              No hay un tiempo limite para la resolucion de esta evaluación
                             </span>
                           </div>
                         </div>
                       </div>
+                        : <div className="flex flex-col items-start w-full max-md:max-w-full">
+                          <div className="flex gap-2 items-start font-bold">
+                            <i className='shrink-0 fa fa-check text-[#CF072C] text-xl me-1'></i>
+                            <div>
+                              <span className='block'>
+                                <span className='me-1'>Duración</span>
+                                {moduleDuration.hours > 0 && <>{moduleDuration.hours}h</>} {moduleDuration.minutes > 0 && <>{moduleDuration.minutes}m</>}</span>
+                              <span className="block gap-2.5 self-stretch mt-2 font-medium max-md:pl-5 max-md:max-w-full">
+                                Si finaliza el tiempo se enviará las respuestas que hayas
+                                contestado.
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                    }
+                    
+                    <div className="flex flex-col items-start w-full max-md:max-w-full">
+                      <div className="flex gap-2 items-start font-bold">
+                        <i className='shrink-0 fa fa-check text-[#CF072C] text-xl me-1'></i>
+                        <div>
+                          <span className='block'>Intentos permitidos</span>
+                          <span className="block gap-2.5 self-stretch mt-2 font-medium max-md:pl-5 max-md:max-w-full">
+                            Tendrás {module.attemps == 1 ? <><b>1</b> intento permitido</> : <><b>{module.attemps}</b> intentos permitidos</>} para desarrollar tu evaluación.
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="flex flex-col items-start w-full max-md:max-w-full">
+                      <div className="flex gap-2 items-start font-bold">
+                        <i className='shrink-0 fa fa-check text-[#CF072C] text-xl me-1'></i>
+                        <div>
+                          <span className='block'>Total de preguntas</span>
+                          <span className="block gap-2.5 self-stretch mt-2 font-medium max-md:pl-5 max-md:max-w-full">
+                            El examen consta de <b>{module.questions_count}</b> preguntas
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+                  <div className="flex flex-col p-4 mt-10 w-full bg-rose-50 rounded-lg max-md:max-w-full">
+                    <div className="text-base font-semibold tracking-normal leading-none text-neutral-800 max-md:max-w-full">
+                      <i className='fas fa-lightbulb me-2'></i>
+                      Recomendaciones
+                    </div>
+                    <div className="mt-1 text-sm font-medium leading-6 text-gray-600 max-md:max-w-full">
+                      - Asegúrate de estar en un lugar tranquilo para evitar interrupciones.
+                      <br />
+                      - Lee cada pregunta con atención antes de responder.
+                      <br />
+                      - Revisa tus respuestas antes de enviar el examen.
+                    </div>
+                  </div>
+                  {
+                    attemps.filter(({ finished }) => finished == 1).length < module.attemps &&
+                    <button className="w-max px-8 py-4 mt-10 text-sm font-semibold text-white bg-rose-700 rounded-xl"
+                      onClick={onStartAttemp}>
+                      {attemps.find(({ finished }) => finished == 0) ? 'Continuar evaluación' : 'Realizar evaluación'}
+                    </button>
                   }
-                  <div className="flex flex-col items-start w-full max-md:max-w-full">
-                    <div className="flex gap-2 items-start font-bold">
-                      <i className='shrink-0 fa fa-check text-[#CF072C] text-xl me-1'></i>
-                      <div>
-                        <span className='block'>Intentos permitidos</span>
-                        <span className="block gap-2.5 self-stretch mt-2 font-medium max-md:pl-5 max-md:max-w-full">
-                          Tendrás {module.attemps == 1 ? <><b>1</b> intento permitido</> : <><b>{module.attemps}</b> intentos permitidos</>} para desarrollar tu evaluación.
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="flex flex-col items-start w-full max-md:max-w-full">
-                    <div className="flex gap-2 items-start font-bold">
-                      <i className='shrink-0 fa fa-check text-[#CF072C] text-xl me-1'></i>
-                      <div>
-                        <span className='block'>Total de preguntas</span>
-                        <span className="block gap-2.5 self-stretch mt-2 font-medium max-md:pl-5 max-md:max-w-full">
-                          El examen consta de <b>{module.questions_count}</b> preguntas
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className="flex flex-col p-4 mt-10 w-full bg-rose-50 rounded-lg max-md:max-w-full">
-                  <div className="text-base font-semibold tracking-normal leading-none text-neutral-800 max-md:max-w-full">
-                    <i className='fas fa-lightbulb me-2'></i>
-                    Recomendaciones
-                  </div>
-                  <div className="mt-1 text-sm font-medium leading-6 text-gray-600 max-md:max-w-full">
-                    - Asegúrate de estar en un lugar tranquilo para evitar interrupciones.
-                    <br />
-                    - Lee cada pregunta con atención antes de responder.
-                    <br />
-                    - Revisa tus respuestas antes de enviar el examen.
-                  </div>
-                </div>
-                {
-                  attemps.filter(({ finished }) => finished == 1).length < module.attemps &&
-                  <button className="w-max px-8 py-4 mt-10 text-sm font-semibold text-white bg-rose-700 rounded-xl"
-                    onClick={onStartAttemp}>
-                    {attemps.find(({ finished }) => finished == 0) ? 'Continuar evaluación' : 'Realizar evaluación'}
-                  </button>
-                }
               </div>
           }
         </div>
+        
       </div>
     </section>
   </>)

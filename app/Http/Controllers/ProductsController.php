@@ -8,6 +8,7 @@ use App\Models\Attributes;
 use App\Models\AttributesValues;
 use App\Models\Category;
 use App\Models\dxDataGrid;
+use App\Models\ExamSimulation;
 use App\Models\Galerie;
 use App\Models\Icon;
 use App\Models\Products;
@@ -237,12 +238,14 @@ class ProductsController extends Controller
     $tags = Tag::where("status", "=", true)->get();
     $categoria = Category::where('status', 1)->get();
     $docentes = Staff::where('status', 1)->get();
+    $simulacros = ExamSimulation::where('status', 1)->get();
 
     $icons = Icon::all();
-    // $subcategories = SubCategory::where('status', 1)->get();
+    $subcategories = SubCategory::where('status', 1)->get();
     $galery = [];
     $especificacion = [json_decode('{"tittle":"", "specifications":""}', false)];
-    return view('pages.products.save', compact('icons', 'docentes', 'product', 'atributos', 'valorAtributo', 'categoria', 'tags', 'especificacion',  'galery'));
+    return view('pages.products.save', compact('subcategories',
+    'icons', 'docentes', 'product', 'atributos', 'valorAtributo', 'categoria', 'tags', 'especificacion',  'galery', 'simulacros'));
   }
 
   public function edit(string $id)
@@ -259,8 +262,9 @@ class ProductsController extends Controller
     $galery = Galerie::where("product_id", "=", $id)->get();
     $docentes = Staff::where('status', 1)->get();
     $icons = Icon::all();
+    $simulacros = ExamSimulation::where('status', 1)->get();
 
-    return view('pages.products.save', compact('product', 'docentes', 'icons', 'atributos', 'valorAtributo', 'tags', 'categoria', 'especificacion', 'subcategories', 'galery'));
+    return view('pages.products.save', compact('simulacros','product', 'docentes', 'icons', 'atributos', 'valorAtributo', 'tags', 'categoria', 'especificacion', 'subcategories', 'galery'));
   }
 
   private function saveImg(Request $request, string $field)
@@ -420,13 +424,21 @@ class ProductsController extends Controller
       if (array_key_exists('destacar', $data)) {
         if (strtolower($data['destacar']) == 'on') $data['destacar'] = 1;
       }
+
       if (array_key_exists('recomendar', $data)) {
         if (strtolower($data['recomendar']) == 'on') $data['recomendar'] = 1;
       }
 
+      if (array_key_exists('is_exam', $data)) {
+        if (strtolower($data['is_exam']) == 'on') $data['is_exam'] = 1;
+      }
+
+     
+
       $cleanedData = Arr::where($data, function ($value, $key) {
         return !is_null($value);
       });
+
 
       if (!isset($cleanedData['stock'])) {
         $cleanedData['stock'] = 0;
@@ -441,6 +453,9 @@ class ProductsController extends Controller
       // Busca el producto, si existe lo actualiza, si no lo crea
       $producto = Products::find($request->id);
       if ($producto) {
+        if ($request->examsimulation_id == null) {
+          $cleanedData['examsimulation_id'] = null;
+        }
         $cleanedData['max_stock'] = $this->gestionarMaxStock($producto->max_stock, $cleanedData['stock']);
         $producto->update($cleanedData);
       } else {

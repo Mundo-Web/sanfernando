@@ -9,6 +9,8 @@ use App\Models\AboutUs;
 use App\Models\Address;
 use App\Models\Attemp;
 use App\Models\AttempDetail;
+use App\Models\AttempSimulation;
+use App\Models\AttempSimulationDetail;
 use App\Models\Attributes;
 use App\Models\AttributesValues;
 use App\Models\Blog;
@@ -20,20 +22,27 @@ use App\Models\Slider;
 use App\Models\Strength;
 use App\Models\Testimony;
 use App\Models\Category;
+use App\Models\ExamSimulation;
+use App\Models\Faqs;
 use App\Models\Galerie;
 use App\Models\Module;
 use App\Models\Offer;
 use App\Models\PolyticsCondition;
 use App\Models\Price;
+use App\Models\ResourceList;
+use App\Models\Resources;
 use App\Models\SaleDetail;
 use App\Models\Specifications;
 use App\Models\Staff;
 use App\Models\Tag;
+use App\Models\TagResource;
 use App\Models\TermsAndCondition;
 use App\Models\User;
 use App\Models\UserDetails;
 use App\Models\Wishlist;
 use Culqi\Culqi;
+use Culqi\Resource;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -59,16 +68,18 @@ class IndexController extends Controller
       ->where('visible', '=', 1)->with(['tags', 'category'])->activeDestacado()->take(6)->get();
     $benefit = Strength::where('status', '=', 1)->take(9)->get();
     $testimonies = Testimony::where('status', '=', 1)->where('visible', '=', 1)->get();
+    $recursos = Resources::where('status', '=', 1)->where('visible', '=', 1)->take(3)->get();
 
     $blogs = Blog::where('status', '=', 1)->where('visible', '=', 1)->with('categories')->orderBy('id', 'desc')->take(3)->get();
 
-    $aboutUs = AboutUs::whereIn('titulo', ['TITULO-OBJETIVO', 'DESCRIPCION-OBJETIVO', 'CURSOS', 'ESTUDIANTES', 'TASA-EXITO'])->get();
+    $aboutUs = AboutUs::whereIn('titulo', ['TITULO-NOSOTROS', 'DESCRIPCION-NOSOTROS', 'DESCRIPCIONSECOND-NOSOTROS', 'IMAGEN-NOSOTROS'])->get();
     $general = General::first();
 
     return Inertia::render('Home', [
       'url_env' => env('APP_URL'),
       'popularProducts' => $popularProducts,
       'sliders' => $sliders,
+      'recursos' => $recursos,
       'benefit' =>  $benefit,
       'testimonies' => $testimonies,
       'aboutUs' => $aboutUs,
@@ -112,6 +123,27 @@ class IndexController extends Controller
     )->rootView('app');
   }
 
+
+  public function simulacros()
+  {
+
+    
+    $simulacros =  ExamSimulation::with('questions.majors')->where('status', 1)->where('visible', 1)->take(12)->get();
+    
+    //check if user is logged in
+    $userIsLogged = Auth::check();
+
+    return Inertia::render(
+      'Simulacro',
+      [
+        'simulacros' => $simulacros,
+        'env_url' => env('APP_URL'),
+        'userIsLogged' => $userIsLogged,
+      ]
+    )->rootView('app');
+
+  }
+
   public function detalleCurso(string $id)
   {
     $producto = Products::with(['tags', 'galeria', 'category', 'docentes'])->where('id', $id)->first();
@@ -130,10 +162,11 @@ class IndexController extends Controller
   }
 
   public function docente()
-  {
+  { $cursos = Products::where('status', 1)->where('visible', 1)->get();
     $docentes = Staff::where('status', 1)->get();
     return Inertia::render('Docente', [
-      'docentes' => $docentes
+      'docentes' => $docentes,
+      'cursos' => $cursos
     ])->rootView('app');
   }
 
@@ -160,8 +193,12 @@ class IndexController extends Controller
   public function contacto()
   {
     $general = General::first();
+    $aboutUs = AboutUs::all();
+    $faqs = Faqs::where('status', '=', 1)->where('visible', '=', 1)->orderBy('created_at', 'desc')->get();
     return Inertia::render('Contacto', [
-      'general' => $general
+      'general' => $general,
+      'faqs' => $faqs,
+      'aboutUs' => $aboutUs,
     ])->rootView('app');
   }
 
@@ -213,6 +250,8 @@ class IndexController extends Controller
     ])->rootView('app');
   }
 
+  
+
   public function evaluation(Request $request, string $evaluationId)
   {
     $evaluation = Module::with(['course', 'questions', 'questions.answers'])
@@ -245,6 +284,113 @@ class IndexController extends Controller
       'questions' => $questions,
       'attemp' => $attemp
     ])->rootView('app');
+  }
+
+  
+  public function simulacro(Request $request, string $examId)
+  {
+
+    $courseJpa = Products::where('examsimulation_id', $examId)->first();
+
+    if (!$courseJpa) return redirect('/micuenta');
+
+    if (!SaleDetail::where('product_id', $courseJpa->id)->where('user_id', Auth::user()->id)->exists()) return redirect('/micuenta');
+
+    $evaluation = ExamSimulation::with('questions')
+      ->where('id', $examId)
+      ->withCount('questions')
+      ->first();
+
+    if (!$evaluation) return \redirect('/micuenta');
+
+    
+    $attemp = AttempSimulation::select()
+      ->where('evaluation_id', $evaluation->id)
+      ->where('user_id', Auth::user()->id)
+      ->orderBy('created_at', 'DESC')
+      ->first();
+
+    $attemps = AttempSimulation::select()
+      ->with('evaluation')
+      ->where('course_id', $evaluation->id)
+      ->where('user_id', Auth::user()->id)
+      ->get();
+
+
+      return Inertia::render('SimulacroDesarrollo', [
+      'evaluation' => $evaluation,
+      'course' => $courseJpa,
+      'attemp' => $attemp,
+      'attemps' => $attemps
+    ])->rootView('app');
+  }
+
+
+  public function simulacroDesarrollo(Request $request, string $evaluationId){
+    
+    
+    
+    $evaluation = Products::where('examsimulation_id', $evaluationId)->first();
+
+    $examen = ExamSimulation::with('questions')
+      ->where('id', $evaluationId)
+      ->first();
+
+    if (!$evaluation) return \redirect('/micuenta');
+
+    $attemp = AttempSimulation::select()
+      ->where('evaluation_id', $examen->id)
+      ->where('user_id', Auth::user()->id)
+      ->orderBy('created_at', 'DESC')
+      ->first();
+    
+    if (!$attemp) return redirect("/micuenta/simulation/{$evaluationId}");
+
+    $questions = $examen->questions->map(function ($question) use ($attemp) {
+      $question->random_answers = $question->randomAnswers();
+      $isDone = AttempSimulationDetail::where('question_id', $question->id)
+        ->where('attemp_id', $attemp->id)
+        ->exists();
+      $question->done = $isDone;
+      unset($question->answers);
+      return $question;
+    });
+
+    return Inertia::render('ExamenDesarrollo', [
+      'evaluation' => $evaluation,
+      'questions' => $questions,
+      'attemp' => $attemp
+    ])->rootView('app');
+  }
+
+
+  public function simulacroTerminado(Request $request, string $attempId){
+    
+    $attempJpa = AttempSimulation::with(['course','evaluation'])->find($attempId);
+
+    $totalpuntaje = $this->calculateTotalScore($attempJpa);
+
+    $attempsCount = AttempSimulation::where('user_id', Auth::user()->id)
+      ->where('course_id', $attempJpa->course->id)
+      ->count();
+    
+      return Inertia::render('SimulacroTerminado', [
+        'attemp' => $attempJpa,
+        'evaluation' => $attempJpa->evaluation,
+        'course' => $attempJpa->course,
+        'attempsCount' => $attempsCount,
+        'totalpuntaje' => $totalpuntaje
+      ])->rootView('app');
+  }
+
+  private function calculateTotalScore($attempJpa) {
+    $totalScore = 0;
+    foreach ($attempJpa->details as $detail) {
+        if ($detail->is_correct) {
+            $totalScore += $detail->points;
+        }
+    }
+    return $totalScore;
   }
 
 
@@ -757,19 +903,105 @@ class IndexController extends Controller
   public function searchDocente(Request $request)
   {
     $query = $request->input('query');
+    $cursoSeleccionados =  $request->input('curse');
+    $order = $request->input('order');
+
+    
     $resultados = Staff::select('staff.*')
       ->where('nombre', 'like', "%$query%")
-      ->where('status', 1)
+      ->where('status', 1);
+    
+
+    if (isset($cursoSeleccionados)) {
+        $cursosSplit = array_map('intval', explode(',', $cursoSeleccionados));
+        
+        if (count($cursosSplit) > 0) {
+          $query = DB::table('staff_xproducts')->select('staff_id')->whereIn('producto_id', $cursosSplit)->get()->pluck('staff_id')->unique();
+          $resultados = $resultados->whereIn('staff.id', $query);
+        }
+    }
+
+    switch ($order) {
+      case 'a-z':
+        $resultados = $resultados->orderBy('nombre', 'asc');
+        break;
+      case 'z-a':
+        $resultados = $resultados->orderBy('nombre', 'desc');
+        break;
+      case 'ultimos':
+        $resultados = $resultados->orderBy('created_at', 'desc');
+        break;
+      default:
+        // Default ordering if no valid order is provided
+        $resultados = $resultados->orderBy('created_at', 'asc');
+        break;
+    }
+
+    $totalCount = 0;
+    
+    if ($request->requireTotalCount) {
+      $totalCount = $resultados->count('*');
+    }
+
+    $resultados = $resultados->skip($request->skip ?? 0)
+      ->take($request->take ?? 10)
       ->get();
-    return response()->json(['resultado' => $resultados]);
+
+    return response()->json(['resultado' => $resultados, 'totalCount' =>  $totalCount]);
   }
+
+  public function searchResource(Request $request)
+  {
+    $query = $request->input('query');
+    $order = $request->input('order');
+    $tag = $request->input('tag');
+
+    $resultados = Resources::select('resources.*')
+      ->where('name', 'like', "%$query%")
+      ->where('status', 1)
+      ->where('visible', 1);
+
+      if (isset($tag)){
+        $idtag = ResourceList::where('name','=', $tag)->first();
+        $tagsxProducts = TagResource::where('etiqueta', $idtag->id)->get()->pluck('id_resource');
+        $resultados = $resultados->whereIn('resources.id', $tagsxProducts);
+      }
+     
+    switch ($order) {
+      case 'a-z':
+        $resultados = $resultados->orderBy('name', 'asc');
+        break;
+      case 'z-a':
+        $resultados = $resultados->orderBy('name', 'desc');
+        break;
+      case 'ultimos':
+        $resultados = $resultados->orderBy('created_at', 'desc');
+        break;
+      default:
+        // Default ordering if no valid order is provided
+        $resultados = $resultados->orderBy('created_at', 'asc');
+        break;
+    }
+
+    $totalCount = 0;
+    
+    if ($request->requireTotalCount) {
+      $totalCount = $resultados->count('*');
+    }
+
+    $resultados = $resultados->skip($request->skip ?? 0)
+      ->take($request->take ?? 10)
+      ->get();
+    
+    return response()->json(['resultado' => $resultados, 'totalCount' =>  $totalCount]);
+  }
+
 
   public function searchProduct(Request $request)
   {
     $query = $request->input('query');
     $order = $request->input('order');
     $categoria =  $request->input('category');
-
     $tag = $request->input('tag');
 
 
@@ -790,7 +1022,6 @@ class IndexController extends Controller
 
     if (isset($tag)){
       $tagsxProducts = DB::table('tags_xproducts')->select('producto_id')->where('tag_id', $tag)->get()->pluck('producto_id');
-      
       $resultados = $resultados->whereIn('products.id', $tagsxProducts);
     }
 
@@ -817,7 +1048,32 @@ class IndexController extends Controller
         $resultados = $resultados->orderBy('created_at', 'asc');
         break;
     }
+
     $totalCount = 0;
+    
+    if ($request->requireTotalCount) {
+      $totalCount = $resultados->count('*');
+    }
+
+    $resultados = $resultados->skip($request->skip ?? 0)
+      ->take($request->take ?? 10)
+      ->get();
+
+
+
+    return response()->json(['resultado' => $resultados, 'totalCount' =>  $totalCount]);
+  }
+
+
+  public function buscarSimulacro(Request $request)
+  {
+    $query = $request->input('query');
+    
+    $resultados = ExamSimulation::select('exam_simulations.*')
+      ->where('title', 'like', "%$query%");
+
+    $totalCount = 0;
+    
     if ($request->requireTotalCount) {
       $totalCount = $resultados->count('*');
     }
@@ -1049,24 +1305,11 @@ class IndexController extends Controller
   {
 
     $data = $request->all();
-    $data['full_name'] = $request->name . ' ' . $request->last_name;
-
+    
     try {
-      $reglasValidacion = [
-        'name' => 'required|string|max:255',
-        'email' => 'required|email|max:255',
-      ];
-      $mensajes = [
-        'name.required' => 'El campo nombre es obligatorio.',
-        'email.required' => 'El campo correo electrónico es obligatorio.',
-        'email.email' => 'El formato del correo electrónico no es válido.',
-        'email.max' => 'El campo correo electrónico no puede tener más de :max caracteres.',
-      ];
-      $request->validate($reglasValidacion, $mensajes);
-      $formlanding = Message::create($data);
-      $this->envioCorreo($formlanding);
-
+      $this->envioCorreo($data);
       return response()->json(['message' => 'Mensaje enviado con exito']);
+
     } catch (ValidationException $e) {
 
       return response()->json(['message' => $e->validator->errors()], 400);
@@ -1089,136 +1332,161 @@ class IndexController extends Controller
 
   private function envioCorreo($data)
   {
-
-    $appUrl = env('APP_URL');
-    $name = $data['name'];
-    $mensaje = "Gracias por registrarse en " . env('APP_NAME');
-    $mail = EmailConfig::config($name, $mensaje);
-    $datosGenerales = General::first();
-    try {
+      $appUrl = env('APP_URL');
+      $name = $data['full_name'];
+      $mensaje = "Gracias por comunicarte con " . env('APP_NAME');
+      $mail = EmailConfig::config($name, $mensaje);
+      $datosGenerales = General::first();
+      try {
       $mail->addAddress($data['email']);
-      $mail->Body = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html lang="en">
+      $mail->Body = '
+          <html lang="en">
+          <head>
+          <meta charset="UTF-8" />
+          <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+          <title>Academia San Fernando</title>
+          <link rel="preconnect" href="https://fonts.googleapis.com" />
+          <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+          <link
+              href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+              rel="stylesheet"
+          />
+          <style>
+              * {
+              margin: 0;
+              padding: 0;
+              box-sizing: border-box;
+              }
+          </style>
+          </head>
+          <body>
+          <main>
+              <table
+              style="
+                  width: 600px;
+                  margin: 0 auto;
+                  text-align: center;
+                  background-image: url(' .
+                      $appUrl .
+                      '/mail/fondo.png);
+                  background-repeat: no-repeat;
+                  background-position: center;
+                  background-size: cover;
+              "
+              >
+              <thead>
+                  <tr>
+                  <th
+                      style="
+                      display: flex;
+                      flex-direction: row;
+                      justify-content: center;
+                      align-items: center;
+                      margin-top: 40px;
+                      padding: 0 200px;
+                      "
+                  >
+                      <a href="' .
+                      $appUrl .
+                      '" target="_blank" style="text-align:center" ><img src="' .
+                      $appUrl .
+                      '/mail/logo.png" alt="hpi" /></a>
+                  </th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr>
+                  <td>
+                      <p
+                      style="
+                          color: #ffffff;
+                          font-size: 40px;
+                          line-height: normal;
+                          font-family: Google Sans;
+                          font-weight: bold;
+                      "
+                      >
+                      ¡Gracias
+                      <span style="color: #ffffff">por escribirnos!</span>
+                      </p>
+                  </td>
+                  </tr>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mundo web</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-    </style>
-    <!--[if !mso]><!-- -->
-    <link href="https://fonts.googleapis.com/css?family=Roboto:400,400i,700,700i" rel="stylesheet">
-    <!--<![endif]-->
-</head>
-
-<body>
-    <main>
-        <table style="
-                width: 600px;
-                margin: 0 auto;
-                text-align: center;
-                background-image: url(https://egespp.mundoweb.pe/mail/fondo.png);
-                background-repeat: no-repeat;
-                background-position: center;
-                background-size: cover;
-            ">
-            <thead>
-                <tr>
-                    <th style="
-                                            display: flex;
-                                            flex-direction: row;
-                                            justify-content: center;
-                                            align-items: center;
-                                            margin: 40px;
-                                            padding: 0 200px;
-                                        "><a href="' .
-        $appUrl .
-        '" target="_blank" style="text-align: center"><img src="https://egespp.mundoweb.pe/mail/logo.png" alt="Gestion publica"></a></th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td class="esd-text">
-                        <p style="
-                        color: #ffffff;
-                        font-weight: 500;
-                        font-size: 40px;
-                        text-align: center;
-                        width: 500px;
-                        margin: 0 auto;
-                        padding: 20px 0;
-                        font-family: Montserrat, sans-serif;
-                    "> ¡Gracias Por Registrarte! </p>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="esd-text">
-                        <p style="
-                                                color: #ffffff;
-                                                font-weight: 400;
-                                                font-size: 20px;
-                                                text-align: center;
-                                                width: 500px;
-                                                margin: 0 auto;
-                                                padding: 20px 0;
-                                                font-family: Montserrat, sans-serif;
-                                            "><span style="display: block">Hola ' . $name . '</span><span style="display: block">En breve estaremos comunicandonos contigo </span></p>
-                    </td>
-                </tr>
-                <tr>
-                    <td><a target="_blank" href="' .
-        $appUrl .
-        '" style="
-                                                text-decoration: none;
-                                                background-color: #fdfefd;
-                                                color: #254f9a;
-                                                padding: 16px 20px;
-                                                display: inline-flex;
-                                                justify-content: center;
-                                                border-radius: 10px;
-                                                align-items: center;
-                                                gap: 10px;
-                                                font-weight: 600;
-                                                font-family: Montserrat, sans-serif;
-                                                font-size: 16px;
-                                                margin-bottom: 350px;
-                                            "><span>Visita nuestra web</span></a></td>
-                </tr>
-                <tr style="margin-top: 300px">
-                    <td><a href="' . $datosGenerales->facebook . '" target="_blank" style="   padding: 0 5px 30px 0;
-                                                display: inline-block;
-                                            "><img src="https://egespp.mundoweb.pe/mail/facebook.png" alt="facebook"></a><a href="' . $datosGenerales->instagram . '" target="_blank" style="
-                                                padding: 0 5px 30px 0;
-                                                display: inline-block;
-                                            "><img src="https://egespp.mundoweb.pe/mail/instagram.png" alt="instagram"></a><a href="' . $datosGenerales->linkedin . '" target="_blank" style="padding: 0 5px 30px 0;
-                                display: inline-block;
-                                            "><img src="https://egespp.mundoweb.pe/mail/linkedin.png" alt="linkedin"></a><a href="' . $datosGenerales->tiktok . '" target="_blank" style="padding: 0 5px 30px 0;
-                                display: inline-block;
-                                            "><img src="https://egespp.mundoweb.pe/mail/tiktok.png" alt="tiktok"></a><a href="https://api.whatsapp.com/send?phone=' . $datosGenerales->whatsapp . '&text=' . $datosGenerales->mensaje_whatsapp . '" target="_blank" style="padding: 0 5px 30px 0;
-                                display: inline-block;
-                                            "><img src="https://egespp.mundoweb.pe/mail/whatsapp.png" alt="whastapp"></a></td>
-                </tr>
-            </tbody>
-        </table>
-    </main>
-</body>
-
-</html>
-
+                  <tr>
+                  <td>
+                      <p
+                      style="
+                          color: #ffffff;
+                          font-weight: 500;
+                          font-size: 18px;
+                          text-align: center;
+                          width: 500px;
+                          margin: 0 auto;
+                          padding: 20px 0 5px 0;
+                          font-family: Google Sans;
+                      "
+                      >
+                      <span style="display: block">Hola ' . $name . '</span>
+                      </p>
+                  </td>
+                  </tr>
+                  
+                  <tr>
+                  <td>
+                      <p
+                      style="
+                          color: #ffffff;
+                          font-weight: 500;
+                          font-size: 18px;
+                          text-align: center;
+                          width: 500px;
+                          margin: 0 auto;
+                          padding: 0px 10px 5px 0px;
+                          font-family: Google Sans;
+                      "
+                      >
+                      En breve estaremos comunicandonos contigo.
+                      </p>
+                  </td>
+                  </tr>
+                  <tr>
+                  <td>
+                      <a
+                      target="_blank"
+                      href="' .
+                      $appUrl .
+                      '"
+                      style="
+                          text-decoration: none;
+                          background-color: #59C402;
+                          color: #ffffff;
+                          padding: 13px 20px;
+                          display: inline-flex;
+                          justify-content: center;
+                          border-radius: 32px;
+                          align-items: center;
+                          gap: 10px;
+                          font-weight: 600;
+                          font-family: Google Sans;
+                          font-size: 16px;
+                          margin-bottom: 350px;
+                      "
+                      >
+                      <span>Visita nuestra web</span>
+                      </a>
+                  </td>
+                  </tr>
+              </tbody>
+              </table>
+          </main>
+          </body>
+      </html>
       ';
       $mail->isHTML(true);
       $mail->send();
-    } catch (\Throwable $th) {
+      } catch (\Throwable $th) {
       //throw $th;
-    }
+      }
   }
 
   private function envioCorreoCompra($data)
@@ -1431,4 +1699,33 @@ class IndexController extends Controller
 
     return response()->json($resultados);
   }
+
+
+  public function recursos(){
+    $recursos = Resources::where('status', '=', 1)->where('visible', '=', 1)->orderBy('created_at', 'desc')->get();
+    $documentoscat = ResourceList::where('status', '=', 1)->where('visible', '=', 1)->get();
+    $aboutUs = AboutUs::all();
+    return Inertia::render('Recursos', [
+       'recursos' => $recursos,
+       'aboutUs' => $aboutUs,
+       'documentoscat' => $documentoscat,
+    ])->rootView('app');
+  }
+
+  public function aumentarContador(Request $request){
+
+    $recurso = Resources::where('id', $request->id)->first();
+   
+    if (!$recurso) {
+      return response()->json(['error' => 'Recurso no encontrado'], 404);
+    }
+
+    $recurso->count += 1;
+
+    $recurso->save();
+
+    return response()->json(['resultado' => 'Contador actualizado', 'contador' => $recurso->count]);
+
+  }
+
 }

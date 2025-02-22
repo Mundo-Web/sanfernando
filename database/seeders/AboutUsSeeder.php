@@ -14,31 +14,47 @@ class AboutUsSeeder extends Seeder
      */
     public function run(): void
     {
-        AboutUs::updateOrCreate(['titulo' => 'INICIO-FIN'], [
-            'descripcion' => '2007-2021'
+       
+        
+        AboutUs::updateOrCreate(['titulo' => 'TITULO-NOSOTROS'], [
+            'descripcion' => 'Nuestra Misión: Transformar el Aprendizaje Médico'
         ]);
-        AboutUs::updateOrCreate(['titulo' => 'TITULO-OBJETIVO'], [
-            'descripcion' => 'Compartimos conocimientos con el mundo'
+       
+        AboutUs::updateOrCreate(['titulo' => 'DESCRIPCION-NOSOTROS'], [
+            'descripcion' => 'Conectamos a estudiantes y médicos con conocimientos actualizados, herramientas prácticas y expertos de renombre. Nuestro objetivo es ayudarte a alcanzar tus metas profesionales a través de una experiencia de aprendizaje única y efectiva.'
         ]);
-        AboutUs::updateOrCreate(['titulo' => 'DESCRIPCION-OBJETIVO'], [
-            'descripcion' => 'Nuestro objetivo es proporcionar formación de alta calidad a funcionarios y trabajadores del sector público, capacitándolos con los conocimientos necesarios para implementar acciones efectivas que contribuyan al desarrollo y mejora continua de las políticas públicas en el Perú. Nos comprometemos a ser líderes en educación y capacitación, impulsando la innovación y la ética en la gestión pública para generar un impacto positivo y duradero en nuestra sociedad'
+
+        AboutUs::updateOrCreate(['titulo' => 'DESCRIPCIONSECOND-NOSOTROS'], [
+            'descripcion' => 'Somos más que una plataforma de cursos. Somos tu aliado en cada etapa de tu carrera médica'
         ]);
-        AboutUs::updateOrCreate(['titulo' => 'TITULO-MISION'], [
-            'descripcion' => 'Nuestra misión de mil millones suena audaz, y estamos de acuerdo'
+
+        AboutUs::updateOrCreate(['titulo' => 'IMAGEN-NOSOTROS'], [
+            'imagen' => 'images/academia/bannerf.png'
         ]);
-        AboutUs::updateOrCreate(['titulo' => 'DESCRIPCION-MISION'], [
-            'descripcion' => 'Nuestro objetivo es proporcionar formación de alta calidad a funcionarios y trabajadores del sector público, capacitándolos con los conocimientos necesarios para implementar acciones efectivas que contribuyan al desarrollo y mejora continua de las políticas públicas en el Perú.'
+
+        AboutUs::updateOrCreate(['titulo' => 'TITULO-CONTACTO'], [
+            'descripcion' => 'iEstamos a Solo un Mensaje de Distancia'
         ]);
-        AboutUs::updateOrCreate(['titulo' => 'TITULO-GALERIA'], [
-            'descripcion' => 'Llevamos aquí casi 17 años'
+
+        AboutUs::updateOrCreate(['titulo' => 'IMAGEN-CONTACTO'], [
+            'imagen' => 'images/academia/imagencontacto.png'
         ]);
-        AboutUs::updateOrCreate(['titulo' => 'DESCRIPCION-GALERIA'], [
-            'descripcion' => 'En estos casi 17 años, hemos sido testigos de innumerables momentos que reflejan nuestro compromiso con la excelencia en la gestión pública. Nuestra galería captura la esencia de nuestros logros, eventos, y la dedicación de aquellos que han formado parte de este camino. Explora nuestros recuerdos y descubre cómo hemos crecido junto a nuestros alumnos y colaboradores.'
+
+        AboutUs::updateOrCreate(['titulo' => 'TITULO-FAQ'], [
+            'descripcion' => 'FAQ: Encuentra la Información que Buscas'
         ]);
-        AboutUs::updateOrCreate(['titulo' => 'CURSOS'], ['descripcion' => '6.3k']);
-        AboutUs::updateOrCreate(['titulo' => 'ESTUDIANTES'], ['descripcion' => '26k']);
-        AboutUs::updateOrCreate(['titulo' => 'INSTRUCTORES'], ['descripcion' => '+20']);
-        AboutUs::updateOrCreate(['titulo' => 'TASA-EXITO'], ['descripcion' => '99.9%']);
-        AboutUs::updateOrCreate(['titulo' => 'EMPRESAS'], ['descripcion' => '57']);
+
+        AboutUs::updateOrCreate(['titulo' => 'DESCRIPCION-FAQ'], [
+            'descripcion' => 'Respuestas a las Preguntas Más Comunes'
+        ]);
+
+        AboutUs::updateOrCreate(['titulo' => 'TITULO-RECURSOS'], [
+            'descripcion' => 'Recursos Útiles para Tu Formación Médica'
+        ]);
+
+        AboutUs::updateOrCreate(['titulo' => 'DESCRIPTION-RECURSOS'], [
+            'descripcion' => 'Accede a documentos oficiales, guías y materiales diseñados para apoyar tu desarrollo como profesional de la salud.'
+        ]);
+      
     }
 }

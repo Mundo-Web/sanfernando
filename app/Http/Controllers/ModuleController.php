@@ -23,6 +23,7 @@ class ModuleController extends BasicController
     $courses = Products::select()
       ->where('status', true)
       ->where('visible', true)
+      ->where('is_exam', false)
       ->get();
 
     return [

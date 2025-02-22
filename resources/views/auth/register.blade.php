@@ -6,11 +6,8 @@
     <div class="flex flex-col md:flex-row justify-center h-screen">
         <div class="w-2/5 hidden md:block font-poppins">
             <!-- Imagen ocupando toda la altura y sin desbordar -->
-            <div style="background-image: url('{{ asset('images/imagen_login.png') }}')"
+            <div style="background-image: url('{{ asset('images/academia/imagenregister.png') }}')"
                 class="bg-cover bg-center bg-no-repeat w-full h-full shadow-lg">
-                {{-- <h1 class="font-medium text-[24px] py-10 bg-black bg-opacity-25 text-center text-white">
-                        Deco Tab
-                    </h1> --}}
             </div>
         </div>
 
@@ -22,12 +19,12 @@
                     <p class="font-normal text-base font-poppins_regular">
                         ¿Ya tienes una cuenta?
                         <a href="{{ route('login') }}"
-                            class="font-semibold font-poppins_regular text-[16px] text-[#CF072C]">Iniciar
+                            class="font-semibold font-poppins_regular text-[16px] text-[#F19905]">Iniciar
                             Sesión</a>
                     </p>
                 </div>
                 <div class="">
-                    <form method="POST" action="{{ route('register') }}" class="flex flex-col gap-5">
+                    <form method="POST" action="{{ route('register') }}" class="flex flex-col gap-5 font-poppins_regular">
                         @csrf
                         @php
                             if ($errors->any()) {
@@ -38,7 +35,7 @@
                         <div>
                             <input type="text" placeholder="Nombre completo" id="name" name="name"
                                 :value="old('name')" required autofocus
-                                class="w-full py-3 px-3 focus:outline-none text-[#CF072C] placeholder-[#CF072C] focus:placeholder-[#CF072C] font-normal text-base bg-[#FFF0F0] rounded-2xl border-2 border-transparent focus:border-2 focus:border-[#CF072C] focus:ring-0" />
+                                class="w-full py-3 px-3 focus:outline-none text-[#F19905] placeholder-[#F19905] focus:placeholder-[#F19905] font-normal text-base bg-[#FFF0F0] rounded-2xl border-2 border-transparent focus:border-2 focus:border-[#F19905] focus:ring-0" />
                             @error('name')
                                 <span class="text-red-500 text-sm">{{ $message }}</span>
                             @enderror
@@ -46,7 +43,7 @@
                         {{-- <div>
                             <input type="text" placeholder="Apellidos" id="lastname" name="lastname"
                                 :value="old('lastname')" required autofocus
-                                class="w-full py-3 px-3 focus:outline-none text-[#CF072C] placeholder-[#CF072C] focus:placeholder-[#CF072C] font-normal text-base bg-[#FFF0F0] rounded-2xl border-2 border-transparent focus:border-2 focus:border-[#CF072C] focus:ring-0" />
+                                class="w-full py-3 px-3 focus:outline-none text-[#F19905] placeholder-[#F19905] focus:placeholder-[#F19905] font-normal text-base bg-[#FFF0F0] rounded-2xl border-2 border-transparent focus:border-2 focus:border-[#F19905] focus:ring-0" />
                             @error('lastname')
                                 <span class="text-red-500 text-sm">{{ $message }}</span>
                             @enderror
@@ -54,7 +51,7 @@
                         <div>
                             <input type="text" placeholder="Correo electrónico" id="email" name="email"
                                 :value="old('email')" required
-                                class="w-full py-3 px-3 focus:outline-none text-[#CF072C] placeholder-[#CF072C] focus:placeholder-[#CF072C] font-normal text-base bg-[#FFF0F0] rounded-2xl border-2 border-transparent focus:border-2 focus:border-[#CF072C] focus:ring-0" />
+                                class="w-full py-3 px-3 focus:outline-none text-[#F19905] placeholder-[#F19905] focus:placeholder-[#F19905] font-normal text-base bg-[#FFF0F0] rounded-2xl border-2 border-transparent focus:border-2 focus:border-[#F19905] focus:ring-0" />
                             @error('email')
                                 <span class="text-red-500 text-sm">{{ $message }}</span>
                             @enderror
@@ -64,7 +61,7 @@
                             <!-- Input -->
                             <input type="password" placeholder="Contraseña" id="password" name="password" required
                                 autocomplete="new-password"
-                                class="w-full py-3 px-3 focus:outline-none text-[#CF072C] placeholder-[#CF072C] focus:placeholder-[#CF072C] font-normal text-base bg-[#FFF0F0] rounded-2xl border-2 border-transparent focus:border-2 focus:border-[#CF072C] focus:ring-0" />
+                                class="w-full py-3 px-3 focus:outline-none text-[#F19905] placeholder-[#F19905] focus:placeholder-[#F19905] font-normal text-base bg-[#FFF0F0] rounded-2xl border-2 border-transparent focus:border-2 focus:border-[#F19905] focus:ring-0" />
 
                             <!-- Imagen -->
                             <img src="./images/svg/pass_eyes.svg" alt="password"
@@ -78,7 +75,7 @@
                             <!-- Input -->
                             <input type="password" placeholder="Confirmar contraseña" id="password_confirmation"
                                 name="password_confirmation" required autocomplete="new-password"
-                                class="w-full py-3 px-3 focus:outline-none text-[#CF072C] placeholder-[#CF072C] focus:placeholder-[#CF072C] font-normal text-base bg-[#FFF0F0] rounded-2xl border-2 border-transparent focus:border-2 focus:border-[#CF072C] focus:ring-0" />
+                                class="w-full py-3 px-3 focus:outline-none text-[#F19905] placeholder-[#F19905] focus:placeholder-[#F19905] font-normal text-base bg-[#FFF0F0] rounded-2xl border-2 border-transparent focus:border-2 focus:border-[#F19905] focus:ring-0" />
                             <!-- Imagen -->
                             <img src="./images/svg/pass_eyes.svg" alt="password"
                                 class="absolute right-4 top-1/2 transform -translate-y-1/2 cursor-pointer ojopassWord_confirmation" />
@@ -88,15 +85,15 @@
                         </div>
 
                         <div class="flex gap-3 my-4">
-                            <input type="checkbox" id="acepto_terminos" class="w-5 h-5 appearance-none rounded-[0.25rem] border border-solid  outline-none focus:ring-[#CF072C] checked:bg-[#CF072C] text-[#CF072C] focus:ring-0 focus:border-[#CF072C] border-[#CF072C]" required />
+                            <input type="checkbox" id="acepto_terminos" class="w-5 h-5 appearance-none rounded-[0.25rem] border border-solid  outline-none focus:ring-[#F19905] checked:bg-[#F19905] text-[#F19905] focus:ring-0 focus:border-[#F19905] border-[#F19905]" required />
                             <label name="newsletter" id="newsletter" class="font-normal text-sm font-poppins_regular">
 
                                 Acepto la
-                                <span class="font-semibold text-[#CF072C] cursor-pointer open-modal"
+                                <span class="font-semibold text-[#F19905] cursor-pointer open-modal"
                                     data-tipo='PoliticaPriv'> Política de
                                     Privacidad</span>
                                 y los
-                                <span class="font-semibold text-[#CF072C] cursor-pointer open-modal"
+                                <span class="font-semibold text-[#F19905] cursor-pointer open-modal"
                                     data-tipo='terminosUso'>
                                     Términos de Uso
                                 </span>
@@ -105,11 +102,11 @@
 
                         <div class="">
                             <input type="submit" value="Crear cuenta"
-                                class="text-white bg-[#CF072C] w-full py-3 rounded-2xl cursor-pointer font-semibold font-poppins_regular text-center" />
+                                class="text-white bg-[#F19905] w-full py-3 rounded-2xl cursor-pointer font-semibold font-poppins_regular text-center" />
                         </div>
                     </form>
 
-                    <p class="mt-4">Ya tienes una cuenta? <a href="/login" class="font-semibold">Iniciar sesion</a></p>
+                    <p class="mt-4 font-poppins_regular">Ya tienes una cuenta? <a href="/login" class="font-semibold">Iniciar sesion</a></p>
                     {{-- <x-validation-errors class="mt-4" /> --}}
                 </div>
             </div>

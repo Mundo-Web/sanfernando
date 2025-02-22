@@ -188,6 +188,34 @@ class SliderController extends Controller
             $slider->name_image = $nombreImagen;
         }
 
+        if ($request->hasFile("imagen_second")) {
+
+            $manager = new ImageManager(new Driver());
+
+
+            $ruta = storage_path() . '/app/public/images/slider/' . $slider->name_image_second;
+
+            // dd($ruta);
+            if (File::exists($ruta)) {
+                File::delete($ruta);
+            }
+
+            $rutanueva = 'storage/images/slider/';
+            $nombreImagen = Str::random(10) . '_' . $request->file('imagen_second')->getClientOriginalName();
+            $img =  $manager->read($request->file('imagen_second'));
+            // $img->coverDown(968, 351, 'center');
+
+            if (!file_exists($rutanueva)) {
+                mkdir($rutanueva, 0777, true); // Se crea la ruta con permisos de lectura, escritura y ejecución
+            }
+
+            $img->save($rutanueva . $nombreImagen);
+
+
+            $slider->url_image_second = $rutanueva;
+            $slider->name_image_second = $nombreImagen;
+        }
+
 
 
         $slider->save();

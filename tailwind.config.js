@@ -46,6 +46,13 @@ export default {
                 poppins_thin: ["poppins_thin"],
                 poppins_regular: ["poppins_regular"],
 
+                Montserrat_ExtraBold: ["Montserrat_ExtraBold"],
+                Montserrat_Bold: ["Montserrat_Bold"],
+                Montserrat_SemiBold: ["Montserrat_SemiBold"],
+                Montserrat_Medium: ["Montserrat_Medium"],
+                Montserrat_Regular: ["Montserrat_Regular"],
+                Montserrat_Light: ["Montserrat_Light"],
+
             },
 
             screens: {

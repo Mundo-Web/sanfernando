@@ -24,7 +24,7 @@
     }
   </style>
   <main>
-    <form id="paymentForm" class="font-poppins w-11/12 mx-auto my-12 flex flex-col gap-10">
+    <form id="paymentForm" class="font-Montserrat_Medium w-11/12 mx-auto my-12 flex flex-col gap-10">
       @csrf
 
       <x-breadcrumb>
@@ -33,7 +33,7 @@
       </x-breadcrumb>
 
       <div class="flex md:gap-20 flex-col md:flex-row">
-        <div class="flex justify-between items-center md:basis-8/12 w-full md:w-auto">
+        <div class="flex justify-between items-start md:basis-8/12 w-full md:w-auto">
           <x-ecommerce.gateway.container completed="{{ 2 }}">
             <div class="flex flex-col gap-5">
               <div>
@@ -52,7 +52,7 @@
                               class="text-red-500">*</span></label>
                           <input id="email" type="email" placeholder="Correo electrónico" required=""
                             name="email" value="{{ auth()->check() ? auth()->user()->email : '' }}"
-                            class="w-full py-3 px-4 focus:outline-none placeholder-gray-400 font-normal text-[16px] border-[1.5px] border-gray-200 rounded-xl text-[#6C7275]"
+                            class="w-full py-3 px-4 focus:outline-none placeholder-gray-400 font-normal text-[16px] border-[1.5px] border-gray-200 rounded-xl text-[#6C7275] focus:ring-[#F19905] focus:border-[#F19905]"
                             required>
                         </div>
                         <div class="basis-1/3 flex flex-col gap-2">
@@ -60,7 +60,7 @@
                               class="text-red-500">*</span></label>
                           <input id="celular" type="text" placeholder="(+51) 000 000 000" name="phone"
                             value="{{ auth()->check() ? auth()->user()->phone : '' }}"
-                            class="w-full py-3 px-4 focus:outline-none placeholder-gray-400 font-normal text-[16px] border-[1.5px] border-gray-200 rounded-xl"
+                            class="w-full py-3 px-4 focus:outline-none placeholder-gray-400 font-normal text-[16px] border-[1.5px] border-gray-200 rounded-xl focus:ring-[#F19905] focus:border-[#F19905]"
                             required>
                         </div>
                       </div>
@@ -70,7 +70,7 @@
                               class="text-red-500">*</span></label>
                           <input id="nombre" type="text" placeholder="Nombre" name="nombre"
                             value="{{ auth()->check() ? auth()->user()->name : '' }}"
-                            class="w-full py-3 px-4 focus:outline-none placeholder-gray-400 font-normal text-[16px] border-[1.5px]  rounded-xl text-[#6C7275]"
+                            class="w-full py-3 px-4 focus:outline-none placeholder-gray-400 font-normal text-[16px] border-[1.5px] border-gray-200  rounded-xl text-[#6C7275] focus:ring-[#F19905] focus:border-[#F19905]"
                             required>
                         </div>
                         <div class="basis-1/2 flex flex-col gap-2">
@@ -78,7 +78,7 @@
                               class="text-red-500">*</span></label>
                           <input id="apellidos" type="text" placeholder="Apellido" name="apellidos"
                             value="{{ auth()->check() ? auth()->user()->lastname : '' }}"
-                            class="w-full py-3 px-4 focus:outline-none placeholder-gray-400 font-normal text-[16px] border-[1.5px]  rounded-xl text-[#6C7275] "
+                            class="w-full py-3 px-4 focus:outline-none placeholder-gray-400 font-normal text-[16px] border-[1.5px] border-gray-200  rounded-xl text-[#6C7275] focus:ring-[#F19905] focus:border-[#F19905]"
                             required>
 
                         </div>
@@ -88,9 +88,9 @@
 
                       <div class="basis-2/3 flex flex-row gap-2 ">
                         <input id="termsandconditions" type="checkbox" required
-                          class="border-2 rounded-sm w-5 h-5 checked:bg-red-800 checked:border-red-800 focus:checked:bg-red-800 focus:checked:border-red-800 checked:hover:bg-red-400" />
+                          class="border-2 rounded-sm w-5 h-5 text-[#F19905] ring-0 focus:ring-0" />
                         <label for="termsandconditions" class="font-medium text-sm text-[#6C7275]">Estoy de acuerdo con
-                          los <a class="font-bold" href="{{ route('terms_condition') }}" target="_blanck">terminos y
+                          los <a class="font-bold" id="linkTerminospago" target="_blanck">terminos y
                             condiciones</a></label>
 
                       </div>
@@ -321,16 +321,16 @@
               </div>
               @if (Auth::check())
                 <button id="btnPagar"
-                  class="text-white bg-red-800 w-full py-4 rounded-3xl cursor-pointer font-semibold text-[16px] inline-block text-center">Pagar</button>
+                  class="text-white bg-[#F19905] font-Montserrat_Medium w-full py-3 rounded-3xl cursor-pointer  text-[16px] inline-block text-center">Pagar</button>
               @else
-                <span> <i class="fa fa-info-circle" aria-hidden="true"></i> Por favor inicie sesion para continuar con
+                <span> <i class="fa fa-info-circle" aria-hidden="true"></i> Por favor inicie sesión para continuar con
                   la compra</span>
                 <a href="{{ route('login') }}" target="_blank"
-                  class="text-white bg-red-800 w-full py-4 rounded-3xl cursor-pointer font-semibold text-[16px] inline-block text-center">
-                  Iniciar Sesion</a>
-                <span class="text-center ">
+                  class="text-white bg-[#F19905] font-Montserrat_Medium w-full py-3 rounded-3xl cursor-pointer text-[16px] inline-block text-center">
+                  Iniciar Sesión</a>
+                <span class="text-center font-Montserrat_Medium">
                   o <a href="{{ route('register') }}" target="_blank" class="underline">
-                    Registrate</a>
+                    Regístrate</a>
                 </span>
               @endif
 

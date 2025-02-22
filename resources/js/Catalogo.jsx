@@ -47,6 +47,7 @@ const Catalogo = ({ minPrice, maxPrice, categories, tags, attribute_values, id_c
     getItems()
   }, [currentPage])
 
+  
   const getItems = async () => {
     const filterBody = []
 

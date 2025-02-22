@@ -75,21 +75,30 @@
             </x-slot>
           @endif
         </x-menu.item>
-        <x-menu.item id="testimonios" href="{{ route('testimonios.index') }}" icon="fas fa-star">
+        {{-- <x-menu.item id="testimonios" href="{{ route('testimonios.index') }}" icon="fas fa-star">
           Testimonios
-        </x-menu.item>
+        </x-menu.item> --}}
       </x-menu.group>
 
       <x-menu.group title="Contenido">
         <x-menu.item id="categorias" href="{{ route('categorias.index') }}"
           icon="fas fa-folder">Categorias</x-menu.item>
-        {{-- <x-menu.item id="subcategories" href="{{ route('subcategories.index') }}"
-          icon="fas fa-folder-open">Subcategorias</x-menu.item> --}}
-        <x-menu.item id="tags" href="{{ route('tags.index') }}" icon="fas fa-tag">Etiquetas</x-menu.item>
+        <x-menu.item id="subcategories" href="{{ route('subcategories.index') }}"
+          icon="fas fa-folder-open">Subcategorias</x-menu.item>
+        {{-- <x-menu.item id="tags" href="{{ route('tags.index') }}" icon="fas fa-tag">Etiquetas</x-menu.item> --}}
         <x-menu.item id="products" href="{{ route('products.index') }}" icon="fas fa-box">Cursos /
-          Diplomados</x-menu.item>
+          Simulacros</x-menu.item>
         <x-menu.item id="modules" href="{{ route('Admin/Modules.jsx') }}" icon="fas fa-boxes">Modulos</x-menu.item>
         <x-menu.item id="consumers" href="{{ route('Admin/Consumers.jsx') }}" icon="fas fa-users">Alumnos</x-menu.item>
+      </x-menu.group>
+
+      <x-menu.group title="Simulacros">
+       
+        <x-menu.item id="simulacros" href="{{ route('exam.index') }}" icon="fas fa-boxes">Simulacros</x-menu.item>
+        <x-menu.item id="preguntas" href="{{ route('question.index') }}" icon="fas fa-boxes">Preguntas</x-menu.item>
+        <x-menu.item id="respuestas" href="{{ route('response.index') }}" icon="fas fa-boxes">Respuestas</x-menu.item>
+        <x-menu.item id="major" href="{{ route('major.index') }}" icon="fas fa-boxes">Especialidad</x-menu.item>
+        
       </x-menu.group>
 
       <x-menu.group title="Datos de la empresa">
@@ -115,18 +124,19 @@
         </x-menu.item>
       </x-menu.group>
 
-      <x-menu.group title="Servicios y Beneficios">
+      {{-- <x-menu.group title="Servicios y Beneficios">
         <x-menu.item id="servicios" href="{{ route('servicios.index') }}" icon="fas fa-wrench">Servicios</x-menu.item>
-        <x-menu.item id="strength" href="{{ route('strength.index') }}">Beneficios</x-menu.item>
-      </x-menu.group>
+        
+      </x-menu.group> --}}
 
       <x-menu.group title="Contenido">
-        <x-menu.item id="blog" href="{{ route('blog.index') }}" icon="fas fa-pencil-alt">Blog</x-menu.item>
+        <x-menu.item id="strength" href="{{ route('strength.index') }}">Beneficios</x-menu.item>
+        {{-- <x-menu.item id="blog" href="{{ route('blog.index') }}" icon="fas fa-pencil-alt">Blog</x-menu.item> --}}
         <x-menu.item id="slider" href="{{ route('slider.index') }}" icon="fas fa-sliders-h">Sliders</x-menu.item>
-        <x-menu.item id="popup" href="{{ route('popup.index') }}" icon="fas fa-sliders-h">Popup</x-menu.item>
-        <x-menu.item id="banners" href="{{ route('banners.index') }}"
-          icon="fa fa-solid fa-image">Banners</x-menu.item>
-        <x-menu.item id="galerie" href="{{ route('galerie.index') }}" icon="fas fa-images">Galerias</x-menu.item>
+        {{-- <x-menu.item id="popup" href="{{ route('popup.index') }}" icon="fas fa-sliders-h">Popup</x-menu.item> --}}
+        {{-- <x-menu.item id="banners" href="{{ route('banners.index') }}" icon="fa fa-solid fa-image">Banners</x-menu.item> --}}
+        <x-menu.item id="resources" href="{{ route('resources.index') }}" icon="fa fa-solid fa-image">Recursos</x-menu.item>
+        {{-- <x-menu.item id="galerie" href="{{ route('galerie.index') }}" icon="fas fa-images">Galerias</x-menu.item> --}}
       </x-menu.group>
 
       <x-menu.group title="Equipo y Convenios">
@@ -134,19 +144,19 @@
         <x-menu.item id="logos" href="{{ route('logos.index') }}" icon="fas fa-shapes">Convenios</x-menu.item>
       </x-menu.group>
 
-      <x-menu.group title="Atributos y Valores">
+      {{-- <x-menu.group title="Atributos y Valores">
         <x-menu.item id="attributes" href="{{ route('attributes.index') }}">Atributos</x-menu.item>
         <x-menu.item id="valoresattributes" href="{{ route('valoresattributes.index') }}">Valor de
           atributo</x-menu.item>
-      </x-menu.group>
+      </x-menu.group> --}}
 
       <x-menu.group title="Otros">
         <x-menu.item id="estados" href="{{ route('estados.index') }}" icon="fas fa-toggle-on">Estados de
           pedidos</x-menu.item>
         <x-menu.item id="faqs" href="{{ route('faqs.index') }}"
           icon="fas fa-question-circle">FAQs</x-menu.item>
-        <x-menu.item id="subscripciones" href="{{ route('subscripciones') }}"
-          icon="fas fa-images">Subscripciones</x-menu.item>
+        {{-- <x-menu.item id="subscripciones" href="{{ route('subscripciones') }}"
+          icon="fas fa-images">Subscripciones</x-menu.item> --}}
         <x-menu.item id="icons" href="{{ route('icons.index') }}" icon="fas fa-images">Iconos</x-menu.item>
       </x-menu.group>
     </div>

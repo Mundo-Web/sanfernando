@@ -5,13 +5,16 @@ namespace App\Providers;
 use App\Http\Controllers\IndexController;
 use App\Models\Blog;
 use App\Models\Category;
+use App\Models\ExamSimulation;
 use App\Models\General;
 use App\Models\LibroReclamaciones;
 use App\Models\Message;
 use App\Models\PoliticaDatos;
 use App\Models\PolyticsCondition;
 use App\Models\Products;
+use App\Models\Resources;
 use App\Models\Sale;
+use App\Models\Staff;
 use App\Models\Tag;
 use App\Models\TermsAndCondition;
 use Illuminate\Contracts\Pagination\Paginator;
@@ -45,22 +48,24 @@ class AppServiceProvider extends ServiceProvider
 
             // Obtener los datos del footer
             $datosgenerales = General::first(); // Suponiendo que tienes un modelo Footer y un método footerData() en él
-            // Pasar los datos a la vista
-
-            //jalar datos de un controlador 
+            $docentes = Staff::where('status', 1)->get();
             $politicDev = PolyticsCondition::first();
+            $recursos = Resources::where('visible', '=', 1)->where('status', 1)->get();
             $termsAndCondicitions = TermsAndCondition::first();
             $politicaDatos = PoliticaDatos::first();
+            $simulacros = ExamSimulation::where('status', 1)->where('visible', 1)->get();
 
-            $view->with(['datosgenerales' => $datosgenerales, 'politicas' => $politicDev, 'terminos' => $termsAndCondicitions , 'politicaDatos' => $politicaDatos]);
+            $view->with(['simulacros' => $simulacros, 'recursos' => $recursos, 'docentes'=> $docentes, 'datosgenerales' => $datosgenerales, 'politicas' => $politicDev, 'terminos' => $termsAndCondicitions , 'politicaDatos' => $politicaDatos]);
         });
 
         View::composer('components.public.header', function ($view) {
             
             $datosgenerales = General::first();
+            $docentes = Staff::where('status', 1)->get();
+            $simulacros = ExamSimulation::where('status', 1)->where('visible', 1)->get();
             $blog = Blog::where('status', '=', 1)->where('visible', '=', 1)->count(); // Suponiendo que tienes un modelo Footer y un método footerData() en él
             $categoriasMenu = Category::where('visible', '=', 1)->where('is_menu', 1)->get();
-
+            $recursos = Resources::where('visible', '=', 1)->where('status', 1)->get();
             $categorias = Category::with(['subcategories' => function ($query) {
                 $query->whereHas('products');
             }])->get();
@@ -75,8 +80,8 @@ class AppServiceProvider extends ServiceProvider
                 ->exists();
 
             // Pasar los datos a la vista
-            $view->with(['datosgenerales' => $datosgenerales, 'blog' => $blog,  
-            'categoriasMenu' => $categoriasMenu, 'tags' => $tags, 'offerExists' => $offerExists , 'categorias'=> $categorias]);
+            $view->with(['simulacros' => $simulacros, 'docentes'=> $docentes, 'datosgenerales' => $datosgenerales, 'blog' => $blog,  
+            'categoriasMenu' => $categoriasMenu, 'tags' => $tags, 'offerExists' => $offerExists , 'categorias'=> $categorias, 'recursos' => $recursos]);
         });
 
         View::composer('components.app.sidebar', function ($view) {

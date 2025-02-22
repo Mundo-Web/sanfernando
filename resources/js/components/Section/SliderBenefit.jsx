@@ -26,11 +26,11 @@ const SliderBenefit = ({ benefits }) => {
                 },
                 768: {
                     slidesPerView: 2,
-                    spaceBetween: 20,
+                    spaceBetween: 30,
                 },
                 1024: {
                     slidesPerView: 2,
-                    spaceBetween: 20,
+                    spaceBetween: 30,
                 },
                 1350: {
                     slidesPerView: 3,

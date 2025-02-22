@@ -36,6 +36,7 @@ class AttempController extends BasicController
         $attempJpa = Attemp::where('user_id', Auth::user()->id)
             ->where('evaluation_id', $request->evaluation_id)
             ->where('finished', false)
+            ->orderBy('created_at', 'DESC')
             ->first();
 
         if ($attempJpa) {

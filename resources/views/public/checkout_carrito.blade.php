@@ -16,7 +16,7 @@
 
 
   <main>
-    <section class="font-poppins w-11/12 mx-auto my-8 flex flex-col gap-5">
+    <section class="font-Montserrat_Medium w-11/12 mx-auto my-8 flex flex-col gap-5">
       <x-breadcrumb>
         <x-breadcrumb.item>Carrito</x-breadcrumb.item>
       </x-breadcrumb>
@@ -59,7 +59,7 @@
                 <span id="itemTotal" class="font-semibold text-[20px]">s/ 0.00</span>
               </div>
               <a id="btnSiguiente" href="/pago"
-                class="text-white bg-red-800 w-full py-4 rounded-3xl cursor-pointer font-semibold text-[16px] inline-block text-center">Siguiente</a>
+                class="text-white bg-[#F19905] w-full py-3 rounded-3xl cursor-pointer font-Montserrat_SemiBold text-[16px] inline-block text-center">Siguiente</a>
             </div>
           </div>
         </div>

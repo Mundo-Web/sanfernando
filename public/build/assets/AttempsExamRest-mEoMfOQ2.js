@@ -1,0 +1,1 @@
+var m=Object.defineProperty;var p=(t,s,a)=>s in t?m(t,s,{enumerable:!0,configurable:!0,writable:!0,value:a}):t[s]=a;var e=(t,s,a)=>(p(t,typeof s!="symbol"?s+"":s,a),a);import{B as i}from"./BasicRest-6H19Tby_.js";class x extends i{constructor(){super(...arguments);e(this,"path","attemps-simulation")}}export{x as A};

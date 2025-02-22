@@ -426,9 +426,9 @@ function PintarCarrito() {
 
   articulosCarrito.forEach(element => {
     console.log(element)
-    let plantilla = `<tr class=" font-poppins border-b">
+    let plantilla = `<tr class=" font-Montserrat_Medium border-b">
           <td class="p-2">
-            <img src="/${element.imagen}" class="block bg-[#F3F5F7] rounded-md p-0 " alt="producto"  style="width: 100px; height: 75px; object-fit: contain; object-position: center;" />
+            <img src="/${element.imagen}" class="block rounded-md p-0 " alt="producto"  style="width: 100px; height: 70px; object-fit: cover; object-position: center;" />
           </td>
           <td class="p-2">
             <p class="font-semibold text-[14px] text-[#151515] mb-1">
@@ -438,7 +438,7 @@ function PintarCarrito() {
           </td>
           <td class="p-2 text-end flex flex-col items-end">
           <p class="font-semibold text-[14px] text-[#151515] w-max">
-            S/${Number(element.precio)}
+            S/ ${Number(element.precio)}
           </p>
           <button type="button" onClick="(deleteItem(${element.id} ))" class="w-6 h-6 flex justify-end items-end ">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="#272727" class="w-6 h-6">

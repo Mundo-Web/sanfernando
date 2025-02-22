@@ -1,155 +1,165 @@
-<footer class="flex flex-col justify-center px-[8%] py-20 bg-slate-900 max-md:px-5 !text-lg !font-poppins_regular">
-  <div class="flex flex-wrap gap-10 justify-between items-start w-full max-md:max-w-full">
-    <section class="flex flex-col min-w-[240px] w-[330px]">
-      <div class="flex flex-col w-full">
-        <div class="flex gap-2 items-center self-start">
-          <img loading="lazy"
-            src="https://cdn.builder.io/api/v1/image/assets/TEMP/93f2421934f627c82a1f00265f8fb2b03632c8f4c667470a8307d61d620234d7"
-            class="object-contain shrink-0 self-stretch my-auto w-10 aspect-square" alt="Company logo" />
-          <div class="flex flex-col self-stretch my-auto w-[100px]">
-            <img loading="lazy"
-              src="https://cdn.builder.io/api/v1/image/assets/TEMP/5d9cc8593fc9f4378529e5f8c320b53f2fcac980a4b35b024695fc7e7110fb0f"
-              class="object-contain max-w-full aspect-[3.03] w-[100px]" alt="Company name" />
-            <img loading="lazy"
-              src="https://cdn.builder.io/api/v1/image/assets/TEMP/bd5896281afafbaa5dec749f1bab7d83b6d5ed9b62b8ebe2e33452518a7e0678"
-              class="object-contain max-w-full aspect-[16.67] w-[100px]" alt="Company slogan" />
-          </div>
+<footer class="bg-[#191023]">
+    <style>
+        #modalPoliticasDev #modalTerminosCondiciones #modallinkPoliticasDatos {
+            ;
+            height: 70vh;
+            overflow-y: auto;
+        }
+        #modalPoliticasDev .prose,
+        #modalTerminosCondiciones .prose,
+        #modallinkPoliticasDatos .prose {
+            max-width: 100%;
+            text-align: justify;
+        }
+        .prose * {
+            margin-bottom: 0% !important;
+            margin-top: 0% !important;
+        }
+    </style>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 md:justify-center w-full px-[5%] py-8 lg:py-16 ">
+
+        <div class="flex flex-col text-white text-base justify-start items-start gap-5">
+            <img class="h-20 object-contain" src="{{ asset('images/img/logosf.png') }}" />
+            @if (Auth::user() == null)
+              <div class="mt-3 flex flex-row gap-3">
+                  <a href="/register"
+                      class="text-base font-Montserrat_Medium tracking-wide bg-[#F19905] text-white px-3 md:px-6 py-3 rounded-3xl">
+                      Regístrate</a>
+                  <a href="/login"
+                      class="text-base font-Montserrat_Medium tracking-wide bg-transparent border text-white px-3 md:px-6 py-3 rounded-3xl">
+                      Ingresar</a>
+              </div>
+            @endif
         </div>
-        {{-- <p class="mt-4 text-xs leading-4 text-white">
-          Nunc gravida sodales lectus et finibus. Duis vehicula pretium odio, nec efficitur purus tempor at. Donec eget
-          tellus id tellus convallis malesuada at eget justo.
-        </p> --}}
-      </div>
-      <a href="/catalogoGestion"
-        class="flex gap-3 items-start mt-6 text-sm font-semibold tracking-normal leading-10 text-white rounded-xl min-h-[40px]">
-        <span class="gap-3 self-stretch px-6 h-10 bg-red-600 rounded-xl min-w-[240px] max-md:px-5">
-          Explorar todos los cursos y Diplomados
-        </span>
-      </a>
-    </section>
-    <nav class="flex flex-wrap gap-10 items-start min-w-[240px] w-[659px] max-md:max-w-full">
-      <div class="flex flex-col flex-1 shrink leading-tight whitespace-nowrap basis-0">
-        <h3 class="text-sm font-medium text-white">Enlaces</h3>
-        <ul class="flex flex-col mt-5 w-full text-xs text-white text-opacity-80">
-          <li><a href="{{ route('Home.jsx') }}">Inicio</a></li>
-          <li class="mt-3"><a href="{{ route('CatalogoGP.jsx') }}">Cursos</a></li>
-          <li class="mt-3"><a href="{{ route('Nosotros.jsx') }}">Nosotros</a></li>
-          <li class="mt-3"><a href="{{ route('Docente.jsx') }}">Docentes</a></li>
-          <li class="mt-3"><a href="/blog">Blog</a></li>
-          <li class="mt-3"><a href="{{ route('Contacto.jsx') }}">Contacto</a></li>
-        </ul>
-      </div>
-      <div class="flex flex-col w-[221px]">
-        <h3 class="text-sm font-medium leading-tight text-white">Datos de contacto</h3>
-        <address class="flex flex-col mt-5 w-full text-xs leading-4 text-white text-opacity-80 not-italic">
-          <p>{{ $datosgenerales->address }} - {{ $datosgenerales->city }}, {{ $datosgenerales->district }}</p>
-          <p class="mt-3">Correo Electrónico: <a
-              href="mailto:admision@gestionpublica.edu.pe">{{ $datosgenerales->email }}</a></p>
-          <p class="mt-3 leading-tight">Teléfono: <a href="tel:+51943305073">{{ $datosgenerales->cellphone }}</a></p>
-        </address>
-      </div>
-      <div class="flex flex-col flex-1 shrink leading-tight basis-0">
-        <h3 class="text-sm font-medium text-white">Aviso Legal</h3>
-        <ul class="flex flex-col mt-5 w-full text-xs text-white text-opacity-80">
-          @if (isset($politicaDatos->text_content) && $politicaDatos->text_content)
-            <li><a id="linkPoliticas">Política de Privacidad</a></li>
-          @else
-            <li><a href="#">Política de Privacidad</a></li>
-          @endif
-          @if (isset($terminos->text_content) && $terminos->text_content)
-            <li class="mt-3"><a id="linkTerminos">Términos y Condiciones</a></li>
-          @else
-            <li class="mt-3"><a href="#">Términos y Condiciones</a></li>
-          @endif
 
-          <a class="mt-3" href="{{ route('librodereclamaciones') }}"><img class="w-20"
-            src="{{ asset('images/img/reclamaciones.png') }}" /></a>
-        </ul>
-      </div>
-    </nav>
-  </div>
-  <hr class="mt-12 w-full bg-white rounded-lg min-h-[2px] max-md:mt-10 max-md:max-w-full" />
-  <div class="flex flex-wrap gap-10 justify-between items-center mt-12 w-full max-md:mt-10 max-md:max-w-full">
-    <p class="self-stretch my-auto text-xs leading-tight text-white">
-      Copyright © 2023 EGESPP. Reservados todos los derechos
-    </p>
-    <div class="flex gap-2.5 items-start self-stretch my-auto">
+        <div class="flex flex-col text-sm font-Montserrat_Regular text-white gap-2 pl-0 lg:pl-24">
+            <h3 class="text-xl text-white font-Montserrat_Bold pb-3">Enlaces</h3>
+            <a href="{{ route('Home.jsx') }}">Inicio</a>
+            <a href="{{ route('CatalogoGP.jsx') }}">Cursos</a>
+            @if (count($docentes)> 0)
+                <a href="{{ route('Docente.jsx') }}">Docentes</a>
+            @endif
+            @if (count($recursos)>0)
+                <a href="{{ route('Recursos.jsx') }}">Recursos</a>
+            @endif
+            <a href="{{ route('Contacto.jsx') }}">Contacto</a>
+        </div>
 
-      @if ($datosgenerales->instagram)
-        <a target="_blank" href="{{ $datosgenerales->instagram }}" aria-label="Instagram">
-          <img loading="lazy"
-            src="https://cdn.builder.io/api/v1/image/assets/TEMP/b923cc1833af09337dc143c7c3d54c19cfe840deec4df793c6d96201779c7718"
-            class="object-contain shrink-0 w-8 aspect-square" alt="" />
-        </a>
-      @endif
-      @if ($datosgenerales->facebook)
-        <a target="_blank" href="{{ $datosgenerales->facebook }}" aria-label="Facebook">
-          <img loading="lazy"
-            src="https://cdn.builder.io/api/v1/image/assets/TEMP/3c44a8c6d2e998706681aefde9edcecc1a8c578bd58b7870eb2a1f803e056be5"
-            class="object-contain shrink-0 w-8 aspect-square" alt="" />
-        </a>
-      @endif
-      @if ($datosgenerales->linkedin)
-        <a target="_blank" href="{{ $datosgenerales->linkedin }}" aria-label="Linkedin">
-          <img loading="lazy"
-            src="https://cdn.builder.io/api/v1/image/assets/TEMP/b66ec4cdec5c308e6417c85e86eb12d327f5bcedaa96b3e65ca3c9d2259a126c"
-            class="object-contain shrink-0 w-8 aspect-square" alt="" />
-        </a>
-      @endif
-      @if ($datosgenerales->tiktok)
-        <a target="_blank" href="{{ $datosgenerales->tiktok }}" aria-label="Tiktok">
-          <img loading="lazy"
-            src="https://cdn.builder.io/api/v1/image/assets/TEMP/3607abf1fa88fd120d941c5e99b8e4bb76763247b76cd8982cfbb664d0cf5113"
-            class="object-contain shrink-0 w-8 aspect-square" alt="" />
-        </a>
-      @endif
-      @if ($datosgenerales->youtube)
-        <a target="_blank" href="{{ $datosgenerales->youtube }}" class='text-center' aria-label="YouTube">
-          <i class="fa-brands fa-youtube text-lg w-8 bg-[#fa080c] text-white rounded-full p-1.5"></i></a>
-      @endif
-      @if ($datosgenerales->twitter)
-        <a target="_blank" href="{{ $datosgenerales->twitter }}" class='text-center' aria-labe="twitter">
-          <i class="fa-brands fa-x-twitter text-lg w-8 bg-[#fa080c] text-white rounded-full p-1.5"></i></a>
-      @endif
+        <div class="flex flex-col text-sm font-Montserrat_Regular text-white gap-2">
+            <h3 class="text-xl text-white font-Montserrat_Bold pb-3">Datos de contacto</h3>
+            <p>{{ $datosgenerales->address }} {{ $datosgenerales->inside }}</p>
+            <p> {{ $datosgenerales->city }} - {{ $datosgenerales->country }}</p>
+            <p>{{ $datosgenerales->cellphone }}</p>
+            <p>{{ $datosgenerales->email }}</p>
+        </div>
+
+        <div class="flex flex-col text-sm font-Montserrat_Regular text-white gap-2">
+            <h3 class="text-xl text-white font-Montserrat_Bold pb-3">Aviso legal</h3>
+          
+            <a id="linkTerminos">Terminos y condiciones </a>
+            <a id="linkPoliticas">Politicas de devolucion </a>
+
+            <a href="{{ route('librodereclamaciones') }}"><img class="w-24"
+                    src="{{ asset('images/img/reclamaciones.png') }}" /></a>
+        </div>
 
     </div>
-  </div>
 
-  <div id="modalTerminosCondiciones" class="modal" style="max-width: 900px !important;width: 100% !important;  ">
-    <!-- Modal body -->
-    <div class="p-4 ">
-      <h1 class="font-Inter_SemiBold">Terminos y condiciones</h1>
-      <p class="font-Inter_Regular p-2 prose">{!! $terminos->content ?? '' !!}</p>
+    <div class="bg-[#191023] py-5 flex items-center justify-center w-11/12 mx-auto border-t">
+        <div class="flex flex-col lg:flex-row justify-between items-center gap-5 w-full">
+
+            <div class="text-center">
+                <p class="font-normal font-Montserrat_Regular text-sm text-white">
+                    Copyright &copy; 2023 {{ config('app.name') }}. Reservados todos los derechos. Powered by <a
+                        href="https://www.mundoweb.pe" target="_blank" class="text-white border-b border-white"> Mundo
+                        Web
+                    </a>
+                </p>
+            </div>
+
+            <div class="flex flex-row gap-4 text-[#ccc]">
+                @if ($datosgenerales->facebook)
+                    <a href="{{ $datosgenerales->facebook }}">
+                      <div class="p-2 bg-white bg-opacity-10 rounded-full w-10 h-10 flex flex-col justify-center items-center border border-white border-opacity-20">
+                        <i class="fa-brands fa-square-facebook text-white text-xl"></i>
+                      </div>
+                    </a>
+                @endif
+                @if ($datosgenerales->instagram)
+                    <a href="{{ $datosgenerales->instagram }}">
+                      <div class="p-2 bg-white bg-opacity-10 rounded-full w-10 h-10 flex flex-col justify-center items-center border border-white border-opacity-20">
+                        <i class="fa-brands fa-instagram text-white text-xl"></i>
+                      </div>
+                    </a>
+                @endif
+                @if ($datosgenerales->linkedin)
+                    <a href="{{ $datosgenerales->linkedin }}">
+                      <div class="p-2 bg-white bg-opacity-10 rounded-full w-10 h-10 flex flex-col justify-center items-center border border-white border-opacity-20">
+                        <i class="fa-brands fa-linkedin text-white text-xl"></i>
+                      </div>
+                    </a>
+                @endif
+                @if ($datosgenerales->tiktok)
+                    <a href="{{ $datosgenerales->tiktok }}">
+                      <div class="p-2 bg-white bg-opacity-10 rounded-full w-10 h-10 flex flex-col justify-center items-center border border-white border-opacity-20">
+                        <i class="fa-brands fa-tiktok text-white text-xl"></i>
+                      </div>
+                    </a>
+                @endif
+                @if ($datosgenerales->whatsapp)
+                    <a href="{{ $datosgenerales->whatsapp }}">
+                      <div class="p-2 bg-white bg-opacity-10 rounded-full w-10 h-10 flex flex-col justify-center items-center border border-white border-opacity-20">
+                        <i class="fa-brands fa-whatsapp text-white text-xl"></i>
+                      </div>
+                    </a>
+                @endif
+            </div>
+        </div>
     </div>
-  </div>
-  <div id="modalPoliticasDev" class="modal" style="max-width: 900px !important; width: 100% !important;  ">
-    <!-- Modal body -->
-    <div class="p-4 ">
-      <h1 class="font-Inter_SemiBold">Politicas de devolucion</h1>
 
-      <p class="font-Inter_Regular p-2">{!! $politicaDatos->content ?? '' !!}</p>
-
-
+    <div id="modalTerminosCondiciones" class="modal" style="max-width: 900px !important;width: 100% !important;  ">
+        <div class="p-4 ">
+            <h1 class="font-Montserrat_Bold text-center text-2xl">Términos y condiciones</h1>
+            <p class="font-Montserrat_Regular  prose grid grid-cols-1">{!! $terminos->content ?? '' !!}</p>
+        </div>
     </div>
-  </div>
+
+    <div id="modalPoliticasDev" class="modal" style="max-width: 900px !important; width: 100% !important;  ">
+        <div class="p-4 ">
+            <h1 class="font-Montserrat_Bold text-center text-2xl">Políticas de devolución</h1>
+            <p class="font-Montserrat_Regular  prose grid grid-cols-1 ">{!! $politicas->content ?? '' !!}</p>
+        </div>
+    </div>
+
 </footer>
 
 <script>
-  $(document).ready(function() {
-    $(document).on('click', '#linkTerminos', function() {
-      $('#modalTerminosCondiciones').modal({
-        show: true,
-        fadeDuration: 400,
+    $(document).ready(function() {
+        $(document).on('click', '#linkTerminos', function() {
+            $('#modalTerminosCondiciones').modal({
+                show: true,
+                fadeDuration: 400,
 
-      })
+            })
+        })
+        
+        $(document).on('click', '#linkPoliticas', function() {
+            $('#modalPoliticasDev').modal({
+                show: true,
+                fadeDuration: 400,
+
+
+            })
+        })
+
+        $(document).on('click', '#linkTerminospago', function() {
+            $('#modalTerminosCondiciones').modal({
+                show: true,
+                fadeDuration: 400,
+
+            })
+        })
+        
     })
-    $(document).on('click', '#linkPoliticas', function() {
-      $('#modalPoliticasDev').modal({
-        show: true,
-        fadeDuration: 400,
-
-
-      })
-    })
-  })
 </script>

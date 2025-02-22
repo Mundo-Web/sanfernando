@@ -21,6 +21,8 @@ return new class extends Migration
             $table->string('link2')->nullable();
             $table->string('url_image')->nullable();
             $table->string('name_image')->nullable();
+            $table->string('url_image_second')->nullable();
+            $table->string('name_image_second')->nullable();
             $table->boolean('visible')->default(true);
             $table->boolean('status')->default(true);
             $table->timestamps();

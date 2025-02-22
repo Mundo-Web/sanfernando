@@ -1,6 +1,6 @@
 @php
   $pagina = Route::currentRouteName();
-  $isIndex = $pagina == 'index';
+  $isIndex = $pagina == 'Home.jsx';
 @endphp
 
 
@@ -62,6 +62,13 @@
     bottom: 0;
     z-index: 900;
   }
+
+  .selectancho [class$="-control"] {
+    width: auto !important;
+    min-width: 250px !important;
+  }
+
+  
 </style>
 
 {{-- <img src="{{ asset('images/contacto.png') }}" class="absolute top-0 left-0 w-full z-[99999] opacity-30"></img> --}}
@@ -201,89 +208,14 @@
 
 </div>
 
+<header class="sticky top-0 z-30">
+  {{-- border-b shadow-lg --}}
 
-<div class="sticky top-0 z-30 bg-white border-b shadow-lg">
-  <header class="font-poppins_regular">
-  
-    <section
-      class="flex flex-wrap gap-10 justify-between items-center px-[8%] py-3 border border-solid bg-slate-900 border-teal-800 border-opacity-10 max-md:px-5">
-      <div
-        class="hidden md:flex gap-4 items-start self-stretch my-auto text-sm tracking-normal leading-7 text-center min-w-[240px] text-slate-100">
-  
-        <p>Teléfono: {{ $datosgenerales->cellphone }}</p>
-        <p>Email: {{ $datosgenerales->email }}</p>
-      </div>
-      <nav class="flex gap-4 items-center self-stretch my-auto mx-auto md:mx-0">
-        @if (Auth::user() == null)
-          <div class="text-white">
-            <a href="/login" class="text-white">Inicia sesion </a>
-            <span class="text-slate-200">o</span>
-            <a href="/register" class="text-white">Registrate</a>
-          </div>
-        @else
-          <div class=" relative text-white inline-flex" x-data="{ open: false }">
-            <button class="inline-flex justify-center items-center group" aria-haspopup="true"
-              @click.prevent="open = !open" :aria-expanded="open">
-              <div class="flex items-center truncate mt-[4px]">
-                <span id="username"
-                  class="truncate ml-2 text-sm font-medium dark:text-slate-300 group-hover:opacity-75 dark:group-hover:text-slate-200  ">
-                </span>
-                <i class="fas fa-angle-down ms-2"></i>
-              </div>
-            </button>
-            <div
-              class="origin-top-right z-40 text-red-600 bg-red-100 absolute top-full min-w-44  dark:bg-slate-800 border border-slate-200 dark:border-slate-700 py-1.5 rounded shadow-lg overflow-hidden mt-1"
-              @click.outside="open = false" @keydown.escape.window="open = false" x-show="open">
-              <ul>
-                <li class=" hover:bg-rose-700 hover:text-white transition duration-100 ease-in">
-                  <a class="font-medium text-sm  flex items-center py-1 px-3 " href="/micuenta" @click="open = false"
-                    @focus="open = true" @focusout="open = false">Mi
-                    Cuenta</a>
-                </li>
-  
-                <li class=" hover:bg-rose-700 hover:text-white transition duration-100 ease-in">
-                  <form method="POST" action="{{ route('logout') }}" x-data>
-                    @csrf
-                    <button type="submit" class="font-medium text-sm  flex items-center py-1 px-3"
-                      @click.prevent="$root.submit(); open = false">
-                      {{ __('Cerrar sesión') }}
-                    </button>
-                  </form>
-                </li>
-              </ul>
-            </div>
-          </div>
-        @endif
-        <a href="#" aria-label="Social Media Link 3">
-          <div id="open-cart" class="relative">
-            <span id="itemsCount"
-              class="bg-rose-700 text-xs font-medium text-white text-center px-[7px] py-[2px]  rounded-full absolute -bottom-4 -right-4 ml-3">0</span>
-            <img loading="lazy"
-              src="https://cdn.builder.io/api/v1/image/assets/TEMP/2cb868de28b1b49e52be101815be5c820fdf20aee19c0b5b86753f263366f629?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f"
-              alt="" class="object-contain shrink-0 w-6 aspect-square" />
-          </div>
-  
-  
-  
-        </a>
-      </nav>
-    </section>
-  
-  
-  
-    <div class="flex justify-end relative">
-      <div class="fixed bottom-[36px] z-[10] right-[15px] md:right-[25px]">
-        <a href="https://api.whatsapp.com/send?phone={{ $datosgenerales->whatsapp }}&text={{ $datosgenerales->mensaje_whatsapp }}"
-          target="_blank" class="">
-          <img src="{{ asset('images/img/WhatsApp.png') }}" alt="whatsapp" class="w-20" />
-        </a>
-      </div>
-    </div>
-  
-    <x-header-carrito />
-  
-  </header>
-  <div id="header-menu" class="flex justify-between gap-5 w-full px-[5%] xl:px-[8%] py-3  text-[17px] ">
+  <div id="header-menu" class="flex justify-between gap-5 w-full px-[5%] text-[17px] py-2 text-white 
+    @if ($isIndex ? 1 : 0)
+    @else
+    bg-[#191023]
+    @endif">
 
     <div id="menu-burguer" class="lg:hidden z-10 w-max">
       <img class="h-10 w-10 cursor-pointer" src="{{ asset('images/img/menu_hamburguer.png') }}"
@@ -292,54 +224,66 @@
 
     <div class="w-auto">
       <a href="/">
-        <img id="logo-gestion_publica" class="w-[170px] " {{-- public\images\svg\LOGO2.png --}}
-          src="{{ asset($isIndex ? 'images/img/logorojo.png' : 'images/img/logorojo.png') }}"
+        <img id="logo-gestion_publica" class="w-28"
+          src="{{ asset($isIndex ? 'images/img/logosf.png' : 'images/img/logosf.png') }}"
           alt="gestion_publica" />
       </a>
     </div>
 
-    <div class="hidden lg:flex items-center justify-center ">
+    <div class="hidden lg:flex items-center justify-center">
       <div>
         <nav id="menu-items"
-          class=" text-[#333] text-base font-Inter_Medium flex gap-5 xl:gap-10 items-center justify-center "
+          class="text-base font-Montserrat_SemiBold flex gap-5 xl:gap-10 items-center justify-center "
           x-data="{ openCatalogo: false, openSubMenu: null }">
-          <a href="{{ route('Home.jsx') }}" class="font-medium hover:opacity-75 ">
-            <span class="underline-this">Inicio</span>
-          </a>
+          
+          {{-- <a href="{{ route('Home.jsx') }}" class="font-medium hover:opacity-75 ">
+            <span class="underline-this">Catalogo de cursos</span>
+          </a> --}}
 
           <a id="productos-link" href="{{ route('CatalogoGP.jsx') }}" class="font-medium ">
-            <span class="underline-this">Programas</span>
+            <span>Catalogo de cursos</span>
             {{-- <div id="productos-link-h" class="w-0"></div> --}}
-
           </a>
-
-          <a id="productos-link" href="{{ route('Nosotros.jsx') }}" class="font-medium ">
-            <span class="underline-this">Nosotros</span>
-            {{-- <div id="productos-link-h" class="w-0"></div> --}}
-
-          </a>
-
-          {{-- @if ($offerExists) --}}
-          <a href="{{ route('Docente.jsx') }}" class="font-medium hover:opacity-75">
-            <span class="underline-this">Docentes</span>
-          </a>
-          {{-- @endif --}}
-
-
-          {{--  <a href="#" class="font-medium hover:opacity-75 ">
-            <span class="underline-this">Eventos </span>
-          </a> --}}
-          @if ($blog > 0)
-            <a href="/blog" class="font-medium hover:opacity-75 ">
-              <span class="underline-this">Blog </span>
+          
+          @if (count($docentes)> 0)
+            <a href="{{ route('Docente.jsx') }}" class="font-medium hover:opacity-75">
+              <span>Docentes</span>
             </a>
           @endif
 
+          {{-- <a id="productos-link" href="{{ route('Nosotros.jsx') }}" class="font-medium ">
+            <span class="underline-this">Nosotros</span>
+          </a> --}}
+          @if (count($recursos)>0)
+            <a href="{{ route('Recursos.jsx') }}" class="font-medium hover:opacity-75 ">
+              <span>Recursos</span>
+            </a>
+          @endif
+
+          @if (count($simulacros)>0)
+            <a href="{{ route('Simulacro.jsx') }}" class="font-medium hover:opacity-75 ">
+              <span>Examenes de Simulacro</span>
+            </a>
+          @endif
+
+          @if (count($recursos)>0)
+            <a href="{{ route('Recursos.jsx') }}" class="font-medium hover:opacity-75 ">
+              <span>Recursos</span>
+            </a>
+          @endif
+          
+
+          {{-- @if ($blog > 0)
+            <a href="/blog" class="font-medium hover:opacity-75 ">
+              <span class="underline-this">Blog </span>
+            </a>
+          @endif --}}
 
           <a href="{{ route('Contacto.jsx') }}" class="font-medium hover:opacity-75  ">
-            <span class="underline-this">Contacto</span>
+            <span>Ayuda y Soporte</span>
           </a>
-          @if ($tags->count() > 0)
+
+          {{-- @if ($tags->count() > 0)
             @foreach ($tags as $item)
               <a href="/catalogoGestion?tag={{ $item->id }}" class="font-medium hover:opacity-75    "
                 style="color: {{ $item->color }}">
@@ -347,29 +291,83 @@
                   {{ $item->name }} </span>
               </a>
             @endforeach
-
-          @endif
+          @endif --}}
 
         </nav>
       </div>
     </div>
 
-
-
-    <section class="flex gap-3 items-center">
-      <x-header-search />
-
-      {{-- <a href="/register"
-        class="hidden md:flex  gap-2.5 justify-center items-center self-stretch px-5 py-2.5 my-auto text-sm font-semibold text-center text-red-600 bg-red-100 rounded-lg min-h-[40px]">
-        <span class="self-stretch my-auto hover:scale-110 transition-transform">Crear Cuenta</span>
-        <img loading="lazy"
-          src="https://cdn.builder.io/api/v1/image/assets/TEMP/75bad0eb80e4c8fa820b5a280da9560ca64547065469b69cd2c648442bf9f1c3?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f"
-          alt="" class="object-contain shrink-0 self-stretch my-auto w-5 aspect-square" />
-      </a> --}}
+    <section class="flex flex-wrap gap-2 justify-between items-center">
+        
+        <nav class="flex gap-4 items-center self-stretch my-auto mx-auto md:mx-0 font-Montserrat_SemiBold">
+          @if (Auth::user() == null)
+            <div class="text-white hidden md:block">
+              <a href="/login" class="text-white">Inicia sesión </a>
+              <span class="text-slate-200">|</span>
+              <a href="/register" class="text-white px-4 py-2 bg-[#F19905] rounded-2xl">Regístrate</a>
+            </div>
+          @else
+            <div class=" relative text-white  hidden md:inline-flex" x-data="{ open: false }">
+              <button class="inline-flex justify-center items-center group" aria-haspopup="true"
+                @click.prevent="open = !open" :aria-expanded="open">
+                <div class="flex items-center truncate mt-[4px]">
+                  <span id="username"
+                    class="truncate ml-2 text-sm font-medium !text-white">
+                  </span>
+                  <i class="fas fa-angle-down ms-2"></i>
+                </div>
+              </button>
+              <div
+                class="origin-top-right z-40 text-[#F19905] bg-red-100 absolute top-full min-w-44  dark:bg-slate-800 border border-slate-200 dark:border-slate-700 py-1.5 rounded shadow-lg overflow-hidden mt-1"
+                @click.outside="open = false" @keydown.escape.window="open = false" x-show="open">
+                <ul>
+                  <li class=" hover:bg-[#F19905] hover:text-white transition duration-100 ease-in">
+                    <a class="font-medium text-sm  flex items-center py-1 px-3 " href="/micuenta" @click="open = false"
+                      @focus="open = true" @focusout="open = false">Mi
+                      Cuenta</a>
+                  </li>
+    
+                  <li class=" hover:bg-[#F19905] hover:text-white transition duration-100 ease-in">
+                    <form method="POST" action="{{ route('logout') }}" x-data>
+                      @csrf
+                      <button type="submit" class="font-medium text-sm  flex items-center py-1 px-3"
+                        @click.prevent="$root.submit(); open = false">
+                        {{ __('Cerrar sesión') }}
+                      </button>
+                    </form>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          @endif
+          <a href="#">
+            <div id="open-cart" class="relative">
+              <span id="itemsCount"
+                class="bg-[#F19905] flex text-xs font-medium text-white text-center px-[7px] py-[2px]  rounded-full absolute -bottom-4 -right-4 ml-3">0</span>
+              <img loading="lazy"
+                src="https://cdn.builder.io/api/v1/image/assets/TEMP/2cb868de28b1b49e52be101815be5c820fdf20aee19c0b5b86753f263366f629?placeholderIfAbsent=true&apiKey=5531072f5ff9482693929f17ec98446f"
+                alt="" class="object-contain shrink-0 w-6 aspect-square z-20" />
+            </div>
+          </a>
+        </nav>
     </section>
-
+    
+    <x-header-carrito />
+    
   </div>
+
+</header>
+
+  {{-- Whatsapp --}}
+<div class="flex justify-end relative">
+    <div class="fixed bottom-[36px] z-[10] right-[15px] md:right-[25px]">
+      <a href="https://api.whatsapp.com/send?phone={{ $datosgenerales->whatsapp }}&text={{ $datosgenerales->mensaje_whatsapp }}"
+        target="_blank" class="">
+        <img src="{{ asset('images/img/WhatsApp.png') }}" alt="whatsapp" class="w-20" />
+      </a>
+    </div>
 </div>
+
 <script>
   let clockSearch;
   @auth
@@ -419,55 +417,41 @@
     }
 
   }
+
+
   $(document).ready(function() {
     if ({{ $isIndex ? 1 : 0 }}) {
       $(window).scroll(function() {
         var scroll = $(window).scrollTop();
-        var categoriasOffset = $('#categorias').offset().top;
 
-        const headerMenu = $('#header-menu')
-        const logo = $('#logo-decotab')
-        const items = $('#menu-items')
-        const username = $('#username')
-        const burguer = $('#menu-burguer')
-        if (scroll >= categoriasOffset) {
+        const headerMenu = $('#header-menu');
+        const logo = $('#logo-decotab');
+        const items = $('#menu-items');
+        const username = $('#username');
+        const burguer = $('#menu-burguer');
+
+        if (scroll > 0) {  // Verifica si el usuario hizo scroll
           headerMenu
-            .removeClass('absolute bg-transparent text-white')
-            .addClass('fixed top-0 bg-white shadow-lg');
-          items
-            .removeClass('text-white')
-            .addClass('text-[#272727]')
+            .removeClass('bg-transparent')  // Elimina las clases actuales
+            .addClass('bg-[#191023] shadow-lg');  // Agrega las clases con fondo blanco y sombra
           username
-            .removeClass('text-white')
-            .addClass('text-[#272727]')
-          // burguer
-          //   .removeClass('absolute')
-          //   .addClass('fixed')
-          logo.attr('src', 'images/svg/logo_decotab_header.svg')
-          $('#header-menu svg').attr('stroke', '#272727');
+            .removeClass('text-white')  // Cambia el color del nombre de usuario
+            .addClass('text-[#272727]');
         } else {
           headerMenu
-            .removeClass('fixed bg-white shadow-lg')
-            .addClass('absolute bg-transparent text-white');
-          items
-            .removeClass('text-[#272727]')
-            .addClass('text-white')
+            .removeClass('bg-[#191023] shadow-lg')  // Elimina las clases con fondo blanco
+            .addClass('bg-transparent');  // Vuelve a poner el fondo transparente
           username
-            .removeClass('text-[#272727]')
-            .addClass('text-white')
-          // burguer
-          //   .removeClass('fixed')
-          //   .addClass('absolute')
-          logo.attr('src', '')
-          $('#header-menu svg').attr('stroke', 'white');
+            .removeClass('text-[#272727]')  // Vuelve al color blanco
+            .addClass('text-white');
         }
       });
     }
-    mostrarTotalItems()
-  })
+    mostrarTotalItems();  // Llama a la función que desees al cargar
+});
 </script>
-<script src="{{ asset('js/storage.extend.js') }}"></script>
 
+<script src="{{ asset('js/storage.extend.js') }}"></script>
 
 <script>
   function addOnCarBtn(id, operacion) {
@@ -585,6 +569,7 @@
     }
   });
 </script>
+
 <script>
   const categorias = @json($categorias);
   var activeHover = false
@@ -760,3 +745,4 @@
 
   })
 </script>
+

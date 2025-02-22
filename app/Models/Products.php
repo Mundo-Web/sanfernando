@@ -48,7 +48,9 @@ class Products extends Model
     'brochure_url',
     'offer_message',
     'tipo_portada',
-    'portada_detalle'
+    'portada_detalle',
+    'is_exam',
+    'examsimulation_id'
   ];
 
   public function categoria()

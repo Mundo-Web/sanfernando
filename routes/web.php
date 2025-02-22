@@ -39,7 +39,13 @@ use App\Http\Controllers\ValoresAtributosController;
 use App\Http\Controllers\TagController;
 use App\Http\Controllers\TermsAndConditionController;
 use App\Http\Controllers\CertificateController;
-
+use App\Http\Controllers\ExamSimulationController;
+use App\Http\Controllers\MajorController;
+use App\Http\Controllers\QuestionExamController;
+use App\Http\Controllers\ResourcesController;
+use App\Http\Controllers\ResponseExamController;
+use App\Models\Major;
+use App\Models\QuestionExam;
 
 /*
 |--------------------------------------------------------------------------
@@ -77,11 +83,14 @@ Route::get('/producto/{id}', [IndexController::class, 'producto'])->name('produc
 Route::post('carrito/buscarProducto', [CarritoController::class, 'buscarProducto'])->name('carrito.buscarProducto');
 Route::post('/buscar', [IndexController::class, 'searchProduct'])->name('buscar');
 Route::post('/buscarDocente', [IndexController::class, 'searchDocente'])->name('buscarDocente');
+Route::post('/buscarRecursos', [IndexController::class, 'searchResource'])->name('buscarRecursos');
+Route::post('/buscarSimulacro', [IndexController::class, 'buscarSimulacro'])->name('buscarSimulacro');
 
 /* Página 404 */
 Route::get('/404', [IndexController::class, 'error'])->name('error');
+
 /* Formulario de contacto */
-Route::post('guardarContactos', [IndexController::class, 'guardarContacto'])->name('guardarContactos');
+Route::post('guardarContactos', [IndexController::class, 'guardarContacto'])->name('guardarContacto');
 Route::post('guardarformulario', [LibroReclamacionesController::class, 'storePublic'])->name('guardarFormReclamo');
 
 Route::get('/obtenerProvincia/{departmentId}', [IndexController::class, 'obtenerProvincia'])->name('obtenerProvincia');
@@ -90,6 +99,8 @@ Route::get('/obtenerDistritos/{provinceId}', [IndexController::class, 'obtenerDi
 Route::get('/politicas-de-devolucion', [IndexController::class, 'politicasDevolucion'])->name('politicas_dev');
 Route::get('/terminos-y-condiciones', [IndexController::class, 'TerminosyCondiciones'])->name('terms_condition');
 
+/* Aumentar contador*/
+Route::post('/aumentarContador', [IndexController::class, 'aumentarContador'])->name('aumentarContador');
 
 // Route::post('/payment/culqi', [PaymentController::class, 'culqi'])->name('payment.culqi');
 Route::get('/buscarblog', [IndexController::class, 'searchBlog'])->name('buscarblog');
@@ -156,6 +167,30 @@ Route::middleware(['auth:sanctum', 'verified', 'can:Admin'])->group(function () 
         Route::patch('/subcategories', [SubCategoryController::class, 'update'])->name('subcategories.update');
         Route::get('/subcategories/count', [SubCategoryController::class, 'contarCategoriasDestacadas'])->name('subcategories.count');
 
+        //Especialidad
+        Route::resource('/major', MajorController::class);
+        Route::post('/major/deleteCategory', [MajorController::class, 'deleteMajor'])->name('major.deleteMajor');
+        Route::post('/major/updateVisible', [MajorController::class, 'updateVisible'])->name('major.updateVisible');
+
+        //Preguntas
+        Route::resource('/question', QuestionExamController::class);
+        Route::post('/question/deleteQuestionExam', [QuestionExamController::class, 'deleteQuestionExam'])->name('question.deleteQuestionExam');
+        Route::post('/question/updateVisible', [QuestionExamController::class, 'updateVisible'])->name('question.updateVisible');
+
+        //Respuestas
+        Route::resource('/response', ResponseExamController::class);
+        Route::post('/response/deleteResponseExam', [ResponseExamController::class, 'deleteResponseExam'])->name('response.deleteResponseExam');
+        Route::post('/response/updateVisible', [ResponseExamController::class, 'updateVisible'])->name('response.updateVisible');    
+
+        //ExamSimulated
+        Route::resource('/exam', ExamSimulationController::class);
+        Route::post('/exam/deleteExam', [ExamSimulationController::class, 'deleteExam'])->name('exam.deleteExam');
+        Route::post('/exam/updateVisible', [ExamSimulationController::class, 'updateVisible'])->name('exam.updateVisible');
+
+        Route::get('/especialidades', [ExamSimulationController::class, 'obtenerEspecialidades'])->name('obtenerEspecialidades');
+        Route::get('/preguntas/{especialidad}', [ExamSimulationController::class, 'obtenerPreguntas'])->name('obtenerPreguntas');
+
+ 
         //Precios
         Route::resource('/prices', PriceController::class);
         Route::get('/prices/create', [PriceController::class, 'save'])->name('prices.create');
@@ -183,6 +218,12 @@ Route::middleware(['auth:sanctum', 'verified', 'can:Admin'])->group(function () 
         //Equipo
         Route::resource('/staff', StaffController::class);
         Route::post('/staff/updateVisible', [StaffController::class, 'updateVisible'])->name('staff.updateVisible');
+        Route::post('/staff/borrar', [StaffController::class, 'borrar'])->name('staff.borrar');
+        
+        //Resources
+        Route::resource('/resources', ResourcesController::class);
+        Route::post('/resources/updateVisible', [ResourcesController::class, 'updateVisible'])->name('resources.updateVisible');
+        Route::post('/resources/borrar', [ResourcesController::class, 'borrar'])->name('resources.borrar');
 
         //Beneficios    
         Route::resource('/strength', StrengthController::class);

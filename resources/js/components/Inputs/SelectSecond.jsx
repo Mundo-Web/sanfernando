@@ -4,26 +4,26 @@ import Select from 'react-select'
 const customStyles = {
   control: (provided, state) => ({
     ...provided,
-    backgroundColor: '#F9FAFB', // Color de fondo
+    backgroundColor: '#f0f1f2', // Color de fondo
     borderRadius: '12px',
     width: '200px',
-    borderColor: state.isFocused ? '#EA1D2C' : '#F9FAFB', // Color de borde
-    boxShadow: state.isFocused ? '0 0 0 1px #EA1D2C' : 'none',
+    borderColor: state.isFocused ? '#221F1F' : '#F9FAFB', // Color de borde
+    boxShadow: state.isFocused ? '0 0 0 1px #221F1F' : 'none',
     '&:hover': {
-      borderColor: '#EA1D2C',
+      borderColor: '#221F1F',
     },
     minHeight: '48px', // Altura mínima del select
 
   }),
   option: (provided, state) => ({
     ...provided,
-    color: state.isSelected ? '#FFFFFF' : '#EA1D2C', // Color de texto
+    color: state.isSelected ? '#FFFFFF' : '#221F1F', // Color de texto
     paddingTop: '13px',
     paddingBottom: '13px',
-    backgroundColor: state.isSelected ? '#EA1D2C' : '#F9FAFB', // Color de fondo
+    backgroundColor: state.isSelected ? '#221F1F' : '#F9FAFB', // Color de fondo
     '&:hover': {
-      backgroundColor: state.isSelected ? '#EA1D2C' : '#FDE8E8',
-      color: state.isSelected ? '#FFFFFF' : '#EA1D2C',
+      backgroundColor: state.isSelected ? '#221F1F' : '#FDE8E8',
+      color: state.isSelected ? '#FFFFFF' : '#221F1F',
     },
     padding: '10px 20px', // Espaciado interno de las opciones
   }),
@@ -35,9 +35,9 @@ const customStyles = {
   }),
   dropdownIndicator: (provided) => ({
     ...provided,
-    color: '#EA1D2C',
+    color: '#221F1F',
     '&:hover': {
-      color: '#EA1D2C',
+      color: '#221F1F',
     },
   }),
   indicatorSeparator: () => ({
@@ -45,11 +45,11 @@ const customStyles = {
   }),
   singleValue: (provided) => ({
     ...provided,
-    color: '#EA1D2C', // Color del texto seleccionado
+    color: '#221F1F', // Color del texto seleccionado
   }),
   placeholder: (provided) => ({
     ...provided,
-    color: '#EA1D2C', // Color del placeholder
+    color: '#221F1F', // Color del placeholder
     fontWeight: 'bold', // Peso de la fuente
     fontSize: '16px', // Tamaño de la fuente
   }),
@@ -57,20 +57,15 @@ const customStyles = {
 
 
 
-const options = [
-  { value: 'a-z', label: 'Desde A a Z' },
-  { value: 'z-a', label: 'Desde Z a A' },
-  { value: 'ultimos', label: 'Ultimos' },
-
-]
-
-const SelectSecond = ({ title, handleOptionChange }) => {
-
+const SelectSecond = ({ title, handleOptionChange, options}) => {
+ 
   return (
-    <Select className='font-poppins_regular font-bold'
+    <Select className='font-Montserrat_Regular font-bold selectancho'
+      
       styles={customStyles}
       options={options}
       placeholder={title}
+      isSearchable={false}
       onChange={handleOptionChange}
     />
   );

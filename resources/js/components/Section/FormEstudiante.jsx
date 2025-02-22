@@ -119,7 +119,7 @@ const FormEstudiante = ({ user }) => {
         <div className="flex flex-wrap gap-6 items-start w-full max-md:max-w-full">
           <div className="flex flex-col min-w-[240px] w-[264px]">
             <div
-              className="flex flex-col justify-center items-center p-8 max-w-full bg-rose-50 rounded w-[264px] max-md:px-5">
+              className="flex flex-col justify-center items-center p-8 max-w-full bg-yellow-50 rounded w-[264px] max-md:px-5">
               <div className="flex flex-col w-full text-sm font-medium tracking-normal leading-none text-white">
                 <div className="flex relative flex-col w-full aspect-square">
                   <div className="flex relative flex-col w-full aspect-square">
@@ -157,7 +157,7 @@ const FormEstudiante = ({ user }) => {
                     name="name"
                     defaultValue={formUser.current.name}
                     onChange={handleForm}
-                    className="w-full py-3 px-3 focus:outline-none text-[#CF072C] placeholder-[#CF072C] focus:placeholder-[#CF072C] font-normal text-base bg-[#FFF0F0] rounded-xl border-2 border-transparent focus:border-2 focus:border-[#CF072C] focus:ring-0"
+                    className="w-full py-3 px-3 focus:outline-none text-[#F19905] placeholder-[#F19905] focus:placeholder-[#F19905] font-normal text-base bg-yellow-50 rounded-xl border-2 border-transparent focus:border-2 focus:border-[#F19905] focus:ring-0"
                     placeholder="Nombre"
                   />
                 </div>
@@ -167,7 +167,7 @@ const FormEstudiante = ({ user }) => {
                   name="lastname"
                   defaultValue={formUser.current.lastname || ''}
                   onChange={handleForm}
-                  className="overflow-hidden flex-1 shrink w-full py-3 px-3 focus:outline-none text-[#CF072C] placeholder-[#CF072C] focus:placeholder-[#CF072C] font-normal text-base bg-[#FFF0F0] rounded-xl border-2 border-transparent focus:border-2 focus:border-[#CF072C] focus:ring-0"
+                  className="overflow-hidden flex-1 shrink w-full py-3 px-3 focus:outline-none text-[#F19905] placeholder-[#F19905] focus:placeholder-[#F19905] font-normal text-base bg-yellow-50 rounded-xl border-2 border-transparent focus:border-2 focus:border-[#F19905] focus:ring-0"
                   placeholder="Apellido"
                 />
               </div>
@@ -179,7 +179,7 @@ const FormEstudiante = ({ user }) => {
                                     name="username"
                                     defaultValue={formUser.current.username}
                                     onChange={handleForm}
-                                    className="w-full py-3 px-3 focus:outline-none text-[#CF072C] placeholder-[#CF072C] focus:placeholder-[#CF072C] font-normal text-base bg-[#FFF0F0] rounded-xl border-2 border-transparent focus:border-2 focus:border-[#CF072C] focus:ring-0"
+                                    className="w-full py-3 px-3 focus:outline-none text-[#F19905] placeholder-[#F19905] focus:placeholder-[#F19905] font-normal text-base bg-yellow-50 rounded-xl border-2 border-transparent focus:border-2 focus:border-[#F19905] focus:ring-0"
                                     placeholder="Nombre de usuario"
                                 />
                             </div> */}
@@ -191,7 +191,7 @@ const FormEstudiante = ({ user }) => {
                   name="email"
                   defaultValue={formUser.current.email}
                   onChange={handleForm}
-                  className="w-full py-3 px-3 focus:outline-none text-[#CF072C] placeholder-[#CF072C] focus:placeholder-[#CF072C] font-normal text-base bg-[#FFF0F0] rounded-xl border-2 border-transparent focus:border-2 focus:border-[#CF072C] focus:ring-0"
+                  className="w-full py-3 px-3 focus:outline-none text-[#F19905] placeholder-[#F19905] focus:placeholder-[#F19905] font-normal text-base bg-yellow-50 rounded-xl border-2 border-transparent focus:border-2 focus:border-[#F19905] focus:ring-0"
                   placeholder="hola@mail.com"
                 />
               </div>
@@ -203,7 +203,7 @@ const FormEstudiante = ({ user }) => {
                   name="occupation"
                   defaultValue={formUser.current.occupation}
                   onChange={handleForm}
-                  className="w-full py-3 px-3 focus:outline-none text-[#CF072C] placeholder-[#CF072C] focus:placeholder-[#CF072C] font-normal text-base bg-[#FFF0F0] rounded-xl border-2 border-transparent focus:border-2 focus:border-[#CF072C] focus:ring-0"
+                  className="w-full py-3 px-3 focus:outline-none text-[#F19905] placeholder-[#F19905] focus:placeholder-[#F19905] font-normal text-base bg-yellow-50 rounded-xl border-2 border-transparent focus:border-2 focus:border-[#F19905] focus:ring-0"
                   placeholder="Estudiante"
                 />
               </div>
@@ -211,7 +211,7 @@ const FormEstudiante = ({ user }) => {
                 type='button'
                 onClick={handleSubmit}
 
-                className="gap-2.5 self-stretch px-5 py-2.5 mt-6 w-full text-sm font-semibold text-center text-teal-50 bg-rose-700 rounded-lg min-h-[40px]"
+                className="gap-2.5 self-stretch px-5 py-2.5 mt-6 w-full text-sm font-semibold text-center text-teal-50 bg-[#F19905] rounded-lg min-h-[40px]"
               >
                 Salvar cambios
               </button>
@@ -230,7 +230,7 @@ const FormEstudiante = ({ user }) => {
             <div
               className="flex overflow-hidden flex-wrap flex-1  justify-center  mt-1.5 text-base text-gray-600 whitespace-nowrap bg-white rounded-lg border-solid size-full max-md:max-w-full">
               <input type="password" id="current-password" placeholder="Contraseña" name='password' onChange={handleForm}
-                className="flex-grow py-3 px-3 focus:outline-none text-[#CF072C] placeholder-[#CF072C] focus:placeholder-[#CF072C] font-normal text-base bg-[#FFF0F0] rounded-xl border-2 border-transparent focus:border-2 focus:border-[#CF072C] focus:ring-0" />
+                className="flex-grow py-3 px-3 focus:outline-none text-[#F19905] placeholder-[#F19905] focus:placeholder-[#F19905] font-normal text-base bg-yellow-50 rounded-xl border-2 border-transparent focus:border-2 focus:border-[#F19905] focus:ring-0" />
             </div>
           </div>
           <div className="flex overflow-hidden flex-col mt-5 w-full  max-md:max-w-full">
@@ -239,7 +239,7 @@ const FormEstudiante = ({ user }) => {
             <div
               className="flex overflow-hidden flex-wrap flex-1  justify-center  mt-1.5 text-base text-gray-600 whitespace-nowrap bg-white rounded-lg border-solid size-full max-md:max-w-full">
               <input type="password" id="new-password" placeholder="Contraseña" name='newpassword' onChange={handleForm}
-                className="flex-grow py-3 px-3 focus:outline-none text-[#CF072C] placeholder-[#CF072C] focus:placeholder-[#CF072C] font-normal text-base bg-[#FFF0F0] rounded-xl border-2 border-transparent focus:border-2 focus:border-[#CF072C] focus:ring-0" />
+                className="flex-grow py-3 px-3 focus:outline-none text-[#F19905] placeholder-[#F19905] focus:placeholder-[#F19905] font-normal text-base bg-yellow-50 rounded-xl border-2 border-transparent focus:border-2 focus:border-[#F19905] focus:ring-0" />
             </div>
           </div>
           <div className="flex overflow-hidden flex-col mt-5 w-full  max-md:max-w-full">
@@ -248,11 +248,11 @@ const FormEstudiante = ({ user }) => {
             <div
               className="flex overflow-hidden flex-wrap flex-1  justify-center  mt-1.5 text-base text-gray-600 whitespace-nowrap bg-white rounded-lg border-solid size-full max-md:max-w-full">
               <input type="password" id="confirm-password" placeholder="Confirmar Contraseña" name='confirmnewpassword' onChange={handleForm}
-                className="flex-grow py-3 px-3 focus:outline-none text-[#CF072C] placeholder-[#CF072C] focus:placeholder-[#CF072C] font-normal text-base bg-[#FFF0F0] rounded-xl border-2 border-transparent focus:border-2 focus:border-[#CF072C] focus:ring-0" />
+                className="flex-grow py-3 px-3 focus:outline-none text-[#F19905] placeholder-[#F19905] focus:placeholder-[#F19905] font-normal text-base bg-yellow-50 rounded-xl border-2 border-transparent focus:border-2 focus:border-[#F19905] focus:ring-0" />
             </div>
           </div>
           <button type="button" onClick={handleSubmitPass}
-            className="gap-2.5 self-start px-5 py-2.5 mt-6 text-sm text-center text-teal-50 bg-rose-700 rounded-lg min-h-[40px]">
+            className="gap-2.5 self-start px-5 py-2.5 mt-6 text-sm text-center text-teal-50 bg-[#F19905] rounded-lg min-h-[40px]">
             Salvar cambios
           </button>
         </form>

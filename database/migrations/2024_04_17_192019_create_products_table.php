@@ -28,6 +28,7 @@ return new class extends Migration
             $table->string('sku')->nullable();
             $table->boolean('destacar')->default(false);
             $table->boolean('recomendar')->default(false);
+           
             $table->unsignedBigInteger('categoria_id')->nullable();
 
             $table->boolean('visible')->default(true);
@@ -35,7 +36,6 @@ return new class extends Migration
             $table->timestamps();
 
             $table->foreign('categoria_id')->references('id')->on('categories');
-            
         });
     }
 
