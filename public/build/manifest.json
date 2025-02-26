@@ -441,7 +441,7 @@
     "src": "resources/js/ExamenDesarrollo.jsx"
   },
   "resources/js/Home.jsx": {
-    "file": "assets/Home-RlioHRQC.js",
+    "file": "assets/Home-cmtr-Sra.js",
     "imports": [
       "resources/js/Utils/YTEmbed.jsx",
       "resources/js/Utils/ReactAppend.jsx",
