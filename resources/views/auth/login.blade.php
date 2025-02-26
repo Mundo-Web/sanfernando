@@ -1,5 +1,7 @@
 <x-authentication-layout>
-
+  @php
+       $currentUrl = url()->full();
+  @endphp
   <div class="flex flex-col md:flex-row justify-center h-screen">
     <!-- Primer div -->
     <div class="w-2/5 hidden md:block font-poppins_semibold">
@@ -47,9 +49,15 @@
                 </label>
               </div>
 
-              <div>
+              <div class="flex flex-col md:flex-row gap-3">
                 <input type="submit" value="Iniciar Sesión"
                   class="text-white bg-[#F19905] px-6 py-3 rounded-2xl cursor-pointer  font-semibold font-poppins_regular  tracking-normal" />
+                <a href="{{ strpos($currentUrl, 'ref=pago') !== false ? route('login-google', ['ref' => 'pago']) : route('login-google') }}"
+                    class="cursor-pointer flex flex-row gap-2 justify-center items-center px-6 py-3  w-full rounded-2xl border border-[#F19905] border-solid">
+                    <img loading="lazy" src="/images/img/Google1.png" alt=""
+                      class="object-contain shrink-0  my-auto w-6 aspect-square" />
+                    <span class=" my-auto">Ingresar con Google</span>
+                </a>
               </div>
             </div>
 
