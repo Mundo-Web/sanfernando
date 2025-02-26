@@ -61,7 +61,7 @@
         </div>
     </div>
 
-    <!-- Modal -->
+    
     @if ($isOpen)
     <div class="modal-overlay" class="" style="display: block;">
         <div class="modal"  style="display: block;" class="top-1/2 left-1/2 -translate-x-1/2 flex">
