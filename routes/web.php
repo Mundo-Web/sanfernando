@@ -78,7 +78,7 @@ Route::get('/google-callback', function () {
     if ($userExist) {
         Auth::login($userExist);
 
-        return redirect()->route('index');
+        return redirect()->route('Home.jsx');
     } else {
         if (User::where('email', $user->email)->exists()) {
             $userExist = User::where('email', $user->email)->first();
@@ -99,7 +99,7 @@ Route::get('/google-callback', function () {
             Auth::login($userNew);
         }
 
-        return redirect()->route('index');
+        return redirect()->route('Home.jsx');
     }
 });
 
