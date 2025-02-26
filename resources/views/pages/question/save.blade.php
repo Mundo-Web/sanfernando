@@ -6,6 +6,7 @@
       <input type="hidden" name="id" value="{{ $question->id }}">
       <div
         class="col-span-full xl:col-span-8 bg-white dark:bg-slate-800 shadow-lg rounded-sm border border-slate-200 dark:border-slate-700">
+        
         <header class="px-5 py-4 border-b border-slate-100 dark:border-slate-700">
           <h2 class="font-semibold text-slate-800 dark:text-slate-100 text-2xl tracking-tight">
             @if (!$question->id)
@@ -17,7 +18,7 @@
         </header>
 
         <div class="p-3">
-          <div class="rounded shadow-lg p-4 px-4 ">
+          <div class="rounded shadow-lg p-4 px-4">
             <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 md:grid-cols-5">
               
               <div class="md:col-span-5">
@@ -93,7 +94,6 @@
         </div>
       </div>
     </form>
-
   </div>
 
 </x-app-layout>

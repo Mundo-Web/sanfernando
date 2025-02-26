@@ -19,4 +19,9 @@ class ResponseExam extends Model
     {
         return $this->belongsTo(QuestionExam::class, 'question_id');
     }
+
+    public function question()
+    {
+        return $this->belongsTo(QuestionExam::class);
+    }
 }

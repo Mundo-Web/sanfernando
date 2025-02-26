@@ -96,7 +96,6 @@
        
         <x-menu.item id="simulacros" href="{{ route('exam.index') }}" icon="fas fa-boxes">Simulacros</x-menu.item>
         <x-menu.item id="preguntas" href="{{ route('question.index') }}" icon="fas fa-boxes">Preguntas</x-menu.item>
-        <x-menu.item id="respuestas" href="{{ route('response.index') }}" icon="fas fa-boxes">Respuestas</x-menu.item>
         <x-menu.item id="major" href="{{ route('major.index') }}" icon="fas fa-boxes">Especialidad</x-menu.item>
         
       </x-menu.group>

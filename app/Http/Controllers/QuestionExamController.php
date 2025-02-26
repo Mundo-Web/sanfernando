@@ -19,9 +19,10 @@ class QuestionExamController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-    {
+    {   
+        $majors = Major::where('status', true)->get();
         $question = QuestionExam::where("status", "=", true)->get();
-        return view('pages.question.index', compact('question'));
+        return view('pages.question.savelist', compact('question','majors'));
     }
 
     /**

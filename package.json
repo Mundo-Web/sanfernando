@@ -21,6 +21,7 @@
         "@tailwindcss/line-clamp": "^0.4.4",
         "@tippyjs/react": "^4.2.6",
         "@vitejs/plugin-react": "^4.3.1",
+        "alpinejs": "^3.14.8",
         "aos": "^2.3.4",
         "chart.js": "^4.4.1",
         "chartjs-adapter-moment": "^1.0.1",

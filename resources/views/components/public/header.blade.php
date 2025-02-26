@@ -245,6 +245,13 @@
             {{-- <div id="productos-link-h" class="w-0"></div> --}}
           </a>
           
+          @if (count($simulacros)>0)
+            <a href="{{ route('Simulacro.jsx') }}" class="font-medium hover:opacity-75 ">
+              <span>Simulacros</span>
+            </a>
+          @endif
+
+
           @if (count($docentes)> 0)
             <a href="{{ route('Docente.jsx') }}" class="font-medium hover:opacity-75">
               <span>Docentes</span>
@@ -254,17 +261,6 @@
           {{-- <a id="productos-link" href="{{ route('Nosotros.jsx') }}" class="font-medium ">
             <span class="underline-this">Nosotros</span>
           </a> --}}
-          @if (count($recursos)>0)
-            <a href="{{ route('Recursos.jsx') }}" class="font-medium hover:opacity-75 ">
-              <span>Recursos</span>
-            </a>
-          @endif
-
-          @if (count($simulacros)>0)
-            <a href="{{ route('Simulacro.jsx') }}" class="font-medium hover:opacity-75 ">
-              <span>Examenes de Simulacro</span>
-            </a>
-          @endif
 
           @if (count($recursos)>0)
             <a href="{{ route('Recursos.jsx') }}" class="font-medium hover:opacity-75 ">
@@ -280,7 +276,7 @@
           @endif --}}
 
           <a href="{{ route('Contacto.jsx') }}" class="font-medium hover:opacity-75  ">
-            <span>Ayuda y Soporte</span>
+            <span>Contacto</span>
           </a>
 
           {{-- @if ($tags->count() > 0)

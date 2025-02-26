@@ -46,4 +46,6 @@ class QuestionExam extends Model
         $answers = collect([$correctAnswer])->merge($incorrectAnswers);
         return $answers->shuffle();
     }
+
+   
 }

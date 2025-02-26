@@ -69,14 +69,15 @@ class ExamSimulationController extends Controller
         } else {
             $jpa->update($body);
 
-            $jpa->questions()->sync([]);
+            $questions = [];
+
             if (!empty($request->questions)) {
                 foreach ($request->questions as $question) {
-                    $jpa->questions()->attach($question['pregunta_id'], [
-                        'score' => $question['puntaje']
-                    ]);
+                    $questions[$question['pregunta_id']] = ['score' => $question['puntaje']];
                 }
             }
+            
+            $jpa->questions()->sync($questions);
         }
         
     

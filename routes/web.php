@@ -46,6 +46,7 @@ use App\Http\Controllers\ResourcesController;
 use App\Http\Controllers\ResponseExamController;
 use App\Models\Major;
 use App\Models\QuestionExam;
+use App\Livewire\CreateQuestion;
 
 /*
 |--------------------------------------------------------------------------
@@ -174,9 +175,10 @@ Route::middleware(['auth:sanctum', 'verified', 'can:Admin'])->group(function () 
 
         //Preguntas
         Route::resource('/question', QuestionExamController::class);
+        
         Route::post('/question/deleteQuestionExam', [QuestionExamController::class, 'deleteQuestionExam'])->name('question.deleteQuestionExam');
         Route::post('/question/updateVisible', [QuestionExamController::class, 'updateVisible'])->name('question.updateVisible');
-
+       
         //Respuestas
         Route::resource('/response', ResponseExamController::class);
         Route::post('/response/deleteResponseExam', [ResponseExamController::class, 'deleteResponseExam'])->name('response.deleteResponseExam');

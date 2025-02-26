@@ -106,7 +106,7 @@
     "file": "assets/truncateText-C3yxPslF.js"
   },
   "resources/css/app.css": {
-    "file": "assets/app-aAK6Degf.css",
+    "file": "assets/app-50vWb0P2.css",
     "isEntry": true,
     "src": "resources/css/app.css"
   },
@@ -423,7 +423,7 @@
     "src": "resources/js/EvaluationFinished.jsx"
   },
   "resources/js/ExamenDesarrollo.jsx": {
-    "file": "assets/ExamenDesarrollo-SchQjmPq.js",
+    "file": "assets/ExamenDesarrollo-P8lFC2IH.js",
     "imports": [
       "resources/js/Utils/YTEmbed.jsx",
       "resources/js/Utils/ReactAppend.jsx",
@@ -668,7 +668,7 @@
     "css": [
       "assets/app-dGvTjJ5y.css"
     ],
-    "file": "assets/app-MHgqMfPT.js",
+    "file": "assets/app-XnJ9VjBD.js",
     "imports": [
       "_axios-_sX4vCAy.js",
       "__commonjsHelpers-4gQjN7DL.js"

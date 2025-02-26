@@ -25,7 +25,7 @@
 
 
   <!-- Styles -->
-  @livewireStyles
+  {{-- @livewireStyles --}}
   <link rel="stylesheet" href="{{ asset('css/styles.css') }}" />
 
   @vite(['resources/css/app.css', 'resources/js/' . Route::currentRouteName()])
@@ -38,7 +38,7 @@
   <script src="/lte/assets/js/vendor.min.js"></script>
   <script src="/lte/assets/libs/select2/js/select2.full.min.js"></script>
   <script src="/lte/assets/js/app.min.js"></script>
-  @livewireScripts
+  {{-- @livewireScripts --}}
   {{-- <script src="{{ asset('js/functions.js') }}?v={{ uniqid() }}"></script> --}}
 
 </body>
