@@ -47,7 +47,9 @@ use App\Http\Controllers\ResponseExamController;
 use App\Models\Major;
 use App\Models\QuestionExam;
 use App\Livewire\CreateQuestion;
-
+use App\Models\User;
+use Laravel\Socialite\Facades\Socialite;
+use Illuminate\Support\Facades\Auth;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -63,6 +65,43 @@ use App\Livewire\CreateQuestion;
 // Route::get('/login-rev', [AuthController::class, 'loginView'])->name('Login.jsx');
 // Route::get('/register-rev', [AuthController::class, 'registerView'])->name('Register.jsx');
 // Route::get('/', [IndexController::class, 'index'])->name('index');
+
+Route::get('/login-google', function () {
+
+    return Socialite::driver('google')->redirect();
+})->name('login-google');
+
+Route::get('/google-callback', function () {
+    $user = Socialite::driver('google')->user();
+    $userExist = User::where('external_id', $user->id)->where('external_auth', 'google')->first();
+
+    if ($userExist) {
+        Auth::login($userExist);
+
+        return redirect()->route('index');
+    } else {
+        if (User::where('email', $user->email)->exists()) {
+            $userExist = User::where('email', $user->email)->first();
+            $userExist->external_id = $user->id;
+            $userExist->external_auth = 'google';
+            $userExist->save();
+            Auth::login($userExist);
+        } else {
+            $userNew = User::create([
+                'name' => $user->user['given_name'],
+                'lastname' => $user->user['family_name'],
+                'email' => $user->email,
+                'external_id' => $user->id,
+                'external_auth' => 'google',
+                'avatar' => $user->avatar
+
+            ])->assignRole('Customer');
+            Auth::login($userNew);
+        }
+
+        return redirect()->route('index');
+    }
+});
 
 Route::get('/servicios', [IndexController::class, 'servicios'])->name('servicios');
 Route::get('/comentario', [IndexController::class, 'comentario'])->name('comentario');

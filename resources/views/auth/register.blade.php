@@ -1,7 +1,9 @@
 <x-authentication-layout>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
-
+    @php
+       $currentUrl = url()->full();
+    @endphp
 
     <div class="flex flex-col md:flex-row justify-center h-screen">
         <div class="w-2/5 hidden md:block font-poppins">
@@ -100,11 +102,19 @@
                             </label>
                         </div>
 
-                        <div class="">
+                        <div class="flex flex-col md:flex-row gap-3">
                             <input type="submit" value="Crear cuenta"
                                 class="text-white bg-[#F19905] w-full py-3 rounded-2xl cursor-pointer font-semibold font-poppins_regular text-center" />
+                            <a href="{{ strpos($currentUrl, 'ref=pago') !== false ? route('login-google', ['ref' => 'pago']) : route('login-google') }}"
+                                    class="cursor-pointer flex flex-row gap-2 justify-center items-center px-6 py-3  w-full rounded-2xl border border-[#F19905] border-solid">
+                                    <img loading="lazy" src="/images/img/Google1.png" alt=""
+                                      class="object-contain shrink-0  my-auto w-6 aspect-square" />
+                                    <span class=" my-auto">Ingresar con Google</span>
+                            </a>
                         </div>
                     </form>
+
+                   
 
                     <p class="mt-4 font-poppins_regular">Ya tienes una cuenta? <a href="/login" class="font-semibold">Iniciar sesion</a></p>
                     {{-- <x-validation-errors class="mt-4" /> --}}
