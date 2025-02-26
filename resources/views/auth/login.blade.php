@@ -48,7 +48,8 @@
                 <label for="acepto_terminos" class="font-normal text-[#4E5566] ">Acuérdate de mí
                 </label>
               </div>
-
+            </div>
+            
               <div class="flex flex-col md:flex-row gap-3">
                 <input type="submit" value="Iniciar Sesión"
                   class="text-white bg-[#F19905] px-6 py-3 rounded-2xl cursor-pointer  font-semibold font-poppins_regular  tracking-normal" />
@@ -59,7 +60,7 @@
                     <span class=" my-auto">Ingresar con Google</span>
                 </a>
               </div>
-            </div>
+            
 
             {{-- @if (Route::has('password.request'))
               <div class="flex flex-row justify-center items-centerpx-4">
