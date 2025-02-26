@@ -103,12 +103,12 @@ const Home = ({
     </section>
     )}
     
-    <section className='px-[5%] xl:px-[8%] py-12 xl:py-16 bg-gradient-to-b from-white to-[#F2F3F7]'>
+    <section className='px-[5%] xl:px-[8%] pt-12 xl:pt-16 bg-gradient-to-b from-white to-[#F2F3F7]'>
       <TwoColumn aboutUs={aboutUs} />
     </section>
 
 
-    <section className="px-[5%] xl:px-[8%] bg-[#F2F3F7]">
+    <section className="px-[5%] xl:px-[8%] bg-[#F2F3F7] py-12 xl:py-16">
         <div className="flex flex-row justify-center items-center bg-[#191023] w-full rounded-3xl relative">
          
                 <div className="flex flex-col gap-5 p-8 justify-center items-center w-full max-w-xl text-white text-center">
@@ -140,7 +140,7 @@ const Home = ({
     </section>
 
     {recursos?.length > 0 && (
-      <section className="px-[5%] xl:px-[8%] py-10 lg:py-20 bg-[#F2F3F7]">
+      <section className="px-[5%] xl:px-[8%] pb-10 lg:py-20 bg-[#F2F3F7]">
           <div className='flex flex-col gap-8'>
 
             <div className='flex flex-col md:flex-row md:justify-between items-start justify-center gap-5'>
