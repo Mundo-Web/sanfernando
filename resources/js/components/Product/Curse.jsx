@@ -28,7 +28,7 @@ const Curse = ({ producto, userIsLogged, deseoActivo = false }) => {
     <div className="flex relative flex-col flex-1 shrink basis-0 min-w-[240px]">
       <div className="min-w-[240px]">
         <img loading="lazy" src={`/${producto.imagen}`} className="object-cover object-center z-0 w-full rounded-t-2xl h-[280px]"
-          alt="Course background image" onError={e => e.target.src = '/images/img/noimagen.jpg'} />
+          alt="Course background image" onError={e => e.target.src = '/images/img/no_img.jpg'} />
       </div>
 
       <div className="flex z-0 flex-col p-6 w-full bg-[#F2F3F7] gap-2 rounded-b-3xl">
