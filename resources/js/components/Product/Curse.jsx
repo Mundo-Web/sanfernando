@@ -75,7 +75,7 @@ const Curse = ({ producto, userIsLogged, deseoActivo = false }) => {
               <path d="M2.75017 10.2027C2.75017 6.57162 2.75017 4.75607 3.7936 3.62803C4.83703 2.5 6.51641 2.5 9.87517 2.5H11.4585C14.8173 2.5 16.4967 2.5 17.5401 3.62803C18.5835 4.75607 18.5835 6.57162 18.5835 10.2027V10.6307C18.5835 14.2617 18.5835 16.0773 17.5401 17.2053C16.4967 18.3333 14.8173 18.3333 11.4585 18.3333H9.87517C6.51641 18.3333 4.83703 18.3333 3.7936 17.2053C2.75017 16.0773 2.75017 14.2617 2.75017 10.6307V10.2027Z" stroke="#221F1F" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" />
               <path d="M3.16667 6.66797H18.1667" stroke="#221F1F" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" />
             </svg>
-            <p>{producto.duracion} semanas</p>
+            <p>{producto.duracion} {producto.is_exam ? 'horas' : 'semanas'}</p>
           </div>
 
           <div className="flex flex-row gap-1 items-center justify-start">
