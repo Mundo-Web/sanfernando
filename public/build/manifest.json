@@ -109,7 +109,7 @@
     "file": "assets/truncateText-C3yxPslF.js"
   },
   "resources/css/app.css": {
-    "file": "assets/app-u0CbiVBM.css",
+    "file": "assets/app-rFuK90pj.css",
     "isEntry": true,
     "src": "resources/css/app.css"
   },
@@ -212,7 +212,7 @@
     "src": "resources/js/Catalogo.jsx"
   },
   "resources/js/CatalogoGP.jsx": {
-    "file": "assets/CatalogoGP-z1xIHfxF.js",
+    "file": "assets/CatalogoGP-zh8opNV0.js",
     "imports": [
       "resources/js/Utils/YTEmbed.jsx",
       "resources/js/Utils/ReactAppend.jsx",
@@ -235,7 +235,7 @@
     "src": "resources/js/CatalogoGP.jsx"
   },
   "resources/js/CatalogoSimulacro.jsx": {
-    "file": "assets/CatalogoSimulacro-WJpeOZTL.js",
+    "file": "assets/CatalogoSimulacro-73KiaFtH.js",
     "imports": [
       "resources/js/Utils/YTEmbed.jsx",
       "resources/js/Utils/ReactAppend.jsx",
@@ -572,7 +572,7 @@
     "src": "resources/js/Register.jsx"
   },
   "resources/js/Simulacro.jsx": {
-    "file": "assets/Simulacro-D1L06Cl9.js",
+    "file": "assets/Simulacro-eSD-xs9G.js",
     "imports": [
       "resources/js/Utils/YTEmbed.jsx",
       "resources/js/Utils/ReactAppend.jsx",

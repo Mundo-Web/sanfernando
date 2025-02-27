@@ -97,7 +97,7 @@ class IndexController extends Controller
     $productos =  Products::with(['tags', 'galeria', 'category'])->where('status', 1)->take(12)->get();
 
     $categorias = Category::select('categories.id', 'categories.name', 'categories.visible')
-    ->with(['subcategories'])
+      ->with(['subcategories'])
       ->join('products', 'products.categoria_id', 'categories.id')
       ->where('categories.visible', 1)
       ->where('products.status', 1)
@@ -133,7 +133,8 @@ class IndexController extends Controller
 
     $productos =  Products::with(['tags', 'galeria', 'category'])->where('status', 1)->take(12)->get();
 
-    $categorias = Category::select('categories.id', 'categories.name', 'categories.visible')
+    $categorias = Category::with(['subcategories'])
+      ->select('categories.id', 'categories.name', 'categories.visible')
       ->join('products', 'products.categoria_id', 'categories.id')
       ->where('categories.visible', 1)
       ->where('products.status', 1)
@@ -155,16 +156,18 @@ class IndexController extends Controller
         'categorias' => $categorias
       ]
     )->rootView('app');
-
   }
 
   public function detalleCurso(string $id)
   {
     $producto = Products::with(['tags', 'galeria', 'category', 'docentes'])->where('id', $id)->first();
     $modules = Module::select([
-      'name', 'duration', 'order', 'type'
+      'name',
+      'duration',
+      'order',
+      'type'
     ])
-    ->withCount(['sources'])
+      ->withCount(['sources'])
       ->where('course_id', $producto->id)
       ->get();
     return Inertia::render('CursoDetalle', [
@@ -176,11 +179,11 @@ class IndexController extends Controller
   }
 
   public function docente()
-  { 
+  {
     $cursos = Major::where('status', 1)
-    ->where('visible', 1)
-    ->whereHas('staff')
-    ->get();
+      ->where('visible', 1)
+      ->whereHas('staff')
+      ->get();
 
     $docentes = Staff::where('status', 1)->get();
     return Inertia::render('Docente', [
@@ -269,7 +272,7 @@ class IndexController extends Controller
     ])->rootView('app');
   }
 
-  
+
 
   public function evaluation(Request $request, string $evaluationId)
   {
@@ -305,7 +308,7 @@ class IndexController extends Controller
     ])->rootView('app');
   }
 
-  
+
   public function simulacro(Request $request, string $examId)
   {
 
@@ -322,7 +325,7 @@ class IndexController extends Controller
 
     if (!$evaluation) return \redirect('/micuenta');
 
-    
+
     $attemp = AttempSimulation::select()
       ->where('evaluation_id', $evaluation->id)
       ->where('user_id', Auth::user()->id)
@@ -336,7 +339,7 @@ class IndexController extends Controller
       ->get();
 
 
-      return Inertia::render('SimulacroDesarrollo', [
+    return Inertia::render('SimulacroDesarrollo', [
       'evaluation' => $evaluation,
       'course' => $courseJpa,
       'attemp' => $attemp,
@@ -345,10 +348,11 @@ class IndexController extends Controller
   }
 
 
-  public function simulacroDesarrollo(Request $request, string $evaluationId){
-    
-    
-    
+  public function simulacroDesarrollo(Request $request, string $evaluationId)
+  {
+
+
+
     $evaluation = Products::where('examsimulation_id', $evaluationId)->first();
 
     $examen = ExamSimulation::with('questions')
@@ -362,7 +366,7 @@ class IndexController extends Controller
       ->where('user_id', Auth::user()->id)
       ->orderBy('created_at', 'DESC')
       ->first();
-    
+
     if (!$attemp) return redirect("/micuenta/simulation/{$evaluationId}");
 
     $questions = $examen->questions->map(function ($question) use ($attemp) {
@@ -383,31 +387,33 @@ class IndexController extends Controller
   }
 
 
-  public function simulacroTerminado(Request $request, string $attempId){
-    
-    $attempJpa = AttempSimulation::with(['course','evaluation'])->find($attempId);
+  public function simulacroTerminado(Request $request, string $attempId)
+  {
+
+    $attempJpa = AttempSimulation::with(['course', 'evaluation'])->find($attempId);
 
     $totalpuntaje = $this->calculateTotalScore($attempJpa);
 
     $attempsCount = AttempSimulation::where('user_id', Auth::user()->id)
       ->where('course_id', $attempJpa->course->id)
       ->count();
-    
-      return Inertia::render('SimulacroTerminado', [
-        'attemp' => $attempJpa,
-        'evaluation' => $attempJpa->evaluation,
-        'course' => $attempJpa->course,
-        'attempsCount' => $attempsCount,
-        'totalpuntaje' => $totalpuntaje
-      ])->rootView('app');
+
+    return Inertia::render('SimulacroTerminado', [
+      'attemp' => $attempJpa,
+      'evaluation' => $attempJpa->evaluation,
+      'course' => $attempJpa->course,
+      'attempsCount' => $attempsCount,
+      'totalpuntaje' => $totalpuntaje
+    ])->rootView('app');
   }
 
-  private function calculateTotalScore($attempJpa) {
+  private function calculateTotalScore($attempJpa)
+  {
     $totalScore = 0;
     foreach ($attempJpa->details as $detail) {
-        if ($detail->is_correct) {
-            $totalScore += $detail->points;
-        }
+      if ($detail->is_correct) {
+        $totalScore += $detail->points;
+      }
     }
     return $totalScore;
   }
@@ -925,24 +931,24 @@ class IndexController extends Controller
     $cursoSeleccionados =  $request->input('curse');
     $order = $request->input('order');
 
-    
+
     $resultados = Staff::with('majors')->select('staff.*')
       ->where('status', 1);
-    
+
     if (!empty($query)) {
-        $resultados = $resultados->where('nombre', 'like', "%$query%");
+      $resultados = $resultados->where('nombre', 'like', "%$query%");
     }
 
     if (!empty($cursoSeleccionados)) {
       $categoriaSplit = array_filter(explode(',', $cursoSeleccionados));
-        if (!empty($categoriaSplit)) {
-              $resultados = $resultados->whereIn('staff.major_id', $categoriaSplit);
-        }
+      if (!empty($categoriaSplit)) {
+        $resultados = $resultados->whereIn('staff.major_id', $categoriaSplit);
+      }
     }
-    
+
     // if (isset($cursoSeleccionados)) {
     //     $cursosSplit = array_map('intval', explode(',', $cursoSeleccionados));
-        
+
     //     if (count($cursosSplit) > 0) {
     //       $query = DB::table('staff_xproducts')->select('staff_id')->whereIn('producto_id', $cursosSplit)->get()->pluck('staff_id')->unique();
     //       $resultados = $resultados->whereIn('staff.id', $query);
@@ -959,11 +965,11 @@ class IndexController extends Controller
     $resultados = $resultados->orderBy($orderConfig['column'], $orderConfig['direction']);
 
     $totalCount = 0;
-    
+
     if ($request->requireTotalCount) {
       $totalCount = $resultados->count('*');
     }
-    
+
     $resultados = $resultados->skip($request->skip ?? 0)
       ->take($request->take ?? 10)
       ->get();
@@ -982,15 +988,15 @@ class IndexController extends Controller
       ->where('status', 1)
       ->where('visible', 1);
 
-      if (isset($tag) && $tag !== 'todos') {
-        $idtag = ResourceList::where('name', '=', $tag)->first();
-    
-        if ($idtag) {
-            $tagsxProducts = TagResource::where('etiqueta', $idtag->id)->get()->pluck('id_resource');
-            $resultados = $resultados->whereIn('resources.id', $tagsxProducts);
-        }
+    if (isset($tag) && $tag !== 'todos') {
+      $idtag = ResourceList::where('name', '=', $tag)->first();
+
+      if ($idtag) {
+        $tagsxProducts = TagResource::where('etiqueta', $idtag->id)->get()->pluck('id_resource');
+        $resultados = $resultados->whereIn('resources.id', $tagsxProducts);
       }
-     
+    }
+
     switch ($order) {
       case 'a-z':
         $resultados = $resultados->orderBy('name', 'asc');
@@ -1008,7 +1014,7 @@ class IndexController extends Controller
     }
 
     $totalCount = 0;
-    
+
     if ($request->requireTotalCount) {
       $totalCount = $resultados->count('*');
     }
@@ -1016,7 +1022,7 @@ class IndexController extends Controller
     $resultados = $resultados->skip($request->skip ?? 0)
       ->take($request->take ?? 10)
       ->get();
-    
+
     return response()->json(['resultado' => $resultados, 'totalCount' =>  $totalCount]);
   }
 
@@ -1034,24 +1040,24 @@ class IndexController extends Controller
     $requireTotalCount = $request->input('requireTotalCount', false);
 
     $resultados = Products::select('products.*')
-        ->where('products.status', 1)
-        ->where('products.visible', 1)
-        ->where('products.is_exam', 0)
-        ->join('categories', 'categories.id', 'products.categoria_id')
-        ->where('categories.visible', 1)
-        ->where('categories.status', 1)
-        ->with(['tags', 'galeria', 'category']);
-    
+      ->where('products.status', 1)
+      ->where('products.visible', 1)
+      ->where('products.is_exam', 0)
+      ->join('categories', 'categories.id', 'products.categoria_id')
+      ->where('categories.visible', 1)
+      ->where('categories.status', 1)
+      ->with(['tags', 'galeria', 'category']);
+
 
     if (!empty($query)) {
-          $resultados = $resultados->where('producto', 'like', "%$query%");
+      $resultados = $resultados->where('producto', 'like', "%$query%");
     }
 
     if (!empty($categoria)) {
       $categoriaSplit = array_filter(explode(',', $categoria));
-        if (!empty($categoriaSplit)) {
-            $resultados = $resultados->whereIn('products.categoria_id', $categoriaSplit);
-        }
+      if (!empty($categoriaSplit)) {
+        $resultados = $resultados->whereIn('products.categoria_id', $categoriaSplit);
+      }
     }
 
     if (!empty($subcategoria)) {
@@ -1078,13 +1084,13 @@ class IndexController extends Controller
     if ($requireTotalCount) {
       $totalCount = $resultados->count();
     } else {
-        $totalCount = 0;
+      $totalCount = 0;
     }
 
     $resultados = $resultados->skip($skip)->take($take)->get();
 
     // $totalCount = 0;
-    
+
     // if ($request->requireTotalCount) {
     //   $totalCount = $resultados->count('*');
     // }
@@ -1101,6 +1107,7 @@ class IndexController extends Controller
     $query = $request->input('query');
     $order = $request->input('order');
     $categoria =  $request->input('category');
+    $subcategoria =  $request->input('subcategory');
     $tag = $request->input('tag');
 
     $skip = $request->input('skip', 0);
@@ -1108,24 +1115,31 @@ class IndexController extends Controller
     $requireTotalCount = $request->input('requireTotalCount', false);
 
     $resultados = Products::select('products.*')
-        ->where('products.status', 1)
-        ->where('products.visible', 1)
-        ->where('products.is_exam', 1)
-        ->join('categories', 'categories.id', 'products.categoria_id')
-        ->where('categories.visible', 1)
-        ->where('categories.status', 1)
-        ->with(['tags', 'galeria', 'category']);
-    
+      ->where('products.status', 1)
+      ->where('products.visible', 1)
+      ->where('products.is_exam', 1)
+      ->join('categories', 'categories.id', 'products.categoria_id')
+      ->where('categories.visible', 1)
+      ->where('categories.status', 1)
+      ->with(['tags', 'galeria', 'category']);
+
 
     if (!empty($query)) {
-          $resultados = $resultados->where('producto', 'like', "%$query%");
+      $resultados = $resultados->where('producto', 'like', "%$query%");
     }
 
     if (!empty($categoria)) {
       $categoriaSplit = array_filter(explode(',', $categoria));
-        if (!empty($categoriaSplit)) {
-            $resultados = $resultados->whereIn('products.categoria_id', $categoriaSplit);
-        }
+      if (!empty($categoriaSplit)) {
+        $resultados = $resultados->whereIn('products.categoria_id', $categoriaSplit);
+      }
+    }
+
+    if (!empty($subcategoria)) {
+      $subcategoriaSplit = array_filter(explode(',', $subcategoria));
+      if (!empty($subcategoriaSplit)) {
+        $resultados = $resultados->whereIn('products.subcategory_id', $subcategoriaSplit);
+      }
     }
 
     // if (isset($tag)){
@@ -1145,14 +1159,14 @@ class IndexController extends Controller
     if ($requireTotalCount) {
       $totalCount = $resultados->count();
     } else {
-        $totalCount = 0;
+      $totalCount = 0;
     }
 
 
     $resultados = $resultados->skip($skip)->take($take)->get();
 
     // $totalCount = 0;
-    
+
     // if ($request->requireTotalCount) {
     //   $totalCount = $resultados->count('*');
     // }
@@ -1384,11 +1398,10 @@ class IndexController extends Controller
   {
 
     $data = $request->all();
-    
+
     try {
       $this->envioCorreo($data);
       return response()->json(['message' => 'Mensaje enviado con exito']);
-
     } catch (ValidationException $e) {
 
       return response()->json(['message' => $e->validator->errors()], 400);
@@ -1411,12 +1424,12 @@ class IndexController extends Controller
 
   private function envioCorreo($data)
   {
-      $appUrl = env('APP_URL');
-      $name = $data['full_name'];
-      $mensaje = "Gracias por comunicarte con " . env('APP_NAME');
-      $mail = EmailConfig::config($name, $mensaje);
-      $datosGenerales = General::first();
-      try {
+    $appUrl = env('APP_URL');
+    $name = $data['full_name'];
+    $mensaje = "Gracias por comunicarte con " . env('APP_NAME');
+    $mail = EmailConfig::config($name, $mensaje);
+    $datosGenerales = General::first();
+    try {
       $mail->addAddress($data['email']);
       $mail->Body = '
           <html lang="en">
@@ -1446,8 +1459,8 @@ class IndexController extends Controller
                   margin: 0 auto;
                   text-align: center;
                   background-image: url(' .
-                      $appUrl .
-                      '/mail/fondo.png);
+        $appUrl .
+        '/mail/fondo.png);
                   background-repeat: no-repeat;
                   background-position: center;
                   background-size: cover;
@@ -1466,10 +1479,10 @@ class IndexController extends Controller
                       "
                   >
                       <a href="' .
-                      $appUrl .
-                      '" target="_blank" style="text-align:center" ><img src="' .
-                      $appUrl .
-                      '/mail/logo.png" alt="hpi" /></a>
+        $appUrl .
+        '" target="_blank" style="text-align:center" ><img src="' .
+        $appUrl .
+        '/mail/logo.png" alt="hpi" /></a>
                   </th>
                   </tr>
               </thead>
@@ -1533,8 +1546,8 @@ class IndexController extends Controller
                       <a
                       target="_blank"
                       href="' .
-                      $appUrl .
-                      '"
+        $appUrl .
+        '"
                       style="
                           text-decoration: none;
                           background-color: #59C402;
@@ -1563,9 +1576,9 @@ class IndexController extends Controller
       ';
       $mail->isHTML(true);
       $mail->send();
-      } catch (\Throwable $th) {
+    } catch (\Throwable $th) {
       //throw $th;
-      }
+    }
   }
 
   private function envioCorreoCompra($data)
@@ -1780,21 +1793,23 @@ class IndexController extends Controller
   }
 
 
-  public function recursos(){
+  public function recursos()
+  {
     $recursos = Resources::where('status', '=', 1)->where('visible', '=', 1)->orderBy('created_at', 'desc')->get();
     $documentoscat = ResourceList::where('status', '=', 1)->where('visible', '=', 1)->get();
     $aboutUs = AboutUs::all();
     return Inertia::render('Recursos', [
-       'recursos' => $recursos,
-       'aboutUs' => $aboutUs,
-       'documentoscat' => $documentoscat,
+      'recursos' => $recursos,
+      'aboutUs' => $aboutUs,
+      'documentoscat' => $documentoscat,
     ])->rootView('app');
   }
 
-  public function aumentarContador(Request $request){
+  public function aumentarContador(Request $request)
+  {
 
     $recurso = Resources::where('id', $request->id)->first();
-   
+
     if (!$recurso) {
       return response()->json(['error' => 'Recurso no encontrado'], 404);
     }
@@ -1804,7 +1819,5 @@ class IndexController extends Controller
     $recurso->save();
 
     return response()->json(['resultado' => 'Contador actualizado', 'contador' => $recurso->count]);
-
   }
-
 }

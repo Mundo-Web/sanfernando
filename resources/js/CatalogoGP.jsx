@@ -217,7 +217,7 @@ const CatalogoGP = ({
           <div className="flex flex-col w-full lg:w-1/3">
             <div className="relative w-full mb-8">
 
-              <div className={`py-3 px-4 cursor-pointer bg-[#f0f1f2] flex rounded-t-2xl justify-between items-center ${isOpen ? "" : "rounded-b-2xl"}`} onClick={() => setIsOpen(!isOpen)} >
+              <div className={`py-3 px-4 cursor-pointer flex  justify-between items-center`} onClick={() => setIsOpen(!isOpen)} >
                 <span className="font-Montserrat_Bold text-[#221F1F] text-xl">Categorias</span>
                 <span className={`transform transition-transform ${isOpen ? "rotate-180" : ""}`}>
                   <i className="fa-solid fa-chevron-down"></i>
@@ -226,13 +226,13 @@ const CatalogoGP = ({
 
 
               <ul
-                className={`w-full p-5 pt-2 flex flex-col gap-3 bg-[#f0f1f2] border-b border-gray-300 z-10 rounded-b-2xl ${isOpen ? "block" : "hidden"
+                className={`w-full px-4 pb-6 pt-2 flex flex-col gap-3  border-b border-gray-300 z-10 ${isOpen ? "block" : "hidden"
                   }`}
               >
                 {categorias.length > 0 && categorias.map((item, index) => {
                   return (
                     <li key={`category-${item.id}`} className='flex flex-row items-start justify-start'>
-                      <input type="checkbox" id={`react-option-${index}`} value={item.id} className="peer rounded-sm focus:ring-0 border-[#F19905] text-[#F19905]"
+                      <input type="checkbox" id={`react-option-${index}`} value={item.id} className="peer rounded focus:ring-0 border-[#F19905] text-[#F19905]"
                         onChange={(e) => handleCategoryChange(item.id, e.target.checked)} checked={query.current.category.includes(item.id)}></input>
                       <label
                         // onClick={(e) => handleCategoryChange(item.id, e.target.previousSibling.checked)}
@@ -249,7 +249,7 @@ const CatalogoGP = ({
             </div>
             <div className="relative w-full">
 
-              <div className={`py-3 px-4 cursor-pointer bg-[#f0f1f2] flex rounded-t-2xl transition-all justify-between items-center ${isSubcategoryOpen ? "" : "rounded-b-2xl"}`} onClick={() => setIsSubcategoryOpen(!isSubcategoryOpen)} >
+              <div className={`py-3 px-4 cursor-pointer flex transition-all justify-between items-center`} onClick={() => setIsSubcategoryOpen(!isSubcategoryOpen)} >
                 <span className="font-Montserrat_Bold text-[#221F1F] text-xl">Subcategorias</span>
                 <span className={`transform transition-transform ${isSubcategoryOpen ? "rotate-180" : ""}`}>
                   <i className="fa-solid fa-chevron-down"></i>
@@ -258,7 +258,7 @@ const CatalogoGP = ({
 
 
               <ul
-                className={`w-full p-5 pt-2 flex flex-col gap-3 bg-[#f0f1f2] border-b border-gray-300 z-10 rounded-b-2xl ${isSubcategoryOpen ? "block" : "hidden"
+                className={`w-full px-4 pb-6 pt-2 flex flex-col gap-3 border-b border-gray-300 z-10 ${isSubcategoryOpen ? "block" : "hidden"
                   }`}
               >
                 {
@@ -268,14 +268,14 @@ const CatalogoGP = ({
                         query.current.category.length > 0 &&
                         !query.current.category.includes(category.id)
                       ) ||
-                      category.subcategories.length <= 0
+                      (category.subcategories?.length || 0) <= 0
                     ) return
                     return <div key={category.id}>
                       <p className="font-semibold mb-2">{category.name}</p>
-                      {category.subcategories.map((subcategory) => {
+                      {category.subcategories?.map((subcategory) => {
                         return (
                           <li key={`category-${subcategory.id}`} className='flex flex-row items-start justify-start py-1'>
-                            <input type="checkbox" id={`sc-option-${subcategory.id}`} value={subcategory.id} className="peer rounded-sm focus:ring-0 border-[#F19905] text-[#F19905]"
+                            <input type="checkbox" id={`sc-option-${subcategory.id}`} value={subcategory.id} className="peer rounded focus:ring-0 border-[#F19905] text-[#F19905]"
                               onChange={(e) => handleSubcategoryChange(category.id, subcategory.id, e.target.checked)} checked={query.current.subcategory.includes(subcategory.id)}></input>
                             <label
                               htmlFor={`sc-option-${subcategory.id}`}
