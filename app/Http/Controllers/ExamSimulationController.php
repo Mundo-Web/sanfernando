@@ -25,10 +25,10 @@ class ExamSimulationController extends Controller
      */
     public function create()
     {   
-        $question = QuestionExam::where('status', true)->get();
+        $preguntas = QuestionExam::where('status', true)->get();
         $especialidades = Major::where('status', true)->get();
         $exam = new ExamSimulation();
-        return view('pages.exam.save', compact('question','exam','especialidades'));
+        return view('pages.exam.save', compact('preguntas','exam','especialidades'));
     }
 
 
@@ -36,8 +36,9 @@ class ExamSimulationController extends Controller
     {
         $exam = ExamSimulation::with('questions.majors')->findOrfail($id);
         $especialidades = Major::where('status', true)->get();
-        $questions = QuestionExam::where('status', true)->get();
-        return view('pages.exam.save', compact('questions','exam','especialidades'));
+        $preguntas = QuestionExam::where('status', true)->get();
+        
+        return view('pages.exam.save', compact('preguntas','exam','especialidades'));
     }
 
     /**
