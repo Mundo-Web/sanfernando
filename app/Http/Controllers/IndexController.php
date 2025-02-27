@@ -97,6 +97,7 @@ class IndexController extends Controller
     $productos =  Products::with(['tags', 'galeria', 'category'])->where('status', 1)->take(12)->get();
 
     $categorias = Category::select('categories.id', 'categories.name', 'categories.visible')
+    ->with(['subcategories'])
       ->join('products', 'products.categoria_id', 'categories.id')
       ->where('categories.visible', 1)
       ->where('products.status', 1)
@@ -1025,6 +1026,7 @@ class IndexController extends Controller
     $query = $request->input('query');
     $order = $request->input('order');
     $categoria =  $request->input('category');
+    $subcategoria =  $request->input('subcategory');
     $tag = $request->input('tag');
 
     $skip = $request->input('skip', 0);
@@ -1050,6 +1052,13 @@ class IndexController extends Controller
         if (!empty($categoriaSplit)) {
             $resultados = $resultados->whereIn('products.categoria_id', $categoriaSplit);
         }
+    }
+
+    if (!empty($subcategoria)) {
+      $subcategoriaSplit = array_filter(explode(',', $subcategoria));
+      if (!empty($subcategoriaSplit)) {
+        $resultados = $resultados->whereIn('products.subcategory_id', $subcategoriaSplit);
+      }
     }
 
     // if (isset($tag)){

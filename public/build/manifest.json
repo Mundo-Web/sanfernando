@@ -109,7 +109,7 @@
     "file": "assets/truncateText-C3yxPslF.js"
   },
   "resources/css/app.css": {
-    "file": "assets/app-R2Q-dNhI.css",
+    "file": "assets/app-u0CbiVBM.css",
     "isEntry": true,
     "src": "resources/css/app.css"
   },
@@ -212,7 +212,7 @@
     "src": "resources/js/Catalogo.jsx"
   },
   "resources/js/CatalogoGP.jsx": {
-    "file": "assets/CatalogoGP-kuxfejse.js",
+    "file": "assets/CatalogoGP-z1xIHfxF.js",
     "imports": [
       "resources/js/Utils/YTEmbed.jsx",
       "resources/js/Utils/ReactAppend.jsx",
