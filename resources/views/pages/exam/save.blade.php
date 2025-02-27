@@ -86,7 +86,7 @@
                                 </div>
                             </div>
 
-
+                            {{$preguntas}}
                             <!-- Pregunta -->
                             <div class="md:col-span-5">
                                 <label for="pregunta_{{ $index }}">Pregunta</label>
@@ -103,6 +103,7 @@
                                           <option value="{{ $q->id }}" {{ $question->id == $q->id ? 'selected' : '' }}>
                                               {{ $q->question }}
                                           </option>
+                                         
                                       @endforeach
                                   </select>
                                 </div>

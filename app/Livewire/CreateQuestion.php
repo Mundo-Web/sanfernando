@@ -13,7 +13,7 @@ class CreateQuestion extends Component
     public $description;
     public $questionId;
     public $imagen;
-    public $status = false;
+    public $status = true;
     
     public $majors;
     public $questions = [];
@@ -71,7 +71,7 @@ class CreateQuestion extends Component
         $this->description = '';
         $this->questionId = '';
         $this->imagen = null;
-        $this->status = false;
+        $this->status = true;
         $this->answers = [];
     }
 
