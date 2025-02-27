@@ -158,7 +158,7 @@ const Docente = ({ docentes, cursos }) => {
 										<input type="checkbox" id={`react-option-${index}`} value={item.id} className="peer rounded-[5px] focus:ring-0 border-[#F19905] text-[#F19905]"
 										onChange={(e) => handleDocenteChange(item.id, e.target.checked)}></input>
 										<label
-											onClick={(e) => handleDocenteChange(item.id, e.target.previousSibling.checked)}
+											// onClick={(e) => handleDocenteChange(item.id, e.target.previousSibling.checked)}
 											htmlFor={`react-option-${index}`}
 											type="button"
 											className="font-Montserrat_Regular leading-none ml-2"
