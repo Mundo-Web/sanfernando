@@ -37,7 +37,7 @@
               @foreach ($staff as $item)
                 <tr>
                   <td>{{ $item->nombre }}</td>
-                  <td>{{ $item->majors->name }}</td>
+                  <td>{{ $item->majors->name ?? "Sin especialidad"}}</td>
                   {{-- <td>{{ $item->facebook }}</td>
                   <td>{{ $item->instagram }}</td>
                   <td>{{ $item->youtube }}</td>
