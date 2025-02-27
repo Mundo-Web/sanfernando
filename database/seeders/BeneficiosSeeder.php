@@ -26,23 +26,5 @@ class BeneficiosSeeder extends Seeder
     Strength::updateOrCreate(['titulo' => 'Formación Integral'], [
       'descripcionshort' => 'Programas educativos que abarcan todos los aspectos de la gestión pública.'
     ]);
-    Strength::updateOrCreate(['titulo' => 'Certificación Reconocida'], [
-      'descripcionshort' => 'Obtén certificados reconocidos que potencien tu perfil profesional.'
-    ]);
-    Strength::updateOrCreate(['titulo' => 'Flexibilidad'], [
-      'descripcionshort' => 'Opciones de estudio que se adaptan a tu ritmo de vida y responsabilidades.'
-    ]);
-    Strength::updateOrCreate(['titulo' => 'Actualización Continua'], [
-      'descripcionshort' => 'Mantente al día con las últimas tendencias y cambios en la gestión pública.'
-    ]);
-    Strength::updateOrCreate(['titulo' => 'Soporte Personalizado'], [
-      'descripcionshort' => 'Recibe orientación y apoyo a lo largo de todo tu proceso de aprendizaje.'
-    ]);
-    Strength::updateOrCreate(['titulo' => 'Materiales de Estudio'], [
-      'descripcionshort' => 'Acceso a recursos y materiales educativos de alta calidad.'
-    ]);
-    Strength::updateOrCreate(['titulo' => 'Prácticas Profesionales'], [
-      'descripcionshort' => 'Oportunidades para aplicar lo aprendido en entornos reales de trabajo.'
-    ]);
   }
 }
