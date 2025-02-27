@@ -154,8 +154,9 @@ const Docente = ({ docentes, cursos }) => {
 							>
 								{cursos.length > 0 && cursos.map((item, index) => {
 									return (
-									<li className='flex flex-row items-start justify-start'>
-										<input type="checkbox" id={`react-option-${index}`} value={item.id} className="peer rounded-[5px] focus:ring-0 border-[#F19905] text-[#F19905]" required=""></input>
+										<li key={index} className='flex flex-row items-start justify-start'>
+										<input type="checkbox" id={`react-option-${index}`} value={item.id} className="peer rounded-[5px] focus:ring-0 border-[#F19905] text-[#F19905]"
+										onChange={(e) => handleDocenteChange(item.id, e.target.checked)}></input>
 										<label
 											onClick={(e) => handleDocenteChange(item.id, e.target.previousSibling.checked)}
 											htmlFor={`react-option-${index}`}
