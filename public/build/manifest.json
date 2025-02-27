@@ -106,7 +106,7 @@
     "file": "assets/truncateText-C3yxPslF.js"
   },
   "resources/css/app.css": {
-    "file": "assets/app-LCM81BfA.css",
+    "file": "assets/app-u0CbiVBM.css",
     "isEntry": true,
     "src": "resources/css/app.css"
   },
@@ -368,7 +368,7 @@
     "src": "resources/js/Diploma.jsx"
   },
   "resources/js/Docente.jsx": {
-    "file": "assets/Docente-lN-e_FiV.js",
+    "file": "assets/Docente-x2dx2WVD.js",
     "imports": [
       "resources/js/Utils/YTEmbed.jsx",
       "resources/js/Utils/ReactAppend.jsx",

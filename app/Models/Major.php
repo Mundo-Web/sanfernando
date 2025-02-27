@@ -10,4 +10,8 @@ class Major extends Model
     use HasFactory;
     protected $fillable=['name', 'description', 'imagen', 'visible', 'status'];
 
+    public function staff()
+    {
+        return $this->hasMany(Staff::class, 'major_id');
+    }
 }

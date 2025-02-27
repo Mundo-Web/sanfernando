@@ -23,7 +23,7 @@ const Teacher = ({ docentes }) => {
                 </h2>
             </Tippy>
 
-            <div className='font-Montserrat_SemiBold text-sm text-[#F19905] -mt-2'><p>{docentes.cargo}</p></div>
+            <div className='font-Montserrat_SemiBold text-sm text-[#F19905] -mt-2'><p>Especialista en {docentes.majors?.name}</p></div>
 
             <div className='font-Montserrat_Regular text-sm text-[#221F1F] line-clamp-3'>
                 <p>{docentes.resume}</p>

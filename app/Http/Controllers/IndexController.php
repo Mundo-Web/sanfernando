@@ -25,6 +25,7 @@ use App\Models\Category;
 use App\Models\ExamSimulation;
 use App\Models\Faqs;
 use App\Models\Galerie;
+use App\Models\Major;
 use App\Models\Module;
 use App\Models\Offer;
 use App\Models\PolyticsCondition;
@@ -174,7 +175,12 @@ class IndexController extends Controller
   }
 
   public function docente()
-  { $cursos = Products::where('status', 1)->where('visible', 1)->get();
+  { 
+    $cursos = Major::where('status', 1)
+    ->where('visible', 1)
+    ->whereHas('staff')
+    ->get();
+
     $docentes = Staff::where('status', 1)->get();
     return Inertia::render('Docente', [
       'docentes' => $docentes,
@@ -919,42 +925,44 @@ class IndexController extends Controller
     $order = $request->input('order');
 
     
-    $resultados = Staff::select('staff.*')
-      ->where('nombre', 'like', "%$query%")
+    $resultados = Staff::with('majors')->select('staff.*')
       ->where('status', 1);
     
+    if (!empty($query)) {
+        $resultados = $resultados->where('nombre', 'like', "%$query%");
+    }
 
-    if (isset($cursoSeleccionados)) {
-        $cursosSplit = array_map('intval', explode(',', $cursoSeleccionados));
-        
-        if (count($cursosSplit) > 0) {
-          $query = DB::table('staff_xproducts')->select('staff_id')->whereIn('producto_id', $cursosSplit)->get()->pluck('staff_id')->unique();
-          $resultados = $resultados->whereIn('staff.id', $query);
+    if (!empty($cursoSeleccionados)) {
+      $categoriaSplit = array_filter(explode(',', $cursoSeleccionados));
+        if (!empty($categoriaSplit)) {
+              $resultados = $resultados->whereIn('staff.major_id', $categoriaSplit);
         }
     }
+    
+    // if (isset($cursoSeleccionados)) {
+    //     $cursosSplit = array_map('intval', explode(',', $cursoSeleccionados));
+        
+    //     if (count($cursosSplit) > 0) {
+    //       $query = DB::table('staff_xproducts')->select('staff_id')->whereIn('producto_id', $cursosSplit)->get()->pluck('staff_id')->unique();
+    //       $resultados = $resultados->whereIn('staff.id', $query);
+    //     }
+    // }
 
-    switch ($order) {
-      case 'a-z':
-        $resultados = $resultados->orderBy('nombre', 'asc');
-        break;
-      case 'z-a':
-        $resultados = $resultados->orderBy('nombre', 'desc');
-        break;
-      case 'ultimos':
-        $resultados = $resultados->orderBy('created_at', 'desc');
-        break;
-      default:
-        // Default ordering if no valid order is provided
-        $resultados = $resultados->orderBy('created_at', 'asc');
-        break;
-    }
+    $orderMapping = [
+      'a-z' => ['column' => 'nombre', 'direction' => 'asc'],
+      'z-a' => ['column' => 'nombre', 'direction' => 'desc'],
+      'ultimos' => ['column' => 'created_at', 'direction' => 'desc'],
+    ];
+
+    $orderConfig = $orderMapping[$order] ?? ['column' => 'created_at', 'direction' => 'asc'];
+    $resultados = $resultados->orderBy($orderConfig['column'], $orderConfig['direction']);
 
     $totalCount = 0;
     
     if ($request->requireTotalCount) {
       $totalCount = $resultados->count('*');
     }
-
+    
     $resultados = $resultados->skip($request->skip ?? 0)
       ->take($request->take ?? 10)
       ->get();
@@ -1063,7 +1071,6 @@ class IndexController extends Controller
     } else {
         $totalCount = 0;
     }
-
 
     $resultados = $resultados->skip($skip)->take($take)->get();
 

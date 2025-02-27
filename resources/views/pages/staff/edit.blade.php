@@ -16,7 +16,7 @@
           <div class="rounded shadow-lg p-4 px-4 ">
             <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 md:grid-cols-5">
               <div class="md:col-span-5">
-                <label for="nombre">Nombre</label>
+                <label for="nombre">Nombre<span class="text-red-500 font-bold">*</span></label>
                 <div class="relative mb-2  mt-2">
                   <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                     <svg class="w-5 h-5 text-gray-500 dark:text-gray-400" xmlns="http://www.w3.org/2000/svg"
@@ -58,11 +58,14 @@
                     class="mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                     <option value="">Seleccionar especialidad</option>
                     @foreach ($majors as $item)
-                      <option value="{{ $item->id }}" @if ($item->id == $product->examsimulation_id) selected @endif>
+                      <option value="{{ $item->id }}" @if ($item->id == $staff->major_id) selected @endif>
                         {{ $item->name }}</option>
                     @endforeach
                   </select>
                 </div>
+                @error('major_id')
+                  <p class="text-red-500 text-sm">{{ $message }}</p>
+                @enderror
               </div>
 
 
