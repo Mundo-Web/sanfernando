@@ -24,8 +24,8 @@
       "_main-jzs2GwAM.js"
     ]
   },
-  "_Curse-v0vPQocV.js": {
-    "file": "assets/Curse-v0vPQocV.js",
+  "_Curse-gTWmMTb7.js": {
+    "file": "assets/Curse-gTWmMTb7.js",
     "imports": [
       "resources/js/Utils/YTEmbed.jsx",
       "_truncateText-C3yxPslF.js",
@@ -109,7 +109,7 @@
     "file": "assets/truncateText-C3yxPslF.js"
   },
   "resources/css/app.css": {
-    "file": "assets/app-rFuK90pj.css",
+    "file": "assets/app-CgqU-Y3r.css",
     "isEntry": true,
     "src": "resources/css/app.css"
   },
@@ -212,14 +212,14 @@
     "src": "resources/js/Catalogo.jsx"
   },
   "resources/js/CatalogoGP.jsx": {
-    "file": "assets/CatalogoGP-zh8opNV0.js",
+    "file": "assets/CatalogoGP-Mqt5xXvN.js",
     "imports": [
       "resources/js/Utils/YTEmbed.jsx",
       "resources/js/Utils/ReactAppend.jsx",
       "_CreateReactScript-DoGUH63A.js",
       "_main-jzs2GwAM.js",
       "resources/js/components/Section/SliderFront.jsx",
-      "_Curse-v0vPQocV.js",
+      "_Curse-gTWmMTb7.js",
       "resources/js/components/Section/SliderTestimony.jsx",
       "_SelectSecond-Am4rvYjZ.js",
       "_FilterPagination-mejO9PtN.js",
@@ -235,14 +235,14 @@
     "src": "resources/js/CatalogoGP.jsx"
   },
   "resources/js/CatalogoSimulacro.jsx": {
-    "file": "assets/CatalogoSimulacro-73KiaFtH.js",
+    "file": "assets/CatalogoSimulacro-zNod7TgL.js",
     "imports": [
       "resources/js/Utils/YTEmbed.jsx",
       "resources/js/Utils/ReactAppend.jsx",
       "_CreateReactScript-DoGUH63A.js",
       "_main-jzs2GwAM.js",
       "resources/js/components/Section/SliderFront.jsx",
-      "_Curse-v0vPQocV.js",
+      "_Curse-gTWmMTb7.js",
       "resources/js/components/Section/SliderTestimony.jsx",
       "_SelectSecond-Am4rvYjZ.js",
       "_FilterPagination-mejO9PtN.js",
@@ -395,14 +395,14 @@
     "src": "resources/js/Docente.jsx"
   },
   "resources/js/DocenteDetalle.jsx": {
-    "file": "assets/DocenteDetalle-_Bv7SyTe.js",
+    "file": "assets/DocenteDetalle-D2s-DPRD.js",
     "imports": [
       "resources/js/Utils/YTEmbed.jsx",
       "resources/js/Utils/ReactAppend.jsx",
       "_CreateReactScript-DoGUH63A.js",
       "_main-jzs2GwAM.js",
       "resources/js/components/Section/SliderFront.jsx",
-      "_Curse-v0vPQocV.js",
+      "_Curse-gTWmMTb7.js",
       "resources/js/components/Section/SliderTestimony.jsx",
       "resources/js/components/Product/Teacher.jsx",
       "__commonjsHelpers-4gQjN7DL.js",
@@ -469,14 +469,14 @@
     "src": "resources/js/ExamenDesarrollo.jsx"
   },
   "resources/js/Home.jsx": {
-    "file": "assets/Home-ZQDmhkt_.js",
+    "file": "assets/Home-dYXw4awg.js",
     "imports": [
       "resources/js/Utils/YTEmbed.jsx",
       "resources/js/Utils/ReactAppend.jsx",
       "_CreateReactScript-DoGUH63A.js",
       "resources/js/components/Section/SliderFront.jsx",
       "_HtmlContent-GGptkZZp.js",
-      "_Curse-v0vPQocV.js",
+      "_Curse-gTWmMTb7.js",
       "resources/js/components/Section/SliderTestimony.jsx",
       "_Recurso-nLRqarZw.js",
       "__commonjsHelpers-4gQjN7DL.js",
@@ -572,7 +572,7 @@
     "src": "resources/js/Register.jsx"
   },
   "resources/js/Simulacro.jsx": {
-    "file": "assets/Simulacro-eSD-xs9G.js",
+    "file": "assets/Simulacro-5e2swxhz.js",
     "imports": [
       "resources/js/Utils/YTEmbed.jsx",
       "resources/js/Utils/ReactAppend.jsx",
