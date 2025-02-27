@@ -139,16 +139,12 @@ const CatalogoSimulacro = ({
             <section className="flex flex-col">
                 <div className="flex flex-col justify-center items-center px-[8%] py-10 xl:py-16 w-full max-w-3xl text-center mx-auto gap-5">
                     <h1 className="text-4xl lg:text-5xl font-Montserrat_Bold font-bold">
-                        Descubre el Curso Perfecto para Ti
+                        Simulacros
                     </h1>
-
-                    <p className="text-base font-Montserrat_Regular tracking-normal">
-                        Más de 50 opciones diseñadas para estudiantes y médicos en busca de especialización.
-                    </p>
 
                     <div className="flex flex-wrap gap-2.5 items-center px-4 py-2 w-full bg-[#566574] bg-opacity-10 rounded-3xl max-md:max-w-full">
                       
-                      <label htmlFor="searchInput" className="sr-only">Buscar por nombre del curso, especialidad o palabras</label>
+                      <label htmlFor="searchInput" className="sr-only">Buscar por nombre especialidad o palabras</label>
                       <input type="text" id="searchInput" onChange={buscarProducto} placeholder="Buscar por nombre del curso, especialidad o palabras" className="flex-1 w-full py-3 px-3 text-base font-poppins_regular text-[#2D464C] border-0 focus:border-0 focus:ring-0 bg-transparent" style={{ outline: 'none !important', border: 'none' }} defaultValue={GET.search} />
                       <a 
                           className="w-auto bg-[#F19905] px-6 py-2 rounded-2xl text-base text-white font-Montserrat_SemiBold">
