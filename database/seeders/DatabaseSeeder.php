@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
             MessageSeeder::class,
             GeneralSeeder::class,
             CategorySeeder::class,
+            SubcategorySeeder::class,
             FaqsSeeder::class,
             BeneficiosSeeder::class,
             SliderSeeder::class,
