@@ -60,6 +60,7 @@
                     </div>
                     
                   </div>
+                  
                   <div class="md:col-span-5" id="select-simulacro">
                     <label for="examsimulation_id">Escoge simulacro <span class="text-red-500 font-bold">*</span></label>
                     <div class="relative mb-2  mt-2">

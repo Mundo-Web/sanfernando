@@ -18,11 +18,17 @@ class Staff extends Model
         'status',
         'url_foto',
         'linkedin',
+        'major_id',
         'resume'
     ];
 
     public function productos()
     {
         return $this->belongsToMany(Products::class, 'staff_xproducts', 'staff_id', 'producto_id');
+    }
+
+    public function majors()
+    {
+        return $this->belongsTo(Major::class, 'major_id');
     }
 }

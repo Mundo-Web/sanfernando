@@ -44,7 +44,25 @@
                     aria-describedby="url_foto" id="url_foto" type="file">
                 </div>
               </div>
-              <div class="md:col-span-5">
+              
+              <div class="md:col-span-5" id="select-simulacro">
+                <label for="major_id">Especialidad<span class="text-red-500 font-bold">*</span></label>
+                <div class="relative mb-2  mt-2">
+                  <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                    <i class="text-lg text-gray-500 dark:text-gray-400 fas fa-folder"></i>
+                  </div>
+                  <select id="major_id" name="major_id"
+                    class="mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    <option value="">Seleccionar especialidad</option>
+                    @foreach ($majors as $item)
+                      <option value="{{ $item->id }}" @if ($item->id == $product->examsimulation_id) selected @endif>
+                        {{ $item->name }}</option>
+                    @endforeach
+                  </select>
+                </div>
+              </div>
+
+              {{-- <div class="md:col-span-5">
                 <label for="cargo">Cargo</label>
                 <div class="relative mb-2  mt-2">
                   <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
@@ -63,7 +81,8 @@
                     class="mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     placeholder="Cargo">
                 </div>
-              </div>
+              </div> --}}
+
               <div class="md:col-span-5">
                 <label for="linkedin">Resume</label>
                 <div class="relative mb-2  mt-2">

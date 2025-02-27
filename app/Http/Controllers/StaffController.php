@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Major;
 use App\Models\Staff;
 use Illuminate\Http\Request;
 use Intervention\Image\Drivers\Gd\Driver;
@@ -24,7 +25,8 @@ class StaffController extends Controller
      */
     public function create()
     {
-        return view('pages.staff.create');
+        $majors = Major::where('status', 1)->get();
+        return view('pages.staff.create', compact('majors'));
         
     }
 
