@@ -86,7 +86,7 @@
                                 </div>
                             </div>
 
-                            {{$preguntas}}
+                            
                             <!-- Pregunta -->
                             <div class="md:col-span-5">
                                 <label for="pregunta_{{ $index }}">Pregunta</label>
