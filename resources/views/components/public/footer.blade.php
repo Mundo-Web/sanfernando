@@ -56,7 +56,6 @@
 
         <div class="flex flex-col text-sm font-Montserrat_Regular text-white gap-2">
             <h3 class="text-xl text-white font-Montserrat_Bold pb-3">Aviso legal</h3>
-          
             <a id="linkTerminos">Terminos y condiciones </a>
             <a id="linkPoliticas">Politicas de devolucion </a>
 
@@ -137,6 +136,14 @@
 <script>
     $(document).ready(function() {
         $(document).on('click', '#linkTerminos', function() {
+            $('#modalTerminosCondiciones').modal({
+                show: true,
+                fadeDuration: 400,
+
+            })
+        })
+
+        $(document).on('click', '#linkTerminos2', function() {
             $('#modalTerminosCondiciones').modal({
                 show: true,
                 fadeDuration: 400,

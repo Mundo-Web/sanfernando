@@ -109,7 +109,7 @@
     "file": "assets/truncateText-C3yxPslF.js"
   },
   "resources/css/app.css": {
-    "file": "assets/app-kZvFFdqJ.css",
+    "file": "assets/app-R2Q-dNhI.css",
     "isEntry": true,
     "src": "resources/css/app.css"
   },
@@ -373,7 +373,7 @@
     "src": "resources/js/Diploma.jsx"
   },
   "resources/js/Docente.jsx": {
-    "file": "assets/Docente-lN-e_FiV.js",
+    "file": "assets/Docente-DBSER3Ba.js",
     "imports": [
       "resources/js/Utils/YTEmbed.jsx",
       "resources/js/Utils/ReactAppend.jsx",

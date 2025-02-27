@@ -23,13 +23,13 @@
             <thead>
               <tr>
                 <th>Nombre </th>
-                <th>cargo</th>
-                <th>facebook</th>
+                <th class="w-72">Especialidad</th>
+                {{-- <th>facebook</th>
                 <th>instagram</th>
                 <th>youtube</th>
-                <th>twitter</th>
-                <th>Visible</th>
-                <th>Acciones</th>
+                <th>twitter</th> --}}
+                <th class="w-32">Visible</th>
+                <th class="w-32">Acciones</th>
               </tr>
             </thead>
             <tbody>
@@ -37,11 +37,11 @@
               @foreach ($staff as $item)
                 <tr>
                   <td>{{ $item->nombre }}</td>
-                  <td>{{ $item->cargo }}</td>
-                  <td>{{ $item->facebook }}</td>
+                  <td>{{ $item->majors->name ?? "Sin especialidad"}}</td>
+                  {{-- <td>{{ $item->facebook }}</td>
                   <td>{{ $item->instagram }}</td>
                   <td>{{ $item->youtube }}</td>
-                  <td>{{ $item->twitter }}</td>
+                  <td>{{ $item->twitter }}</td> --}}
                   <td>
                     <form method="POST" action="">
                       @csrf
@@ -81,11 +81,11 @@
             <tfoot>
               <tr>
                 <th>Nombre </th>
-                <th>cargo</th>
-                <th>facebook</th>
+                <th>Especialidad</th>
+                {{-- <th>facebook</th>
                 <th>instagram</th>
                 <th>youtube</th>
-                <th>twitter</th>
+                <th>twitter</th> --}}
                 <th>Visible</th>
                 <th>Acciones</th>
               </tr>

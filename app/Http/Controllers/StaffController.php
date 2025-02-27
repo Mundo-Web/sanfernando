@@ -37,6 +37,9 @@ class StaffController extends Controller
     {
         $request->validate([
             'nombre' => 'required',
+            'major_id' => 'required',
+        ], [
+            'major_id.required' => 'Selecciona una especialidad o crea una en "Especialidades"',
         ]);
 
         $data = $request->all();
@@ -80,8 +83,8 @@ class StaffController extends Controller
     public function edit(string $id)
     {
         $staff = Staff::find($id);
-
-        return view('pages.staff.edit', compact('staff'));
+        $majors = Major::where('status', 1)->get();
+        return view('pages.staff.edit', compact('staff','majors'));
     }
 
     /**
@@ -91,6 +94,9 @@ class StaffController extends Controller
     {
         $request->validate([
             'nombre' => 'required',
+            'major_id' => 'required',
+        ], [
+            'major_id.required' => 'Selecciona una especialidad o crea una en "Especialidades"',
         ]);
         
         $data = $request->all();

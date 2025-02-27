@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react'
 import { createRoot } from 'react-dom/client'
 import CreateReactScript from './Utils/CreateReactScript'
-import { Fetch } from 'sode-extend-react'
+import { Fetch, GET } from "sode-extend-react";
 import arrayJoin from './Utils/ArrayJoin'
 import { set } from 'sode-extend-react/sources/cookies'
 import SliderFront from './components/Section/SliderFront'
@@ -21,6 +21,7 @@ const Docente = ({ docentes, cursos }) => {
 
 	const [items, setItems] = useState([docentes])
 	const [isOpen, setIsOpen] = useState(true);
+
 	const options = [
 		{ value: 'a-z', label: 'Desde A a Z' },
 		{ value: 'z-a', label: 'Desde Z a A' },
@@ -35,7 +36,7 @@ const Docente = ({ docentes, cursos }) => {
 	
 	const take = 9
 	const [currentPage, setCurrentPage] = useState(1)
-	const query = useRef({ query: '', order: '', curse: ''});
+	const query = useRef({ query: '', order: '', major: GET.major ? [GET.major] : [],});
 	const [totalCount, setTotalCount] = useState(0)
 
 	useEffect(() => {
@@ -53,7 +54,7 @@ const Docente = ({ docentes, cursos }) => {
 		let query2 = query.current
 
 		try {
-			const response = await axios.post(`/buscarDocente?query=${query2.query}&&order=${query2.order}&&curse=${query2.curse}`, {
+			const response = await axios.post(`/buscarDocente?query=${query2.query}&&order=${query2.order}&&curse=${query2.major.join(',')}`, {
 				skip: take * (currentPage - 1),
 				requireTotalCount: true,
 				take
@@ -74,19 +75,32 @@ const Docente = ({ docentes, cursos }) => {
 
 	const handleDocenteChange = (id, check) => {
         console.log(id, check);
+
+		if (!Array.isArray(query.current.major)) {
+            query.current.major = [];
+        }
+
 		if (check) {
             // Si el checkbox está marcado, quita el id del array
-            query.current = {
+            // query.current = {
+            //     ...query.current,
+            //     curse: query.current.curse.filter(
+            //         (catId) => catId !== id
+            //     ),
+            // };
+			query.current = {
                 ...query.current,
-                curse: query.current.curse.filter(
-                    (catId) => catId !== id
-                ),
-            };
+                major: [...query.current.major, id],
+			};
         } else {
             // Si el checkbox no está marcado, agrega el id al array
-            query.current = {
+            // query.current = {
+            //     ...query.current,
+            //     curse: [...(query.current.curse || []), id],
+            // };
+			query.current = {
                 ...query.current,
-                curse: [...(query.current.curse || []), id],
+                major: query.current.major.filter((catId) => catId !== id),
             };
         }
 		console.log(query.current);
@@ -99,7 +113,7 @@ const Docente = ({ docentes, cursos }) => {
 
 
 			<section className="flex flex-col !font-normal">
-                <div className="flex flex-col justify-center items-center px-[8%] pt-10 xl:pt-16 w-full max-w-3xl text-center mx-auto gap-5">
+                <div className="flex flex-col justify-center items-center px-[8%] pt-10 xl:pt-16 w-full max-w-3xl 2xl:max-w-4xl text-center mx-auto gap-5">
                     <h1 className="text-4xl lg:text-5xl font-Montserrat_Bold font-bold">
 						Un Equipo de Expertos a Tu Lado
                     </h1>
@@ -109,8 +123,8 @@ const Docente = ({ docentes, cursos }) => {
                     </p>
 
                     <div className="flex flex-wrap gap-2.5 items-center px-4 py-2 w-full bg-[#566574] bg-opacity-10 rounded-3xl max-md:max-w-full">
-                      <label htmlFor="searchInput" className="sr-only">Buscar por nombre del profesor, especialidad o curso</label>
-                      <input type="text" id="searchInput" onChange={buscarProducto} placeholder="Buscar por nombre del profesor, especialidad o curso" className="flex-1 w-full py-3 px-3 text-base font-poppins_regular text-[#2D464C] border-0 focus:border-0 focus:ring-0 bg-transparent" style={{ outline: 'none !important', border: 'none' }} />
+                      <label htmlFor="searchInput" className="sr-only">Buscar por nombre del profesor</label>
+                      <input type="text" id="searchInput" onChange={buscarProducto} placeholder="Buscar por nombre del profesor" className="flex-1 w-full py-3 px-3 text-base font-poppins_regular text-[#2D464C] border-0 focus:border-0 focus:ring-0 bg-transparent" style={{ outline: 'none !important', border: 'none' }} />
 					  	<a 
                           className="w-auto bg-[#F19905] px-6 py-2 rounded-2xl text-base text-white font-Montserrat_SemiBold">
                           Buscar
@@ -125,30 +139,31 @@ const Docente = ({ docentes, cursos }) => {
 					<div className="flex flex-col w-full lg:w-1/3">
 						<div className="relative w-full">
 							
-							<div className={`py-3 px-4 cursor-pointer bg-[#f0f1f2] flex rounded-t-2xl justify-between items-center ${isOpen ? "" : "rounded-b-2xl"}`} onClick={() => setIsOpen(!isOpen)} >
-								<span className="font-Montserrat_Bold text-[#221F1F] text-xl">Cursos</span>
+							<div className={`py-3 px-4 cursor-pointer bg-white flex rounded-t-2xl justify-between items-center ${isOpen ? "" : "rounded-b-2xl"}`} onClick={() => setIsOpen(!isOpen)} >
+								<span className="font-Montserrat_Bold text-[#221F1F] text-xl">Especialidades</span>
 								<span className={`transform transition-transform ${isOpen ? "rotate-180" : ""}`}>
-									<i class="fa-solid fa-chevron-down"></i>
+									<i className="fa-solid fa-chevron-down"></i>
 								</span>
 							</div>
 
 						
 							<ul
-								className={`w-full p-5 flex flex-col gap-3 bg-[#f0f1f2] border-b border-gray-300 z-10 rounded-b-2xl ${
+								className={`w-full p-5 flex flex-col gap-3 bg-white z-10 rounded-b-2xl ${
 									isOpen ? "block" : "hidden"
 								}`}
 							>
 								{cursos.length > 0 && cursos.map((item, index) => {
 									return (
-									<li className='flex flex-row items-start justify-start'>
-										<input type="checkbox" id={`react-option-${index}`} value={item.id} className="peer rounded-sm focus:ring-0 border-[#F19905] text-[#F19905]" required=""></input>
+										<li key={index} className='flex flex-row items-start justify-start'>
+										<input type="checkbox" id={`react-option-${index}`} value={item.id} className="peer rounded-[5px] focus:ring-0 border-[#F19905] text-[#F19905]"
+										onChange={(e) => handleDocenteChange(item.id, e.target.checked)}></input>
 										<label
-											onClick={(e) => handleDocenteChange(item.id, e.target.previousSibling.checked)}
+											// onClick={(e) => handleDocenteChange(item.id, e.target.previousSibling.checked)}
 											htmlFor={`react-option-${index}`}
 											type="button"
 											className="font-Montserrat_Regular leading-none ml-2"
 										>
-										{item.producto}
+										{item.name}
 										</label>
 									</li>
 									);
@@ -159,8 +174,8 @@ const Docente = ({ docentes, cursos }) => {
 
 					<div className='flex flex-col w-full lg:w-2/3'>
 						
-						<div className='grid grid-cols-1 lg:grid-cols-2 gap-6'>
-							<div className="col-span-1 lg:col-span-2 flex flex-col md:flex-row md:justify-end gap-3 justify-center items-start  min-w-[240px] font-Montserrat_Regular">
+						<div className='grid grid-cols-1 md:grid-cols-2 gap-6'>
+							<div className="col-span-1 md:col-span-2 flex flex-col md:flex-row md:justify-end gap-3 justify-center items-start  min-w-[240px] font-Montserrat_Regular">
 								<span className="self-stretch my-auto text-sm tracking-normal leading-loose text-gray-600 ml-1">
 									Ordenar por:
 								</span>
