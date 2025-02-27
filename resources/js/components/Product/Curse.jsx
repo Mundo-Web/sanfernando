@@ -56,7 +56,7 @@ const Curse = ({ producto, userIsLogged, deseoActivo = false }) => {
           className="flex flex-wrap justify-evenly w-full gap-x-4 gap-y-1 self-start text-xs tracking-normal font-Montserrat_Regular leading-loose text-[#566574] py-2">
 
           {
-            producto.docente &&
+            producto.docentes?.[0] &&
             <div className="flex flex-row gap-1 items-center justify-start">
               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
                 <path d="M16.6663 18.3359V15.8359C16.6663 13.4789 16.6663 12.3004 15.9341 11.5682C15.2018 10.8359 14.0233 10.8359 11.6663 10.8359L9.99967 12.5026L8.33301 10.8359C5.97598 10.8359 4.79747 10.8359 4.06524 11.5682C3.33301 12.3004 3.33301 13.4789 3.33301 15.8359V18.3359" stroke="#221F1F" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" />
@@ -65,7 +65,7 @@ const Curse = ({ producto, userIsLogged, deseoActivo = false }) => {
                 <path d="M12.9168 5.41797V4.58464C12.9168 2.9738 11.611 1.66797 10.0002 1.66797C8.38933 1.66797 7.0835 2.9738 7.0835 4.58464V5.41797C7.0835 7.0288 8.38933 8.33464 10.0002 8.33464C11.611 8.33464 12.9168 7.0288 12.9168 5.41797Z" stroke="#221F1F" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" />
                 <path d="M13.9585 16.043C13.9585 16.3881 13.6787 16.668 13.3335 16.668C12.9883 16.668 12.7085 16.3881 12.7085 16.043C12.7085 15.6978 12.9883 15.418 13.3335 15.418C13.6787 15.418 13.9585 15.6978 13.9585 16.043Z" stroke="#221F1F" stroke-width="1.25" />
               </svg>
-              <p>{producto.docente}</p>
+                <p>{producto.docentes?.[0].nombre}</p>
             </div>
           }
 
