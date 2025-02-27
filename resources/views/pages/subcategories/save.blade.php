@@ -18,6 +18,7 @@
           <div class="rounded shadow-lg p-4 px-4 ">
             <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 md:grid-cols-5">
               <input type="hidden" name="id" value="{{ $subcategory->id }}">
+              
               <div class="md:col-span-5">
                 <label for="costo_x_art">Categoria</label>
                 <div class="relative mb-2  mt-2">
@@ -39,6 +40,7 @@
                   <p class="text-red-500 text-sm">{{ $message }}</p>
                 @enderror
               </div>
+              
               <div class="md:col-span-5">
                 <label for="name">Nombre</label>
                 <div class="relative mb-2  mt-2">

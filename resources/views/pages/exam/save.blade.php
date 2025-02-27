@@ -63,7 +63,7 @@
                 <div id="questions-container">
                   @foreach ($exam->questions as $index => $question)
                         <div class="grid grid-cols-1 md:grid-cols-12 gap-1 md:gap-4 mt-4 question-group">
-                            
+                          
                             <!-- Especialidad -->
                             <div class="md:col-span-4">
                                 <label for="especialidad_{{ $index }}">Especialidad</label>
@@ -99,7 +99,7 @@
                                       focus:border-blue-500 block w-full pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 
                                       dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                                       <option value="">Seleccione una pregunta</option>
-                                      @foreach ($questions->where('major_id', $question->majors?->id) as $q)
+                                      @foreach ($preguntas->where('major_id', $question->majors?->id) as $q)
                                           <option value="{{ $q->id }}" {{ $question->id == $q->id ? 'selected' : '' }}>
                                               {{ $q->question }}
                                           </option>
