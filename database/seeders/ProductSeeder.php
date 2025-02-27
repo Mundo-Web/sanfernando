@@ -67,7 +67,7 @@ class ProductSeeder extends Seeder
                     'descuento' => $discount ? $discount : 0,
                     'precio' => $price ? $price : 0,
                     'costo_x_art' => $cost ? $cost : 0,
-                    'stock' => is_numeric($row[13]) ? $row[13] : 0,
+                    'stock' => 1,
                     'imagen' => 'images/img/noimagen.jpg',
                     'imagen_ambiente' => 'images/img/noimagen.jpg',
                     'status' => true,
