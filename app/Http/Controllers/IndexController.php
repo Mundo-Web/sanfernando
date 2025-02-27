@@ -1040,6 +1040,7 @@ class IndexController extends Controller
     $requireTotalCount = $request->input('requireTotalCount', false);
 
     $resultados = Products::select('products.*')
+      ->with(['docentes'])
       ->where('products.status', 1)
       ->where('products.visible', 1)
       ->where('products.is_exam', 0)
