@@ -83,7 +83,7 @@ const Home = ({
           </h1>
 
           <div className="flex flex-row justify-center items-center">
-            <a href="/catalogoGestion"
+            <a href="/catalogo"
               className="flex w-auto gap-1 justify-center items-center px-5 py-3 my-auto text-center text-white bg-[#191023] rounded-3xl"
               role="button">
               <span className="self-stretch my-auto font-Montserrat_Regular text-white">Ver todos los cursos</span>
