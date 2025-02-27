@@ -33,10 +33,8 @@ class SliderSeeder extends Seeder
                         'description' => $row[2],
                         'url_image' => 'images/',
                         'name_image' => 'banner-' . $row[0] . '.jpg',
-                        'botontext1' => 'DIPLOMADOS',
-                        'link1' => '/catalogoGestion?category=diploma',
-                        'botontext2' => 'CURSOS',
-                        'link2' => '/catalogoGestion?category=courses',
+                        'botontext1' => 'Explorar Cursos',
+                        'link1' => '/catalogoGestion',
                     ]);
                 }
             },
