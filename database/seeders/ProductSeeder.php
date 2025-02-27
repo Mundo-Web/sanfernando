@@ -15,6 +15,7 @@ use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\Importable;
 use SoDe\Extend\File;
 use SoDe\Extend\Text;
+use Illuminate\Support\Str;
 
 class ProductSeeder extends Seeder
 {
@@ -32,34 +33,37 @@ class ProductSeeder extends Seeder
 
                 $category = Category::updateOrCreate(['id' => $row[1]], [
                     'id' => $row[1],
-                    'name' => $row[2],
-                    'slug' => str_replace(' ', '-', strtolower($row[2])),
+                    // 'name' => $row[2],
+                    // 'slug' => str_replace(' ', '-', strtolower($row[2])),
                     'url_image' => 'images/img/',
                     'name_image' => 'noimagen.jpg'
                 ]);
 
                 if ($row[3] == '') $subcategory = new SubCategory();
                 else {
-                    $subcategory = SubCategory::updateOrCreate(['id' => $row[3]], [
+                    $subcategory = SubCategory::updateOrCreate(['id' => $row[2]], [
                         'category_id' => $category->id,
-                        'name' => $row[4],
-                        'slug' => str_replace(' ', '-', strtolower($row[4])),
+                        // 'name' => $row[4],
+                        // 'slug' => str_replace(' ', '-', strtolower($row[4])),
                         'status' => true,
                         'visible' => true
                     ]);
                 }
 
-                $price = str_replace(',', '.', Text::keep($row[11] ?? '', '0123456789,'));
-                $cost = str_replace(',', '.', Text::keep($row[12] ?? '', '0123456789,'));
-                $discount = str_replace(',', '.', Text::keep($row[9] ?? '', '0123456789,'));
+                $price = str_replace(',', '.', Text::keep($row[8] ?? '', '0123456789,'));
+                $cost = str_replace(',', '.', Text::keep($row[11] ?? '', '0123456789,'));
+                $discount = str_replace(',', '.', Text::keep($row[7] ?? '', '0123456789,'));
 
-                $product = Products::updateOrCreate(['sku' => $row[5]], [
+                $product = Products::updateOrCreate(['sku' => $row[3]], [
+                    'uuid' => Str::uuid(),
                     'categoria_id' => $category->id,
                     'subcategory_id' => $subcategory->id,
-                    'sku' => $row[5],
-                    'producto' => $row[6],
-                    'color' => $row[7],
-                    'description' => $row[8],
+                    'sku' => $row[3],
+                    'producto' => $row[4],
+                    'extract' => $row[5],
+                    'description' => $row[6],
+                    'description2' => $row[9],
+                    'que_lograras' => $row[10],
                     'descuento' => $discount ? $discount : 0,
                     'precio' => $price ? $price : 0,
                     'costo_x_art' => $cost ? $cost : 0,

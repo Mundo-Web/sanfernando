@@ -30,7 +30,7 @@ class DatabaseSeeder extends Seeder
             AboutUsSeeder::class,
             IconsTableSeeder::class,
             TestimonySeeder::class,
-            // productosCursosSeeder::class,
+            ProductSeeder::class,
             // ModuleSeeder::class,
             // QuestionSeeder::class,
             // AnswerSeeder::class,
