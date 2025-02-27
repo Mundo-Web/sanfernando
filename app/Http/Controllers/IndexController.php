@@ -68,7 +68,7 @@ class IndexController extends Controller
       ->where('visible', '=', 1)->with(['tags', 'category'])->activeDestacado()->take(6)->get();
     $benefit = Strength::where('status', '=', 1)->take(9)->get();
     $testimonies = Testimony::where('status', '=', 1)->where('visible', '=', 1)->get();
-    $recursos = Resources::where('status', '=', 1)->where('visible', '=', 1)->orderBy('created_at', 'asc')->take(4)->get();
+    $recursos = Resources::where('status', '=', 1)->where('visible', '=', 1)->orderBy('created_at', 'desc')->take(4)->get();
 
     $blogs = Blog::where('status', '=', 1)->where('visible', '=', 1)->with('categories')->orderBy('id', 'desc')->take(3)->get();
 
