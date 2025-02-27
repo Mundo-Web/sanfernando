@@ -162,7 +162,7 @@ const Home = ({
                 </div>
             </div>
 
-            <div className='w-full grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6'>
+            <div className='w-full grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-6'>
               {
                 recursos.map((recursos, i) => ( <Recurso recurso={recursos} />))
               }

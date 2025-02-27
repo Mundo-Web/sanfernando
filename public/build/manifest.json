@@ -106,7 +106,7 @@
     "file": "assets/truncateText-C3yxPslF.js"
   },
   "resources/css/app.css": {
-    "file": "assets/app-50vWb0P2.css",
+    "file": "assets/app-LCM81BfA.css",
     "isEntry": true,
     "src": "resources/css/app.css"
   },
@@ -441,7 +441,7 @@
     "src": "resources/js/ExamenDesarrollo.jsx"
   },
   "resources/js/Home.jsx": {
-    "file": "assets/Home-TAyxYZid.js",
+    "file": "assets/Home-UALetpAx.js",
     "imports": [
       "resources/js/Utils/YTEmbed.jsx",
       "resources/js/Utils/ReactAppend.jsx",
