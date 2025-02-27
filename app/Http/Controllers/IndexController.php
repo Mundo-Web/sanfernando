@@ -68,7 +68,7 @@ class IndexController extends Controller
       ->where('visible', '=', 1)->with(['tags', 'category'])->activeDestacado()->take(6)->get();
     $benefit = Strength::where('status', '=', 1)->take(9)->get();
     $testimonies = Testimony::where('status', '=', 1)->where('visible', '=', 1)->get();
-    $recursos = Resources::where('status', '=', 1)->where('visible', '=', 1)->take(3)->get();
+    $recursos = Resources::where('status', '=', 1)->where('visible', '=', 1)->orderBy('created_at', 'asc')->take(4)->get();
 
     $blogs = Blog::where('status', '=', 1)->where('visible', '=', 1)->with('categories')->orderBy('id', 'desc')->take(3)->get();
 
@@ -1004,21 +1004,34 @@ class IndexController extends Controller
     $categoria =  $request->input('category');
     $tag = $request->input('tag');
 
+    $skip = $request->input('skip', 0);
+    $take = $request->input('take', 10);
+    $requireTotalCount = $request->input('requireTotalCount', false);
 
     $resultados = Products::select('products.*')
-      ->where('producto', 'like', "%$query%")
-      ->join('categories', 'categories.id', 'products.categoria_id')
-      ->where('categories.visible', 1)->where('products.status', 1)
-      ->with(['tags', 'galeria', 'category']);
-
+        ->where('products.status', 1)
+        ->join('categories', 'categories.id', 'products.categoria_id')
+        ->where('categories.visible', 1)
+        ->with(['tags', 'galeria', 'category']);
     
-    if (isset($categoria)) {
-      $categoriaSplit = explode(',', $categoria);
-      
-      if (count($categoriaSplit) > 0) {
-        $resultados = $resultados->whereIn('products.categoria_id', $categoriaSplit);
-      }
+     // Filtro por query
+    if (!empty($query)) {
+          $resultados = $resultados->where('producto', 'like', "%$query%");
     }
+
+    if (!empty($categoria)) {
+      $categoriaSplit = array_filter(explode(',', $categoria));
+        if (!empty($categoriaSplit)) {
+            $resultados = $resultados->whereIn('products.categoria_id', $categoriaSplit);
+        }
+    }
+    // if (isset($categoria)) {
+    //   $categoriaSplit = explode(',', $categoria);
+      
+    //   if (count($categoriaSplit) > 0) {
+    //     $resultados = $resultados->whereIn('products.categoria_id', $categoriaSplit);
+    //   }
+    // }
 
     if (isset($tag)){
       $tagsxProducts = DB::table('tags_xproducts')->select('producto_id')->where('tag_id', $tag)->get()->pluck('producto_id');
@@ -1031,35 +1044,49 @@ class IndexController extends Controller
       $resultados = $resultados->where('categoria_id', 2);
     } */
 
+    $orderMapping = [
+      'a-z' => ['column' => 'producto', 'direction' => 'asc'],
+      'z-a' => ['column' => 'producto', 'direction' => 'desc'],
+      'ultimos' => ['column' => 'created_at', 'direction' => 'desc'],
+    ];
 
+    $orderConfig = $orderMapping[$order] ?? ['column' => 'created_at', 'direction' => 'asc'];
+    $resultados = $resultados->orderBy($orderConfig['column'], $orderConfig['direction']);
 
-    switch ($order) {
-      case 'a-z':
-        $resultados = $resultados->orderBy('producto', 'asc');
-        break;
-      case 'z-a':
-        $resultados = $resultados->orderBy('producto', 'desc');
-        break;
-      case 'ultimos':
-        $resultados = $resultados->orderBy('created_at', 'desc');
-        break;
-      default:
-        // Default ordering if no valid order is provided
-        $resultados = $resultados->orderBy('created_at', 'asc');
-        break;
+    if ($requireTotalCount) {
+      $totalCount = $resultados->count();
+    } else {
+        $totalCount = 0;
     }
 
-    $totalCount = 0;
+
+    $resultados = $resultados->skip($skip)->take($take)->get();
+
+    // switch ($order) {
+    //   case 'a-z':
+    //     $resultados = $resultados->orderBy('producto', 'asc');
+    //     break;
+    //   case 'z-a':
+    //     $resultados = $resultados->orderBy('producto', 'desc');
+    //     break;
+    //   case 'ultimos':
+    //     $resultados = $resultados->orderBy('created_at', 'desc');
+    //     break;
+    //   default:
+    //     // Default ordering if no valid order is provided
+    //     $resultados = $resultados->orderBy('created_at', 'asc');
+    //     break;
+    // }
+
+    // $totalCount = 0;
     
-    if ($request->requireTotalCount) {
-      $totalCount = $resultados->count('*');
-    }
+    // if ($request->requireTotalCount) {
+    //   $totalCount = $resultados->count('*');
+    // }
 
-    $resultados = $resultados->skip($request->skip ?? 0)
-      ->take($request->take ?? 10)
-      ->get();
-
-
+    // $resultados = $resultados->skip($request->skip ?? 0)
+    //   ->take($request->take ?? 10)
+    //   ->get();
 
     return response()->json(['resultado' => $resultados, 'totalCount' =>  $totalCount]);
   }

@@ -25,10 +25,17 @@ const CatalogoGP = ({
     // const query = useRef({ query: '', order: '' });
     // const [query, setQuery] = useState({ query: GET.search ?? '', order: '' });
 
-    const query = useRef({
-        query: "",
+    // const query = useRef({
+    //     query: "",
+    //     order: "",
+    //     category: GET.category ?? "",
+    //     tag: GET.tag ?? "",
+    // });
+
+    const [query, setQuery] = useState({
+        query: GET.search ?? "",
         order: "",
-        category: GET.category ?? "",
+        category: GET.category ? [GET.category] : [],
         tag: GET.tag ?? "",
     });
 
@@ -38,9 +45,8 @@ const CatalogoGP = ({
         { value: 'ultimos', label: 'Ultimos' },
     ]
 
-    const [items, setItems] = useState();
+    const [items, setItems] = useState([]);
     const [isOpen, setIsOpen] = useState(true);
-
     const deseosactivos = Wishlist.map((item) => item.product_id);
 
     const toggleListVisibility = () => {
@@ -51,20 +57,43 @@ const CatalogoGP = ({
     const [currentPage, setCurrentPage] = useState(1);
     const [totalCount, setTotalCount] = useState(0);
 
-    useEffect(() => {
-        buscarProductoQuery();
-    }, [null]);
+    // useEffect(() => {
+    //     buscarProductoQuery();
+    // }, [null]);
 
     useEffect(() => {
         buscarProductoQuery();
-    }, [currentPage]);
+    }, [currentPage, query]);
+
+    // useEffect(() => {
+    //     buscarProductoQuery();
+    // }, [currentPage]);
+
+    // const buscarProductoQuery = async () => {
+    //     let query2 = query.current;
+
+    //     try {
+    //         const response = await axios.post(
+    //             `/buscar?query=${query2.query}&order=${query2.order}&&category=${query2.category}&&tag=${query2.tag}`,
+    //             {
+    //                 skip: take * (currentPage - 1),
+    //                 requireTotalCount: true,
+    //                 take,
+    //             }
+    //         );
+    //         const data = response.data;
+
+    //         setItems(data.resultado);
+    //         setTotalCount(data.totalCount ?? 0);
+    //     } catch (error) {
+    //         console.error("Error fetching search results:", error);
+    //     }
+    // };
 
     const buscarProductoQuery = async () => {
-        let query2 = query.current;
-
         try {
             const response = await axios.post(
-                `/buscar?query=${query2.query}&order=${query2.order}&&category=${query2.category}&&tag=${query2.tag}`,
+                `/buscar?query=${query.query}&order=${query.order}&category=${query.category.join(',')}&tag=${query.tag}`,
                 {
                     skip: take * (currentPage - 1),
                     requireTotalCount: true,
@@ -72,7 +101,6 @@ const CatalogoGP = ({
                 }
             );
             const data = response.data;
-
             setItems(data.resultado);
             setTotalCount(data.totalCount ?? 0);
         } catch (error) {
@@ -80,49 +108,73 @@ const CatalogoGP = ({
         }
     };
 
-    const buscarProducto = async (event) => {
-        setCurrentPage(1);
+    // const buscarProducto = async (event) => {
+    //     setCurrentPage(1);
 
         // setQuery((prevQuery) => ({
         //   ...prevQuery,
         //   query: event.target.value,
         // }));
-        query.current = { ...query.current, query: event.target.value };
-        buscarProductoQuery();
+    //     query.current = { ...query.current, query: event.target.value };
+    //     buscarProductoQuery();
+    // };
+
+    const buscarProducto = (event) => {
+        setCurrentPage(1);
+        setQuery((prevQuery) => ({
+            ...prevQuery,
+            query: event.target.value,
+        }));
     };
 
-    const handleOptionChange = (event) => {
+    // const handleOptionChange = (event) => {
         // setQuery((prevQuery) => ({
         //   ...prevQuery,
         //   order: event.value
         // }));
 
-        query.current = { ...query.current, order: event.value };
+    //     query.current = { ...query.current, order: event.value };
 
-        buscarProductoQuery();
+    //     buscarProductoQuery();
+    // };
+
+    const handleOptionChange = (event) => {
+        setQuery((prevQuery) => ({
+            ...prevQuery,
+            order: event.value,
+        }));
     };
     
+    // const handleCategoryChange = (id, check) => {
+    //     console.log(id, check);
+
+    //     if (check) {
+            
+    //         query.current = {
+    //             ...query.current,
+    //             category: query.current.category.filter(
+    //                 (catId) => catId !== id
+    //             ),
+    //         };
+    //     } else {
+            
+    //         query.current = {
+    //             ...query.current,
+    //             category: [...(query.current.category || []), id],
+    //         };
+    //     }
+
+    //     console.log(query.current);
+    //     buscarProductoQuery();
+    // };
+
     const handleCategoryChange = (id, check) => {
-        console.log(id, check);
-
-        if (check) {
-            // Si el checkbox está marcado, quita el id del array
-            query.current = {
-                ...query.current,
-                category: query.current.category.filter(
-                    (catId) => catId !== id
-                ),
-            };
-        } else {
-            // Si el checkbox no está marcado, agrega el id al array
-            query.current = {
-                ...query.current,
-                category: [...(query.current.category || []), id],
-            };
-        }
-
-        console.log(query.current);
-        buscarProductoQuery();
+        setQuery((prevQuery) => ({
+            ...prevQuery,
+            category: check
+                ? prevQuery.category.filter((catId) => catId !== id)
+                : [...prevQuery.category, id],
+        }));
     };
 
     return (
@@ -204,7 +256,7 @@ const CatalogoGP = ({
 							<div className={`py-3 px-4 cursor-pointer bg-[#f0f1f2] flex rounded-t-2xl justify-between items-center ${isOpen ? "" : "rounded-b-2xl"}`} onClick={() => setIsOpen(!isOpen)} >
 								<span className="font-Montserrat_Bold text-[#221F1F] text-xl">Cursos</span>
 								<span className={`transform transition-transform ${isOpen ? "rotate-180" : ""}`}>
-									<i class="fa-solid fa-chevron-down"></i>
+									<i className="fa-solid fa-chevron-down"></i>
 								</span>
 							</div>
 
@@ -216,17 +268,23 @@ const CatalogoGP = ({
 							>
 								{categorias.length > 0 && categorias.map((item, index) => {
 									return (
-									<li className='flex flex-row items-start justify-start'>
-										<input type="checkbox" id={`react-option-${index}`} value={item.id} className="peer rounded-sm focus:ring-0 border-[#F19905] text-[#F19905]" required=""></input>
-										<label
-											onClick={(e) => handleCategoryChange(item.id, e.target.previousSibling.checked)}
-											htmlFor={`react-option-${index}`}
-											type="button"
-											className="font-Montserrat_Regular leading-none ml-2"
-										>
-										{item.name}
-										</label>
-									</li>
+                                    <li key={item.id} className='flex flex-row items-start justify-start'>
+                                        <input 
+                                            type="checkbox" 
+                                            id={`react-option-${index}`} 
+                                            value={item.id} 
+                                            className="peer rounded-sm focus:ring-0 border-[#F19905] text-[#F19905]" 
+                                            required=""
+                                        />
+                                        <label
+                                            onClick={(e) => handleCategoryChange(item.id, e.target.previousSibling.checked)}
+                                            htmlFor={`react-option-${index}`}
+                                            type="button"
+                                            className="font-Montserrat_Regular leading-none ml-2"
+                                        >
+                                            {item.name}
+                                        </label>
+                                    </li>
 									);
 								})}
 							</ul>
