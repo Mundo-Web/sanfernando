@@ -124,7 +124,7 @@ Route::post('carrito/buscarProducto', [CarritoController::class, 'buscarProducto
 Route::post('/buscar', [IndexController::class, 'searchProduct'])->name('buscar');
 Route::post('/buscarDocente', [IndexController::class, 'searchDocente'])->name('buscarDocente');
 Route::post('/buscarRecursos', [IndexController::class, 'searchResource'])->name('buscarRecursos');
-Route::post('/buscarSimulacro', [IndexController::class, 'buscarSimulacro'])->name('buscarSimulacro');
+Route::post('/buscarSimulacro', [IndexController::class, 'searchSimulate'])->name('buscarSimulacro');
 
 /* Página 404 */
 Route::get('/404', [IndexController::class, 'error'])->name('error');

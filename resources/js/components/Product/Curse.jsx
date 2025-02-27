@@ -90,7 +90,7 @@ const Curse = ({ producto, userIsLogged, deseoActivo = false }) => {
         <a href={`/detalleCurso/${producto.id}`}
           className="flex gap-1 font-Montserrat_SemiBold justify-center items-center self-stretch px-5 py-2.5 my-auto text-center text-white bg-[#F19905] rounded-3xl"
           role="button">
-          <span className="self-stretch my-0">Ver curso</span>
+          <span className="self-stretch my-0">{producto.is_exam === 1 ? "Ver Simulacro" : "Ver Curso"}</span>
         </a>
 
       </div>

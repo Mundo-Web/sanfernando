@@ -53,7 +53,7 @@ class AppServiceProvider extends ServiceProvider
             $recursos = Resources::where('visible', '=', 1)->where('status', 1)->get();
             $termsAndCondicitions = TermsAndCondition::first();
             $politicaDatos = PoliticaDatos::first();
-            $simulacros = ExamSimulation::where('status', 1)->where('visible', 1)->get();
+            $simulacros = Products::where('status', 1)->where('visible', 1)->where('is_exam', 1)->get();
 
             $view->with(['simulacros' => $simulacros, 'recursos' => $recursos, 'docentes'=> $docentes, 'datosgenerales' => $datosgenerales, 'politicas' => $politicDev, 'terminos' => $termsAndCondicitions , 'politicaDatos' => $politicaDatos]);
         });
@@ -62,7 +62,7 @@ class AppServiceProvider extends ServiceProvider
             
             $datosgenerales = General::first();
             $docentes = Staff::where('status', 1)->get();
-            $simulacros = ExamSimulation::where('status', 1)->where('visible', 1)->get();
+            $simulacros = Products::where('status', 1)->where('visible', 1)->where('is_exam', 1)->get();
             $blog = Blog::where('status', '=', 1)->where('visible', '=', 1)->count(); // Suponiendo que tienes un modelo Footer y un método footerData() en él
             $categoriasMenu = Category::where('visible', '=', 1)->where('is_menu', 1)->get();
             $recursos = Resources::where('visible', '=', 1)->where('status', 1)->get();

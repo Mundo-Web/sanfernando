@@ -44,7 +44,12 @@ class SubCategoryController extends Controller
      * Store a newly created resource in storage.
      */
     public function save(Request $request)
-    {
+    {   
+        $request->validate([
+            'name' => 'required',
+            'category_id' => 'required',
+        ]);
+
         $body = $request->all();
         $body['slug'] = strtolower(str_replace(' ', '-', $request->name));
         $body['destacar'] = isset($request->destacar);
@@ -76,7 +81,11 @@ class SubCategoryController extends Controller
 
 
     public function update(Request $request)
-    {
+    {   
+        $request->validate([
+            'name' => 'required',
+        ]);
+
         $body = $request->all();
         try {
             if ($request->field == 'destacar') {

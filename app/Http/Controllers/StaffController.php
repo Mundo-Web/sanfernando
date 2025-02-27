@@ -33,20 +33,17 @@ class StaffController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'nombre' => 'required',
+        ]);
+
         $data = $request->all();
 
-        
-        
         if ($request->hasFile("url_foto")) {
 
             $manager = new ImageManager(Driver::class);
-
             $nombreImagen = Str::random(10) . '_' . $request->file('url_foto')->getClientOriginalName();
-
             $img =  $manager->read($request->file('url_foto'));
-
-            // Obtener las dimensiones de la imagen que se esta subiendo
-            // $img->coverDown(640, 640, 'center');
 
             $ruta = 'storage/images/docentes/';
 
@@ -55,7 +52,6 @@ class StaffController extends Controller
             }
 
             $img->save($ruta . $nombreImagen);
-
             $data['url_foto'] = $ruta.$nombreImagen;
             
         }
@@ -91,27 +87,25 @@ class StaffController extends Controller
      */
     public function update(Request $request, string $id)
     {
-
+        $request->validate([
+            'nombre' => 'required',
+        ]);
+        
         $data = $request->all();
+        
         if ($request->hasFile("url_foto")) {
 
             $manager = new ImageManager(Driver::class);
-
             $nombreImagen = Str::random(10) . '_' . $request->file('url_foto')->getClientOriginalName();
-
             $img =  $manager->read($request->file('url_foto'));
-
-            // Obtener las dimensiones de la imagen que se esta subiendo
-            // $img->coverDown(640, 640, 'center');
 
             $ruta = 'storage/images/docentes/';
 
             if (!file_exists($ruta)) {
-                mkdir($ruta, 0777, true); // Se crea la ruta con permisos de lectura, escritura y ejecución
+                mkdir($ruta, 0777, true);
             }
 
             $img->save($ruta . $nombreImagen);
-
             $data['url_foto'] = $ruta.$nombreImagen;
             
         }
@@ -119,9 +113,9 @@ class StaffController extends Controller
         
         Staff::updateOrCreate(
             ['id' => $id],
-            $data // Condiciones para buscar el registro existente
-             // Datos para actualizar o crear el registro
+            $data 
         );
+
         return redirect()->route('staff.index')->with('success', 'Publicación Actualizada exitosamente.');
 
     }

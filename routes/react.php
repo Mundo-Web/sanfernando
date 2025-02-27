@@ -10,8 +10,8 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', [IndexController::class, 'index'])->name('Home.jsx');
-Route::get('/catalogoGestion', [IndexController::class, 'cursosyDiplomados'])->name('CatalogoGP.jsx');
-Route::get('/simulacros', [IndexController::class, 'simulacros'])->name('Simulacro.jsx');
+Route::get('/catalogo', [IndexController::class, 'cursosyDiplomados'])->name('CatalogoGP.jsx');
+Route::get('/simulacros', [IndexController::class, 'simulacros'])->name('CatalogoSimulacro.jsx');
 Route::get('/detalleCurso/{id}', [IndexController::class, 'detalleCurso'])->name('CursoDetalle.jsx');
 Route::get('/docente', [IndexController::class, 'docente'])->name('Docente.jsx');
 Route::get('/detalleDocente/{id}', [IndexController::class, 'docenteDetalle'])->name('DocenteDetalle.jsx');
@@ -24,7 +24,7 @@ Route::get('/dashDocente', [IndexController::class, 'dashDocente'])->name('Dashb
 // Route::get('/dashEstudiante', [IndexController::class, 'dashEstudiante'])->name('DashboardEstudiante.jsx');
 Route::get('/diploma', [IndexController::class, 'diploma'])->name('Diploma.jsx');
 
-Route::get('/catalogo/{id?}', [IndexController::class, 'catalogo'])->name('Catalogo.jsx');
+// Route::get('/catalogo/{id?}', [IndexController::class, 'catalogo'])->name('Catalogo.jsx');
 Route::get('/ofertas/{id?}', [IndexController::class, 'ofertas'])->name('Ofertas.jsx');
 
 Route::middleware(['auth:sanctum', 'verified', 'can:Admin'])->group(function () {

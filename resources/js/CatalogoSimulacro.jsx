@@ -14,11 +14,10 @@ import Dropdown from "./components/Dropdown";
 import FilterPagination from "./components/Filter/FilterPagination";
 import axios from "axios";
 
-const CatalogoGP = ({
+const CatalogoSimulacro = ({
     productos,
     env_url,
     userIsLogged,
-    Wishlist,
     categorias,
 }) => {
     const [isListVisible, setIsListVisible] = useState(false);
@@ -39,7 +38,6 @@ const CatalogoGP = ({
 
     const [items, setItems] = useState();
     const [isOpen, setIsOpen] = useState(true);
-    const deseosactivos = Wishlist.map((item) => item.product_id);
 
     const toggleListVisibility = () => {
         setIsListVisible(!isListVisible);
@@ -63,7 +61,7 @@ const CatalogoGP = ({
 
         try {
             const response = await axios.post(
-                `/buscar?query=${query2.query}&order=${query2.order}&category=${query2.category.join(',')}`,
+                `/buscarSimulacro?query=${query2.query}&order=${query2.order}&category=${query2.category.join(',')}`,
                 {
                     skip: take * (currentPage - 1),
                     requireTotalCount: true,
@@ -254,18 +252,12 @@ const CatalogoGP = ({
                                     <SelectSecond title={'Seleccionar '} options={options} handleOptionChange={handleOptionChange} />
                                 </div>
                                 {items?.map((producto, index) => {
-                                    let deseoActivo = deseosactivos.includes(
-                                        producto.id
-                                    )
-                                        ? (producto.wishlist = true)
-                                        : (producto.wishlist = false);
                                     return (
                                         <Curse
                                             key={index}
                                             producto={producto}
                                             env_url={env_url}
                                             userIsLogged={userIsLogged}
-                                            deseoActivo={deseoActivo}
                                         />
                                     );
                                 })}
@@ -284,5 +276,5 @@ const CatalogoGP = ({
 };
 
 CreateReactScript((el, properties) => {
-    createRoot(el).render(<CatalogoGP {...properties} />);
+    createRoot(el).render(<CatalogoSimulacro {...properties} />);
 });

@@ -40,8 +40,9 @@ class ResourcesController extends Controller
     public function store(Request $request)
     {   
         $request->validate([
-            'imagen' => 'nullable|image|mimes:jpg,jpeg,png',
-            'archive' => 'nullable|mimes:pdf,doc,docx,xls,xlsx',
+            'name' => 'required',
+            'imagen' => 'required|image|mimes:jpg,jpeg,png',
+            'archive' => 'required|mimes:pdf,doc,docx,xls,xlsx',
         ]);
 
         $data = $request->all();

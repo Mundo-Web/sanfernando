@@ -17,6 +17,8 @@ const Recursos = ({ recursos, documentoscat, aboutUs }) => {
       label: doc.name
     }));
 
+    documentos.push({ value: "todos", label: "Todos los documentos" });
+
     const data = {}
     aboutUs.forEach(x => {
         data[x.titulo] = x.descripcion
@@ -26,6 +28,7 @@ const Recursos = ({ recursos, documentoscat, aboutUs }) => {
       { value: 'a-z', label: 'Desde A a Z' },
       { value: 'z-a', label: 'Desde Z a A' },
       { value: 'ultimos', label: 'Ultimos' },
+      { value: 'todos', label: 'Todas las opciones' },
     ]
 
     const [items, setItems] = useState([recursos]);
@@ -125,7 +128,7 @@ const Recursos = ({ recursos, documentoscat, aboutUs }) => {
                           <span className="self-stretch my-auto text-sm tracking-normal leading-loose text-gray-600 ml-1">
                             Ordenar por:
                           </span>
-                          <SelectSecond title={'Seleccionar '} options={options} handleOptionChange={handleOptionChange} />
+                          <SelectSecond title={'Todas las opciones '} options={options} handleOptionChange={handleOptionChange} />
                         </div>
                     
                     </div>

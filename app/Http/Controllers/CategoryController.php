@@ -49,7 +49,11 @@ class CategoryController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-    {
+    {   
+        $request->validate([
+            'name' => 'required',
+        ]);
+
         $body = $request->all();
 
         if ($request->hasFile("imagen")) {
@@ -105,7 +109,11 @@ class CategoryController extends Controller
      * Update the specified resource in storage.
      */
     public function update(Request $request, $id)
-    {
+    {   
+        $request->validate([
+            'name' => 'required',
+        ]);
+        
         $category = Category::findOrfail($id);
 
         if ($request->hasFile("imagen")) {

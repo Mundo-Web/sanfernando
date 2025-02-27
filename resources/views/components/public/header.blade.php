@@ -114,7 +114,7 @@
         </a>
         <ul x-show="openCatalogo" x-transition class="ml-3 mt-1 space-y-1 border-l border-gray-300">
           <li>
-            <a href="{{ route('Catalogo.jsx') }}"
+            <a href="{{ route('CatalogoGP.jsx') }}"
               class="text-[#272727] flex items-center py-2 px-3 hover:opacity-75 transition-opacity duration-300">
               <span class="underline-this">
                 Todas las categorías
@@ -236,24 +236,27 @@
           class="text-base font-Montserrat_SemiBold flex gap-5 xl:gap-10 items-center justify-center "
           x-data="{ openCatalogo: false, openSubMenu: null }">
           
-          {{-- <a href="{{ route('Home.jsx') }}" class="font-medium hover:opacity-75 ">
-            <span class="underline-this">Catalogo de cursos</span>
-          </a> --}}
+          <a href="{{ route('Home.jsx') }}" class="font-medium">
+            <span>Inicio</span>
+          </a>
 
-          <a id="productos-link" href="{{ route('CatalogoGP.jsx') }}" class="font-medium ">
-            <span>Catalogo de cursos</span>
+         
+
+          <a id="productos-link" href="{{ route('CatalogoGP.jsx') }}" class="font-medium">
+            <span>Catálogo</span>
             {{-- <div id="productos-link-h" class="w-0"></div> --}}
           </a>
+
           
           @if (count($simulacros)>0)
-            <a href="{{ route('Simulacro.jsx') }}" class="font-medium hover:opacity-75 ">
+            <a href="{{ route('CatalogoSimulacro.jsx') }}" class="font-medium">
               <span>Simulacros</span>
             </a>
           @endif
 
 
           @if (count($docentes)> 0)
-            <a href="{{ route('Docente.jsx') }}" class="font-medium hover:opacity-75">
+            <a href="{{ route('Docente.jsx') }}" class="font-medium">
               <span>Docentes</span>
             </a>
           @endif
@@ -263,7 +266,7 @@
           </a> --}}
 
           @if (count($recursos)>0)
-            <a href="{{ route('Recursos.jsx') }}" class="font-medium hover:opacity-75 ">
+            <a href="{{ route('Recursos.jsx') }}" class="font-medium">
               <span>Recursos</span>
             </a>
           @endif
@@ -275,7 +278,7 @@
             </a>
           @endif --}}
 
-          <a href="{{ route('Contacto.jsx') }}" class="font-medium hover:opacity-75  ">
+          <a href="{{ route('Contacto.jsx') }}" class="font-medium">
             <span>Contacto</span>
           </a>
 

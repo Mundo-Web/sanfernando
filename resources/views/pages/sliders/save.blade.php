@@ -19,7 +19,7 @@
         <div class="p-3">
           <div class="rounded shadow-lg p-4 px-4 ">
             <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 md:grid-cols-5">
-              <div class="md:col-span-4">
+              <div class="md:col-span-5">
                 <label for="title">Titulo de slider</label>
                 <div class="relative mb-2 ">
                   <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
@@ -29,9 +29,12 @@
                     class="mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     placeholder="Título">
                 </div>
+                @error('title')
+                  <p class="text-red-500 text-sm">{{ $message }}</p>
+                @enderror
               </div>
 
-               <div class="md:col-span-1">
+               {{-- <div class="md:col-span-1">
                 <label for="title">Color de slider</label>
                 <div class="relative mb-2 h-12 ">
                   <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
@@ -40,7 +43,7 @@
                   <input type="color" id="color" name="color" value="{{ $slider->color }}" style="border-radius:25px"
                      class="h-full w-full pl-8 pr-3">
                 </div>
-              </div>
+              </div> --}}
 
               <div class="md:col-span-5">
                 <label for="description">Descripción de servicio</label>

@@ -124,21 +124,33 @@ class IndexController extends Controller
   }
 
 
+
+
   public function simulacros()
   {
 
-    
-    $simulacros =  ExamSimulation::with('questions.majors')->where('status', 1)->where('visible', 1)->take(12)->get();
-    
+    $productos =  Products::with(['tags', 'galeria', 'category'])->where('status', 1)->take(12)->get();
+
+    $categorias = Category::select('categories.id', 'categories.name', 'categories.visible')
+      ->join('products', 'products.categoria_id', 'categories.id')
+      ->where('categories.visible', 1)
+      ->where('products.status', 1)
+      ->groupBy('categories.id', 'categories.name', 'categories.visible')
+      ->get();
+
     //check if user is logged in
     $userIsLogged = Auth::check();
+    if ($userIsLogged) {
+      $user = Auth::user();
+    }
 
     return Inertia::render(
-      'Simulacro',
+      'CatalogoSimulacro',
       [
-        'simulacros' => $simulacros,
+        'productos' => $productos,
         'env_url' => env('APP_URL'),
         'userIsLogged' => $userIsLogged,
+        'categorias' => $categorias
       ]
     )->rootView('app');
 
@@ -961,10 +973,13 @@ class IndexController extends Controller
       ->where('status', 1)
       ->where('visible', 1);
 
-      if (isset($tag)){
-        $idtag = ResourceList::where('name','=', $tag)->first();
-        $tagsxProducts = TagResource::where('etiqueta', $idtag->id)->get()->pluck('id_resource');
-        $resultados = $resultados->whereIn('resources.id', $tagsxProducts);
+      if (isset($tag) && $tag !== 'todos') {
+        $idtag = ResourceList::where('name', '=', $tag)->first();
+    
+        if ($idtag) {
+            $tagsxProducts = TagResource::where('etiqueta', $idtag->id)->get()->pluck('id_resource');
+            $resultados = $resultados->whereIn('resources.id', $tagsxProducts);
+        }
       }
      
     switch ($order) {
@@ -1010,11 +1025,14 @@ class IndexController extends Controller
 
     $resultados = Products::select('products.*')
         ->where('products.status', 1)
+        ->where('products.visible', 1)
+        ->where('products.is_exam', 0)
         ->join('categories', 'categories.id', 'products.categoria_id')
         ->where('categories.visible', 1)
+        ->where('categories.status', 1)
         ->with(['tags', 'galeria', 'category']);
     
-     // Filtro por query
+
     if (!empty($query)) {
           $resultados = $resultados->where('producto', 'like', "%$query%");
     }
@@ -1025,24 +1043,11 @@ class IndexController extends Controller
             $resultados = $resultados->whereIn('products.categoria_id', $categoriaSplit);
         }
     }
-    // if (isset($categoria)) {
-    //   $categoriaSplit = explode(',', $categoria);
-      
-    //   if (count($categoriaSplit) > 0) {
-    //     $resultados = $resultados->whereIn('products.categoria_id', $categoriaSplit);
-    //   }
+
+    // if (isset($tag)){
+    //   $tagsxProducts = DB::table('tags_xproducts')->select('producto_id')->where('tag_id', $tag)->get()->pluck('producto_id');
+    //   $resultados = $resultados->whereIn('products.id', $tagsxProducts);
     // }
-
-    if (isset($tag)){
-      $tagsxProducts = DB::table('tags_xproducts')->select('producto_id')->where('tag_id', $tag)->get()->pluck('producto_id');
-      $resultados = $resultados->whereIn('products.id', $tagsxProducts);
-    }
-
-    /*  if ($categoria == 'courses') {
-      $resultados = $resultados->where('categoria_id', 1);
-    } else if ($categoria == 'diploma') {
-      $resultados = $resultados->where('categoria_id', 2);
-    } */
 
     $orderMapping = [
       'a-z' => ['column' => 'producto', 'direction' => 'asc'],
@@ -1062,21 +1067,73 @@ class IndexController extends Controller
 
     $resultados = $resultados->skip($skip)->take($take)->get();
 
-    // switch ($order) {
-    //   case 'a-z':
-    //     $resultados = $resultados->orderBy('producto', 'asc');
-    //     break;
-    //   case 'z-a':
-    //     $resultados = $resultados->orderBy('producto', 'desc');
-    //     break;
-    //   case 'ultimos':
-    //     $resultados = $resultados->orderBy('created_at', 'desc');
-    //     break;
-    //   default:
-    //     // Default ordering if no valid order is provided
-    //     $resultados = $resultados->orderBy('created_at', 'asc');
-    //     break;
+    // $totalCount = 0;
+    
+    // if ($request->requireTotalCount) {
+    //   $totalCount = $resultados->count('*');
     // }
+
+    // $resultados = $resultados->skip($request->skip ?? 0)
+    //   ->take($request->take ?? 10)
+    //   ->get();
+
+    return response()->json(['resultado' => $resultados, 'totalCount' =>  $totalCount]);
+  }
+
+  public function searchSimulate(Request $request)
+  {
+    $query = $request->input('query');
+    $order = $request->input('order');
+    $categoria =  $request->input('category');
+    $tag = $request->input('tag');
+
+    $skip = $request->input('skip', 0);
+    $take = $request->input('take', 10);
+    $requireTotalCount = $request->input('requireTotalCount', false);
+
+    $resultados = Products::select('products.*')
+        ->where('products.status', 1)
+        ->where('products.visible', 1)
+        ->where('products.is_exam', 1)
+        ->join('categories', 'categories.id', 'products.categoria_id')
+        ->where('categories.visible', 1)
+        ->where('categories.status', 1)
+        ->with(['tags', 'galeria', 'category']);
+    
+
+    if (!empty($query)) {
+          $resultados = $resultados->where('producto', 'like', "%$query%");
+    }
+
+    if (!empty($categoria)) {
+      $categoriaSplit = array_filter(explode(',', $categoria));
+        if (!empty($categoriaSplit)) {
+            $resultados = $resultados->whereIn('products.categoria_id', $categoriaSplit);
+        }
+    }
+
+    // if (isset($tag)){
+    //   $tagsxProducts = DB::table('tags_xproducts')->select('producto_id')->where('tag_id', $tag)->get()->pluck('producto_id');
+    //   $resultados = $resultados->whereIn('products.id', $tagsxProducts);
+    // }
+
+    $orderMapping = [
+      'a-z' => ['column' => 'producto', 'direction' => 'asc'],
+      'z-a' => ['column' => 'producto', 'direction' => 'desc'],
+      'ultimos' => ['column' => 'created_at', 'direction' => 'desc'],
+    ];
+
+    $orderConfig = $orderMapping[$order] ?? ['column' => 'created_at', 'direction' => 'asc'];
+    $resultados = $resultados->orderBy($orderConfig['column'], $orderConfig['direction']);
+
+    if ($requireTotalCount) {
+      $totalCount = $resultados->count();
+    } else {
+        $totalCount = 0;
+    }
+
+
+    $resultados = $resultados->skip($skip)->take($take)->get();
 
     // $totalCount = 0;
     
@@ -1092,27 +1149,6 @@ class IndexController extends Controller
   }
 
 
-  public function buscarSimulacro(Request $request)
-  {
-    $query = $request->input('query');
-    
-    $resultados = ExamSimulation::select('exam_simulations.*')
-      ->where('title', 'like', "%$query%");
-
-    $totalCount = 0;
-    
-    if ($request->requireTotalCount) {
-      $totalCount = $resultados->count('*');
-    }
-
-    $resultados = $resultados->skip($request->skip ?? 0)
-      ->take($request->take ?? 10)
-      ->get();
-
-
-
-    return response()->json(['resultado' => $resultados, 'totalCount' =>  $totalCount]);
-  }
 
   public function direccion()
   {

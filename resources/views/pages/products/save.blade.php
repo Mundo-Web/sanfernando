@@ -45,7 +45,8 @@
 
                     </div>
                   </div>
-                   <div class="col-span-5 md:col-span-2 flex flex-row justify-center items-end pb-2">
+                  
+                  <div class="col-span-5 md:col-span-2 flex flex-row justify-center items-end pb-2">
 
                     <div class="md:col-span-5 flex flex-wrap flex-4 justify-between">
                       <label class="inline-flex items-center cursor-pointer mb-2">
@@ -59,8 +60,7 @@
                     </div>
                     
                   </div>
-
-                  <div class="md:col-span-5">
+                  <div class="md:col-span-5" id="select-simulacro">
                     <label for="examsimulation_id">Escoge simulacro <span class="text-red-500 font-bold">*</span></label>
                     <div class="relative mb-2  mt-2">
                       <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
@@ -1361,4 +1361,25 @@
       $(`#subcategory_id option[data-category="${value}"]`).prop('hidden', false)
     })
   </script>
+
+  <script>
+    $(document).ready(function () {
+      function toggleSelect() {
+        if ($("#is_exam").is(":checked")) {
+          $("#select-simulacro").show();
+        } else {
+          $("#select-simulacro").hide();
+        }
+      }
+  
+      // Ejecutar al cargar la página
+      toggleSelect();
+  
+      // Ejecutar cuando cambia el checkbox
+      $("#is_exam").on("change", function () {
+        toggleSelect();
+      });
+    });
+  </script>
+
 </x-app-layout>
