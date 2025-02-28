@@ -40,17 +40,32 @@ class AttempSimulationController extends BasicController
         $response = Response::simpleTryCatch(function (Response $response) use ($id) {
             $attempJpa = AttempSimulation::find($id);
             
-            $corrects = AttempSimulationDetail::select([
+           
+
+            $preguntasCorrectas = AttempSimulationDetail::select([
                 'attemp_simulation_details.*',
             ])
                 ->join('response_exams', 'response_exams.id', 'attemp_simulation_details.answer_id')
                 ->where('response_exams.is_correct', true)
                 ->where('attemp_id', $attempJpa->id)
-                ->count();
+                ->count();    
+
+            $puntajeObtenido = AttempSimulationDetail::select([
+                'attemp_simulation_details.*',
+            ])
+                ->join('response_exams', 'response_exams.id', 'attemp_simulation_details.answer_id')
+                ->join('question_exams', 'question_exams.id', 'response_exams.question_id')
+                ->join('attemp_simulations', 'attemp_simulations.id', 'attemp_simulation_details.attemp_id')
+                ->join('exam_question', 'exam_question.exam_simulation_id', 'attemp_simulations.evaluation_id')
+                ->where('response_exams.is_correct', true)
+                ->where('attemp_id', $attempJpa->id)
+                ->sum('exam_question.score');    
 
             $attempJpa->finished = true;
+            
             $attempJpa->questions = ExamSimulation::find($attempJpa->evaluation_id)->questions()->count();
-            $attempJpa->score = $corrects;
+            $attempJpa->corrects = $preguntasCorrectas;
+            $attempJpa->score = $puntajeObtenido;
             
             $attempJpa->save();
         });

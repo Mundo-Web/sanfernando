@@ -32,10 +32,10 @@ const SimulacroTerminado = ({ attemp, course, evaluation, attempsCount, totalpun
               ? <i className='my-10 text-[100px] text-green-500 far fa-smile'></i>
               : <i className='my-10 text-[100px] text-red-500 far fa-frown'></i>
           }
-          <p className={`block mx-auto text-4xl font-bold rounded-lg border-4 w-max px-8 py-4 ${passed ? 'bg-green-100 border-green-300 text-green-500' : 'bg-red-100 border-red-300 text-red-500'}`}>{attemp.score}/{attemp.questions}</p>
+          <p className={`block mx-auto text-4xl font-bold rounded-lg border-4 w-max px-8 py-4 ${passed ? 'bg-green-100 border-green-300 text-green-500' : 'bg-red-100 border-red-300 text-red-500'}`}>{attemp.score} puntos</p>
           <div className="flex flex-col items-center mt-4 w-full max-md:max-w-full">
             <div className="text-lg leading-tight text-rose-700 max-md:max-w-full">
-              Obtuviste {attemp.score} respuestas correctas de {attemp.questions}
+              Obtuviste {attemp.corrects} respuestas correctas de {attemp.questions}
             </div>
             <div className={`mt-4 text-xl tracking-normal leading-7 text-neutral-800 max-md:max-w-full`}>
               {

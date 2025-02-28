@@ -302,9 +302,9 @@
           <div class="p-4 py-0">
             <hr>
           </div>
-          <div class="p-4">
+          <div class="p-4 ">
             <div class="font-poppins flex flex-col gap-5">
-              <div class="text-[#141718] flex justify-between items-center border-b-[1px] border-[#E8ECEF] pb-5">
+              <div class="text-[#141718]  justify-between items-center border-b-[1px] border-[#E8ECEF] pb-5 hidden">
                 <p class="font-normal text-[16px]">Envío</p>
                 <p id="precioEnvio" class="font-semibold text-[16px]">Gratis</p>
               </div>
