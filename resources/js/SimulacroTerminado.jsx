@@ -7,8 +7,8 @@ const attempsExamRest = new AttempsExamRest()
 
 const SimulacroTerminado = ({ attemp, course, evaluation, attempsCount, totalpuntaje }) => {
 
-  const passed = attemp.score > (evaluation?.description)
-  console.log(totalpuntaje)
+  const passed = Number(attemp.score) >= Number((evaluation?.description))
+  console.log(attemp.score)
   const onStartAttemp = async (e) => {
     const request = {
       evaluation_id: evaluation.id,
@@ -35,7 +35,11 @@ const SimulacroTerminado = ({ attemp, course, evaluation, attempsCount, totalpun
           <p className={`block mx-auto text-4xl font-bold rounded-lg border-4 w-max px-8 py-4 ${passed ? 'bg-green-100 border-green-300 text-green-500' : 'bg-red-100 border-red-300 text-red-500'}`}>{attemp.score} puntos</p>
           <div className="flex flex-col items-center mt-4 w-full max-md:max-w-full">
             <div className="text-lg leading-tight text-rose-700 max-md:max-w-full">
-              Obtuviste {attemp.corrects} respuestas correctas de {attemp.questions}
+              {parseInt(attemp.corrects) == 1 ? (
+                <p>Obtuviste {parseInt(attemp.corrects)} respuesta correcta de {parseInt(attemp.questions)}</p>
+              ) : (
+                <p>Obtuviste {parseInt(attemp.corrects)} respuestas correctas de {parseInt(attemp.questions)}</p>
+              )}
             </div>
             <div className={`mt-4 text-xl tracking-normal leading-7 text-neutral-800 max-md:max-w-full`}>
               {
