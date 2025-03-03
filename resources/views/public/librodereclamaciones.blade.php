@@ -169,7 +169,6 @@
           <input id="termsandconditions" type="checkbox" required class="focus:ring-0  rounded-sm w-5 h-5 text-[#F19905]" />
           <label for="termsandconditions" class="font-medium text-sm text-[#6C7275]">Estoy de acuerdo con los <a
               class="font-bold" id="linkTerminos2">terminos y condiciones</a></label>
-
         </div>
         {{-- <div class="flex flex-col col-span-4 gap-2">
                     <label for="archivo" class="font-medium text-[12px] text-[#6C7275]">Adjuntar archivos

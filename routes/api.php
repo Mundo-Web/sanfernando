@@ -11,6 +11,7 @@ use App\Http\Controllers\CertificateController;
 use App\Http\Controllers\ConsumerController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ExcelController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\ModuleController;
@@ -109,7 +110,8 @@ Route::middleware(['web', 'auth:sanctum', 'verified'])->group(function () {
 
     Route::post('/attemps-detail-simulation', [AttempSimulationDetailController::class, 'save']);
 
-
+    Route::post('/upload/items', [ExcelController::class, 'items'])->name('upload.items');
+    Route::post('/upload/images', [ExcelController::class, 'items'])->name('upload.images');
 
     Route::post('/signs', [SignController::class, 'save']);
 

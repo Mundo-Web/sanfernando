@@ -7,6 +7,11 @@
                     Preguntas
                 </h2>
                 <button wire:click="create" class="bg-blue-500 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded text-sm mt-3">Nueva pregunta</button>
+                <button id="file-excel-button"
+                    class="bg-blue-500 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded text-sm">
+                    <i class="fas fa-cloud-upload-alt me-1"></i>
+                    Cargar preguntas
+                </button>
             </header>
 
             <div class="p-3">
@@ -149,6 +154,45 @@
             </div>
         </div>
     @endif
+    
+    <form id="file-excel-modal" class="modal !py-6">
+        <p class="mb-2">
+          <b>Carga un zip (Imagenes sueltas)</b>
+        </p>
+        <input
+          class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
+          aria-describedby="images_input_help" id="image_input" type="file" accept=".zip">
+        <p class="mt-1 text-sm text-gray-500 dark:text-gray-300 mb-4" id="images_input_help">
+          Los nombres deben ir en formato: <br>
+          <code>
+            <span class="mention">Código Interno</span>*.jpg
+          </code>
+        </p>
+    
+        <p class="mb-2">
+          <b>Carga un archivo excel</b>
+          (<a href="/storage/templates/Items.xlsx" download="Items" class="text-blue-500 underline">Descargar formato</a>)
+        </p>
+        <input
+          class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
+          aria-describedby="file_input_help" id="file_input" type="file" accept=".xlsx,.xls">
+        <p class="mt-1 text-sm text-gray-500 dark:text-gray-300 mb-4" id="file_input_help">XLSX o XLS (Solo archivo Excel)
+        </p>
+    
+        <div id="progress-container" class="mt-4 hidden">
+          <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
+            <div id="progress-bar" class="bg-blue-600 h-2.5 rounded-full" style="width: 0%"></div>
+          </div>
+          <p id="progress-text" class="mt-2 text-sm text-gray-600 dark:text-gray-400">0%</p>
+        </div>
+    
+        <button
+          class="mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
+          type="submit">
+          Cargar
+        </button>
+    </form>
+
 
     <style>
         .modal-overlay {
@@ -164,87 +208,86 @@
             z-index: 1000;
             overflow-y: scroll;
         }
-    
-        /* .modal-container {
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            width: 90%;
-            max-width: 600px;
-            max-height: 90vh;
-            overflow-y: auto;
-        }
-    
-        .modal-content {
-            padding: 20px;
-        }
-    
-        .modal-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid #e5e7eb;
-            padding-bottom: 10px;
-            margin-bottom: 20px;
-        }
-    
-        .modal-title {
-            margin: 0;
-            font-size: 1.25rem;
-            font-weight: 600;
-        }
-    
-        .close {
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: #6b7280;
-        }
-    
-        .close:hover {
-            color: #000;
-        }
-    
-        .modal-body {
-            margin-bottom: 20px;
-        }
-    
-        .form-group {
-            margin-bottom: 15px;
-        }
-    
-        .form-group label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: 500;
-        }
-    
-        .form-group input,
-        .form-group select,
-        .form-group textarea {
-            width: 100%;
-            padding: 8px;
-            border: 1px solid #e5e7eb;
-            border-radius: 4px;
-            font-size: 1rem;
-        }
-    
-        .form-group textarea {
-            resize: vertical;
-        }
-    
-        .modal-footer {
-            display: flex;
-            justify-content: flex-end;
-            border-top: 1px solid #e5e7eb;
-            padding-top: 10px;
-        }
-    
-        .modal-footer button {
-            margin-left: 10px;
-        } */
     </style>
+
+    <script>
+        $(document).on('click', '#file-excel-button', () => {
+            $('#file-excel-modal').modal('show');
+        });
+
+        $(document).on('submit', '#file-excel-modal', (e) => {
+            e.preventDefault();
+
+            const fileInput = $('#file_input')[0];
+            const file = fileInput.files[0];
+
+            const zipInput = $('#image_input')[0];
+            const zip = zipInput.files[0];
+
+            if (!file) {
+            Swal.fire({
+                icon: 'warning',
+                title: 'Archivo requerido',
+                text: 'Por favor, selecciona un archivo Excel.'
+            });
+            return;
+            }
+
+            const formData = new FormData();
+            formData.append('file', file);
+            if (zip) formData.append('zip', zip)
+
+            formData.append('image_route_pattern', '{0}_');
+
+            $.ajax({
+            url: "/api/upload/items",
+            type: 'POST',
+            headers: {
+                'X-Xsrf-Token': decodeURIComponent(Cookies.get('XSRF-TOKEN'))
+            },
+            data: formData,
+            processData: false,
+            contentType: false,
+            timeout: 240000,
+            xhr: function() {
+                const xhr = new window.XMLHttpRequest();
+                xhr.upload.addEventListener("progress", function(evt) {
+                if (evt.lengthComputable) {
+                    const percentComplete = evt.loaded / evt.total * 100;
+                    $('#progress-container').removeClass('hidden');
+                    $('#progress-bar').css('width', percentComplete + '%');
+                    $('#progress-text').text(Math.round(percentComplete) + '%');
+                }
+                }, false);
+                return xhr;
+            },
+            success: function(response) {
+                Swal.fire({
+                icon: 'success',
+                title: 'Éxito',
+                text: 'Archivo cargado exitosamente.'
+                });
+                $('#file-excel-modal').modal('hide');
+                // Aquí puedes agregar código adicional para manejar la respuesta del servidor
+            },
+            error: function(xhr, status, error) {
+                Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'Error al cargar el archivo: ' + error
+                });
+            },
+            complete: function() {
+                $('#progress-container').addClass('hidden');
+                $('#progress-bar').css('width', '0%');
+                $('#progress-text').text('0%');
+                $('#file_input').val('');
+                $('#image_input').val('');
+            }
+            });
+        });
+    </script>
+    <script src="/js/moment/min/moment.min.js"></script>
 </div>
 
 
