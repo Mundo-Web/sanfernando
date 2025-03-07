@@ -3,11 +3,16 @@
 namespace App\Livewire;
 use App\Models\QuestionExam;
 use App\Models\Major;
-
+use Livewire\WithFileUploads;
 use Livewire\Component;
+use Intervention\Image\ImageManager;
+use Intervention\Image\Drivers\Gd\Driver; 
+use Illuminate\Support\Str;
 
 class CreateQuestion extends Component
 {   
+    use WithFileUploads;
+
     public $major_id;
     public $question;
     public $description;
@@ -89,7 +94,24 @@ class CreateQuestion extends Component
             return;
         }
 
-        $imagenPath = $this->imagen ? $this->imagen->store('questions', 'public') : null;
+        $imagenPath = null;
+
+        if ($this->imagen) {
+            $manager = new ImageManager(new Driver()); 
+            $nombreImagen = Str::random(10) . '_' . $this->imagen->getClientOriginalName();
+            $ruta = 'storage/images/questions/';
+    
+            if (!file_exists($ruta)) {
+                mkdir($ruta, 0777, true);
+            }
+    
+            $img = $manager->read($this->imagen->getRealPath());
+            $img->save($ruta . $nombreImagen);
+    
+            $imagenPath = $ruta . $nombreImagen;
+        }
+
+        
 
         $question = QuestionExam::updateOrCreate(['id' => $this->questionId], [
             'major_id' => $this->major_id,
@@ -100,6 +122,7 @@ class CreateQuestion extends Component
         ]);
 
         $question->answers()->delete(); // Eliminar respuestas anteriores (si es una actualización)
+
         foreach ($this->answers as $answer) {
             $question->answers()->create([
                 'question_id' => $question->id,
@@ -133,6 +156,7 @@ class CreateQuestion extends Component
         $this->major_id = $questionJpa->major_id;
         $this->question = $questionJpa->question;
         $this->description = $questionJpa->description;
+        $this->imagen = $questionJpa->imagen;
         $this->status = $questionJpa->status;
 
         $this->answers = [];

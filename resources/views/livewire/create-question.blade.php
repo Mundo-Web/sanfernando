@@ -77,7 +77,7 @@
                             <button wire:click="closeModal" class="close text-2xl font-bold text-slate-800"><i class="fa-regular fa-circle-xmark"></i></button>
                         </div>
                         <div class="modal-body">
-                            <form class="flex flex-col gap-2 py-3">
+                            <form class="flex flex-col gap-2 py-3" enctype="multipart/form-data">
                                 
                                 <div class="col-span-1">
                                     <label for="major_id" class="font-normal text-slate-600 dark:text-slate-100 text-lg tracking-tight">Especialidad</label>
@@ -97,26 +97,28 @@
                                 <div class="col-span-1">
                                     <label for="question">Pregunta</label>
                                     <div class="relative mb-2  mt-1">
-                                        <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                                        <div class="absolute top-2 left-0 flex items-center pl-3 pointer-events-none">
                                             <i class="text-lg text-gray-500 dark:text-gray-400 fas fa-pen"></i>
                                           </div>
-                                        <input type="text" wire:model="question" class="mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" id="question">
+                                        <textarea type="text" wire:model="question" class="mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" id="question"></textarea>
                                     </div>
                                     @error('question') <span class="text-danger">{{ $message }}</span> @enderror
                                 </div>
 
                                 <div class="col-span-1">
-                                    <label for="description">Descripción (Opcional)</label>
-                                    <div class="relative mb-2  mt-1">
-                                        <div class="absolute top-2 left-0 flex items-center pl-3 pointer-events-none">
-                                            <i class="text-lg text-gray-500 dark:text-gray-400 fas fa-pen"></i>
-                                        </div>
-                                        <textarea wire:model="description" class="mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" id="description"></textarea>
+                                    <label for="question">Imagen</label>
+                                    <div class="relative mb-4  mt-1">
+                                        <input type="file" wire:model="imagen" class="" id="imagen">
                                     </div>
-                                    @error('description') <span class="text-danger">{{ $message }}</span> @enderror
+                                    @if($imagen)
+                                        @if(is_string($imagen))
+                                            <img class="w-28 h-20 object-contain" src="{{ asset($imagen) }}" alt="Imagen de la pregunta">
+                                        @else
+                                            <img class="w-28 h-20 object-contain" src="{{ $imagen->temporaryUrl() }}" alt="Imagen de la pregunta">
+                                        @endif
+                                    @endif
                                 </div>
 
-                                
                                 <div class="flex flex-row justify-start items-center">
                                     <button type="button" class="bg-blue-500 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded text-sm mt-3" wire:click="addAnswer">Agregar Respuesta</button>
                                 </div>
@@ -171,7 +173,7 @@
     
         <p class="mb-2">
           <b>Carga un archivo excel</b>
-          (<a href="/storage/templates/Items.xlsx" download="Items" class="text-blue-500 underline">Descargar formato</a>)
+          (<a href="/storage/templates/Preguntas_model.xlsx" download="Preguntas" class="text-blue-500 underline">Descargar formato</a>)
         </p>
         <input
           class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
@@ -237,7 +239,7 @@
             formData.append('file', file);
             if (zip) formData.append('zip', zip)
 
-            formData.append('image_route_pattern', '{0}_');
+            formData.append('image_route_pattern', '{0}');
 
             $.ajax({
             url: "/api/upload/items",

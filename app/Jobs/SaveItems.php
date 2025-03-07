@@ -63,9 +63,9 @@ class SaveItems implements ShouldQueue
       $qsCount = QuestionExam::count();
       $rsCount = ResponseExam::count();
       
-      Major::query()->delete();
-      QuestionExam::query()->delete();
-      ResponseExam::query()->delete();
+      // Major::query()->delete();
+      // QuestionExam::query()->delete();
+      // ResponseExam::query()->delete();
       
 
       dump("Productos: {$esCount} - Productos: {$qsCount} - Productos: {$rsCount}");
@@ -78,9 +78,12 @@ class SaveItems implements ShouldQueue
 
     foreach ($this->items as $item) {
       try {
-        $imageRoute = \str_replace('{0}', $item[0], $this->image_route_pattern);
-
-        $productImages = \array_filter($images, fn($image) => Text::startsWith($image, $imageRoute));
+        $imageRoute = $item[0];
+        
+        $productImages = \array_filter($images, function ($image) use ($imageRoute) {
+          $fileName = pathinfo($image, PATHINFO_FILENAME);
+          return $fileName === $imageRoute;
+        });
 
         // Searching or Creating a Category
         $majorJpa = Major::updateOrCreate([
@@ -114,19 +117,12 @@ class SaveItems implements ShouldQueue
         ]);
 
 
-        $i = 0;
-        
-        foreach ($productImages as $image) {
-          try {
-            $productImage = 'storage/images/questions/' . $image;
-            if ($i == 0) {
-              $questionJpa->imagen = $productImage;
+        if (!empty($productImages)) {
+          $firstImage = 'storage/images/questions/' . reset($productImages);
+          if (file_exists(public_path($firstImage))) {
+              $questionJpa->imagen = $firstImage;
               $questionJpa->save();
-            }
-          } catch (\Throwable $th) {
-            dump($th->getMessage());
           }
-          $i++;
         }
 
         dump("{$questionJpa->question}\n {$responseJpa->response} \n {$responseJpa->is_correct} \n {$questionJpa->imagen}");

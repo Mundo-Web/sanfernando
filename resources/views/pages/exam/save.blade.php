@@ -167,14 +167,17 @@
 
 
 <script>
+
   $(document).ready(function () {
       $('.select2').select2({
             placeholder: "Seleccione una opción",
             allowClear: true
         });
-    });
-      $(document).ready(function () {
-        let questionIndex = $(".question-group").length;
+  });
+
+  $(document).ready(function () {
+    
+      let questionIndex = $(".question-group").length;
 
       $("#add-question").click(function () {
           questionIndex++;
@@ -306,7 +309,5 @@
               questionSelector.html('<option value="">Seleccione una pregunta</option>');
           }
       });
-
-
   });
 </script>
