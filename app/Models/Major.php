@@ -14,4 +14,6 @@ class Major extends Model
     {
         return $this->hasMany(Staff::class, 'major_id');
     }
+
+    
 }

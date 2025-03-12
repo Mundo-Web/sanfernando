@@ -8,10 +8,11 @@ use Livewire\Component;
 use Intervention\Image\ImageManager;
 use Intervention\Image\Drivers\Gd\Driver; 
 use Illuminate\Support\Str;
+use Livewire\WithPagination;
 
 class CreateQuestion extends Component
 {   
-    use WithFileUploads;
+    use WithFileUploads, WithPagination;
 
     public $major_id;
     public $question;
@@ -21,25 +22,32 @@ class CreateQuestion extends Component
     public $status = true;
     
     public $majors;
-    public $questions = [];
+    // public $questions = [];
     public $isOpen = false;
     public $selectedMajorId;
 
     public $answers = [];
     public $correctAnswers = [];
+    public $perPage = 5;
+    public $search = '';
     
     public function render()
-    {
-        return view('livewire.create-question');
+    {   
+        $questions = $this->filterQuestions();
+        // return view('livewire.create-question');
+        return view('livewire.create-question', [
+            'questions' => $questions, // Pasa las preguntas paginadas a la vista
+        ]);
     }
 
 
     public function mount()
     {
-        $this->majors = Major::all();
-        $this->selectedMajorId = $this->majors->first()->id ?? null;
-        $this->questions = QuestionExam::with('majors')->get();
-        $this->filterQuestions();
+        $this->majors = Major::where('status', 1)->get();
+        // $this->selectedMajorId = $this->majors->first()->id ?? null;
+        $this->selectedMajorId = '';
+        // $this->questions = QuestionExam::with('majors')->get();
+        // $this->filterQuestions();
     }
 
     public function selectMajor($majorId)
@@ -49,8 +57,39 @@ class CreateQuestion extends Component
     }
 
     public function filterQuestions()
+    {   
+        $query = QuestionExam::query();
+
+        // Filtrar por especialidad si está seleccionada
+        if ($this->selectedMajorId) {
+            $query->where('major_id', $this->selectedMajorId);
+        }
+
+        // Aplicar búsqueda si hay un término de búsqueda
+        if ($this->search) {
+            $query->search($this->search);
+        }
+
+        // Paginar los resultados
+        return $query->paginate($this->perPage);
+    }
+
+    public function updatedSelectedMajorId()
     {
-        $this->questions = QuestionExam::where('major_id', $this->selectedMajorId)->get();
+        // Este método se ejecuta automáticamente cuando cambia el valor de selectedMajorId
+        $this->resetPage(); // Reinicia la paginación al cambiar la especialidad
+    }
+
+    public function updatedPerPage()
+    {
+        // Este método se ejecuta automáticamente cuando cambia el valor de perPage
+        $this->resetPage(); // Reinicia la paginación al cambiar el número de elementos por página
+    }
+
+    public function updatedSearch()
+    {
+        // Reinicia la paginación al cambiar el término de búsqueda
+        $this->resetPage();
     }
 
     public function create()

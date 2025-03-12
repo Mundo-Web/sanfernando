@@ -19,46 +19,102 @@
                     
                     <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 md:grid-cols-5">
                         
-                        <div role="tablist" class="flex border-b overflow-x-auto w-full md:col-span-5">
-                            @foreach ($majors as $major)
-                                <a
-                                    id="tab{{ $major->id }}"
-                                    role="tab"
-                                    aria-selected="{{ $selectedMajorId == $major->id ? 'true' : 'false' }}"
-                                    aria-controls="panel{{ $major->id }}"
-                                    wire:click="selectMajor({{ $major->id }})"
-                                    class="px-4 py-2 w-[150px] focus:outline-none border-b-2 {{ $selectedMajorId == $major->id ? 'border-blue-500' : 'border-transparent' }}">
-                                    {{ $major->name }}
-                                </a>
-                            @endforeach
-                        </div>
-
+                        <section  class="md:col-span-5">
+                                <div class="w-full font-sans">
+                                    <div class="bg-white dark:bg-gray-800 relative  sm:rounded-lg overflow-hidden">
+                                        <div class="flex items-center justify-between d p-4">
+                                            <div class="flex">
+                                                <div class="relative w-full">
+                                                    <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                                                        <svg aria-hidden="true" class="w-5 h-5 text-gray-500 dark:text-gray-400"
+                                                            fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                                            <path fill-rule="evenodd"
+                                                                d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+                                                                clip-rule="evenodd" />
+                                                        </svg>
+                                                    </div>
+                                                    <input  
+                                                        wire:model.live.debounce.300ms = "search"
+                                                        type="text"
+                                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full pl-10 p-2 "
+                                                        placeholder="Search" required="">
+                                                </div>
+                                            </div>
+                                            <div class="flex space-x-3">
+                                                <div class="flex space-x-3 items-center">
+                                                    <label class="w-40 text-sm font-medium text-gray-900">Especialidad:</label>
+                                                    <select wire:model="selectedMajorId" wire:change="filterQuestions" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                                                        <option value="">Todas</option>
+                                                        @foreach ($majors as $major)
+                                                            <option value="{{ $major->id }}">{{ $major->name }}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="overflow-x-auto">
+                                            <table id="questionsTable" class="w-full text-sm text-left text-gray-500 dark:text-gray-400" wire:init="filterQuestions">
+                                                <thead class="text-xs text-gray-700 uppercase bg-gray-50">
+                                                    <tr>
+                                                        <th scope="col" class="px-4 py-3">Pregunta</th>
+                                                        <th scope="col" class="px-4 py-3 w-28">Imagen</th>
+                                                        <th scope="col" class="px-4 py-3 w-28">
+                                                            <span class="sr-only">Acciones</span>
+                                                        </th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @foreach ($questions as $item)
+                                                        <tr class="border-b dark:border-gray-700">
+                                                            <td scope="row"
+                                                                class="px-4 py-3 font-normal text-gray-700 whitespace-nowrap dark:text-white">
+                                                                {{ \Illuminate\Support\Str::limit($item->question, 100, '...') }}</td>
+                                                            <td class="px-4 py-3 w-28">
+                                                                @if ($item->imagen)
+                                                                    <img src="{{asset($item->imagen)}}" class="w-10 object-contain h-10"/>
+                                                                @else
+                                                                    <h3 class="text-gray-700"></h3>
+                                                                @endif
+                                                            </td>
+                                                            <td class="w-28">
+                                                                <div class="flex flex-row gap-3 items-center justify-center">
+                                                                    <button wire:click="edit('{{ $item->id }}')" class="px-3 py-1 bg-yellow-500 text-white rounded">Editar</button>
+                                                                    <button wire:click="delete('{{ $item->id }}')" class="px-3 py-1 bg-red-500 text-white rounded">Eliminar</button>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                    @endforeach
+                                                </tbody>
+                                            </table>
+                                        </div>
                         
-                            
-                            <table id="questionsTable" class="table table-bordered md:col-span-5" wire:init="filterQuestions">
-                                <thead>
-                                    <tr>
-                                        <th class="min-w-[200px]">Pregunta</th>
-                                        <th class="min-w-[150px]">Acciones</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($this->questions as $item)
-                                        <tr>
-                                            <td>{{ $item->question }}</td>
-                                            <td>
-                                                <button wire:click="edit('{{ $item->id }}')" class="btn btn-primary">Editar</button>
-                                                <button wire:click="delete('{{ $item->id }}')" class="btn btn-danger">Eliminar</button>
-                                            </td>
-                                        </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
-                            
-                    </div>
+                                        <div class="py-4 px-3">
+                                            <div class="flex ">
+                                                <div class="flex space-x-4 items-center mb-3">
+                                                    <label class="w-40 text-sm font-medium text-gray-900">Por pagina</label>
+                                                    <select wire:model.live="perPage"
+                                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
+                                                        <option value="5">5</option>
+                                                        <option value="10">10</option>
+                                                        <option value="20">20</option>
+                                                        <option value="50">50</option>
+                                                        <option value="100">100</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
 
-                    <livewire:question-table />
-                    
+                                        <!-- Paginación -->
+                                        <div class="py-4 px-3">
+                                            {{ $questions->links() }}
+                                        </div>
+                                    </div>
+                                </div>
+                        </section>
+                        
+                        
+
+                    </div>
                 </div>
             </div>
 

@@ -47,5 +47,9 @@ class QuestionExam extends Model
         return $answers->shuffle();
     }
 
+    public function scopeSearch($query, $search)
+    {
+        return $query->where('question', 'like', '%'.$search.'%');
+    }
    
 }

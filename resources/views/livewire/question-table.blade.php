@@ -4,6 +4,18 @@
         <input wire:model="search" type="text" placeholder="Buscar..." class="form-control">
     </div>
 
+    {{-- Select para filtrar por especialidad --}}
+    <div class="mb-4">
+        <select wire:model="majorFilter" class="form-control">
+            <option value="">Todas las especialidades</option>
+            @foreach($majors as $major)
+                <option value="{{ $major->id }}">{{ $major->name }}</option>
+            @endforeach
+        </select>
+    </div>
+
+    <h2>mensaje demo</h2>
+
     {{-- Tabla --}}
     <div class="table-responsive">
         <table class="table table-bordered">
