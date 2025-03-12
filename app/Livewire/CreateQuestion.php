@@ -136,18 +136,22 @@ class CreateQuestion extends Component
         $imagenPath = null;
 
         if ($this->imagen) {
-            $manager = new ImageManager(new Driver()); 
-            $nombreImagen = Str::random(10) . '_' . $this->imagen->getClientOriginalName();
-            $ruta = 'storage/images/questions/';
-    
-            if (!file_exists($ruta)) {
-                mkdir($ruta, 0777, true);
+            if (is_string($this->imagen)) {
+                $imagenPath = $this->imagen;
+            } else {
+                $manager = new ImageManager(new Driver());
+                $nombreImagen = Str::random(10) . '_' . $this->imagen->getClientOriginalName();
+                $ruta = 'storage/images/questions/';
+        
+                if (!file_exists($ruta)) {
+                    mkdir($ruta, 0777, true);
+                }
+        
+                $img = $manager->read($this->imagen->getRealPath());
+                $img->save($ruta . $nombreImagen);
+        
+                $imagenPath = $ruta . $nombreImagen;
             }
-    
-            $img = $manager->read($this->imagen->getRealPath());
-            $img->save($ruta . $nombreImagen);
-    
-            $imagenPath = $ruta . $nombreImagen;
         }
 
         
