@@ -37,12 +37,12 @@
                                                         wire:model.live.debounce.300ms = "search"
                                                         type="text"
                                                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full pl-10 p-2 "
-                                                        placeholder="Search" required="">
+                                                        placeholder="Buscar" required="">
                                                 </div>
                                             </div>
                                             <div class="flex space-x-3">
                                                 <div class="flex space-x-3 items-center">
-                                                    <label class="w-40 text-sm font-medium text-gray-900">Especialidad:</label>
+                                                    <label class="w-40 text-sm font-medium text-gray-900 dark:text-white">Especialidad:</label>
                                                     <select wire:model="selectedMajorId" wire:change="filterQuestions" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
                                                         <option value="">Todas</option>
                                                         @foreach ($majors as $major)
@@ -57,9 +57,9 @@
                                                 <thead class="text-xs text-gray-700 uppercase bg-gray-50">
                                                     <tr>
                                                         <th scope="col" class="px-4 py-3">Pregunta</th>
-                                                        <th scope="col" class="px-4 py-3 w-28">Imagen</th>
+                                                        <th scope="col" class="px-4 py-3 w-28"></th>
                                                         <th scope="col" class="px-4 py-3 w-28">
-                                                            <span class="sr-only">Acciones</span>
+                                                            Acciones
                                                         </th>
                                                     </tr>
                                                 </thead>
@@ -79,8 +79,9 @@
                                                             <td class="w-28">
                                                                 <div class="flex flex-row gap-3 items-center justify-center">
                                                                     <button wire:click="edit('{{ $item->id }}')" class="px-3 py-1 bg-yellow-500 text-white rounded">Editar</button>
-                                                                    <button wire:click="delete('{{ $item->id }}')" class="px-3 py-1 bg-red-500 text-white rounded">Eliminar</button>
+                                                                    <button onclick="confirmDelete('{{ $item->id }}')" class="px-3 py-1 bg-red-500 text-white rounded">Eliminar</button>
                                                                 </div>
+                                                                {{-- wire:click="delete('{{ $item->id }}')" --}}
                                                             </td>
                                                         </tr>
                                                     @endforeach
@@ -91,7 +92,7 @@
                                         <div class="py-4 px-3">
                                             <div class="flex ">
                                                 <div class="flex space-x-4 items-center mb-3">
-                                                    <label class="w-40 text-sm font-medium text-gray-900">Por pagina</label>
+                                                    <label class="w-40 text-sm font-medium text-gray-900 dark:text-white">Por pagina</label>
                                                     <select wire:model.live="perPage"
                                                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
                                                         <option value="5">5</option>
@@ -348,6 +349,25 @@
 
     <script src="/js/moment/min/moment.min.js"></script>
 
+    <script>
+        function confirmDelete(questionId) {
+            Swal.fire({
+                title: '¿Estás seguro?',
+                text: "¡No podrás revertir esto!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Sí, eliminar',
+                cancelButtonText: 'Cancelar'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // Llama al método delete de Livewire
+                    Livewire.emit('deleteQuestion', questionId);
+                }
+            });
+        }
+    </script>
   
 </div>
 

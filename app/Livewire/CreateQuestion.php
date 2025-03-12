@@ -30,6 +30,7 @@ class CreateQuestion extends Component
     public $correctAnswers = [];
     public $perPage = 5;
     public $search = '';
+    protected $listeners = ['deleteQuestion' => 'delete'];
     
     public function render()
     {   
@@ -154,8 +155,6 @@ class CreateQuestion extends Component
             }
         }
 
-        
-
         $question = QuestionExam::updateOrCreate(['id' => $this->questionId], [
             'major_id' => $this->major_id,
             'question' => $this->question,
@@ -218,7 +217,8 @@ class CreateQuestion extends Component
     public function delete($id)
     {
         QuestionExam::find($id)->delete();
-        session()->flash('message', 'Task Deleted Successfully.');
+        session()->flash('message', 'Pregunta eliminada correctamente.');
+        $this->filterQuestions();
     }
 
     public function addAnswer()
