@@ -19,35 +19,33 @@
                     
                     <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 md:grid-cols-5">
                         
-                        <div role="tablist" class="flex border-b">
+                        <div role="tablist" class="flex border-b overflow-x-auto w-full md:col-span-5">
                             @foreach ($majors as $major)
-                                <button
+                                <a
                                     id="tab{{ $major->id }}"
                                     role="tab"
                                     aria-selected="{{ $selectedMajorId == $major->id ? 'true' : 'false' }}"
                                     aria-controls="panel{{ $major->id }}"
                                     wire:click="selectMajor({{ $major->id }})"
-                                    class="px-4 py-2 focus:outline-none border-b-2 {{ $selectedMajorId == $major->id ? 'border-blue-500' : 'border-transparent' }}">
+                                    class="px-4 py-2 w-[150px] focus:outline-none border-b-2 {{ $selectedMajorId == $major->id ? 'border-blue-500' : 'border-transparent' }}">
                                     {{ $major->name }}
-                                </button>
+                                </a>
                             @endforeach
                         </div>
 
                         
-
+                            
                             <table id="questionsTable" class="table table-bordered md:col-span-5" wire:init="filterQuestions">
                                 <thead>
                                     <tr>
-                                        <th>Pregunta</th>
-                                        <th>Descripción</th>
-                                        <th>Acciones</th>
+                                        <th class="min-w-[200px]">Pregunta</th>
+                                        <th class="min-w-[150px]">Acciones</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach ($this->questions as $item)
                                         <tr>
                                             <td>{{ $item->question }}</td>
-                                            <td>{{ $item->description }}</td>
                                             <td>
                                                 <button wire:click="edit('{{ $item->id }}')" class="btn btn-primary">Editar</button>
                                                 <button wire:click="delete('{{ $item->id }}')" class="btn btn-danger">Eliminar</button>
@@ -58,6 +56,8 @@
                             </table>
                             
                     </div>
+
+                    <livewire:question-table />
                     
                 </div>
             </div>
@@ -289,7 +289,10 @@
             });
         });
     </script>
+
     <script src="/js/moment/min/moment.min.js"></script>
+
+  
 </div>
 
 

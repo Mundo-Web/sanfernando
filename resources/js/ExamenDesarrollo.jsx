@@ -23,27 +23,27 @@ const ExamenDesarrollo = ({ evaluation, questions: questionsFromDB, attemp }) =>
     minutes: evaluation.duracion % 60
   }
 
-  // useEffect(() => {
-  //   const startsAt = moment(attemp.created_at);
-  //   const durationInSeconds = evaluation.duration * 60;
+  useEffect(() => {
+    const startsAt = moment(attemp.created_at);
+    const durationInSeconds = evaluation.duracion * 60;
 
-  //   const intervalId = setInterval(() => {
-  //     const now = moment();
-  //     const diffInSeconds = now.diff(startsAt, 'seconds')
-  //     const percentageElapsed = (diffInSeconds / durationInSeconds) * 100
-  //     const finalPercentage = Math.min(percentageElapsed, 100)
-  //     setPercentaje(finalPercentage)
-  //     setSeconds(diffInSeconds)
+    const intervalId = setInterval(() => {
+      const now = moment();
+      const diffInSeconds = now.diff(startsAt, 'seconds')
+      const percentageElapsed = (diffInSeconds / durationInSeconds) * 100
+      const finalPercentage = Math.min(percentageElapsed, 100)
+      setPercentaje(finalPercentage)
+      setSeconds(diffInSeconds)
 
-  //     if (percentage >= 100) {
-  //       clearInterval(intervalId)
-  //       finishEvaluation()
-  //     }
-  //   }, 1000);
+      if (finalPercentage >= 100) {
+        clearInterval(intervalId)
+        FinishForceEvaluation()
+      }
+    }, 1000);
 
-  //   return () => clearInterval(intervalId);
+    return () => clearInterval(intervalId);
 
-  // }, [attemp.created_at, evaluation.duracion]);
+  }, [attemp.created_at, evaluation.duracion]);
 
   const hours = Math.floor(seconds / 3600);
   const minutes = Math.floor((seconds % 3600) / 60);
@@ -125,6 +125,24 @@ const ExamenDesarrollo = ({ evaluation, questions: questionsFromDB, attemp }) =>
     finishEvaluation()
   }
 
+  const FinishForceEvaluation = async () => {
+    // Guardar todas las respuestas
+    const requests = Object.entries(answers).map(([questionId, answerId]) => ({
+      question_id: questionId,
+      answer_id: answerId,
+      attemp_id: attemp.id,
+    }));
+
+    //const result = await attempExamDetailsRest.save(request)
+    const results = await Promise.all(requests.map(request => attempExamDetailsRest.save(request)));
+    
+    //if (!result) return
+    if (results.some(result => !result)) return;
+
+    finishEvaluation()
+  }
+
+
   const finishEvaluation = async () => {
     const result = attempsExamRest.delete(attemp.id)
     if (!result) return
@@ -161,6 +179,23 @@ const ExamenDesarrollo = ({ evaluation, questions: questionsFromDB, attemp }) =>
         } */}
       </div>
     </section>
+
+
+    {/* Sección del contador */}
+
+    {
+        evaluation.duracion != null && <section className="px-[5%] lg:px-[8%] font-poppins_regular">
+          <div className="mx-auto mt-12 w-full max-w-3xl bg-white sticky top-4 p-4 pb-2 border rounded-md shadow-md">
+            <p className="mb-2">Tiempo transcurrido: {formattedTime}</p>
+            <div className="w-full bg-gray-200 rounded-full h-2.5 mb-4 dark:bg-gray-700">
+              <div
+                className="bg-red-600 h-2.5 rounded-full dark:bg-red-500"
+                style={{ width: `${percentage}%` }}
+              ></div>
+            </div>
+          </div>
+        </section>
+    }
 
     {/* <section className='px-[5%] lg:px-[8%] font-poppins_regular'>
 
