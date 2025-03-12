@@ -363,10 +363,20 @@
             }).then((result) => {
                 if (result.isConfirmed) {
                     // Llama al método delete de Livewire
-                    Livewire.emit('deleteQuestion', questionId);
+                    Livewire.dispatch('deleteQuestion', { id: questionId });
                 }
             });
         }
+
+        Livewire.on('showSuccessAlert', (event) => {
+            Swal.fire({
+                icon: 'success',
+                title: 'Éxito',
+                text: event.message,
+                timer: 2000, // Cierra automáticamente después de 2 segundos
+                showConfirmButton: false
+            });
+        });
     </script>
   
 </div>

@@ -28,10 +28,10 @@ class CreateQuestion extends Component
 
     public $answers = [];
     public $correctAnswers = [];
-    public $perPage = 5;
+    public $perPage = 10;
     public $search = '';
     protected $listeners = ['deleteQuestion' => 'delete'];
-    
+
     public function render()
     {   
         $questions = $this->filterQuestions();
