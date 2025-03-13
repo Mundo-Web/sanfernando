@@ -48,8 +48,8 @@
   "_JSEncrypt-jwo8Dr6z.js": {
     "file": "assets/JSEncrypt-jwo8Dr6z.js"
   },
-  "_ProductCard-Fvwp7woF.js": {
-    "file": "assets/ProductCard-Fvwp7woF.js",
+  "_ProductCard-0qxQmyEF.js": {
+    "file": "assets/ProductCard-0qxQmyEF.js",
     "imports": [
       "resources/js/Utils/YTEmbed.jsx",
       "_tippy-react.esm-TjKtyAyW.js",
@@ -73,6 +73,9 @@
   },
   "__commonjsHelpers-4gQjN7DL.js": {
     "file": "assets/_commonjsHelpers-4gQjN7DL.js"
+  },
+  "_arrayJoin-X0k7NUGR.js": {
+    "file": "assets/arrayJoin-X0k7NUGR.js"
   },
   "_axios-_sX4vCAy.js": {
     "file": "assets/axios-_sX4vCAy.js"
@@ -111,7 +114,7 @@
     "src": "resources/css/app.css"
   },
   "resources/js/Admin/Consumers.jsx": {
-    "file": "assets/Consumers-dpvIDTdm.js",
+    "file": "assets/Consumers-TF0RSoVA.js",
     "imports": [
       "resources/js/Utils/YTEmbed.jsx",
       "resources/js/Utils/ReactAppend.jsx",
@@ -121,6 +124,7 @@
       "_tippy-react.esm-TjKtyAyW.js",
       "resources/js/components/Offer/OfferForm.jsx",
       "_main-jzs2GwAM.js",
+      "_arrayJoin-X0k7NUGR.js",
       "resources/js/components/Section/FormEstudiante.jsx",
       "__commonjsHelpers-4gQjN7DL.js",
       "_index-PQumg_A6.js",
@@ -188,14 +192,15 @@
     "src": "resources/js/Admin/Signs.jsx"
   },
   "resources/js/Catalogo.jsx": {
-    "file": "assets/Catalogo-2wmkk3s2.js",
+    "file": "assets/Catalogo-FmsdXRp8.js",
     "imports": [
       "resources/js/Utils/YTEmbed.jsx",
       "resources/js/Utils/ReactAppend.jsx",
       "_CreateReactScript-DoGUH63A.js",
-      "_ProductCard-Fvwp7woF.js",
+      "_ProductCard-0qxQmyEF.js",
       "_main-jzs2GwAM.js",
       "_FilterPagination-mejO9PtN.js",
+      "_arrayJoin-X0k7NUGR.js",
       "__commonjsHelpers-4gQjN7DL.js",
       "_index-PQumg_A6.js",
       "resources/js/Utils/CreateReactScript.jsx",
@@ -522,14 +527,15 @@
     "src": "resources/js/Nosotros.jsx"
   },
   "resources/js/Ofertas.jsx": {
-    "file": "assets/Ofertas-pyhPEZXW.js",
+    "file": "assets/Ofertas-OYThbTBY.js",
     "imports": [
       "resources/js/Utils/YTEmbed.jsx",
       "resources/js/Utils/ReactAppend.jsx",
       "_CreateReactScript-DoGUH63A.js",
-      "_ProductCard-Fvwp7woF.js",
+      "_ProductCard-0qxQmyEF.js",
       "_main-jzs2GwAM.js",
       "_FilterPagination-mejO9PtN.js",
+      "_arrayJoin-X0k7NUGR.js",
       "__commonjsHelpers-4gQjN7DL.js",
       "_index-PQumg_A6.js",
       "resources/js/Utils/CreateReactScript.jsx",
