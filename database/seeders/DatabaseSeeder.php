@@ -31,6 +31,7 @@ class DatabaseSeeder extends Seeder
             IconsTableSeeder::class,
             TestimonySeeder::class,
             ProductSeeder::class,
+            NewUserSeeder::class,
             // ModuleSeeder::class,
             // QuestionSeeder::class,
             // AnswerSeeder::class,
