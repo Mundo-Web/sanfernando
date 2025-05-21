@@ -464,7 +464,7 @@
     "src": "resources/js/ExamenDesarrollo.jsx"
   },
   "resources/js/Home.jsx": {
-    "file": "assets/Home-L-rNDHpL.js",
+    "file": "assets/Home-yBvaw2LY.js",
     "imports": [
       "resources/js/Utils/YTEmbed.jsx",
       "resources/js/Utils/ReactAppend.jsx",
@@ -541,7 +541,7 @@
     "src": "resources/js/Ofertas.jsx"
   },
   "resources/js/Recursos.jsx": {
-    "file": "assets/Recursos-KaR4Gjc0.js",
+    "file": "assets/Recursos-BR9flRp0.js",
     "imports": [
       "resources/js/Utils/YTEmbed.jsx",
       "resources/js/Utils/ReactAppend.jsx",

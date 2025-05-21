@@ -161,7 +161,7 @@ const Home = ({
                     </p>
                 </div>
                 <div className='flex flex-col'>
-                    <a 
+                    <a href="/recursos"
                       className="w-auto bg-[#252222] px-6 py-3 rounded-3xl text-white font-Montserrat_SemiBold">
                       Ver todos los recursos
                     </a>
