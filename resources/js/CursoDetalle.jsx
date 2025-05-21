@@ -38,6 +38,8 @@ const CursoDetalle = ({ producto, modules, url_env }) => {
     return str;
   };
 
+    
+
   return (
     <>
       <main className="z-[15] mb-8">
@@ -430,10 +432,28 @@ const CursoDetalle = ({ producto, modules, url_env }) => {
                         )
                       )}
                     </div>
+                    
                   </div>
               </div>
             )}
 
+            {
+                producto.brochure_url &&
+            <div className="flex flex-col px-6 mt-6 w-full max-md:pl-5">
+              <div className="text-base font-medium leading-none text-[#252222] font-Montserrat_Medium">
+                Brochure:
+              </div>
+              <a  href={`https://sanfernandoacademy.com/${producto.brochure_url}`} 
+                  download 
+                  target="_blank" 
+                  >
+                <div
+                  className="flex flex-row items-center justify-center gap-1 px-3 w-full text-white rounded-xl font-Montserrat_SemiBold py-3 cursor-pointer bg-[#F19905]">
+                    <span>Descargar <i class="fa-solid fa-download"></i></span>
+                </div>
+              </a>
+            </div>
+            }
 
             <div className="mt-6 w-full border border-white border-solid min-h-[1px]"></div>
 

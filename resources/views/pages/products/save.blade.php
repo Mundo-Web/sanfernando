@@ -837,7 +837,7 @@
 
                 </div>
               </div>
-              <div class="md:col-span-5 flex justify-between gap-4">
+              <div class="md:col-span-5 flex flex-col justify-between gap-1">
 
                 <div class="w-full">
                   <label for="descuento"> Brochre del curso </label>
@@ -851,7 +851,7 @@
 
 
                 @if (isset($product->brochure_url))
-                  <a href="{{ asset('storage/' . $product->brochure_url) }}" target="_blank">Ver Brochure</a>
+                  <a href="{{ asset($product->brochure_url) }}" target="_blank">Ver Brochure</a>
                 @endif
 
               </div>
