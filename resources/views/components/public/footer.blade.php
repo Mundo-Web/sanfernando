@@ -74,10 +74,7 @@
 
             <div class="text-center">
                 <p class="font-normal font-Montserrat_Regular text-sm text-white">
-                    Copyright &copy; 2023 {{ config('app.name') }}. Reservados todos los derechos. Powered by <a
-                        href="https://www.mundoweb.pe" target="_blank" class="text-white border-b border-white"> Mundo
-                        Web
-                    </a>
+                    Copyright &copy; 2024 San Fernando Academy. Todos los derechos reservados. 
                 </p>
             </div>
 
