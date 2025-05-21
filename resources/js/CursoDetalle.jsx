@@ -440,17 +440,19 @@ const CursoDetalle = ({ producto, modules, url_env }) => {
             {
                 producto.brochure_url &&
             <div className="flex flex-col px-6 mt-6 w-full max-md:pl-5">
-              <div className="text-base font-medium leading-none text-[#252222] font-Montserrat_Medium">
+              <div className=" text-base font-medium leading-none text-[#252222] font-Montserrat_Medium">
                 Brochure:
               </div>
               <a  href={`https://sanfernandoacademy.com/${producto.brochure_url}`} 
                   download 
-                  target="_blank" 
+                  target="_blank"
+                  className='mt-2 w-auto' 
                   >
-                <div
+                {/* <div
                   className="flex flex-row items-center justify-center gap-1 px-3 w-full text-white rounded-xl font-Montserrat_SemiBold py-3 cursor-pointer bg-[#F19905]">
                     <span>Descargar <i class="fa-solid fa-download"></i></span>
-                </div>
+                </div> */}
+                <img loading="lazy" className='w-10 h-10 object-contain' src='/images/academia/pdf.png' />
               </a>
             </div>
             }
