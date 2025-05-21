@@ -171,8 +171,8 @@ const Contacto = ({ general, faqs, aboutUs }) => {
                             />
                             Estoy de acuerdo con todos sus{" "}
                             <span
-                                className="font-semibold  "
-                                id="#linkTerminos2"
+                                className="font-semibold  cursor-pointer"
+                                id="linkTerminoss"
                             >
                                 {" "}
                                 Términos & condiciones

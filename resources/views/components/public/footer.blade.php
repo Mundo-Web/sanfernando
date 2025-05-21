@@ -154,7 +154,7 @@
             })
         })
 
-        $(document).on('click', '#linkTerminos2', function() {
+        $(document).on('click', '#linkTerminoss', function() {
             $('#modalTerminosCondiciones').modal({
                 show: true,
                 fadeDuration: 400,

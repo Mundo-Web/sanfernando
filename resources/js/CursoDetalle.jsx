@@ -441,7 +441,7 @@ const CursoDetalle = ({ producto, modules, url_env }) => {
                 producto.brochure_url &&
             <div className="flex flex-col px-6 mt-6 w-full max-md:pl-5">
               <div className=" text-base font-medium leading-none text-[#252222] font-Montserrat_Medium">
-                Descargar Brochure:
+                Brochure:
               </div>
               <div className='flex flex-row'>
                 <a  href={`https://sanfernandoacademy.com/${producto.brochure_url}`} 
