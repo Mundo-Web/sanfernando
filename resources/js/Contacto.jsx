@@ -278,7 +278,7 @@ const Contacto = ({ general, faqs, aboutUs }) => {
                                 </h1>
 
                                 <p className="text-base font-Montserrat_Regular tracking-normal">
-                                    <HtmlContent html={data['DESCRIPTION-FAQ']} />
+                                    <HtmlContent html={data['DESCRIPCION-FAQ']} />
                                 </p>
                             </div>
                         </div>
