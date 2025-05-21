@@ -97,10 +97,13 @@ class AboutUsController extends Controller
    */
   public function update(Request $request, string $id)
   {
+    
     $request->validate([
       'titulo' => 'required',
     ]);
+    
 		$aboutUs = AboutUs::find($id);
+
 		try {
 			
 			if ($request->hasFile("imagen")) {

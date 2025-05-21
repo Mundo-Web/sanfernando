@@ -14,7 +14,7 @@
         <div class="p-3">
           <div class="rounded shadow-lg p-4 px-4 ">
             <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 md:grid-cols-5">
-              <div class="md:col-span-5">
+              <div class="md:col-span-5 hidden">
                 <label for="nombre">Titulo</label>
                 <div class="relative mb-2  mt-2">
                   <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
@@ -29,7 +29,7 @@
                       </g>
                     </svg>
                   </div>
-                  <input disabled type="text" id="titulo" name="titulo" value="{{ $aboutUs->titulo }}"
+                  <input type="text" id="titulo" name="titulo" value="{{ $aboutUs->titulo }}"
                     class="mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     placeholder="Titulo">
                 </div>
@@ -40,9 +40,9 @@
                   {{-- <input type="text" id="descripcion" name="descripcion" value="{{ $aboutUs->descripcion }}"
                     class="mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     placeholder="Descripcion"> --}}
-                    <textarea  id="description" name="descripcion"
+                    <textarea  id="descripcion" name="descripcion"
                                         class="ckeditor mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                        placeholder="descripcion">{{ $aboutUs->content }}</textarea>
+                                        placeholder="descripcion">{{ $aboutUs->descripcion }}</textarea>
                 </div>
               </div>
 
@@ -77,7 +77,7 @@
 
   <script src="/ckeditor/ckeditor.js"></script>
   <script>
-      CKEDITOR.replace('description', {
+      CKEDITOR.replace('descripcion', {
           toolbar: [
               { name: 'document', items: ['Source'] }, // Código fuente
               { name: 'clipboard', items: ['Cut', 'Copy', 'Paste', '-', 'Undo', 'Redo'] },

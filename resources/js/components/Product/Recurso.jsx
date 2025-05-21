@@ -114,7 +114,7 @@ const Recurso = ({ recurso }) => {
                     href={recurso.archive ? recurso.archive : "#"}
                     onClick={onClickCount}
                     download={recurso.archive ? true : false}
-                    className="w-full bg-[#F19905] text-center px-6 py-3 rounded-3xl text-white font-Montserrat_SemiBold"
+                    className="w-full bg-[#F19905] text-center px-6 py-3 rounded-xl text-white font-Montserrat_SemiBold"
                 >
                     Descargar
                 </a>
