@@ -56,8 +56,8 @@
       "resources/js/components/Product/Teacher.jsx"
     ]
   },
-  "_Recurso-nLRqarZw.js": {
-    "file": "assets/Recurso-nLRqarZw.js",
+  "_Recurso-zGkyaSQV.js": {
+    "file": "assets/Recurso-zGkyaSQV.js",
     "imports": [
       "resources/js/Utils/YTEmbed.jsx",
       "resources/js/components/Product/Teacher.jsx",
@@ -269,7 +269,7 @@
     "src": "resources/js/ConfirmEmail.jsx"
   },
   "resources/js/Contacto.jsx": {
-    "file": "assets/Contacto-86wKA9_J.js",
+    "file": "assets/Contacto-bC0tcHF6.js",
     "imports": [
       "resources/js/Utils/YTEmbed.jsx",
       "resources/js/Utils/ReactAppend.jsx",
@@ -464,7 +464,7 @@
     "src": "resources/js/ExamenDesarrollo.jsx"
   },
   "resources/js/Home.jsx": {
-    "file": "assets/Home-yBvaw2LY.js",
+    "file": "assets/Home-liAwrMTL.js",
     "imports": [
       "resources/js/Utils/YTEmbed.jsx",
       "resources/js/Utils/ReactAppend.jsx",
@@ -473,7 +473,7 @@
       "_HtmlContent-GGptkZZp.js",
       "_Curse-L0-kR5cl.js",
       "resources/js/components/Section/SliderTestimony.jsx",
-      "_Recurso-nLRqarZw.js",
+      "_Recurso-zGkyaSQV.js",
       "__commonjsHelpers-4gQjN7DL.js",
       "_index-PQumg_A6.js",
       "resources/js/Utils/CreateReactScript.jsx",
@@ -541,7 +541,7 @@
     "src": "resources/js/Ofertas.jsx"
   },
   "resources/js/Recursos.jsx": {
-    "file": "assets/Recursos-BR9flRp0.js",
+    "file": "assets/Recursos-PBHwd96x.js",
     "imports": [
       "resources/js/Utils/YTEmbed.jsx",
       "resources/js/Utils/ReactAppend.jsx",
@@ -550,7 +550,7 @@
       "_axios-_sX4vCAy.js",
       "_FilterPagination-mejO9PtN.js",
       "_main-jzs2GwAM.js",
-      "_Recurso-nLRqarZw.js",
+      "_Recurso-zGkyaSQV.js",
       "_HtmlContent-GGptkZZp.js",
       "__commonjsHelpers-4gQjN7DL.js",
       "_index-PQumg_A6.js",

@@ -66,9 +66,9 @@ const Recurso = ({ recurso }) => {
     return (
         <div
             
-            className="flex flex-col justify-between gap-3 p-5 bg-white rounded-xl overflow-hidden"
+            className="flex flex-col justify-between gap-3 p-2 bg-white rounded-xl overflow-hidden border"
         >
-            <div className="flex flex-row gap-4">
+            <div className="flex flex-row gap-4 p-3">
                 <img
                     src={recurso.imagen}
                     onError={(e) =>
@@ -109,14 +109,16 @@ const Recurso = ({ recurso }) => {
                 </div>
             </div>
 
-            <a
-                href={recurso.archive ? recurso.archive : "#"}
-                onClick={onClickCount}
-                download={recurso.archive ? true : false}
-                className="w-auto bg-[#F19905] text-center px-6 py-3 rounded-3xl text-white font-Montserrat_SemiBold"
-            >
-                Descargar
-            </a>
+             
+                <a
+                    href={recurso.archive ? recurso.archive : "#"}
+                    onClick={onClickCount}
+                    download={recurso.archive ? true : false}
+                    className="w-full bg-[#F19905] text-center px-6 py-3 rounded-3xl text-white font-Montserrat_SemiBold"
+                >
+                    Descargar
+                </a>
+             
         </div>
     );
 };

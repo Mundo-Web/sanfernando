@@ -100,8 +100,8 @@ const Recursos = ({ recursos, documentoscat, aboutUs }) => {
                     </p>
 
                     <div className="flex flex-wrap gap-2.5 items-center px-4 py-2 w-full bg-[#566574] bg-opacity-10 rounded-3xl max-md:max-w-full">
-                      <label htmlFor="searchInput" className="sr-only">Buscar recurso</label>
-                      <input type="text" id="searchInput" onChange={buscarProducto} placeholder="Buscar por nombre del profesor, especialidad o curso" className="flex-1 w-full py-3 px-3 text-base font-poppins_regular text-[#2D464C] border-0 focus:border-0 focus:ring-0 bg-transparent" style={{ outline: 'none !important', border: 'none' }} />
+                      <label htmlFor="searchInput" className="sr-only">Busca tu recurso</label>
+                      <input type="text" id="searchInput" onChange={buscarProducto} placeholder="Busca tu recurso" className="flex-1 w-full py-3 px-3 text-base font-poppins_regular text-[#2D464C] border-0 focus:border-0 focus:ring-0 bg-transparent" style={{ outline: 'none !important', border: 'none' }} />
 					  	        <a 
                           className="w-auto bg-[#F19905] px-6 py-2 rounded-2xl text-base text-white font-Montserrat_SemiBold">
                           Buscar
