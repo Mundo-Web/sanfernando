@@ -125,7 +125,7 @@ const Home = ({
                       
                       <div className='flex flex-col z-10'>
                         <a 
-                          href={`//api.whatsapp.com/send?phone=${general.whatsapp}&text=Quiero+empezar+a+enseñar`}
+                          href={`//api.whatsapp.com/send?phone=${general.whatsapp}&text=${general.mensaje_whatsapp}`}
                           className="block"  // ← Esto hace que el enlace se comporte como un bloque
                         >
                           <div className="w-full bg-[#F19905] px-6 py-3 rounded-3xl text-white font-Montserrat_SemiBold">
