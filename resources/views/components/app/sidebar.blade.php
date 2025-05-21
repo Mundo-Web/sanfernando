@@ -110,14 +110,17 @@
         <x-menu.item id="signs" href="{{ route('Admin/Signs.jsx') }}" icon="fas fa-sign">
           Firmas
         </x-menu.item>
-        {{-- <x-menu.item id="politicas-de-devolucion" href="{{ route('politicas-de-devolucion.edit', 1) }}"
+        
+        <x-menu.item id="politicas-de-devolucion" href="{{ route('politicas-de-devolucion.edit', 1) }}"
           icon="fas fa-undo-alt">
-          Politicas de Devolucion
-        </x-menu.item> --}}
+          Políticas de devolución
+        </x-menu.item>
+
         <x-menu.item id="terminos-y-condiciones" href="{{ route('terminos-y-condiciones.edit', 1) }}"
           icon="fas fa-file-contract">
           Terminos y Condiciones
         </x-menu.item>
+
         <x-menu.item id="politica-datos" href="{{ route('politicadatos.detalle', 1) }}" icon="fas fa-file-contract">
           Políticas de privacidad
         </x-menu.item>

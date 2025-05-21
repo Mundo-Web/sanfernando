@@ -163,81 +163,100 @@ const CursoDetalle = ({ producto, modules, url_env }) => {
               </div>
             </div>)}
 
-            <div className="flex flex-col gap-3 mt-10 w-full">
-              <div className="text-2xl font-Montserrat_Bold">
-                A quién va dirigido
-              </div>
+            {(producto?.description2 || producto?.imagen_ambiente) && (
+                <div className="flex flex-col gap-3 mt-10 w-full">
+                  <div className="text-2xl font-Montserrat_Bold">
+                    A quién va dirigido
+                  </div>
 
-              <div className="flex flex-col w-full font-Montserrat_Regular">
-                <div dangerouslySetInnerHTML={{ __html: producto?.description2 ?? '' }}></div>
-              </div>
-
-              {producto?.imagen_ambiente && (<img loading="lazy"
-                src={'/' + producto.imagen_ambiente}
-                className="object-contain mt-5 w-full rounded-xl " />
-              )}
-            </div>      
-
-
-            {producto.que_lograras && (
-              <div className='flex flex-col mt-10 w-full'>
-                <div className="text-2xl font-Montserrat_Bold">
-                  Qué lograrás una vez terminado el Diplomado
-                </div>
-                <div className="bg-[#F2F3F7] rounded-2xl p-6 mt-5">
-                    <div className="grid grid-cols-1 min-w-[240px] gap-5 items-start w-full text-base font-Montserrat_Regular text-[#252222]">
-                      
-                      {(() => {
-                        const parser = new DOMParser();
-                        const doc = parser.parseFromString(producto.que_lograras, "text/html");
-                        const parrafos = Array.from(doc.querySelectorAll("p")); 
-
-                        return parrafos.map((p, index) => (
-                          <div key={index} className="flex gap-3 items-start w-full">
-                            <i className="fa-solid fa-circle-check text-2xl text-[#F19905]"></i>
-                            <div className="flex-1 shrink basis-0">
-                              {p.textContent.trim()} 
-                            </div>
-                          </div>
-                        ));
-                      })()}
-
+                  {producto?.description2 && (
+                    <div className="flex flex-col w-full font-Montserrat_Regular">
+                      <div dangerouslySetInnerHTML={{ __html: producto.description2 }}></div>
                     </div>
+                  )}
+
+                  {producto?.imagen_ambiente && (
+                    <img
+                      loading="lazy"
+                      src={'/' + producto.imagen_ambiente}
+                      className="object-contain mt-5 w-full rounded-xl"
+                    />
+                  )}
                 </div>
-              </div>
-            )}  
+            )} 
 
 
-            <div className="flex flex-col mt-10 w-full max-md:max-w-full">
-              <div className="text-2xl font-Montserrat_Bold text-[#252222]">
-                <h1>Temario</h1>
-                <div className="max-w-2xl py-4 space-y-2">
-                  {modules.sort((a, b) => a.order - b.order).map((module, index) => (
-                    <div key={index} className="bg-[#F2F3F7] rounded-lg overflow-hidden border border-[#F19905]">
-                      <div className="px-4 py-2 flex items-start justify-between cursor-pointer">
-                        <div className="flex flex-col gap-1">
-                          <h3 className="text-lg font-Montserrat_Bold text-gray-800">
-                            {/* {module.type == 'session' ? `Módulo ${index + 1}`: 'Evaluación final'}:  */}
-                            {module.name}
-                          </h3>
-                          <div className="mt-2 flex items-center font-Montserrat_Regular text-sm text-gray-600 space-x-4">
-                            <span className="flex items-center">
-                              <i className="fa fa-book mr-2 text-blue-500" />
-                              {module.sources_count} recursos
-                            </span>
-                            <span className="flex items-center">
-                              <i className="fa fa-clock mr-2 text-[#F19905]" />
-                              {module.duration || 0}m
-                            </span>
+            {(() => {
+              if (!producto.que_lograras) return null; // Si no hay contenido, no renderizar nada
+
+              const parser = new DOMParser();
+              const doc = parser.parseFromString(producto.que_lograras, "text/html");
+              const parrafos = Array.from(doc.querySelectorAll("p"));
+
+              const parrafosConTexto = parrafos.filter(p => {
+                const textContent = p.textContent.trim();
+                const hasRealContent = textContent.length > 0 && !p.innerHTML.match(/^<br\s*\/?>$/i);
+                return hasRealContent;
+              });
+
+              if (parrafosConTexto.length === 0) return null; // Si no hay párrafos válidos, no renderizar nada
+
+              return (
+                <div className='flex flex-col mt-10 w-full'>
+                  <div className="text-2xl font-Montserrat_Bold">
+                    Qué lograrás una vez terminado el Diplomado
+                  </div>
+                  <div className="bg-[#F2F3F7] rounded-2xl p-6 mt-5">
+                    <div className="grid grid-cols-1 min-w-[240px] gap-5 items-start w-full text-base font-Montserrat_Regular text-[#252222]">
+                      {parrafosConTexto.map((p, index) => (
+                        <div key={index} className="flex gap-3 items-start w-full">
+                          <i className="fa-solid fa-circle-check text-2xl text-[#F19905]"></i>
+                          <div className="flex-1 shrink basis-0">
+                            {p.textContent.trim()} 
                           </div>
                         </div>
-                        {/* <FontAwesomeIcon icon={faChevronDown} className="text-gray-400 mt-1" /> */}
-                      </div>
+                      ))}
                     </div>
-                  ))}
+                  </div>
+                </div>
+              );
+            })()}
+
+            {modules && modules.length > 0 && (
+              <div className="flex flex-col mt-10 w-full max-md:max-w-full">
+                <div className="text-2xl font-Montserrat_Bold text-[#252222]">
+                  <h1>Temario</h1>
+                  <div className="max-w-2xl py-4 space-y-2">
+                    {modules
+                      .sort((a, b) => a.order - b.order)
+                      .map((module, index) => (
+                        <div
+                          key={index}
+                          className="bg-[#F2F3F7] rounded-lg overflow-hidden border border-[#F19905]"
+                        >
+                          <div className="px-4 py-2 flex items-start justify-between cursor-pointer">
+                            <div className="flex flex-col gap-1">
+                              <h3 className="text-lg font-Montserrat_Bold text-gray-800">
+                                {module.name}
+                              </h3>
+                              <div className="mt-2 flex items-center font-Montserrat_Regular text-sm text-gray-600 space-x-4">
+                                <span className="flex items-center">
+                                  <i className="fa fa-book mr-2 text-blue-500" />
+                                  {module.sources_count} recursos
+                                </span>
+                                <span className="flex items-center">
+                                  <i className="fa fa-clock mr-2 text-[#F19905]" />
+                                  {module.duration || 0}m
+                                </span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      ))}
+                  </div>
                 </div>
               </div>
-            </div>
+            )}
 
 
             {producto?.docentes.length > 0 && (

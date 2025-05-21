@@ -15,6 +15,9 @@
             margin-bottom: 0% !important;
             margin-top: 0% !important;
         }
+        .modal{
+            padding: 15px !important;
+        }
     </style>
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 md:justify-center w-full px-[5%] py-8 lg:py-16 ">
@@ -58,8 +61,9 @@
             <h3 class="text-xl text-white font-Montserrat_Bold pb-3">Aviso legal</h3>
             <a id="linkTerminos">Terminos y condiciones </a>
             <a id="linkPoliticas">Politicas de devolucion </a>
+            <a id="linkPoliticasPriv">Politicas de privacidad </a>
 
-            <a href="{{ route('librodereclamaciones') }}"><img class="w-24"
+            <a class="mt-3" href="{{ route('librodereclamaciones') }}"><img class="w-24"
                     src="{{ asset('images/img/reclamaciones.png') }}" /></a>
         </div>
 
@@ -120,14 +124,21 @@
     <div id="modalTerminosCondiciones" class="modal" style="max-width: 900px !important;width: 100% !important;  ">
         <div class="p-4 ">
             <h1 class="font-Montserrat_Bold text-center text-2xl">Términos y condiciones</h1>
-            <p class="font-Montserrat_Regular  prose grid grid-cols-1">{!! $terminos->content ?? '' !!}</p>
+            <div class="font-Montserrat_Regular  prose grid grid-cols-1 mt-5">{!! $terminos->content ?? '' !!}</div>
         </div>
     </div>
 
     <div id="modalPoliticasDev" class="modal" style="max-width: 900px !important; width: 100% !important;  ">
         <div class="p-4 ">
             <h1 class="font-Montserrat_Bold text-center text-2xl">Políticas de devolución</h1>
-            <p class="font-Montserrat_Regular  prose grid grid-cols-1 ">{!! $politicas->content ?? '' !!}</p>
+            <div class="font-Montserrat_Regular  prose grid grid-cols-1 mt-5">{!! $politicas->content ?? '' !!}</div>
+        </div>
+    </div>
+
+    <div id="modalPoliticasPriv" class="modal" style="max-width: 900px !important; width: 100% !important;  ">
+        <div class="p-4 ">
+            <h1 class="font-Montserrat_Bold text-center text-2xl">Políticas de privacidad</h1>
+            <div class="font-Montserrat_Regular  prose grid grid-cols-1 mt-5">{!! $politicaDatos->content ?? '' !!}</div>
         </div>
     </div>
 
@@ -162,6 +173,14 @@
 
         $(document).on('click', '#linkTerminospago', function() {
             $('#modalTerminosCondiciones').modal({
+                show: true,
+                fadeDuration: 400,
+
+            })
+        })
+
+        $(document).on('click', '#linkPoliticasPriv', function() {
+            $('#modalPoliticasPriv').modal({
                 show: true,
                 fadeDuration: 400,
 

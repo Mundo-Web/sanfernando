@@ -109,7 +109,7 @@ const Home = ({
 
 
     <section className="px-[5%] xl:px-[8%] bg-[#F2F3F7] py-12 xl:py-16">
-        <div className="flex flex-row justify-center items-center bg-[#191023] w-full rounded-3xl relative">
+        <div className="flex flex-col gap-0 md:gap-10 lg:gap-0 lg:flex-row justify-center items-center bg-[#191023] w-full rounded-3xl relative">
          
                 <div className="flex flex-col gap-5 p-8 justify-center items-center w-full max-w-xl text-white text-center">
 
@@ -122,18 +122,24 @@ const Home = ({
                         Somos más que una plataforma de cursos. Somos tu aliado en cada etapa de tu carrera médica
                       </p>
 
-                      <div className='flex flex-col'>
-                        <a href={`//api.whatsapp.com/send?phone=${general.whatsapp}&text=Quiero+empezar+a+enseñar`}
-                          className="w-auto bg-[#F19905] px-6 py-3 rounded-3xl text-white font-Montserrat_SemiBold">
-                          Comienza Ahora
+                      
+                      <div className='flex flex-col z-10'>
+                        <a 
+                          href={`//api.whatsapp.com/send?phone=${general.whatsapp}&text=Quiero+empezar+a+enseñar`}
+                          className="block"  // ← Esto hace que el enlace se comporte como un bloque
+                        >
+                          <div className="w-full bg-[#F19905] px-6 py-3 rounded-3xl text-white font-Montserrat_SemiBold">
+                            <span>Comienza Ahora</span>
+                          </div>
                         </a>
                       </div>
+                      
 
                 </div>
 
-                <div className="absolute right-0 bottom-0 flex flex-col ml-5 w-full items-end  md:w-6/12 mt-0 md:-mt-16">
+                <div className="flex lg:absolute right-0 bottom-0  flex-col ml-5 w-full justify-center items-end  md:w-6/12 mt-0 md:-mt-16">
                     <img src={''} onError={e => e.target.src = 'images/academia/imagenderecha.png'}
-                          className="object-contain h-[350px] w-full object-right" />
+                          className="object-contain h-[300px] lg:h-[350px] w-full object-center lg:object-right -mb-[1px]" />
                 </div>
             
         </div>

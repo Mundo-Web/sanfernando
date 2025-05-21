@@ -79,11 +79,11 @@
       <path d="M18 2L2 18M18 18L2 2" stroke="#272727" stroke-width="2.66667" stroke-linecap="round" />
     </svg>
   </button>
-  <nav class="w-full h-full overflow-y-auto p-8" x-data="{ openCatalogo: true, openSubMenu: null }">
+  <nav class="w-full h-full overflow-y-auto p-8" x-data="{ openCatalogo: false, openSubMenu: null }">
     <ul class="space-y-1">
       <li>
         <a href="/"
-          class="text-[#272727] font-medium font-poppins text-sm py-2 px-3 block hover:opacity-75 transition-opacity duration-300 {{ $isIndex ? 'text-[#FF5E14]' : '' }}">
+          class="text-[#272727] font-medium font-Montserrat_Regular text-sm py-2 px-3 block hover:opacity-75 transition-opacity duration-300 {{ $isIndex ? 'text-[#FF5E14]' : '' }}">
           <span class="underline-this">
             <svg
               class="inline-block w-3 h-3 mb-0.5 me-2 text-gray-400 dark:text-gray-500 group-hover:text-blue-600 dark:group-hover:text-blue-500"
@@ -91,13 +91,13 @@
               <path
                 d="m19.707 9.293-2-2-7-7a1 1 0 0 0-1.414 0l-7 7-2 2a1 1 0 0 0 1.414 1.414L2 10.414V18a2 2 0 0 0 2 2h3a1 1 0 0 0 1-1v-4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v4a1 1 0 0 0 1 1h3a2 2 0 0 0 2-2v-7.586l.293.293a1 1 0 0 0 1.414-1.414Z" />
             </svg>
-            INICIO
+            Inicio
           </span>
         </a>
       </li>
       <li>
         <a @click="openCatalogo = !openCatalogo" href="javascript:void(0)"
-          class="text-[#272727] flex justify-between items-center font-medium font-poppins text-sm py-2 px-3 hover:opacity-75 transition-opacity duration-300 {{ $pagina == 'catalogo' ? 'text-[#FF5E14]' : '' }}">
+          class="text-[#272727] flex justify-between items-center font-medium font-Montserrat_Regular text-sm py-2 px-3 hover:opacity-75 transition-opacity duration-300 {{ $pagina == 'catalogo' ? 'text-[#FF5E14]' : '' }}">
           <span class="underline-this">
             <svg
               class="inline-block w-3 h-3 mb-0.5 me-2 text-gray-400 dark:text-gray-500 group-hover:text-blue-600 dark:group-hover:text-blue-500"
@@ -107,62 +107,36 @@
               <path
                 d="M1 18h16a1 1 0 0 0 1-1v-6h-4.439a.99.99 0 0 0-.908.6 3.978 3.978 0 0 1-7.306 0 .99.99 0 0 0-.908-.6H0v6a1 1 0 0 0 1 1Z" />
             </svg>
-            PRODUCTOS
+            Catalogo
           </span>
           <span :class="{ 'rotate-180': openCatalogo }"
             class="ms-1 inline-block transform transition-transform duration-300">↓</span>
         </a>
-        <ul x-show="openCatalogo" x-transition class="ml-3 mt-1 space-y-1 border-l border-gray-300">
+        <ul x-show="openCatalogo" x-transition class="ml-3 mt-1 space-y-1 border-l border-gray-300 text-sm">
           <li>
             <a href="{{ route('CatalogoGP.jsx') }}"
-              class="text-[#272727] flex items-center py-2 px-3 hover:opacity-75 transition-opacity duration-300">
+              class="text-[#272727] font-Montserrat_Regular flex items-center py-2 px-3 hover:opacity-75 transition-opacity duration-300">
               <span class="underline-this">
                 Todas las categorías
-
               </span>
-
             </a>
             @if (count($categorias) > 0)
-
-
               @foreach ($categorias as $item)
                 <a href="/catalogo/{{ $item->id }}"
-                  class="text-[#272727] flex items-center py-2 px-3 hover:opacity-75 transition-opacity duration-300"
+                  class="text-[#272727] flex items-center font-Montserrat_Regular py-2 px-3 hover:opacity-75 transition-opacity duration-300"
                   @click="openCategories[{{ $item->id }}] = !openCategories[{{ $item->id }}]">
                   <span>{{ $item->name }}</span>
-                  {{--  <svg class="w-5 h-5 transform transition-transform"
-                            :class="{ 'rotate-180': openCategories[{{ $item->id }}] }" fill="none"
-                            stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7">
-                            </path>
-                          </svg> --}}
                 </a>
-
-                {{-- <div x-show="openCategories[{{ $item->id }}]"
-                        class="p-4 border border-t-0 border-gray-200 space-y-4">
-                        @foreach ($item->subcategories as $subitem)
-                          <label for="item-category-{{ $subitem->id }}"
-                            class="text-custom-border flex flex-row gap-2 items-center cursor-pointer">
-                            <a href="/catalogo/{{ $subitem->id }}" id="item-category-{{ $subitem->id }}"
-                              name="category"
-                              class=" rounded-sm border-none text-[#272727] flex items-center py-2 px-3 hover:opacity-75 transition-opacity duration-300"
-                              value="{{ $subitem->id }}">
-                              {{ $subitem->name }}
-                            </a>
-                          </label>
-                        @endforeach
-                      </div> --}}
               @endforeach
-
             @endif
           </li>
 
         </ul>
       </li>
-      @if ($blog > 0)
+      @if (count($simulacros) > 0)
         <li>
-          <a href="/blog"
-            class="text-[#272727] font-medium font-poppins text-sm py-2 px-3 block hover:opacity-75 transition-opacity duration-300 {{ $pagina == 'contacto' ? 'text-[#FF5E14]' : '' }}">
+          <a href="{{ route('CatalogoSimulacro.jsx') }}"
+            class="text-[#272727] font-medium font-Montserrat_Regular text-sm py-2 px-3 block hover:opacity-75 transition-opacity duration-300 {{ $pagina == 'contacto' ? 'text-[#FF5E14]' : '' }}">
             <span class="underline-this">
               <svg
                 class="inline-block w-3 h-3 mb-0.5 me-2 text-gray-400 dark:text-gray-500 group-hover:text-blue-600 dark:group-hover:text-blue-500"
@@ -170,14 +144,47 @@
                 <path
                   d="M12 0H2a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2ZM7.5 17.5h-1a1 1 0 0 1 0-2h1a1 1 0 0 1 0 2ZM12 13H2V4h10v9Z" />
               </svg>
-              BLOG
+              Simulacros
             </span>
           </a>
         </li>
       @endif
+      @if (count($docentes)  > 0)
+        <li>
+          <a href="{{ route('Docente.jsx') }}"
+            class="text-[#272727] font-medium font-Montserrat_Regular text-sm py-2 px-3 block hover:opacity-75 transition-opacity duration-300 {{ $pagina == 'contacto' ? 'text-[#FF5E14]' : '' }}">
+            <span class="underline-this">
+              <svg
+                class="inline-block w-3 h-3 mb-0.5 me-2 text-gray-400 dark:text-gray-500 group-hover:text-blue-600 dark:group-hover:text-blue-500"
+                aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 14 20">
+                <path
+                  d="M12 0H2a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2ZM7.5 17.5h-1a1 1 0 0 1 0-2h1a1 1 0 0 1 0 2ZM12 13H2V4h10v9Z" />
+              </svg>
+              Docentes
+            </span>
+          </a>
+        </li>
+      @endif
+      @if (count($recursos) > 0)
+        <li>
+          <a href="{{ route('Recursos.jsx') }}"
+            class="text-[#272727] font-medium font-Montserrat_Regular text-sm py-2 px-3 block hover:opacity-75 transition-opacity duration-300 {{ $pagina == 'contacto' ? 'text-[#FF5E14]' : '' }}">
+            <span class="underline-this">
+              <svg
+                class="inline-block w-3 h-3 mb-0.5 me-2 text-gray-400 dark:text-gray-500 group-hover:text-blue-600 dark:group-hover:text-blue-500"
+                aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 14 20">
+                <path
+                  d="M12 0H2a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2ZM7.5 17.5h-1a1 1 0 0 1 0-2h1a1 1 0 0 1 0 2ZM12 13H2V4h10v9Z" />
+              </svg>
+              Recursos
+            </span>
+          </a>
+        </li>
+      @endif 
+
       <li>
         <a href="/contacto"
-          class="text-[#272727] font-medium font-poppins text-sm py-2 px-3 block hover:opacity-75 transition-opacity duration-300 {{ $pagina == 'contacto' ? 'text-[#FF5E14]' : '' }}">
+          class="text-[#272727] font-medium font-Montserrat_Regular text-sm py-2 px-3 block hover:opacity-75 transition-opacity duration-300 {{ $pagina == 'contacto' ? 'text-[#FF5E14]' : '' }}">
           <span class="underline-this">
             <svg
               class="inline-block w-3 h-3 mb-0.5 me-2 text-gray-400 dark:text-gray-500 group-hover:text-blue-600 dark:group-hover:text-blue-500"
@@ -186,23 +193,11 @@
                 d="M19 4h-1a1 1 0 1 0 0 2v11a1 1 0 0 1-2 0V2a2 2 0 0 0-2-2H2a2 2 0 0 0-2 2v15a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3V5a1 1 0 0 0-1-1ZM3 4a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V4Zm9 13H4a1 1 0 0 1 0-2h8a1 1 0 0 1 0 2Zm0-3H4a1 1 0 0 1 0-2h8a1 1 0 0 1 0 2Zm0-3H4a1 1 0 0 1 0-2h8a1 1 0 1 1 0 2Zm0-3h-2a1 1 0 0 1 0-2h2a1 1 0 1 1 0 2Zm0-3h-2a1 1 0 0 1 0-2h2a1 1 0 1 1 0 2Z" />
               <path d="M6 5H5v1h1V5Z" />
             </svg>
-            CONTACTO
+            Contacto
           </span></a>
       </li>
 
-      @if ($tags->count() > 0)
-        @foreach ($tags as $item)
-          <li>
-            <a href="/catalogo?tag={{ $item->id }}"
-              class="text-[#272727] font-medium font-poppins text-sm py-2 px-3 block hover:opacity-75 transition-opacity duration-300 {{ $pagina == 'contacto' ? 'text-[#FF5E14]' : '' }}">
-              <span class="underline-this  ">
-                {{ $item->name }} </span>
-            </a>
-
-          </li>
-        @endforeach
-
-      @endif
+     
     </ul>
   </nav>
 
@@ -211,13 +206,13 @@
 <header class="sticky top-0 z-30">
   {{-- border-b shadow-lg --}}
 
-  <div id="header-menu" class="flex justify-between gap-5 w-full px-[5%] text-[17px] py-2 text-white 
+  <div id="header-menu" class="flex items-center justify-between gap-5 w-full px-[5%] text-[17px] py-2 text-white 
     @if ($isIndex ? 1 : 0)
     @else
     bg-[#191023]
     @endif">
 
-    <div id="menu-burguer" class="lg:hidden z-10 w-max">
+    <div id="menu-burguer" class="lg:hidden z-10 w-max flex flex-row items-center">
       <img class="h-10 w-10 cursor-pointer" src="{{ asset('images/img/menu_hamburguer.png') }}"
         alt="menu hamburguesa" onclick="show()" />
     </div>
@@ -589,7 +584,7 @@
          if (element.subcategories.length == 0) return;
          let ul = document.createElement('ul');
          ul.className =
-           'text-[#006BF6] font-bold font-poppins text-md py-2 px-3 block   duration-300 w-full whitespace-nowrap gap-4';
+           'text-[#006BF6] font-bold font-Montserrat_Regular text-md py-2 px-3 block   duration-300 w-full whitespace-nowrap gap-4';
 
          ul.innerHTML = element.name;
          element.subcategories.forEach(subcategoria => {
@@ -598,7 +593,7 @@
            li.style.setProperty('padding-right', '2px', 'important');
 
            li.className =
-             'text-[#272727] px-2 rounded-sm cursor-pointer font-normal font-poppins text-[13px] py-2 px-3 hover:bg-blue-200 hover:opacity-75 transition-opacity duration-300 w-full whitespace-nowrap';
+             'text-[#272727] px-2 rounded-sm cursor-pointer font-normal font-Montserrat_Regular text-[13px] py-2 px-3 hover:bg-blue-200 hover:opacity-75 transition-opacity duration-300 w-full whitespace-nowrap';
            // Crear el elemento 'a'
            let a = document.createElement('a');
            a.href = `/catalogo?subcategoria=${subcategoria.id}`;

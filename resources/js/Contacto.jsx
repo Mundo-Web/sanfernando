@@ -278,7 +278,7 @@ const Contacto = ({ general, faqs, aboutUs }) => {
                                 </h1>
 
                                 <p className="text-base font-Montserrat_Regular tracking-normal">
-                                    <HtmlContent html={data['DESCRIPCION-FAQ']} />
+                                    <HtmlContent html={data['DESCRIPTION-FAQ']} />
                                 </p>
                             </div>
                         </div>
@@ -300,9 +300,9 @@ const Contacto = ({ general, faqs, aboutUs }) => {
                                                         </svg>
                                                     </span>
                                                 </summary>
-                                                <p className="text-base text-[#252222] font-Montserrat_Regular">
+                                                <div className="text-base text-[#252222] font-Montserrat_Regular">
                                                     <div dangerouslySetInnerHTML={{ __html: faq?.respuesta ?? '' }}></div>
-                                                </p>
+                                                </div>
                                             </details>
                                         </div>
                                     ))}                  
