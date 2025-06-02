@@ -122,7 +122,7 @@
             </a>
             @if (count($categorias) > 0)
               @foreach ($categorias as $item)
-                <a href="/catalogo/{{ $item->id }}"
+                <a href="/catalogo?category={{ $item->id }}"
                   class="text-[#272727] flex items-center font-Montserrat_Regular py-2 px-3 hover:opacity-75 transition-opacity duration-300"
                   @click="openCategories[{{ $item->id }}] = !openCategories[{{ $item->id }}]">
                   <span>{{ $item->name }}</span>
