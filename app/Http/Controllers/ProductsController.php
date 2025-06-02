@@ -741,4 +741,37 @@ class ProductsController extends Controller
       return response()->json(['message' => 'No se ha podido agregar el producto '], 400);
     }
   }
+
+
+  public function borrarFichaTecnica(Request $request){
+    
+    try {
+       
+        $obtenerproducto = Products::find($request->id);
+
+        if (!$obtenerproducto) {
+            return response()->json(['message' => 'Producto no encontrado'], 404);
+        }
+      
+        $rutaCompleta = $obtenerproducto->brochure_url;
+      
+        if (file_exists($rutaCompleta)) {
+            
+            if (unlink($rutaCompleta)) {
+               
+                $obtenerproducto->brochure_url = "";
+                $obtenerproducto->update();
+                
+                return response()->json(['message' => 'Ficha Técnica eliminada con éxito']);
+            } else {
+                return response()->json(['message' => 'No se pudo eliminar el archivo físico'], 500);
+            }
+        } else {
+            return response()->json(['message' => 'El archivo no existe'], 404);
+        }
+
+    } catch (\Throwable $th) {
+        return response()->json(['message' => 'No se ha podido eliminar la Ficha Técnica', 'error' => $th->getMessage()], 400);
+    }
+  }
 }

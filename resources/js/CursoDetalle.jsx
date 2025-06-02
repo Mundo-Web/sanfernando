@@ -38,7 +38,12 @@ const CursoDetalle = ({ producto, modules, url_env }) => {
     return str;
   };
 
-    
+  const isValidImage = (imgPath) => {
+    return imgPath && 
+           imgPath !== "images/img/noimagen.jpg" && 
+           !imgPath.includes('noimagen');
+  };
+  
 
   return (
     <>
@@ -177,11 +182,13 @@ const CursoDetalle = ({ producto, modules, url_env }) => {
                     </div>
                   )}
 
-                  {producto?.imagen_ambiente && (
+                  {isValidImage(producto?.imagen_ambiente) && (
                     <img
                       loading="lazy"
                       src={'/' + producto.imagen_ambiente}
                       className="object-contain mt-5 w-full rounded-xl"
+                      alt="Imagen del producto en ambiente"
+                      onError={(e) => e.target.style.display = 'none'} // Oculta si falla la carga
                     />
                   )}
                 </div>

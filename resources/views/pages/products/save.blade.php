@@ -837,21 +837,43 @@
 
                 </div>
               </div>
-              <div class="md:col-span-5 flex flex-col justify-between gap-1">
+
+              <div class="md:col-span-5 flex flex-col justify-between gap-1 mt-3">
 
                 <div class="w-full">
                   <label for="descuento"> Brochre del curso </label>
                   <div class="relative mb-2 mt-2">
-
                     <input type="file" id="brochure_url" name="brochure_url"
                       class="mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                       placeholder="descuento">
                   </div>
                 </div>
 
+                @if($product->brochure_url)
+                    <span><a class="font-bold"
+                            href="{{ asset($product->brochure_url) }}"
+                            target="_blank">Eliminar brochure actual</a>
+                        <i onclick="borrarFicha({{ $product->id }})"
+                            class="ml-1 cursor-pointer absolute">
+                            <svg class="w-full" xmlns="http://www.w3.org/2000/svg" version="1.1"
+                                xmlns:xlink="http://www.w3.org/1999/xlink" width="20"
+                                height="20" x="0" y="0" viewBox="0 0 512 512"
+                                style="enable-background:new 0 0 512 512" xml:space="preserve">
+                                <g>
+                                    <g fill="#EF5350">
+                                        <path
+                                            d="M412.6 141.4v.1c0 .6-.2.9-.4 1.1s-.6.5-1.2.5h-11.4c-.4-.1-.9-.2-1.4-.2s-.9.1-1.4.2H115.1c-.4-.1-.9-.2-1.4-.2s-.9.1-1.4.2H101c-1 0-1.7-.8-1.7-1.7v-32.1c0-1 .8-1.7 1.7-1.7h310c1 0 1.7.8 1.7 1.7zM393.4 152.7V442c0 13.3-10.8 24.1-24.1 24.1H142.8c-13.3 0-24.1-10.8-24.1-24.1V152.7zM332 396.2V222.7c0-2.7-2.2-4.9-4.9-4.9s-4.9 2.2-4.9 4.9v173.4c0 2.7 2.2 4.9 4.9 4.9 2.8 0 4.9-2.1 4.9-4.8zM261 409V209.9c0-2.7-2.2-4.9-4.9-4.9s-4.9 2.2-4.9 4.9v199c0 2.7 2.2 4.9 4.9 4.9s4.9-2.1 4.9-4.8zm-71.1-12.8V222.7c0-2.7-2.2-4.9-4.9-4.9s-4.9 2.2-4.9 4.9v173.4c0 2.7 2.2 4.9 4.9 4.9s4.8-2.1 4.9-4.8zM321.5 57.3v40.5h-9.7V57.3c0-.9-.7-1.7-1.7-1.7H201.8c-.9 0-1.7.7-1.7 1.7v40.5h-9.8V57.3c0-6.3 5.1-11.4 11.4-11.4H310c6.4 0 11.5 5.1 11.5 11.4z"
+                                            fill="#EF5350" opacity="1" data-original="#ef5350">
+                                        </path>
+                                    </g>
+                                </g>
+                            </svg>
+                        </i>
+                    </span>
+                @endif
 
                 @if (isset($product->brochure_url))
-                  <a href="{{ asset($product->brochure_url) }}" target="_blank">Ver Brochure</a>
+                  <a href="{{ asset($product->brochure_url) }}" class="mt-3" target="_blank">Ver Brochure</a>
                 @endif
 
               </div>
@@ -1381,6 +1403,35 @@
         toggleSelect();
       });
     });
+  </script>
+
+  <script>
+    function borrarFicha(id) {
+      $.ajax({
+            url: "{{ route('activity.borrarficha') }}",
+            method: 'POST',
+            data: {
+                _token: $('input[name="_token"]').val(),
+                status: status,
+                id: id,
+            },
+            success: function(success) {
+                Swal.fire({
+
+                    icon: "success",
+                    title: 'Brochure eliminado',
+                    showConfirmButton: false,
+                    timer: 1500
+
+                }).then(() => {
+                    location.reload();
+                });
+            },
+            error: function(error) {
+                console.log(error)
+            }
+        })
+    }
   </script>
 
 </x-app-layout>

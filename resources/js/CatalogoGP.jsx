@@ -31,7 +31,7 @@ const CatalogoGP = ({
     category: GET.category ? [GET.category] : [],
     subcategory: GET.subcategory ? [GET.subcategory] : [],
   });
-
+    console.log(query);
   const options = [
     { value: 'a-z', label: 'Desde A a Z' },
     { value: 'z-a', label: 'Desde Z a A' },
