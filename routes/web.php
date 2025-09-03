@@ -259,7 +259,7 @@ Route::middleware(['auth:sanctum', 'verified', 'can:Admin'])->group(function () 
         //Equipo
         Route::resource('/staff', StaffController::class);
         Route::post('/staff/updateVisible', [StaffController::class, 'updateVisible'])->name('staff.updateVisible');
-        Route::post('/staff/borrar', [StaffController::class, 'borrar'])->name('staff.borrar');
+        Route::post('/staff/borrar', [StaffController::class, 'deleteStaff'])->name('staff.deleteStaff');
         
         //Resources
         Route::resource('/resources', ResourcesController::class);
