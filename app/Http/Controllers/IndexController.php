@@ -98,10 +98,12 @@ class IndexController extends Controller
 
     $categorias = Category::select('categories.id', 'categories.name', 'categories.visible')
       ->with(['subcategories'])
-      ->join('products', 'products.categoria_id', 'categories.id')
-      ->where('categories.visible', 1)
-      ->where('products.status', 1)
-      ->groupBy('categories.id', 'categories.name', 'categories.visible')
+      ->whereHas('products', function($query) {
+          $query->where('visible', 1);
+          $query->where('status', 1);
+      })
+      ->where('visible', 1)
+      ->where('status', 1)
       ->get();
 
     //check if user is logged in
