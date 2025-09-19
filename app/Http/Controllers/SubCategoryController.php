@@ -82,9 +82,9 @@ class SubCategoryController extends Controller
 
     public function update(Request $request)
     {   
-        $request->validate([
-            'name' => 'required',
-        ]);
+        // $request->validate([
+        //     'name' => 'required',
+        // ]);
 
         $body = $request->all();
         try {
