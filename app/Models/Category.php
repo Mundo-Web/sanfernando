@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Category extends Model
 {
     use HasFactory;
-    protected $fillable=['name','slug', 'description', 'url_image', 'name_image','destacar', 'fit', 'visible', 'state', 'is_menu'];
+    protected $fillable = ['name', 'slug', 'description', 'url_image', 'name_image', 'destacar', 'fit', 'visible', 'state', 'is_menu'];
 
     // public function subcategories()
     // {
@@ -25,10 +25,17 @@ class Category extends Model
         return $this->hasMany(Products::class);
     }
 
+    public function products()
+    {
+        return $this->hasMany(Products::class)
+            ->where('visible', true)
+            ->where('status', true);
+    }
+
     public function subcategories()
     {
         return $this->hasMany(SubCategory::class)
-                    ->where('visible', true)
-                    ->where('status', true);
+            ->where('visible', true)
+            ->where('status', true);
     }
 }
