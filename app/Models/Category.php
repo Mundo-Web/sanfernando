@@ -27,6 +27,8 @@ class Category extends Model
 
     public function subcategories()
     {
-        return $this->hasMany(SubCategory::class);
+        return $this->hasMany(SubCategory::class)
+                    ->where('visible', true)
+                    ->where('status', true);
     }
 }
