@@ -236,16 +236,33 @@ class ProductsController extends Controller
     $atributos = Attributes::where("status", "=", true)->get();
     $valorAtributo = AttributesValues::where("status", "=", true)->get();
     $tags = Tag::where("status", "=", true)->get();
-    $categoria = Category::where('status', 1)->get();
+    $categoria = Category::query()
+      ->where('status', 1)
+      ->where('visible')
+      ->get();
     $docentes = Staff::where('status', 1)->get();
     $simulacros = ExamSimulation::where('status', 1)->get();
 
     $icons = Icon::all();
-    $subcategories = SubCategory::where('status', 1)->get();
+    $subcategories = SubCategory::query()
+      ->where('status', 1)
+      ->where('visible')
+      ->get();
     $galery = [];
     $especificacion = [json_decode('{"tittle":"", "specifications":""}', false)];
-    return view('pages.products.save', compact('subcategories',
-    'icons', 'docentes', 'product', 'atributos', 'valorAtributo', 'categoria', 'tags', 'especificacion',  'galery', 'simulacros'));
+    return view('pages.products.save', compact(
+      'subcategories',
+      'icons',
+      'docentes',
+      'product',
+      'atributos',
+      'valorAtributo',
+      'categoria',
+      'tags',
+      'especificacion',
+      'galery',
+      'simulacros'
+    ));
   }
 
   public function edit(string $id)
@@ -257,14 +274,20 @@ class ProductsController extends Controller
     $especificacion = Specifications::where("product_id", "=", $id)->get();
     if ($especificacion->count() == 0) $especificacion = [json_decode('{"tittle":"", "specifications":""}', false)];
     $tags = Tag::where('status', 1)->get();
-    $categoria = Category::all();
-    $subcategories = SubCategory::all();
+    $categoria = Category::query()
+      ->where('status', 1)
+      ->where('visible')
+      ->get();
+    $subcategories = SubCategory::query()
+      ->where('status', 1)
+      ->where('visible')
+      ->get();
     $galery = Galerie::where("product_id", "=", $id)->get();
     $docentes = Staff::where('status', 1)->get();
     $icons = Icon::all();
     $simulacros = ExamSimulation::where('status', 1)->get();
 
-    return view('pages.products.save', compact('simulacros','product', 'docentes', 'icons', 'atributos', 'valorAtributo', 'tags', 'categoria', 'especificacion', 'subcategories', 'galery'));
+    return view('pages.products.save', compact('simulacros', 'product', 'docentes', 'icons', 'atributos', 'valorAtributo', 'tags', 'categoria', 'especificacion', 'subcategories', 'galery'));
   }
 
   private function saveImg(Request $request, string $field)
@@ -311,7 +334,7 @@ class ProductsController extends Controller
    * Store a newly created resource in storage.
    */
   public function store(Request $request)
-  { 
+  {
 
     try {
       $especificaciones = [];
@@ -434,7 +457,7 @@ class ProductsController extends Controller
         if (strtolower($data['is_exam']) == 'on') $data['is_exam'] = 1;
       }
 
-     
+
 
       $cleanedData = Arr::where($data, function ($value, $key) {
         return !is_null($value);
@@ -743,35 +766,35 @@ class ProductsController extends Controller
   }
 
 
-  public function borrarFichaTecnica(Request $request){
-    
+  public function borrarFichaTecnica(Request $request)
+  {
+
     try {
-       
-        $obtenerproducto = Products::find($request->id);
 
-        if (!$obtenerproducto) {
-            return response()->json(['message' => 'Producto no encontrado'], 404);
-        }
-      
-        $rutaCompleta = $obtenerproducto->brochure_url;
-      
-        if (file_exists($rutaCompleta)) {
-            
-            if (unlink($rutaCompleta)) {
-               
-                $obtenerproducto->brochure_url = "";
-                $obtenerproducto->update();
-                
-                return response()->json(['message' => 'Ficha Técnica eliminada con éxito']);
-            } else {
-                return response()->json(['message' => 'No se pudo eliminar el archivo físico'], 500);
-            }
+      $obtenerproducto = Products::find($request->id);
+
+      if (!$obtenerproducto) {
+        return response()->json(['message' => 'Producto no encontrado'], 404);
+      }
+
+      $rutaCompleta = $obtenerproducto->brochure_url;
+
+      if (file_exists($rutaCompleta)) {
+
+        if (unlink($rutaCompleta)) {
+
+          $obtenerproducto->brochure_url = "";
+          $obtenerproducto->update();
+
+          return response()->json(['message' => 'Ficha Técnica eliminada con éxito']);
         } else {
-            return response()->json(['message' => 'El archivo no existe'], 404);
+          return response()->json(['message' => 'No se pudo eliminar el archivo físico'], 500);
         }
-
+      } else {
+        return response()->json(['message' => 'El archivo no existe'], 404);
+      }
     } catch (\Throwable $th) {
-        return response()->json(['message' => 'No se ha podido eliminar la Ficha Técnica', 'error' => $th->getMessage()], 400);
+      return response()->json(['message' => 'No se ha podido eliminar la Ficha Técnica', 'error' => $th->getMessage()], 400);
     }
   }
 }
