@@ -237,16 +237,16 @@ class ProductsController extends Controller
     $valorAtributo = AttributesValues::where("status", "=", true)->get();
     $tags = Tag::where("status", "=", true)->get();
     $categoria = Category::query()
-      ->where('status', true)
-      ->where('visible', true)
+      ->where('status', 1)
+      ->where('visible', 1)
       ->get();
     $docentes = Staff::where('status', 1)->get();
     $simulacros = ExamSimulation::where('status', 1)->get();
 
     $icons = Icon::all();
     $subcategories = SubCategory::query()
-      ->where('status', true)
-      ->where('visible', true)
+      ->where('status', 1)
+      ->where('visible', 1)
       ->get();
     $galery = [];
     $especificacion = [json_decode('{"tittle":"", "specifications":""}', false)];
@@ -275,12 +275,12 @@ class ProductsController extends Controller
     if ($especificacion->count() == 0) $especificacion = [json_decode('{"tittle":"", "specifications":""}', false)];
     $tags = Tag::where('status', 1)->get();
     $categoria = Category::query()
-      ->where('status', true)
-      ->where('visible', true)
+      ->where('status', 1)
+      ->where('visible', 1)
       ->get();
     $subcategories = SubCategory::query()
-      ->where('status', true)
-      ->where('visible', true)
+      ->where('status', 1)
+      ->where('visible', 1)
       ->get();
     $galery = Galerie::where("product_id", "=", $id)->get();
     $docentes = Staff::where('status', 1)->get();
