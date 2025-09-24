@@ -140,7 +140,7 @@ const Docente = ({ docentes, cursos }) => {
 						<div className="relative w-full">
 							
 							<div className={`py-3 px-4 cursor-pointer bg-white flex rounded-t-2xl justify-between items-center ${isOpen ? "" : "rounded-b-2xl"}`} onClick={() => setIsOpen(!isOpen)} >
-								<span className="font-Montserrat_Bold text-[#221F1F] text-xl">Categorías</span>
+								<span className="font-Montserrat_Bold text-[#221F1F] text-xl">Especialidad</span>
 								<span className={`transform transition-transform ${isOpen ? "rotate-180" : ""}`}>
 									<i className="fa-solid fa-chevron-down"></i>
 								</span>
