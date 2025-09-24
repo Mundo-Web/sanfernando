@@ -245,7 +245,7 @@
          
 
           <a id="productos-link" href="{{ route('CatalogoGP.jsx') }}" class="font-medium">
-            <span>Catálogo</span>
+            <span>Cursos</span>
             {{-- <div id="productos-link-h" class="w-0"></div> --}}
           </a>
 
