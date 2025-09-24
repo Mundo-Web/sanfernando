@@ -189,10 +189,12 @@ class IndexController extends Controller
   {
     $cursos = Major::where('status', 1)
       ->where('visible', 1)
-      ->whereHas('staff')
+      ->whereHas('staff', function ($query) {
+        $query->where('status', true);
+      })
       ->get();
 
-    $docentes = Staff::where('status', 1)->get();
+    $docentes = Staff::where('status', true)->get();
     return Inertia::render('Docente', [
       'docentes' => $docentes,
       'cursos' => $cursos

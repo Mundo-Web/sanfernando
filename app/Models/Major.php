@@ -8,12 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Major extends Model
 {
     use HasFactory;
-    protected $fillable=['name', 'description', 'imagen', 'visible', 'status'];
+    protected $fillable = ['name', 'description', 'imagen', 'visible', 'status'];
 
     public function staff()
     {
-        return $this->hasMany(Staff::class, 'major_id');
+        return $this->hasMany(Staff::class, 'major_id')
+            ->where('status', true);
     }
-
-    
 }
