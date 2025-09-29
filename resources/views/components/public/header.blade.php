@@ -96,8 +96,8 @@
         </a>
       </li>
       <li>
-        <a @click="openCatalogo = !openCatalogo" href="javascript:void(0)"
-          class="text-[#272727] flex justify-between items-center font-medium font-Montserrat_Regular text-sm py-2 px-3 hover:opacity-75 transition-opacity duration-300 {{ $pagina == 'catalogo' ? 'text-[#FF5E14]' : '' }}">
+        <a href="{{ route('CatalogoGP.jsx') }}"
+          class="text-[#272727] font-medium font-Montserrat_Regular text-sm py-2 px-3 block hover:opacity-75 transition-opacity duration-300 {{ $pagina == 'catalogo' ? 'text-[#FF5E14]' : '' }}">
           <span class="underline-this">
             <svg
               class="inline-block w-3 h-3 mb-0.5 me-2 text-gray-400 dark:text-gray-500 group-hover:text-blue-600 dark:group-hover:text-blue-500"
@@ -107,31 +107,9 @@
               <path
                 d="M1 18h16a1 1 0 0 0 1-1v-6h-4.439a.99.99 0 0 0-.908.6 3.978 3.978 0 0 1-7.306 0 .99.99 0 0 0-.908-.6H0v6a1 1 0 0 0 1 1Z" />
             </svg>
-            Catalogo
+            Cursos
           </span>
-          <span :class="{ 'rotate-180': openCatalogo }"
-            class="ms-1 inline-block transform transition-transform duration-300">↓</span>
         </a>
-        <ul x-show="openCatalogo" x-transition class="ml-3 mt-1 space-y-1 border-l border-gray-300 text-sm">
-          <li>
-            <a href="{{ route('CatalogoGP.jsx') }}"
-              class="text-[#272727] font-Montserrat_Regular flex items-center py-2 px-3 hover:opacity-75 transition-opacity duration-300">
-              <span class="underline-this">
-                Todas las categorías
-              </span>
-            </a>
-            @if (count($categorias) > 0)
-              @foreach ($categorias as $item)
-                <a href="/catalogo?category={{ $item->id }}"
-                  class="text-[#272727] flex items-center font-Montserrat_Regular py-2 px-3 hover:opacity-75 transition-opacity duration-300"
-                  @click="openCategories[{{ $item->id }}] = !openCategories[{{ $item->id }}]">
-                  <span>{{ $item->name }}</span>
-                </a>
-              @endforeach
-            @endif
-          </li>
-
-        </ul>
       </li>
       @if (count($simulacros) > 0)
         <li>

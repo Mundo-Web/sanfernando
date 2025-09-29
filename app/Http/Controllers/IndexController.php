@@ -140,8 +140,17 @@ class IndexController extends Controller
 
     $productos =  Products::with(['tags', 'galeria', 'category'])->where('status', 1)->take(12)->get();
 
-    $categorias = Category::with(['subcategories'])
-      ->select('categories.id', 'categories.name', 'categories.visible')
+    $categorias = Category::select('categories.id', 'categories.name', 'categories.visible')
+      ->with(['subcategories' => function ($query) {
+        $query->whereHas('products', function ($q) {
+          $q->where('visible', 1)
+            ->where('status', 1);
+        });
+      }])
+      ->whereHas('products', function ($query) {
+        $query->where('visible', 1)
+          ->where('status', 1);
+      })
       ->join('products', 'products.categoria_id', 'categories.id')
       ->where('categories.visible', 1)
       ->where('products.status', 1)
