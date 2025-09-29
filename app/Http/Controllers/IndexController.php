@@ -94,17 +94,24 @@ class IndexController extends Controller
   public function cursosyDiplomados()
   {
     $Wishlist = [];
-    $productos =  Products::with(['tags', 'galeria', 'category'])->where('status', 1)->take(12)->get();
+    $productos =  Products::with(['tags', 'galeria', 'category'])
+      ->where('is_exam', 0)
+      ->where('status', 1)->take(12)
+      ->get();
 
     $categorias = Category::select('categories.id', 'categories.name', 'categories.visible')
       ->with(['subcategories' => function ($query) {
         $query->whereHas('products', function ($q) {
-          $q->where('visible', 1)
+          $q
+            ->where('is_exam', 0)
+            ->where('visible', 1)
             ->where('status', 1);
         });
       }])
       ->whereHas('products', function ($query) {
-        $query->where('visible', 1)
+        $query
+          ->where('is_exam', 0)
+          ->where('visible', 1)
           ->where('status', 1);
       })
       ->where('visible', 1)
@@ -138,17 +145,25 @@ class IndexController extends Controller
   public function simulacros()
   {
 
-    $productos =  Products::with(['tags', 'galeria', 'category'])->where('status', 1)->take(12)->get();
+    $productos =  Products::with(['tags', 'galeria', 'category'])
+      ->where('is_exam', 1)
+      ->where('status', 1)
+      ->take(12)
+      ->get();
 
     $categorias = Category::select('categories.id', 'categories.name', 'categories.visible')
       ->with(['subcategories' => function ($query) {
         $query->whereHas('products', function ($q) {
-          $q->where('visible', 1)
+          $q
+            ->where('is_exam', 1)
+            ->where('visible', 1)
             ->where('status', 1);
         });
       }])
       ->whereHas('products', function ($query) {
-        $query->where('visible', 1)
+        $query
+          ->where('is_exam', 1)
+          ->where('visible', 1)
           ->where('status', 1);
       })
       ->join('products', 'products.categoria_id', 'categories.id')
